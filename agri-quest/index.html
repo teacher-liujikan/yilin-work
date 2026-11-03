@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+<title>農業概論闖關</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;700&display=swap">
+<style>
+/* Layout: one column. Home = rank card + five growth-stage levels + badges + 錯題本. Quiz = one question at a time with instant feedback. */
+:root{
+  --bg:#f2f4ee; --card:#ffffff; --ink:#1b2a21; --muted:#5d6b62; --line:#d4dcd2;
+  --accent:#2d6a4c; --accent-soft:#e2eee6; --gold:#a8701a; --gold-soft:#f8eed8;
+  --ok:#1d8457; --ok-soft:#e2f4ea; --bad:#c43d2c; --bad-soft:#fbe9e6; --lock:#c9d0c8;
+  --f-display:"Huninn","Noto Sans TC",sans-serif;
+  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111713; --card:#19211c; --ink:#e4ebe5; --muted:#9aa89e; --line:#2d3a31;
+  --accent:#7cc39d; --accent-soft:#1d3127; --gold:#e3b25a; --gold-soft:#33291a;
+  --ok:#5ccb92; --ok-soft:#173326; --bad:#ff7a68; --bad-soft:#3a1e1a; --lock:#3a453d; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111713; --card:#19211c; --ink:#e4ebe5; --muted:#9aa89e; --line:#2d3a31;
+  --accent:#7cc39d; --accent-soft:#1d3127; --gold:#e3b25a; --gold-soft:#33291a;
+  --ok:#5ccb92; --ok-soft:#173326; --bad:#ff7a68; --bad-soft:#3a1e1a; --lock:#3a453d; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.75}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 60px}
+button{font:inherit;cursor:pointer;color:inherit}
+.btn{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:5px 16px;font-size:15px;line-height:1.6}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--card);font-weight:700}
+.btn.big{font-size:18px;padding:9px 28px}
+.btn:focus-visible,.opt:focus-visible,.level:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.muted{color:var(--muted)}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;margin:0;line-height:1.3;text-wrap:balance}
+
+header.top{position:relative;padding-right:100px;display:flex;flex-direction:column;gap:4px;margin-bottom:18px}
+.school{font-size:14px;color:var(--muted);letter-spacing:.04em}
+h1{font-size:clamp(28px,6vw,38px)}
+.qrthumb{position:absolute;top:2px;right:0;display:flex;flex-direction:column;align-items:center;gap:2px;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:6px 6px 2px;cursor:zoom-in}
+.qrthumb small{font-size:12px;color:#1b2a21;line-height:1.4}
+.qrthumb img,.qrthumb canvas{display:block;width:70px!important;height:70px!important}
+.qrmodal{position:fixed;inset:0;z-index:50;background:rgba(10,16,12,.72);display:grid;place-items:center;padding:16px}
+.qrcard{background:#fff;color:#1b2a21;border-radius:18px;padding:24px;display:flex;flex-direction:column;align-items:center;gap:12px;max-width:100%;text-align:center}
+.qrcard h2{font-size:24px}
+#qrBig img,#qrBig canvas{display:block;width:min(70vw,60vh,420px)!important;height:auto!important}
+.qrurl{margin:0;font-size:14px;color:#5d6b62;word-break:break-all;user-select:all}
+
+/* rank card */
+.rank{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:center}
+.lv{grid-row:span 2;width:62px;height:62px;border-radius:50%;border:3px solid var(--gold);display:grid;place-items:center;text-align:center;line-height:1.1;background:var(--gold-soft)}
+.lv small{display:block;font-size:11px;color:var(--gold);letter-spacing:.08em}
+.lv b{font-family:var(--f-display);font-weight:400;font-size:26px;color:var(--gold)}
+.rank-t{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;min-width:0}
+.rank-t h2{font-size:24px}
+.rank-t span{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.xpbar{height:10px;border-radius:10px;background:var(--accent-soft);overflow:hidden}
+.xpbar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--accent));border-radius:10px;transition:width .6s}
+
+section.block{margin-top:28px}
+.block-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.block-h h2{font-size:24px}
+.block-h small{color:var(--muted);font-size:14px}
+
+/* levels */
+.levels{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+@media (max-width:620px){.levels{grid-template-columns:1fr}}
+.level{position:relative;text-align:left;border:1.5px solid var(--line);background:var(--card);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+@media (max-width:620px){.level{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:2px 12px}.level .stars{grid-row:span 2}.level .st{grid-column:2}}
+.level .no{font-size:13px;color:var(--muted);letter-spacing:.05em}
+.level h3{font-size:22px}
+.level .rg{font-size:13px;color:var(--muted)}
+.level .st{font-size:13px;font-weight:700;color:var(--accent)}
+.stars{color:var(--gold);letter-spacing:2px;font-size:18px;line-height:1.2}
+.stars .off{color:var(--lock)}
+.level.cleared{border-color:var(--ok)}
+.level.next{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.level:disabled{opacity:.5;cursor:not-allowed;background:transparent}
+.level:not(:disabled):hover{border-color:var(--accent)}
+.sprout{width:34px;height:34px}
+
+.rules{margin:10px 0 0;padding:10px 14px;border:1.5px dashed var(--line);border-radius:12px;font-size:15px;color:var(--muted)}
+.rules b{color:var(--ink)}
+.rules ul{margin:4px 0 0;padding-left:1.2em}
+
+/* badges */
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.badge{border:1.5px solid var(--line);border-radius:12px;padding:8px 10px;background:var(--card);display:flex;gap:10px;align-items:center;min-width:0}
+.badge .medal{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-display);font-size:16px;background:var(--gold-soft);color:var(--gold);border:2px solid var(--gold)}
+.badge b{display:block;font-size:15px;line-height:1.4}
+.badge small{display:block;font-size:12px;color:var(--muted);line-height:1.4}
+.badge.locked{opacity:.45}
+.badge.locked .medal{background:transparent;border-color:var(--lock);color:var(--lock)}
+
+/* wrong book */
+.wb{display:flex;flex-direction:column;gap:6px}
+.wb details{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:8px 14px}
+.wb summary{cursor:pointer;display:flex;gap:10px;align-items:baseline;list-style:none}
+.wb summary::-webkit-details-marker{display:none}
+.wb summary .n{font-weight:700;color:var(--bad);flex:none;font-variant-numeric:tabular-nums}
+.wb summary .s{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.wb summary .c{flex:none;font-size:13px;color:var(--muted)}
+.empty{color:var(--muted);font-size:15px;padding:10px 14px;border:1.5px dashed var(--line);border-radius:12px}
+
+/* quiz */
+.qhead{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:8px;display:flex;flex-direction:column;gap:8px}
+.qrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.qrow .ttl{flex:1;min-width:0}
+.qrow .ttl b{font-family:var(--f-display);font-weight:400;font-size:22px}
+.qrow .ttl small{display:block;font-size:13px;color:var(--muted)}
+.combo{font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums;font-size:15px;border:1.5px solid var(--gold);border-radius:999px;padding:2px 12px;background:var(--gold-soft)}
+.combo[data-n="0"]{opacity:.35}
+.dots{display:flex;gap:5px}
+.dots i{flex:1;height:8px;border-radius:6px;background:var(--line)}
+.dots i.cur{background:var(--accent)}
+.dots i.r{background:var(--ok)}
+.dots i.w{background:var(--bad)}
+.phase{display:inline-block;font-size:13px;font-weight:700;border-radius:6px;padding:0 8px;margin-right:6px;background:var(--accent-soft);color:var(--accent)}
+.phase.re{background:var(--bad-soft);color:var(--bad)}
+
+.q{position:relative;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:6px}
+.q.right{border-color:var(--ok)} .q.wrong{border-color:var(--bad)}
+.qn{font-weight:700;color:var(--accent);margin-right:6px;font-variant-numeric:tabular-nums}
+.stem{margin:0 0 8px}
+.items{margin:6px 0 8px;padding:8px 12px;border:1.5px dashed var(--line);border-radius:10px;background:var(--bg)}
+.items p{margin:2px 0}
+.scroll{overflow-x:auto}
+table.pv{border-collapse:collapse;margin:8px auto}
+table.pv td,table.pv th{border:1.5px solid var(--ink);padding:4px 14px;text-align:center;font-weight:400;white-space:nowrap}
+@media (max-width:480px){table.pv td,table.pv th{padding:4px 7px;font-size:15px}}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0 4px}
+@media (max-width:520px){.opts{grid-template-columns:1fr}}
+.opt{text-align:left;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:8px 12px;display:flex;gap:10px;align-items:center;min-width:0;transition:border-color .15s,background .15s}
+.opt:not(:disabled):hover{border-color:var(--accent);background:var(--accent-soft)}
+.opt .k{flex:none;font-weight:700;width:36px;height:28px;border-radius:14px;border:1.5px solid var(--muted);display:grid;place-items:center;font-size:14px}
+.opt:disabled{cursor:default}
+.opt.good{border-color:var(--ok);background:var(--ok-soft)}
+.opt.good .k{background:var(--ok);border-color:var(--ok);color:var(--card)}
+.opt.bad{border-color:var(--bad);background:var(--bad-soft)}
+.opt.bad .k{background:var(--bad);border-color:var(--bad);color:var(--card)}
+.fb{margin-top:12px;border-radius:12px;padding:10px 14px}
+.fb.ok{background:var(--ok-soft)} .fb.no{background:var(--bad-soft)}
+.fb strong{font-family:var(--f-display);font-weight:400;font-size:22px}
+.fb.ok strong{color:var(--ok)} .fb.no strong{color:var(--bad)}
+.fb .gain{font-weight:700;color:var(--gold);margin-left:8px;font-variant-numeric:tabular-nums}
+.fb p{margin:2px 0;font-size:15px}
+.explain{margin-top:10px;border-left:3px solid var(--accent);padding:2px 0 2px 12px}
+.explain h4{margin:10px 0 2px;font-size:15px;color:var(--accent);letter-spacing:.05em}
+.explain h4:first-child{margin-top:0}
+.explain p{margin:4px 0}
+details.explain summary{cursor:pointer;color:var(--accent);font-size:15px}
+.nextrow{display:flex;justify-content:flex-end;margin-top:14px}
+.float{position:absolute;right:18px;top:10px;font-weight:700;color:var(--gold);font-size:22px;pointer-events:none;animation:up 1.1s ease-out forwards}
+@keyframes up{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-36px)}}
+
+/* round screens */
+.panel{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:26px 20px;margin-top:10px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.panel h2{font-size:30px}
+.panel .big{font-family:var(--f-display);font-size:clamp(22px,5vw,28px);margin:0}
+.panel .bigstars{font-size:44px;letter-spacing:6px;color:var(--gold);line-height:1}
+.panel .bigstars .off{color:var(--lock)}
+.panel .row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.chipq{font-size:14px;border:1.5px solid var(--bad);color:var(--bad);background:var(--bad-soft);border-radius:8px;padding:0 10px;font-variant-numeric:tabular-nums}
+.earn{display:flex;flex-direction:column;gap:2px;font-size:15px;min-width:min(100%,280px)}
+.earn div{display:flex;justify-content:space-between;gap:20px;border-bottom:1px dashed var(--line);padding:2px 0;font-variant-numeric:tabular-nums}
+.earn div b{color:var(--gold)}
+.newbadge{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap}
+
+.toasts{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;flex-direction:column;gap:8px;align-items:center;width:max-content;max-width:calc(100% - 32px)}
+.toast{background:var(--ink);color:var(--card);border-radius:12px;padding:8px 16px;font-size:15px;animation:tin .3s ease-out;box-shadow:0 6px 20px rgba(0,0,0,.18)}
+.toast b{color:var(--gold-soft)}
+@keyframes tin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+footer{margin-top:40px;color:var(--muted);font-size:14px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px}
+.confirm{display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <button type="button" class="qrthumb" id="qrOpen" aria-label="放大 QR code，讓學生用平板或手機掃描"><span id="qrSmall"></span><small>掃我開始</small></button>
+    <div class="school">115 學年度第一學期・農業群 專業科目(二)・第一次聯合模擬考</div>
+    <h1>農業概論 闖關測驗</h1>
+  </header>
+  <main id="main"></main>
+  <div class="qrmodal" id="qrModal" hidden><div class="qrcard" role="dialog" aria-modal="true" aria-labelledby="qrTitle"><h2 id="qrTitle">掃這裡，開始闖關</h2><div id="qrBig"></div><p class="qrurl" id="qrUrl"></p><button type="button" class="btn primary" id="qrClose">關閉</button></div></div>
+  <footer><span>單選題 50 題・5 關。紀錄只存在這台裝置的瀏覽器裡。</span><span id="resetZone"><button class="btn" id="resetBtn" type="button">清除紀錄，從頭開始</button></span></footer>
+</div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function(){
+const $=s=>document.querySelector(s);
+const KEY='agri-quest-115-1';
+const L='ABCD';
+
+const Q=[
+ {s:'s1',n:'1',type:'choice',stem:"臺灣的農業生產結構以小農經營居多，自加入世界貿易組織(WTO)以後，面臨國內外市場的劇烈競爭，為強化臺灣農業的競爭優勢，並促進產業轉型，應積極採取下列哪一項三生三化的發展目標？",fig:"",opts:["農村生態自然化", "農民生活現代化", "農業生產企業化", "農業機械自動化"],ans:2,
+  ex:"<h4>詳解</h4><p>加入 WTO 後，臺灣農業面臨國內外劇烈競爭，小農必須發展規模經濟，以降低生產成本並提高其他附加價值，進而促使產業的轉型與升級，強化臺灣農業的競爭優勢。</p><h4>解題思路</h4><p>這題問的是「三生三化」。三生是生產、生活、生態，對應的三化是生產企業化、生活現代化、生態自然化。題目關鍵字是「競爭優勢」和「產業轉型」，這是生產面的目標，也就是用企業化、規模化經營來降低成本、提高附加價值。(A) 是生態面，(B) 是生活面，(D) 機械自動化只是手段，不是三化目標。所以答案選 (C)。</p><h4>重點整理</h4><p>三生三化＝農業生產企業化、農民生活現代化、農村生態自然化。看到「競爭力、轉型、降低成本」→ 生產企業化。</p>"},
+ {s:'s1',n:'2',type:'choice',stem:"荔枝是臺灣夏季盛產的水果，有「一日色變，二日香變，三日味變」的特性。荔枝採摘後急速脫水失重、而使果殼褐變發黑，風味快速流失，導致產品在銷售上受到諸多限制，即使盛產豐沛也難以穩定達到外銷標準，前述最符合臺灣農業生產上的哪一項特性？",fig:"",opts:["社會性", "經濟性", "自然性", "生物性"],ans:1,
+  ex:"<h4>詳解</h4><p>荔枝因具備消費者嗜好、生鮮味美等性質，從產地生產到進入消費市場這段期間存在有延遲現象，無法在短期內隨市場需求調節其生產數量且不耐儲藏，導致銷售通路與時間的限制，此乃經濟性特質。</p><h4>解題思路</h4><p>荔枝「一日色變、二日香變、三日味變」，重點是採收後很快就變質、不耐儲藏。題目強調的結果是「銷售受限、難以達到外銷標準」，這是產品在運銷、儲藏上的問題，屬於經濟性特質。同學容易被「褐變、脫水」吸引去選生物性，但要看題目最後落在哪裡——落在銷售面。所以答案選 (B)。</p><h4>重點整理</h4><p>經濟性特質：生產無法隨需求即時調節、產品不耐儲藏、運銷受時間與通路限制、價格波動大。</p>"},
+ {s:'s1',n:'3',type:'choice',stem:"農業經濟發展隨著人類需求與文明的演進，而逐漸從採集為生轉向農作耕耘，人類開始邁入以農業為中心的時代，利用鐵器製造農具、鑿井取水、施用肥料及曆法制定，提高農業生產效率，這是屬於下列哪一個時期？",fig:"",opts:["耕牧經濟時期", "村落經濟時期", "城市經歷時期", "都會經濟時期"],ans:1,
+  ex:"<h4>詳解</h4><p>人類因為定居開始栽種耕作，利用鐵器製作農具、施用肥料、鑿井取水及曆法制定，進入以農業為中心的村落經濟時期。</p><h4>解題思路</h4><p>從「採集為生」轉向「定居耕作」，加上鐵器農具、鑿井、施肥、曆法這些線索，代表人類已經定居下來、以農業為生活中心，這就是村落經濟時期。耕牧時期還在游耕游牧，城市時期的特徵則是物物交換變成貿易。(C) 選項「城市經歷時期」本身名稱也不對。答案選 (B)。</p><h4>重點整理</h4><p>農業經濟發展五期：耕牧 → 村落 → 城市 → 國家 → 世界。村落期關鍵字：定居、鐵器、鑿井、施肥、曆法。</p>"},
+ {s:'s1',n:'4',type:'choice',stem:"今年因氣候穩定、風調雨順，芒果產量比常年增產近 3 成，相較去年受低溫與颱風影響的歉收期，增產幅度更是顯著。由於產量大增，市場面臨「量多價跌」的壓力，批發價較去年同期重挫逾 3 成。連鎖量販店甚至祭出單顆 10 元的超殺優惠。綜合上面所述，有關芒果生產的農業特質，下列哪些學生的理解正確？",fig:"<div class=\"items\"><p>甲：臺灣芒果的主要產地南部地區，這屬於農業的生物性特質</p><p>乙：低溫颱風等造成芒果產量歉收這屬於農業的自然性特質</p><p>丙：芒果屬於季節性農產品，市場因為量多而價跌，這是農業的經濟性特質</p><p>丁：連鎖通路為了營運，祭出單顆 10 元的優惠，這是農業的社會性特質</p></div>",opts:["甲乙", "甲丙", "乙丙", "丙丁"],ans:2,
+  ex:"<h4>詳解</h4><p>甲：臺灣芒果的主要產地在南部，這是因為地理位置與氣候條件的影響，是屬於自然性特質。</p><p>丁：連鎖量販店為了營運促銷，祭出單顆 10 元的優惠，芒果的價格波動是屬於經濟性特質。</p><h4>解題思路</h4><p>這題要一句一句判斷。甲：芒果產地集中在南部，是受氣候和地理位置影響，屬於自然性，不是生物性，所以甲錯。乙：低溫、颱風造成歉收，是自然性，正確。丙：季節性產品量多價跌，是經濟性，正確。丁：量販店促銷造成價格波動，也是經濟性，不是社會性，所以丁錯。正確的是乙丙，答案選 (C)。</p><h4>重點整理</h4><p>自然性＝受氣候、地理、天災左右；經濟性＝價格、供需、運銷；判斷時看「造成現象的原因」是什麼。</p>"},
+ {s:'s1',n:'5',type:'choice',stem:"有關農業涵義與範圍的敘述，下列何者正確？",fig:"",opts:["農業的英文為 Agriculture，此字源自希臘文", "青割玉米的栽培屬於園藝生產", "漁撈分為遠洋、近海兩種漁業", "廣義的農業是指從事農、林、漁、牧之產、製、儲、銷及保育的工作"],ans:3,
+  ex:"<h4>詳解</h4><p>(A) 農業的英文為 Agriculture，此字源自拉丁文</p><p>(B) 青割玉米的栽培屬於農藝生產</p><p>(C) 漁撈分為遠洋、近海、沿岸及內河等漁業</p><h4>解題思路</h4><p>(A) Agriculture 源自拉丁文，不是希臘文。(B) 青割玉米是飼料作物，屬於農藝生產，不是園藝。(C) 漁撈除了遠洋、近海，還有沿岸和內河漁業，所以「兩種」是錯的。(D) 廣義農業包含農林漁牧的產、製、儲、銷及保育，正確。答案選 (D)。</p><h4>重點整理</h4><p>Agriculture 源自拉丁文 ager（田地）＋ cultura（耕作）。廣義農業＝農林漁牧之產製儲銷＋保育。</p>"},
+ {s:'s1',n:'6',type:'choice',stem:"經濟學家與社會學家公認「農業是文化的搖籃」，認為有人類的地方必然有農業的生產，而人類在此生活所留下的軌跡正是創造生活與文化的起源。下列何者是世界上最早的農業發祥地之一？",fig:"",opts:["印度的恆河", "歐洲的多瑙河", "南美洲的亞馬遜河", "中國的長江"],ans:0,
+  ex:"<h4>詳解</h4><p>世界上農業最早的起源地都是文化的發祥地，有中國的黃河、印度的恆河、埃及的尼羅河、中東的幼發拉底河和底格里斯河。</p><h4>解題思路</h4><p>農業發祥地和古文明發祥地是重疊的，都在大河流域。選項中只有印度的恆河在名單裡。要注意 (D) 是陷阱，中國的農業發祥地是「黃河」不是長江。多瑙河、亞馬遜河都不是。答案選 (A)。</p><h4>重點整理</h4><p>農業發祥地＝古文明發祥地：中國黃河、印度恆河、埃及尼羅河、中東兩河流域（幼發拉底河、底格里斯河）。</p>"},
+ {s:'s1',n:'7',type:'choice',stem:"依據考古學家的發掘，下列何者是人類最先栽培的作物？",fig:"",opts:["稻米", "玉米", "大麥", "小麥"],ans:3,
+  ex:"<h4>詳解</h4><p>人類最早栽培的作物是小麥，其次為大麥。</p><h4>解題思路</h4><p>根據考古發掘，人類最早栽培的作物是小麥，其次是大麥，都起源於中東兩河流域一帶。稻米、玉米的栽培都比較晚。答案選 (D)。</p><h4>重點整理</h4><p>最早栽培作物：小麥 &gt; 大麥。</p>"},
+ {s:'s1',n:'8',type:'choice',stem:"春秋戰國到秦漢時代，農產物的流通從物物交換逐漸轉變為貿易行為，交易由以「粟」為信用演進為「錢帛」，前述最可能是下列哪個時期？",fig:"",opts:["村落經濟時期", "城市經濟時期", "都會經濟時期", "國家經濟時期"],ans:1,
+  ex:"<h4>詳解</h4><p>城市經濟時期起源於春秋戰國而盛行於秦漢時代，農產物的流通從物物交換逐漸變為貿易行為，交易由以「粟」為信用演進為「錢帛」。</p><h4>解題思路</h4><p>題目的關鍵線索是「物物交換轉變為貿易行為」和「從粟演進到錢帛」，也就是開始有貨幣交易，這是城市經濟時期的特徵，時間是春秋戰國到秦漢。答案選 (B)。</p><h4>重點整理</h4><p>城市經濟時期：春秋戰國起、秦漢盛；物物交換 → 貿易；以粟為信用 → 錢帛。</p>"},
+ {s:'s1',n:'9',type:'choice',stem:"為了保障生產者、運銷者及消費者的共同利益，政府採用「劃定生產範圍、限制產銷數量、規定市場價格」等管制措施，這是哪一個時期的措施？",fig:"",opts:["世界經濟時期", "國家經濟時期", "都會經濟時期", "城市經濟時期"],ans:0,
+  ex:"<h4>解題思路</h4><p>題目描述政府用「劃定生產範圍、限制產銷數量、規定市場價格」等管制措施，來保障生產者、運銷者及消費者的共同利益。這種由政府出面、用制度管理農產品產銷的做法，本題答案為 (A) 世界經濟時期。</p><h4>重點整理</h4><p>農業經濟發展五期：耕牧 → 村落 → 城市 → 國家 → 世界。把每一期的關鍵字和代表做法對起來記。</p>"},
+ {s:'s1',n:'10',type:'choice',stem:"小力目前是技術型高中農場經營科的學生，他「最不可能」在高中階段達成下列哪一項的專題研究學習成果？",fig:"",opts:["進行有機玫瑰的栽培試驗", "到休閒農場進行高中生從農見習計畫", "學習木材的加工設計，改良學校課桌椅", "通過考試，取得植物診療師的資格"],ans:3,
+  ex:"<h4>詳解</h4><p>報考「專門職業及技術人員高等考試植物診療師考試」須具備國內外專科以上學校植物醫學、植物保護、植物病蟲害、昆蟲、植物病理、農藝、農園生產、園藝等相關科系、所、組、學位學程畢業，並領有畢業證書者，小力只有高職學歷尚不符合資格。</p><h4>解題思路</h4><p>題目問「最不可能」。(A)(B)(C) 都是高職生可以做的專題：栽培試驗、從農見習、木材加工。(D) 植物診療師是高考，報考資格要專科以上相關科系畢業，高職學歷還不能報考。答案選 (D)。</p><h4>重點整理</h4><p>植物診療師＝專技高考，需專科以上植物醫學、植保、農藝、園藝等相關科系畢業。</p>"},
+ {s:'s2',n:'11',type:'choice',stem:"有關老師課堂上講解的「適溫效應」，以下四位同學各自記錄了重點筆記，下列何組學生理解正確？",fig:"<div class=\"items\"><p>甲生：植物在恆溫下生理作用常較日夜變溫下為差</p><p>乙生：較高的夜間溫度有利於根系的生長</p><p>丙生：較高的日間溫度下呼吸作用的速度大，光合作用的效率反而低</p><p>丁生：較低的溫度可以促進根系的生長及細胞分裂素的合成</p></div>",opts:["甲乙", "甲丁", "乙丙", "丙丁"],ans:1,
+  ex:"<h4>詳解</h4><p>乙生：較低的溫度可促進根系的生長與細胞分裂素的合成。</p><p>丙生：較高的日間溫度有利於光合作用的進行。</p><h4>解題思路</h4><p>甲生：日夜變溫比恆溫好，所以恆溫下生理作用較差，正確。乙生：應該是「較低」的夜溫有利根系生長，不是較高，所以錯。丙生：日溫較高有利光合作用，題目說效率反而低，所以錯。丁生：低溫促進根系生長和細胞分裂素合成，正確。答案甲丁，選 (B)。</p><h4>重點整理</h4><p>適溫效應：日溫高 → 利光合作用；夜溫低 → 減少呼吸消耗、促進根系生長及細胞分裂素合成。</p>"},
+ {s:'s2',n:'12',type:'choice',stem:"植物對日照長短所產生之反應稱為「光週期感應」，植物受光週期感應影響最大的是開花結果；阿偉在宜蘭的農地上進行耕作，他為了讓栽培的作物在秋冬短日期間仍有機會收成，採取點燈延長光照的方式來調節花期，則他最有可能栽種的是下列哪一個作物？",fig:"",opts:["蘿蔔", "聖誕紅", "番茄", "火龍果"],ans:3,
+  ex:"<h4>詳解</h4><p>希望在秋冬短日期間仍有收穫而進行點燈的應為①促使長日照植物開花或②促使短日植物延遲開花如菊花等。</p><p>(A)(D) 蘿蔔和火龍果屬於長日照植物，但秋冬季節正好是蘿蔔的生長季，無須增加光照促進開花結果，因此最佳答案應為 (D) 火龍果。</p><p>(B) 聖誕紅為短日照植物，秋冬季節正好是短日階段正好開花，無須採取點燈延長光照。</p><p>(C) 番茄為不受日照長短影響的作物，栽種時無須利用光照促成栽培。</p><h4>解題思路</h4><p>點燈延長光照，就是在短日季節製造長日條件，有兩種用途：讓長日植物開花，或讓短日植物延後開花。題目要在秋冬「收成」，所以要讓長日植物開花結果。火龍果是長日植物，秋冬點燈可以產期調節，延長收成。蘿蔔雖然也是長日植物，但我們吃的是根，秋冬本來就是它的生長季，不需要點燈。聖誕紅是短日植物，秋冬自然開花。番茄是中性植物。答案選 (D)。</p><h4>重點整理</h4><p>點燈（夜間照明）用途：①長日植物在短日期開花（火龍果）；②短日植物延遲開花（菊花）。聖誕紅＝短日植物；番茄＝中性植物。</p>"},
+ {s:'s2',n:'13',type:'choice',stem:"某 YouTuber 想要介紹幾種臺灣深具代表性的水果──香蕉、芒果、鳳梨與蓮霧等給法國的友人認識，他應該去探訪哪一處農業產區？",fig:"",opts:["屏東平原", "花東縱谷平原", "臺中盆地", "宜蘭平原"],ans:0,
+  ex:"<h4>詳解</h4><p>屏東平原是臺灣第二大平原，盛產水稻、香蕉、蓮霧、芒果、鳳梨、洋蔥等農產品。</p><h4>解題思路</h4><p>香蕉、芒果、鳳梨、蓮霧都是熱帶水果，產地集中在南部，屏東平原氣候溫暖，是這些水果的主要產區。屏東平原是臺灣第二大平原。答案選 (A)。</p><h4>重點整理</h4><p>屏東平原：臺灣第二大平原，盛產熱帶水果（香蕉、蓮霧、芒果、鳳梨）及水稻、洋蔥。</p>"},
+ {s:'s2',n:'14',type:'choice',stem:"作物在不同生長階段對水分的需求皆有所不同，水分影響農作物很多重要的生理機能，下列哪一組選項中的生理作用均與水分有密切關係？",fig:"<div class=\"items\"><p>①蒸散作用　②運輸作用　③春化作用　④新陳代謝作用　⑤防禦機制　⑥吸收作用</p></div>",opts:["①②④", "①③⑥", "②④⑤", "③⑤⑥"],ans:0,
+  ex:"<h4>詳解</h4><p>水分對作物的影響有：作為細胞主成分、吸收作用、蒸散作用、運輸作用、新陳代謝作用、細胞的膨壓、光合作用合成葡萄糖。春化作用與溫度有關，防衛機制與水分無關。</p><h4>解題思路</h4><p>逐一看：蒸散、運輸、新陳代謝、吸收，都跟水分直接相關。③春化作用是「低溫」促進開花，跟溫度有關；⑤防禦機制跟水分無關。所以排除③和⑤，有③或⑤的選項都不對，只剩 (A) ①②④。</p><h4>重點整理</h4><p>水分功能：細胞主成分、吸收、蒸散、運輸、新陳代謝、維持膨壓、光合作用原料。春化作用＝低溫效應。</p>"},
+ {s:'s2',n:'15',type:'choice',stem:"農業部針對具外銷潛力之果樹推動集團產區，輔導農民改善果園經營，並推行「國產優良品牌水果認證制度」，確保果品品質、甜度及安全標準，進而穩定國內市場供需且增加國際競爭力。下列何組水果最具外銷潛力？",fig:"",opts:["龍眼、荔枝", "柑橘、文旦", "番石榴、木瓜", "鳳梨、芒果"],ans:3,
+  ex:"<h4>詳解</h4><p>較具外銷潛力的水果有香蕉、鳳梨、蓮霧、芒果、文旦柚、荔枝等。龍眼、柑橘與木瓜都不是以外銷為主的水果。</p><h4>解題思路</h4><p>這題要每組兩種都具外銷潛力才算對。(A) 龍眼不是外銷主力。(B) 柑橘不是。(C) 番石榴、木瓜都不是。(D) 鳳梨、芒果都是臺灣重要外銷水果。答案選 (D)。</p><h4>重點整理</h4><p>外銷潛力水果：香蕉、鳳梨、蓮霧、芒果、文旦、荔枝。龍眼、柑橘、木瓜非外銷主力。</p>"},
+ {s:'s2',n:'16',type:'choice',stem:"世界貿易組織(WTO)多邊貿易體系的成立宗旨在創造一個自由、公平的國際貿易環境，秉持永續的原則進行資源的最佳配置，以達到貿易開放、平等、互惠與互利。下列敘述何者違背 WTO 的理念？",fig:"",opts:["對所有會員國之貨品都給予同等最優惠的待遇", "藉由各國談判的過程逐步開放市場", "允許各國對於弱勢的農產品進行扶助與補貼", "最終的目標希望降低產品的關稅至零"],ans:2,
+  ex:"<h4>詳解</h4><p>WTO 要求會員國針對農業的出口補貼及國內農業進行的各項扶助補貼都須受到約束，必須逐年削減。</p><h4>解題思路</h4><p>WTO 的精神是自由、公平貿易。(A) 最惠國待遇、(B) 談判逐步開放、(D) 降低關稅，都符合 WTO 理念。(C) 允許各國補貼弱勢農產品，會扭曲貿易，WTO 是要求補貼逐年削減，所以違背 WTO 理念。答案選 (C)。</p><h4>重點整理</h4><p>WTO 原則：最惠國待遇、國民待遇、降低關稅、削減農業補貼（出口補貼及國內境內支持）。</p>"},
+ {s:'s2',n:'17',type:'choice',stem:"加入世界貿易組織(WTO)後，發展本土優勢的重點農產品是農業部一直以來的推動目標，下列何者是臺灣具有本土優勢的強項農產品？",fig:"",opts:["白色肉雞", "茶葉", "茂谷柑", "香水百合"],ans:1,
+  ex:"<h4>詳解</h4><p>農業部將熱帶果樹、蝴蝶蘭、臺灣鯛及茶葉列為臺灣農業具有本土優勢之重點農產品。</p><h4>解題思路</h4><p>農業部列的本土優勢重點農產品有四項：熱帶果樹、蝴蝶蘭、臺灣鯛和茶葉。選項中只有茶葉在名單內。答案選 (B)。</p><h4>重點整理</h4><p>本土優勢四大重點：熱帶果樹、蝴蝶蘭、臺灣鯛、茶葉。</p>"},
+ {s:'s2',n:'18',type:'choice',stem:"有關世界糧食作物的敘述，下列何者正確？",fig:"",opts:["水稻是亞洲的糧食，出口國都在東南亞", "玉米是中國北方地區的主食，中國大陸是世界最大的玉米生產國", "小麥是世界性的糧食，是產量最多、分布最廣的糧食作物", "全世界現有可耕地有 14 億公頃，用於生產糧食作物的不到 1/2"],ans:2,
+  ex:"<h4>詳解</h4><p>(A) 水稻是亞洲的糧食，主要出口國有泰國、越南、美國等</p><p>(B) 美國是世界最大的玉米生產國</p><p>(D) 全世界現有可耕地有 14 億公頃，用於生產糧食作物的超過 1/2</p><h4>解題思路</h4><p>(A) 水稻出口國不只在東南亞，美國也是主要出口國，所以「都在東南亞」錯。(B) 世界最大玉米生產國是美國，不是中國。(D) 用於生產糧食作物的耕地是超過一半，不是不到一半。(C) 小麥是世界性糧食，產量最多、分布最廣，正確。答案選 (C)。</p><h4>重點整理</h4><p>小麥：分布最廣、產量最多的世界性糧食；玉米最大產國：美國；稻米出口：泰國、越南、美國。</p>"},
+ {s:'s2',n:'19',type:'choice',stem:"小城跟爸媽到澎湖旅遊，安排了最受歡迎的海上牧場半日遊，並享用了美味的海鮮大餐。澎湖地區的海上牧場是屬於哪一種漁業生產類型？",fig:"",opts:["遠洋漁業", "近海漁業", "沿岸漁業", "養殖漁業"],ans:3,
+  ex:"<h4>詳解</h4><p>澎湖地區的海上牧場是結合箱網養殖與休閒漁業，主要利用箱網養殖海鱺、花枝、石斑魚與牡蠣等水產品，此屬於養殖漁業。</p><h4>解題思路</h4><p>澎湖海上牧場雖然在海上，但它是用箱網來「養」海鱺、石斑、牡蠣等，屬於人工養殖，再結合休閒觀光。同學看到「海上」容易選沿岸或近海漁業，但關鍵在於是養出來的，不是捕撈的。答案選 (D)。</p><h4>重點整理</h4><p>判斷漁業類型看「捕撈」還是「養殖」。箱網養殖＝養殖漁業（海面養殖）。</p>"},
+ {s:'s2',n:'20',type:'choice',stem:"年雨量分佈在 500~750 mm 的農業地區，是屬於下列何種農業型態且最適合栽種的作物為何？",fig:"",opts:["半潮濕區，可種耐旱作物", "半乾旱區，可種耐旱作物", "濕潤區，種一般作物", "半乾燥區，適合部分作物和草原"],ans:0,
+  ex:"<h4>詳解</h4><p>年雨量 500~750 mm 的農業地區，屬於半潮濕區，可種耐旱作物。</p><h4>解題思路</h4><p>年雨量 500 到 750 毫米的地區歸類為半潮濕區，雨量還不算充足，適合種植耐旱作物。答案選 (A)。這題要記住雨量分區的數字範圍和對應名稱。</p><h4>重點整理</h4><p>年雨量 500~750 mm → 半潮濕區，可種耐旱作物。</p>"},
+ {s:'s3',n:'21',type:'choice',stem:"陽性植物是指在強光下才能正常生長的植物，栽培時必須全日照，不可有遮蔭。下列何者是陽性植物？",fig:"",opts:["茉莉花", "山茶花", "姑婆芋", "水稻"],ans:3,
+  ex:"<h4>詳解</h4><p>茉莉花與山茶花是半陰性植物，姑婆芋是陰性植物。</p><h4>解題思路</h4><p>陽性植物要全日照才長得好。茉莉花、山茶花是半陰性植物；姑婆芋長在林下，是陰性植物。水稻需要充足陽光，是典型的陽性植物。答案選 (D)。</p><h4>重點整理</h4><p>陽性植物：水稻等多數糧食作物；半陰性：茉莉花、山茶花；陰性：姑婆芋。</p>"},
+ {s:'s3',n:'22',type:'choice',stem:"臺灣種植甘蔗的歷史悠久，從哪個時代開始，已經有蔗糖外銷的國際市場？",fig:"",opts:["日治時代", "清朝時代", "荷蘭時代", "明鄭時代"],ans:2,
+  ex:"<h4>詳解</h4><p>荷蘭時代已經開始鼓勵生產甘蔗和水稻，並且以荷蘭東印度公司名義外銷稻米、蔗糖、鹿皮與鹿茸。</p><h4>解題思路</h4><p>荷蘭時代就鼓勵生產甘蔗和稻米，透過荷蘭東印度公司把蔗糖、稻米、鹿皮、鹿茸外銷，所以蔗糖外銷國際市場是從荷蘭時代開始的。答案選 (C)。</p><h4>重點整理</h4><p>荷蘭時代：東印度公司外銷稻米、蔗糖、鹿皮、鹿茸。</p>"},
+ {s:'s3',n:'23',type:'choice',stem:"畢業典禮時，阿志買了一把花束送給學長，裡面有向日葵、火鶴和蔥花，這三種植物的「花序」配對何者正確？",fig:"<div class=\"scroll\"><table class=\"pv\"><tr><th></th><th>向日葵</th><th>火鶴</th><th>蔥花</th></tr><tr><th>(A)</th><td>單頂花序</td><td>葇荑花序</td><td>頭狀花序</td></tr><tr><th>(B)</th><td>單頂花序</td><td>穗狀花序</td><td>複總狀花序</td></tr><tr><th>(C)</th><td>頭狀花序</td><td>佛焰花序</td><td>繖形花序</td></tr><tr><th>(D)</th><td>頭狀花序</td><td>佛焰花序</td><td>繖房花序</td></tr></table></div>",opts:["單頂花序、葇荑花序、頭狀花序", "單頂花序、穗狀花序、複總狀花序", "頭狀花序、佛焰花序、繖形花序", "頭狀花序、佛焰花序、繖房花序"],ans:2,
+  ex:"<h4>詳解</h4><p>向日葵是頭狀花序、火鶴是佛焰花序、蔥花是繖形花序。</p><h4>解題思路</h4><p>向日葵是菊科，菊科的花序是頭狀花序，看起來像一朵花，其實是很多小花組成的。火鶴是天南星科，有一片佛焰苞包著肉穗，是佛焰花序。蔥花的小花梗都從同一點長出來，像一把傘，是繖形花序。答案選 (C)。</p><h4>重點整理</h4><p>頭狀花序：菊科（向日葵）；佛焰花序：天南星科（火鶴、海芋）；繖形花序：蔥。</p>"},
+ {s:'s3',n:'24',type:'choice',stem:"一朵花上僅有雄蕊或雌蕊者稱為單性花，下列何者為單性花？",fig:"",opts:["扁蒲", "鬱金香", "朱槿", "蝴蝶蘭"],ans:0,
+  ex:"<h4>詳解</h4><p>(A) 扁蒲是雌雄異花的單性花。</p><h4>解題思路</h4><p>單性花是一朵花只有雄蕊或只有雌蕊。扁蒲是瓜類，瓜類大多是雌雄異花，雄花、雌花分開，所以是單性花。鬱金香、朱槿、蝴蝶蘭一朵花裡雄蕊雌蕊都有，是兩性花。答案選 (A)。</p><h4>重點整理</h4><p>瓜類（扁蒲、胡瓜、南瓜等）多為雌雄異花的單性花。</p>"},
+ {s:'s3',n:'25',type:'choice',stem:"果實依果皮的發育情形，可以分為真果及假果，真果的果皮完全由子房壁發育而成，假果則由花萼、花托等伴同子房發育為果實。下列何者是假果？",fig:"",opts:["柑橘", "梨", "桃", "李"],ans:1,
+  ex:"<h4>詳解</h4><p>桃、李、柑橘都是真果。</p><h4>解題思路</h4><p>真果完全由子房發育而來，假果則有花托、花萼等一起參與。梨我們吃的果肉主要是花托發育而來的，所以是假果。桃、李、柑橘都是真果。答案選 (B)。</p><h4>重點整理</h4><p>假果：梨、蘋果（花托發育）、草莓等；真果：桃、李、柑橘。</p>"},
+ {s:'s3',n:'26',type:'choice',stem:"作物的生長可分為營養生長與生殖生長，有些作物進入生殖生長階段(開花)後，營養生長就會趨緩或停止；但另有一些作物在開花結果時，營養生長仍會持續進行。下列何者屬於營養生長與生殖生長並行的作物？",fig:"",opts:["水稻", "蕎麥", "玉米", "小麥"],ans:1,
+  ex:"<h4>詳解</h4><p>一年生的水稻、玉米、小麥在進入生殖生長後，營養生長幾乎就停止。</p><h4>解題思路</h4><p>水稻、玉米、小麥這類一年生禾本科作物，抽穗開花後營養生長就幾乎停止，養分集中供應穀粒。蕎麥則是邊開花結實、植株還會繼續生長，屬於營養生長與生殖生長並行。答案選 (B)。</p><h4>重點整理</h4><p>禾穀類（水稻、玉米、小麥）：開花後營養生長停止；蕎麥：營養與生殖生長並行。</p>"},
+ {s:'s3',n:'27',type:'choice',stem:"小平進行植物栽培實習課程時，摘錄老師講解的各種球根作物繁殖方法，下列何者記錄「錯誤」？",fig:"",opts:["孤挺花：鱗莖繁殖", "唐菖蒲：球莖繁殖", "風信子：塊莖繁殖", "大理花：塊根繁殖"],ans:2,
+  ex:"<h4>詳解</h4><p>(C) 風信子是鱗莖繁殖。</p><h4>解題思路</h4><p>這題問「記錄錯誤」。孤挺花鱗莖、唐菖蒲球莖、大理花塊根都對。風信子是鱗莖，不是塊莖，所以 (C) 錯誤。答案選 (C)。</p><h4>重點整理</h4><p>鱗莖：孤挺花、風信子、鬱金香、百合；球莖：唐菖蒲；塊根：大理花。</p>"},
+ {s:'s3',n:'28',type:'choice',stem:"嫁接法又稱接木法，可以增進果實的品質，也可對抗病蟲害調節樹勢。果農將溫帶梨的花芽(梨穗)，嫁接到平地適應性強的梨樹上，突破了平地氣候限制，讓臺灣在中低海拔地區也能年年量產出甜脆多汁的高品質水梨，所使用的平地砧木為下列何者？",fig:"",opts:["豐水梨", "橫山梨", "新興梨", "蜜雪梨"],ans:1,
+  ex:"<h4>詳解</h4><p>臺灣高接梨的嫁接是採用平地適應力強的橫山梨作為平地砧木。</p><h4>解題思路</h4><p>臺灣的高接梨技術，是把溫帶梨的花芽嫁接在平地梨樹上。這個平地砧木就是適應力強的橫山梨。豐水梨、新興梨是溫帶梨品種，通常是接穗來源。答案選 (B)。</p><h4>重點整理</h4><p>高接梨：砧木＝橫山梨（平地梨）；接穗＝溫帶梨花芽（如豐水、新興）。</p>"},
+ {s:'s3',n:'29',type:'choice',stem:"傳統育種必須依賴「開花、授粉、結果」，因此受到「遠緣雜交不親和(生殖隔離)」的限制，親緣關係太遠的植物無法交配。組織培養的技術突破很多植物繁殖上的限制，克服雜交育種上的種種不親和現象。著名的「馬鈴茄(Pomato)」之雜交植株，可能利用下列哪一種組織培養技術克服親緣限制問題成功雜交？",fig:"",opts:["胚培養", "懸浮細胞培養", "原生質體培養", "器官培養"],ans:2,
+  ex:"<h4>詳解</h4><p>不含細胞壁的細胞為原生質體，利用原生質體可以進行體細胞培養，獲得不同物種間的雜交種。馬鈴茄雜交植株即為其經典案例。</p><h4>解題思路</h4><p>馬鈴薯和番茄親緣差太遠，不能用傳統授粉雜交。原生質體是把細胞壁去掉的細胞，兩種植物的原生質體可以融合，再培養成植株，這就是體細胞融合。馬鈴茄就是經典例子。答案選 (C)。</p><h4>重點整理</h4><p>原生質體＝去除細胞壁的細胞 → 體細胞融合 → 克服遠緣雜交不親和（馬鈴茄）。</p>"},
+ {s:'s3',n:'30',type:'choice',stem:"在一塊農地上，若連續栽培同一種作物，稱為連作。連作制度是農民常用的耕作方式，有其優點和缺點，下列敘述何者正確？",fig:"",opts:["連作可以節省勞力與成本，如玉米及甘蔗的宿根栽培", "連作要注意養分被吸收殆盡造成缺乏現象，如大豆連作容易缺磷", "有些作物可以連作，如水稻、亞麻", "茄科、葫蘆科和百合科都不適合連作"],ans:1,
+  ex:"<h4>詳解</h4><p>(A) 玉米無法宿根栽培</p><p>(C) 亞麻不可以連作</p><p>(D) 百合科可以連作</p><h4>解題思路</h4><p>(A) 甘蔗可以宿根栽培，但玉米不行，所以錯。(C) 水稻可以連作，但亞麻不可以，所以錯。(D) 百合科可以連作，所以錯。(B) 連作會讓特定養分消耗殆盡，大豆連作容易缺磷，正確。答案選 (B)。</p><h4>重點整理</h4><p>連作缺點：養分偏耗、病蟲害累積、自毒作用。甘蔗可宿根，玉米不行；水稻、百合科可連作；亞麻不宜連作。</p>"},
+ {s:'s4',n:'31',type:'choice',stem:"下列哪一種灌溉方式最適用於水源缺乏、水價昂貴、人工缺乏卻工業發達的地區？",fig:"",opts:["滴水灌溉法", "葉面灌溉法", "地表灌溉法", "地下灌溉法"],ans:0,
+  ex:"<h4>解題思路</h4><p>題目條件是：水源缺乏、水價貴、人工少，但工業發達。滴水灌溉最省水，透過管線直接把水滴到根部，省水又省工，只是需要管路、滴頭等設備，所以適合工業發達、能提供設備的地區。地表灌溉最浪費水，答案選 (A)。</p><h4>重點整理</h4><p>滴灌：最省水、省工，設備成本高 → 適合缺水但工業發達的地區。</p>"},
+ {s:'s4',n:'32',type:'choice',stem:"作物栽種後，將植株行間的土壤培覆在作物莖基部或根部，此為培土。培土可以提高作物的品質，並有利養分吸收、增加產量、抗風和抑制雜草生長。下列何組作物在栽培過程中皆需要培土？",fig:"",opts:["香菜、空心菜", "菠菜、地瓜葉", "四季豆、茄子", "胡蘿蔔、玉米"],ans:3,
+  ex:"<h4>詳解</h4><p>需要培土的多為根莖類作物（蘿蔔、胡蘿蔔、薑）、有支持根的作物（玉米、甘蔗），及怕陽光照射綠化的作物（蘆筍、竹筍）等。</p><h4>解題思路</h4><p>需要培土的作物有三類：根莖類（蘿蔔、胡蘿蔔、薑）、有支持根的作物（玉米、甘蔗）、怕光線綠化的作物（蘆筍、竹筍）。(D) 胡蘿蔔是根莖類，玉米有支持根，兩個都需要培土。其他選項是葉菜類或果菜類，不需要。答案選 (D)。</p><h4>重點整理</h4><p>需培土三類：根莖類、具支持根（玉米、甘蔗）、怕光綠化（蘆筍、竹筍）。</p>"},
+ {s:'s4',n:'33',type:'choice',stem:"2025 年的暑假，高雄茂林區降下累積將近 2900 毫米的雨量。臺中、南投市區及雲林、嘉義與臺南等縣市均曾傳出嚴重淹水與溪水暴漲的災情，在經歷過水患後的農地，最需要採用哪一種耕種方式來讓土壤肥力恢復？",fig:"",opts:["連作", "混作", "輪作", "休耕"],ans:3,
+  ex:"<h4>詳解</h4><p>經歷水患後的農地應進行休耕，讓土壤充分的曝曬，降低病害的產生，使土地恢復生機。</p><h4>解題思路</h4><p>水患後土壤長期泡水、缺氧，病菌也多。這時最需要的是休耕，讓土地曝曬、通氣，減少病害，讓地力恢復。輪作也能改善地力，但最直接的是先休耕。答案選 (D)。</p><h4>重點整理</h4><p>休耕：讓土壤曝曬通氣、減少病害、恢復地力。</p>"},
+ {s:'s4',n:'34',type:'choice',stem:"將礱穀、風穀、米漏三者功能合而為一，達成一體化連貫作業的機具是下列何者？",fig:"",opts:["精米機", "穀類乾燥機", "全自動礱穀機", "聯合收穫機"],ans:2,
+  ex:"<h4>詳解</h4><p>(A) 精米機主要用於糙米之碾製與白米精製</p><p>(B) 穀類乾燥機是用來乾燥穀物，降低穀物之含水率</p><p>(D) 聯合收穫機是用於水稻及雜糧之收割、脫粒及清選</p><h4>解題思路</h4><p>礱穀是把稻穀脫殼成糙米，風穀是把空殼吹掉，米漏是分選。把這三個功能合在一起的是全自動礱穀機。精米機是把糙米碾成白米，乾燥機是降低含水率，聯合收穫機是收割脫粒。答案選 (C)。</p><h4>重點整理</h4><p>全自動礱穀機＝礱穀＋風穀＋米漏一體化；精米機：糙米 → 白米。</p>"},
+ {s:'s4',n:'35',type:'choice',stem:"在園圃四周搭架圍網，形成一網室，以防止病蟲之入侵，稱為網室栽培。紗網雖不能將所有害蟲全部隔絕，但可對較大體積之害蟲進行阻擋攔截，減少用藥，避免農藥毒害。網室栽培木瓜可藉由阻絕哪一種害蟲來降低輪點毒素病的發生？",fig:"",opts:["蚜蟲", "介殼蟲", "粉蝨", "葉蟬"],ans:0,
+  ex:"<h4>解題思路</h4><p>木瓜輪點病毒是靠蚜蟲傳播的。網室栽培可以把蚜蟲擋在外面，阻斷病毒傳播。介殼蟲、粉蝨、葉蟬不是主要傳播者。題目寫的「輪點毒素病」應為「輪點病毒病」。答案選 (A)。</p><h4>重點整理</h4><p>木瓜輪點病毒病：媒介昆蟲為蚜蟲 → 網室栽培阻絕蚜蟲。</p>"},
+ {s:'s4',n:'36',type:'choice',stem:"進行養液栽培時，培養液的 pH 值與電導度(EC 值)是決定作物生長的關鍵，若培養液的 pH 值超過「X」值時，鐵離子會呈不溶狀態，引發「萎黃病」；此外，養液栽培用水之 EC 值最好在「Y」 ms/cm 之間較適合作物生長。上述的「X」與「Y」分別為何？",fig:"",opts:["X = 4.5、Y = 4~6", "X = 5.5、Y = 3~5", "X = 6.5、Y = 2~3", "X = 7.5、Y = 6~7"],ans:2,
+  ex:"<h4>詳解</h4><p>水耕栽培時，培養液的 pH 值 5.5~6.5，養液栽培用水中的 EC 值在 2~3 ms/cm 之間較適合作物生長。</p><h4>解題思路</h4><p>養液的 pH 值適合範圍在 5.5 到 6.5，超過 6.5 鐵會變成不溶狀態，植物吸收不到，就出現萎黃病。EC 值是電導度，代表養液濃度，適合範圍在 2 到 3 ms/cm。所以 X 是 6.5、Y 是 2~3，答案選 (C)。</p><h4>重點整理</h4><p>養液栽培：pH 5.5~6.5（超過 6.5 鐵不溶 → 萎黃病）；EC 2~3 ms/cm。</p>"},
+ {s:'s4',n:'37',type:'choice',stem:"葉子在莖上著生的順序叫葉序，下列何者的葉序是對生？",fig:"",opts:["葡萄", "桂花", "楓香", "榕樹"],ans:1,
+  ex:"<h4>詳解</h4><p>葡萄、榕樹與楓香之葉序皆為互生。</p><h4>解題思路</h4><p>對生是一個節上長兩片葉子、相對生長。桂花是對生。葡萄、榕樹、楓香都是互生，也就是一個節只長一片葉子。答案選 (B)。</p><h4>重點整理</h4><p>對生：桂花；互生：葡萄、榕樹、楓香。</p>"},
+ {s:'s4',n:'38',type:'choice',stem:"土壤依其形成與搬運方式，分為定積土及運積土，下列選項中何者皆為運積土？",fig:"",opts:["植基土、海積土", "湖積土、崩積土", "崩積土、殘積土", "聚積土、沖積土"],ans:1,
+  ex:"<h4>詳解</h4><p>殘積土、聚積土（植基土）是定積土；崩積土、沖積土、湖積土、海積土是運積土。</p><h4>解題思路</h4><p>定積土是在原地形成的，像殘積土、聚積土（又叫植基土）。運積土是被重力、水、風等搬運到別處堆積的，像崩積土、沖積土、湖積土、海積土。(B) 湖積土和崩積土都是運積土，答案選 (B)。</p><h4>重點整理</h4><p>定積土：殘積土、聚積土（植基土）；運積土：崩積土、沖積土、湖積土、海積土、風積土。</p>"},
+ {s:'s4',n:'39',type:'choice',stem:"岩石的風化作用分為機械(物理)的與化學的，下列何者是化學的作用？",fig:"",opts:["重力作用", "溫度變化", "流水作用", "溶解作用"],ans:3,
+  ex:"<h4>詳解</h4><p>岩石風化作用分為物理與化學二種：物理作用有溫度、結冰、流水、冰川、海浪、風、動植物、雨水、重力等；化學作用有氧化還原作用、水合作用、水解作用、碳酸化作用、溶解作用、生物作用。</p><h4>解題思路</h4><p>物理風化只改變岩石大小形狀，不改變成分，像溫度變化、流水、重力。化學風化會改變岩石成分，像氧化、水合、水解、碳酸化、溶解。溶解作用是化學作用，答案選 (D)。</p><h4>重點整理</h4><p>物理風化：溫度、結冰、流水、風、重力；化學風化：氧化還原、水合、水解、碳酸化、溶解。</p>"},
+ {s:'s4',n:'40',type:'choice',stem:"優良的土壤應具備適當的孔隙、水分及空氣，同時兼具保水、保肥及通氣功效等物理性質。最適合作物生長的土壤組成比例，下列何者正確？",fig:"",opts:["有機質 5%", "水分 15%", "礦物質 30%", "空氣 40%"],ans:0,
+  ex:"<h4>詳解</h4><p>最適合作物生長的土壤，其組成比例為有機質 5%、礦物質 45%、水分 30%、空氣 20%。</p><h4>解題思路</h4><p>理想土壤組成：固體一半，其中礦物質 45%、有機質 5%；另一半是孔隙，由水分和空氣填滿。選項中只有有機質 5% 符合。礦物質不是 30%，水分不是 15%，空氣不是 40%。答案選 (A)。</p><h4>重點整理</h4><p>理想土壤：礦物質 45%、有機質 5%、水分 30%、空氣 20%。</p>"},
+ {s:'s5',n:'41',type:'choice',stem:"土壤孔隙的體積佔土壤總體積的百分比稱為土壤孔度(或稱土壤孔隙度)，即由水分和空氣所佔的非固體部分，孔度大小與保水、排水和根系發育習習相關。下列何者是最理想的土壤孔度？",fig:"",opts:["20%", "30%", "40%", "50%"],ans:3,
+  ex:"<h4>詳解</h4><p>一般土壤孔度：砂土 30~40%，壤土 40~50%，黏土 50~60%，理想孔度為 50% 左右。</p><h4>解題思路</h4><p>孔度就是土壤中水和空氣佔的比例。砂土孔度小、黏土孔度大。理想的土壤孔度大約 50%，剛好呼應上一題固體一半、孔隙一半的概念。答案選 (D)。</p><h4>重點整理</h4><p>理想孔度約 50%；砂土 30~40%、壤土 40~50%、黏土 50~60%。</p>"},
+ {s:'s5',n:'42',type:'choice',stem:"土壤粒子相互聚合的情形及排列的方式稱為「土壤構造」，下列敘述何者「錯誤」？",fig:"",opts:["土壤構造可以多施有機肥料來改善", "下雨後趁土壤水分充足時耕犁，可以增加土壤毛細作用", "土壤構造有以團粒構造最佳", "施用石灰可以增加土壤團粒構造"],ans:1,
+  ex:"<h4>詳解</h4><p>(B) 土壤要在適當含水量時耕犁及深耕，雨天不宜耕犁，會破壞土壤團粒構造，導致排水與通氣不良。</p><h4>解題思路</h4><p>這題問「錯誤」。(A) 有機肥可改善土壤構造，正確。(C) 團粒構造最好，正確。(D) 石灰的鈣能促進團粒形成，正確。(B) 雨後土壤太濕時耕犁，會破壞團粒構造，讓排水和通氣變差，所以錯誤。答案選 (B)。</p><h4>重點整理</h4><p>團粒構造最佳；可用有機肥、石灰改善；土壤過濕時不可耕犁。</p>"},
+ {s:'s5',n:'43',type:'choice',stem:"土壤中粒徑在 0.0002 mm 以下者，多具膠體特性，其能吸附水分及陽離子，並透過陽離子交換作用提供植物所需養分。當黏粒上原本吸附「鉀離子(K⁺)」時，下列哪一組陽離子可同時將「鉀離子(K⁺)」交換出來？",fig:"",opts:["Ca⁺⁺、Na⁺", "Mg⁺⁺、NH₄⁺", "Ca⁺⁺、Mg⁺⁺", "NH₄⁺、Na⁺"],ans:2,
+  ex:"<h4>詳解</h4><p>Ca⁺⁺ &gt; Mg⁺⁺ &gt; K⁺ &gt; Na⁺ &gt; NH₄⁺ 陽離子交換力比 K⁺ 大的才能將 K⁺ 交換出來。</p><h4>解題思路</h4><p>陽離子交換力順序是：鈣 &gt; 鎂 &gt; 鉀 &gt; 鈉 &gt; 銨。要把鉀換出來，必須交換力比鉀大，只有鈣和鎂。題目要求「一組都能」，所以兩個都要比鉀強，只有 (C) 鈣、鎂。答案選 (C)。</p><h4>重點整理</h4><p>陽離子交換力：Ca⁺⁺ &gt; Mg⁺⁺ &gt; K⁺ &gt; Na⁺ &gt; NH₄⁺。一般而言，價數越高交換力越強。</p>"},
+ {s:'s5',n:'44',type:'choice',stem:"土壤微生物對於土壤肥力影響很多，而氨化細菌、硝化細菌、固氮細菌等微生物可以協助進行氮循環作用。下列何者為硝化細菌進行硝化作用之反應過程？",fig:"",opts:["NH₄⁺ → NO₃⁻", "N₂ → NH₄⁺", "NO₃⁻ → N₂", "N₂ + 3H₂ → 2NH₃"],ans:0,
+  ex:"<h4>詳解</h4><p>(A) NH₄⁺ → NO₃⁻：硝化作用</p><p>(B) N₂ → NH₄⁺：氨化作用</p><p>(C) NO₃⁻ → N₂：脫氮作用</p><p>(D) N₂ + 3H₂ → 2NH₃：工業製氮的哈伯法</p><h4>解題思路</h4><p>硝化作用是把銨態氮轉成硝酸態氮，也就是 NH₄⁺ → NO₃⁻，由硝化細菌在通氣良好的土壤中進行。答案選 (A)。</p><h4>重點整理</h4><p>硝化作用：NH₄⁺ → NO₃⁻（需氧、通氣良好）。</p>"},
+ {s:'s5',n:'45',type:'choice',stem:"承上題，當土壤通氣不良或積水過多而導致氧氣不足時，土壤會產生脫氮現象，此對農作物而言十分不利。下列何者為脫氮作用之過程？",fig:"",opts:["NH₄⁺ → NO₃⁻", "N₂ → NH₄⁺", "NO₃⁻ → N₂", "N₂ + 3H₂ → 2NH₃"],ans:2,
+  ex:"<h4>詳解</h4><p>(A) NH₄⁺ → NO₃⁻：硝化作用</p><p>(B) N₂ → NH₄⁺：氨化作用</p><p>(C) NO₃⁻ → N₂：脫氮作用</p><p>(D) N₂ + 3H₂ → 2NH₃：工業製氮的哈伯法</p><h4>解題思路</h4><p>脫氮作用是土壤缺氧時，硝酸態氮被還原成氮氣跑到空氣中，也就是 NO₃⁻ → N₂。這會讓土壤損失氮肥，對作物不利，所以要避免土壤積水、通氣不良。答案選 (C)。</p><h4>重點整理</h4><p>脫氮作用：NO₃⁻ → N₂（缺氧、積水時發生，造成氮素流失）。</p>"},
+ {s:'s5',n:'46',type:'choice',stem:"卡布種了一批草莓，他希望促進草莓的果實膨大、著色並提高甜度，需要使用下列何者？",fig:"",opts:["過期牛奶", "糖蜜", "尿素", "草木灰"],ans:3,
+  ex:"<h4>詳解</h4><p>在開花結果及果實發育期，作物對鉀的需求量非常大，施用鉀肥能幫助果實膨大、著色並提高甜度，(D) 草木灰是鉀肥。</p><h4>解題思路</h4><p>果實膨大、著色、提高甜度，這是鉀肥的功能。草木灰的主要成分是鉀，屬於鉀肥。尿素是氮肥，主要促進莖葉生長，過多反而影響果實品質。答案選 (D)。</p><h4>重點整理</h4><p>鉀肥：促進果實膨大、著色、提高甜度；草木灰＝鉀肥。</p>"},
+ {s:'s5',n:'47',type:'choice',stem:"植物所需之次要元素中，下列何者與植物細胞組成及豆科根瘤形成有關，缺乏該元素時幼葉呈淡綠至黃色，且植株矮小？",fig:"",opts:["硫(S)", "鎂(Mg)", "鐵(Fe)", "鈣(Ca)"],ans:0,
+  ex:"<h4>詳解</h4><p>硫為構成植物體內胺基酸及酵素的主要成分，是蛋白質合成的必要元素，亦與豆科根瘤形成及植物細胞的組成有關。</p><h4>解題思路</h4><p>題目三個線索：次要元素、跟豆科根瘤形成有關、缺乏時幼葉淡綠到黃色。硫是含硫胺基酸和酵素的成分，跟蛋白質合成、根瘤形成有關，而且硫在植物體內不易移動，所以缺乏症狀出現在幼葉。答案選 (A)。</p><h4>重點整理</h4><p>硫：胺基酸、酵素、蛋白質合成、豆科根瘤；不易移動 → 缺乏時幼葉黃化。</p>"},
+ {s:'s5',n:'48',type:'choice',stem:"阿兩的農地需要施用氮素 50 公斤，現有 10-15-8 配方的複合肥料，若施用此複合肥料來提供足量氮素的同時，還可以提供氧化鉀多少公斤？",fig:"",opts:["4", "40", "62.5", "625"],ans:1,
+  ex:"<h4>詳解</h4><p>總肥料量：50 ÷ 10% = 500 公斤</p><p>氧化鉀的量：500 × 8% = 40 公斤</p><h4>解題思路</h4><p>10-15-8 代表氮 10%、磷酐 15%、氧化鉀 8%。要提供氮素 50 公斤，先算需要多少肥料：50 除以 10%，等於 500 公斤。這 500 公斤肥料中，氧化鉀佔 8%，500 乘 8% 等於 40 公斤。答案選 (B)。</p><h4>重點整理</h4><p>複合肥料 N-P₂O₅-K₂O 百分比；總肥量 ＝ 需求量 ÷ 成分%；其他成分 ＝ 總肥量 × 成分%。</p>"},
+ {s:'s5',n:'49',type:'choice',stem:"有關肥料性質的分類，下列何者正確？",fig:"",opts:["尿素：化學中性、生理中性", "硝酸銨：化學酸性、生理酸性", "過磷酸鈣：化學酸性、生理酸性", "硫酸鉀：化學酸性、生理酸性"],ans:0,
+  ex:"<h4>詳解</h4><p>(B) 硝酸銨：化學酸性、生理中性</p><p>(C) 過磷酸鈣：化學酸性、生理中性</p><p>(D) 硫酸鉀：化學中性、生理酸性</p><h4>解題思路</h4><p>化學性是肥料本身溶在水中的酸鹼性；生理性是植物吸收後，留在土壤中的殘留物讓土壤變酸或變鹼。尿素化學中性、生理中性，正確。硝酸銨和過磷酸鈣都是生理中性，硫酸鉀是化學中性、生理酸性。答案選 (A)。</p><h4>重點整理</h4><p>化學性＝肥料本身酸鹼；生理性＝植物吸收後土壤殘留的酸鹼。尿素：中性/中性。</p>"},
+ {s:'s5',n:'50',type:'choice',stem:"小星擁有四塊地：甲(pH 5.0)、乙(pH 6.8)、丙(pH 7.2)、丁(pH 8.5)，則哪一塊地最可能會有鐵、錳、鋅、銅元素缺乏且伴隨高鹽分的問題？",fig:"",opts:["甲地", "乙地", "丙地", "丁地"],ans:3,
+  ex:"<h4>詳解</h4><p>土壤 pH 7.5 以上，會讓鐵、鋅、錳、銅缺乏，且容易伴隨高鹽分毒害。</p><h4>解題思路</h4><p>鐵、錳、鋅、銅這些微量元素在鹼性土壤中會變成不溶性，植物吸收不到。鹼性土壤也常伴隨鹽分累積。四塊地中只有丁地 pH 8.5，超過 7.5，屬於鹼性土壤。答案選 (D)。</p><h4>重點整理</h4><p>鹼性土（pH &gt; 7.5）：鐵、錳、鋅、銅缺乏，常伴隨高鹽分。酸性土則易缺磷、鈣、鎂。</p>"}
+];
+
+Q.forEach((q,i)=>q.id='q'+i);
+
+const S=[
+ {id:'s1',name:'播種',range:'第 1～10 題'},
+ {id:'s2',name:'發芽',range:'第 11～20 題'},
+ {id:'s3',name:'茁壯',range:'第 21～30 題'},
+ {id:'s4',name:'開花',range:'第 31～40 題'},
+ {id:'s5',name:'豐收',range:'第 41～50 題'}
+];
+const RANKS=[{xp:0,t:'菜鳥農夫'},{xp:100,t:'見習農友'},{xp:250,t:'新手青農'},{xp:450,t:'農場主'},{xp:700,t:'農業達人'},{xp:950,t:'神農'}];
+const BADGES=[
+ {id:'first',m:'始',name:'首戰告捷',desc:'第一次過關'},
+ {id:'perfect',m:'零',name:'零失誤',desc:'一關的第一輪 10 題全對'},
+ {id:'combo5',m:'5',name:'手感來了',desc:'連續答對 5 題'},
+ {id:'combo10',m:'10',name:'停不下來',desc:'連續答對 10 題'},
+ {id:'combo20',m:'20',name:'無人能擋',desc:'連續答對 20 題'},
+ {id:'oneshot',m:'收',name:'一次回收',desc:'錯題回收第一次就全對'},
+ {id:'grit',m:'韌',name:'越挫越勇',desc:'錯題回收失敗後，再挑戰成功'},
+ {id:'allclear',m:'豐',name:'全面豐收',desc:'五關全部過關'},
+ {id:'allstar',m:'★',name:'滿天星',desc:'五關都拿到三顆星'},
+ {id:'god',m:'神',name:'神農降世',desc:'等級升到「神農」'}
+];
+const XP={first:10,combo:5,retry:5,clear:30,perfect:50};
+
+const fresh=()=>({xp:0,stages:{},wrong:{},badges:{},streak:0,bestStreak:0,run:null,view:'home'});
+let state=fresh();
+try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&typeof s==='object')state=Object.assign(fresh(),s)}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}};
+
+const qsOf=sid=>Q.filter(q=>q.s===sid);
+const byId=id=>Q.find(q=>q.id===id);
+const sIdx=sid=>S.findIndex(s=>s.id===sid);
+const unlocked=i=>i===0||!!(state.stages[S[i-1].id]||{}).cleared;
+const rankOf=xp=>{let i=0;RANKS.forEach((r,k)=>{if(xp>=r.xp)i=k});return i};
+const starsHTML=n=>[0,1,2].map(i=>i<n?'★':'<span class="off">★</span>').join('');
+const starsFor=first=>first>=9?3:first>=7?2:1;
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+
+/* ---------- rewards ---------- */
+function toast(html){const t=document.createElement('div');t.className='toast';t.innerHTML=html;$('#toasts').appendChild(t);setTimeout(()=>t.remove(),3200)}
+function award(id){if(state.badges[id])return;state.badges[id]=Date.now();const b=BADGES.find(x=>x.id===id);if(state.run)state.run.newBadges=(state.run.newBadges||[]).concat(id);toast(`解鎖徽章 <b>${b.name}</b>`)}
+function gain(n,label){
+  const r=state.run;if(r&&r.replay)return 0;
+  const before=rankOf(state.xp);state.xp+=n;if(r){r.earned=r.earned||{};r.earned[label]=(r.earned[label]||0)+n}
+  const after=rankOf(state.xp);
+  if(after>before){toast(`升級！你現在是 <b>${RANKS[after].t}</b>`);if(r)r.rankUp=RANKS[after].t;if(after===RANKS.length-1)award('god')}
+  return n;
+}
+function bumpStreak(ok){
+  state.streak=ok?state.streak+1:0;
+  state.bestStreak=Math.max(state.bestStreak,state.streak);
+  if(state.streak>=5)award('combo5');if(state.streak>=10)award('combo10');if(state.streak>=20)award('combo20');
+}
+
+/* ---------- header rank ---------- */
+function rankCard(){
+  const i=rankOf(state.xp),cur=RANKS[i],nx=RANKS[i+1];
+  const pct=nx?Math.round((state.xp-cur.xp)/(nx.xp-cur.xp)*100):100;
+  return `<div class="rank"><div class="lv"><div><small>LV</small><b>${i+1}</b></div></div>
+    <div class="rank-t"><h2>${cur.t}</h2><span>${state.xp} XP${nx?`・再 ${nx.xp-state.xp} XP 升「${nx.t}」`:'・已經是最高等級'}</span></div>
+    <div class="xpbar" role="progressbar" aria-label="經驗值" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div></div>`;
+}
+
+/* ---------- home ---------- */
+function sproutSVG(i,done){
+  const c=done?'var(--ok)':'var(--muted)';
+  const parts=[
+    `<ellipse cx="17" cy="27" rx="4" ry="3" fill="${c}"/>`,
+    `<path d="M17 28 V18" stroke="${c}" stroke-width="2" fill="none"/><path d="M17 20 C12 20 10 16 10 13 C14 13 17 15 17 20 Z" fill="${c}"/>`,
+    `<path d="M17 30 V10" stroke="${c}" stroke-width="2" fill="none"/><path d="M17 20 C11 20 8 16 8 12 C13 12 17 15 17 20 Z M17 16 C22 16 25 12 25 8 C20 8 17 11 17 16 Z" fill="${c}"/>`,
+    `<path d="M17 30 V12" stroke="${c}" stroke-width="2" fill="none"/><path d="M17 23 C12 23 9 20 9 16 C13 16 17 19 17 23 Z" fill="${c}"/><circle cx="17" cy="9" r="3" fill="var(--gold)"/><circle cx="13.5" cy="9" r="2.5" fill="none" stroke="var(--gold)" stroke-width="1.5"/><circle cx="20.5" cy="9" r="2.5" fill="none" stroke="var(--gold)" stroke-width="1.5"/>`,
+    `<path d="M17 30 V8" stroke="${c}" stroke-width="2" fill="none"/>${[10,14,18,22].map(y=>`<ellipse cx="14" cy="${y}" rx="2.6" ry="1.6" fill="var(--gold)" transform="rotate(-30 14 ${y})"/><ellipse cx="20" cy="${y}" rx="2.6" ry="1.6" fill="var(--gold)" transform="rotate(30 20 ${y})"/>`).join('')}`
+  ];
+  return `<svg class="sprout" viewBox="0 0 34 34" aria-hidden="true"><path d="M3 30 H31" stroke="var(--line)" stroke-width="2"/>${parts[i]}</svg>`;
+}
+function renderHome(){
+  const firstOpen=S.findIndex((s,i)=>unlocked(i)&&!(state.stages[s.id]||{}).cleared);
+  const lv=S.map((s,i)=>{
+    const st=state.stages[s.id]||{};const open=unlocked(i);const inRun=state.run&&state.run.sid===s.id;
+    const status=!open?'未解鎖':inRun?'繼續挑戰 →':st.cleared?`已過關・最佳 ${st.best}/10`:'開始挑戰 →';
+    return `<button type="button" class="level${st.cleared?' cleared':''}${i===firstOpen?' next':''}" data-start="${s.id}" ${open?'':'disabled'} aria-label="第 ${i+1} 關 ${s.name}，${s.range}，${status}">
+      ${sproutSVG(i,st.cleared)}<div><div class="no">第 ${i+1} 關</div><h3>${s.name}</h3><div class="rg">${s.range}</div></div>
+      <div class="stars" aria-label="${st.stars||0} 顆星">${starsHTML(st.stars||0)}</div><div class="st">${status}</div></button>`}).join('');
+  const wb=Object.keys(state.wrong).map(byId).filter(Boolean).sort((a,b)=>+a.n-+b.n);
+  $('#main').innerHTML=`${rankCard()}
+  <section class="block"><div class="block-h"><h2>關卡</h2><small>過關才能解鎖下一關</small></div>
+    <div class="levels">${lv}</div>
+    <div class="rules"><b>怎麼玩：</b>一題一題作答，答完馬上知道對錯，答錯會跳出詳解並記進錯題本。10 題做完後進入「錯題回收」，把錯的題目全部答對才算過關。
+      <ul><li>第一輪答對 <b>+${XP.first}</b> XP，連續答對 3 題以上每題再 <b>+${XP.combo}</b></li><li>錯題回收答對 <b>+${XP.retry}</b>，過關 <b>+${XP.clear}</b>，第一輪 10 題全對再加 <b>+${XP.perfect}</b></li><li>星星看第一輪答對幾題：9～10 題 ★★★、7～8 題 ★★、其他 ★。已過關的關卡可以重玩刷星星，但不會再加 XP。</li></ul></div>
+  </section>
+  <section class="block"><div class="block-h"><h2>徽章</h2><small>${Object.keys(state.badges).length} / ${BADGES.length}・最高連對 ${state.bestStreak} 題</small></div>
+    <div class="badges">${BADGES.map(b=>`<div class="badge${state.badges[b.id]?'':' locked'}"><span class="medal">${b.m}</span><div><b>${b.name}</b><small>${b.desc}</small></div></div>`).join('')}</div>
+  </section>
+  <section class="block"><div class="block-h"><h2>錯題本</h2><small>${wb.length} 題</small></div>
+    ${wb.length?`<div class="wb">${wb.map(q=>`<details><summary><span class="n">第 ${q.n} 題</span><span class="s">${q.stem.replace(/<[^>]+>/g,'')}</span><span class="c">錯 ${state.wrong[q.id]} 次</span></summary>${qBody(q,q.ans,true)}<div class="explain">${q.ex}</div></details>`).join('')}</div>`
+      :'<p class="empty">還沒有錯題。答錯的題目會自動收進這裡，考前拿來複習。</p>'}
+  </section>`;
+}
+
+/* ---------- quiz ---------- */
+function qBody(q,picked,done){
+  return `<p class="stem"><span class="qn">${q.n}.</span>${q.stem}</p>${q.fig||''}
+  <div class="opts" role="group" aria-label="選項">${q.opts.map((o,i)=>{
+    let c='';if(done){if(i===q.ans)c=' good';else if(i===picked)c=' bad'}
+    return `<button type="button" class="opt${c}" data-c="${i}" ${done?'disabled':''}><span class="k">(${L[i]})</span><span>${o}</span></button>`}).join('')}</div>`;
+}
+function startStage(sid){
+  const st=state.stages[sid]||{};
+  state.run={sid,phase:'first',order:qsOf(sid).map(q=>q.id),idx:0,res:[],pick:null,firstWrong:[],miss:[],tries:0,replay:!!st.cleared,earned:{},newBadges:[]};
+  state.view='quiz';save();render();window.scrollTo(0,0);
+}
+function answer(c){
+  const r=state.run;if(!r||r.pick!=null)return;
+  const q=byId(r.order[r.idx]);const ok=c===q.ans;r.pick=c;r.res[r.idx]=ok;r.lastGain=0;r.lastCombo=false;
+  bumpStreak(ok);
+  if(ok){
+    if(r.phase==='first'){r.lastGain+=gain(XP.first,'第一輪答對');if(state.streak>=3){r.lastGain+=gain(XP.combo,'連對加碼');r.lastCombo=true}}
+    else r.lastGain+=gain(XP.retry,'錯題回收答對');
+  }else{
+    state.wrong[q.id]=(state.wrong[q.id]||0)+1;
+    if(r.phase==='first')r.firstWrong.push(q.id);else r.miss.push(q.id);
+  }
+  save();renderQuiz();
+  if(r.lastGain){const f=document.createElement('span');f.className='float';f.textContent='+'+r.lastGain;$('.q').appendChild(f)}
+  const nb=$('#nextBtn');if(nb)nb.focus({preventScroll:true});
+}
+function next(){
+  const r=state.run;r.idx++;r.pick=null;
+  if(r.idx<r.order.length){save();renderQuiz();window.scrollTo(0,0);return}
+  if(r.phase==='first'){r.phase=r.firstWrong.length?'between':'clear'}
+  else{r.phase=r.miss.length?'fail':'clear'}
+  if(r.phase==='clear')clearStage();
+  save();renderQuiz();window.scrollTo(0,0);
+}
+function startRetry(){
+  const r=state.run;r.tries++;r.phase='retry';r.order=shuffle(r.firstWrong);r.idx=0;r.res=[];r.pick=null;r.miss=[];
+  save();renderQuiz();window.scrollTo(0,0);
+}
+function clearStage(){
+  const r=state.run;const first=10-r.firstWrong.length;const stars=starsFor(first);
+  const st=state.stages[r.sid]||{};
+  gain(XP.clear,'過關獎勵');if(!r.firstWrong.length)gain(XP.perfect,'零失誤獎勵');
+  r.stars=stars;r.first=first;r.improved=!!st.cleared&&stars>(st.stars||0);
+  state.stages[r.sid]={cleared:true,stars:Math.max(stars,st.stars||0),best:Math.max(first,st.best||0)};
+  award('first');if(!r.firstWrong.length)award('perfect');
+  if(r.firstWrong.length&&r.tries===1)award('oneshot');
+  if(r.tries>1)award('grit');
+  if(S.every(s=>(state.stages[s.id]||{}).cleared))award('allclear');
+  if(S.every(s=>(state.stages[s.id]||{}).stars===3))award('allstar');
+}
+function renderQuiz(){
+  const r=state.run;if(!r){state.view='home';return render()}
+  const i=sIdx(r.sid),s=S[i];
+  const head=`<div class="qhead"><div class="qrow"><button type="button" class="btn" id="homeBtn">← 關卡</button>
+    <div class="ttl"><b>第 ${i+1} 關・${s.name}</b><small>${r.phase==='first'?'<span class="phase">第一輪</span>':r.phase==='retry'?`<span class="phase re">錯題回收${r.tries>1?` 第 ${r.tries} 次`:''}</span>`:''}${s.range}${r.replay?'・重玩（不加 XP）':''}</small></div>
+    <span class="combo" data-n="${state.streak}">連對 ${state.streak}</span></div>
+    ${(r.phase==='first'||r.phase==='retry')?`<div class="dots" aria-label="第 ${r.idx+1} 題，共 ${r.order.length} 題">${r.order.map((id,k)=>`<i class="${k<r.idx||(k===r.idx&&r.pick!=null)?(r.res[k]?'r':'w'):k===r.idx?'cur':''}"></i>`).join('')}</div>`:''}</div>`;
+  let body='';
+  if(r.phase==='first'||r.phase==='retry'){
+    const q=byId(r.order[r.idx]);const done=r.pick!=null;const ok=done&&r.pick===q.ans;
+    body=`<article class="q${done?(ok?' right':' wrong'):''}">${qBody(q,r.pick,done)}
+      ${done?(ok?`<div class="fb ok" role="status"><strong>答對了！</strong>${r.lastGain?`<span class="gain">+${r.lastGain} XP</span>`:''}${r.lastCombo?`<p>連對 ${state.streak} 題，加碼中</p>`:''}</div><details class="explain"><summary>看說明</summary>${q.ex}</details>`
+        :`<div class="fb no" role="status"><strong>答錯了</strong><p>正確答案是 (${L[q.ans]})，這題已經記進錯題本。先把詳解看懂再往下。</p></div><div class="explain">${q.ex}</div>`)
+        +`<div class="nextrow"><button type="button" class="btn primary big" id="nextBtn">${r.idx+1<r.order.length?'下一題 →':r.phase==='first'?'看這一輪結果':'看回收結果'}</button></div>`:''}
+    </article>`;
+  }else if(r.phase==='between'){
+    const first=10-r.firstWrong.length;
+    body=`<section class="panel"><h2>第一輪結束</h2><p class="big">10 題答對 ${first} 題</p>
+      <div class="row">${r.firstWrong.map(id=>`<span class="chipq">第 ${byId(id).n} 題</span>`).join('')}</div>
+      <p class="muted">這 ${r.firstWrong.length} 題要在「錯題回收」裡全部答對，才能過關。題目順序會打亂。</p>
+      <button type="button" class="btn primary big" id="retryBtn">開始錯題回收（${r.firstWrong.length} 題）</button></section>`;
+  }else if(r.phase==='fail'){
+    body=`<section class="panel"><h2>差一點！</h2><p class="big">${r.order.length} 題裡還有 ${r.miss.length} 題答錯</p>
+      <div class="row">${r.miss.map(id=>`<span class="chipq">第 ${byId(id).n} 題</span>`).join('')}</div>
+      <p class="muted">錯題回收要一次全部答對才過關。回去看一下錯題本的詳解，再挑戰一次。</p>
+      <button type="button" class="btn primary big" id="retryBtn">再挑戰錯題回收（${r.firstWrong.length} 題）</button></section>`;
+  }else if(r.phase==='clear'){
+    const nx=S[i+1];const earned=Object.entries(r.earned||{});const total=earned.reduce((a,[,v])=>a+v,0);
+    body=`<section class="panel"><h2>第 ${i+1} 關 過關！</h2><div class="bigstars" aria-label="${r.stars} 顆星">${starsHTML(r.stars)}</div>
+      <p class="muted">第一輪答對 ${r.first} / 10 題${r.improved?'・刷新最佳星數！':''}</p>
+      ${r.replay?'<p class="muted">重玩模式不加 XP，星星和最佳紀錄會保留比較好的那次。</p>':`<div class="earn">${earned.map(([k,v])=>`<div><span>${k}</span><b>+${v}</b></div>`).join('')}<div><span>這一關合計</span><b>+${total} XP</b></div></div>`}
+      ${r.rankUp?`<p class="big">升級成「${r.rankUp}」</p>`:''}
+      ${(r.newBadges||[]).length?`<div class="newbadge">${r.newBadges.map(id=>{const b=BADGES.find(x=>x.id===id);return `<div class="badge"><span class="medal">${b.m}</span><div><b>${b.name}</b><small>${b.desc}</small></div></div>`}).join('')}</div>`:''}
+      <div class="row">${nx?`<button type="button" class="btn primary big" data-start="${nx.id}">下一關：${nx.name} →</button>`:'<p class="big">五關全部完成！</p>'}<button type="button" class="btn big" id="homeBtn2">回關卡</button></div></section>`;
+  }
+  $('#main').innerHTML=head+body;
+}
+function render(){
+  if(state.view==='quiz'&&state.run&&state.run.phase!=='done')renderQuiz();else{state.view='home';renderHome()}
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click',e=>{
+  const t=e.target.closest('button');if(!t)return;
+  if(t.dataset.start){const r=state.run;if(r&&r.sid===t.dataset.start&&r.phase!=='clear'){state.view='quiz';save();render();window.scrollTo(0,0)}else startStage(t.dataset.start);return}
+  if(t.classList.contains('opt')&&t.dataset.c!=null&&!t.disabled){answer(+t.dataset.c);return}
+  if(t.id==='nextBtn'){next();return}
+  if(t.id==='retryBtn'){startRetry();return}
+  if(t.id==='homeBtn'||t.id==='homeBtn2'){if(state.run&&state.run.phase==='clear')state.run=null;state.view='home';save();render();window.scrollTo(0,0);return}
+});
+const rz=$('#resetZone');
+rz.addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.id==='resetBtn'){rz.innerHTML='<span class="confirm">XP、星星、徽章和錯題本都會清掉，確定嗎？<button class="btn primary" id="yesReset" type="button">清除</button><button class="btn" id="noReset" type="button">不要</button></span>';return}
+  if(b.id==='yesReset'){state=fresh();save();render();window.scrollTo(0,0)}
+  rz.innerHTML='<button class="btn" id="resetBtn" type="button">清除紀錄，從頭開始</button>';
+});
+
+/* QR code */
+(function(){
+  const url=/github\.io$/.test(location.hostname)?location.origin+location.pathname:'https://teacher-liujikan.github.io/yilin-work/agri-quest/';
+  const make=(el,size)=>{try{new QRCode(el,{text:url,width:size,height:size,colorDark:'#1b2a21',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M})}catch(e){}};
+  if(window.QRCode){make($('#qrSmall'),140);make($('#qrBig'),420)}else{$('#qrOpen').hidden=true}
+  $('#qrUrl').textContent=url;
+  const m=$('#qrModal');
+  $('#qrOpen').addEventListener('click',()=>{m.hidden=false;$('#qrClose').focus()});
+  $('#qrClose').addEventListener('click',()=>{m.hidden=true});
+  m.addEventListener('click',e=>{if(e.target===m)m.hidden=true});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')m.hidden=true});
+})();
+render();
+})();
+</script>
+
+</body>
+</html>
