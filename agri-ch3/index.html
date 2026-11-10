@@ -215,7 +215,58 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 .layer.r1{background:#5c7a3a;min-height:74px}.layer.r2{background:#7f9a4c;min-height:56px}.layer.r3{background:#a8b86a;color:#2a2118;min-height:48px}.layer.r4{background:#d8c38a;color:#2a2118;min-height:44px;border-radius:0 0 40px 40px}
-.cmp td:first-child{white-space:nowrap}
+
+.art{width:100%;height:auto;display:block;color:var(--ink)}
+figure{margin:0}
+figcaption{font-size:15px;line-height:1.5;margin-top:6px;text-align:center}
+figcaption b{display:block;font-size:17px}
+.mvd{display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,1fr);gap:10px 14px;align-items:center;margin-top:8px}
+.mvd figure{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:8px 10px}
+.mvd figure svg{max-height:120px}
+.mvh{font-weight:900;font-size:20px;text-align:center;border-radius:10px;padding:6px;line-height:1.3}
+.mvh small{display:block;font-size:13px;font-weight:500;color:var(--muted)}
+.mvh.m{background:var(--g3s);color:var(--g3)}.mvh.d{background:var(--g2s);color:var(--g2)}
+.mvl{font-weight:900;font-size:18px;color:var(--soil);text-align:center;line-height:1.2}
+.mvl small{display:block;font-size:12px;font-weight:500}
+@media (max-width:560px){.mvd{grid-template-columns:40px 1fr 1fr;gap:8px}.mvl{font-size:15px}figcaption{font-size:13px}figcaption b{font-size:15px}}
+.icons{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:8px}
+.icons.three-up{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:620px){.icons.three-up{grid-template-columns:1fr}}
+.icons figure,.infl figure{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px}
+.icons figure svg{max-height:110px}
+.infl{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:8px}
+.infl figure svg{max-height:110px}
+.tagl{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:0 8px;margin-right:4px;vertical-align:2px}
+.tagl.lim{background:var(--g4s);color:var(--g4)}.tagl.inf{background:var(--g3s);color:var(--g3)}
+.rootsvg{max-width:200px;margin:0 auto}
+.two>svg.art{max-height:210px}
+.rz{cursor:pointer}.rz:focus{outline:none}
+.rz.on>rect,.rz.on>path:first-child{stroke:#e0a21b;stroke-width:4}
+.modes{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:8px}
+.mode{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.mode>b{font-size:20px}
+.mode small{font-size:14px;color:var(--muted)}
+.plots{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-height:64px}
+.plots.rows{flex-direction:column;align-items:stretch;gap:3px}
+.cr{width:44px;height:44px;border-radius:8px;display:grid;place-items:center;font-weight:900;color:#fff;font-size:17px}
+.cr.r{background:#c9a227}.cr.b{background:#a0521b}.cr.v{background:#4f8a3c}.cr.e{background:#b8a48a}
+.ar{color:var(--muted);font-weight:700}
+.row{border-radius:6px;padding:1px 8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-align:center}
+.row.big{background:#e8d27a;color:#4a3d10}.row.sm{background:#c8e3b6;color:#2f4a1f;font-size:11px}.row.mix{background:linear-gradient(90deg,#f6c3d5,#c8e3b6,#f6c3d5);color:#3a2a2a}
+.machines{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:560px){.machines{grid-template-columns:1fr 1fr}}
+.machines div{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px;font-size:15px}
+.machines b{display:block;font-size:18px;color:var(--soil)}
+.temps{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.tscale,.trow{display:grid;grid-template-columns:130px minmax(0,1fr) 110px;gap:10px;align-items:center}
+.tscale{grid-template-columns:130px repeat(4,minmax(0,1fr)) 110px;font-size:12px;color:var(--muted)}
+.tscale span:first-child{grid-column:2}
+.trow b{font-size:15px}.trow small{font-size:13px;color:var(--muted)}
+.track{position:relative;height:30px;background:var(--bg);border:1px solid var(--line);border-radius:999px}
+.track i{position:absolute;top:2px;bottom:2px;border-radius:999px;color:#fff;font-style:normal;font-weight:700;font-size:13px;display:grid;place-items:center;white-space:nowrap}
+.trow.hl b{color:var(--g1)}
+@media (max-width:560px){.tscale{display:none}.trow{grid-template-columns:1fr;gap:2px}}
+
 .ex{color:var(--muted);font-size:15px}
 </style>
 </head>
@@ -244,85 +295,161 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <span class="hint">打開後黃色重點變空格，學生先說答案，再點空格揭曉。</span>
   </div>
 
+  <!-- 共用圖示 -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="s-bulb" viewBox="0 0 100 90"><path d="M50 8 C50 20 62 26 70 40 C80 58 72 76 50 78 C28 76 20 58 30 40 C38 26 50 20 50 8Z" fill="#f3e2c4" stroke="#b08458" stroke-width="2"/><path d="M50 14 C50 28 60 34 64 46 C68 60 62 72 50 73" fill="none" stroke="#b08458" stroke-width="1.5"/><path d="M50 14 C50 28 40 34 36 46 C32 60 38 72 50 73" fill="none" stroke="#b08458" stroke-width="1.5"/><path d="M40 78 l-6 9 M50 78 v10 M60 78 l6 9" stroke="#b08458" stroke-width="1.5"/><text x="50" y="52" text-anchor="middle" font-size="9" fill="#8a5a35">鱗片</text></symbol>
+      <symbol id="s-corm" viewBox="0 0 100 90"><path d="M50 22 v-14 M50 22 l-8 -10 M50 22 l8 -10" stroke="#4f8a3c" stroke-width="3" stroke-linecap="round"/><ellipse cx="50" cy="48" rx="34" ry="24" fill="#d9b98c" stroke="#8a5a35" stroke-width="2"/><path d="M20 44 h60 M18 54 h64" stroke="#8a5a35" stroke-width="1" stroke-dasharray="3 3"/><path d="M35 72 l-6 12 M50 72 v13 M65 72 l6 12" stroke="#b08458" stroke-width="1.5"/></symbol>
+      <symbol id="s-tuber" viewBox="0 0 100 90"><path d="M10 20 C30 22 34 28 40 34" fill="none" stroke="#b08458" stroke-width="2"/><ellipse cx="58" cy="50" rx="34" ry="26" fill="#e3c48f" stroke="#8a5a35" stroke-width="2"/><g fill="#8a5a35"><circle cx="44" cy="40" r="2.5"/><circle cx="66" cy="38" r="2.5"/><circle cx="74" cy="58" r="2.5"/><circle cx="50" cy="62" r="2.5"/></g><text x="58" y="88" text-anchor="middle" font-size="9" fill="#8a5a35">芽眼</text></symbol>
+      <symbol id="s-troot" viewBox="0 0 100 90"><path d="M50 4 v14" stroke="#4f8a3c" stroke-width="3"/><path d="M50 18 C40 22 20 30 18 44 C16 58 30 70 40 62 C46 56 50 40 50 18Z" fill="#c9566b" stroke="#8c2f42" stroke-width="2"/><path d="M50 18 C62 24 82 34 82 52 C82 70 66 76 60 66 C54 56 52 36 50 18Z" fill="#c9566b" stroke="#8c2f42" stroke-width="2"/><path d="M18 46 l-8 6 M82 56 l8 8" stroke="#b08458" stroke-width="1.5"/></symbol>
+      <symbol id="s-rhizome" viewBox="0 0 100 90"><path d="M8 58 C20 50 30 64 44 56 C56 50 66 62 80 54 C88 50 94 54 96 58 C92 66 84 68 76 66 C64 72 52 64 42 70 C30 76 18 68 8 70Z" fill="#e8cf8f" stroke="#8a5a35" stroke-width="2"/><path d="M30 56 v-34 M30 34 l-8 -10 M60 56 v-40 M60 30 l8 -10" stroke="#4f8a3c" stroke-width="3" stroke-linecap="round"/><path d="M24 72 l-4 12 M50 70 l2 12 M76 68 l4 12" stroke="#b08458" stroke-width="1.5"/><text x="52" y="46" font-size="9" fill="#8a5a35">節</text></symbol>
+      <symbol id="s-runner" viewBox="0 0 100 90"><g stroke="#4f8a3c" stroke-width="3" stroke-linecap="round"><path d="M24 60 l-10 -26 M24 60 l0 -30 M24 60 l10 -26"/><path d="M78 64 l-7 -18 M78 64 l7 -18"/></g><path d="M24 60 C40 40 60 40 78 64" fill="none" stroke="#6b8f3a" stroke-width="2" stroke-dasharray="4 3"/><path d="M14 66 h70" stroke="#b08458" stroke-width="2"/><path d="M24 66 l-4 12 M24 66 l4 12 M78 66 l-3 9 M78 66 l3 9" stroke="#b08458" stroke-width="1.5"/><text x="50" y="36" text-anchor="middle" font-size="9" fill="#4f8a3c">走莖</text></symbol>
+      <symbol id="s-sucker" viewBox="0 0 100 90"><rect x="34" y="18" width="16" height="50" rx="4" fill="#8cc06e" stroke="#4f8a3c" stroke-width="2"/><path d="M42 18 C30 4 14 6 8 10 M42 18 C56 2 76 4 84 10" fill="none" stroke="#4f8a3c" stroke-width="3"/><path d="M66 68 v-20 M66 50 l-6 -8 M66 50 l6 -8" stroke="#4f8a3c" stroke-width="3" stroke-linecap="round"/><path d="M50 72 C56 74 62 72 66 68" fill="none" stroke="#8a5a35" stroke-width="2"/><path d="M10 70 h80" stroke="#b08458" stroke-width="2"/><text x="78" y="44" font-size="9" fill="#4f8a3c">吸芽</text></symbol>
+      <symbol id="s-tiller" viewBox="0 0 100 90"><g stroke="#4f8a3c" stroke-width="3" stroke-linecap="round" fill="none"><path d="M50 70 C48 50 46 30 40 10"/><path d="M50 70 C52 50 56 30 62 12"/><path d="M50 70 C42 54 30 40 20 26"/><path d="M50 70 C58 54 70 42 82 30"/><path d="M50 70 C50 50 50 30 50 8"/></g><path d="M14 72 h72" stroke="#b08458" stroke-width="2"/><path d="M44 72 l-6 12 M50 72 v13 M56 72 l6 12" stroke="#b08458" stroke-width="1.5"/></symbol>
+      <symbol id="s-bulbil" viewBox="0 0 100 90"><path d="M50 88 V6" stroke="#4f8a3c" stroke-width="3"/><g fill="none" stroke="#4f8a3c" stroke-width="3" stroke-linecap="round"><path d="M50 30 C62 24 72 22 82 24"/><path d="M50 50 C38 44 28 42 18 44"/><path d="M50 70 C62 64 72 62 82 64"/></g><g fill="#6b4a2b"><circle cx="56" cy="34" r="5"/><circle cx="44" cy="54" r="5"/><circle cx="56" cy="74" r="5"/></g><text x="70" y="40" font-size="9" fill="#6b4a2b">珠芽</text></symbol>
+    </defs>
+  </svg>
+
   <!-- ===== 構造與生長 ===== -->
   <section class="panel" id="p1">
     <div class="card">
       <h2>單子葉 vs 雙子葉</h2>
-      <div class="tblwrap"><table class="t cmp">
-        <tr><th></th><th>單子葉</th><th>雙子葉</th></tr>
-        <tr><td>根</td><td><span class="key">鬚根系</span>（淺根）</td><td><span class="key">軸根系</span>（深根）</td></tr>
-        <tr><td>莖</td><td>維管束<span class="key">散生</span>、無形成層，不變粗</td><td>維管束<span class="key">環狀</span>、有形成層，會變粗</td></tr>
-        <tr><td>葉</td><td>平行脈；葉片、葉鞘、葉舌、葉耳</td><td>網狀脈；葉片、葉柄、托葉（齊全＝完全葉）</td></tr>
-        <tr><td>花</td><td>3 或 3 的倍數</td><td>4、5 或其倍數</td></tr>
-        <tr><td>種子</td><td><span class="key">有胚乳</span>、子葉 1 枚</td><td><span class="key">無胚乳</span>、子葉 2 枚（子葉貯藏養分）</td></tr>
-        <tr><td>例子</td><td>稻、玉米、鳳梨、百合、蔥</td><td>大豆、西瓜、菊花、胡蘿蔔</td></tr>
-      </table></div>
-      <p class="note">松、柏、杉＝裸子植物，多子葉。</p>
+      <p>同一個部位，左右比一比。</p>
+      <div class="mvd">
+        <div class="mvh"></div><div class="mvh m">單子葉<small>稻、玉米、鳳梨、百合、蔥</small></div><div class="mvh d">雙子葉<small>大豆、西瓜、菊花、胡蘿蔔</small></div>
+
+        <div class="mvl">根</div>
+        <figure><svg viewBox="0 0 120 100" class="art"><path d="M0 26 h120" stroke="#b08458" stroke-width="2"/><path d="M60 4 v24" stroke="#4f8a3c" stroke-width="4"/><g fill="none" stroke="#b08458" stroke-width="2" stroke-linecap="round"><path d="M60 28 C50 50 40 70 34 92"/><path d="M60 28 C56 54 52 76 50 96"/><path d="M60 28 C62 54 66 76 70 96"/><path d="M60 28 C70 50 80 70 88 90"/><path d="M60 28 C46 44 32 58 20 74"/><path d="M60 28 C74 44 88 58 100 72"/></g></svg><figcaption><span class="key">鬚根系</span>：一把細根，淺根</figcaption></figure>
+        <figure><svg viewBox="0 0 120 100" class="art"><path d="M0 26 h120" stroke="#b08458" stroke-width="2"/><path d="M60 4 v24" stroke="#4f8a3c" stroke-width="4"/><path d="M54 28 h12 L61 98 h-2Z" fill="#c99a63" stroke="#8a5a35" stroke-width="1.5"/><g fill="none" stroke="#b08458" stroke-width="1.5" stroke-linecap="round"><path d="M57 40 C46 44 38 50 30 56"/><path d="M63 46 C74 50 82 56 90 62"/><path d="M58 60 C48 64 42 70 36 76"/><path d="M62 70 C70 74 76 80 82 86"/></g></svg><figcaption><span class="key">軸根系</span>：一條主根，深根</figcaption></figure>
+
+        <div class="mvl">莖<small>橫切面</small></div>
+        <figure><svg viewBox="0 0 120 100" class="art"><circle cx="60" cy="50" r="42" fill="#dcefcf" stroke="#4f8a3c" stroke-width="3"/><g fill="#4f8a3c"><circle cx="42" cy="30" r="4"/><circle cx="70" cy="26" r="4"/><circle cx="84" cy="48" r="4"/><circle cx="58" cy="48" r="4"/><circle cx="36" cy="58" r="4"/><circle cx="72" cy="70" r="4"/><circle cx="50" cy="76" r="4"/><circle cx="88" cy="66" r="3"/><circle cx="30" cy="40" r="3"/><circle cx="62" cy="62" r="3"/></g></svg><figcaption>維管束<span class="key">散生</span>，無形成層</figcaption></figure>
+        <figure><svg viewBox="0 0 120 100" class="art"><circle cx="60" cy="50" r="42" fill="#dcefcf" stroke="#4f8a3c" stroke-width="3"/><circle cx="60" cy="50" r="27" fill="none" stroke="#c46a17" stroke-width="2" stroke-dasharray="3 3"/><g fill="#4f8a3c"><circle cx="60" cy="23" r="5"/><circle cx="79" cy="31" r="5"/><circle cx="87" cy="50" r="5"/><circle cx="79" cy="69" r="5"/><circle cx="60" cy="77" r="5"/><circle cx="41" cy="69" r="5"/><circle cx="33" cy="50" r="5"/><circle cx="41" cy="31" r="5"/></g></svg><figcaption>維管束<span class="key">環狀</span>＋形成層（會變粗）</figcaption></figure>
+
+        <div class="mvl">葉</div>
+        <figure><svg viewBox="0 0 120 100" class="art"><path d="M60 4 C76 30 76 70 60 96 C44 70 44 30 60 4Z" fill="#8cc06e" stroke="#4f8a3c" stroke-width="2"/><g stroke="#4f8a3c" stroke-width="1.3" fill="none"><path d="M60 8 V92"/><path d="M54 18 C51 40 51 60 54 84"/><path d="M66 18 C69 40 69 60 66 84"/></g></svg><figcaption><span class="key">平行脈</span>；有葉鞘、葉舌、葉耳</figcaption></figure>
+        <figure><svg viewBox="0 0 120 100" class="art"><path d="M60 8 C92 18 96 60 60 82 C24 60 28 18 60 8Z" fill="#8cc06e" stroke="#4f8a3c" stroke-width="2"/><path d="M60 82 v16" stroke="#4f8a3c" stroke-width="3"/><g stroke="#4f8a3c" stroke-width="1.3" fill="none"><path d="M60 12 V82"/><path d="M60 30 L44 22 M60 30 L76 22 M60 46 L40 38 M60 46 L80 38 M60 62 L44 56 M60 62 L76 56"/><path d="M48 40 l-4 6 M72 40 l4 6 M50 26 l-4 4 M70 26 l4 4"/></g></svg><figcaption><span class="key">網狀脈</span>；葉片＋葉柄＋托葉</figcaption></figure>
+
+        <div class="mvl">花</div>
+        <figure><svg viewBox="0 0 120 100" class="art"><g transform="translate(60 50)"><g fill="#f2a7c3" stroke="#c0567f" stroke-width="1.5"><ellipse cx="0" cy="-24" rx="13" ry="22"/><ellipse cx="0" cy="-24" rx="13" ry="22" transform="rotate(120)"/><ellipse cx="0" cy="-24" rx="13" ry="22" transform="rotate(240)"/></g><circle r="8" fill="#f1c75b"/></g></svg><figcaption>花瓣 <span class="key">3</span> 或 3 的倍數</figcaption></figure>
+        <figure><svg viewBox="0 0 120 100" class="art"><g transform="translate(60 50)"><g fill="#f2a7c3" stroke="#c0567f" stroke-width="1.5"><ellipse cx="0" cy="-24" rx="12" ry="21"/><ellipse cx="0" cy="-24" rx="12" ry="21" transform="rotate(72)"/><ellipse cx="0" cy="-24" rx="12" ry="21" transform="rotate(144)"/><ellipse cx="0" cy="-24" rx="12" ry="21" transform="rotate(216)"/><ellipse cx="0" cy="-24" rx="12" ry="21" transform="rotate(288)"/></g><circle r="8" fill="#f1c75b"/></g></svg><figcaption>花瓣 <span class="key">4、5</span> 或其倍數</figcaption></figure>
+
+        <div class="mvl">種子</div>
+        <figure><svg viewBox="0 0 120 100" class="art"><path d="M60 6 C88 10 96 46 86 70 C78 90 42 90 34 70 C24 46 32 10 60 6Z" fill="#f1c75b" stroke="#b5891c" stroke-width="2"/><path d="M50 52 C46 64 48 78 58 84 C68 78 70 64 64 52 C60 46 54 46 50 52Z" fill="#e8f3d8" stroke="#4f8a3c" stroke-width="2"/><text x="60" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="#7a5a10">胚乳</text><text x="57" y="72" text-anchor="middle" font-size="10" fill="#2f6b3a">胚</text></svg><figcaption><span class="key">有胚乳</span>、子葉 1 枚（玉米）</figcaption></figure>
+        <figure><svg viewBox="0 0 120 100" class="art"><path d="M22 52 C18 24 50 10 72 16 C96 22 106 46 96 66 C86 86 58 90 40 80 C30 74 24 64 22 52Z" fill="#f4e0b8" stroke="#8a5a35" stroke-width="2"/><path d="M30 50 C40 30 70 22 90 40" fill="none" stroke="#8a5a35" stroke-width="1.5"/><path d="M28 54 C30 50 34 48 38 50 C36 56 32 58 28 54Z" fill="#8cc06e"/><text x="64" y="40" text-anchor="middle" font-size="10" font-weight="700" fill="#8a5a35">子葉</text><text x="62" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#8a5a35">子葉</text></svg><figcaption><span class="key">無胚乳</span>、子葉 2 枚貯養分（大豆）</figcaption></figure>
+      </div>
     </div>
 
     <div class="card">
       <h2>根的構造</h2>
+      <p>點根上的每一段看看。</p>
       <div class="profile">
-        <div class="layers" id="layers">
-          <button class="layer r1" data-l="a" aria-pressed="true">成熟部<small>根毛</small></button>
-          <button class="layer r2" data-l="b" aria-pressed="false">延長部</button>
-          <button class="layer r3" data-l="c" aria-pressed="false">生長點</button>
-          <button class="layer r4" data-l="d" aria-pressed="false">根冠<small>根尖</small></button>
-        </div>
+        <svg viewBox="0 0 160 300" class="art rootsvg" role="group" aria-label="根尖構造">
+          <g class="rz" data-l="a" tabindex="0" role="button" aria-label="成熟部"><rect x="62" y="6" width="36" height="120" fill="#c99a63"/><g stroke="#8a5a35" stroke-width="1.5"><path d="M62 30 l-26 -6 M62 52 l-30 2 M62 76 l-24 8 M62 100 l-20 10 M98 36 l26 -8 M98 60 l30 0 M98 84 l24 8 M98 108 l20 10"/></g><text x="80" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">成熟部</text></g>
+          <g class="rz" data-l="b" tabindex="0" role="button" aria-label="延長部"><rect x="64" y="126" width="32" height="70" fill="#dcb98a"/><text x="80" y="166" text-anchor="middle" font-size="13" font-weight="700" fill="#4a3324">延長部</text></g>
+          <g class="rz" data-l="c" tabindex="0" role="button" aria-label="生長點"><rect x="66" y="196" width="28" height="44" fill="#8cc06e"/><text x="80" y="223" text-anchor="middle" font-size="12" font-weight="700" fill="#1f3a14">生長點</text></g>
+          <g class="rz" data-l="d" tabindex="0" role="button" aria-label="根冠"><path d="M62 240 h36 C98 268 90 290 80 294 C70 290 62 268 62 240Z" fill="#e6d3a6" stroke="#b08458" stroke-width="1.5" stroke-dasharray="3 2"/><text x="80" y="268" text-anchor="middle" font-size="12" font-weight="700" fill="#4a3324">根冠</text></g>
+          <text x="128" y="44" font-size="11" fill="#8a5a35">根毛</text>
+        </svg>
         <div class="lay-info" id="layInfo"></div>
       </div>
-      <p class="note">水生植物（睡蓮）多無根毛，靠<b>表皮</b>吸收。</p>
     </div>
 
     <div class="card">
-      <h2>變態莖與變態葉</h2>
-      <div class="two">
-        <div class="box c1"><b class="t">地上變態莖</b>匍匐莖：<span class="key">甘藷</span>｜攀緣莖：爬牆虎｜葉狀莖：文竹｜莖針：玫瑰</div>
-        <div class="box c4"><b class="t">地下變態莖</b>鱗莖：<span class="key">百合</span>｜球莖：<span class="key">唐菖蒲</span>｜根莖：美人蕉、薑｜塊莖：<span class="key">馬鈴薯</span></div>
+      <h2>變態莖</h2>
+      <p>長得不像莖，但有<b>節、芽</b>的，就是莖。</p>
+      <div class="icons">
+        <figure><svg viewBox="0 0 100 90" class="art"><use href="#s-bulb"/></svg><figcaption><b>鱗莖</b>百合、洋蔥</figcaption></figure>
+        <figure><svg viewBox="0 0 100 90" class="art"><use href="#s-corm"/></svg><figcaption><b>球莖</b>唐菖蒲、芋</figcaption></figure>
+        <figure><svg viewBox="0 0 100 90" class="art"><use href="#s-tuber"/></svg><figcaption><b>塊莖</b>馬鈴薯</figcaption></figure>
+        <figure><svg viewBox="0 0 100 90" class="art"><use href="#s-rhizome"/></svg><figcaption><b>根莖</b>薑、美人蕉</figcaption></figure>
+        <figure><svg viewBox="0 0 100 90" class="art"><use href="#s-runner"/></svg><figcaption><b>匍匐莖</b>甘藷、草莓</figcaption></figure>
       </div>
-      <p style="margin-top:10px"><b>變態葉</b>：貯藏葉（蘆薈）、鱗狀葉（武竹）、針狀葉（<span class="key">仙人掌</span>）、捕蟲葉（豬籠草）</p>
-      <p><b>葉序</b>：互生（榕樹）｜對生（桂花、咖啡）｜輪生（夾竹桃、黑板樹）</p>
+      <p class="note">地上變態莖還有：攀緣莖（爬牆虎）、葉狀莖（文竹）、莖針（玫瑰）。<b>甘藷的薯塊是「塊根」，不是莖。</b></p>
     </div>
 
     <div class="card">
-      <h2>花</h2>
-      <ul>
-        <li><b>完全花</b>＝花萼＋花冠＋雄蕊＋雌蕊；雌蕊＝柱頭＋花柱＋子房</li>
-        <li><b>雌雄同株異花</b>：<span class="key">玉米、瓜類</span>｜<b>雌雄異株</b>：<span class="key">蘆筍、菠菜、木瓜</span></li>
-        <li>蟲媒花：大、豔、香（茶、桃）｜風媒花：小、淡、花粉多（玉米、麥）</li>
-      </ul>
-      <h3>花序（必考）</h3>
-      <div class="tblwrap"><table class="t">
-        <tr><th>有限<br><small>頂端先開</small></th><td>單頂：玫瑰、鬱金香｜<span class="key">聚繖：石竹</span>｜歧繖：薄荷</td></tr>
-        <tr><th rowspan="3">無限<br><small>基部先開</small></th><td>穗狀：<span class="key">小麥</span>、唐菖蒲｜總狀：金魚草｜圓錐（複總狀）：<span class="key">水稻</span>、甘藍、芒果</td></tr>
-        <tr><td>葇荑：<span class="key">柳樹</span>｜佛焰（肉穗）：<span class="key">芋</span>、火鶴｜繖房：<span class="key">梨、櫻花</span></td></tr>
-        <tr><td>繖形：<span class="key">胡蘿蔔、蔥</span>｜頭狀：<span class="key">菊花</span>｜隱頭：<span class="key">榕樹、無花果</span></td></tr>
-        <tr><th>混合</th><td>葡萄</td></tr>
-      </table></div>
-    </div>
-
-    <div class="card">
-      <h2>果實與種子</h2>
-      <div class="three">
-        <div class="box c1"><b class="t">單果</b>一花一子房：番茄、桃</div>
-        <div class="box c2"><b class="t">複果</b>整個花序：<span class="key">鳳梨、桑椹、無花果</span></div>
-        <div class="box c3"><b class="t">聚合果</b>一花多子房＋花托：<span class="key">草莓、釋迦</span></div>
+      <h2>花的構造</h2>
+      <div class="two" style="align-items:center">
+        <svg viewBox="0 0 260 220" class="art" role="img" aria-label="花的構造圖">
+          <path d="M130 218 V150" stroke="#4f8a3c" stroke-width="5"/>
+          <ellipse cx="130" cy="150" rx="22" ry="9" fill="#a8c46e" stroke="#4f8a3c" stroke-width="2"/>
+          <path d="M110 148 C90 140 78 124 80 110 C96 116 108 130 114 144Z M150 148 C170 140 182 124 180 110 C164 116 152 130 146 144Z" fill="#7fae5c" stroke="#4f8a3c" stroke-width="1.5"/>
+          <path d="M112 142 C70 120 58 70 76 50 C100 64 116 104 122 138Z M148 142 C190 120 202 70 184 50 C160 64 144 104 138 138Z" fill="#f6c3d5" stroke="#c0567f" stroke-width="2"/>
+          <path d="M130 140 C120 136 118 124 122 114 h16 C142 124 140 136 130 140Z" fill="#f1c75b" stroke="#b5891c" stroke-width="2"/>
+          <path d="M130 114 V66" stroke="#b5891c" stroke-width="4"/><ellipse cx="130" cy="62" rx="10" ry="5" fill="#e0a21b"/>
+          <g stroke="#c46a17" stroke-width="2"><path d="M120 138 L104 84"/><path d="M140 138 L156 84"/></g>
+          <g fill="#8a4a0d"><ellipse cx="103" cy="80" rx="5" ry="8"/><ellipse cx="157" cy="80" rx="5" ry="8"/></g>
+          <g font-size="12" fill="currentColor" font-weight="700">
+            <path d="M140 62 H206" stroke="currentColor" stroke-width=".8"/><text x="208" y="66">柱頭</text>
+            <path d="M134 92 H206" stroke="currentColor" stroke-width=".8"/><text x="208" y="96">花柱</text>
+            <path d="M138 128 H206" stroke="currentColor" stroke-width=".8"/><text x="208" y="132">子房</text>
+            <path d="M98 80 H40" stroke="currentColor" stroke-width=".8"/><text x="4" y="78">花藥</text>
+            <path d="M110 110 H40" stroke="currentColor" stroke-width=".8"/><text x="4" y="114">花絲</text>
+            <path d="M70 70 H40" stroke="currentColor" stroke-width=".8" opacity="0"/><text x="4" y="44">花瓣</text><path d="M80 56 L36 42" stroke="currentColor" stroke-width=".8"/>
+            <path d="M88 124 L40 150" stroke="currentColor" stroke-width=".8"/><text x="4" y="154">花萼</text>
+            <path d="M108 154 L40 186" stroke="currentColor" stroke-width=".8"/><text x="4" y="190">花托</text>
+          </g>
+        </svg>
+        <div>
+          <div class="box c3"><b class="t">雌蕊</b>柱頭＋花柱＋<span class="key">子房</span>（以後變果實）</div>
+          <div class="box c1" style="margin-top:8px"><b class="t">雄蕊</b>花藥（花粉）＋花絲</div>
+          <p class="note"><b>完全花</b>＝花萼、花冠、雄蕊、雌蕊四樣都有。</p>
+          <p style="margin:8px 0 0">雌雄同株異花：<span class="key">玉米、瓜類</span><br>雌雄異株：<span class="key">蘆筍、菠菜、木瓜</span></p>
+        </div>
       </div>
-      <p style="margin-top:10px">真果（只有子房壁）：桃、柑橘｜<b>假果</b>（含花托）：<span class="key">蘋果、梨</span>｜單偽結果：不受精就結果（無籽葡萄）</p>
-      <p><b>種子</b>：胚（胚根、胚莖、胚芽、子葉）＋種皮（來自<span class="key">珠被</span>）＋胚乳（極核＋精核）</p>
+    </div>
+
+    <div class="card">
+      <h2>花序圖鑑（必考）</h2>
+      <p>看形狀記名字。<span class="tagl lim">有限</span>頂端先開；<span class="tagl inf">無限</span>基部先開。</p>
+      <div class="infl">
+        <figure><svg viewBox="0 0 80 100" class="art"><path d="M40 98 V30" stroke="#4f8a3c" stroke-width="3"/><circle cx="40" cy="22" r="14" fill="#f2a7c3" stroke="#c0567f" stroke-width="2"/></svg><figcaption><span class="tagl lim">有限</span><b>單頂</b>玫瑰、鬱金香</figcaption></figure>
+        <figure><svg viewBox="0 0 80 100" class="art"><path d="M40 98 V30 M40 60 L18 42 M40 60 L62 42" stroke="#4f8a3c" stroke-width="3" fill="none"/><circle cx="40" cy="22" r="10" fill="#f2a7c3" stroke="#c0567f" stroke-width="2"/><circle cx="16" cy="36" r="7" fill="#f8d2e0" stroke="#c0567f" stroke-width="2"/><circle cx="64" cy="36" r="7" fill="#f8d2e0" stroke="#c0567f" stroke-width="2"/><text x="40" y="26" text-anchor="middle" font-size="10" font-weight="700">1</text></svg><figcaption><span class="tagl lim">有限</span><b>聚繖</b>石竹</figcaption></figure>
+        <figure><svg viewBox="0 0 80 100" class="art"><path d="M40 98 V6" stroke="#4f8a3c" stroke-width="3"/><g fill="#f1c75b" stroke="#b5891c" stroke-width="1.5"><circle cx="34" cy="16" r="5"/><circle cx="46" cy="24" r="5"/><circle cx="34" cy="32" r="5"/><circle cx="46" cy="40" r="5"/><circle cx="34" cy="48" r="5"/><circle cx="46" cy="56" r="5"/><circle cx="34" cy="64" r="5"/></g></svg><figcaption><span class="tagl inf">無限</span><b>穗狀</b>小麥（花無柄）</figcaption></figure>
+        <figure><svg viewBox="0 0 80 100" class="art"><path d="M40 98 V6" stroke="#4f8a3c" stroke-width="3"/><g stroke="#4f8a3c" stroke-width="2"><path d="M40 16 l-14 -4 M40 28 l14 -4 M40 40 l-14 -4 M40 52 l14 -4 M40 64 l-14 -4"/></g><g fill="#f2a7c3" stroke="#c0567f" stroke-width="1.5"><circle cx="24" cy="12" r="5"/><circle cx="56" cy="24" r="5"/><circle cx="24" cy="36" r="5"/><circle cx="56" cy="48" r="5"/><circle cx="24" cy="60" r="5"/></g></svg><figcaption><span class="tagl inf">無限</span><b>總狀</b>金魚草（花有柄）</figcaption></figure>
+        <figure><svg viewBox="0 0 80 100" class="art"><path d="M40 98 V8" stroke="#4f8a3c" stroke-width="3"/><g stroke="#4f8a3c" stroke-width="2" fill="none"><path d="M40 70 L12 52 M40 50 L66 34 M40 34 L18 22"/></g><g fill="#f1c75b" stroke="#b5891c" stroke-width="1"><circle cx="40" cy="8" r="3.5"/><circle cx="12" cy="52" r="3.5"/><circle cx="20" cy="57" r="3.5"/><circle cx="28" cy="62" r="3.5"/><circle cx="66" cy="34" r="3.5"/><circle cx="58" cy="39" r="3.5"/><circle cx="50" cy="44" r="3.5"/><circle cx="18" cy="22" r="3.5"/><circle cx="26" cy="26" r="3.5"/></g></svg><figcaption><span class="tagl inf">無限</span><b>圓錐（複總狀）</b>水稻、芒果</figcaption></figure>
+        <figure><svg viewBox="0 0 80 100" class="art"><path d="M40 98 V40" stroke="#4f8a3c" stroke-width="3"/><g stroke="#4f8a3c" stroke-width="2" fill="none"><path d="M40 72 C24 60 14 40 12 22"/><path d="M40 58 C30 46 26 34 26 20"/><path d="M40 46 C44 36 52 28 54 20"/><path d="M40 40 C52 34 64 28 68 22"/></g><g fill="#f8d2e0" stroke="#c0567f" stroke-width="1.5"><circle cx="12" cy="18" r="6"/><circle cx="26" cy="16" r="6"/><circle cx="40" cy="16" r="6"/><circle cx="54" cy="16" r="6"/><circle cx="68" cy="18" r="6"/></g><path d="M40 40 V22" stroke="#4f8a3c" stroke-width="2"/></svg><figcaption><span class="tagl inf">無限</span><b>繖房</b>梨、櫻花（花排成平頂）</figcaption></figure>
+        <figure><svg viewBox="0 0 80 100" class="art"><path d="M40 98 V54" stroke="#4f8a3c" stroke-width="3"/><g stroke="#4f8a3c" stroke-width="2"><path d="M40 54 L12 26 M40 54 L22 16 M40 54 L40 12 M40 54 L58 16 M40 54 L68 26"/></g><g fill="#fff" stroke="#8a8a8a" stroke-width="1.5"><circle cx="12" cy="24" r="6"/><circle cx="22" cy="14" r="6"/><circle cx="40" cy="10" r="6"/><circle cx="58" cy="14" r="6"/><circle cx="68" cy="24" r="6"/></g></svg><figcaption><span class="tagl inf">無限</span><b>繖形</b>胡蘿蔔、蔥（同一點長出）</figcaption></figure>
+        <figure><svg viewBox="0 0 80 100" class="art"><path d="M40 98 V46" stroke="#4f8a3c" stroke-width="3"/><g fill="#f1c75b" stroke="#c46a17" stroke-width="1.5"><ellipse cx="40" cy="34" rx="34" ry="8" transform="rotate(0)"/></g><g fill="#f6e08a" stroke="#c46a17" stroke-width="1"><path d="M8 34 C10 18 16 14 20 22Z M72 34 C70 18 64 14 60 22Z M24 28 C24 12 32 10 34 24Z M56 28 C56 12 48 10 46 24Z"/></g><g fill="#a0521b"><circle cx="30" cy="34" r="2"/><circle cx="40" cy="33" r="2"/><circle cx="50" cy="34" r="2"/><circle cx="35" cy="37" r="2"/><circle cx="45" cy="37" r="2"/></g></svg><figcaption><span class="tagl inf">無限</span><b>頭狀</b>菊花、向日葵</figcaption></figure>
+        <figure><svg viewBox="0 0 80 100" class="art"><path d="M40 98 V82" stroke="#4f8a3c" stroke-width="3"/><path d="M40 82 C14 80 8 50 20 30 C28 16 34 12 40 8 C46 12 52 16 60 30 C72 50 66 80 40 82Z" fill="#9bbf6a" stroke="#4f8a3c" stroke-width="2"/><path d="M40 76 C22 74 18 52 26 36 C32 26 36 22 40 18 C44 22 48 26 54 36 C62 52 58 74 40 76Z" fill="#f4d9c6"/><g fill="#c0567f"><circle cx="34" cy="40" r="2.5"/><circle cx="46" cy="40" r="2.5"/><circle cx="30" cy="52" r="2.5"/><circle cx="40" cy="50" r="2.5"/><circle cx="50" cy="52" r="2.5"/><circle cx="34" cy="62" r="2.5"/><circle cx="46" cy="62" r="2.5"/></g></svg><figcaption><span class="tagl inf">無限</span><b>隱頭</b>榕樹、無花果（花藏在裡面）</figcaption></figure>
+        <figure><svg viewBox="0 0 80 100" class="art"><path d="M10 10 C30 8 40 12 44 20" fill="none" stroke="#6b4a2b" stroke-width="3"/><path d="M44 20 C48 40 46 70 40 94" fill="none" stroke="#8a8a5a" stroke-width="2"/><g fill="#c9c98c" stroke="#8a8a5a" stroke-width="1"><circle cx="46" cy="26" r="4"/><circle cx="47" cy="34" r="4"/><circle cx="47" cy="42" r="4"/><circle cx="47" cy="50" r="4"/><circle cx="46" cy="58" r="4"/><circle cx="45" cy="66" r="4"/><circle cx="43" cy="74" r="4"/><circle cx="42" cy="82" r="4"/><circle cx="40" cy="90" r="3.5"/></g></svg><figcaption><span class="tagl inf">無限</span><b>葇荑</b>柳樹（下垂）</figcaption></figure>
+        <figure><svg viewBox="0 0 80 100" class="art"><path d="M40 98 V70" stroke="#4f8a3c" stroke-width="3"/><path d="M40 72 C10 66 8 26 30 8 C34 30 46 56 40 72Z" fill="#e2483b" stroke="#a52a20" stroke-width="2"/><rect x="36" y="22" width="9" height="46" rx="4.5" fill="#f1c75b" stroke="#b5891c" stroke-width="1.5" transform="rotate(10 40 45)"/><text x="62" y="30" font-size="9" fill="currentColor">肉穗</text><text x="2" y="90" font-size="9" fill="currentColor">佛焰苞</text></svg><figcaption><span class="tagl inf">無限</span><b>佛焰（肉穗）</b>芋、火鶴花</figcaption></figure>
+      </div>
+      <p class="note">混合花序：葡萄。</p>
+    </div>
+
+    <div class="card">
+      <h2>果實三兄弟</h2>
+      <div class="icons three-up">
+        <figure><svg viewBox="0 0 120 100" class="art"><path d="M60 14 C90 14 102 44 92 70 C84 90 36 90 28 70 C18 44 30 14 60 14Z" fill="#f6a96b" stroke="#c46a17" stroke-width="2"/><ellipse cx="60" cy="54" rx="14" ry="20" fill="#a0521b"/><path d="M60 14 C62 8 70 4 78 6" stroke="#4f8a3c" stroke-width="3" fill="none"/></svg><figcaption><b>單果</b>一朵花、一個子房<br><span class="ex">番茄、桃、柑橘</span></figcaption></figure>
+        <figure><svg viewBox="0 0 120 100" class="art"><g fill="#4f8a3c"><path d="M60 30 L52 4 L58 22 L60 0 L62 22 L68 4Z"/><path d="M60 30 L40 10 L56 26Z M60 30 L80 10 L64 26Z"/></g><ellipse cx="60" cy="64" rx="28" ry="34" fill="#f1c75b" stroke="#b5891c" stroke-width="2"/><g fill="none" stroke="#b5891c" stroke-width="1.5"><path d="M36 46 L84 82 M34 62 L76 94 M44 34 L88 66 M84 46 L36 82 M86 62 L44 94 M76 34 L32 66"/></g></svg><figcaption><b>複果</b>整個花序變一個果<br><span class="ex"><span class="key">鳳梨、桑椹、無花果</span></span></figcaption></figure>
+        <figure><svg viewBox="0 0 120 100" class="art"><path d="M60 22 C92 20 96 50 80 74 C72 88 66 96 60 96 C54 96 48 88 40 74 C24 50 28 20 60 22Z" fill="#e2483b" stroke="#a52a20" stroke-width="2"/><g fill="#4f8a3c"><path d="M60 24 L44 10 L56 20 L60 6 L64 20 L76 10Z"/></g><g fill="#f6e08a"><circle cx="48" cy="40" r="2"/><circle cx="60" cy="38" r="2"/><circle cx="72" cy="40" r="2"/><circle cx="44" cy="54" r="2"/><circle cx="56" cy="52" r="2"/><circle cx="68" cy="52" r="2"/><circle cx="78" cy="56" r="2"/><circle cx="50" cy="66" r="2"/><circle cx="62" cy="66" r="2"/><circle cx="72" cy="68" r="2"/><circle cx="56" cy="80" r="2"/><circle cx="66" cy="80" r="2"/></g></svg><figcaption><b>聚合果</b>一朵花、多個子房＋花托<br><span class="ex"><span class="key">草莓、釋迦</span></span></figcaption></figure>
+      </div>
+      <p class="note"><b>假果</b>＝花托也一起長大：<b>蘋果、梨</b>。單偽結果：不受精就結果（無籽葡萄）。種皮來自<b>珠被</b>。</p>
     </div>
 
     <div class="card">
       <h2>作物的生長</h2>
-      <div class="two">
-        <div class="box c2"><b class="t">營養生長</b>發芽 → <span class="key">花芽分化</span></div>
-        <div class="box c1"><b class="t">生殖生長</b>花芽分化 → 種子成熟<br><span class="ex">營養生長停止：稻、玉米｜持續：大豆、落花生</span></div>
+      <div class="two" style="align-items:center">
+        <svg viewBox="0 0 280 160" class="art" role="img" aria-label="S 型生長曲線">
+          <rect x="34" y="10" width="110" height="128" fill="#e0f2e7"/><rect x="144" y="10" width="126" height="128" fill="#fbe1ea"/>
+          <text x="89" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#2f6b3a">營養生長</text>
+          <text x="207" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#a2408c">生殖生長</text>
+          <path d="M34 138 H272 M34 138 V8" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M36 132 C90 130 110 120 140 80 C170 40 200 38 268 36" fill="none" stroke="#c46a17" stroke-width="4"/>
+          <path d="M144 10 V138" stroke="#a2408c" stroke-dasharray="4 3"/>
+          <text x="144" y="154" text-anchor="middle" font-size="11" fill="currentColor">花芽分化</text>
+          <text x="40" y="154" font-size="11" fill="currentColor">發芽</text><text x="230" y="154" font-size="11" fill="currentColor">種子成熟</text>
+          <text x="14" y="76" font-size="11" fill="currentColor" transform="rotate(-90 14 76)">生長量</text>
+        </svg>
+        <ul>
+          <li>生長曲線呈 <span class="key">S 型</span></li>
+          <li>分界點：<span class="key">花芽分化</span></li>
+          <li>碳氮比高（醣多）→ <span class="key">容易開花</span>；氮多 → 長枝葉</li>
+          <li>五大激素：生長素、激勃素、細胞分裂素、離層酸、乙烯</li>
+        </ul>
       </div>
-      <ul style="margin-top:10px">
-        <li>生長曲線呈 <span class="key">S 型</span></li>
-        <li><b>碳氮比</b>：氮多 → 長枝葉；碳水化合物多 → <span class="key">容易開花</span></li>
-        <li>五大激素：生長素、激勃素、細胞分裂素、離層酸、乙烯</li>
-      </ul>
     </div>
     <div class="actions"><button class="btn" data-go="t2">下一個：繁殖 →</button></div>
   </section>
@@ -331,43 +458,54 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
   <section class="panel" id="p2" hidden>
     <div class="card">
       <h2>有性 vs 無性繁殖</h2>
-      <div class="tblwrap"><table class="t">
-        <tr><th></th><th>有性（種子繁殖）</th><th>無性（營養繁殖）</th></tr>
-        <tr><th>優點</th><td>簡單、量大、好貯運、植株壽命長、<span class="key">無病</span></td><td><span class="key">保持親本特性</span>、提早開花、無籽作物也能繁殖</td></tr>
-        <tr><th>缺點</th><td><span class="key">易變異</span>、開花慢</td><td>根淺壽命短、技術較高、不易大量</td></tr>
-        <tr><th>常見</th><td>一、二年生作物：禾本科、豆科、十字花科</td><td>果樹、花卉、薯類</td></tr>
-      </table></div>
-      <p class="note">後熟作用：種子採收後要放一段時間，胚成熟才會發芽。</p>
+      <div class="two">
+        <div class="box c1"><b class="t">有性（種子）</b>優點：量大、好貯運、<span class="key">無病</span><br>缺點：<span class="key">容易變異</span>、開花慢</div>
+        <div class="box c2"><b class="t">無性（營養器官）</b>優點：<span class="key">保持親本特性</span>、提早開花<br>缺點：根淺、技術較高</div>
+      </div>
     </div>
 
     <div class="card">
-      <h2>分割繁殖（最確實安全）</h2>
-      <div class="tblwrap"><table class="t">
-        <tr><th>分蘗</th><td>水稻、<span class="key">菊花</span></td><th>吸芽</th><td><span class="key">香蕉、龍舌蘭</span></td></tr>
-        <tr><th>根莖</th><td>美人蕉、薑、鳶尾</td><th>走莖</th><td><span class="key">草莓</span>、吊蘭</td></tr>
-        <tr><th>鱗莖</th><td>鬱金香、風信子</td><th>球莖</th><td><span class="key">唐菖蒲、仙客來</span></td></tr>
-        <tr><th>珠芽</th><td>百合</td><th>零餘子</th><td><span class="key">山藥</span></td></tr>
-        <tr><th>塊莖</th><td>馬鈴薯</td><th>塊根</th><td><span class="key">甘藷</span>、大理花</td></tr>
-      </table></div>
+      <h2>分割繁殖：用哪個器官？</h2>
+      <div class="icons">
+        <figure><svg viewBox="0 0 100 90" class="art"><use href="#s-sucker"/></svg><figcaption><b>吸芽</b><span class="key">香蕉、龍舌蘭</span></figcaption></figure>
+        <figure><svg viewBox="0 0 100 90" class="art"><use href="#s-tiller"/></svg><figcaption><b>分蘗</b>水稻、<span class="key">菊花</span></figcaption></figure>
+        <figure><svg viewBox="0 0 100 90" class="art"><use href="#s-runner"/></svg><figcaption><b>走莖</b><span class="key">草莓</span>、吊蘭</figcaption></figure>
+        <figure><svg viewBox="0 0 100 90" class="art"><use href="#s-corm"/></svg><figcaption><b>球莖</b><span class="key">仙客來、唐菖蒲</span></figcaption></figure>
+        <figure><svg viewBox="0 0 100 90" class="art"><use href="#s-bulb"/></svg><figcaption><b>鱗莖</b>鬱金香、風信子</figcaption></figure>
+        <figure><svg viewBox="0 0 100 90" class="art"><use href="#s-bulbil"/></svg><figcaption><b>珠芽／零餘子</b>百合／<span class="key">山藥</span></figcaption></figure>
+        <figure><svg viewBox="0 0 100 90" class="art"><use href="#s-tuber"/></svg><figcaption><b>塊莖</b>馬鈴薯</figcaption></figure>
+        <figure><svg viewBox="0 0 100 90" class="art"><use href="#s-troot"/></svg><figcaption><b>塊根</b><span class="key">甘藷</span>、大理花</figcaption></figure>
+        <figure><svg viewBox="0 0 100 90" class="art"><use href="#s-rhizome"/></svg><figcaption><b>根莖</b>薑、美人蕉</figcaption></figure>
+      </div>
     </div>
 
     <div class="card">
       <h2>扦插、壓條、嫁接</h2>
-      <div class="three">
-        <div class="box c1"><b class="t">扦插</b>根插：泡桐<br><span class="key">枝插（最常用）</span><br>葉插：秋海棠、石蓮</div>
-        <div class="box c2"><b class="t">壓條</b>堆取：杜鵑<br>偃取（彎取）：頂梢壓條 → <span class="key">草莓</span><br><span class="key">高取（空中壓條，最常用）</span>：環剝＋水苔，荔枝</div>
-        <div class="box c3"><b class="t">嫁接</b>上＝<span class="key">接穗</span>、下＝<span class="key">砧木</span><br>枝接最常用；芽接切 T 形；根接：柑橘更新根群</div>
+      <div class="icons three-up">
+        <figure><svg viewBox="0 0 120 100" class="art"><path d="M30 60 h60 l-8 36 h-44Z" fill="#c46a17" stroke="#8a4a0d" stroke-width="2"/><rect x="28" y="56" width="64" height="8" rx="2" fill="#a0521b"/><path d="M60 80 V18" stroke="#6b8f3a" stroke-width="4"/><path d="M60 28 C46 20 40 12 40 6 C50 8 58 16 60 28Z M60 34 C74 26 80 18 80 12 C70 14 62 22 60 34Z" fill="#8cc06e" stroke="#4f8a3c" stroke-width="1.5"/><g stroke="#f6e7c8" stroke-width="1.5"><path d="M60 80 l-10 8 M60 80 l10 8 M60 76 l-8 4"/></g></svg><figcaption><b>扦插</b>剪一段插進介質長根<br><span class="ex"><span class="key">枝插最常用</span>；葉插：秋海棠、石蓮</span></figcaption></figure>
+        <figure><svg viewBox="0 0 120 100" class="art"><path d="M10 96 C30 70 50 50 110 30" fill="none" stroke="#6b4a2b" stroke-width="5"/><ellipse cx="62" cy="50" rx="14" ry="11" fill="#9bbf6a" stroke="#4f8a3c" stroke-width="2"/><path d="M50 50 h24" stroke="#6b8a4a" stroke-dasharray="2 2"/><g stroke="#f6e7c8" stroke-width="1.5"><path d="M58 52 l-4 6 M64 52 l2 6"/></g><path d="M110 30 C104 20 96 18 90 20 M100 33 C100 22 106 16 112 16" stroke="#4f8a3c" stroke-width="3" fill="none"/><text x="44" y="78" font-size="9" fill="currentColor">環剝＋水苔</text></svg><figcaption><b>高取法（空中壓條）</b>最常用的壓條<br><span class="ex">荔枝、印度橡膠樹；草莓用頂梢壓條</span></figcaption></figure>
+        <figure><svg viewBox="0 0 120 100" class="art"><path d="M60 98 V52" stroke="#6b4a2b" stroke-width="8"/><path d="M60 52 V20" stroke="#8a6a3a" stroke-width="7"/><rect x="52" y="46" width="16" height="10" fill="#e8e0c0" stroke="#8a8a5a"/><path d="M60 22 C48 12 42 6 40 2 M60 26 C72 16 78 10 82 6" stroke="#4f8a3c" stroke-width="3" fill="none"/><text x="74" y="32" font-size="10" font-weight="700" fill="#2f6b3a">接穗</text><text x="70" y="82" font-size="10" font-weight="700" fill="#6b4a2b">砧木</text></svg><figcaption><b>嫁接</b>上面接穗＋下面砧木<br><span class="ex">枝接最常用；芽接切 T 形</span></figcaption></figure>
       </div>
     </div>
 
     <div class="card">
       <h2>組織培養</h2>
-      <ul>
-        <li>原理：細胞<span class="key">全能性</span>，無菌培養</li>
-        <li>生長素 → 長<span class="key">根</span>｜細胞分裂素 → 長<span class="key">莖芽</span>（椰子水可代替）</li>
-        <li><span class="key">分生組織（莖頂）培養 → 無病毒苗</span>：香蕉、菊花、香石竹</li>
-        <li>胚培養 → 克服雜交不親和｜<span class="key">蘭花</span>最常用組培繁殖</li>
-      </ul>
+      <div class="two" style="align-items:center">
+        <svg viewBox="0 0 200 140" class="art" role="img" aria-label="組織培養瓶">
+          <path d="M70 10 h60 v20 l30 90 C162 130 150 136 140 136 H60 C50 136 38 130 40 120 L70 30Z" fill="#eef6fb" stroke="#7aa7c4" stroke-width="2"/>
+          <rect x="66" y="4" width="68" height="10" rx="3" fill="#c9d6de"/>
+          <path d="M46 106 H154 L160 120 C162 130 150 136 140 136 H60 C50 136 38 130 40 120Z" fill="#f6e08a" opacity=".8"/>
+          <path d="M100 108 V70" stroke="#4f8a3c" stroke-width="3"/><path d="M100 82 C88 74 84 64 86 58 C96 62 100 72 100 82Z M100 76 C112 68 116 58 114 52 C104 56 100 66 100 76Z" fill="#8cc06e" stroke="#4f8a3c"/>
+          <g stroke="#8a5a35" stroke-width="1.5"><path d="M100 108 l-8 10 M100 108 l8 10 M100 108 v12"/></g>
+          <text x="100" y="130" text-anchor="middle" font-size="10" fill="#7a5a10">培養基</text>
+        </svg>
+        <ul>
+          <li>原理：細胞<span class="key">全能性</span>，無菌培養</li>
+          <li>生長素 → <span class="key">根</span>；細胞分裂素 → <span class="key">莖芽</span></li>
+          <li>莖頂（分生組織）培養 → <span class="key">無病毒苗</span>（香蕉）</li>
+          <li><span class="key">蘭花</span>最常用</li>
+        </ul>
+      </div>
     </div>
     <div class="actions"><button class="btn" data-go="t3">下一個：栽培管理 →</button></div>
   </section>
@@ -375,61 +513,78 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
   <!-- ===== 栽培管理 ===== -->
   <section class="panel" id="p3" hidden>
     <div class="card">
-      <h2>栽培模式</h2>
-      <div class="tblwrap"><table class="t">
-        <tr><th>休耕</th><td>暫停種植，恢復地力、減少<span class="key">忌地現象</span></td></tr>
-        <tr><th>連作</th><td>同地連種同一作物；<span class="key">臺灣最通行</span>（水稻）</td></tr>
-        <tr><th>混作</th><td>同時種兩種以上，<span class="key">沒有</span>主副之分</td></tr>
-        <tr><th>間作</th><td>同時種兩種以上，<span class="key">有</span>主作物和間作物</td></tr>
-        <tr><th>輪作</th><td>依順序輪流種不同作物；<span class="key">最好的制度</span>（豆科配禾本科、水旱輪作）</td></tr>
-        <tr><th>複作</th><td>一年內種一次以上；<span class="key">複作指數 ＝ 一年種植次數 × 100%</span></td></tr>
-      </table></div>
+      <h2>栽培模式：一看就懂</h2>
+      <div class="modes">
+        <div class="mode"><b>連作</b><div class="plots"><span class="cr r">稻</span><span class="ar">→</span><span class="cr r">稻</span><span class="ar">→</span><span class="cr r">稻</span></div><small>同一作物一直種；<span class="key">臺灣最通行</span></small></div>
+        <div class="mode"><b>輪作</b><div class="plots"><span class="cr b">豆</span><span class="ar">→</span><span class="cr r">稻</span><span class="ar">→</span><span class="cr v">菜</span></div><small>照順序換作物；<span class="key">最好的制度</span></small></div>
+        <div class="mode"><b>間作</b><div class="plots rows"><span class="row big">玉米 玉米 玉米</span><span class="row sm">大豆 大豆 大豆</span><span class="row big">玉米 玉米 玉米</span></div><small>同時種，<span class="key">有主副</span></small></div>
+        <div class="mode"><b>混作</b><div class="plots rows"><span class="row mix">梨 蘋果 梨</span><span class="row mix">蘋果 梨 蘋果</span></div><small>同時種，<span class="key">沒有主副</span></small></div>
+        <div class="mode"><b>複作</b><div class="plots"><span class="cr r">稻</span><span class="cr r">稻</span><span class="cr v">菜</span></div><small>一年 3 次 → <span class="key">複作指數 300%</span></small></div>
+        <div class="mode"><b>休耕</b><div class="plots"><span class="cr e">休</span></div><small>讓土地休息，減少<span class="key">忌地現象</span></small></div>
+      </div>
       <div class="two" style="margin-top:12px">
-        <div class="box c2"><b class="t">耐連作</b>禾本科、百合科、繖形花科、十字花科（<span class="key">小白菜</span>）</div>
-        <div class="box c4"><b class="t">忌連作</b><span class="key">茄科最忌</span>（番茄、辣椒、馬鈴薯）、豆科、葫蘆科</div>
+        <div class="box c2"><b class="t">耐連作</b>禾本科、十字花科（<span class="key">小白菜</span>）、百合科</div>
+        <div class="box c4"><b class="t">忌連作</b><span class="key">茄科最忌</span>（辣椒 → 馬鈴薯 ✗）、豆科、葫蘆科</div>
       </div>
     </div>
 
     <div class="card">
-      <h2>整地與播種</h2>
-      <p><b>整地順序</b>：耕犁 → 碎土耙平 → 作畦 → 鎮壓</p>
-      <p><b>種子預措</b>：選種（<span class="key">鹽水選</span>）、浸種、消毒、催芽、萌爆（滲調）、覆膜、拌種（豆科＋<span class="key">根瘤菌</span>）</p>
-      <div class="formula">播種深度 ＝ 種子直徑的 3～4 倍</div>
-      <div class="two" style="margin-top:10px">
-        <div class="box c1"><b class="t">宜深</b>大粒、嫌光性、砂土、乾燥</div>
-        <div class="box c3"><b class="t">宜淺</b>小粒、好光性、黏土、多雨</div>
+      <h2>播種</h2>
+      <div class="two" style="align-items:center">
+        <svg viewBox="0 0 220 130" class="art" role="img" aria-label="播種深度示意">
+          <rect x="0" y="30" width="220" height="100" fill="#d9b98c"/><path d="M0 30 h220" stroke="#8a5a35" stroke-width="2"/>
+          <g fill="#c99a63" opacity=".6"><circle cx="20" cy="60" r="3"/><circle cx="180" cy="90" r="3"/><circle cx="150" cy="50" r="2"/><circle cx="40" cy="110" r="2"/></g>
+          <ellipse cx="90" cy="96" rx="12" ry="9" fill="#f1c75b" stroke="#b5891c" stroke-width="2"/>
+          <path d="M120 30 V87 M114 36 l6 -6 l6 6 M114 81 l6 6 l6 -6" stroke="#2f6b3a" stroke-width="2" fill="none"/>
+          <text x="130" y="56" font-size="12" font-weight="700" fill="#2f6b3a">覆土厚度</text><text x="130" y="72" font-size="12" font-weight="700" fill="#2f6b3a">＝直徑×3～4</text>
+          <path d="M78 110 H102" stroke="#4a3324" stroke-width="1"/><text x="90" y="124" text-anchor="middle" font-size="10" fill="#4a3324">種子直徑</text>
+        </svg>
+        <div>
+          <p><b>宜深</b>：大粒、嫌光、砂土、乾燥<br><b>宜淺</b>：小粒、好光、黏土、多雨</p>
+          <p>撒播：細小（油菜）｜條播：玉米｜點播：<span class="key">大粒貴重</span></p>
+          <p class="note">整地：耕犁 → 碎土 → 作畦 → 鎮壓｜預措：<b>鹽水選</b>、拌<b>根瘤菌</b>｜春化：約 5℃ 低溫提早開花</p>
+        </div>
       </div>
-      <p style="margin-top:10px">撒播：細小便宜（油菜）｜條播：多數（玉米）｜點播：<span class="key">大粒貴重</span>｜<b>春化處理</b>：約 5℃ 低溫，提早開花（鬱金香）</p>
     </div>
 
     <div class="card">
-      <h2>田間管理</h2>
-      <ul>
-        <li><b>中耕</b>：淺耕約 5～6 cm；初期淺、中期深、末期淺</li>
-        <li><b>培土</b>：抗倒伏（玉米、甘蔗）、增產（<span class="key">馬鈴薯</span>）、軟化（<span class="key">蔥白、竹筍、蘆筍</span>）、助<span class="key">落花生結莢</span></li>
-        <li><b>覆蓋</b>：保水、抑草、保溫</li>
-        <li><b>灌溉</b>：<span class="key">滴灌最省水</span>｜噴灌：坡地果園｜水田：輪流灌溉</li>
-        <li><b>排水</b>：明溝、暗溝、動力排水</li>
-      </ul>
+      <h2>培土與田間管理</h2>
+      <div class="two" style="align-items:center">
+        <svg viewBox="0 0 220 140" class="art" role="img" aria-label="培土示意">
+          <rect x="0" y="100" width="220" height="40" fill="#d9b98c"/>
+          <path d="M60 100 C80 70 140 70 160 100Z" fill="#b8915f" stroke="#8a5a35" stroke-width="2"/>
+          <path d="M110 100 V14" stroke="#4f8a3c" stroke-width="5"/>
+          <path d="M110 40 C90 30 78 18 74 6 M110 50 C130 40 142 28 146 16 M110 30 C100 20 98 10 100 4" stroke="#4f8a3c" stroke-width="3" fill="none"/>
+          <rect x="105" y="72" width="10" height="28" fill="#f6f2e2"/>
+          <path d="M170 82 C176 76 182 76 188 82" stroke="#8a5a35" stroke-width="2" fill="none"/>
+          <text x="166" y="72" font-size="11" font-weight="700" fill="#8a5a35">把土堆上去</text>
+          <text x="60" y="66" font-size="11" font-weight="700" fill="#2f6b3a">蔥白變長</text>
+        </svg>
+        <ul>
+          <li><b>培土</b>：防倒伏（玉米）、增產（<span class="key">馬鈴薯</span>）、軟化（<span class="key">蔥白、竹筍</span>）、<span class="key">落花生結莢</span></li>
+          <li><b>中耕</b>：淺耕約 5～6 cm（初淺、中深、末淺）</li>
+          <li><b>灌溉</b>：<span class="key">滴灌最省水</span>；噴灌用在坡地果園</li>
+        </ul>
+      </div>
     </div>
 
     <div class="card">
-      <h2>整枝、修剪、疏果、套袋</h2>
+      <h2>果樹管理</h2>
+      <div class="icons three-up">
+        <figure><svg viewBox="0 0 120 100" class="art"><path d="M60 98 V60" stroke="#6b4a2b" stroke-width="7"/><path d="M60 62 C40 50 26 36 22 20 M60 62 C80 50 94 36 98 20 M60 62 C52 44 48 30 46 14 M60 62 C68 44 72 30 74 14" stroke="#6b4a2b" stroke-width="4" fill="none"/><g fill="#8cc06e" opacity=".9"><circle cx="22" cy="18" r="10"/><circle cx="46" cy="12" r="10"/><circle cx="74" cy="12" r="10"/><circle cx="98" cy="18" r="10"/></g></svg><figcaption><b>開心型</b>桃、釋迦、番石榴</figcaption></figure>
+        <figure><svg viewBox="0 0 120 100" class="art"><path d="M60 98 V8" stroke="#6b4a2b" stroke-width="6"/><path d="M60 70 L30 58 M60 70 L90 58 M60 48 L36 38 M60 48 L84 38 M60 28 L44 20 M60 28 L76 20" stroke="#6b4a2b" stroke-width="3"/><path d="M60 6 L20 72 H100Z" fill="#8cc06e" opacity=".5"/></svg><figcaption><b>主幹型</b><span class="key">蘋果</span></figcaption></figure>
+        <figure><svg viewBox="0 0 120 100" class="art"><g fill="#f2d06b" stroke="#b5891c"><rect x="44" y="40" width="32" height="40" rx="6"/></g><path d="M60 20 V40" stroke="#6b4a2b" stroke-width="3"/><path d="M40 20 H80" stroke="#6b4a2b" stroke-width="5"/><g fill="#8cc06e"><ellipse cx="30" cy="18" rx="10" ry="5"/><ellipse cx="90" cy="18" rx="10" ry="5"/></g><text x="60" y="64" text-anchor="middle" font-size="10" font-weight="700" fill="#7a5a10">套袋</text></svg><figcaption><b>疏果、套袋</b>蘋果 <span class="key">30～35 葉</span>留一果<br><span class="ex">套袋：落花後 2 週內</span></figcaption></figure>
+      </div>
+      <p class="note">冬剪（12～3 月）：短截、疏刪｜夏剪（4～7 月）：摘心、摘果。棚架整枝：梨、葡萄。</p>
+    </div>
+
+    <div class="card">
+      <h2>收穫與儲藏</h2>
       <div class="two">
-        <div class="box c2"><b class="t">整枝</b>棚架：梨、葡萄｜開心型：<span class="key">桃、釋迦、番石榴</span>｜主幹型：<span class="key">蘋果</span>｜空心型：枇杷、柿、芒果</div>
-        <div class="box c1"><b class="t">修剪</b>冬剪（12～3 月）：短截、疏刪<br>夏剪（4～7 月）：摘心、摘果、除芽</div>
+        <div class="box c1"><b class="t">收穫時期</b>稻穀：<span class="key">黃熟期</span>｜毛豆：<span class="key">乳熟期</span>｜薯類：地下部停止生長</div>
+        <div class="box c2"><b class="t">收穫方法</b>割（稻）｜拔（<span class="key">落花生</span>）｜摘（茶）｜掘（甘藷）</div>
       </div>
-      <div class="formula">留一果的葉片數：桃 25｜梨 30｜<span class="key">蘋果 30～35</span></div>
-      <p style="margin-top:10px">套袋：落花後 <span class="key">2 週內</span>｜除袋：採收前 2～4 週</p>
-    </div>
-
-    <div class="card">
-      <h2>收穫、調製、儲藏</h2>
-      <ul>
-        <li>禾穀類：<span class="key">黃熟期</span>｜毛豆：<span class="key">乳熟期</span>｜青割玉米：乳熟期後｜薯類：地下部停止生長</li>
-        <li>割取（稻）｜拔取（<span class="key">落花生</span>、蔥）｜摘取（茶）｜掘取（甘藷）</li>
-        <li>儲藏含水量 <span class="key">12% 以下</span>；含水 +1% 或溫度 +5℃ → 安全期<span class="key">減半</span></li>
-      </ul>
+      <div class="formula">儲藏含水量 12% 以下；含水 +1% 或溫度 +5℃ → 安全期減半</div>
     </div>
     <div class="actions"><button class="btn" data-go="t4">下一個：機具與設施 →</button></div>
   </section>
@@ -438,41 +593,49 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
   <section class="panel" id="p4" hidden>
     <div class="card">
       <h2>生產機具<span class="sec">3-3</span></h2>
-      <div class="tblwrap"><table class="t">
-        <tr><th>整地</th><td>犁、圓盤耙、耕耘機、曳引機</td><th>種植</th><td>播種機、<span class="key">插秧機</span></td></tr>
-        <tr><th>管理</th><td><span class="key">中耕機</span>、噴霧機、施肥機</td><th>收穫</th><td>聯合收穫機、脫穀機</td></tr>
-        <tr><th>調製</th><td>乾燥機、礱穀機、選別機</td><th>搬運</th><td>單軌車、架空索道</td></tr>
-      </table></div>
-      <p class="note">自動化三期：技術開發（1991–95）→ 應用推廣（1996–2000）→ 技術成熟（2001～）；現在推動<b>智慧農業 4.0</b>。</p>
+      <div class="machines">
+        <div><b>整地</b>犁、耕耘機、曳引機</div><div><b>種植</b>播種機、<span class="key">插秧機</span></div><div><b>管理</b><span class="key">中耕機</span>、噴霧機</div>
+        <div><b>收穫</b>聯合收穫機</div><div><b>調製</b>乾燥機、礱穀機</div><div><b>搬運</b>單軌車、索道</div>
+      </div>
+      <p class="note">自動化：技術開發（1991）→ 應用推廣（1996）→ 技術成熟（2001～）→ 智慧農業 4.0</p>
     </div>
 
     <div class="card">
-      <h2>設施栽培<span class="sec">3-4</span></h2>
-      <div class="two">
-        <div class="box c1"><b class="t">促成栽培＝提早</b>冬天保溫，提早收穫（草莓）</div>
+      <h2>四種溫室的溫度<span class="sec">3-4</span></h2>
+      <div class="temps">
+        <div class="tscale"><span>0℃</span><span>10</span><span>20</span><span>30</span><span>40℃</span></div>
+        <div class="trow"><b>高溫（熱洞子）</b><div class="track"><i style="left:45%;width:45%;background:#e2483b">18～36℃</i></div><small>熱帶</small></div>
+        <div class="trow"><b>中溫（暖洞子）</b><div class="track"><i style="left:30%;width:32.5%;background:#ef8a2c">12～25℃</i></div><small>熱帶、亞熱帶</small></div>
+        <div class="trow hl"><b>低溫（溫洞子）</b><div class="track"><i style="left:12.5%;width:37.5%;background:#e0b21b">5～20℃</i></div><small>亞熱帶、溫暖帶</small></div>
+        <div class="trow"><b>冷室（冷洞子）</b><div class="track"><i style="left:0;width:37.5%;background:#3a8ad6">0～15℃</i></div><small>溫暖帶</small></div>
+      </div>
+      <div class="two" style="margin-top:12px">
+        <div class="box c1"><b class="t">促成栽培＝提早</b>冬天保溫（草莓）</div>
         <div class="box c3"><b class="t">抑制栽培＝延後</b>菊花<span class="key">電照延遲開花</span></div>
       </div>
-      <p style="margin-top:10px"><b>網室</b>：木瓜網室<span class="key">防蚜蟲傳病毒</span>；通風差易生紅蜘蛛，不能完全隔絕害蟲</p>
-      <div class="tblwrap"><table class="t">
-        <tr><th>溫室</th><th>冬季溫度</th><th>栽培</th></tr>
-        <tr><td>高溫（熱洞子）</td><td>18～36℃</td><td>熱帶作物</td></tr>
-        <tr><td>中溫（暖洞子）</td><td>12～25℃</td><td>熱帶、亞熱帶</td></tr>
-        <tr><td>低溫（<span class="key">溫洞子</span>）</td><td><span class="key">5～20℃</span></td><td>亞熱帶、溫暖帶</td></tr>
-        <tr><td>冷室（冷洞子）</td><td>0～15℃</td><td>溫暖帶</td></tr>
-      </table></div>
     </div>
 
     <div class="card">
-      <h2>養液栽培與植物工廠<span class="sec">3-4</span></h2>
-      <ul>
-        <li>種類：水耕、礫耕、砂耕（又稱無土栽培）</li>
-        <li>最適：<span class="key">pH 5.5～6.5</span>、EC 2～3 mS/cm；要打氣補氧</li>
-        <li>pH＞8 → 缺鐵錳，<b>黃化</b>｜pH＜4.5 → 缺鈣鎂鉀，<b>凋萎</b></li>
-        <li>植物工廠：太陽光利用型、<span class="key">完全人工光型</span>（LED）</li>
-      </ul>
-      <div class="three" style="margin-top:10px">
-        <div class="box c2"><b class="t">春化處理</b>低溫，提早開花</div>
-        <div class="box c4"><b class="t">軟化栽培</b>遮光，<span class="key">韭黃</span></div>
+      <h2>網室、養液栽培、植物工廠<span class="sec">3-4</span></h2>
+      <div class="two" style="align-items:center">
+        <svg viewBox="0 0 220 140" class="art" role="img" aria-label="網室木瓜防蚜蟲">
+          <path d="M20 130 V40 L110 10 L200 40 V130" fill="#eef6ee" stroke="#6b8a6b" stroke-width="2"/>
+          <g stroke="#9bb59b" stroke-width=".8"><path d="M20 60 H200 M20 80 H200 M20 100 H200 M50 30 V130 M80 20 V130 M110 10 V130 M140 20 V130 M170 30 V130"/></g>
+          <path d="M110 130 V64" stroke="#8a6a3a" stroke-width="5"/><path d="M110 66 C90 52 80 50 72 54 M110 66 C130 52 140 50 148 54 M110 66 C100 50 100 42 104 36 M110 66 C120 50 120 42 116 36" stroke="#4f8a3c" stroke-width="3" fill="none"/>
+          <g fill="#f1c75b"><ellipse cx="104" cy="84" rx="5" ry="8"/><ellipse cx="116" cy="86" rx="5" ry="8"/></g>
+          <g fill="#4f8a3c"><ellipse cx="214" cy="56" rx="5" ry="3"/><ellipse cx="208" cy="20" rx="5" ry="3"/></g>
+          <path d="M206 50 l-6 -2" stroke="#b4362c" stroke-width="2"/><text x="150" y="10" font-size="10" font-weight="700" fill="#b4362c">蚜蟲進不來</text>
+        </svg>
+        <ul>
+          <li><b>網室木瓜</b>：<span class="key">防蚜蟲</span>傳病毒；但不能完全隔絕害蟲</li>
+          <li><b>養液栽培</b>：水耕、礫耕、砂耕；<span class="key">pH 5.5～6.5</span>、EC 2～3</li>
+          <li>pH 太高 → 黃化；太低 → 凋萎</li>
+          <li><b>植物工廠</b>：太陽光型、<span class="key">完全人工光型</span>（LED）</li>
+        </ul>
+      </div>
+      <div class="three" style="margin-top:12px">
+        <div class="box c2"><b class="t">春化</b>低溫，提早開花</div>
+        <div class="box c4"><b class="t">軟化</b>遮光 → <span class="key">韭黃</span></div>
         <div class="box c1"><b class="t">產期調節</b>蓮霧斷根浸水、<span class="key">鳳梨電石</span></div>
       </div>
     </div>
@@ -518,13 +681,13 @@ document.addEventListener("click",e=>{ const k=e.target.closest(".key"); if(k&&d
 
 /* 根的構造 */
 const ROOT={
- a:{t:"成熟部（根毛部）",d:["組織已分化完成：表皮 → 皮層 → 中心柱","表皮細胞向外突出成<b>根毛</b>，是<b>吸收的主要構造</b>"]},
- b:{t:"延長部",d:["接在生長點之後","細胞伸長，讓根往下長"]},
- c:{t:"生長點",d:["位在<b>根冠和延長部之間</b>","<b>分生組織</b>，分裂能力強"]},
- d:{t:"根冠",d:["根的最前端，帽狀","<b>保護生長點</b>；細胞排列鬆散、容易脫落"]}
+ a:{t:"成熟部（根毛部）",d:["表皮細胞向外突出成<b>根毛</b>","根毛是<b>吸收水分養分的主要構造</b>"]},
+ b:{t:"延長部",d:["接在生長點後面","細胞伸長，把根往下推"]},
+ c:{t:"生長點",d:["在<b>根冠和延長部之間</b>","<b>分生組織</b>，細胞分裂能力最強"]},
+ d:{t:"根冠",d:["根的最前端，像一頂帽子","<b>保護生長點</b>；細胞容易脫落"]}
 };
-function renderRoot(k){ document.querySelectorAll("#layers .layer").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===k)); const L=ROOT[k]; $("layInfo").innerHTML=`<h3>${L.t}</h3><ul>${L.d.map(x=>`<li>${x}</li>`).join("")}</ul>`; }
-document.querySelectorAll("#layers .layer").forEach(b=>b.onclick=()=>renderRoot(b.dataset.l));
+function renderRoot(k){ document.querySelectorAll(".rz").forEach(g=>g.classList.toggle("on",g.dataset.l===k)); const L=ROOT[k]; $("layInfo").innerHTML=`<h3>${L.t}</h3><ul>${L.d.map(x=>`<li>${x}</li>`).join("")}</ul>`; }
+document.querySelectorAll(".rz").forEach(g=>{ g.onclick=()=>renderRoot(g.dataset.l); g.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();renderRoot(g.dataset.l);}}; });
 renderRoot("a");
 
 /* 動手判斷 */
