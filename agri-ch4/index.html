@@ -234,6 +234,48 @@ figcaption b{display:block;font-size:17px}
 .phbar small{font-weight:500;font-size:12px}
 .phaxis{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:4px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ===== 多裝置：電視／平板／手機 ===== */
+.tabs{position:sticky;top:0;z-index:20;background:var(--bg);padding:8px 0;margin:14px 0 10px}
+.btn,.pk,.tab{min-height:44px}
+.opt{min-height:56px}
+.widewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+/* 平板 */
+@media (min-width:600px) and (max-width:1100px){
+  body{font-size:18px}
+  .card p,.card li{font-size:18px}
+  .qtext{font-size:24px}.opt{font-size:20px}
+}
+/* 手機 */
+@media (max-width:599px){
+  .wrap{padding-block:12px 40px}
+  h1{font-size:30px}
+  .qr img{width:64px;height:64px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:none;font-size:16px;padding:6px 14px}
+  .tab small{display:none}
+  .card{padding:14px}
+  .card h2{font-size:21px}
+  .qtext{font-size:20px}
+  .toolbar .hint{display:none}
+  .widewrap>svg{min-width:560px}
+}
+/* 電視、大螢幕：整頁放大 */
+@media (min-width:1500px){ .wrap{zoom:1.3} }
+@media (min-width:2200px){ .wrap{zoom:1.75} }
+@media (min-width:3000px){ .wrap{zoom:2.4} }
+
+.phbar .seg{font-size:18px!important;padding:12px 6px!important;line-height:1.4!important}
+.phbar small{font-size:15px!important;font-weight:700!important;display:block;margin-top:4px}
+.phaxis{font-size:14px!important}
+@media (max-width:599px){
+  .phbar{flex-direction:column}
+  .phbar .seg{flex:none!important;display:flex;justify-content:space-between;align-items:center;text-align:left;gap:10px;padding:10px 14px!important}
+  .phbar .seg>br{display:none}
+  .phbar small{margin:0;text-align:right}
+  .phaxis{display:none}
+}
 </style>
 </head>
 <body>
@@ -285,7 +327,7 @@ figcaption b{display:block;font-size:17px}
 
     <div class="card">
       <h2>定積土 vs 運積土<span class="sec">4-1</span></h2>
-      <svg viewBox="0 0 640 230" class="art scene" role="img" aria-label="各種土壤堆積位置">
+      <div class="widewrap"><svg viewBox="0 0 640 230" class="art scene" role="img" aria-label="各種土壤堆積位置">
         <rect x="0" y="0" width="640" height="230" fill="#e9f3fb"/>
         <path d="M0 200 L60 120 L130 40 L200 110 L260 180 L640 200 V230 H0Z" fill="#b9a688" stroke="#7a6a52" stroke-width="2"/>
         <path d="M100 82 L130 40 L160 70 C148 80 120 86 100 82Z" fill="#8d8a85"/>
@@ -304,7 +346,7 @@ figcaption b{display:block;font-size:17px}
           <text x="372" y="182" text-anchor="middle" fill="#a2408c">沖積土</text>
           <text x="566" y="226" text-anchor="middle" fill="#a2408c">風積土</text>
         </g>
-      </svg>
+      </svg></div>
       <div class="legend2"><span class="lg g">定積土：留在原地（殘積、聚積）</span><span class="lg p">運積土：被重力、水、風搬走</span></div>
       <div class="tip"><b>土壤發育五因子：</b><span class="key">生物、氣候、母岩、地形、時間</span></div>
     </div>
@@ -383,11 +425,11 @@ figcaption b{display:block;font-size:17px}
     <div class="card">
       <h2>化學性質<span class="sec">4-2</span></h2>
       <div class="phbar" aria-label="土壤 pH">
-        <div class="seg" style="flex:2;background:#d63b2f">酸性土<br><small>＜5：鋁鐵錳毒害<br>→ 施<b>石灰</b></small></div>
-        <div class="seg" style="flex:1.5;background:#ef8a2c">微酸<br><small>茶、鳳梨</small></div>
-        <div class="seg" style="flex:.8;background:#3d9a52">6.5～6.8<br><small>最適</small></div>
-        <div class="seg" style="flex:1.2;background:#3a8ad6">微鹼<br><small>棉、高粱</small></div>
-        <div class="seg" style="flex:1.6;background:#5a4bc4">鹽鹼土<br><small>＞8 → 施<b>石膏、硫磺</b></small></div>
+        <div class="seg" style="flex:2;background:#d63b2f">酸性土<br><small>pH＜5，鋁鐵錳毒害<br>改良：施<b>石灰</b></small></div>
+        <div class="seg" style="flex:1.5;background:#ef8a2c">微酸<br><small>適合：茶、鳳梨</small></div>
+        <div class="seg" style="flex:.8;background:#3d9a52">6.5～6.8<br><small>多數作物最適</small></div>
+        <div class="seg" style="flex:1.2;background:#3a8ad6">微鹼<br><small>適合：棉花、高粱</small></div>
+        <div class="seg" style="flex:1.6;background:#5a4bc4">鹽鹼土<br><small>pH＞8<br>改良：施<b>石膏、硫磺</b></small></div>
       </div>
       <div class="phaxis"><span>pH 4</span><span>多雨地區偏酸 ←</span><span>7</span><span>→ 乾旱地區偏鹼</span><span>9</span></div>
       <ul style="margin-top:12px">
@@ -398,7 +440,7 @@ figcaption b{display:block;font-size:17px}
 
     <div class="card">
       <h2>氮在土壤裡的旅行<span class="sec">4-2</span></h2>
-      <svg viewBox="0 0 660 260" class="art" role="img" aria-label="氮循環示意">
+      <div class="widewrap"><svg viewBox="0 0 660 260" class="art" role="img" aria-label="氮循環示意">
         <rect x="0" y="0" width="660" height="80" fill="#e9f3fb"/><rect x="0" y="80" width="660" height="180" fill="#f1e2c8"/>
         <text x="330" y="30" text-anchor="middle" font-size="16" font-weight="900" fill="#3a6a9a">空氣中的 N₂</text>
         <g font-size="15" font-weight="900" text-anchor="middle">
@@ -414,7 +456,7 @@ figcaption b{display:block;font-size:17px}
         <path d="M210 40 C150 60 110 100 80 150" stroke="#3a6a9a" stroke-width="3" fill="none"/><path d="M76 140 l3 12 l10 -7" stroke="#3a6a9a" stroke-width="3" fill="none"/>
         <text x="196" y="100" text-anchor="middle" font-size="13" font-weight="900" fill="#3a6a9a">固氮</text><text x="196" y="116" text-anchor="middle" font-size="11" fill="#3a6a9a">根瘤菌（共生）</text>
         <path d="M536 206 V240" stroke="#2f6b3a" stroke-width="2"/><text x="536" y="254" text-anchor="middle" font-size="12" font-weight="700" fill="#2f6b3a">植物吸收</text>
-      </svg>
+      </svg></div>
       <p class="note">固氮菌＝非共生；根瘤菌＋豆科＝共生；藍綠藻也能固氮。</p>
     </div>
 
