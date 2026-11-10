@@ -1,0 +1,811 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>土壤肥料總複習</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: 同「自然段與意義段」的架構：上方標題＋QR，分頁 土壤重點／肥料重點／動手做／計算練習／小測驗。土色系，投影用大字。 */
+:root{
+  --bg:#f7f3ec; --paper:#ffffff; --ink:#2a2118; --muted:#6c5f52; --line:#e3d9cb; --grid:#efe8dc;
+  --accent:#2f6b3a; --accent-ink:#ffffff; --accent-soft:#e3f0e3;
+  --soil:#8a5a35; --soil-soft:#f4e7da;
+  --mark:#ffe08a; --mark-ink:#2a2118;
+  --ok:#1f7a45; --ok-soft:#e1f4e7; --bad:#b4362c; --bad-soft:#fbe7e4;
+  --g1:#c46a17; --g2:#2f8a57; --g3:#3b6fd1; --g4:#a2408c;
+  --g1s:#fbecdc; --g2s:#e0f2e7; --g3s:#e3ebfb; --g4s:#f6e4f1;
+  --lA:#4a3324; --lB:#8e6038; --lC:#c4a07a; --lR:#8d8a85;
+  --f:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#17130f; --paper:#211b16; --ink:#efe7dc; --muted:#b4a594; --line:#3a3027; --grid:#1d1813;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#17130f; --paper:#211b16; --ink:#efe7dc; --muted:#b4a594; --line:#3a3027; --grid:#1d1813;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:17px;line-height:1.7;
+  background-image:radial-gradient(var(--grid) 1.2px,transparent 1.2px);background-size:22px 22px}
+.wrap{max-width:980px;margin:0 auto;padding-block:20px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{display:flex;gap:16px;align-items:flex-start;justify-content:space-between}
+.brand{min-width:0}
+.eyebrow{font-size:14px;letter-spacing:.12em;color:var(--soil);font-weight:700}
+h1{font-size:clamp(30px,6vw,44px);font-weight:900;line-height:1.2;margin:4px 0 6px;text-wrap:balance}
+.sub{color:var(--muted);margin:0;font-size:16px}
+.qr{flex:none;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+.qr img{width:84px;height:84px;image-rendering:pixelated;display:block}
+.qr span{font-size:12px;color:#4a3d31;font-weight:700}
+button:focus-visible,.qr:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tabs{display:flex;gap:8px;margin:22px 0 14px;flex-wrap:wrap}
+.tab{font:inherit;font-weight:700;font-size:17px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:999px;padding:7px 18px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.tab small{font-weight:500;opacity:.8;margin-left:4px;font-size:13px}
+.panel{display:flex;flex-direction:column;gap:16px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px}
+.toolbar .hint{font-size:14px;color:var(--muted)}
+.switch{display:inline-flex;align-items:center;gap:8px;font-weight:700;cursor:pointer;user-select:none}
+.switch input{width:20px;height:20px;accent-color:var(--accent)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;min-width:0}
+.card h2{font-size:24px;font-weight:900;margin:0 0 8px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.card h2 .sec{font-size:13px;font-weight:700;color:var(--soil);background:var(--soil-soft);border-radius:999px;padding:1px 10px}
+.card h3{font-size:19px;margin:14px 0 4px}
+.card p{margin:6px 0}
+.card ul{margin:6px 0;padding-left:1.3em}
+.card li{margin:3px 0}
+.key{background:var(--mark);color:var(--mark-ink);border-radius:4px;padding:0 4px;font-weight:700;transition:filter .2s}
+body.blank .key{color:transparent;background:var(--soil-soft);border-bottom:2px solid var(--soil);cursor:pointer;user-select:none}
+body.blank .key.show{color:var(--mark-ink);background:var(--mark);border-bottom-color:transparent}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:720px){.two,.three{grid-template-columns:1fr}}
+.box{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--bg);min-width:0}
+.box b.t{display:block;font-size:17px;margin-bottom:2px}
+.box.c1{border-top:5px solid var(--g1)}.box.c2{border-top:5px solid var(--g2)}.box.c3{border-top:5px solid var(--g3)}.box.c4{border-top:5px solid var(--g4)}
+.note{font-size:15px;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 12px;margin-top:10px}
+.tip{font-size:15px;border:1.5px dashed var(--soil);border-radius:10px;padding:8px 12px;margin-top:10px;background:var(--soil-soft)}
+.tip b{color:var(--soil)}
+.tblwrap{overflow-x:auto;margin-top:8px}
+table.t{width:100%;border-collapse:collapse;font-size:16px;min-width:520px}
+table.t th,table.t td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+table.t th{background:var(--accent-soft);white-space:nowrap}
+table.t td.c{text-align:center}
+.pill{display:inline-block;font-size:13px;font-weight:700;border-radius:999px;padding:0 9px;border:1.5px solid currentColor;white-space:nowrap;line-height:1.6}
+.pill.ok{color:var(--ok)}.pill.no{color:var(--bad)}.pill.mid{color:var(--g1)}
+.btn{font:inherit;font-weight:700;font-size:16px;border:0;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:9px 22px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+.btn:disabled{opacity:.45;cursor:default}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+
+/* 組成條 */
+.bar{display:flex;height:44px;border-radius:10px;overflow:hidden;margin-top:8px;font-size:14px;font-weight:700;color:#fff}
+.bar span{display:grid;place-items:center;white-space:nowrap;padding:0 4px;overflow:hidden}
+
+/* 粒徑尺 */
+.scale{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;margin-top:8px}
+.scale div{border-radius:8px;padding:8px 6px;text-align:center;font-size:14px;line-height:1.35;background:var(--bg);border:1px solid var(--line)}
+.scale div b{display:block;font-size:16px}
+.scale .dot{display:block;margin:4px auto;border-radius:50%;background:var(--soil)}
+@media (max-width:560px){.scale{grid-template-columns:1fr 1fr}}
+
+/* 剖面 */
+.profile{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr);gap:16px;align-items:stretch}
+@media (max-width:620px){.profile{grid-template-columns:1fr}}
+.layers{display:flex;flex-direction:column;border-radius:10px;overflow:hidden;border:2px solid var(--line)}
+.layer{font:inherit;border:0;color:#fff;font-weight:900;font-size:18px;cursor:pointer;text-align:left;padding:10px 14px;display:flex;flex-direction:column;justify-content:center;position:relative}
+.layer small{font-weight:500;font-size:13px;opacity:.9}
+.layer[aria-pressed="true"]{box-shadow:inset 0 0 0 4px var(--mark)}
+.layer.A{background:var(--lA);min-height:70px}.layer.B{background:var(--lB);min-height:90px}.layer.C{background:var(--lC);color:#2a2118;min-height:80px}.layer.R{background:var(--lR);min-height:50px;background-image:radial-gradient(#6d6a66 3px,transparent 3.5px);background-size:16px 14px}
+.lay-info{border:1px solid var(--line);border-radius:10px;padding:12px 16px;background:var(--bg)}
+.lay-info h3{margin:0 0 4px}
+
+/* 氮轉化 */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:8px}
+.chem{border:2px solid var(--soil);border-radius:10px;padding:4px 12px;font-weight:900;font-size:18px;background:var(--paper)}
+.arr{display:flex;flex-direction:column;align-items:center;font-size:13px;font-weight:700;color:var(--accent);line-height:1.2;min-width:70px}
+.arr::after{content:"⟶";font-size:22px;line-height:1}
+.arr.bad{color:var(--bad)}
+
+/* 元素格 */
+.egroup{margin-top:10px}
+.egroup .lab{font-size:14px;font-weight:700;color:var(--muted);margin-bottom:4px}
+.els{display:flex;flex-wrap:wrap;gap:8px}
+.el{font:inherit;width:72px;height:72px;border-radius:10px;border:2px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1;position:relative}
+.el b{font-size:24px;font-weight:900}
+.el small{font-size:13px}
+.el.main{border-color:var(--g1)}.el.sec{border-color:var(--g3)}.el.tr{border-color:var(--g2)}
+.el.npk::before{content:"三要素";position:absolute;top:-9px;font-size:11px;font-weight:700;background:var(--g1);color:#fff;border-radius:999px;padding:0 6px}
+.el.mob::after{content:"";position:absolute;right:6px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--g4)}
+.el[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.einfo{margin-top:14px;border:1px solid var(--line);border-radius:10px;padding:12px 16px;background:var(--bg);min-height:120px}
+.einfo h3{margin:0 0 6px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.einfo dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px}
+.einfo dt{font-weight:700;color:var(--soil);white-space:nowrap}
+.einfo dd{margin:0}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;color:var(--muted);margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--g4);margin-right:4px}
+
+/* 木桶 */
+.barrel{display:flex;align-items:flex-end;gap:3px;height:120px;margin:8px 0}
+.barrel span{flex:1;background:var(--soil);border-radius:4px 4px 0 0;color:#fff;font-size:12px;font-weight:700;text-align:center;padding-top:2px}
+.barrel span.low{background:var(--bad)}
+
+/* pH 站 */
+.phwrap{margin-top:6px}
+.phscale{height:22px;border-radius:999px;background:linear-gradient(90deg,#d63b2f,#ef8a2c,#f2cf3c,#5cb85c,#3a8ad6,#5a4bc4);position:relative}
+input[type=range]{width:100%;accent-color:var(--accent);margin:8px 0 0}
+.phnum{font-size:46px;font-weight:900;line-height:1;color:var(--accent)}
+.phzone{font-size:20px;font-weight:900}
+.phgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+@media (max-width:620px){.phgrid{grid-template-columns:1fr}}
+
+/* 診斷卡 */
+.cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.case{font:inherit;color:var(--ink);text-align:left;border:2px solid var(--line);border-radius:12px;background:var(--paper);padding:12px 14px;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-height:150px}
+.case .q{font-size:16px}
+.case .tag{font-size:12px;font-weight:700;color:var(--muted)}
+.case .a{margin-top:auto;font-size:15px;color:var(--muted)}
+.case.open{border-color:var(--accent);background:var(--accent-soft)}
+.case.open .a{color:var(--ink)}
+.case .a b{font-size:22px;color:var(--accent);margin-right:6px}
+
+/* 計算 */
+.picker{display:flex;gap:8px;flex-wrap:wrap}
+.pk{font:inherit;font-size:15px;font-weight:700;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:7px 12px;cursor:pointer;line-height:1.3;text-align:left}
+.pk small{display:block;font-size:12px;font-weight:500;color:var(--muted)}
+.pk[aria-selected="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.problem{font-size:21px;line-height:1.8;font-weight:500}
+.problem b{color:var(--soil)}
+.formula{font-size:18px;font-weight:700;background:var(--soil-soft);border-radius:10px;padding:8px 14px;margin-top:10px}
+.ansrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.ansrow input{font:inherit;font-size:20px;width:180px;border:2px solid var(--line);border-radius:10px;padding:6px 12px;background:var(--paper);color:var(--ink)}
+.ansfb{font-weight:700}
+.ansfb.ok{color:var(--ok)}.ansfb.bad{color:var(--bad)}
+.steps{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.step{border-left:5px solid var(--accent);background:var(--bg);border-radius:0 10px 10px 0;padding:8px 14px;font-size:18px}
+.step .n{font-size:13px;font-weight:700;color:var(--accent);display:block}
+.step.final{border-color:var(--g1);background:var(--g1s);font-weight:900}
+
+/* 測驗 */
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.progress{display:flex;gap:4px;flex-wrap:wrap}
+.dot{width:18px;height:8px;border-radius:4px;background:var(--line)}
+.dot.ok{background:var(--ok)}.dot.bad{background:var(--bad)}.dot.now{background:var(--accent);opacity:.5}
+.qtype{font-size:14px;font-weight:700;color:var(--accent);letter-spacing:.06em}
+.qsrc{font-size:13px;font-weight:700;color:var(--soil);background:var(--soil-soft);border-radius:999px;padding:0 8px;margin-left:6px}
+.qtext{font-size:22px;line-height:1.75;margin:10px 0 14px;font-weight:500}
+.qlist{font-size:18px;background:var(--bg);border-radius:10px;padding:8px 14px;margin:-4px 0 14px;line-height:1.9}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{font:inherit;font-size:18px;text-align:left;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:12px 14px;cursor:pointer;display:flex;gap:10px;align-items:center}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt .k{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--bg);font-size:14px;font-weight:700}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt:disabled{cursor:default}
+.feedback{margin-top:14px;border-radius:10px;padding:10px 14px;font-size:16px}
+.feedback.ok{background:var(--ok-soft);color:var(--ok)}
+.feedback.bad{background:var(--bad-soft);color:var(--bad)}
+.feedback .why{color:var(--ink);display:block;margin-top:4px}
+.score{font-size:64px;font-weight:900;color:var(--accent);line-height:1;margin:10px 0}
+.review .item{border-left:4px solid var(--bad);padding:6px 12px;background:var(--bg);border-radius:0 6px 6px 0;font-size:16px;margin-top:8px;text-align:left}
+.overlay{position:fixed;inset:0;background:rgba(20,14,8,.72);display:grid;place-items:center;z-index:50;padding:20px}
+.overlay .inner{background:#fff;border-radius:16px;padding:22px;text-align:center;color:#2a2118;max-width:92vw}
+.overlay img{width:min(340px,72vw);height:min(340px,72vw);image-rendering:pixelated;display:block;margin:0 auto}
+.overlay p{font-size:22px;font-weight:700;margin:12px 0 0}
+.overlay small{display:block;color:#6c5f52;margin-top:4px;word-break:break-all}
+footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="eyebrow">農業概論・第四章 總複習</div>
+      <h1>土壤肥料</h1>
+      <p class="sub">先跟著老師複習土壤和肥料的重點，再動手判斷、練習計算，最後掃 QR code 做小測驗。</p>
+    </div>
+    <div class="qr" id="qrBtn" role="button" tabindex="0" aria-label="放大 QR code"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAADnElEQVR4Xu1cUY6jMAy1t5Xmk0pzgDkKvVm1N4OjzAFGgs9KoKzec0Lbn5Kgocqqfh8ICsoYP+zYjjMapAT9n5KnRcSffw7Xj+vnHhu+h1EjzuNRRHDo8ctZZpX+JJLu4+6G8Yvg4//u9ywhDIdASBsmsVNeSoPL4YAbAJ7rXP+/q//X6FOVxmmA1apqCIOI9F8TbJrm7PPpOl7DVz4e5KFrPh2CXmC18exxrKrlz8C7yX8zW4O2w3wUaa4a2kEk9KdHgt9NP//7+xq/d0lSf/qxS5VmEG2/j5NIg19G98/rqPF7mC1AFhHEUt8fQc/jB86ScTOc1pPzu47a+IUvXqyXFnoLsr6uGkSme+uuTv7a9FmbPCk/QkBFT901IYQOqVGHa0zCdsPzoxxUyK8lt6SW+S8SInpqnt1+I/G1ye/yPMeflNymrAjUhg5JsJ2NmI5p2BzI9bmqzyLsrU/43cX5NpOwVmVWu5izWbg57r3l8fF///tBLePrqlbVYP0KobNecDjDsM8jo2u333XU9n3GCbdlcdkKzvTFqepskZZNwm6/66iNX6S4tNorLPQjSH8+oKDxo0HGz0lFjqK4wXKHz79rqI3fKE+vR1jtrHoJYHqka4anBqltuMblhlrlz0al+s9GqfwP+S/jq7uEd/HU5r3dP6+jVP97P7/wG7mM0yxehKu+ZNVyYuc3A3vztWX8WfXcTELXHJd5GyRJXPVld8fJ899MbNF/CTaMD6+MCTd0qTWH1PKv0n7TwoP356xjg/6LUDp+6sDhrEumjdV4FuMrlkA8P8pAqf73fn5JeNP8i9T3trRwl/96fJWDvfkqHT+uD7YDc90ZC4K05AFZLwCfzTVhaXBZOr4//xx768f8rnllhsl3lSy2Uy6pkfvnHOzN14bxEUuB1VsTpV4GQX2DB0TXXn/OxQb9F6F0/KV/A20a4yfCqgn97YegVrgcUa5kpdLrkxko1f8Lnr/tX4D8/QlLv1xV4HaGZMTWDv0KeYrwAv0UoTZ5uL5gyZCCVfTHouFqPkrbsf8K3ZXJiJ3fNdTGr8kTp16bZumVY7nD5l+FTWMnkvO7htr4jfWNpeHq1lp314nFTh2Pn3NQG7+P+xcYVcW1Xm27h8Z3Q23yuzzPYfpJtjorz0I3qoa/2BrK1Mg6KZ3fDNT4vS37F7iqj8OFhKbtZvG1GE7XKH8J3k3+VJDMhP9/hix/mI93+978fXPm03z8A+fBFKic1gmlAAAAAElFTkSuQmCC"><span>掃我測驗</span></div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" id="t1" aria-selected="true">土壤重點<small>4-1・4-2</small></button>
+    <button class="tab" role="tab" id="t2" aria-selected="false">肥料重點<small>4-3・4-4</small></button>
+    <button class="tab" role="tab" id="t3" aria-selected="false">動手判斷</button>
+    <button class="tab" role="tab" id="t4" aria-selected="false">計算練習</button>
+    <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
+  </nav>
+
+  <div class="toolbar" id="blankBar">
+    <label class="switch"><input type="checkbox" id="blankToggle"> 挖空模式</label>
+    <span class="hint">打開後，黃色重點會變成空格。先讓學生說出答案，再點空格揭曉。</span>
+  </div>
+
+  <!-- ===== 土壤重點 ===== -->
+  <section class="panel" id="p1">
+    <div class="card">
+      <h2>土壤的生成<span class="sec">4-1</span></h2>
+      <p>土壤是<span class="key">岩石經風化</span>，再混合動植物遺體形成的；由礦物質、有機質、水分、空氣組成。土壤生成包括<span class="key">風化作用</span>和<span class="key">成土作用</span>。</p>
+      <div class="two" style="margin-top:10px">
+        <div class="box c1"><b class="t">物理性風化＝<span class="key">崩解</span>作用</b>大石頭變小石頭，成分不變。<br>溫度、風蝕、重力、水力（<span class="key">結冰</span>、流水、冰川、海浪、雨水）、生物</div>
+        <div class="box c3"><b class="t">化學性風化＝<span class="key">分解</span>作用</b>礦物成分改變。<br>水的作用（<span class="key">溶解、水解、水合</span>）、大氣作用（<span class="key">碳酸化</span>、氧化、還原）、生物</div>
+      </div>
+      <h3>成土作用：風化物有沒有被搬走？</h3>
+      <div class="two">
+        <div class="box c2"><b class="t">定積土：<span class="key">留在原地</span></b>殘積土（堆在母岩上）<br>聚積土（堆在低窪處；混入植物遺體成<span class="key">泥炭土</span>）</div>
+        <div class="box c4"><b class="t">運積土：被外力搬走</b>重力 → <span class="key">崩積土</span><br>水力 → 沖積土、湖積土、海積土、冰積土<br>風力 → 風積土</div>
+      </div>
+      <div class="tip"><b>影響土壤發育五因子：</b><span class="key">生物、氣候、母岩、地形、時間</span>（緯度不是）</div>
+    </div>
+
+    <div class="card">
+      <h2>土壤剖面<span class="sec">4-1</span></h2>
+      <p>從地表垂直往下切開看到的面。點一下每一層看看特性。</p>
+      <div class="profile">
+        <div class="layers" id="layers">
+          <button class="layer A" data-l="A" aria-pressed="true">A 層<small>表土層・洗出層</small></button>
+          <button class="layer B" data-l="B" aria-pressed="false">B 層<small>底土層・洗入層</small></button>
+          <button class="layer C" data-l="C" aria-pressed="false">C 層<small>母質層</small></button>
+          <button class="layer R" data-l="R" aria-pressed="false">岩石層<small>最底層</small></button>
+        </div>
+        <div class="lay-info" id="layInfo"></div>
+      </div>
+      <p class="note">由上而下：A 層（表土）→ B 層（底土）→ C 層（母質）。<b>有機質最多是 A 層，最肥沃（礦物質最多）是 B 層。</b></p>
+    </div>
+
+    <div class="card">
+      <h2>理想土壤的組成<span class="sec">4-2</span></h2>
+      <div class="bar" aria-label="礦物質45%、水分25%、空氣25%、有機質5%">
+        <span style="flex:45;background:#8e6038">礦物質 45%</span>
+        <span style="flex:25;background:#3a8ad6">水分 25%</span>
+        <span style="flex:25;background:#7fb7d9;color:#1d2a33">空氣 25%</span>
+        <span style="flex:6;background:#2b2018">5%</span>
+      </div>
+      <p class="note">最後一格是有機質 5%。土壤性質分三大類：物理性質、化學性質、生物性質。</p>
+    </div>
+
+    <div class="card">
+      <h2>物理性質①：質地與構造<span class="sec">4-2</span></h2>
+      <h3>土壤粒級（國際分類法，單位 mm）</h3>
+      <div class="scale">
+        <div><b>礫</b>2 以上<span class="dot" style="width:28px;height:28px"></span>不算土壤</div>
+        <div><b>粗砂</b>2～0.2<span class="dot" style="width:20px;height:20px"></span></div>
+        <div><b>細砂</b>0.2～0.02<span class="dot" style="width:13px;height:13px"></span></div>
+        <div><b>坋粒</b>0.02～0.002<span class="dot" style="width:8px;height:8px"></span></div>
+        <div><b>黏粒</b>0.002 以下<span class="dot" style="width:4px;height:4px"></span></div>
+      </div>
+      <div class="tblwrap"><table class="t">
+        <tr><th></th><th>砂土</th><th>壤土（最理想）</th><th>黏土</th></tr>
+        <tr><th>定義</th><td>砂粒 <span class="key">85%</span> 以上</td><td>鬆黏適中</td><td>黏粒 <span class="key">40%</span> 以上</td></tr>
+        <tr><th>排水、通氣</th><td><span class="pill ok">佳</span></td><td><span class="pill ok">適宜</span></td><td><span class="pill no">差</span></td></tr>
+        <tr><th>保水、保肥</th><td><span class="pill no">差</span></td><td><span class="pill ok">適宜</span></td><td><span class="pill ok">佳</span></td></tr>
+        <tr><th>可塑性、凝結性</th><td>無</td><td>適中</td><td>佳</td></tr>
+        <tr><th>常見構造</th><td>單粒（散粒）構造</td><td><span class="key">團粒構造</span></td><td>黏閉構造</td></tr>
+        <tr><th>孔度</th><td>30～40%</td><td>40～50%</td><td>50～60%</td></tr>
+      </table></div>
+      <p class="note">孔度：黏土＞壤土＞砂土；理想孔度約 50%。<b>團粒構造</b>保水保肥、通氣排水都好，最適合作物和微生物。</p>
+    </div>
+
+    <div class="card">
+      <h2>物理性質②：土壤水分<span class="sec">4-2</span></h2>
+      <div class="tblwrap"><table class="t">
+        <tr><th>種類</th><th>有效嗎？</th><th>特性</th></tr>
+        <tr><td><b>吸著水</b></td><td><span class="pill no">無效水</span></td><td>緊緊吸在土粒表面，不能移動</td></tr>
+        <tr><td><b>毛管水</b>（微管水）</td><td><span class="pill ok">有效水</span></td><td>土粒外的水膜，靠毛管作用移動，<span class="key">植物主要吸收的水</span></td></tr>
+        <tr><td><b>重力水</b></td><td><span class="pill no">無效水</span></td><td>受地心引力往下流走；<span class="key">砂土（大孔隙）</span>剛下雨時重力水多</td></tr>
+        <tr><td><b>結晶水</b>（化合水）</td><td><span class="pill no">無效水</span></td><td>以化合狀態存在，要高溫才能除去</td></tr>
+      </table></div>
+      <h3>土壤水分常數</h3>
+      <ul>
+        <li><b>吸濕係數</b>：乾土在濕空氣中吸附的水量。</li>
+        <li><b>凋萎係數</b>：植物開始<span class="key">永久凋萎</span>時的土壤含水率（移到濕度 100% 也救不回來）。</li>
+        <li><b>田間容水量</b>：灌溉後重力水排掉、水分幾乎不再移動時的含水量，是排水良好下能保持的<span class="key">最高</span>水量。</li>
+        <li><b>土壤水勢</b>：水由<span class="key">高水勢往低水勢</span>移動。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>物理性質③：比重、孔度、空氣、顏色<span class="sec">4-2</span></h2>
+      <div class="two">
+        <div class="box c1"><b class="t">真比重（土壤密度）</b>不含孔隙的土粒重 ÷ 同體積水重<br>一般 <span class="key">2.6～2.7</span> g/cm³</div>
+        <div class="box c3"><b class="t">假比重（容重）</b>含孔隙的烘乾土重 ÷ 同體積水重<br>砂土約 1.4～1.7；有機質土約 1.1～1.4</div>
+      </div>
+      <div class="formula">孔度（%）＝（1 − 假比重 ÷ 真比重）× 100</div>
+      <div class="formula">土壤重量（kg）＝ 面積（m²）× 深度（m）× 容重 × 1000</div>
+      <ul style="margin-top:10px">
+        <li><b>土壤空氣</b>：和大氣比，<span class="key">氧氣較少、二氧化碳較多</span>。通氣不良 → 有機質分解差、根吸收差、嫌氣菌產生有毒物質。</li>
+        <li><b>土壤顏色</b>：黑或暗色＝有機質多、肥力佳；紅黃色＝化育較深、排水良好；藍灰（青灰）色＝排水不良。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>化學性質：有機質、膠體、土壤反應<span class="sec">4-2</span></h2>
+      <ul>
+        <li><b>土壤有機質</b>是<span class="key">土壤肥力的指標</span>；經微生物分解後形成<span class="key">腐植質</span>，可供給養分、保水、改良物理性、供給微生物養料，並有陽離子交換能力。</li>
+        <li><b>土壤膠體</b>（約 0.0002 mm 以下）會吸附水分和陽離子。陽離子交換（吸附）力：<span class="key">H⁺ ＞ Ca²⁺ ＞ Mg²⁺ ＞ K⁺ ＞ Na⁺</span></li>
+        <li><b>土壤反應</b>＝土壤溶液的酸鹼性，由 <span class="key">H⁺ 和 OH⁻ 濃度</span>決定，用 pH 表示。多雨地區鹽基被淋洗 → <span class="key">偏酸</span>；乾旱地區 → <span class="key">偏鹼</span>。</li>
+        <li>多數作物適合 <span class="key">pH 6.5～6.8</span>（近中性）。到「動手判斷」的 pH 測試站看看不同 pH 會發生什麼事。</li>
+      </ul>
+      <div class="tip"><b>鈣對土壤的好處：</b>石灰中和酸性、沉澱鋁錳毒性、讓微生物活躍、促進<span class="key">團粒構造</span>。</div>
+    </div>
+
+    <div class="card">
+      <h2>生物性質：微生物與氮的轉化<span class="sec">4-2</span></h2>
+      <p>土壤微生物：微生動物（線蟲、車輪蟲、原生動物）、微生植物（藻類如<span class="key">藍綠藻可固氮</span>、菌類）、土壤細菌、放射菌（分解<span class="key">木質素</span>）。</p>
+      <div class="flow" aria-label="氮的轉化">
+        <span class="chem">蛋白質</span><span class="arr">氨化</span><span class="chem">NH₃</span><span class="arr">銨化</span><span class="chem">NH₄⁺</span><span class="arr">硝化</span><span class="chem">NO₂⁻</span><span class="arr">硝化</span><span class="chem">NO₃⁻</span>
+      </div>
+      <div class="flow">
+        <span class="chem">NO₃⁻</span><span class="arr bad">脫氮（缺氧）</span><span class="chem">N₂、N₂O</span>
+        <span style="width:24px"></span>
+        <span class="chem">空氣 N₂</span><span class="arr">固氮</span><span class="chem">含氮化合物</span>
+      </div>
+      <div class="three" style="margin-top:12px">
+        <div class="box c2"><b class="t">硝化作用</b><span class="key">NH₄⁺ → NO₂⁻ → NO₃⁻</span>，是氧化作用。</div>
+        <div class="box c1"><b class="t">脫氮作用</b>發生在<span class="key">積水、通氣不良</span>、缺氧時，氮變成氣體跑掉，對作物不利。</div>
+        <div class="box c3"><b class="t">固氮作用</b>固氮細菌＝<span class="key">非共生</span>；根瘤菌和豆科＝<span class="key">共生</span>。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>土壤管理：酸性土和鹽鹼土<span class="sec">4-2</span></h2>
+      <div class="tblwrap"><table class="t">
+        <tr><th></th><th>酸性土壤（pH＜5 危害明顯）</th><th>鹽鹼土壤（pH 8 以上）</th></tr>
+        <tr><th>危害</th><td>細菌活動受限；磷溶解度最低；缺鈣磷鉀；<span class="key">鋁、鐵、錳</span>溶出造成毒害；構造變差</td><td>鹽類妨礙滲透作用、細胞脫水；缺磷硼鐵錳銅鋅；Na⁺ 造成黏閉構造（Mg²⁺ 危害更強）</td></tr>
+        <tr><th>化學改良</th><td>施用<span class="key">石灰</span>等鹼性資材</td><td>施用<span class="key">石膏、硫磺</span>、硫酸、硫酸鐵等酸性資材</td></tr>
+        <tr><th>其他方法</th><td>客土法</td><td>客土、排水、灌溉、刮除、覆蓋、鬆土</td></tr>
+        <tr><th>耐性作物</th><td>稻、茶、鳳梨、甘藷、馬鈴薯、燕麥、菸草</td><td>甜菜、藺草、苜蓿、大麥</td></tr>
+      </table></div>
+    </div>
+    <div class="actions"><button class="btn" data-go="t2">下一個：肥料重點 →</button></div>
+  </section>
+
+  <!-- ===== 肥料重點 ===== -->
+  <section class="panel" id="p2" hidden>
+    <div class="card">
+      <h2>肥料的意義<span class="sec">4-3</span></h2>
+      <div class="two">
+        <div class="box c1"><b class="t">廣義</b>供給作物營養<b>或</b>改良土壤理化性，提高產量與品質的物質。</div>
+        <div class="box c2"><b class="t">狹義</b>直接供給作物養分的物料。</div>
+      </div>
+      <p class="note">為什麼要施肥？養分會被雨水淋洗、被作物吸走，土壤肥力會越來越低。</p>
+    </div>
+
+    <div class="card">
+      <h2>植物需要的 17 種元素<span class="sec">4-3</span></h2>
+      <p>點一下元素，看它的功能和缺乏症狀。</p>
+      <div id="elGrid"></div>
+      <div class="legend"><span><i></i>移轉型（容易移動，缺乏時<b>老葉</b>先出現症狀）</span><span>沒有紫點＝非移轉型（缺乏時<b>新葉、生長點</b>先出現）</span></div>
+      <div class="einfo" id="elInfo"></div>
+      <div class="three" style="margin-top:14px">
+        <div class="box c2"><b class="t">氮 N ＝ <span class="key">葉肥</span></b>葉菜類、觀葉植物需要多</div>
+        <div class="box c1"><b class="t">磷 P ＝ <span class="key">根肥、子實肥</span></b>生長初期和結果期需要多</div>
+        <div class="box c3"><b class="t">鉀 K ＝ <span class="key">莖肥</span></b>澱粉、油糖、纖維類作物需要多</div>
+      </div>
+      <div class="tip"><b>記法：</b>移轉型＝「<span class="key">氮磷鉀鎂氯</span>」→ 老葉先黃；非移轉型＝「硫鈣鐵錳銅鋅硼」→ 新葉先壞。</div>
+    </div>
+
+    <div class="card">
+      <h2>肥料的分類<span class="sec">4-4</span></h2>
+      <div class="tblwrap"><table class="t">
+        <tr><th>分類方式</th><th>種類與例子</th></tr>
+        <tr><td>作用成分</td><td><b>直接肥料</b>：硫酸銨、過磷酸鈣、氯化鉀｜<b>間接肥料</b>：<span class="key">石灰、石膏</span>（改良土壤）</td></tr>
+        <tr><td>化學性質<br><small>（肥料本身）</small></td><td><b>酸性</b>：過磷酸鈣、硫酸銨、氯化鉀｜<b>中性</b>：尿素｜<b>鹼性</b>：<span class="key">草木灰</span>、腐熟糞尿</td></tr>
+        <tr><td>生理性質<br><small>（被吸收後土壤變化）</small></td><td><b>生理酸性</b>：<span class="key">硫酸銨、硫酸鉀、氯化鉀</span>｜<b>生理中性</b>：硝酸銨、硝酸鉀、尿素｜<b>生理鹼性</b>：骨粉、硝酸鈉、硝酸鈣</td></tr>
+        <tr><td>肥效快慢</td><td><b>遲效</b>：堆肥、廄肥、落葉｜<b>緩效</b>：骨粉、油粕、魚肥｜<b>速效</b>：硫酸銨、尿素、過磷酸鈣、氯化鉀</td></tr>
+        <tr><td>施用時間</td><td><b>基肥</b>：有機肥｜<b>追肥</b>：化學肥料｜<b>禮肥</b>：果樹<span class="key">收成後</span>施的肥</td></tr>
+      </table></div>
+    </div>
+
+    <div class="card">
+      <h2>有機肥料<span class="sec">4-4</span></h2>
+      <div class="two">
+        <div class="box c2"><b class="t">植物質肥料</b>
+          <ul>
+            <li><b>堆肥</b>：完全肥料，碳氮比 25～30：1，作基肥</li>
+            <li><b>綠肥</b>：把植物翻耕入土，以<span class="key">氮</span>為主；豆科（田菁、太陽麻、紫雲英）效果較好</li>
+            <li><b>油粕類</b>：大豆粕、<span class="key">花生粕</span>等，以<span class="key">氮</span>為主（5～10%），缺磷鉀，需腐熟</li>
+            <li><b>廄肥</b>：家畜排泄物＋褥草，磷最少</li>
+          </ul></div>
+        <div class="box c1"><b class="t">動物質肥料</b>
+          <ul>
+            <li><b>家畜糞尿</b>：富含鉀、缺磷。豬糞、牛糞＝<span class="key">冷性肥料</span>；馬糞、羊糞＝<span class="key">熱性肥料</span>（可當發熱劑）</li>
+            <li><b>禽糞</b>：以氮最多，<span class="key">雞糞</span>肥分最高、最常用</li>
+            <li><b>魚肥</b>：氮最多、磷次之、鉀最少</li>
+            <li><b>血粉</b>含氮多；<b>骨粉</b>含<span class="key">磷</span>多，作基肥</li>
+          </ul></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>化學肥料：成分要背熟<span class="sec">4-4</span></h2>
+      <div class="tblwrap"><table class="t">
+        <tr><th>肥料</th><th>化學式</th><th>有效成分</th><th>性質與注意</th></tr>
+        <tr><td><b>硫酸銨</b>（硫銨）</td><td>(NH₄)₂SO₄</td><td class="c">N <span class="key">21%</span></td><td>生理酸性；白色結晶</td></tr>
+        <tr><td><b>硝酸銨</b></td><td>NH₄NO₃</td><td class="c">N 33～35%</td><td>生理中性；不可施於水田</td></tr>
+        <tr><td><b>氯化銨</b></td><td>NH₄Cl</td><td class="c">N 25%</td><td>生理酸性</td></tr>
+        <tr><td><b>尿素</b></td><td>CO(NH₂)₂</td><td class="c">N <span class="key">46%</span></td><td>中性；溶解吸熱；可稀釋作葉面噴施</td></tr>
+        <tr><td><b>過磷酸鈣</b></td><td>Ca(H₂PO₄)₂‧H₂O</td><td class="c">P₂O₅ <span class="key">18%</span></td><td>不可和石灰混用</td></tr>
+        <tr><td><b>氯化鉀</b></td><td>KCl</td><td class="c">K₂O <span class="key">60%</span></td><td>生理酸性；含氯，<span class="key">不施於菸田</span></td></tr>
+        <tr><td><b>硫酸鉀</b></td><td>K₂SO₄</td><td class="c">K₂O 50%</td><td>化學中性、生理酸性</td></tr>
+        <tr><td><b>草木灰</b></td><td>K₂CO₃</td><td class="c">K₂O 約 5%</td><td><span class="key">鹼性</span>；不可和硫酸銨、過磷酸鈣混用</td></tr>
+      </table></div>
+      <p class="note">磷肥家族：重過磷酸鈣＝酸性；<b>湯馬斯磷肥＝鹼性</b>（煉鋼副產物）。</p>
+      <h3>複合肥料</h3>
+      <p>包裝上的 <b>a－b－c</b> 依序是 <span class="key">N－P₂O₅－K₂O 的百分比</span>，不是比例。例如台肥 39 號（12－18－12）。化成肥料＝化合成單一肥料（如磷酸銨）；混合肥料＝兩種以上混合。</p>
+      <p class="note">混合不利：硫酸銨、人糞尿和石灰混用（銨會變成氨氣跑掉）。</p>
+    </div>
+
+    <div class="card">
+      <h2>鈣質肥料與微生物肥料<span class="sec">4-4</span></h2>
+      <div class="two">
+        <div class="box c1"><b class="t">鈣質肥料（間接肥料）</b>生石灰 CaO；熟石灰（消石灰）Ca(OH)₂，強鹼。<br>功能：中和酸性、降低鐵鋁毒害、促進團粒構造。<br>施用過量：土壤變鹼，<span class="key">鐵鋅錳硼</span>變得難吸收。</div>
+        <div class="box c2"><b class="t">微生物肥料</b>固氮（根瘤菌）、溶磷菌、有機物分解菌。<br>使用：種子接種、菌液接種，種植後灌入土中以<span class="key">幼苗期</span>最有效。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>施肥的法則<span class="sec">4-4</span></h2>
+      <div class="two">
+        <div>
+          <h3 style="margin-top:0">最少養分法則</h3>
+          <p>作物生長由<span class="key">最缺的那一種養分</span>決定，就像木桶最短的那塊板子決定裝多少水。</p>
+          <div class="barrel" aria-label="木桶示意，鉀最短"><span style="height:95%">N</span><span style="height:88%">P</span><span class="low" style="height:45%">K</span><span style="height:90%">Ca</span><span style="height:85%">Mg</span><span style="height:92%">S</span></div>
+        </div>
+        <div>
+          <h3 style="margin-top:0">報酬遞減法則</h3>
+          <p>施肥越多產量越高，但超過某個限度後，<span class="key">增產率反而下降</span>。</p>
+          <svg viewBox="0 0 220 120" width="100%" style="max-width:300px" aria-label="報酬遞減曲線">
+            <line x1="20" y1="105" x2="210" y2="105" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="20" y1="105" x2="20" y2="8" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M20 100 C60 40, 110 20, 150 22 S 200 40, 208 52" fill="none" stroke="var(--accent)" stroke-width="4"/>
+            <text x="120" y="118" font-size="11" fill="currentColor">施肥量 →</text>
+            <text x="24" y="16" font-size="11" fill="currentColor">產量</text>
+          </svg>
+        </div>
+      </div>
+      <ul>
+        <li><b>連應作用</b>：兩種肥料一起用，效果加倍＝正連應；互相抵消＝負連應（例：石灰讓鐵錳鋅吸收降低）。</li>
+        <li><b>拮抗作用</b>：兩種離子互相排斥，例：<span class="key">石灰（鈣）和鉀肥</span>。</li>
+        <li><b>礦化作用</b>：有機質被微生物分解成簡單無機物，釋出養分。</li>
+        <li><b>肥料利用率</b>：作物真正吸收到的肥料養分比例，越高越好。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>施肥的方法<span class="sec">4-4</span></h2>
+      <div class="tblwrap"><table class="t">
+        <tr><th>方法</th><th>怎麼施</th><th>例子</th></tr>
+        <tr><td><b>撒施</b>（漫施）</td><td>均勻撒滿整片田</td><td>水稻、牧草</td></tr>
+        <tr><td><b>條施</b></td><td>在作物旁開溝施肥再覆土</td><td>玉米、高粱</td></tr>
+        <tr><td><b>穴施</b></td><td>在植穴或種子旁點狀施肥</td><td>瓜類、菸草、葉菜移植前</td></tr>
+        <tr><td><b>環施</b></td><td>以植株為中心，<span class="key">環形</span>施肥</td><td><span class="key">果樹</span></td></tr>
+        <tr><td><b>葉面噴施</b></td><td>液肥噴在葉片；根不好或缺肥嚴重時用</td><td>蘭花噴稀釋尿素（0.5～1%）</td></tr>
+      </table></div>
+      <p class="note"><b>基肥</b>：播種或定植前施（有機肥全部、磷鉀肥大部分）。<b>追肥</b>：生育期間施（化學肥料）。</p>
+    </div>
+    <div class="actions"><button class="btn" data-go="t3">下一個：動手判斷 →</button></div>
+  </section>
+
+  <!-- ===== 動手判斷 ===== -->
+  <section class="panel" id="p3" hidden>
+    <div class="card">
+      <h2>pH 測試站</h2>
+      <p>拖動滑桿改變土壤 pH，看看土壤會發生什麼事、該怎麼改良。</p>
+      <div class="phwrap">
+        <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap"><span class="phnum" id="phNum">6.6</span><span class="phzone" id="phZone"></span></div>
+        <div class="phscale" aria-hidden="true"></div>
+        <input type="range" id="ph" min="4" max="9.5" step="0.1" value="6.6" aria-label="土壤 pH">
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--muted)"><span>4（強酸）</span><span>7（中性）</span><span>9.5（強鹼）</span></div>
+      </div>
+      <div class="phgrid" id="phInfo"></div>
+    </div>
+
+    <div class="card">
+      <h2>缺素診斷室</h2>
+      <p>先看症狀，全班一起猜是缺哪一種元素，再點卡片揭曉。<b>提示：老葉先出現 → 移轉型；新葉先出現 → 非移轉型。</b></p>
+      <div class="actions" style="margin-top:0;margin-bottom:12px"><button class="btn ghost" id="caseAll">全部揭曉</button><button class="btn ghost" id="caseReset">全部蓋回去</button></div>
+      <div class="cases" id="cases"></div>
+    </div>
+
+    <div class="card">
+      <h2>這是哪一種土？</h2>
+      <p>看描述判斷土壤，點卡片看答案。</p>
+      <div class="cases" id="soilCases"></div>
+    </div>
+    <div class="actions"><button class="btn" data-go="t4">下一個：計算練習 →</button></div>
+  </section>
+
+  <!-- ===== 計算練習 ===== -->
+  <section class="panel" id="p4" hidden>
+    <div class="card">
+      <h2>計算練習</h2>
+      <p>選一種題型，先自己算算看，輸入答案後按「對答案」；也可以按「下一步」一步一步看解法。按「換一題」數字會改變。</p>
+      <div class="picker" id="calcPick" role="tablist" aria-label="選擇題型"></div>
+    </div>
+    <div class="card" id="calcBox"></div>
+  </section>
+
+  <!-- ===== 小測驗 ===== -->
+  <section class="panel" id="p5" hidden></section>
+
+  <footer>農業概論 第四章 土壤肥料・總複習。測驗紀錄只存在這台裝置。</footer>
+</div>
+
+<div class="overlay" id="overlay" hidden><div class="inner"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAADnElEQVR4Xu1cUY6jMAy1t5Xmk0pzgDkKvVm1N4OjzAFGgs9KoKzec0Lbn5Kgocqqfh8ICsoYP+zYjjMapAT9n5KnRcSffw7Xj+vnHhu+h1EjzuNRRHDo8ctZZpX+JJLu4+6G8Yvg4//u9ywhDIdASBsmsVNeSoPL4YAbAJ7rXP+/q//X6FOVxmmA1apqCIOI9F8TbJrm7PPpOl7DVz4e5KFrPh2CXmC18exxrKrlz8C7yX8zW4O2w3wUaa4a2kEk9KdHgt9NP//7+xq/d0lSf/qxS5VmEG2/j5NIg19G98/rqPF7mC1AFhHEUt8fQc/jB86ScTOc1pPzu47a+IUvXqyXFnoLsr6uGkSme+uuTv7a9FmbPCk/QkBFT901IYQOqVGHa0zCdsPzoxxUyK8lt6SW+S8SInpqnt1+I/G1ye/yPMeflNymrAjUhg5JsJ2NmI5p2BzI9bmqzyLsrU/43cX5NpOwVmVWu5izWbg57r3l8fF///tBLePrqlbVYP0KobNecDjDsM8jo2u333XU9n3GCbdlcdkKzvTFqepskZZNwm6/66iNX6S4tNorLPQjSH8+oKDxo0HGz0lFjqK4wXKHz79rqI3fKE+vR1jtrHoJYHqka4anBqltuMblhlrlz0al+s9GqfwP+S/jq7uEd/HU5r3dP6+jVP97P7/wG7mM0yxehKu+ZNVyYuc3A3vztWX8WfXcTELXHJd5GyRJXPVld8fJ899MbNF/CTaMD6+MCTd0qTWH1PKv0n7TwoP356xjg/6LUDp+6sDhrEumjdV4FuMrlkA8P8pAqf73fn5JeNP8i9T3trRwl/96fJWDvfkqHT+uD7YDc90ZC4K05AFZLwCfzTVhaXBZOr4//xx768f8rnllhsl3lSy2Uy6pkfvnHOzN14bxEUuB1VsTpV4GQX2DB0TXXn/OxQb9F6F0/KV/A20a4yfCqgn97YegVrgcUa5kpdLrkxko1f8Lnr/tX4D8/QlLv1xV4HaGZMTWDv0KeYrwAv0UoTZ5uL5gyZCCVfTHouFqPkrbsf8K3ZXJiJ3fNdTGr8kTp16bZumVY7nD5l+FTWMnkvO7htr4jfWNpeHq1lp314nFTh2Pn3NQG7+P+xcYVcW1Xm27h8Z3Q23yuzzPYfpJtjorz0I3qoa/2BrK1Mg6KZ3fDNT4vS37F7iqj8OFhKbtZvG1GE7XKH8J3k3+VJDMhP9/hix/mI93+978fXPm03z8A+fBFKic1gmlAAAAAElFTkSuQmCC"><p>用平板或手機掃描，開始小測驗！</p><small>https://teacher-liujikan.github.io/yilin-work/agri-ch4/#quiz</small></div></div>
+
+<script>
+(function(){
+const SHARE_URL = "https://teacher-liujikan.github.io/yilin-work/agri-ch4/#quiz";
+const $ = id => document.getElementById(id);
+const fmt = (n,d=2) => { const r = Math.round(n*10**d)/10**d; return r.toLocaleString("zh-TW",{maximumFractionDigits:d}); };
+
+/* ---------- 分頁 ---------- */
+const TABS=[["t1","p1"],["t2","p2"],["t3","p3"],["t4","p4"],["t5","p5"]];
+function show(t){
+  TABS.forEach(([a,b])=>{ const on=a===t; $(a).setAttribute("aria-selected",on); $(b).hidden=!on; });
+  $("blankBar").hidden = !(t==="t1"||t==="t2");
+  if(t==="t5"&&!quiz) startQuiz();
+  try{ history.replaceState(null,"",t==="t5"?"#quiz":location.pathname+location.search); }catch(e){}
+  window.scrollTo({top:0});
+}
+TABS.forEach(([a])=>$(a).onclick=()=>show(a));
+document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>show(b.dataset.go));
+
+/* ---------- 挖空模式 ---------- */
+$("blankToggle").onchange=e=>{ document.body.classList.toggle("blank",e.target.checked); document.querySelectorAll(".key.show").forEach(k=>k.classList.remove("show")); };
+document.addEventListener("click",e=>{ const k=e.target.closest(".key"); if(k&&document.body.classList.contains("blank")) k.classList.toggle("show"); });
+
+/* ---------- 土壤剖面 ---------- */
+const LAY = {
+  A:{t:"A 層・表土層（洗出層）",d:["礦物質容易被雨水淋洗往下帶走，所以叫「洗出層」。","<b>有機質含量最多</b>，越往下有機質越少。","顏色最深，根群和微生物最多。"]},
+  B:{t:"B 層・底土層（洗入層）",d:["從 A 層洗下來的黏粒和不溶物質，沉澱堆積在這一層，所以叫「洗入層」。","<b>礦物質含量多，是最肥沃的一層</b>。"]},
+  C:{t:"C 層・母質層",d:["岩石風化後的母質，還沒有發育成土壤。","<b>不含有機物</b>。"]},
+  R:{t:"岩石層（母岩）",d:["最底層，還沒風化的岩石。"]}
+};
+function renderLay(k){ document.querySelectorAll("#layers .layer").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===k)); const L=LAY[k]; $("layInfo").innerHTML=`<h3>${L.t}</h3><ul>${L.d.map(x=>`<li>${x}</li>`).join("")}</ul>`; }
+document.querySelectorAll("#layers .layer").forEach(b=>b.onclick=()=>renderLay(b.dataset.l));
+renderLay("A");
+
+/* ---------- 元素 ---------- */
+const EL = {
+ C:{n:"碳",g:"main",f:"來自空氣（CO₂）；光合作用合成醣類的原料。",s:"不易出現缺乏症狀。"},
+ H:{n:"氫",g:"main",f:"來自水；和代謝作用、養分吸收有關。",s:"不易出現缺乏症狀。"},
+ O:{n:"氧",g:"main",f:"來自水和空氣；和光合作用、呼吸作用有關。",s:"不易出現缺乏症狀。"},
+ N:{n:"氮",g:"main",npk:1,mob:1,a:"葉肥",f:"蛋白質的主要成分，也是葉綠素、核酸、酵素的構成元素。葉菜類、觀葉植物需要多。",s:"植株矮小，<b>老葉先黃化</b>（玉米呈 V 字形從葉尖黃化），成熟延遲、穀粒小。"},
+ P:{n:"磷",g:"main",npk:1,mob:1,a:"根肥、子實肥",f:"細胞核、核酸的成分，參與醣類合成。生長初期（長根）和後期（結果、結種子）需要多。",s:"根系生長差、植株矮小、<b>葉色暗綠帶紫</b>；後期著果率低、種子小、分蘗少。"},
+ K:{n:"鉀",g:"main",npk:1,mob:1,a:"莖肥",f:"和新陳代謝、光合作用、酵素活動有關。澱粉類、油糖類、纖維類作物需要多（提高糖度）。",s:"<b>成熟葉（老葉）葉緣焦枯</b>並向內擴散；莖稈細弱、果實小而酸。"},
+ Ca:{n:"鈣",g:"sec",f:"<b>細胞壁</b>的成分；中和有機酸；可改良酸性土壤。",s:"<b>生長點壞死</b>、根短、莖稈瘦弱、花蕾脫落；落花生容易<b>空莢</b>。"},
+ Mg:{n:"鎂",g:"sec",mob:1,f:"<b>葉綠素的構成元素</b>；光合作用所需、酵素活化劑。",s:"<b>老葉先黃化</b>，葉脈仍綠、脈間黃化；葉片向上捲。"},
+ S:{n:"硫",g:"sec",f:"胺基酸、酵素的成分；和蛋白質合成、豆科根瘤形成有關。",s:"<b>幼葉黃綠</b>、葉薄細長，植株矮小。"},
+ Fe:{n:"鐵",g:"tr",f:"<b>合成葉綠素的觸媒</b>、酵素成分；促進光合作用和呼吸作用。",s:"<b>幼葉脈間黃化、葉脈綠色</b>，容易得黃化病。"},
+ B:{n:"硼",g:"tr",f:"細胞膜合成、<b>分生組織</b>分化、醣類轉移。",s:"生長點彎曲、幼葉畸形、花粉發育受阻、果實有壞死斑；<b>木瓜塊腫病</b>。"},
+ Mn:{n:"錳",g:"tr",f:"酵素的活化劑；參與合成葉綠素、光合作用。",s:"幼葉脈間淡綠，有壞疽斑點（和缺鐵很像）。"},
+ Zn:{n:"鋅",g:"tr",f:"酵素成分；參與<b>生長素（IAA）前驅物</b>色胺酸的合成。",s:"新葉變小、叢生，植株矮小，花蕾少。"},
+ Cu:{n:"銅",g:"tr",f:"和<b>氧化還原作用</b>、合成維生素 A 有關。",s:"幼枝死亡，葉片發黃脫落。"},
+ Cl:{n:"氯",g:"tr",mob:1,f:"和光合作用有關；植物很少缺乏。",s:"葉片凋萎黃化、呈青銅色。菸草施氯肥會讓品質變差。"},
+ Mo:{n:"鉬",g:"tr",f:"和<b>根瘤菌固氮</b>有關；硝酸還原酶的成分。",s:"<b>症狀和缺氮很像</b>；葉片上捲、葉緣焦枯。"},
+ Ni:{n:"鎳",g:"tr",f:"尿素酶的成分，影響氮代謝。",s:"症狀不明顯。"}
+};
+const GROUPS=[["main","主要元素（大量）",["C","H","O","N","P","K"]],["sec","次要元素（次量）",["Ca","Mg","S"]],["tr","微量元素",["Fe","B","Mn","Zn","Cu","Cl","Mo","Ni"]]];
+$("elGrid").innerHTML = GROUPS.map(([g,lab,arr])=>`<div class="egroup"><div class="lab">${lab}・${arr.length} 種</div><div class="els">${arr.map(k=>{const e=EL[k];return `<button class="el ${g}${e.npk?" npk":""}${e.mob?" mob":""}" data-e="${k}" aria-pressed="false"><b>${k}</b><small>${e.n}</small></button>`}).join("")}</div></div>`).join("");
+function renderEl(k){
+  document.querySelectorAll(".el").forEach(b=>b.setAttribute("aria-pressed",b.dataset.e===k));
+  const e=EL[k], grp={main:"主要元素",sec:"次要元素",tr:"微量元素"}[e.g];
+  const mob = k==="Mo"||k==="Ni"||["C","H","O"].includes(k) ? "" : `<span class="pill ${e.mob?"mid":"ok"}">${e.mob?"移轉型：老葉先出現":"非移轉型：新葉先出現"}</span>`;
+  $("elInfo").innerHTML=`<h3>${k}　${e.n}<span class="pill ok">${grp}</span>${e.a?`<span class="pill mid">${e.a}</span>`:""}${mob}</h3><dl><dt>功能</dt><dd>${e.f}</dd><dt>缺乏症狀</dt><dd>${e.s}</dd></dl>`;
+}
+document.querySelectorAll(".el").forEach(b=>b.onclick=()=>renderEl(b.dataset.e));
+renderEl("N");
+
+/* ---------- pH 測試站 ---------- */
+function phData(p){
+  if(p<5) return {z:"強酸性",c:"var(--bad)",
+    st:"pH 低於 5，危害明顯：細菌活動受限，氨化、硝化、根瘤固氮都變差，土壤構造也變差。",
+    lack:"磷、鉀、鈣、鎂、鉬（磷在酸性時溶解度最低）",tox:"鋁、鐵、錳溶出太多（活性鋁毒害）",
+    fix:"施用<b>石灰</b>等鹼性資材，或客土法",crop:"耐酸作物：稻、茶、鳳梨、甘藷、馬鈴薯、燕麥、菸草"};
+  if(p<6.5) return {z:"微酸性",c:"var(--g1)",
+    st:"多雨地區常見。鹽基被雨水淋洗，H⁺ 變多。",
+    lack:"越接近 pH 5，磷、鈣、鎂越容易缺乏",tox:"大致還好",
+    fix:"作物不耐酸時可酌量施用石灰，把 pH 調到 6.5 左右",crop:"茶、鳳梨、杜鵑喜歡偏酸的土壤"};
+  if(p<=7.5) return {z:p<=6.8?"最適合多數作物":"近中性",c:"var(--ok)",
+    st:p<=6.8?"多數作物最適合 pH 6.5～6.8。微生物活躍，氨化、硝化、固氮作用順利。":"接近中性，多數作物都能生長。",
+    lack:"養分有效性大致良好",tox:"無",fix:"維持現狀，多施有機質肥料保持地力",crop:"大部分作物"};
+  if(p<8) return {z:"微鹼性",c:"var(--g3)",
+    st:"乾旱、沿海地區常見，土壤被鹽基飽和、不易被淋洗。",
+    lack:"鐵、鋅、錳、銅、硼開始難以吸收",tox:"鎂、鈉、鉀溶出較多",
+    fix:"施用石膏、硫磺等酸性資材；避免再施石灰",crop:"耐鹼作物：棉花、向日葵、高粱"};
+  return {z:"鹽鹼土",c:"var(--g4)",
+    st:"pH 8 以上：鹽類妨礙滲透作用，細胞脫水；Na⁺ 進入膠體造成黏閉構造。",
+    lack:"磷、硼、鐵、錳、銅、鋅",tox:"Na⁺、Mg²⁺ 毒害（Mg²⁺ 比 Na⁺ 更強）",
+    fix:"施用<b>石膏、硫磺</b>、硫酸、硫酸鐵；或客土、排水、灌溉、刮除、覆蓋、鬆土",crop:"耐鹽作物：甜菜、藺草、苜蓿、大麥"};
+}
+function renderPh(){
+  const p=+$("ph").value, d=phData(p);
+  $("phNum").textContent=p.toFixed(1); $("phZone").textContent=d.z; $("phZone").style.color=d.c;
+  $("phInfo").innerHTML=`<div class="box c1"><b class="t">土壤狀況</b>${d.st}</div><div class="box c3"><b class="t">改良方式</b>${d.fix}</div><div class="box c2"><b class="t">容易缺乏</b>${d.lack}</div><div class="box c4"><b class="t">毒害</b>${d.tox}</div><div class="box" style="grid-column:1/-1"><b class="t">適合的作物</b>${d.crop}</div>`;
+}
+$("ph").oninput=renderPh; renderPh();
+
+/* ---------- 缺素診斷 ---------- */
+const CASES=[
+ {t:"玉米・葉片",q:"下面的<b>老葉</b>先變黃，從葉尖呈 V 字形黃化，整株矮小。",a:"N",w:"缺氮。氮會移動，所以老葉先黃。"},
+ {t:"柑橘・葉片",q:"<b>老葉</b>葉脈還是綠的，葉脈之間卻黃掉了。",a:"Mg",w:"缺鎂。鎂是葉綠素構成元素，又是移轉型，老葉先出現。"},
+ {t:"盆栽・新葉",q:"<b>新長出來的嫩葉</b>脈間黃化、葉脈綠色，越長越白。",a:"Fe",w:"缺鐵（黃化病）。鐵不會移動，新葉先出現。"},
+ {t:"番薯・葉片",q:"成熟葉的<b>葉緣乾枯焦黃</b>，慢慢往葉子中間擴散；塊根小。",a:"K",w:"缺鉀。鉀是莖肥，和澱粉累積有關。"},
+ {t:"幼苗",q:"根長不好、植株矮小，<b>葉色暗綠帶紫色</b>。",a:"P",w:"缺磷。磷是根肥，生長初期最需要。"},
+ {t:"落花生",q:"開花結莢了，剝開卻有很多<b>空莢</b>；生長點也壞死。",a:"Ca",w:"缺鈣。鈣是細胞壁成分，不會移動。"},
+ {t:"大豆・豆科",q:"有施氮肥，看起來卻<b>很像缺氮</b>，根瘤也不太固氮。",a:"Mo",w:"缺鉬。鉬和根瘤菌固氮有關，症狀像缺氮。"},
+ {t:"木瓜",q:"乾旱後果實出現硬塊、壞死斑點，生長點彎曲（<b>塊腫病</b>）。",a:"B",w:"缺硼。硼和分生組織分化有關。"},
+];
+function renderCases(){ $("cases").innerHTML=CASES.map((c,i)=>`<button class="case" data-c="${i}"><span class="tag">${c.t}</span><span class="q">${c.q}</span><span class="a">點我看答案</span></button>`).join(""); document.querySelectorAll("#cases .case").forEach(b=>b.onclick=()=>toggleCase(b)); }
+function toggleCase(b,force){ const c=CASES[+b.dataset.c], open = force!==undefined?force:!b.classList.contains("open"); b.classList.toggle("open",open); b.querySelector(".a").innerHTML = open?`<b>${c.a} ${EL[c.a].n}</b>${c.w}`:"點我看答案"; }
+renderCases();
+$("caseAll").onclick=()=>document.querySelectorAll("#cases .case").forEach(b=>toggleCase(b,true));
+$("caseReset").onclick=()=>document.querySelectorAll("#cases .case").forEach(b=>toggleCase(b,false));
+
+const SOILS=[
+ {q:"抓一把捏不成團，澆水馬上流光，含砂粒 85% 以上。",a:"砂土",w:"排水通氣佳，保水保肥差；單粒構造。"},
+ {q:"含黏粒 40% 以上，下雨積水不退，乾旱時收縮龜裂。",a:"黏土",w:"保水保肥佳，通氣排水差；黏閉構造。"},
+ {q:"土粒聚成一顆顆小團，鬆軟好耕，根和微生物都長得好。",a:"團粒構造（壤土）",w:"最理想的土壤構造和質地。"},
+ {q:"颱風後河邊堆積了一層新土，原本是從上游沖下來的。",a:"沖積土（運積土）",w:"被水力搬運後堆積。"},
+ {q:"山腳下堆積的土石，是因為重力從坡上滾落下來。",a:"崩積土（運積土）",w:"和重力有關。"},
+ {q:"低窪濕地，植物遺體不斷堆積，顏色很黑。",a:"泥炭土（聚積土）",w:"屬於定積土，沒有被搬走。"},
+];
+$("soilCases").innerHTML=SOILS.map((c,i)=>`<button class="case" data-s="${i}"><span class="q">${c.q}</span><span class="a">點我看答案</span></button>`).join("");
+document.querySelectorAll("#soilCases .case").forEach(b=>b.onclick=()=>{ const c=SOILS[+b.dataset.s], open=!b.classList.contains("open"); b.classList.toggle("open",open); b.querySelector(".a").innerHTML=open?`<b>${c.a}</b>${c.w}`:"點我看答案"; });
+
+/* ---------- 計算練習 ---------- */
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const CALC=[
+ {name:"土壤重量",sub:"面積×深度×容重",gen(){
+   const ha=Math.random()<.5; const area=ha?pick([1,2,0.5]):pick([300,500,600,800,1000]); const dep=pick([10,15,20,25,30]); const bd=pick([1.2,1.3,1.34,1.4,1.5]);
+   const aM=ha?area*10000:area; const v=aM*dep/100; const w=v*bd*1000;
+   return {q:`一塊農地面積 <b>${ha?area+" 公頃":area+" 平方公尺"}</b>，耕作深度 <b>${dep} 公分</b>，土壤容重 <b>${bd} g/cm³</b>。這塊地耕作層的土壤重量是多少公斤？`,
+     f:"土壤重量（kg）＝ 面積（m²）× 深度（m）× 容重 × 1000",unit:"公斤",ans:w,
+     steps:[ha?`單位換算：${area} 公頃 ＝ ${fmt(aM)} m²；${dep} 公分 ＝ ${dep/100} m`:`單位換算：${dep} 公分 ＝ ${dep/100} m`,
+       `體積：${fmt(aM)} × ${dep/100} ＝ ${fmt(v)} m³（同體積的水重 ${fmt(v*1000)} kg）`,
+       `套公式：${fmt(v)} × ${bd} × 1000 ＝ ${fmt(w)} kg`],
+     fin:`土壤重量 ${fmt(w)} 公斤（${fmt(w/1000)} 公噸）`};}},
+ {name:"土壤孔度",sub:"真比重、假比重",gen(){
+   const d1=pick([2.5,2.6,2.65,2.7]); const d2=pick([1.1,1.2,1.3,1.35,1.4,1.5,1.6]); const P=(1-d2/d1)*100;
+   const type=P>=50?"黏土（50～60%）":P>=40?"壤土（40～50%）":"砂土（30～40%）";
+   return {q:`某農地測得土壤容重（假比重）<b>${d2}</b>、土壤比重（真比重）<b>${d1}</b>。土壤孔度是多少 %？可能是哪一類土壤？`,
+     f:"孔度（%）＝（1 − 假比重 ÷ 真比重）× 100",unit:"%",ans:P,
+     steps:[`假比重 ÷ 真比重 ＝ ${d2} ÷ ${d1} ＝ ${fmt(d2/d1,3)}`,`1 − ${fmt(d2/d1,3)} ＝ ${fmt(1-d2/d1,3)}`,`× 100 ＝ ${fmt(P,1)}%`],
+     fin:`孔度約 ${fmt(P,1)}%，接近${type}`};}},
+ {name:"肥料 → 養分",sub:"一包含多少要素",gen(){
+   const F=pick([["硫酸銨","氮",21],["尿素","氮",46],["過磷酸鈣","磷酐（P₂O₅）",18],["氯化鉀","氧化鉀（K₂O）",60],["硫酸鉀","氧化鉀（K₂O）",50]]); const kg=pick([20,25,40,50,100]); const n=kg*F[2]/100;
+   return {q:`買了一包 <b>${kg} 公斤的${F[0]}</b>，含有效${F[1]}多少公斤？`,f:"單質要素 ＝ 肥料用量 × 該成分的百分比",unit:"公斤",ans:n,
+     steps:[`${F[0]}的有效${F[1]}是 ${F[2]}%（要背）`,`${kg} × ${F[2]}/100 ＝ ${fmt(n)} 公斤`],fin:`有效${F[1]} ${fmt(n)} 公斤`};}},
+ {name:"養分 → 肥料",sub:"需要買幾公斤",gen(){
+   const F=pick([["硫酸銨（硫銨）","氮",21,[21,42,63,84,105]],["尿素","氮",46,[23,46,92,69]],["過磷酸鈣","磷酐",18,[18,36,54,72,90]],["氯化鉀","氧化鉀",60,[30,48,60,90,120]]]); const need=pick(F[3]); const kg=need*100/F[2];
+   return {q:`農改場建議某作物要施 <b>${need} 公斤的${F[1]}</b>，改用<b>${F[0]}</b>，需要多少公斤？`,f:"肥料重量 ＝ 單質要素 × 100 ÷ 該成分百分比",unit:"公斤",ans:kg,
+     steps:[`${F[0]}含${F[1]} ${F[2]}%`,`${need} × 100 ÷ ${F[2]} ＝ ${fmt(kg)} 公斤`],fin:`需要${F[0]} ${fmt(kg)} 公斤`};}},
+ {name:"複合肥換單質",sub:"N－P－K 換算",gen(){
+   const C=pick([["台肥 1 號",[20,5,10]],["台肥 39 號",[12,18,12]],["台肥 43 號",[15,15,15]],["台肥 5 號",[16,8,12]]]); const kg=pick([40,100,200,400]);
+   const K=pick([["氯化鉀",60],["硫酸鉀",50]]); const [n,p,k]=C[1].map(x=>kg*x/100); const a=n*100/21,b=p*100/18,c=k*100/K[1];
+   return {q:`原本要施 <b>${kg} 公斤${C[0]}（${C[1].join("－")}）</b>，改用硫酸銨（N 21%）、過磷酸鈣（P₂O₅ 18%）、${K[0]}（K₂O ${K[1]}%），各需要多少公斤？<br><small style="color:var(--muted)">下面輸入<b>硫酸銨</b>的公斤數即可</small>`,
+     f:"先算出三要素各幾公斤，再用「要素 × 100 ÷ 百分比」換成單質肥料",unit:"公斤",ans:a,
+     steps:[`${C[1].join("－")} 代表 N ${C[1][0]}%、P₂O₅ ${C[1][1]}%、K₂O ${C[1][2]}%`,
+       `三要素：N ＝ ${kg}×${C[1][0]}% ＝ ${fmt(n)}；P₂O₅ ＝ ${kg}×${C[1][1]}% ＝ ${fmt(p)}；K₂O ＝ ${kg}×${C[1][2]}% ＝ ${fmt(k)} 公斤`,
+       `硫酸銨 ＝ ${fmt(n)}×100÷21 ＝ ${fmt(a)} 公斤`,`過磷酸鈣 ＝ ${fmt(p)}×100÷18 ＝ ${fmt(b)} 公斤`,`${K[0]} ＝ ${fmt(k)}×100÷${K[1]} ＝ ${fmt(c)} 公斤`],
+     fin:`硫酸銨 ${fmt(a)}、過磷酸鈣 ${fmt(b)}、${K[0]} ${fmt(c)} 公斤`};}}
+];
+let cType=0, cProb=null, cStep=0;
+function renderPick(){ $("calcPick").innerHTML=CALC.map((c,i)=>`<button class="pk" role="tab" data-i="${i}" aria-selected="${i===cType}">${c.name}<small>${c.sub}</small></button>`).join(""); document.querySelectorAll("#calcPick .pk").forEach(b=>b.onclick=()=>{cType=+b.dataset.i; newProb();}); }
+function newProb(){ cProb=CALC[cType].gen(); cStep=0; renderPick(); renderCalc(); }
+function renderCalc(){
+  const p=cProb, total=p.steps.length;
+  const shown=p.steps.slice(0,cStep).map((s,i)=>`<div class="step"><span class="n">步驟 ${i+1}</span>${s}</div>`).join("") + (cStep>total?`<div class="step final"><span class="n">答</span>${p.fin}</div>`:"");
+  $("calcBox").innerHTML=`<div class="problem">${p.q}</div>
+    <div class="ansrow"><input id="ansIn" inputmode="decimal" placeholder="你的答案" aria-label="輸入答案"><span>${p.unit}</span><button class="btn" id="ansBtn">對答案</button><span class="ansfb" id="ansFb" aria-live="polite"></span></div>
+    ${cStep>0?`<div class="formula">${p.f}</div>`:""}
+    <div class="steps">${shown}</div>
+    <div class="actions"><button class="btn ghost" id="stepBtn" ${cStep>total?"disabled":""}>${cStep===0?"看公式":cStep>=total?"看答案":"下一步"}</button><button class="btn ghost" id="newBtn">換一題</button></div>`;
+  $("stepBtn").onclick=()=>{ cStep++; renderCalc(); };
+  $("newBtn").onclick=newProb;
+  const check=()=>{ const v=parseFloat(($("ansIn").value||"").replace(/[,，\s]/g,"")); const fb=$("ansFb"); if(isNaN(v)){fb.className="ansfb bad";fb.textContent="請輸入數字";return;} const ok=Math.abs(v-p.ans)<=Math.max(0.01,Math.abs(p.ans)*0.01); fb.className="ansfb "+(ok?"ok":"bad"); fb.textContent=ok?"答對了！":"再算算看，或按「下一步」看解法"; };
+  $("ansBtn").onclick=check; $("ansIn").onkeydown=e=>{if(e.key==="Enter")check();};
+}
+newProb();
+
+/* ---------- 小測驗 ---------- */
+// a = 正確選項的索引；fixed = 選項不打亂（組合題）
+const QS=[
+ {src:"111 統測",q:"下列何者屬於「定積土」？",list:"①沖積土　②崩積土　③風積土　④聚積土　⑤殘積土　⑥冰積土",o:["(A) ①②","(B) ②④","(C) ④⑤","(D) ③⑥"],a:2,fixed:1,why:"定積土是留在原地的：聚積土、殘積土。沖積、崩積、風積、冰積都是被外力搬走的運積土。"},
+ {q:"下列哪一種屬於「物理性」風化作用？",o:["結冰作用","水解作用","溶解作用","碳酸化作用"],a:0,why:"結冰讓岩石崩解，成分不變，是物理性風化；水解、溶解、碳酸化會改變成分，是化學性風化。"},
+ {q:"土壤剖面中，被稱為「洗入層」、礦物質含量多而最肥沃的是哪一層？",o:["B 層（底土層）","A 層（表土層）","C 層（母質層）","岩石層"],a:0,why:"A 層的物質被淋洗下來，堆積在 B 層，所以 B 層叫洗入層，礦物質最多、最肥沃。"},
+ {q:"下列何者「不是」影響土壤發育的因子？",o:["緯度","時間","地形","母岩"],a:0,why:"影響土壤發育的五因子是生物、氣候、母岩、地形、時間。"},
+ {src:"110 統測",q:"下列有關土壤質地的敘述，何者正確？",o:["黏土含黏粒在 40% 以上，保水和保肥力佳","2.50 公厘粒徑為粗砂","1.50 公厘粒徑為細砂","砂土含黏粒在 85% 以上，沒有可塑性及凝結力"],a:0,why:"粗砂是 2～0.2 mm（2.5 mm 是礫）、細砂是 0.2～0.02 mm；砂土是含「砂粒」85% 以上。"},
+ {src:"112 統測",q:"土壤質地中，下列何種粒徑占比越多時，澆水或降雨當下所含的重力水較多？",o:["2.0 mm","0.10 mm","0.01 mm","0.002 mm"],a:0,fixed:1,why:"粒徑越大、孔隙越大，水越容易受重力往下流，重力水越多。"},
+ {q:"土壤水分中，可以被植物根群吸收利用的有效水是哪一種？",o:["毛管水","吸著水","重力水","結晶水"],a:0,why:"只有毛管水是有效水；吸著水、重力水、結晶水都是無效水。"},
+ {q:"最適合作物栽培、保水保肥與通氣排水都良好的土壤構造是？",o:["團粒構造","單粒構造","黏閉構造","整塊狀構造"],a:0,why:"團粒構造（如壤土）各項性質都適宜，也適合微生物生長。"},
+ {q:"某土壤假比重 1.3、真比重 2.6，土壤孔度是多少？",o:["50%","30%","40%","60%"],a:0,fixed:1,why:"孔度 ＝（1 − 1.3 ÷ 2.6）× 100 ＝（1 − 0.5）× 100 ＝ 50%。"},
+ {src:"112 統測",q:"小安有甲（pH 5.0）、乙（pH 6.5）、丙（pH 7.0）、丁（pH 8.5）四塊地，欲種植胡蘿蔔，哪塊地宜使用石灰改良 pH 值？",o:["(A) 甲地","(B) 乙地","(C) 丙地","(D) 丁地"],a:0,fixed:1,why:"石灰是鹼性資材，用來改良酸性土壤；甲地 pH 5.0 偏酸。"},
+ {q:"鹽鹼土壤最適合用哪一種資材來改良？",o:["石膏或硫磺","石灰","草木灰","熟石灰"],a:0,why:"鹽鹼土要用酸性資材（石膏、硫磺、硫酸、硫酸鐵）；石灰、草木灰都是鹼性的。"},
+ {src:"112 統測",q:"有關氮循環中硝化作用的過程，下列何者正確？",o:["(A) N₂ → NH₄⁺","(B) NH₄⁺ → NO₃⁻","(C) NO₃⁻ → N₂","(D) N₂ ＋ 3H₂ → 2NH₃"],a:1,fixed:1,why:"硝化作用是銨態氮氧化成亞硝酸態、再成硝酸態氮：NH₄⁺ → NO₂⁻ → NO₃⁻。(C) 是脫氮作用。"},
+ {q:"「脫氮作用」最容易發生在哪一種田間環境？",o:["積水、通氣不良的土壤","排水良好的砂質土","剛施過石灰的旱田","pH 6.5 的壤土"],a:0,why:"脫氮作用由嫌氣菌進行，土壤缺氧時硝酸態氮被還原成氣體散失。"},
+ {src:"109 統測",q:"下列有關腐植質膠體陽離子交換能力大小的比較，何者正確？",o:["(A) K⁺ ＞ Mg²⁺","(B) Mg²⁺ ＞ Ca²⁺","(C) Na⁺ ＜ H⁺","(D) H⁺ ＜ Ca²⁺"],a:2,fixed:1,why:"交換力：H⁺ ＞ Ca²⁺ ＞ Mg²⁺ ＞ K⁺ ＞ Na⁺。"},
+ {q:"被稱為「莖肥」、能提高果實糖度的是哪一種元素？",o:["鉀","氮","磷","鈣"],a:0,why:"氮＝葉肥、磷＝根肥（子實肥）、鉀＝莖肥。"},
+ {src:"111 統測",q:"下列何者為葉綠素的構成元素，且缺乏時症狀先出現在老葉，使葉片變黃？",o:["鎂（Mg）","鈣（Ca）","鐵（Fe）","錳（Mn）"],a:0,why:"鎂是葉綠素構成元素，屬移轉型，所以老葉先黃化；鐵是合成葉綠素的觸媒，缺乏時新葉先黃。"},
+ {src:"110 統測",q:"種植花生時，出現類似缺氮的特徵，是缺乏下列何種微量元素？",o:["鉬","氯","鋅","錳"],a:0,why:"鉬和根瘤菌固氮有關，缺鉬時症狀和缺氮很像。"},
+ {src:"112 統測",q:"阿文經營有機荔枝園，為了提高荔枝糖度，結果期使用哪種資材最有效？",o:["草木灰","石灰","氯化鉀","過期牛奶"],a:0,why:"鉀能提高糖度；有機栽培不能用化學肥料氯化鉀，草木灰（碳酸鉀）可以補充鉀。"},
+ {src:"111 統測",q:"下列何者屬於鹼性肥料？",list:"①過磷酸鈣　②重過磷酸鈣　③湯馬斯磷肥　④草木灰",o:["(A) ①④","(B) ③④","(C) ①②④","(D) ①②③"],a:1,fixed:1,why:"過磷酸鈣、重過磷酸鈣是酸性肥料；湯馬斯磷肥、草木灰是鹼性肥料。"},
+ {q:"下列哪一種是「生理酸性肥料」？",o:["硫酸銨","尿素","硝酸銨","骨粉"],a:0,why:"硫酸銨被吸收後土壤會變酸；尿素、硝酸銨是生理中性，骨粉是生理鹼性。"},
+ {q:"農會建議某作物要施 42 公斤的氮，改用硫酸銨（N 21%）需要多少公斤？",o:["200 公斤","21 公斤","100 公斤","300 公斤"],a:0,fixed:1,why:"肥料重量 ＝ 42 × 100 ÷ 21 ＝ 200 公斤。"},
+ {q:"一包 40 公斤的台肥 39 號（12－18－12），含有效氮多少公斤？",o:["4.8 公斤","3.2 公斤","7.2 公斤","12 公斤"],a:0,why:"12－18－12 代表 N 12%，所以 N ＝ 40 × 12% ＝ 4.8 公斤。"},
+ {q:"以果樹為中心，在一定距離的土壤以環形方式施肥，稱為？",o:["環施","撒施","條施","穴施"],a:0,why:"環施常用於果樹；撒施用於水稻、牧草，條施用於玉米、高粱。"},
+ {q:"施肥量增加到某個限度後，增產率反而下降，這稱為？",o:["報酬遞減法則","最少養分法則","拮抗作用","礦化作用"],a:0,why:"報酬遞減法則；最少養分法則是指生長受「最缺的養分」限制。"}
+];
+const KEY="agri-ch4-review-115-1";
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+let quiz=null;
+function startQuiz(only){
+  const base = only ? only.map(k=>QS[k]) : QS;
+  quiz={retry:!!only,qs:base.map(q=>({...q,idx:QS.indexOf(q),opts:q.fixed?[...q.o]:shuffle(q.o),ans:q.o[q.a]})),i:0,res:[]};
+  renderQuiz();
+}
+function dots(){ return quiz.qs.map((_,k)=>`<span class="dot ${quiz.res[k]===true?"ok":quiz.res[k]===false?"bad":k===quiz.i?"now":""}"></span>`).join(""); }
+function saveBest(n,total){ try{ const s=JSON.parse(localStorage.getItem(KEY)||"{}"); if(!s.best||n>s.best){s.best=n;} s.total=total; s.last=n; localStorage.setItem(KEY,JSON.stringify(s)); return s; }catch(e){ return null; } }
+function renderQuiz(){
+  const P=$("p5"), {qs,i,res}=quiz;
+  if(i>=qs.length){
+    const n=res.filter(Boolean).length, tot=qs.length;
+    const s = quiz.retry ? null : saveBest(n,tot);
+    const r=n/tot;
+    const msg=r===1?(quiz.retry?"錯題全部訂正完成！":"全對！土壤肥料你已經掌握了！"):r>=.8?"很棒！把錯的題目再訂正一次。":r>=.6?"不錯喔！回到重點頁再複習一下。":"別灰心，先回重點頁看一看，再來挑戰！";
+    const wr=qs.map((q,k)=>({q,k})).filter(x=>res[x.k]===false);
+    P.innerHTML=`<div class="card" style="text-align:center"><div class="qtype">${quiz.retry?"錯題再練結果":"測驗結果"}</div><div class="score">${n} / ${tot}</div><p>${msg}</p>${s&&s.best?`<p style="color:var(--muted);font-size:15px">這台裝置的最佳紀錄：${s.best} / ${s.total}</p>`:""}<div class="progress" style="justify-content:center">${dots()}</div>
+      ${wr.length?`<div class="review"><b>訂正一下：</b>${wr.map(({q})=>`<div class="item">${q.q}${q.list?`<br>${q.list}`:""}<br><b>正確答案：${q.ans}</b><br><span style="color:var(--muted)">${q.why}</span></div>`).join("")}</div>`:""}
+      <div class="actions" style="justify-content:center">${wr.length?`<button class="btn" id="retry">錯題再練（${wr.length} 題）</button>`:""}<button class="btn ghost" id="again">整份重測</button><button class="btn ghost" id="back1">回去複習</button></div></div>`;
+    $("again").onclick=()=>startQuiz(); $("back1").onclick=()=>show("t1");
+    if($("retry")) $("retry").onclick=()=>startQuiz(wr.map(x=>x.q.idx));
+    return;
+  }
+  const q=qs[i];
+  P.innerHTML=`<div class="card"><div class="qhead"><span class="qtype">${quiz.retry?"錯題再練・":""}第 ${i+1} 題／共 ${qs.length} 題${q.src?`<span class="qsrc">${q.src}</span>`:""}</span><div class="progress">${dots()}</div></div>
+    <div class="qtext">${q.q}</div>${q.list?`<div class="qlist">${q.list}</div>`:""}
+    <div class="opts">${q.opts.map((o,k)=>`<button class="opt" data-k="${k}"><span class="k">${"ABCD"[k]}</span><span>${o.replace(/^\([A-D]\)\s*/,"")}</span></button>`).join("")}</div>
+    <div id="fb" aria-live="polite"></div><div class="actions" style="justify-content:flex-end"><button class="btn" id="next" hidden>${i===qs.length-1?"看結果":"下一題"}</button></div></div>`;
+  P.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    if(quiz.res[i]!==undefined) return;
+    const pickd=q.opts[+b.dataset.k], ok=pickd===q.ans; quiz.res[i]=ok;
+    P.querySelectorAll(".opt").forEach(x=>{x.disabled=true; if(q.opts[+x.dataset.k]===q.ans) x.classList.add("right");});
+    if(!ok) b.classList.add("wrong");
+    $("fb").innerHTML=`<div class="feedback ${ok?"ok":"bad"}"><b>${ok?"答對了！":"再想想，正確答案是「"+q.ans.replace(/^\([A-D]\)\s*/,"")+"」"}</b><span class="why">${q.why}</span></div>`;
+    P.querySelector(".progress").innerHTML=dots();
+    $("next").hidden=false; $("next").focus();
+  });
+  $("next").onclick=()=>{quiz.i++;renderQuiz();window.scrollTo({top:0});};
+}
+
+/* ---------- QR ---------- */
+const openQR=()=>{$("overlay").hidden=false;};
+$("qrBtn").onclick=openQR; $("qrBtn").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openQR();}};
+$("overlay").onclick=()=>{$("overlay").hidden=true;};
+
+/* 掃 QR code 進來的學生直接到小測驗 */
+if(location.hash==="#quiz") show("t5");
+})();
+</script>
+</body>
+</html>
