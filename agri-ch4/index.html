@@ -212,6 +212,27 @@ input[type=range]{width:100%;accent-color:var(--accent);margin:8px 0 0}
 .overlay p{font-size:22px;font-weight:700;margin:12px 0 0}
 .overlay small{display:block;color:#6c5f52;margin-top:4px;word-break:break-all}
 footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
+
+.art{width:100%;height:auto;display:block;color:var(--ink)}
+figure{margin:0}
+figcaption{font-size:15px;line-height:1.5;margin-top:6px;text-align:center}
+figcaption b{display:block;font-size:17px}
+.ex{color:var(--muted);font-size:14px}
+.icons{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:8px}
+.icons.three-up{grid-template-columns:repeat(3,minmax(0,1fr))}
+.icons.two-up{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:620px){.icons.three-up,.icons.two-up{grid-template-columns:1fr}}
+.icons figure{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px}
+.icons figure svg{max-height:180px}
+.two>svg.art{max-height:260px}
+.scene{border-radius:12px;margin-top:6px}
+.legend2{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.lg{font-size:14px;font-weight:700;border-radius:999px;padding:2px 12px}
+.lg.g{background:var(--g2s);color:var(--g2)}.lg.p{background:var(--g4s);color:var(--g4)}
+.phbar{display:flex;border-radius:12px;overflow:hidden;margin-top:6px}
+.phbar .seg{color:#fff;font-weight:900;font-size:15px;text-align:center;padding:8px 4px;line-height:1.3}
+.phbar small{font-weight:500;font-size:12px}
+.phaxis{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:4px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -242,13 +263,49 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
   <!-- ===== 土壤重點 ===== -->
   <section class="panel" id="p1">
     <div class="card">
-      <h2>土壤的生成<span class="sec">4-1</span></h2>
-      <div class="two">
-        <div class="box c1"><b class="t">物理性風化＝<span class="key">崩解</span></b>成分不變：溫度、風、重力、水力（<span class="key">結冰</span>、流水、海浪）、生物</div>
-        <div class="box c3"><b class="t">化學性風化＝<span class="key">分解</span></b>成分改變：<span class="key">溶解、水解、水合</span>、碳酸化、氧化、還原</div>
-        <div class="box c2"><b class="t">定積土（留在原地）</b><span class="key">殘積土</span>、<span class="key">聚積土</span>（→ 泥炭土）</div>
-        <div class="box c4"><b class="t">運積土（被搬走）</b>重力：崩積土｜水：沖積、湖積、海積、冰積｜風：風積土</div>
+      <h2>風化：岩石怎麼變成土？<span class="sec">4-1</span></h2>
+      <div class="icons two-up">
+        <figure><svg viewBox="0 0 220 110" class="art" role="img" aria-label="物理性風化示意">
+          <path d="M20 90 L40 36 L84 26 L104 70 L90 92Z" fill="#a8a29a" stroke="#6d6a66" stroke-width="2"/>
+          <path d="M60 30 L56 54 L66 70 L62 92" fill="none" stroke="#3a8ad6" stroke-width="3"/>
+          <text x="40" y="20" font-size="11" font-weight="700" fill="#3a8ad6">水結冰撐開</text>
+          <path d="M116 60 h24 M132 52 l8 8 l-8 8" stroke="currentColor" stroke-width="2" fill="none"/>
+          <g fill="#a8a29a" stroke="#6d6a66" stroke-width="1.5"><path d="M150 92 L156 70 L176 66 L180 92Z"/><path d="M184 92 L190 76 L204 78 L206 92Z"/><path d="M168 64 L176 48 L192 50 L194 66Z"/><circle cx="208" cy="64" r="5"/></g>
+        </svg><figcaption><b>物理性＝<span class="key">崩解</span></b>大石變小石，成分不變<br><span class="ex">結冰、溫度、風、流水、重力</span></figcaption></figure>
+        <figure><svg viewBox="0 0 220 110" class="art" role="img" aria-label="化學性風化示意">
+          <path d="M30 92 L46 40 L94 32 L110 92Z" fill="#c9b18a" stroke="#8a5a35" stroke-width="2"/>
+          <g fill="#3a8ad6"><path d="M60 8 c-4 8 -6 12 -6 15 a6 6 0 0 0 12 0 c0 -3 -2 -7 -6 -15Z"/><path d="M86 14 c-3 6 -5 9 -5 12 a5 5 0 0 0 10 0 c0 -3 -2 -6 -5 -12Z"/></g>
+          <g fill="#d96b4b" opacity=".75"><circle cx="58" cy="56" r="4"/><circle cx="80" cy="66" r="5"/><circle cx="68" cy="80" r="3"/></g>
+          <path d="M126 60 h24 M142 52 l8 8 l-8 8" stroke="currentColor" stroke-width="2" fill="none"/>
+          <path d="M158 92 C166 76 196 74 206 92Z" fill="#b5532f" stroke="#7a3a1f" stroke-width="2"/>
+          <text x="182" y="66" text-anchor="middle" font-size="11" font-weight="700" fill="#b5532f">變成新物質</text>
+        </svg><figcaption><b>化學性＝<span class="key">分解</span></b>成分改變<br><span class="ex">溶解、水解、水合、碳酸化、氧化</span></figcaption></figure>
       </div>
+    </div>
+
+    <div class="card">
+      <h2>定積土 vs 運積土<span class="sec">4-1</span></h2>
+      <svg viewBox="0 0 640 230" class="art scene" role="img" aria-label="各種土壤堆積位置">
+        <rect x="0" y="0" width="640" height="230" fill="#e9f3fb"/>
+        <path d="M0 200 L60 120 L130 40 L200 110 L260 180 L640 200 V230 H0Z" fill="#b9a688" stroke="#7a6a52" stroke-width="2"/>
+        <path d="M100 82 L130 40 L160 70 C148 80 120 86 100 82Z" fill="#8d8a85"/>
+        <path d="M108 80 C122 86 146 82 158 72 L162 80 C146 92 120 94 104 88Z" fill="#a0784d"/>
+        <path d="M212 150 C228 170 246 180 262 182 L250 196 C230 192 214 176 206 160Z" fill="#7a5a3a"/>
+        <g fill="#8a7a6a"><circle cx="232" cy="178" r="5"/><circle cx="246" cy="186" r="4"/><circle cx="220" cy="168" r="4"/></g>
+        <path d="M150 60 C200 120 260 170 330 190 C380 200 420 196 470 204" fill="none" stroke="#3a8ad6" stroke-width="6"/>
+        <path d="M300 196 C340 186 400 188 440 202 L440 212 L300 212Z" fill="#6b4a2b"/>
+        <path d="M520 202 C540 176 560 176 580 202Z M560 202 C578 182 596 182 614 202Z" fill="#e6c98a" stroke="#b5891c"/>
+        <path d="M30 196 C50 188 70 190 84 196 L84 206 L30 206Z" fill="#2b2018"/>
+        <path d="M600 160 h-40 M570 154 l-10 6 l10 6" stroke="#6c5f52" stroke-width="2" fill="none"/><text x="604" y="164" font-size="12" fill="#6c5f52">風</text>
+        <g font-size="14" font-weight="900">
+          <text x="134" y="114" text-anchor="middle" fill="#2f6b3a">殘積土</text><text x="134" y="130" text-anchor="middle" font-size="11" fill="#2f6b3a">在母岩上</text>
+          <text x="56" y="182" text-anchor="middle" fill="#2f6b3a">聚積土</text><text x="56" y="222" text-anchor="middle" font-size="11" fill="#fff">（泥炭土）</text>
+          <text x="236" y="146" text-anchor="end" fill="#a2408c">崩積土</text>
+          <text x="372" y="182" text-anchor="middle" fill="#a2408c">沖積土</text>
+          <text x="566" y="226" text-anchor="middle" fill="#a2408c">風積土</text>
+        </g>
+      </svg>
+      <div class="legend2"><span class="lg g">定積土：留在原地（殘積、聚積）</span><span class="lg p">運積土：被重力、水、風搬走</span></div>
       <div class="tip"><b>土壤發育五因子：</b><span class="key">生物、氣候、母岩、地形、時間</span></div>
     </div>
 
@@ -267,73 +324,106 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     </div>
 
     <div class="card">
-      <h2>質地與構造<span class="sec">4-2</span></h2>
-      <p>理想土壤：礦物質 45%、水 25%、空氣 25%、有機質 5%</p>
-      <div class="scale">
-        <div><b>礫</b>＞2</div><div><b>粗砂</b>2～0.2</div><div><b>細砂</b>0.2～0.02</div><div><b>坋粒</b>0.02～0.002</div><div><b>黏粒</b>＜0.002</div>
+      <h2>砂土、壤土、黏土<span class="sec">4-2</span></h2>
+      <div class="icons three-up">
+        <figure><svg viewBox="0 0 120 120" class="art"><rect x="4" y="4" width="112" height="112" rx="8" fill="#fbf3e2" stroke="#d9c39a"/><g fill="#e3c48f" stroke="#b08458" stroke-width="1.5"><circle cx="26" cy="26" r="17"/><circle cx="66" cy="22" r="15"/><circle cx="100" cy="30" r="13"/><circle cx="40" cy="64" r="16"/><circle cx="84" cy="66" r="17"/><circle cx="20" cy="100" r="13"/><circle cx="60" cy="98" r="15"/><circle cx="100" cy="102" r="12"/></g><path d="M60 40 V58 M54 52 l6 6 l6 -6" stroke="#3a8ad6" stroke-width="3" fill="none"/></svg><figcaption><b>砂土</b>顆粒大、縫大，水<span class="key">一下就漏光</span><br><span class="ex">排水通氣佳｜保水保肥差｜單粒構造</span></figcaption></figure>
+        <figure><svg viewBox="0 0 120 120" class="art"><rect x="4" y="4" width="112" height="112" rx="8" fill="#fbf3e2" stroke="#d9c39a"/><g fill="#a77b4f" stroke="#7a5a3a" stroke-width="1"><circle cx="30" cy="30" r="20"/><circle cx="84" cy="34" r="19"/><circle cx="34" cy="86" r="19"/><circle cx="88" cy="88" r="19"/></g><g fill="#c99a63"><circle cx="24" cy="24" r="5"/><circle cx="36" cy="30" r="5"/><circle cx="28" cy="38" r="5"/><circle cx="80" cy="28" r="5"/><circle cx="90" cy="38" r="5"/><circle cx="30" cy="82" r="5"/><circle cx="40" cy="92" r="5"/><circle cx="84" cy="84" r="5"/><circle cx="94" cy="92" r="5"/></g><g fill="#3a8ad6" opacity=".55"><circle cx="58" cy="60" r="6"/></g></svg><figcaption><b>壤土（團粒構造）</b>小顆粒黏成<span class="key">一顆顆小團</span><br><span class="ex">團內保水、團間通氣，<b>最理想</b></span></figcaption></figure>
+        <figure><svg viewBox="0 0 120 120" class="art"><rect x="4" y="4" width="112" height="112" rx="8" fill="#e7d3bf" stroke="#b08458"/><g fill="#9b6a45"><rect x="8" y="10" width="104" height="5" rx="2"/><rect x="8" y="18" width="104" height="5" rx="2"/><rect x="8" y="26" width="104" height="5" rx="2"/><rect x="8" y="34" width="104" height="5" rx="2"/><rect x="8" y="42" width="104" height="5" rx="2"/><rect x="8" y="50" width="104" height="5" rx="2"/><rect x="8" y="58" width="104" height="5" rx="2"/><rect x="8" y="66" width="104" height="5" rx="2"/><rect x="8" y="74" width="104" height="5" rx="2"/><rect x="8" y="82" width="104" height="5" rx="2"/><rect x="8" y="90" width="104" height="5" rx="2"/><rect x="8" y="98" width="104" height="5" rx="2"/></g><path d="M12 6 C40 2 80 2 108 6" stroke="#3a8ad6" stroke-width="4" fill="none"/><text x="60" y="114" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">積水不退</text></svg><figcaption><b>黏土</b>顆粒極小、擠得緊緊的<br><span class="ex">保水保肥佳｜通氣排水差｜黏閉構造</span></figcaption></figure>
       </div>
-      <div class="tblwrap"><table class="t">
-        <tr><th></th><th>砂土</th><th>壤土</th><th>黏土</th></tr>
-        <tr><th>定義</th><td>砂粒 <span class="key">85%</span>↑</td><td>最理想</td><td>黏粒 <span class="key">40%</span>↑</td></tr>
-        <tr><th>排水通氣</th><td><span class="pill ok">佳</span></td><td><span class="pill ok">適宜</span></td><td><span class="pill no">差</span></td></tr>
-        <tr><th>保水保肥</th><td><span class="pill no">差</span></td><td><span class="pill ok">適宜</span></td><td><span class="pill ok">佳</span></td></tr>
-        <tr><th>構造</th><td>單粒</td><td><span class="key">團粒</span>（最佳）</td><td>黏閉</td></tr>
-        <tr><th>孔度</th><td>30～40%</td><td>40～50%</td><td>50～60%</td></tr>
-      </table></div>
+      <div class="scale" style="margin-top:12px">
+        <div><b>礫</b>＞2 mm<span class="dot" style="width:26px;height:26px"></span></div><div><b>粗砂</b>2～0.2<span class="dot" style="width:18px;height:18px"></span></div><div><b>細砂</b>0.2～0.02<span class="dot" style="width:12px;height:12px"></span></div><div><b>坋粒</b>0.02～0.002<span class="dot" style="width:7px;height:7px"></span></div><div><b>黏粒</b>＜0.002<span class="dot" style="width:3px;height:3px"></span></div>
+      </div>
+      <p class="note">砂土：砂粒 <b>85%</b> 以上｜黏土：黏粒 <b>40%</b> 以上｜孔度：黏土 50～60% ＞ 壤土 40～50% ＞ 砂土 30～40%</p>
     </div>
 
     <div class="card">
-      <h2>土壤水分<span class="sec">4-2</span></h2>
-      <div class="tblwrap"><table class="t">
-        <tr><th>吸著水</th><td><span class="pill no">無效</span> 吸在土粒表面</td></tr>
-        <tr><th>毛管水</th><td><span class="pill ok">有效</span> <span class="key">植物主要吸收的水</span></td></tr>
-        <tr><th>重力水</th><td><span class="pill no">無效</span> 往下流走；砂土（粒徑大）較多</td></tr>
-        <tr><th>結晶水</th><td><span class="pill no">無效</span> 化合狀態</td></tr>
-      </table></div>
-      <ul style="margin-top:10px">
-        <li><b>凋萎係數</b>：開始<span class="key">永久凋萎</span>時的含水量</li>
-        <li><b>田間容水量</b>：排水後能保持的<span class="key">最高</span>水量</li>
-      </ul>
+      <h2>土壤水分：哪一種水植物喝得到？<span class="sec">4-2</span></h2>
+      <div class="two" style="align-items:center">
+        <svg viewBox="0 0 260 200" class="art" role="img" aria-label="土壤水分種類">
+          <rect x="0" y="0" width="260" height="200" fill="#fbf3e2"/>
+          <g><circle cx="70" cy="70" r="46" fill="#9fd0f0"/><circle cx="70" cy="70" r="34" fill="#4a94cf"/><circle cx="70" cy="70" r="29" fill="#c99a63" stroke="#8a5a35" stroke-width="2"/></g>
+          <g><circle cx="176" cy="84" r="46" fill="#9fd0f0"/><circle cx="176" cy="84" r="34" fill="#4a94cf"/><circle cx="176" cy="84" r="29" fill="#c99a63" stroke="#8a5a35" stroke-width="2"/></g>
+          <path d="M120 128 V186 M112 176 l8 10 l8 -10" stroke="#1f5fa8" stroke-width="3" fill="none"/>
+          <g font-size="12" font-weight="900">
+            <path d="M88 52 L130 18" stroke="#1f5fa8"/><text x="132" y="16" fill="#1f5fa8">吸著水（緊貼，無效）</text>
+            <path d="M54 30 L20 14" stroke="#2f6b3a"/><text x="4" y="12" fill="#2f6b3a">毛管水（水膜，有效）</text>
+            <text x="132" y="160" fill="#b4362c">重力水</text><text x="132" y="176" font-size="11" fill="#b4362c">往下流走，無效</text>
+          </g>
+        </svg>
+        <ul>
+          <li>只有<span class="key">毛管水</span>是有效水，植物主要喝它</li>
+          <li>吸著水、重力水、結晶水都是<b>無效水</b></li>
+          <li>粒徑大（砂土）→ <span class="key">重力水多</span></li>
+          <li><b>凋萎係數</b>：開始<span class="key">永久凋萎</span>的含水量</li>
+          <li><b>田間容水量</b>：排水後保持的<span class="key">最高</span>水量</li>
+        </ul>
+      </div>
     </div>
 
     <div class="card">
-      <h2>比重、孔度、空氣<span class="sec">4-2</span></h2>
-      <p>真比重約 <span class="key">2.6～2.7</span>（不含孔隙）；假比重＝容重（含孔隙）</p>
-      <div class="formula">孔度（%）＝（1 − 假比重 ÷ 真比重）× 100</div>
-      <div class="formula">土壤重（kg）＝ 面積（m²）× 深度（m）× 容重 × 1000</div>
-      <p style="margin-top:10px">土壤空氣：比大氣<span class="key">氧少、CO₂ 多</span>｜黑色＝有機質多；青灰色＝排水不良</p>
+      <h2>比重與孔度<span class="sec">4-2</span></h2>
+      <div class="two" style="align-items:center">
+        <svg viewBox="0 0 260 130" class="art" role="img" aria-label="真比重與假比重">
+          <rect x="10" y="20" width="100" height="90" fill="#fbf3e2" stroke="#8a5a35" stroke-width="2"/>
+          <rect x="22" y="32" width="76" height="66" fill="#c99a63"/>
+          <text x="60" y="122" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">真比重：只算土粒</text>
+          <rect x="150" y="20" width="100" height="90" fill="#fbf3e2" stroke="#8a5a35" stroke-width="2"/>
+          <g fill="#c99a63"><circle cx="170" cy="40" r="11"/><circle cx="200" cy="38" r="12"/><circle cx="230" cy="44" r="10"/><circle cx="176" cy="70" r="12"/><circle cx="210" cy="72" r="11"/><circle cx="236" cy="86" r="10"/><circle cx="170" cy="98" r="9"/><circle cx="204" cy="98" r="9"/></g>
+          <text x="200" y="122" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">假比重：連孔隙一起算</text>
+          <text x="60" y="68" text-anchor="middle" font-size="18" font-weight="900" fill="#fff">2.65</text>
+        </svg>
+        <div>
+          <div class="formula">孔度（%）＝（1 − 假比重 ÷ 真比重）× 100</div>
+          <div class="formula">土壤重（kg）＝ 面積 m² × 深度 m × 容重 × 1000</div>
+          <p class="note">土壤空氣：比大氣<b>氧少、CO₂ 多</b>。黑色＝有機質多；青灰色＝排水不良。</p>
+        </div>
+      </div>
     </div>
 
     <div class="card">
       <h2>化學性質<span class="sec">4-2</span></h2>
-      <ul>
+      <div class="phbar" aria-label="土壤 pH">
+        <div class="seg" style="flex:2;background:#d63b2f">酸性土<br><small>＜5：鋁鐵錳毒害<br>→ 施<b>石灰</b></small></div>
+        <div class="seg" style="flex:1.5;background:#ef8a2c">微酸<br><small>茶、鳳梨</small></div>
+        <div class="seg" style="flex:.8;background:#3d9a52">6.5～6.8<br><small>最適</small></div>
+        <div class="seg" style="flex:1.2;background:#3a8ad6">微鹼<br><small>棉、高粱</small></div>
+        <div class="seg" style="flex:1.6;background:#5a4bc4">鹽鹼土<br><small>＞8 → 施<b>石膏、硫磺</b></small></div>
+      </div>
+      <div class="phaxis"><span>pH 4</span><span>多雨地區偏酸 ←</span><span>7</span><span>→ 乾旱地區偏鹼</span><span>9</span></div>
+      <ul style="margin-top:12px">
         <li>有機質＝<span class="key">肥力指標</span>；分解後成<span class="key">腐植質</span></li>
         <li>陽離子交換力：<span class="key">H⁺ ＞ Ca²⁺ ＞ Mg²⁺ ＞ K⁺ ＞ Na⁺ ＞ NH₄⁺</span>　<span class="pill mid">口訣：乞丐謀甲吶喊</span><br><small style="color:var(--muted)">乞＝氫 H⁺、丐＝鈣 Ca²⁺、謀＝鎂 Mg²⁺、甲＝鉀 K⁺、吶＝鈉 Na⁺、喊＝銨 NH₄⁺</small></li>
-        <li>土壤反應：多雨 → <span class="key">酸</span>；乾旱 → <span class="key">鹼</span>；最適 <span class="key">pH 6.5～6.8</span></li>
       </ul>
     </div>
 
     <div class="card">
-      <h2>微生物與氮的轉化<span class="sec">4-2</span></h2>
-      <div class="flow" aria-label="氮的轉化">
-        <span class="chem">蛋白質</span><span class="arr">氨化</span><span class="chem">NH₃</span><span class="arr">銨化</span><span class="chem">NH₄⁺</span><span class="arr">硝化</span><span class="chem">NO₂⁻</span><span class="arr">硝化</span><span class="chem">NO₃⁻</span>
-      </div>
-      <div class="three" style="margin-top:12px">
-        <div class="box c2"><b class="t">硝化</b><span class="key">NH₄⁺ → NO₃⁻</span>（氧化）</div>
-        <div class="box c1"><b class="t">脫氮</b><span class="key">積水缺氧</span>，氮變氣體跑掉</div>
-        <div class="box c3"><b class="t">固氮</b>固氮菌＝非共生；<span class="key">根瘤菌＝共生</span></div>
-      </div>
-      <p class="note">藍綠藻可固氮；放射菌分解木質素。</p>
+      <h2>氮在土壤裡的旅行<span class="sec">4-2</span></h2>
+      <svg viewBox="0 0 660 260" class="art" role="img" aria-label="氮循環示意">
+        <rect x="0" y="0" width="660" height="80" fill="#e9f3fb"/><rect x="0" y="80" width="660" height="180" fill="#f1e2c8"/>
+        <text x="330" y="30" text-anchor="middle" font-size="16" font-weight="900" fill="#3a6a9a">空氣中的 N₂</text>
+        <g font-size="15" font-weight="900" text-anchor="middle">
+          <rect x="20" y="160" width="96" height="44" rx="10" fill="#fff" stroke="#8a5a35" stroke-width="2"/><text x="68" y="188" fill="#4a3324">蛋白質</text>
+          <rect x="176" y="160" width="96" height="44" rx="10" fill="#fff" stroke="#8a5a35" stroke-width="2"/><text x="224" y="188" fill="#4a3324">NH₄⁺</text>
+          <rect x="332" y="160" width="96" height="44" rx="10" fill="#fff" stroke="#8a5a35" stroke-width="2"/><text x="380" y="188" fill="#4a3324">NO₂⁻</text>
+          <rect x="488" y="160" width="96" height="44" rx="10" fill="#fff" stroke="#2f6b3a" stroke-width="3"/><text x="536" y="188" fill="#2f6b3a">NO₃⁻</text>
+        </g>
+        <g stroke="#2f6b3a" stroke-width="3" fill="none"><path d="M118 182 H170 M162 176 l8 6 l-8 6"/><path d="M274 182 H326 M318 176 l8 6 l-8 6"/><path d="M430 182 H482 M474 176 l8 6 l-8 6"/></g>
+        <g font-size="13" font-weight="700" text-anchor="middle"><text x="146" y="174" fill="#2f6b3a">氨化</text><text x="146" y="222" fill="#6c5f52" font-size="11">（銨化）</text><text x="378" y="150" fill="#2f6b3a">硝化（氧化）</text></g>
+        <path d="M560 156 C580 110 560 70 450 40" stroke="#b4362c" stroke-width="3" fill="none" stroke-dasharray="6 4"/><path d="M456 32 l-8 8 l11 4" stroke="#b4362c" stroke-width="3" fill="none"/>
+        <text x="604" y="100" text-anchor="middle" font-size="13" font-weight="900" fill="#b4362c">脫氮</text><text x="604" y="116" text-anchor="middle" font-size="11" fill="#b4362c">積水缺氧</text>
+        <path d="M210 40 C150 60 110 100 80 150" stroke="#3a6a9a" stroke-width="3" fill="none"/><path d="M76 140 l3 12 l10 -7" stroke="#3a6a9a" stroke-width="3" fill="none"/>
+        <text x="196" y="100" text-anchor="middle" font-size="13" font-weight="900" fill="#3a6a9a">固氮</text><text x="196" y="116" text-anchor="middle" font-size="11" fill="#3a6a9a">根瘤菌（共生）</text>
+        <path d="M536 206 V240" stroke="#2f6b3a" stroke-width="2"/><text x="536" y="254" text-anchor="middle" font-size="12" font-weight="700" fill="#2f6b3a">植物吸收</text>
+      </svg>
+      <p class="note">固氮菌＝非共生；根瘤菌＋豆科＝共生；藍綠藻也能固氮。</p>
     </div>
 
     <div class="card">
       <h2>酸性土與鹽鹼土<span class="sec">4-2</span></h2>
-      <div class="tblwrap"><table class="t">
-        <tr><th></th><th>酸性土（pH＜5）</th><th>鹽鹼土（pH＞8）</th></tr>
-        <tr><th>問題</th><td>缺磷鈣鉀；<span class="key">鋁鐵錳</span>毒害</td><td>缺鐵鋅錳銅硼；Na⁺ 使土壤黏閉</td></tr>
-        <tr><th>改良</th><td><span class="key">石灰</span></td><td><span class="key">石膏、硫磺</span></td></tr>
-        <tr><th>耐性作物</th><td>稻、茶、鳳梨、甘藷</td><td>甜菜、藺草、苜蓿、大麥</td></tr>
-      </table></div>
+      <div class="two">
+        <div class="box c1"><b class="t">酸性土（pH＜5）</b>缺磷鈣鉀，<span class="key">鋁鐵錳</span>毒害<br>改良：<span class="key">石灰</span>｜耐酸：稻、茶、鳳梨、甘藷</div>
+        <div class="box c3"><b class="t">鹽鹼土（pH＞8）</b>缺鐵鋅錳銅硼，Na⁺ 使土壤黏閉<br>改良：<span class="key">石膏、硫磺</span>｜耐鹽：甜菜、苜蓿、大麥</div>
+      </div>
     </div>
     <div class="actions"><button class="btn" data-go="t2">下一個：肥料重點 →</button></div>
   </section>
@@ -341,17 +431,51 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
   <!-- ===== 肥料重點 ===== -->
   <section class="panel" id="p2" hidden>
     <div class="card">
+      <h2>肥料三要素：管哪裡？<span class="sec">4-3</span></h2>
+      <div class="two" style="align-items:center">
+        <svg viewBox="0 0 260 250" class="art" role="img" aria-label="氮葉肥、磷根肥、鉀莖肥">
+          <rect x="0" y="170" width="260" height="80" fill="#e7d3bf"/>
+          <path d="M130 172 V40" stroke="#6b8f3a" stroke-width="10"/>
+          <path d="M130 70 C100 50 70 52 52 64 C74 84 106 84 130 74Z M130 100 C160 80 192 82 210 94 C188 114 156 114 130 104Z M130 46 C116 26 112 14 116 4 C132 12 136 28 130 46Z" fill="#7cc05a" stroke="#3f7a2a" stroke-width="2"/>
+          <g fill="#f1c75b" stroke="#b5891c"><circle cx="150" cy="56" r="7"/><circle cx="162" cy="64" r="7"/></g>
+          <g stroke="#8a5a35" stroke-width="3" fill="none"><path d="M130 172 C120 200 100 220 80 236"/><path d="M130 172 C140 200 160 220 184 236"/><path d="M130 172 V244"/><path d="M118 196 l-24 4 M144 200 l22 2"/></g>
+          <g font-size="15" font-weight="900">
+            <path d="M58 66 L30 40" stroke="#2f8a57"/><text x="2" y="34" fill="#2f8a57">N 葉肥</text>
+            <path d="M136 140 L196 140" stroke="#3b6fd1"/><text x="200" y="145" fill="#3b6fd1">K 莖肥</text>
+            <path d="M172 60 L210 30" stroke="#c46a17"/><text x="196" y="22" fill="#c46a17">P 子實</text>
+            <path d="M100 222 L40 210" stroke="#c46a17"/><text x="2" y="206" fill="#c46a17">P 根肥</text>
+          </g>
+        </svg>
+        <div>
+          <div class="box c2"><b class="t">N 氮＝<span class="key">葉肥</span></b>葉菜類需要多</div>
+          <div class="box c1" style="margin-top:8px"><b class="t">P 磷＝<span class="key">根肥、子實肥</span></b>長根和結果時需要多</div>
+          <div class="box c3" style="margin-top:8px"><b class="t">K 鉀＝<span class="key">莖肥</span></b>提高糖度、澱粉</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>缺乏時：老葉先黃，還是新葉先黃？<span class="sec">4-3</span></h2>
+      <div class="icons two-up">
+        <figure><svg viewBox="0 0 200 170" class="art"><path d="M100 168 V20" stroke="#6b8f3a" stroke-width="5"/>
+          <g stroke="#3f7a2a" stroke-width="1.5"><path d="M100 30 C88 20 80 18 72 22 C80 34 92 36 100 34Z" fill="#7cc05a"/><path d="M100 30 C112 20 120 18 128 22 C120 34 108 36 100 34Z" fill="#7cc05a"/><path d="M100 70 C78 58 62 58 50 66 C64 82 86 82 100 76Z" fill="#7cc05a"/><path d="M100 70 C122 58 138 58 150 66 C136 82 114 82 100 76Z" fill="#7cc05a"/><path d="M100 120 C72 106 50 106 34 116 C52 136 82 136 100 128Z" fill="#e8d35a"/><path d="M100 120 C128 106 150 106 166 116 C148 136 118 136 100 128Z" fill="#e8d35a"/></g>
+          <path d="M150 150 C160 140 170 132 180 130" stroke="#a2408c" stroke-width="2" fill="none"/><text x="140" y="164" font-size="12" font-weight="700" fill="#a2408c">養分搬去新葉</text>
+          <path d="M60 140 C50 100 60 60 80 30" stroke="#a2408c" stroke-width="2.5" fill="none" stroke-dasharray="5 3"/><path d="M74 34 l7 -6 l2 9" stroke="#a2408c" stroke-width="2.5" fill="none"/>
+        </svg><figcaption><b>移轉型：<span class="key">老葉</span>先黃</b><span class="key">氮、磷、鉀、鎂、氯</span><br><span class="ex">會移動，老葉把養分讓給新葉</span></figcaption></figure>
+        <figure><svg viewBox="0 0 200 170" class="art"><path d="M100 168 V20" stroke="#6b8f3a" stroke-width="5"/>
+          <g stroke="#3f7a2a" stroke-width="1.5"><path d="M100 30 C88 20 80 18 72 22 C80 34 92 36 100 34Z" fill="#e8d35a"/><path d="M100 30 C112 20 120 18 128 22 C120 34 108 36 100 34Z" fill="#e8d35a"/><path d="M100 70 C78 58 62 58 50 66 C64 82 86 82 100 76Z" fill="#7cc05a"/><path d="M100 70 C122 58 138 58 150 66 C136 82 114 82 100 76Z" fill="#7cc05a"/><path d="M100 120 C72 106 50 106 34 116 C52 136 82 136 100 128Z" fill="#7cc05a"/><path d="M100 120 C128 106 150 106 166 116 C148 136 118 136 100 128Z" fill="#7cc05a"/></g>
+          <circle cx="100" cy="18" r="6" fill="#8a4a2a"/><text x="112" y="14" font-size="11" font-weight="700" fill="#8a4a2a">生長點壞死</text>
+        </svg><figcaption><b>非移轉型：<span class="key">新葉</span>先壞</b>硫、鈣、鐵、錳、銅、鋅、硼<br><span class="ex">不會移動，新長的部位先缺</span></figcaption></figure>
+      </div>
+    </div>
+
+    <div class="card">
       <h2>17 種必需元素<span class="sec">4-3</span></h2>
       <p>點元素看功能和缺乏症狀。</p>
       <div id="elGrid"></div>
-      <div class="legend"><span><i></i>移轉型：<b>老葉</b>先出現症狀</span><span>無紫點：<b>新葉、生長點</b>先出現</span></div>
+      <div class="legend"><span><i></i>移轉型</span><span>無紫點＝非移轉型</span></div>
       <div class="einfo" id="elInfo"></div>
-      <div class="three" style="margin-top:14px">
-        <div class="box c2"><b class="t">N ＝ <span class="key">葉肥</span></b></div>
-        <div class="box c1"><b class="t">P ＝ <span class="key">根肥、子實肥</span></b></div>
-        <div class="box c3"><b class="t">K ＝ <span class="key">莖肥</span></b></div>
-      </div>
-      <div class="tip"><b>移轉型：</b><span class="key">氮磷鉀鎂氯</span>｜葉綠素構成：<b>鎂</b>｜葉綠素觸媒：<b>鐵</b>｜固氮：<b>鉬</b>｜細胞壁：<b>鈣</b></div>
+      <div class="tip">葉綠素構成：<b>鎂</b>｜葉綠素觸媒：<b>鐵</b>｜固氮：<b>鉬</b>｜細胞壁：<b>鈣</b>｜木瓜塊腫病：<b>硼</b></div>
     </div>
 
     <div class="card">
@@ -361,49 +485,64 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
         <tr><th>生理性</th><td>生理酸性：<span class="key">硫酸銨</span>、硫酸鉀、氯化鉀｜中性：尿素、硝酸銨｜鹼性：骨粉、硝酸鈉</td></tr>
         <tr><th>肥效</th><td>遲效：堆肥、廄肥｜緩效：骨粉、油粕｜速效：化學肥料</td></tr>
         <tr><th>時間</th><td>基肥（有機肥）｜追肥（化肥）｜禮肥（果樹<span class="key">收成後</span>）</td></tr>
-        <tr><th>間接肥料</th><td><span class="key">石灰、石膏</span>（改良土壤，不直接供給養分）</td></tr>
+        <tr><th>間接肥料</th><td><span class="key">石灰、石膏</span>（改良土壤）</td></tr>
       </table></div>
+      <p class="note">有機肥：油粕、綠肥、禽糞以<b>氮</b>為主；骨粉含<b>磷</b>多；家畜糞含<b>鉀</b>多。熱性肥料：<b>馬糞、羊糞</b>。</p>
     </div>
 
     <div class="card">
-      <h2>有機肥料<span class="sec">4-4</span></h2>
-      <div class="tblwrap"><table class="t">
-        <tr><th>堆肥</th><td>完全肥料，C/N 25～30</td><th>綠肥</th><td>以氮為主，豆科最好</td></tr>
-        <tr><th>油粕</th><td>花生粕、大豆粕，<span class="key">以氮為主</span></td><th>骨粉</th><td><span class="key">含磷多</span></td></tr>
-        <tr><th>禽糞</th><td>氮最多，雞糞最常用</td><th>家畜糞</th><td>含鉀多、缺磷</td></tr>
-      </table></div>
-      <p class="note">冷性肥料：豬糞、牛糞｜熱性肥料：<b>馬糞、羊糞</b>（可當發熱劑）</p>
-    </div>
-
-    <div class="card">
-      <h2>化學肥料成分（必背）<span class="sec">4-4</span></h2>
-      <div class="tblwrap"><table class="t">
-        <tr><th>肥料</th><th>成分</th><th>重點</th></tr>
-        <tr><td>硫酸銨</td><td>N <span class="key">21%</span></td><td>生理酸性</td></tr>
-        <tr><td>硝酸銨</td><td>N 33～35%</td><td>不施水田</td></tr>
-        <tr><td>尿素</td><td>N <span class="key">46%</span></td><td>中性；可葉面噴施</td></tr>
-        <tr><td>過磷酸鈣</td><td>P₂O₅ <span class="key">18%</span></td><td>不可和石灰混用</td></tr>
-        <tr><td>氯化鉀</td><td>K₂O <span class="key">60%</span></td><td>含氯，<span class="key">不施菸田</span></td></tr>
-        <tr><td>硫酸鉀</td><td>K₂O 50%</td><td>生理酸性</td></tr>
-        <tr><td>草木灰</td><td>K₂CO₃</td><td><span class="key">鹼性</span>，有機栽培補鉀</td></tr>
-      </table></div>
-      <p class="note">複合肥料 a－b－c ＝ <b>N－P₂O₅－K₂O 的百分比</b>（例：台肥 39 號 12－18－12）</p>
-    </div>
-
-    <div class="card">
-      <h2>施肥法則與方法<span class="sec">4-4</span></h2>
-      <div class="two">
-        <div class="box c1"><b class="t">最少養分法則</b>產量由<span class="key">最缺的養分</span>決定（木桶短板）</div>
-        <div class="box c3"><b class="t">報酬遞減法則</b>超過限度後<span class="key">增產率下降</span></div>
-        <div class="box c2"><b class="t">拮抗作用</b>離子互相排斥：<span class="key">石灰與鉀肥</span></div>
-        <div class="box c4"><b class="t">礦化作用</b>有機質被分解成無機養分</div>
+      <h2>化學肥料：看包裝算成分<span class="sec">4-4</span></h2>
+      <div class="two" style="align-items:center">
+        <svg viewBox="0 0 220 220" class="art" role="img" aria-label="複合肥料包裝 12-18-12">
+          <path d="M40 30 C40 18 180 18 180 30 L190 196 C190 210 30 210 30 196Z" fill="#f4f1e8" stroke="#8a8a7a" stroke-width="2"/>
+          <path d="M40 30 l10 -10 h120 l10 10" fill="none" stroke="#8a8a7a" stroke-width="2"/>
+          <text x="110" y="60" text-anchor="middle" font-size="16" font-weight="900" fill="#2f6b3a">台肥 39 號</text>
+          <text x="110" y="78" text-anchor="middle" font-size="11" fill="#6c5f52">複合肥料・40 公斤</text>
+          <g font-size="30" font-weight="900" text-anchor="middle"><text x="66" y="124" fill="#2f8a57">12</text><text x="110" y="124" fill="#c46a17">18</text><text x="154" y="124" fill="#3b6fd1">12</text></g>
+          <text x="88" y="122" text-anchor="middle" font-size="22" fill="#6c5f52">−</text><text x="132" y="122" text-anchor="middle" font-size="22" fill="#6c5f52">−</text>
+          <g font-size="12" font-weight="700" text-anchor="middle"><text x="66" y="144" fill="#2f8a57">N %</text><text x="110" y="144" fill="#c46a17">P₂O₅ %</text><text x="154" y="144" fill="#3b6fd1">K₂O %</text></g>
+          <text x="110" y="178" text-anchor="middle" font-size="12" fill="#4a3324">N ＝ 40 × 12% ＝ 4.8 kg</text>
+        </svg>
+        <div class="tblwrap" style="margin-top:0"><table class="t" style="min-width:0">
+          <tr><th>肥料</th><th>成分</th><th>重點</th></tr>
+          <tr><td>硫酸銨</td><td>N <span class="key">21%</span></td><td>生理酸性</td></tr>
+          <tr><td>尿素</td><td>N <span class="key">46%</span></td><td>可葉面噴施</td></tr>
+          <tr><td>過磷酸鈣</td><td>P₂O₅ <span class="key">18%</span></td><td>不和石灰混</td></tr>
+          <tr><td>氯化鉀</td><td>K₂O <span class="key">60%</span></td><td><span class="key">不施菸田</span></td></tr>
+          <tr><td>硫酸鉀</td><td>K₂O 50%</td><td>生理酸性</td></tr>
+          <tr><td>草木灰</td><td>K₂CO₃</td><td><span class="key">鹼性</span></td></tr>
+        </table></div>
       </div>
-      <div class="tblwrap" style="margin-top:12px"><table class="t">
-        <tr><th>撒施</th><td>水稻、牧草</td><th>條施</th><td>玉米、高粱</td></tr>
-        <tr><th>穴施</th><td>瓜類、菸草</td><th>環施</th><td><span class="key">果樹</span></td></tr>
-        <tr><th>葉面噴施</th><td colspan="3">根不好時用；蘭花噴尿素 0.5～1%</td></tr>
-      </table></div>
-      <p class="note">石灰施太多 → 土壤變鹼，鐵鋅錳硼難吸收。</p>
+    </div>
+
+    <div class="card">
+      <h2>施肥的法則<span class="sec">4-4</span></h2>
+      <div class="icons two-up">
+        <figure><svg viewBox="0 0 200 150" class="art" role="img" aria-label="最少養分法則木桶">
+          <g stroke="#6b4a2b" stroke-width="1.5"><rect x="40" y="20" width="18" height="120" fill="#c99a63"/><rect x="60" y="30" width="18" height="110" fill="#c99a63"/><rect x="80" y="78" width="18" height="62" fill="#e2483b"/><rect x="100" y="24" width="18" height="116" fill="#c99a63"/><rect x="120" y="34" width="18" height="106" fill="#c99a63"/><rect x="140" y="26" width="18" height="114" fill="#c99a63"/></g>
+          <rect x="42" y="82" width="114" height="56" fill="#4a94cf" opacity=".6"/>
+          <g font-size="12" font-weight="900" fill="#fff" text-anchor="middle"><text x="49" y="40">N</text><text x="69" y="50">P</text><text x="89" y="96">K</text><text x="109" y="44">Ca</text><text x="129" y="54">Mg</text><text x="149" y="46">S</text></g>
+          <path d="M80 80 C64 76 50 74 34 72" stroke="#3a8ad6" stroke-width="2" fill="none"/><text x="4" y="66" font-size="10" fill="#3a8ad6">水從最短處流出</text>
+        </svg><figcaption><b>最少養分法則</b>產量由<span class="key">最缺的養分</span>決定</figcaption></figure>
+        <figure><svg viewBox="0 0 200 150" class="art" role="img" aria-label="報酬遞減曲線">
+          <path d="M24 130 H192 M24 130 V10" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M26 126 C60 60 100 30 140 28 S 184 40 190 54" fill="none" stroke="#2f6b3a" stroke-width="4"/>
+          <circle cx="140" cy="28" r="5" fill="#e2483b"/><text x="140" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#b4362c">限度</text>
+          <text x="120" y="146" font-size="11" fill="currentColor">施肥量 →</text><text x="28" y="20" font-size="11" fill="currentColor">產量</text>
+        </svg><figcaption><b>報酬遞減法則</b>超過限度，<span class="key">增產率下降</span></figcaption></figure>
+      </div>
+      <p class="note"><b>拮抗作用</b>：石灰（鈣）與鉀肥互相排斥｜<b>礦化作用</b>：有機質分解成無機養分｜石灰太多 → 鐵鋅錳硼難吸收</p>
+    </div>
+
+    <div class="card">
+      <h2>施肥方法（從上面看）<span class="sec">4-4</span></h2>
+      <div class="icons">
+        <figure><svg viewBox="0 0 120 100" class="art"><rect x="4" y="4" width="112" height="92" rx="6" fill="#e7d3bf"/><g fill="#7cc05a"><circle cx="24" cy="24" r="6"/><circle cx="60" cy="24" r="6"/><circle cx="96" cy="24" r="6"/><circle cx="24" cy="76" r="6"/><circle cx="60" cy="76" r="6"/><circle cx="96" cy="76" r="6"/></g><g fill="#fff"><circle cx="14" cy="50" r="2"/><circle cx="34" cy="44" r="2"/><circle cx="48" cy="56" r="2"/><circle cx="70" cy="46" r="2"/><circle cx="86" cy="58" r="2"/><circle cx="104" cy="48" r="2"/><circle cx="40" cy="14" r="2"/><circle cx="80" cy="88" r="2"/><circle cx="12" cy="88" r="2"/><circle cx="108" cy="12" r="2"/></g></svg><figcaption><b>撒施</b>整片撒<br><span class="ex">水稻、牧草</span></figcaption></figure>
+        <figure><svg viewBox="0 0 120 100" class="art"><rect x="4" y="4" width="112" height="92" rx="6" fill="#e7d3bf"/><g fill="#7cc05a"><circle cx="24" cy="30" r="6"/><circle cx="60" cy="30" r="6"/><circle cx="96" cy="30" r="6"/><circle cx="24" cy="74" r="6"/><circle cx="60" cy="74" r="6"/><circle cx="96" cy="74" r="6"/></g><rect x="8" y="44" width="104" height="8" rx="4" fill="#fff"/><rect x="8" y="86" width="104" height="6" rx="3" fill="#fff"/></svg><figcaption><b>條施</b>沿著作物開溝<br><span class="ex">玉米、高粱</span></figcaption></figure>
+        <figure><svg viewBox="0 0 120 100" class="art"><rect x="4" y="4" width="112" height="92" rx="6" fill="#e7d3bf"/><g fill="#7cc05a"><circle cx="30" cy="30" r="7"/><circle cx="90" cy="30" r="7"/><circle cx="30" cy="72" r="7"/><circle cx="90" cy="72" r="7"/></g><g fill="#fff"><circle cx="44" cy="30" r="4"/><circle cx="104" cy="30" r="4"/><circle cx="44" cy="72" r="4"/><circle cx="104" cy="72" r="4"/></g></svg><figcaption><b>穴施</b>旁邊挖洞施<br><span class="ex">瓜類、菸草</span></figcaption></figure>
+        <figure><svg viewBox="0 0 120 100" class="art"><rect x="4" y="4" width="112" height="92" rx="6" fill="#e7d3bf"/><circle cx="60" cy="50" r="34" fill="none" stroke="#fff" stroke-width="7"/><circle cx="60" cy="50" r="26" fill="#7cc05a" opacity=".7"/><circle cx="60" cy="50" r="6" fill="#6b4a2b"/></svg><figcaption><b>環施</b>樹冠外圍一圈<br><span class="ex"><span class="key">果樹</span></span></figcaption></figure>
+      </div>
+      <p class="note">葉面噴施：根不好時用，蘭花噴尿素 0.5～1%。基肥＝種植前；追肥＝生長期間。</p>
     </div>
     <div class="actions"><button class="btn" data-go="t3">下一個：動手判斷 →</button></div>
   </section>
