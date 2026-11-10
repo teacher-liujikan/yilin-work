@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>作物生產總複習</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: 同「自然段與意義段」的架構：上方標題＋QR，分頁 土壤重點／肥料重點／動手做／計算練習／小測驗。土色系，投影用大字。 */
+:root{
+  --bg:#f7f3ec; --paper:#ffffff; --ink:#2a2118; --muted:#6c5f52; --line:#e3d9cb; --grid:#efe8dc;
+  --accent:#2f6b3a; --accent-ink:#ffffff; --accent-soft:#e3f0e3;
+  --soil:#8a5a35; --soil-soft:#f4e7da;
+  --mark:#ffe08a; --mark-ink:#2a2118;
+  --ok:#1f7a45; --ok-soft:#e1f4e7; --bad:#b4362c; --bad-soft:#fbe7e4;
+  --g1:#c46a17; --g2:#2f8a57; --g3:#3b6fd1; --g4:#a2408c;
+  --g1s:#fbecdc; --g2s:#e0f2e7; --g3s:#e3ebfb; --g4s:#f6e4f1;
+  --lA:#4a3324; --lB:#8e6038; --lC:#c4a07a; --lR:#8d8a85;
+  --f:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#17130f; --paper:#211b16; --ink:#efe7dc; --muted:#b4a594; --line:#3a3027; --grid:#1d1813;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#17130f; --paper:#211b16; --ink:#efe7dc; --muted:#b4a594; --line:#3a3027; --grid:#1d1813;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:17px;line-height:1.7;
+  background-image:radial-gradient(var(--grid) 1.2px,transparent 1.2px);background-size:22px 22px}
+.wrap{max-width:980px;margin:0 auto;padding-block:20px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{display:flex;gap:16px;align-items:flex-start;justify-content:space-between}
+.brand{min-width:0}
+.eyebrow{font-size:14px;letter-spacing:.12em;color:var(--soil);font-weight:700}
+h1{font-size:clamp(30px,6vw,44px);font-weight:900;line-height:1.2;margin:4px 0 6px;text-wrap:balance}
+.sub{color:var(--muted);margin:0;font-size:16px}
+.qr{flex:none;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+.qr img{width:84px;height:84px;image-rendering:pixelated;display:block}
+.qr span{font-size:12px;color:#4a3d31;font-weight:700}
+button:focus-visible,.qr:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tabs{display:flex;gap:8px;margin:22px 0 14px;flex-wrap:wrap}
+.tab{font:inherit;font-weight:700;font-size:17px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:999px;padding:7px 18px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.tab small{font-weight:500;opacity:.8;margin-left:4px;font-size:13px}
+.panel{display:flex;flex-direction:column;gap:16px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px}
+.toolbar .hint{font-size:14px;color:var(--muted)}
+.switch{display:inline-flex;align-items:center;gap:8px;font-weight:700;cursor:pointer;user-select:none}
+.switch input{width:20px;height:20px;accent-color:var(--accent)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;min-width:0}
+.card h2{font-size:24px;font-weight:900;margin:0 0 8px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.card h2 .sec{font-size:13px;font-weight:700;color:var(--soil);background:var(--soil-soft);border-radius:999px;padding:1px 10px}
+.card h3{font-size:19px;margin:14px 0 4px}
+.card p{margin:6px 0}
+.card ul{margin:6px 0;padding-left:1.3em}
+.card li{margin:3px 0}
+.key{background:var(--mark);color:var(--mark-ink);border-radius:4px;padding:0 4px;font-weight:700;transition:filter .2s}
+body.blank .key{color:transparent;background:var(--soil-soft);border-bottom:2px solid var(--soil);cursor:pointer;user-select:none}
+body.blank .key.show{color:var(--mark-ink);background:var(--mark);border-bottom-color:transparent}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:720px){.two,.three{grid-template-columns:1fr}}
+.box{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--bg);min-width:0}
+.box b.t{display:block;font-size:17px;margin-bottom:2px}
+.box.c1{border-top:5px solid var(--g1)}.box.c2{border-top:5px solid var(--g2)}.box.c3{border-top:5px solid var(--g3)}.box.c4{border-top:5px solid var(--g4)}
+.note{font-size:15px;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 12px;margin-top:10px}
+.tip{font-size:15px;border:1.5px dashed var(--soil);border-radius:10px;padding:8px 12px;margin-top:10px;background:var(--soil-soft)}
+.tip b{color:var(--soil)}
+.tblwrap{overflow-x:auto;margin-top:8px}
+table.t{width:100%;border-collapse:collapse;font-size:16px;min-width:520px}
+table.t th,table.t td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+table.t th{background:var(--accent-soft);white-space:nowrap}
+table.t td.c{text-align:center}
+.pill{display:inline-block;font-size:13px;font-weight:700;border-radius:999px;padding:0 9px;border:1.5px solid currentColor;white-space:nowrap;line-height:1.6}
+.pill.ok{color:var(--ok)}.pill.no{color:var(--bad)}.pill.mid{color:var(--g1)}
+.btn{font:inherit;font-weight:700;font-size:16px;border:0;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:9px 22px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+.btn:disabled{opacity:.45;cursor:default}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+
+/* 組成條 */
+.bar{display:flex;height:44px;border-radius:10px;overflow:hidden;margin-top:8px;font-size:14px;font-weight:700;color:#fff}
+.bar span{display:grid;place-items:center;white-space:nowrap;padding:0 4px;overflow:hidden}
+
+/* 粒徑尺 */
+.scale{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;margin-top:8px}
+.scale div{border-radius:8px;padding:8px 6px;text-align:center;font-size:14px;line-height:1.35;background:var(--bg);border:1px solid var(--line)}
+.scale div b{display:block;font-size:16px}
+.scale .dot{display:block;margin:4px auto;border-radius:50%;background:var(--soil)}
+@media (max-width:560px){.scale{grid-template-columns:1fr 1fr}}
+
+/* 剖面 */
+.profile{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr);gap:16px;align-items:stretch}
+@media (max-width:620px){.profile{grid-template-columns:1fr}}
+.layers{display:flex;flex-direction:column;border-radius:10px;overflow:hidden;border:2px solid var(--line)}
+.layer{font:inherit;border:0;color:#fff;font-weight:900;font-size:18px;cursor:pointer;text-align:left;padding:10px 14px;display:flex;flex-direction:column;justify-content:center;position:relative}
+.layer small{font-weight:500;font-size:13px;opacity:.9}
+.layer[aria-pressed="true"]{box-shadow:inset 0 0 0 4px var(--mark)}
+.layer.A{background:var(--lA);min-height:70px}.layer.B{background:var(--lB);min-height:90px}.layer.C{background:var(--lC);color:#2a2118;min-height:80px}.layer.R{background:var(--lR);min-height:50px;background-image:radial-gradient(#6d6a66 3px,transparent 3.5px);background-size:16px 14px}
+.lay-info{border:1px solid var(--line);border-radius:10px;padding:12px 16px;background:var(--bg)}
+.lay-info h3{margin:0 0 4px}
+
+/* 氮轉化 */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:8px}
+.chem{border:2px solid var(--soil);border-radius:10px;padding:4px 12px;font-weight:900;font-size:18px;background:var(--paper)}
+.arr{display:flex;flex-direction:column;align-items:center;font-size:13px;font-weight:700;color:var(--accent);line-height:1.2;min-width:70px}
+.arr::after{content:"⟶";font-size:22px;line-height:1}
+.arr.bad{color:var(--bad)}
+
+/* 元素格 */
+.egroup{margin-top:10px}
+.egroup .lab{font-size:14px;font-weight:700;color:var(--muted);margin-bottom:4px}
+.els{display:flex;flex-wrap:wrap;gap:8px}
+.el{font:inherit;width:72px;height:72px;border-radius:10px;border:2px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1;position:relative}
+.el b{font-size:24px;font-weight:900}
+.el small{font-size:13px}
+.el.main{border-color:var(--g1)}.el.sec{border-color:var(--g3)}.el.tr{border-color:var(--g2)}
+.el.npk::before{content:"三要素";position:absolute;top:-9px;font-size:11px;font-weight:700;background:var(--g1);color:#fff;border-radius:999px;padding:0 6px}
+.el.mob::after{content:"";position:absolute;right:6px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--g4)}
+.el[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.einfo{margin-top:14px;border:1px solid var(--line);border-radius:10px;padding:12px 16px;background:var(--bg);min-height:120px}
+.einfo h3{margin:0 0 6px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.einfo dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px}
+.einfo dt{font-weight:700;color:var(--soil);white-space:nowrap}
+.einfo dd{margin:0}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;color:var(--muted);margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--g4);margin-right:4px}
+
+/* 木桶 */
+.barrel{display:flex;align-items:flex-end;gap:3px;height:120px;margin:8px 0}
+.barrel span{flex:1;background:var(--soil);border-radius:4px 4px 0 0;color:#fff;font-size:12px;font-weight:700;text-align:center;padding-top:2px}
+.barrel span.low{background:var(--bad)}
+
+/* pH 站 */
+.phwrap{margin-top:6px}
+.phscale{height:22px;border-radius:999px;background:linear-gradient(90deg,#d63b2f,#ef8a2c,#f2cf3c,#5cb85c,#3a8ad6,#5a4bc4);position:relative}
+input[type=range]{width:100%;accent-color:var(--accent);margin:8px 0 0}
+.phnum{font-size:46px;font-weight:900;line-height:1;color:var(--accent)}
+.phzone{font-size:20px;font-weight:900}
+.phgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+@media (max-width:620px){.phgrid{grid-template-columns:1fr}}
+
+/* 診斷卡 */
+.cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.case{font:inherit;color:var(--ink);text-align:left;border:2px solid var(--line);border-radius:12px;background:var(--paper);padding:12px 14px;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-height:150px}
+.case .q{font-size:16px}
+.case .tag{font-size:12px;font-weight:700;color:var(--muted)}
+.case .a{margin-top:auto;font-size:15px;color:var(--muted)}
+.case.open{border-color:var(--accent);background:var(--accent-soft)}
+.case.open .a{color:var(--ink)}
+.case .a b{font-size:22px;color:var(--accent);margin-right:6px}
+
+/* 計算 */
+.picker{display:flex;gap:8px;flex-wrap:wrap}
+.pk{font:inherit;font-size:15px;font-weight:700;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:7px 12px;cursor:pointer;line-height:1.3;text-align:left}
+.pk small{display:block;font-size:12px;font-weight:500;color:var(--muted)}
+.pk[aria-selected="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.problem{font-size:21px;line-height:1.8;font-weight:500}
+.problem b{color:var(--soil)}
+.formula{font-size:18px;font-weight:700;background:var(--soil-soft);border-radius:10px;padding:8px 14px;margin-top:10px}
+.ansrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.ansrow input{font:inherit;font-size:20px;width:180px;border:2px solid var(--line);border-radius:10px;padding:6px 12px;background:var(--paper);color:var(--ink)}
+.ansfb{font-weight:700}
+.ansfb.ok{color:var(--ok)}.ansfb.bad{color:var(--bad)}
+.steps{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.step{border-left:5px solid var(--accent);background:var(--bg);border-radius:0 10px 10px 0;padding:8px 14px;font-size:18px}
+.step .n{font-size:13px;font-weight:700;color:var(--accent);display:block}
+.step.final{border-color:var(--g1);background:var(--g1s);font-weight:900}
+
+/* 測驗 */
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.progress{display:flex;gap:4px;flex-wrap:wrap}
+.dot{width:18px;height:8px;border-radius:4px;background:var(--line)}
+.dot.ok{background:var(--ok)}.dot.bad{background:var(--bad)}.dot.now{background:var(--accent);opacity:.5}
+.qtype{font-size:14px;font-weight:700;color:var(--accent);letter-spacing:.06em}
+.qsrc{font-size:13px;font-weight:700;color:var(--soil);background:var(--soil-soft);border-radius:999px;padding:0 8px;margin-left:6px}
+.qtext{font-size:22px;line-height:1.75;margin:10px 0 14px;font-weight:500}
+.qlist{font-size:18px;background:var(--bg);border-radius:10px;padding:8px 14px;margin:-4px 0 14px;line-height:1.9}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{font:inherit;font-size:18px;text-align:left;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:12px 14px;cursor:pointer;display:flex;gap:10px;align-items:center}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt .k{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--bg);font-size:14px;font-weight:700}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt:disabled{cursor:default}
+.feedback{margin-top:14px;border-radius:10px;padding:10px 14px;font-size:16px}
+.feedback.ok{background:var(--ok-soft);color:var(--ok)}
+.feedback.bad{background:var(--bad-soft);color:var(--bad)}
+.feedback .why{color:var(--ink);display:block;margin-top:4px}
+.score{font-size:64px;font-weight:900;color:var(--accent);line-height:1;margin:10px 0}
+.review .item{border-left:4px solid var(--bad);padding:6px 12px;background:var(--bg);border-radius:0 6px 6px 0;font-size:16px;margin-top:8px;text-align:left}
+.overlay{position:fixed;inset:0;background:rgba(20,14,8,.72);display:grid;place-items:center;z-index:50;padding:20px}
+.overlay .inner{background:#fff;border-radius:16px;padding:22px;text-align:center;color:#2a2118;max-width:92vw}
+.overlay img{width:min(340px,72vw);height:min(340px,72vw);image-rendering:pixelated;display:block;margin:0 auto}
+.overlay p{font-size:22px;font-weight:700;margin:12px 0 0}
+.overlay small{display:block;color:#6c5f52;margin-top:4px;word-break:break-all}
+footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.layer.r1{background:#5c7a3a;min-height:74px}.layer.r2{background:#7f9a4c;min-height:56px}.layer.r3{background:#a8b86a;color:#2a2118;min-height:48px}.layer.r4{background:#d8c38a;color:#2a2118;min-height:44px;border-radius:0 0 40px 40px}
+.cmp td:first-child{white-space:nowrap}
+.ex{color:var(--muted);font-size:15px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="eyebrow">農業概論・第三章 總複習</div>
+      <h1>作物生產</h1>
+      <p class="sub">重點複習 → 動手判斷 → 掃 QR 小測驗　<a href="../agri-ch4/" style="color:var(--accent);font-weight:700">第四章 土壤肥料 →</a></p>
+    </div>
+    <div class="qr" id="qrBtn" role="button" tabindex="0" aria-label="放大 QR code"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAADkUlEQVR4Xu1cUY7iMAy1t5X4LBIH2KN0brBHWs2R9gb0KHOAldpPpFZePdspzA9NEFRB6/fBtBAV4xfHju0MC5Vg+FEymohi/H2EfkI/t3hgPkzs+JiYSW9xxcwt0XAkSp+3YY+beED/RSh9PjhrZv0KxhXjSojmVogWttW7P+N1OgW/myjV/z7jzVapu7CcOxGi6SA0HBuhflRqYdP62/aRJx8hT4H/mlpSQvmjuzihgxJ/ReizQJ8Z2FWf3UyJ0MbjarPf4DcXu/KVAZNHRMwHA4sFWXKGOSvn1ImI+uBK5c9HnfrPR6n8oBCEKqaTcD+eEGQ1M66I+z+nmQYb0AS/myjV/6vHtzDOJPWEgHkikuHnhRFfmf3epkBeLU88/z5K9UMiI3ytLcO6SCfXq9QC1MtMcqZG5Fz6/Bj/XL5K9Ql+IYFyOaonBpRzZVq3SyC+H4PfbZTq/9XjnVUNnhArJ4NVks3rWmgV9puFV/P1yPN9fbbUxnD0cIs/NGpeF24s0hE/b+ER/Zeg9PnJYNMi7cuwfiXodtfrfjr87xZK9f/q8S12RbOgjCCav/IgC0H0L33vBP87EtsHr5Ynnv/ceMxSG+51zf/6bfLJKQndY1DEz0/W/w7z2WoJiKBsf0RWFbRw6xM74Zs90w7yFCHkuQ/kNy5M/RdY7P5iGR6FiVqrFFI/LvizprhCn89dP/fQ5xo/K6FfqVKITTAzHyx9JZ9R38/AHnwVIbleuFkrMnj+KqU71vd0u1Sb/CHPBtRMLYOh0DSklpMQUFnpSIfYp6HPt1uf4X9B47WJQ4vA8nlcWGSE69Vyv+6egt+34xfxM7a+IgKmr00cWKnRpKOtOVH/zUJt89/9r+WqbK+7vuj6rNAiQ9SPMlAjv1o6Uie8hlbqa1PXhuU87LY2+UOezPhK42c14mumY+2fjPpRLmqbb6ngm6q+7maVULNfhM5rYTjs9w3jq/X8Aprcf6eGDW2y01/DHmnhurb5GfLcx/fzC0g9czNb1aiXpfXjDNOCFGY7B79bqHO+pa2vN2Hphsjfo4WZcZLBUKf8+fiv5deuZ9QStH/SI621iSP4zUBt8+f76ZNmBqvCmu7AITOvJHUL6kxR399GbfyaPH5+oZt9VdZKw8AHhM4LTjIcxI8z1Cl/Pv43+VN/LLD2T970zOomSdtlo38jB7XNHz/hm4v4/wzvt/8tQm3zM+S5j38+YBybj9wZNQAAAABJRU5ErkJggg=="><span>掃我測驗</span></div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" id="t1" aria-selected="true">構造與生長<small>3-1</small></button>
+    <button class="tab" role="tab" id="t2" aria-selected="false">繁殖<small>3-1</small></button>
+    <button class="tab" role="tab" id="t3" aria-selected="false">栽培管理<small>3-2</small></button>
+    <button class="tab" role="tab" id="t4" aria-selected="false">機具與設施<small>3-3・3-4</small></button>
+    <button class="tab" role="tab" id="t5" aria-selected="false">動手判斷</button>
+    <button class="tab" role="tab" id="t6" aria-selected="false">小測驗</button>
+  </nav>
+
+  <div class="toolbar" id="blankBar">
+    <label class="switch"><input type="checkbox" id="blankToggle"> 挖空模式</label>
+    <span class="hint">打開後黃色重點變空格，學生先說答案，再點空格揭曉。</span>
+  </div>
+
+  <!-- ===== 構造與生長 ===== -->
+  <section class="panel" id="p1">
+    <div class="card">
+      <h2>單子葉 vs 雙子葉</h2>
+      <div class="tblwrap"><table class="t cmp">
+        <tr><th></th><th>單子葉</th><th>雙子葉</th></tr>
+        <tr><td>根</td><td><span class="key">鬚根系</span>（淺根）</td><td><span class="key">軸根系</span>（深根）</td></tr>
+        <tr><td>莖</td><td>維管束<span class="key">散生</span>、無形成層，不變粗</td><td>維管束<span class="key">環狀</span>、有形成層，會變粗</td></tr>
+        <tr><td>葉</td><td>平行脈；葉片、葉鞘、葉舌、葉耳</td><td>網狀脈；葉片、葉柄、托葉（齊全＝完全葉）</td></tr>
+        <tr><td>花</td><td>3 或 3 的倍數</td><td>4、5 或其倍數</td></tr>
+        <tr><td>種子</td><td><span class="key">有胚乳</span>、子葉 1 枚</td><td><span class="key">無胚乳</span>、子葉 2 枚（子葉貯藏養分）</td></tr>
+        <tr><td>例子</td><td>稻、玉米、鳳梨、百合、蔥</td><td>大豆、西瓜、菊花、胡蘿蔔</td></tr>
+      </table></div>
+      <p class="note">松、柏、杉＝裸子植物，多子葉。</p>
+    </div>
+
+    <div class="card">
+      <h2>根的構造</h2>
+      <div class="profile">
+        <div class="layers" id="layers">
+          <button class="layer r1" data-l="a" aria-pressed="true">成熟部<small>根毛</small></button>
+          <button class="layer r2" data-l="b" aria-pressed="false">延長部</button>
+          <button class="layer r3" data-l="c" aria-pressed="false">生長點</button>
+          <button class="layer r4" data-l="d" aria-pressed="false">根冠<small>根尖</small></button>
+        </div>
+        <div class="lay-info" id="layInfo"></div>
+      </div>
+      <p class="note">水生植物（睡蓮）多無根毛，靠<b>表皮</b>吸收。</p>
+    </div>
+
+    <div class="card">
+      <h2>變態莖與變態葉</h2>
+      <div class="two">
+        <div class="box c1"><b class="t">地上變態莖</b>匍匐莖：<span class="key">甘藷</span>｜攀緣莖：爬牆虎｜葉狀莖：文竹｜莖針：玫瑰</div>
+        <div class="box c4"><b class="t">地下變態莖</b>鱗莖：<span class="key">百合</span>｜球莖：<span class="key">唐菖蒲</span>｜根莖：美人蕉、薑｜塊莖：<span class="key">馬鈴薯</span></div>
+      </div>
+      <p style="margin-top:10px"><b>變態葉</b>：貯藏葉（蘆薈）、鱗狀葉（武竹）、針狀葉（<span class="key">仙人掌</span>）、捕蟲葉（豬籠草）</p>
+      <p><b>葉序</b>：互生（榕樹）｜對生（桂花、咖啡）｜輪生（夾竹桃、黑板樹）</p>
+    </div>
+
+    <div class="card">
+      <h2>花</h2>
+      <ul>
+        <li><b>完全花</b>＝花萼＋花冠＋雄蕊＋雌蕊；雌蕊＝柱頭＋花柱＋子房</li>
+        <li><b>雌雄同株異花</b>：<span class="key">玉米、瓜類</span>｜<b>雌雄異株</b>：<span class="key">蘆筍、菠菜、木瓜</span></li>
+        <li>蟲媒花：大、豔、香（茶、桃）｜風媒花：小、淡、花粉多（玉米、麥）</li>
+      </ul>
+      <h3>花序（必考）</h3>
+      <div class="tblwrap"><table class="t">
+        <tr><th>有限<br><small>頂端先開</small></th><td>單頂：玫瑰、鬱金香｜<span class="key">聚繖：石竹</span>｜歧繖：薄荷</td></tr>
+        <tr><th rowspan="3">無限<br><small>基部先開</small></th><td>穗狀：<span class="key">小麥</span>、唐菖蒲｜總狀：金魚草｜圓錐（複總狀）：<span class="key">水稻</span>、甘藍、芒果</td></tr>
+        <tr><td>葇荑：<span class="key">柳樹</span>｜佛焰（肉穗）：<span class="key">芋</span>、火鶴｜繖房：<span class="key">梨、櫻花</span></td></tr>
+        <tr><td>繖形：<span class="key">胡蘿蔔、蔥</span>｜頭狀：<span class="key">菊花</span>｜隱頭：<span class="key">榕樹、無花果</span></td></tr>
+        <tr><th>混合</th><td>葡萄</td></tr>
+      </table></div>
+    </div>
+
+    <div class="card">
+      <h2>果實與種子</h2>
+      <div class="three">
+        <div class="box c1"><b class="t">單果</b>一花一子房：番茄、桃</div>
+        <div class="box c2"><b class="t">複果</b>整個花序：<span class="key">鳳梨、桑椹、無花果</span></div>
+        <div class="box c3"><b class="t">聚合果</b>一花多子房＋花托：<span class="key">草莓、釋迦</span></div>
+      </div>
+      <p style="margin-top:10px">真果（只有子房壁）：桃、柑橘｜<b>假果</b>（含花托）：<span class="key">蘋果、梨</span>｜單偽結果：不受精就結果（無籽葡萄）</p>
+      <p><b>種子</b>：胚（胚根、胚莖、胚芽、子葉）＋種皮（來自<span class="key">珠被</span>）＋胚乳（極核＋精核）</p>
+    </div>
+
+    <div class="card">
+      <h2>作物的生長</h2>
+      <div class="two">
+        <div class="box c2"><b class="t">營養生長</b>發芽 → <span class="key">花芽分化</span></div>
+        <div class="box c1"><b class="t">生殖生長</b>花芽分化 → 種子成熟<br><span class="ex">營養生長停止：稻、玉米｜持續：大豆、落花生</span></div>
+      </div>
+      <ul style="margin-top:10px">
+        <li>生長曲線呈 <span class="key">S 型</span></li>
+        <li><b>碳氮比</b>：氮多 → 長枝葉；碳水化合物多 → <span class="key">容易開花</span></li>
+        <li>五大激素：生長素、激勃素、細胞分裂素、離層酸、乙烯</li>
+      </ul>
+    </div>
+    <div class="actions"><button class="btn" data-go="t2">下一個：繁殖 →</button></div>
+  </section>
+
+  <!-- ===== 繁殖 ===== -->
+  <section class="panel" id="p2" hidden>
+    <div class="card">
+      <h2>有性 vs 無性繁殖</h2>
+      <div class="tblwrap"><table class="t">
+        <tr><th></th><th>有性（種子繁殖）</th><th>無性（營養繁殖）</th></tr>
+        <tr><th>優點</th><td>簡單、量大、好貯運、植株壽命長、<span class="key">無病</span></td><td><span class="key">保持親本特性</span>、提早開花、無籽作物也能繁殖</td></tr>
+        <tr><th>缺點</th><td><span class="key">易變異</span>、開花慢</td><td>根淺壽命短、技術較高、不易大量</td></tr>
+        <tr><th>常見</th><td>一、二年生作物：禾本科、豆科、十字花科</td><td>果樹、花卉、薯類</td></tr>
+      </table></div>
+      <p class="note">後熟作用：種子採收後要放一段時間，胚成熟才會發芽。</p>
+    </div>
+
+    <div class="card">
+      <h2>分割繁殖（最確實安全）</h2>
+      <div class="tblwrap"><table class="t">
+        <tr><th>分蘗</th><td>水稻、<span class="key">菊花</span></td><th>吸芽</th><td><span class="key">香蕉、龍舌蘭</span></td></tr>
+        <tr><th>根莖</th><td>美人蕉、薑、鳶尾</td><th>走莖</th><td><span class="key">草莓</span>、吊蘭</td></tr>
+        <tr><th>鱗莖</th><td>鬱金香、風信子</td><th>球莖</th><td><span class="key">唐菖蒲、仙客來</span></td></tr>
+        <tr><th>珠芽</th><td>百合</td><th>零餘子</th><td><span class="key">山藥</span></td></tr>
+        <tr><th>塊莖</th><td>馬鈴薯</td><th>塊根</th><td><span class="key">甘藷</span>、大理花</td></tr>
+      </table></div>
+    </div>
+
+    <div class="card">
+      <h2>扦插、壓條、嫁接</h2>
+      <div class="three">
+        <div class="box c1"><b class="t">扦插</b>根插：泡桐<br><span class="key">枝插（最常用）</span><br>葉插：秋海棠、石蓮</div>
+        <div class="box c2"><b class="t">壓條</b>堆取：杜鵑<br>偃取（彎取）：頂梢壓條 → <span class="key">草莓</span><br><span class="key">高取（空中壓條，最常用）</span>：環剝＋水苔，荔枝</div>
+        <div class="box c3"><b class="t">嫁接</b>上＝<span class="key">接穗</span>、下＝<span class="key">砧木</span><br>枝接最常用；芽接切 T 形；根接：柑橘更新根群</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>組織培養</h2>
+      <ul>
+        <li>原理：細胞<span class="key">全能性</span>，無菌培養</li>
+        <li>生長素 → 長<span class="key">根</span>｜細胞分裂素 → 長<span class="key">莖芽</span>（椰子水可代替）</li>
+        <li><span class="key">分生組織（莖頂）培養 → 無病毒苗</span>：香蕉、菊花、香石竹</li>
+        <li>胚培養 → 克服雜交不親和｜<span class="key">蘭花</span>最常用組培繁殖</li>
+      </ul>
+    </div>
+    <div class="actions"><button class="btn" data-go="t3">下一個：栽培管理 →</button></div>
+  </section>
+
+  <!-- ===== 栽培管理 ===== -->
+  <section class="panel" id="p3" hidden>
+    <div class="card">
+      <h2>栽培模式</h2>
+      <div class="tblwrap"><table class="t">
+        <tr><th>休耕</th><td>暫停種植，恢復地力、減少<span class="key">忌地現象</span></td></tr>
+        <tr><th>連作</th><td>同地連種同一作物；<span class="key">臺灣最通行</span>（水稻）</td></tr>
+        <tr><th>混作</th><td>同時種兩種以上，<span class="key">沒有</span>主副之分</td></tr>
+        <tr><th>間作</th><td>同時種兩種以上，<span class="key">有</span>主作物和間作物</td></tr>
+        <tr><th>輪作</th><td>依順序輪流種不同作物；<span class="key">最好的制度</span>（豆科配禾本科、水旱輪作）</td></tr>
+        <tr><th>複作</th><td>一年內種一次以上；<span class="key">複作指數 ＝ 一年種植次數 × 100%</span></td></tr>
+      </table></div>
+      <div class="two" style="margin-top:12px">
+        <div class="box c2"><b class="t">耐連作</b>禾本科、百合科、繖形花科、十字花科（<span class="key">小白菜</span>）</div>
+        <div class="box c4"><b class="t">忌連作</b><span class="key">茄科最忌</span>（番茄、辣椒、馬鈴薯）、豆科、葫蘆科</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>整地與播種</h2>
+      <p><b>整地順序</b>：耕犁 → 碎土耙平 → 作畦 → 鎮壓</p>
+      <p><b>種子預措</b>：選種（<span class="key">鹽水選</span>）、浸種、消毒、催芽、萌爆（滲調）、覆膜、拌種（豆科＋<span class="key">根瘤菌</span>）</p>
+      <div class="formula">播種深度 ＝ 種子直徑的 3～4 倍</div>
+      <div class="two" style="margin-top:10px">
+        <div class="box c1"><b class="t">宜深</b>大粒、嫌光性、砂土、乾燥</div>
+        <div class="box c3"><b class="t">宜淺</b>小粒、好光性、黏土、多雨</div>
+      </div>
+      <p style="margin-top:10px">撒播：細小便宜（油菜）｜條播：多數（玉米）｜點播：<span class="key">大粒貴重</span>｜<b>春化處理</b>：約 5℃ 低溫，提早開花（鬱金香）</p>
+    </div>
+
+    <div class="card">
+      <h2>田間管理</h2>
+      <ul>
+        <li><b>中耕</b>：淺耕約 5～6 cm；初期淺、中期深、末期淺</li>
+        <li><b>培土</b>：抗倒伏（玉米、甘蔗）、增產（<span class="key">馬鈴薯</span>）、軟化（<span class="key">蔥白、竹筍、蘆筍</span>）、助<span class="key">落花生結莢</span></li>
+        <li><b>覆蓋</b>：保水、抑草、保溫</li>
+        <li><b>灌溉</b>：<span class="key">滴灌最省水</span>｜噴灌：坡地果園｜水田：輪流灌溉</li>
+        <li><b>排水</b>：明溝、暗溝、動力排水</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>整枝、修剪、疏果、套袋</h2>
+      <div class="two">
+        <div class="box c2"><b class="t">整枝</b>棚架：梨、葡萄｜開心型：<span class="key">桃、釋迦、番石榴</span>｜主幹型：<span class="key">蘋果</span>｜空心型：枇杷、柿、芒果</div>
+        <div class="box c1"><b class="t">修剪</b>冬剪（12～3 月）：短截、疏刪<br>夏剪（4～7 月）：摘心、摘果、除芽</div>
+      </div>
+      <div class="formula">留一果的葉片數：桃 25｜梨 30｜<span class="key">蘋果 30～35</span></div>
+      <p style="margin-top:10px">套袋：落花後 <span class="key">2 週內</span>｜除袋：採收前 2～4 週</p>
+    </div>
+
+    <div class="card">
+      <h2>收穫、調製、儲藏</h2>
+      <ul>
+        <li>禾穀類：<span class="key">黃熟期</span>｜毛豆：<span class="key">乳熟期</span>｜青割玉米：乳熟期後｜薯類：地下部停止生長</li>
+        <li>割取（稻）｜拔取（<span class="key">落花生</span>、蔥）｜摘取（茶）｜掘取（甘藷）</li>
+        <li>儲藏含水量 <span class="key">12% 以下</span>；含水 +1% 或溫度 +5℃ → 安全期<span class="key">減半</span></li>
+      </ul>
+    </div>
+    <div class="actions"><button class="btn" data-go="t4">下一個：機具與設施 →</button></div>
+  </section>
+
+  <!-- ===== 機具與設施 ===== -->
+  <section class="panel" id="p4" hidden>
+    <div class="card">
+      <h2>生產機具<span class="sec">3-3</span></h2>
+      <div class="tblwrap"><table class="t">
+        <tr><th>整地</th><td>犁、圓盤耙、耕耘機、曳引機</td><th>種植</th><td>播種機、<span class="key">插秧機</span></td></tr>
+        <tr><th>管理</th><td><span class="key">中耕機</span>、噴霧機、施肥機</td><th>收穫</th><td>聯合收穫機、脫穀機</td></tr>
+        <tr><th>調製</th><td>乾燥機、礱穀機、選別機</td><th>搬運</th><td>單軌車、架空索道</td></tr>
+      </table></div>
+      <p class="note">自動化三期：技術開發（1991–95）→ 應用推廣（1996–2000）→ 技術成熟（2001～）；現在推動<b>智慧農業 4.0</b>。</p>
+    </div>
+
+    <div class="card">
+      <h2>設施栽培<span class="sec">3-4</span></h2>
+      <div class="two">
+        <div class="box c1"><b class="t">促成栽培＝提早</b>冬天保溫，提早收穫（草莓）</div>
+        <div class="box c3"><b class="t">抑制栽培＝延後</b>菊花<span class="key">電照延遲開花</span></div>
+      </div>
+      <p style="margin-top:10px"><b>網室</b>：木瓜網室<span class="key">防蚜蟲傳病毒</span>；通風差易生紅蜘蛛，不能完全隔絕害蟲</p>
+      <div class="tblwrap"><table class="t">
+        <tr><th>溫室</th><th>冬季溫度</th><th>栽培</th></tr>
+        <tr><td>高溫（熱洞子）</td><td>18～36℃</td><td>熱帶作物</td></tr>
+        <tr><td>中溫（暖洞子）</td><td>12～25℃</td><td>熱帶、亞熱帶</td></tr>
+        <tr><td>低溫（<span class="key">溫洞子</span>）</td><td><span class="key">5～20℃</span></td><td>亞熱帶、溫暖帶</td></tr>
+        <tr><td>冷室（冷洞子）</td><td>0～15℃</td><td>溫暖帶</td></tr>
+      </table></div>
+    </div>
+
+    <div class="card">
+      <h2>養液栽培與植物工廠<span class="sec">3-4</span></h2>
+      <ul>
+        <li>種類：水耕、礫耕、砂耕（又稱無土栽培）</li>
+        <li>最適：<span class="key">pH 5.5～6.5</span>、EC 2～3 mS/cm；要打氣補氧</li>
+        <li>pH＞8 → 缺鐵錳，<b>黃化</b>｜pH＜4.5 → 缺鈣鎂鉀，<b>凋萎</b></li>
+        <li>植物工廠：太陽光利用型、<span class="key">完全人工光型</span>（LED）</li>
+      </ul>
+      <div class="three" style="margin-top:10px">
+        <div class="box c2"><b class="t">春化處理</b>低溫，提早開花</div>
+        <div class="box c4"><b class="t">軟化栽培</b>遮光，<span class="key">韭黃</span></div>
+        <div class="box c1"><b class="t">產期調節</b>蓮霧斷根浸水、<span class="key">鳳梨電石</span></div>
+      </div>
+    </div>
+    <div class="actions"><button class="btn" data-go="t5">下一個：動手判斷 →</button></div>
+  </section>
+
+  <!-- ===== 動手判斷 ===== -->
+  <section class="panel" id="p5" hidden>
+    <div class="card">
+      <h2>看作物，說答案</h2>
+      <p>選一個主題，全班先說答案，再點卡片揭曉。</p>
+      <div class="picker" id="dPick" role="tablist" aria-label="選擇主題"></div>
+      <div class="actions"><button class="btn ghost" id="dAll">全部揭曉</button><button class="btn ghost" id="dReset">全部蓋回去</button></div>
+    </div>
+    <div class="cases" id="dCases"></div>
+    <div class="actions"><button class="btn" data-go="t6">去做小測驗 →</button></div>
+  </section>
+
+  <!-- ===== 小測驗 ===== -->
+  <section class="panel" id="p6" hidden></section>
+
+  <footer>農業概論 第三章 作物生產・總複習。測驗紀錄只存在這台裝置。</footer>
+</div>
+
+<div class="overlay" id="overlay" hidden><div class="inner"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAADkUlEQVR4Xu1cUY7iMAy1t5X4LBIH2KN0brBHWs2R9gb0KHOAldpPpFZePdspzA9NEFRB6/fBtBAV4xfHju0MC5Vg+FEymohi/H2EfkI/t3hgPkzs+JiYSW9xxcwt0XAkSp+3YY+beED/RSh9PjhrZv0KxhXjSojmVogWttW7P+N1OgW/myjV/z7jzVapu7CcOxGi6SA0HBuhflRqYdP62/aRJx8hT4H/mlpSQvmjuzihgxJ/ReizQJ8Z2FWf3UyJ0MbjarPf4DcXu/KVAZNHRMwHA4sFWXKGOSvn1ImI+uBK5c9HnfrPR6n8oBCEKqaTcD+eEGQ1M66I+z+nmQYb0AS/myjV/6vHtzDOJPWEgHkikuHnhRFfmf3epkBeLU88/z5K9UMiI3ytLcO6SCfXq9QC1MtMcqZG5Fz6/Bj/XL5K9Ql+IYFyOaonBpRzZVq3SyC+H4PfbZTq/9XjnVUNnhArJ4NVks3rWmgV9puFV/P1yPN9fbbUxnD0cIs/NGpeF24s0hE/b+ER/Zeg9PnJYNMi7cuwfiXodtfrfjr87xZK9f/q8S12RbOgjCCav/IgC0H0L33vBP87EtsHr5Ynnv/ceMxSG+51zf/6bfLJKQndY1DEz0/W/w7z2WoJiKBsf0RWFbRw6xM74Zs90w7yFCHkuQ/kNy5M/RdY7P5iGR6FiVqrFFI/LvizprhCn89dP/fQ5xo/K6FfqVKITTAzHyx9JZ9R38/AHnwVIbleuFkrMnj+KqU71vd0u1Sb/CHPBtRMLYOh0DSklpMQUFnpSIfYp6HPt1uf4X9B47WJQ4vA8nlcWGSE69Vyv+6egt+34xfxM7a+IgKmr00cWKnRpKOtOVH/zUJt89/9r+WqbK+7vuj6rNAiQ9SPMlAjv1o6Uie8hlbqa1PXhuU87LY2+UOezPhK42c14mumY+2fjPpRLmqbb6ngm6q+7maVULNfhM5rYTjs9w3jq/X8Aprcf6eGDW2y01/DHmnhurb5GfLcx/fzC0g9czNb1aiXpfXjDNOCFGY7B79bqHO+pa2vN2Hphsjfo4WZcZLBUKf8+fiv5deuZ9QStH/SI621iSP4zUBt8+f76ZNmBqvCmu7AITOvJHUL6kxR399GbfyaPH5+oZt9VdZKw8AHhM4LTjIcxI8z1Cl/Pv43+VN/LLD2T970zOomSdtlo38jB7XNHz/hm4v4/wzvt/8tQm3zM+S5j38+YBybj9wZNQAAAABJRU5ErkJggg=="><p>用平板或手機掃描，開始小測驗！</p><small>https://teacher-liujikan.github.io/yilin-work/agri-ch3/#quiz</small></div></div>
+
+<script>
+(function(){
+const $ = id => document.getElementById(id);
+const TABS=[["t1","p1"],["t2","p2"],["t3","p3"],["t4","p4"],["t5","p5"],["t6","p6"]];
+function show(t){
+  TABS.forEach(([a,b])=>{ const on=a===t; $(a).setAttribute("aria-selected",on); $(b).hidden=!on; });
+  $("blankBar").hidden = ["t5","t6"].includes(t);
+  if(t==="t6"&&!quiz) startQuiz();
+  try{ history.replaceState(null,"",t==="t6"?"#quiz":location.pathname+location.search); }catch(e){}
+  window.scrollTo({top:0});
+}
+TABS.forEach(([a])=>$(a).onclick=()=>show(a));
+document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>show(b.dataset.go));
+
+$("blankToggle").onchange=e=>{ document.body.classList.toggle("blank",e.target.checked); document.querySelectorAll(".key.show").forEach(k=>k.classList.remove("show")); };
+document.addEventListener("click",e=>{ const k=e.target.closest(".key"); if(k&&document.body.classList.contains("blank")) k.classList.toggle("show"); });
+
+/* 根的構造 */
+const ROOT={
+ a:{t:"成熟部（根毛部）",d:["組織已分化完成：表皮 → 皮層 → 中心柱","表皮細胞向外突出成<b>根毛</b>，是<b>吸收的主要構造</b>"]},
+ b:{t:"延長部",d:["接在生長點之後","細胞伸長，讓根往下長"]},
+ c:{t:"生長點",d:["位在<b>根冠和延長部之間</b>","<b>分生組織</b>，分裂能力強"]},
+ d:{t:"根冠",d:["根的最前端，帽狀","<b>保護生長點</b>；細胞排列鬆散、容易脫落"]}
+};
+function renderRoot(k){ document.querySelectorAll("#layers .layer").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===k)); const L=ROOT[k]; $("layInfo").innerHTML=`<h3>${L.t}</h3><ul>${L.d.map(x=>`<li>${x}</li>`).join("")}</ul>`; }
+document.querySelectorAll("#layers .layer").forEach(b=>b.onclick=()=>renderRoot(b.dataset.l));
+renderRoot("a");
+
+/* 動手判斷 */
+const DECKS=[
+ {name:"這是什麼花序？",items:[["水稻","圓錐（複總狀）花序"],["小麥","穗狀花序"],["柳樹","葇荑花序"],["芋、火鶴花","佛焰（肉穗）花序"],["梨、櫻花","繖房花序"],["胡蘿蔔、蔥","繖形花序"],["菊花","頭狀花序"],["榕樹、無花果","隱頭花序"],["石竹","聚繖花序（有限）"],["玫瑰、鬱金香","單頂花序（有限）"],["金魚草","總狀花序"],["葡萄","混合花序"]]},
+ {name:"這是什麼果？",items:[["鳳梨","複果"],["桑椹","複果"],["無花果","複果"],["草莓","聚合果"],["釋迦","聚合果"],["番茄、桃","單果"],["蘋果、梨","假果（含花托）"],["柑橘","真果"]]},
+ {name:"用什麼繁殖？",items:[["香蕉、龍舌蘭","吸芽"],["菊花","分蘗"],["仙客來、唐菖蒲","球莖"],["鬱金香","鱗莖"],["草莓","走莖"],["山藥","零餘子"],["甘藷","塊根"],["馬鈴薯","塊莖"],["百合","珠芽、鱗片"],["薑、美人蕉","根莖"],["荔枝","高取法（空中壓條）"],["蘭花","組織培養"]]},
+ {name:"哪一種栽培模式？",items:[["紅豆收成後，接著種水稻","輪作"],["同一塊田年年都種水稻","連作"],["玉米行間種大豆，玉米是主角","間作"],["梨和蘋果種在一起，不分主副","混作"],["一年種兩期稻＋一期蔬菜","複作，指數 300%"],["辣椒收成後想改種馬鈴薯","不適合：都是茄科，會忌地"]]},
+ {name:"該做什麼管理？",items:[["蔥白太短","培土"],["玉米容易被風吹倒","培土"],["想讓韭菜變韭黃","遮光（軟化栽培）"],["想讓菊花延後開花","電照（抑制栽培）"],["木瓜常得病毒病","網室防蚜蟲"],["種子直徑 1 cm，要蓋多厚的土","約 3～4 cm"],["蘋果一顆果要留幾片葉","30～35 片"],["落花生要儲藏，含水量要多少","12% 以下"]]}
+];
+let dCur=0;
+function renderDeck(){
+  $("dPick").innerHTML=DECKS.map((d,i)=>`<button class="pk" role="tab" data-i="${i}" aria-selected="${i===dCur}">${d.name}</button>`).join("");
+  document.querySelectorAll("#dPick .pk").forEach(b=>b.onclick=()=>{dCur=+b.dataset.i;renderDeck();});
+  $("dCases").innerHTML=DECKS[dCur].items.map((c,i)=>`<button class="case" data-c="${i}" style="min-height:110px"><span class="q" style="font-size:20px;font-weight:700">${c[0]}</span><span class="a">點我看答案</span></button>`).join("");
+  document.querySelectorAll("#dCases .case").forEach(b=>b.onclick=()=>flip(b));
+}
+function flip(b,force){ const c=DECKS[dCur].items[+b.dataset.c], open=force!==undefined?force:!b.classList.contains("open"); b.classList.toggle("open",open); b.querySelector(".a").innerHTML=open?`<b style="font-size:20px">${c[1]}</b>`:"點我看答案"; }
+$("dAll").onclick=()=>document.querySelectorAll("#dCases .case").forEach(b=>flip(b,true));
+$("dReset").onclick=()=>document.querySelectorAll("#dCases .case").forEach(b=>flip(b,false));
+renderDeck();
+
+/* 小測驗 */
+const QS=[
+ {src:"112 統測",q:"龍舌蘭、菊花、仙客來，分別用哪種營養器官繁殖？",o:["(A) 吸芽、分蘗、鱗莖","(B) 吸芽、分蘗、球莖","(C) 塊莖、零餘子、鱗莖","(D) 塊莖、零餘子、走莖"],a:1,fixed:1,why:"龍舌蘭＝吸芽、菊花＝分蘗、仙客來＝球莖。"},
+ {src:"112 統測",q:"柳樹、蔥的花序，和草莓的果實，依序為？",o:["(A) 穗狀花序、總狀花序、單果","(B) 總狀花序、葇荑花序、複果","(C) 繖形花序、穗狀花序、聚合果","(D) 葇荑花序、繖形花序、聚合果"],a:3,fixed:1,why:"柳樹＝葇荑花序、蔥＝繖形花序、草莓＝聚合果。"},
+ {src:"111 統測",q:"水稻、小麥、芋頭依序屬於何種花序？",o:["(A) 複總狀、總狀、葇荑","(B) 穗狀、複總狀、繖形","(C) 繖房、隱頭、聚繖","(D) 複總狀、穗狀、佛焰"],a:3,fixed:1,why:"水稻＝複總狀（圓錐）、小麥＝穗狀、芋＝佛焰花序。"},
+ {src:"110 統測",q:"由一朵花中多數離生子房和花托共同發育的果實是？",o:["草莓","桑椹","鳳梨","無花果"],a:0,why:"這是聚合果，例如草莓、釋迦；桑椹、鳳梨、無花果是複果。"},
+ {src:"110 統測",q:"榕樹屬於哪一種花序？",o:["隱頭花序","頭狀花序","混合花序","葇荑花序"],a:0,why:"榕樹、無花果是隱頭花序；菊花是頭狀花序。"},
+ {src:"109 統測",q:"有關植物根的描述，下列何者正確？",o:["生長點位於根冠和延長部之間，由分生能力強的細胞構成","成熟部細胞排列鬆散、容易脫落","延長部的表皮細胞向外突出形成根毛","根毛部接在生長點之後，可形成根冠"],a:0,why:"容易脫落的是根冠；根毛在成熟部；接在生長點後面的是延長部。"},
+ {src:"108 統測",q:"下列有關作物果實的敘述，何者正確？",o:["鳳梨果實為複果","桑椹為聚合果","無花果為聚合果","草莓果實為複果"],a:0,why:"鳳梨、桑椹、無花果是複果；草莓是聚合果。"},
+ {src:"108 統測",q:"下列有關壓條繁殖法的敘述，何者正確？",o:["頂梢壓條法常用於草莓","偃取法又稱高空壓條法","堆取法為最常用的壓條法","壓條法別名取枝法"],a:0,why:"高取法才叫空中壓條，也是最常用的壓條法。"},
+ {src:"106 統測",q:"有關植物花序，下列何者正確？",o:["石竹為聚繖花序，屬於有限花序","菊花為頭狀花序，屬於有限花序","甘藍與小麥同屬穗狀花序","金魚草與水稻同屬複總狀花序"],a:0,why:"菊花頭狀花序是無限花序；甘藍是圓錐花序；金魚草是總狀花序。"},
+ {q:"下列哪一個是單子葉植物的特徵？",o:["鬚根系、平行脈","軸根系、網狀脈","莖內有形成層","種子無胚乳"],a:0,why:"單子葉：鬚根、平行脈、無形成層、有胚乳。"},
+ {q:"下列哪一種作物是「雌雄異株」？",o:["蘆筍","玉米","絲瓜","水稻"],a:0,why:"蘆筍、菠菜、木瓜是雌雄異株；玉米、瓜類是雌雄同株異花。"},
+ {q:"要生產「無病毒」的香蕉苗，最常用哪一種組織培養？",o:["分生組織（莖頂）培養","胚培養","原生質體培養","細胞懸浮培養"],a:0,why:"莖頂分生組織幾乎沒有病毒，培養後可得無病毒苗。"},
+ {src:"112 統測",q:"農地目前種辣椒，下一期轉作哪一種作物最不適合？",o:["馬鈴薯","蕹菜","青花菜","胡蘿蔔"],a:0,why:"辣椒和馬鈴薯都是茄科，連作會產生忌地現象。"},
+ {src:"111 統測",q:"同一塊地種一期紅豆收成後，再種一期水稻，這種方式稱為？",o:["輪作","間作","混作","連作"],a:0,why:"依順序輪流種不同作物＝輪作。"},
+ {src:"111 統測",q:"同一塊地一年內種了兩期稻米和一期蔬菜，複作指數為？",o:["300%","100%","200%","400%"],a:0,fixed:1,why:"種了 3 次 → 3 × 100% ＝ 300%。"},
+ {src:"109 統測",q:"下列哪一種作物適合連作？",o:["小白菜","馬鈴薯","花生","苦瓜"],a:0,why:"十字花科（小白菜）耐連作；茄科、豆科、葫蘆科忌連作。"},
+ {q:"同時種兩種作物，而且有主作物和副作物之分，稱為？",o:["間作","混作","輪作","複作"],a:0,why:"有主副＝間作；沒有主副＝混作。"},
+ {src:"109 統測",q:"種蔥時發現蔥白太少，下次要加強哪一種管理？",o:["培土","提早移植","少量多次施氮","增加灌溉"],a:0,why:"培土遮光能讓蔥白（假莖）變長，屬於軟化效果。"},
+ {src:"109 統測",q:"想得到最佳蘋果品質，一果應留多少葉片？",o:["30～35 片","40～45 片","20～25 片","10～15 片"],a:0,fixed:1,why:"桃 25、梨 30、蘋果 30～35 片葉留一果。"},
+ {src:"109 統測",q:"落花生收穫後最適合儲藏的含水量是？",o:["12%","24%","20%","16%"],a:0,fixed:1,why:"儲藏含水量要 12% 以下；每多 1% 安全期減半。"},
+ {q:"某種子直徑 1 公分，最適合的覆土深度約為？",o:["3～4 公分","1 公分","0.5 公分","不必覆土"],a:0,why:"播種深度約為種子直徑的 3～4 倍。"},
+ {src:"112 統測",q:"最適合放在「溫洞子」（低溫溫室）栽培的，是哪裡採集的植物？",o:["亞熱帶地區（冬季 5～20℃）","熱帶地區（冬季 18～36℃）","暖溫帶地區（冬季 0～15℃）","熱帶高原（冬季 12～25℃）"],a:0,why:"溫洞子＝低溫溫室，冬季保持 5～20℃，種亞熱帶、溫暖帶作物。"},
+ {src:"112 統測",q:"臺灣木瓜用網室栽培，最主要的功能是？",o:["防止蚜蟲","防止颱風","防止木蝨","縮短結果期"],a:0,why:"網室阻隔蚜蟲，減少蚜蟲傳播的病毒病。"},
+ {q:"養液栽培時，培養液的 pH 值最好保持在？",o:["5.5～6.5","3.5～4.5","7.5～8.5","9 以上"],a:0,fixed:1,why:"pH 5.5～6.5 最適合；太高會黃化，太低會凋萎。"}
+];
+const KEY="agri-ch3-review-115-1";
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+let quiz=null;
+function startQuiz(only){
+  const base = only ? only.map(k=>QS[k]) : QS;
+  quiz={retry:!!only,qs:base.map(q=>({...q,idx:QS.indexOf(q),opts:q.fixed?[...q.o]:shuffle(q.o),ans:q.o[q.a]})),i:0,res:[]};
+  renderQuiz();
+}
+const strip=o=>o.replace(/^\([A-D]\)\s*/,"");
+function dots(){ return quiz.qs.map((_,k)=>`<span class="dot ${quiz.res[k]===true?"ok":quiz.res[k]===false?"bad":k===quiz.i?"now":""}"></span>`).join(""); }
+function saveBest(n,total){ try{ const s=JSON.parse(localStorage.getItem(KEY)||"{}"); if(!s.best||n>s.best)s.best=n; s.total=total; localStorage.setItem(KEY,JSON.stringify(s)); return s; }catch(e){ return null; } }
+function renderQuiz(){
+  const P=$("p6"), {qs,i,res}=quiz;
+  if(i>=qs.length){
+    const n=res.filter(Boolean).length, tot=qs.length, s=quiz.retry?null:saveBest(n,tot), r=n/tot;
+    const msg=r===1?(quiz.retry?"錯題全部訂正完成！":"全對！作物生產你已經掌握了！"):r>=.8?"很棒！把錯的題目再訂正一次。":r>=.6?"不錯喔！回到重點頁再複習一下。":"別灰心，先回重點頁看一看，再來挑戰！";
+    const wr=qs.map((q,k)=>({q,k})).filter(x=>res[x.k]===false);
+    P.innerHTML=`<div class="card" style="text-align:center"><div class="qtype">${quiz.retry?"錯題再練結果":"測驗結果"}</div><div class="score">${n} / ${tot}</div><p>${msg}</p>${s&&s.best?`<p style="color:var(--muted);font-size:15px">這台裝置的最佳紀錄：${s.best} / ${s.total}</p>`:""}<div class="progress" style="justify-content:center">${dots()}</div>
+      ${wr.length?`<div class="review"><b>訂正一下：</b>${wr.map(({q})=>`<div class="item">${q.q}<br><b>正確答案：${strip(q.ans)}</b><br><span style="color:var(--muted)">${q.why}</span></div>`).join("")}</div>`:""}
+      <div class="actions" style="justify-content:center">${wr.length?`<button class="btn" id="retry">錯題再練（${wr.length} 題）</button>`:""}<button class="btn ghost" id="again">整份重測</button><button class="btn ghost" id="back1">回去複習</button></div></div>`;
+    $("again").onclick=()=>startQuiz(); $("back1").onclick=()=>show("t1");
+    if($("retry")) $("retry").onclick=()=>startQuiz(wr.map(x=>x.q.idx));
+    return;
+  }
+  const q=qs[i];
+  P.innerHTML=`<div class="card"><div class="qhead"><span class="qtype">${quiz.retry?"錯題再練・":""}第 ${i+1} 題／共 ${qs.length} 題${q.src?`<span class="qsrc">${q.src}</span>`:""}</span><div class="progress">${dots()}</div></div>
+    <div class="qtext">${q.q}</div>
+    <div class="opts">${q.opts.map((o,k)=>`<button class="opt" data-k="${k}"><span class="k">${"ABCD"[k]}</span><span>${strip(o)}</span></button>`).join("")}</div>
+    <div id="fb" aria-live="polite"></div><div class="actions" style="justify-content:flex-end"><button class="btn" id="next" hidden>${i===qs.length-1?"看結果":"下一題"}</button></div></div>`;
+  P.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    if(quiz.res[i]!==undefined) return;
+    const ok=q.opts[+b.dataset.k]===q.ans; quiz.res[i]=ok;
+    P.querySelectorAll(".opt").forEach(x=>{x.disabled=true; if(q.opts[+x.dataset.k]===q.ans) x.classList.add("right");});
+    if(!ok) b.classList.add("wrong");
+    $("fb").innerHTML=`<div class="feedback ${ok?"ok":"bad"}"><b>${ok?"答對了！":"再想想，正確答案是「"+strip(q.ans)+"」"}</b><span class="why">${q.why}</span></div>`;
+    P.querySelector(".progress").innerHTML=dots();
+    $("next").hidden=false; $("next").focus();
+  });
+  $("next").onclick=()=>{quiz.i++;renderQuiz();window.scrollTo({top:0});};
+}
+
+const openQR=()=>{$("overlay").hidden=false;};
+$("qrBtn").onclick=openQR; $("qrBtn").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openQR();}};
+$("overlay").onclick=()=>{$("overlay").hidden=true;};
+if(location.hash==="#quiz") show("t6");
+})();
+</script>
+</body>
+</html>
