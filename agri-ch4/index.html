@@ -233,6 +233,23 @@ figcaption b{display:block;font-size:17px}
 .phbar .seg{color:#fff;font-weight:900;font-size:15px;text-align:center;padding:8px 4px;line-height:1.3}
 .phbar small{font-weight:500;font-size:12px}
 .phaxis{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:4px}
+
+.defmap .art{border-radius:12px}
+.dchips g{cursor:pointer}
+.dchips rect{fill:#fff;stroke:#2f6b3a;stroke-width:2.5}
+.dchips text{font-size:15px;font-weight:900;text-anchor:middle;fill:#2f6b3a}
+.dchips g.on rect{fill:#2f6b3a}.dchips g.on text{fill:#fff}
+.dchips g:focus{outline:none}.dchips g:focus rect{stroke:#e0a21b;stroke-width:4}
+.defkey{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.dk{border-radius:10px;padding:8px 12px;font-size:15px}
+.dk b{display:block;font-size:16px}
+.dk.new{background:var(--g3s);border-left:5px solid var(--g3)}.dk.old{background:var(--g1s);border-left:5px solid var(--g1)}
+@media (max-width:599px){.defkey{grid-template-columns:1fr}.defmap{overflow-x:auto}.defmap svg{min-width:520px}}
+.einfo .eflex{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;align-items:center}
+.leafpic{background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px;text-align:center}
+.leafpic svg{width:100%;height:auto;display:block}
+.leafpic small{display:block;font-size:13px;font-weight:700;color:#4a3324}
+@media (max-width:520px){.einfo .eflex{grid-template-columns:1fr}.leafpic{max-width:170px;margin:0 auto}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 /* ===== 多裝置：電視／平板／手機 ===== */
@@ -513,7 +530,59 @@ figcaption b{display:block;font-size:17px}
 
     <div class="card">
       <h2>17 種必需元素<span class="sec">4-3</span></h2>
-      <p>點元素看功能和缺乏症狀。</p>
+      <h3 style="margin-top:4px">缺素地圖：症狀出現在哪裡？</h3>
+      <p class="ex" style="margin:0 0 6px">點圖上的元素，下面會出現它的葉片症狀。</p>
+      <div class="defmap">
+        <svg viewBox="0 0 640 400" class="art" role="img" aria-label="缺素症狀出現位置：生長點、新葉、老葉、根">
+          <rect x="0" y="0" width="640" height="400" fill="#f7fbf2"/>
+          <rect x="0" y="300" width="640" height="100" fill="#e7d3bf"/>
+          <rect x="226" y="6" width="188" height="70" rx="12" fill="#fde7e2" opacity=".8"/>
+          <rect x="150" y="80" width="340" height="110" rx="12" fill="#e8f0fb" opacity=".8"/>
+          <rect x="120" y="194" width="400" height="104" rx="12" fill="#fff4d6" opacity=".9"/>
+          <path d="M320 300 V30" stroke="#6b8f3a" stroke-width="8"/>
+          <circle cx="320" cy="26" r="9" fill="#8a4a2a"/>
+          <g stroke="#3f7a2a" stroke-width="1.5">
+            <path d="M320 70 C300 56 284 54 272 60 C284 74 302 76 320 74Z" fill="#c9d96a"/>
+            <path d="M320 70 C340 56 356 54 368 60 C356 74 338 76 320 74Z" fill="#c9d96a"/>
+            <path d="M320 140 C290 120 262 118 244 128 C262 150 294 152 320 146Z" fill="#9bc96a"/>
+            <path d="M320 140 C350 120 378 118 396 128 C378 150 346 152 320 146Z" fill="#9bc96a"/>
+            <path d="M320 250 C280 222 240 220 214 234 C240 266 286 268 320 258Z" fill="#e8d35a"/>
+            <path d="M320 250 C360 222 400 220 426 234 C400 266 354 268 320 258Z" fill="#e8d35a"/>
+          </g>
+          <g stroke="#8a5a35" stroke-width="3" fill="none"><path d="M320 300 C300 330 280 350 256 370"/><path d="M320 300 C340 330 362 350 388 368"/><path d="M320 300 V380"/></g>
+          <g fill="#e6b8a2" stroke="#a0521b"><circle cx="270" cy="356" r="6"/><circle cx="376" cy="356" r="6"/><circle cx="320" cy="350" r="6"/></g>
+          <g font-size="14" font-weight="900">
+            <text x="236" y="28" fill="#a5452b">生長點</text>
+            <text x="160" y="100" fill="#3b6fd1">新葉（上面）</text>
+            <text x="130" y="214" fill="#9a6a0d">老葉（下面）</text>
+            <text x="20" y="324" fill="#6b4a2b">根</text>
+            <text x="500" y="128" fill="#3b6fd1" font-size="13">不會移動的元素</text><text x="500" y="146" fill="#3b6fd1" font-size="13">→ 新的地方先缺</text>
+            <text x="500" y="222" fill="#9a6a0d" font-size="13">會移動的元素</text><text x="500" y="240" fill="#9a6a0d" font-size="13">→ 老葉讓給新葉</text>
+          </g>
+          <path d="M440 240 C460 190 450 140 400 100" stroke="#a2408c" stroke-width="2.5" fill="none" stroke-dasharray="6 4"/><path d="M404 96 l-8 0 l4 8" stroke="#a2408c" stroke-width="2.5" fill="none"/>
+          <g class="dchips">
+            <g data-e="Ca" transform="translate(368 22)"><rect width="40" height="26" rx="13"/><text x="20" y="18">Ca</text></g>
+            <g data-e="B" transform="translate(368 48)"><rect width="40" height="26" rx="13"/><text x="20" y="18">B</text></g>
+            <g data-e="Fe" transform="translate(166 116)"><rect width="40" height="26" rx="13"/><text x="20" y="18">Fe</text></g>
+            <g data-e="Mn" transform="translate(212 154)"><rect width="40" height="26" rx="13"/><text x="20" y="18">Mn</text></g>
+            <g data-e="Zn" transform="translate(166 154)"><rect width="40" height="26" rx="13"/><text x="20" y="18">Zn</text></g>
+            <g data-e="S" transform="translate(404 116)"><rect width="40" height="26" rx="13"/><text x="20" y="18">S</text></g>
+            <g data-e="Cu" transform="translate(404 154)"><rect width="40" height="26" rx="13"/><text x="20" y="18">Cu</text></g>
+            <g data-e="N" transform="translate(136 230)"><rect width="40" height="26" rx="13"/><text x="20" y="18">N</text></g>
+            <g data-e="P" transform="translate(136 262)"><rect width="40" height="26" rx="13"/><text x="20" y="18">P</text></g>
+            <g data-e="K" transform="translate(436 230)"><rect width="40" height="26" rx="13"/><text x="20" y="18">K</text></g>
+            <g data-e="Mg" transform="translate(436 262)"><rect width="40" height="26" rx="13"/><text x="20" y="18">Mg</text></g>
+            <g data-e="Cl" transform="translate(182 262)"><rect width="40" height="26" rx="13"/><text x="20" y="18">Cl</text></g>
+            <g data-e="Mo" transform="translate(410 340)"><rect width="40" height="26" rx="13"/><text x="20" y="18">Mo</text></g>
+          </g>
+          <text x="456" y="358" font-size="12" font-weight="700" fill="#6b4a2b">根瘤固氮</text>
+        </svg>
+      </div>
+      <div class="defkey">
+        <div class="dk new"><b>新葉、生長點先壞</b>Ca 鈣、B 硼（生長點）｜Fe 鐵、Mn 錳、Zn 鋅、S 硫、Cu 銅（新葉）</div>
+        <div class="dk old"><b>老葉先黃</b>N 氮、P 磷、K 鉀、Mg 鎂、Cl 氯</div>
+      </div>
+      <h3>點元素看功能和症狀</h3>
       <div id="elGrid"></div>
       <div class="legend"><span><i></i>移轉型</span><span>無紫點＝非移轉型</span></div>
       <div class="einfo" id="elInfo"></div>
@@ -691,12 +760,46 @@ const EL = {
 };
 const GROUPS=[["main","主要元素（大量）",["C","H","O","N","P","K"]],["sec","次要元素（次量）",["Ca","Mg","S"]],["tr","微量元素",["Fe","B","Mn","Zn","Cu","Cl","Mo","Ni"]]];
 $("elGrid").innerHTML = GROUPS.map(([g,lab,arr])=>`<div class="egroup"><div class="lab">${lab}・${arr.length} 種</div><div class="els">${arr.map(k=>{const e=EL[k];return `<button class="el ${g}${e.npk?" npk":""}${e.mob?" mob":""}" data-e="${k}" aria-pressed="false"><b>${k}</b><small>${e.n}</small></button>`}).join("")}</div></div>`).join("");
+
+/* 缺素葉片圖 */
+const LEAF="M60 6 C96 22 104 76 60 126 C16 76 24 22 60 6Z";
+const VEINS='<g stroke="VC" stroke-width="SW" fill="none" stroke-linecap="round"><path d="M60 10 V124"/><path d="M60 36 L38 26 M60 36 L82 26 M60 58 L32 46 M60 58 L88 46 M60 80 L34 70 M60 80 L86 70 M60 102 L42 94 M60 102 L78 94"/></g>';
+const vein=(c,w)=>VEINS.replace("VC",c).replace("SW",w);
+const stem='<path d="M60 126 V138" stroke="#4f7a2a" stroke-width="4"/>';
+function leafSVG(kind){
+  const G="#7cc05a", Y="#e8d35a";
+  let b="";
+  switch(kind){
+    case "yellow": b=`<path d="${LEAF}" fill="${Y}" stroke="#b5a02a" stroke-width="2"/>${vein("#c9b53a",1.5)}`; break;
+    case "vshape": b=`<path d="${LEAF}" fill="${G}" stroke="#3f7a2a" stroke-width="2"/><path d="M60 6 C74 14 84 28 88 44 L60 74 L32 44 C36 28 46 14 60 6Z" fill="${Y}"/>${vein("#3f7a2a",1.3)}`; break;
+    case "purple": b=`<path d="${LEAF}" fill="#5f8a4a" stroke="#3f5a2a" stroke-width="2"/><path d="${LEAF}" fill="#8a4a9a" opacity=".55"/>${vein("#4a2a5a",1.3)}`; break;
+    case "edge": b=`<path d="${LEAF}" fill="#9a6a3a" stroke="#6b4a2b" stroke-width="2"/><path d="M60 18 C88 32 92 76 60 112 C28 76 32 32 60 18Z" fill="#e8d35a"/><path d="M60 28 C80 40 82 74 60 100 C38 74 40 40 60 28Z" fill="${G}"/>${vein("#3f7a2a",1.3)}`; break;
+    case "inter": b=`<path d="${LEAF}" fill="${Y}" stroke="#b5a02a" stroke-width="2"/>${vein("#3f8a2a",5)}`; break;
+    case "interpale": b=`<path d="${LEAF}" fill="#f4eeb0" stroke="#c9b53a" stroke-width="2"/>${vein("#4f9a3a",4)}`; break;
+    case "spots": b=`<path d="${LEAF}" fill="#c9de8a" stroke="#7a9a3a" stroke-width="2"/>${vein("#4f9a3a",3)}<g fill="#7a4a2a"><circle cx="46" cy="44" r="4"/><circle cx="74" cy="50" r="3.5"/><circle cx="44" cy="72" r="3.5"/><circle cx="76" cy="80" r="4"/><circle cx="56" cy="92" r="3"/></g>`; break;
+    case "palegreen": b=`<path d="${LEAF}" fill="#d6e48a" stroke="#9aaa3a" stroke-width="2"/>${vein("#b5c25a",1.5)}`; break;
+    case "small": return `<svg viewBox="0 0 120 140"><path d="M60 138 V40" stroke="#4f7a2a" stroke-width="4"/><g fill="#a9cf6a" stroke="#3f7a2a" stroke-width="1.5"><ellipse cx="46" cy="40" rx="10" ry="5" transform="rotate(-30 46 40)"/><ellipse cx="74" cy="40" rx="10" ry="5" transform="rotate(30 74 40)"/><ellipse cx="44" cy="48" rx="9" ry="4" transform="rotate(-10 44 48)"/><ellipse cx="76" cy="48" rx="9" ry="4" transform="rotate(10 76 48)"/><ellipse cx="60" cy="32" rx="5" ry="9"/></g><g fill="${G}" stroke="#3f7a2a" stroke-width="1.5"><path d="M60 110 C40 98 26 98 16 104 C28 118 46 118 60 114Z"/><path d="M60 110 C80 98 94 98 104 104 C92 118 74 118 60 114Z"/></g><text x="60" y="16" text-anchor="middle" font-size="11" font-weight="700" fill="#7a4a2a">新葉小、叢生</text></svg>`;
+    case "tipdie": return `<svg viewBox="0 0 120 140"><path d="M60 138 V30" stroke="#4f7a2a" stroke-width="5"/><path d="M60 30 C58 22 60 14 64 8" stroke="#4a2a1a" stroke-width="5" fill="none"/><g stroke="#3f7a2a" stroke-width="1.5"><path d="M60 50 C48 42 40 42 32 46 C40 56 52 56 60 54Z" fill="#a9b04a"/><path d="M60 50 C72 42 80 42 88 46 C80 56 68 56 60 54Z" fill="#a9b04a"/><path d="M60 100 C40 88 26 88 16 94 C28 108 46 108 60 104Z" fill="${G}"/><path d="M60 100 C80 88 94 88 104 94 C92 108 74 108 60 104Z" fill="${G}"/></g><circle cx="64" cy="8" r="6" fill="#4a2a1a"/><text x="88" y="16" font-size="11" font-weight="700" fill="#4a2a1a">枯死</text></svg>`;
+    case "deform": return `<svg viewBox="0 0 120 140"><path d="M60 138 V40" stroke="#4f7a2a" stroke-width="5"/><path d="M60 40 C70 30 72 20 64 12" stroke="#4f7a2a" stroke-width="5" fill="none"/><g stroke="#3f7a2a" stroke-width="1.5"><path d="M62 30 C80 18 92 26 90 36 C80 34 70 40 64 36Z" fill="#b9cf6a"/><path d="M58 52 C40 40 28 48 30 58 C40 56 50 60 58 58Z" fill="#b9cf6a"/></g><ellipse cx="60" cy="104" rx="26" ry="20" fill="#f6b04a" stroke="#c46a17" stroke-width="2"/><g fill="#6b4a2b"><circle cx="50" cy="98" r="4"/><circle cx="68" cy="108" r="5"/><circle cx="58" cy="114" r="3"/></g></svg>`;
+    case "growdie": return `<svg viewBox="0 0 120 140"><path d="M60 138 V24" stroke="#4f7a2a" stroke-width="5"/><circle cx="60" cy="20" r="9" fill="#4a2a1a"/><text x="74" y="14" font-size="11" font-weight="700" fill="#4a2a1a">壞死</text><g stroke="#3f7a2a" stroke-width="1.5"><path d="M60 46 C50 38 42 38 36 42 C44 52 54 52 60 50Z" fill="#4f8a3c"/><path d="M60 46 C70 38 78 38 84 42 C76 52 66 52 60 50Z" fill="#4f8a3c"/><path d="M60 96 C40 84 26 84 16 90 C28 104 46 104 60 100Z" fill="#4f8a3c"/><path d="M60 96 C80 84 94 84 104 90 C92 104 74 104 60 100Z" fill="#4f8a3c"/></g><path d="M44 124 C40 132 48 136 56 132 C60 126 54 120 44 124Z" fill="#e3c48f" stroke="#8a5a35"/><text x="80" y="132" font-size="10" fill="#6b4a2b">空莢</text></svg>`;
+    case "bronze": b=`<path d="${LEAF}" fill="#b08a4a" stroke="#7a5a2a" stroke-width="2"/>${vein("#7a5a2a",1.5)}`; break;
+    case "curl": b=`<path d="M60 6 C96 22 104 76 60 126 C16 76 24 22 60 6Z" fill="#e3d36a" stroke="#9a8a2a" stroke-width="2" transform="scale(1 .8) translate(0 14)"/><path d="M24 50 C30 40 36 36 44 34 M96 50 C90 40 84 36 76 34" stroke="#7a4a2a" stroke-width="5" fill="none"/>${vein("#9a8a2a",1.5)}`; break;
+    default: b=`<path d="${LEAF}" fill="${G}" stroke="#3f7a2a" stroke-width="2"/>${vein("#3f7a2a",1.3)}`;
+  }
+  return `<svg viewBox="0 0 120 140">${b}${stem}</svg>`;
+}
+const DEF={N:["vshape","老葉先黃（從葉尖 V 字形）"],P:["purple","老葉暗綠帶紫"],K:["edge","老葉葉緣焦枯"],Mg:["inter","老葉脈間黃、葉脈綠"],Cl:["bronze","葉片青銅色"],
+ Ca:["growdie","生長點壞死、落花生空莢"],B:["deform","生長點彎曲、果實壞死"],Fe:["interpale","新葉脈間黃化、葉脈綠"],Mn:["spots","新葉淡綠＋壞死斑點"],Zn:["small","新葉小、叢生"],S:["palegreen","新葉整片黃綠"],Cu:["tipdie","幼枝枯死"],Mo:["curl","像缺氮、葉緣焦捲"],
+ C:["ok","不易缺乏"],H:["ok","不易缺乏"],O:["ok","不易缺乏"],Ni:["ok","症狀不明顯"]};
 function renderEl(k){
   document.querySelectorAll(".el").forEach(b=>b.setAttribute("aria-pressed",b.dataset.e===k));
+  document.querySelectorAll(".dchips g").forEach(g=>g.classList.toggle("on",g.dataset.e===k));
   const e=EL[k], grp={main:"主要元素",sec:"次要元素",tr:"微量元素"}[e.g];
   const mob = k==="Mo"||k==="Ni"||["C","H","O"].includes(k) ? "" : `<span class="pill ${e.mob?"mid":"ok"}">${e.mob?"移轉型：老葉先出現":"非移轉型：新葉先出現"}</span>`;
-  $("elInfo").innerHTML=`<h3>${k}　${e.n}<span class="pill ok">${grp}</span>${e.a?`<span class="pill mid">${e.a}</span>`:""}${mob}</h3><dl><dt>功能</dt><dd>${e.f}</dd><dt>缺乏症狀</dt><dd>${e.s}</dd></dl>`;
+  const d=DEF[k];
+  $("elInfo").innerHTML=`<h3>${k}　${e.n}<span class="pill ok">${grp}</span>${e.a?`<span class="pill mid">${e.a}</span>`:""}${mob}</h3><div class="eflex"><div class="leafpic">${leafSVG(d[0])}<small>${d[1]}</small></div><dl><dt>功能</dt><dd>${e.f}</dd><dt>缺乏症狀</dt><dd>${e.s}</dd></dl></div>`;
 }
+document.querySelectorAll(".dchips g").forEach(g=>{ g.setAttribute("tabindex","0"); g.setAttribute("role","button"); g.setAttribute("aria-label",EL[g.dataset.e].n); g.onclick=()=>{renderEl(g.dataset.e); $("elInfo").scrollIntoView({behavior:"smooth",block:"nearest"});}; g.onkeydown=ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();g.onclick();}}; });
 document.querySelectorAll(".el").forEach(b=>b.onclick=()=>renderEl(b.dataset.e));
 renderEl("N");
 
