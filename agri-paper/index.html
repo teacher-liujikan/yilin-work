@@ -136,8 +136,31 @@ figcaption{font-size:15px;line-height:1.5;margin-top:6px;text-align:center;color
 .ps{position:relative;z-index:1;font:inherit;font-weight:900;font-size:16px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:12px;padding:8px 2px;cursor:pointer;min-height:64px;line-height:1.25}
 .ps small{display:block;font-size:11px;font-weight:700;opacity:.75}
 .ps[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
-.pinfo{margin-top:10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:10px 14px;min-height:72px}
-.pinfo b{font-size:18px}
+.pinfo{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);padding:12px 14px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.pinfo{grid-template-columns:1fr}}
+.pinfo .part{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:4px}
+.pinfo .part svg{width:100%;height:auto;display:block}
+.pinfo h3{font-size:22px;margin:0 0 4px}
+.pinfo h3 small{font-size:14px;color:var(--soil);font-weight:700;margin-left:6px}
+.pinfo p{margin:4px 0;font-size:18px}
+.pinfo .why{font-size:15px;border:1.5px dashed var(--soil);border-radius:10px;padding:6px 10px;margin-top:8px;background:var(--soil-soft)}
+.pipebar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}
+.pinfo.paused *{animation-play-state:paused!important}
+.a-up{animation:up 2.4s ease-in infinite}
+@keyframes up{0%{transform:translateY(0);opacity:0}15%{opacity:1}100%{transform:translateY(-72px);opacity:0}}
+.a-slide{animation:slide 4s linear infinite}
+@keyframes slide{0%{transform:translate(0,0);opacity:0}8%{opacity:1}78%{transform:translate(196px,0);opacity:1}100%{transform:translate(214px,34px);opacity:0}}
+.a-belt{animation:belt .8s linear infinite}
+@keyframes belt{to{stroke-dashoffset:-20}}
+.a-grow{animation:grow 3.2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes grow{0%,15%{transform:scale(0)}55%,100%{transform:scale(1)}}
+.a-scrape{animation:scrape 2.6s ease-in-out infinite alternate}
+@keyframes scrape{from{transform:translateX(-70px)}to{transform:translateX(70px)}}
+.a-roll{animation:roll 5s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes roll{from{transform:scale(.45)}to{transform:scale(1)}}
+.a-swirl{animation:rot 3s linear infinite;transform-box:view-box;transform-origin:160px 88px}
+.a-fade{animation:fadeio 3s ease-in-out infinite}
+@keyframes fadeio{0%,100%{opacity:.15}50%{opacity:1}}
 @media (max-width:720px){.pipe{grid-template-columns:repeat(4,minmax(0,1fr))}.pipe .track,.pipe .runner{display:none}}
 
 /* 循環圖 */
@@ -368,6 +391,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <div class="card">
       <h2>工廠怎麼做再生紙？<span class="sec">點每一站看說明</span></h2>
       <div class="pipe" id="pipe"><div class="track"></div><div class="runner"></div></div>
+      <div class="pipebar"><span class="ex">點上面任一站，下面會播放那一站的動畫。</span><span><button class="btn ghost sm" id="pAuto">▶ 自動播放</button> <button class="btn ghost sm" id="pPause">⏸ 暫停動畫</button></span></div>
       <div class="pinfo" id="pinfo" aria-live="polite"></div>
     </div>
 
@@ -392,7 +416,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
           <ul>
             <li>作物收穫後留下的<span class="key">稻稈、筍殼、蔗渣、果皮</span>都含纖維素 → 可以造紙</li>
             <li>台灣稻稈每年約 <span class="key">150 萬公噸</span>，常被<span class="key">露天焚燒</span> → 空氣污染、浪費資源</li>
-            <li>南投埔里：茭白筍田約 1800 公頃（占全台約 85%），紙廠把<span class="key">茭白筍殼</span>和<span class="key">甘蔗渣</span>做成手工紙</li>
+            <li>南投埔里：茭白筍田約 1800 公頃（占全台約 85%），紙廠把<span class="key">茭白筍殼</span>和<span class="key">甘蔗渣</span>做成手工紙<br><a href="https://news.tvbs.com.tw/life/2665527" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;font-size:15px">📰 新聞來源：TVBS〈甘蔗渣、茭白筍殼入料做紙 農廢棄物循環再生〉2024/10/27</a></li>
             <li>農廢紙通常<span class="key">不漂白</span>，保留植物自然的顏色和紋理</li>
           </ul>
         </div>
@@ -563,21 +587,66 @@ document.addEventListener("click",e=>{ const k=e.target.closest(".key"); if(k&&d
 })();
 
 /* ---------- 工廠流程 ---------- */
+const T=(x,y,t,a="middle")=>`<text class="s-txt" x="${x}" y="${y}" text-anchor="${a}">${t}</text>`;
 const PIPE=[
- ["散漿","打散","廢紙加水攪打，散成纖維和水混合的漿。"],
- ["除雜","篩選","篩掉釘書針、塑膠、膠帶等不是紙的東西。"],
- ["脫墨","洗墨","用脫墨劑把油墨洗掉。做白紙、新聞紙要脫墨；工業用紙（紙板）不用。"],
- ["磨漿","帚化","把纖維表面磨得起毛（帚化），增加纖維交織，提高強度。多次回收的短纖維特別需要。"],
- ["淨漿","離心","利用比重不同，以離心法去除灰塵、銅版紙表面的石粉等細小雜質。"],
- ["調漿","配比","依產品把不同廢紙漿調勻，必要時加入原木漿增加強韌度。"],
- ["抄紙","成形","紙漿鋪在網上脫水，纖維交織成濕紙。"],
- ["乾燥","成紙","壓水、烘乾、捲成紙捲，再生紙完成！"]
+ {n:"散漿",s:"打散",d:"廢紙丟進大桶（碎漿機），加水用轉子強力攪拌。",why:"紙泡水後氫鍵被打開，攪一攪就散成纖維和水混在一起的「紙漿」。",
+  art:`<svg viewBox="0 0 320 170"><path class="s-pulp" d="M64 52 L64 130 Q64 138 72 138 L248 138 Q256 138 256 130 L256 52 Z"/><path class="s-tub" d="M60 30 L60 130 Q60 142 72 142 L248 142 Q260 142 260 130 L260 30"/>
+   <g class="a-swirl">${[0,60,120,180,240,300].map((a,i)=>{const r=44,x=160+r*Math.cos(a*Math.PI/180),y=88+r*Math.sin(a*Math.PI/180)*0.55;return i%2?`<rect class="s-sheet" x="${(x-9).toFixed(0)}" y="${(y-7).toFixed(0)}" width="18" height="14" transform="rotate(${a} ${x.toFixed(0)} ${y.toFixed(0)})"/>`:`<path d="M${(x-10).toFixed(0)} ${y.toFixed(0)} q5 -5 10 0 t10 0" stroke="var(--fiber)" stroke-width="3" fill="none" stroke-linecap="round"/>`;}).join("")}</g>
+   <g class="a-rot"><path d="M140 128 L180 128 M160 118 L160 138" stroke="var(--muted)" stroke-width="6" stroke-linecap="round"/></g>
+   ${T(160,22,"廢紙＋水")}${T(160,162,"轉子攪拌 → 紙片散成纖維")}</svg>`},
+ {n:"除雜",s:"篩選",d:"紙漿流過有小孔的篩網，纖維穿過孔洞往下，釘書針、塑膠、膠帶留在網上被送走。",why:"先把「不是紙」的東西挑掉，後面的機器才不會壞。",
+  art:`<svg viewBox="0 0 320 170"><line x1="30" y1="80" x2="250" y2="80" stroke="var(--muted)" stroke-width="5" stroke-dasharray="14 6"/>
+   <rect x="258" y="74" width="46" height="46" rx="4" fill="none" stroke="var(--bad)" stroke-width="3"/>${T(281,136,"雜質")}
+   <g class="a-slide"><path d="M30 64 v10 h14 v-10" stroke="var(--muted)" stroke-width="3" fill="none"/></g>
+   <g class="a-slide" style="animation-delay:1.3s"><rect x="28" y="62" width="18" height="12" fill="var(--g3)" rx="2"/></g>
+   <g class="a-slide" style="animation-delay:2.6s"><rect x="28" y="66" width="20" height="7" fill="#d9c27a" rx="2"/></g>
+   ${[70,110,150,190,230].map((x,i)=>`<path class="a-drop" d="M${x} 84 q4 4 0 9" stroke="var(--fiber)" stroke-width="3" fill="none" stroke-linecap="round" style="animation-delay:${i*.3}s"/>`).join("")}
+   <path class="s-pulp" d="M40 140 L240 140 L232 158 L48 158 Z"/>${T(140,152,"乾淨紙漿")}${T(140,30,"紙漿流過篩網 →")}${T(140,48,"釘書針、塑膠、膠帶被留下")}</svg>`},
+ {n:"脫墨",s:"洗墨",d:"在紙漿裡打入空氣，油墨會黏在氣泡上浮到表面，變成黑色泡沫被刮掉。",why:"做白紙、新聞紙要脫墨；紙板等工業用紙顏色不重要，可以不脫墨。",
+  art:`<svg viewBox="0 0 320 170"><path class="s-pulp" d="M64 50 L64 138 L256 138 L256 50 Z"/><path class="s-tub" d="M60 30 L60 142 L260 142 L260 30"/>
+   <rect x="64" y="42" width="192" height="14" fill="#6d665e"/><g class="a-scrape"><rect x="150" y="26" width="20" height="22" rx="3" fill="var(--wood)"/></g>
+   ${[90,125,160,195,230].map((x,i)=>`<g class="a-up" style="animation-delay:${i*.45}s"><circle cx="${x}" cy="130" r="8" fill="none" stroke="var(--water2)" stroke-width="2.5"/><circle cx="${x+5}" cy="125" r="3" fill="${'#2b2622'}"/></g>`).join("")}
+   <path d="M150 158 L170 158 M160 158 L160 142" stroke="var(--water2)" stroke-width="4"/>${T(290,52,"黑色","middle")}${T(290,68,"泡沫","middle")}${T(160,20,"刮掉含油墨的泡沫")}${T(60,162,"打入空氣","start")}</svg>`},
+ {n:"磨漿",s:"帚化",d:"紙漿通過兩片高速旋轉的磨盤，纖維表面被磨得起毛，像掃把一樣分岔。",why:"起毛的纖維更容易互相勾住、形成更多氫鍵，紙就更強韌。回收多次的短纖維特別需要。",
+  art:`<svg viewBox="0 0 320 170"><g class="a-rot" style="animation-duration:1s"><circle cx="160" cy="80" r="34" fill="var(--paper)" stroke="var(--muted)" stroke-width="4"/>${[0,45,90,135].map(a=>`<line x1="160" y1="46" x2="160" y2="114" stroke="var(--muted)" stroke-width="2" transform="rotate(${a} 160 80)"/>`).join("")}</g>${T(160,134,"旋轉磨盤")}
+   <line x1="20" y1="80" x2="100" y2="80" stroke="var(--fiber)" stroke-width="5" stroke-linecap="round"/>${T(60,110,"磨漿前：光滑")}
+   <path d="M114 80 L120 80" stroke="var(--muted)" stroke-width="2"/><path d="M200 80 L206 80" stroke="var(--muted)" stroke-width="2"/>
+   <line x1="220" y1="80" x2="300" y2="80" stroke="var(--fiber)" stroke-width="5" stroke-linecap="round"/>
+   ${[230,245,260,275,290].map((x,i)=>`<g class="a-grow" style="animation-delay:${i*.15}s"><path d="M${x} 80 l-6 -14 M${x} 80 l6 -12 M${x} 80 l-5 13 M${x} 80 l7 12" stroke="var(--fiber)" stroke-width="2" stroke-linecap="round"/></g>`).join("")}${T(260,110,"磨漿後：起毛")}${T(160,162,"纖維分岔 → 更容易互相勾住")}</svg>`},
+ {n:"淨漿",s:"離心",d:"紙漿在圓錐形的管子裡高速旋轉，重的沙子、石粉被甩到外圈往下沉，輕的纖維從上面出去。",why:"利用「比重不同」分開：銅版紙表面的石粉、灰塵在這裡被去掉。",
+  art:`<svg viewBox="0 0 320 170"><path d="M110 22 L210 22 L172 140 L148 140 Z" fill="var(--pulp)" stroke="var(--muted)" stroke-width="3"/>
+   <path id="spiral" d="M120 30 Q205 34 190 48 Q160 60 130 52 Q118 66 185 72 Q190 86 145 92 Q150 104 178 108 Q172 124 160 132 L160 160" fill="none" stroke="var(--muted)" stroke-dasharray="4 4" opacity=".6"/>
+   ${[0,1,2].map(i=>`<circle r="5" fill="#6d665e"><animateMotion dur="3s" repeatCount="indefinite" begin="${i}s" path="M120 30 Q205 34 190 48 Q160 60 130 52 Q118 66 185 72 Q190 86 145 92 Q150 104 178 108 Q172 124 160 132 L160 160"/></circle>`).join("")}
+   ${[0,1].map(i=>`<path d="M-6 0 q3 -4 6 0 t6 0" stroke="var(--fiber)" stroke-width="3" fill="none"><animateMotion dur="2.4s" repeatCount="indefinite" begin="${i*1.2}s" path="M160 80 L160 10 L290 10"/></path>`).join("")}
+   ${T(222,40,"輕的纖維","start")}${T(222,58,"↑ 往上出去","start")}${T(16,140,"重的沙、石粉","start")}${T(16,158,"↓ 往下排掉","start")}</svg>`},
+ {n:"調漿",s:"配比",d:"不同種類的廢紙漿按比例倒進大桶攪勻；需要更強時加一點原木漿（長纖維）。",why:"廢紙纖維較短，補一些長纖維，紙才夠強韌。",
+  art:`<svg viewBox="0 0 320 170">${[["廢紙漿 A",50],["廢紙漿 B",160],["原木漿",270]].map(([t,x],i)=>`<rect x="${x-34}" y="14" width="68" height="34" rx="6" fill="var(--pulp)" stroke="var(--muted)" stroke-width="2"/>${T(x,36,t)}<path class="a-belt" d="M${x} 50 Q${x} 80 ${160+(x-160)*0.35} 100" fill="none" stroke="${i==2?"var(--wood)":"var(--pulp2)"}" stroke-width="6" stroke-dasharray="10 10"/>`).join("")}
+   <path class="s-pulp" d="M86 100 L234 100 L226 156 L94 156 Z"/><path class="s-tub" d="M80 92 L92 160 L228 160 L240 92"/>
+   <g class="a-stir"><line x1="160" y1="84" x2="160" y2="150" stroke="var(--wood)" stroke-width="5" stroke-linecap="round"/></g>${T(160,140,"攪勻")}</svg>`},
+ {n:"抄紙",s:"成形",d:"紙漿噴到一直往前跑的網子上，水從網孔往下漏，纖維留在網上交織成濕紙。",why:"和我們手抄紙一樣是「用網子撈纖維、讓水漏掉」，只是工廠的網子會一直轉。",
+  art:`<svg viewBox="0 0 320 170"><rect x="14" y="40" width="52" height="40" rx="6" fill="var(--muted)"/>${T(40,32,"噴漿箱")}
+   <path class="a-belt" d="M60 88 L270 88" stroke="var(--pulp2)" stroke-width="5" stroke-dasharray="6 4"/>
+   <rect x="66" y="84" width="10" height="5" class="s-pulp2"/><rect x="80" y="82" width="200" height="6" class="s-sheet"/>
+   <rect x="60" y="88" width="230" height="40" rx="20" fill="none" stroke="var(--mesh)" stroke-width="4" stroke-dasharray="10 6" class="a-belt"/>
+   ${[110,150,190,230].map((x,i)=>`<circle class="a-drop" cx="${x}" cy="132" r="3.5" fill="var(--water2)" style="animation-delay:${i*.3}s"/>`).join("")}
+   ${T(180,74,"纖維留在網上 → 濕紙")}${T(175,162,"水從網孔往下漏")}<path d="M240 52 L280 52" stroke="var(--accent)" stroke-width="3"/><path d="M274 46 L282 52 L274 58" fill="none" stroke="var(--accent)" stroke-width="3"/></svg>`},
+ {n:"乾燥",s:"成紙",d:"濕紙先壓掉水，再繞過一排加熱的滾筒烘乾，最後捲成大紙捲。",why:"水分蒸發，纖維靠近形成氫鍵，紙就定型了。",
+  art:`<svg viewBox="0 0 320 170"><path d="M20 70 Q60 70 70 100 Q80 130 110 100 Q130 70 150 100 Q170 130 190 100 Q210 70 230 100 L262 112" fill="none" class="a-belt" stroke="var(--sheet)" stroke-width="5" stroke-dasharray="12 3" style="stroke:var(--pulp2)"/>
+   ${[90,170].map(x=>`<g class="a-rot" style="animation-duration:2.5s"><circle cx="${x}" cy="112" r="22" fill="#c46a17" opacity=".85"/><line x1="${x-22}" y1="112" x2="${x+22}" y2="112" stroke="#fff" stroke-width="2"/></g>`).join("")}
+   ${[130,210].map(x=>`<g class="a-rot" style="animation-duration:2.5s"><circle cx="${x}" cy="88" r="20" fill="#c46a17" opacity=".7"/><line x1="${x}" y1="68" x2="${x}" y2="108" stroke="#fff" stroke-width="2"/></g>`).join("")}
+   ${[100,140,180].map((x,i)=>`<path class="a-up" d="M${x} 60 q-5 -8 0 -16 t0 -16" fill="none" stroke="var(--water2)" stroke-width="2.5" style="animation-delay:${i*.6}s"/>`).join("")}
+   <g class="a-roll"><circle cx="282" cy="112" r="24" fill="var(--sheet)" stroke="var(--pulp2)" stroke-width="2"/><circle cx="282" cy="112" r="16" fill="none" stroke="var(--pulp2)"/><circle cx="282" cy="112" r="5" fill="var(--muted)"/></g>
+   ${T(140,162,"加熱滾筒烘乾 → 捲成紙捲")}${T(140,20,"水蒸氣")}</svg>`}
 ];
 (function(){
-  const box=$("pipe");
-  PIPE.forEach((p,i)=>{ const b=document.createElement("button"); b.className="ps"; b.dataset.i=i; b.innerHTML=`${p[0]}<small>${i+1}・${p[1]}</small>`; b.onclick=()=>pick(i); box.appendChild(b); });
-  function pick(i){ box.querySelectorAll(".ps").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.i===i)); $("pinfo").innerHTML=`<b>${i+1}. ${PIPE[i][0]}</b>　${PIPE[i][2]}`; }
-  pick(2);
+  const box=$("pipe"), info=$("pinfo"); let cur=0, timer=null, pz=false;
+  PIPE.forEach((p,i)=>{ const b=document.createElement("button"); b.className="ps"; b.dataset.i=i; b.innerHTML=`${p.n}<small>${i+1}・${p.s}</small>`; b.onclick=()=>{ stopAuto(); pick(i); }; box.appendChild(b); });
+  function pick(i){ cur=i; box.querySelectorAll(".ps").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.i===i)); const p=PIPE[i];
+    info.innerHTML=`<div class="part" role="img" aria-label="${p.n}示意動畫">${p.art}</div><div><h3>${i+1}. ${p.n}<small>${p.s}</small></h3><p>${p.d}</p><div class="why"><b>為什麼？</b>${p.why}</div></div>`; }
+  function stopAuto(){ if(timer){ clearInterval(timer); timer=null; $("pAuto").textContent="▶ 自動播放"; } }
+  $("pAuto").onclick=()=>{ if(timer){ stopAuto(); return; } $("pAuto").textContent="■ 停止輪播"; pick((cur+1)%PIPE.length); timer=setInterval(()=>pick((cur+1)%PIPE.length),5000); };
+  $("pPause").onclick=()=>{ pz=!pz; info.classList.toggle("paused",pz); info.querySelectorAll("svg").forEach(s=>pz?s.pauseAnimations&&s.pauseAnimations():s.unpauseAnimations&&s.unpauseAnimations()); $("pPause").textContent=pz?"▶ 播放動畫":"⏸ 暫停動畫"; };
+  pick(0);
 })();
 
 /* ---------- 動手做：步驟動畫 ---------- */
