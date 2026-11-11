@@ -187,7 +187,7 @@ input[type=range]{width:100%;accent-color:var(--accent);margin:8px 0 0}
 .qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 .progress{display:flex;gap:4px;flex-wrap:wrap}
 .dot{width:18px;height:8px;border-radius:4px;background:var(--line)}
-.dot.ok{background:var(--ok)}.dot.bad{background:var(--bad)}.dot.now{background:var(--accent);opacity:.5}
+.dot.ok{background:var(--ok)}.dot.bad{background:var(--bad)}.dot.now{background:var(--line)}
 .qtype{font-size:14px;font-weight:700;color:var(--accent);letter-spacing:.06em}
 .qsrc{font-size:13px;font-weight:700;color:var(--soil);background:var(--soil-soft);border-radius:999px;padding:0 8px;margin-left:6px}
 .qtext{font-size:22px;line-height:1.75;margin:10px 0 14px;font-weight:500}
@@ -212,6 +212,14 @@ input[type=range]{width:100%;accent-color:var(--accent);margin:8px 0 0}
 .overlay p{font-size:22px;font-weight:700;margin:12px 0 0}
 .overlay small{display:block;color:#6c5f52;margin-top:4px;word-break:break-all}
 footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
+.qnav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap}
+.qcount{font-size:14px;color:var(--muted);font-weight:700}
+.btn.sm{min-height:36px;padding:4px 14px;font-size:14px}
+.btn.warn{background:var(--bad);color:#fff;border-color:var(--bad)}
+button.dot{border:0;padding:0;cursor:pointer;width:22px;height:12px}
+.dot.now{outline:2px solid var(--accent);outline-offset:2px}
+.dot.ok.now{background:var(--ok)}.dot.bad.now{background:var(--bad)}
+@media (max-width:599px){.qnav .btn{flex:1}.qcount{order:-1;width:100%;text-align:center}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 .layer.r1{background:#5c7a3a;min-height:74px}.layer.r2{background:#7f9a4c;min-height:56px}.layer.r3{background:#a8b86a;color:#2a2118;min-height:48px}.layer.r4{background:#d8c38a;color:#2a2118;min-height:44px;border-radius:0 0 40px 40px}
@@ -773,40 +781,48 @@ const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math
 let quiz=null;
 function startQuiz(only){
   const base = only ? only.map(k=>QS[k]) : QS;
-  quiz={retry:!!only,qs:base.map(q=>({...q,idx:QS.indexOf(q),opts:q.fixed?[...q.o]:shuffle(q.o),ans:q.o[q.a]})),i:0,res:[]};
+  quiz={retry:!!only,qs:base.map(q=>({...q,idx:QS.indexOf(q),opts:q.fixed?[...q.o]:shuffle(q.o),ans:q.o[q.a]})),i:0,res:[],pick:[],done:false};
   renderQuiz();
 }
-const strip=o=>o.replace(/^\([A-D]\)\s*/,"");
-function dots(){ return quiz.qs.map((_,k)=>`<span class="dot ${quiz.res[k]===true?"ok":quiz.res[k]===false?"bad":k===quiz.i?"now":""}"></span>`).join(""); }
+const stripL=o=>o.replace(/^\([A-D]\)\s*/,"");
+function dots(){ return quiz.qs.map((_,k)=>`<button class="dot ${quiz.res[k]===true?"ok":quiz.res[k]===false?"bad":""}${k===quiz.i&&!quiz.done?" now":""}" data-go="${k}" aria-label="第 ${k+1} 題"></button>`).join(""); }
 function saveBest(n,total){ try{ const s=JSON.parse(localStorage.getItem(KEY)||"{}"); if(!s.best||n>s.best)s.best=n; s.total=total; localStorage.setItem(KEY,JSON.stringify(s)); return s; }catch(e){ return null; } }
+function goQ(k){ quiz.i=k; quiz.done=false; renderQuiz(); window.scrollTo({top:0}); }
+function bindCommon(P){
+  P.querySelectorAll(".dot[data-go]").forEach(d=>d.onclick=()=>goQ(+d.dataset.go));
+  const r=P.querySelector("#qReset");
+  if(r) r.onclick=()=>{ if(r.dataset.arm){ startQuiz(); window.scrollTo({top:0}); } else { r.dataset.arm="1"; r.textContent="確定要從頭開始？再按一次"; r.classList.add("warn"); setTimeout(()=>{ if(r.isConnected){ delete r.dataset.arm; r.textContent="↺ 重新開始"; r.classList.remove("warn"); } },3000); } };
+}
 function renderQuiz(){
   const P=$("p6"), {qs,i,res}=quiz;
-  if(i>=qs.length){
-    const n=res.filter(Boolean).length, tot=qs.length, s=quiz.retry?null:saveBest(n,tot), r=n/tot;
+  const answered=res.filter(x=>x!==undefined).length;
+  if(quiz.done){
+    const n=res.filter(Boolean).length, tot=qs.length, skip=tot-answered, s=quiz.retry?null:saveBest(n,tot), r=n/tot;
     const msg=r===1?(quiz.retry?"錯題全部訂正完成！":"全對！作物生產你已經掌握了！"):r>=.8?"很棒！把錯的題目再訂正一次。":r>=.6?"不錯喔！回到重點頁再複習一下。":"別灰心，先回重點頁看一看，再來挑戰！";
-    const wr=qs.map((q,k)=>({q,k})).filter(x=>res[x.k]===false);
-    P.innerHTML=`<div class="card" style="text-align:center"><div class="qtype">${quiz.retry?"錯題再練結果":"測驗結果"}</div><div class="score">${n} / ${tot}</div><p>${msg}</p>${s&&s.best?`<p style="color:var(--muted);font-size:15px">這台裝置的最佳紀錄：${s.best} / ${s.total}</p>`:""}<div class="progress" style="justify-content:center">${dots()}</div>
-      ${wr.length?`<div class="review"><b>訂正一下：</b>${wr.map(({q})=>`<div class="item">${q.q}<br><b>正確答案：${strip(q.ans)}</b><br><span style="color:var(--muted)">${q.why}</span></div>`).join("")}</div>`:""}
-      <div class="actions" style="justify-content:center">${wr.length?`<button class="btn" id="retry">錯題再練（${wr.length} 題）</button>`:""}<button class="btn ghost" id="again">整份重測</button><button class="btn ghost" id="back1">回去複習</button></div></div>`;
-    $("again").onclick=()=>startQuiz(); $("back1").onclick=()=>show("t1");
+    const wr=qs.map((q,k)=>({q,k})).filter(x=>res[x.k]!==true);
+    P.innerHTML=`<div class="card" style="text-align:center"><div class="qtype">${quiz.retry?"錯題再練結果":"測驗結果"}</div><div class="score">${n} / ${tot}</div><p>${msg}${skip?`<br><span style="color:var(--bad)">還有 ${skip} 題沒作答</span>`:""}</p>${s&&s.best?`<p style="color:var(--muted);font-size:15px">這台裝置的最佳紀錄：${s.best} / ${s.total}</p>`:""}<div class="progress" style="justify-content:center">${dots()}</div><p class="ex" style="margin:4px 0 0">點上面的小方塊可以回到那一題。</p>
+      ${wr.length?`<div class="review"><b>訂正一下：</b>${wr.map(({q,k})=>`<div class="item"><b>第 ${k+1} 題</b>${res[k]===undefined?"（未作答）":""}　${q.q}${q.list?`<br>${q.list}`:""}<br><b>正確答案：${stripL(q.ans)}</b><br><span style="color:var(--muted)">${q.why}</span></div>`).join("")}</div>`:""}
+      <div class="actions" style="justify-content:center">${wr.length?`<button class="btn" id="retry">錯題再練（${wr.length} 題）</button>`:""}<button class="btn ghost" id="qReset">↺ 重新開始</button><button class="btn ghost" id="back1">回去複習</button></div></div>`;
+    $("back1").onclick=()=>show("t1");
     if($("retry")) $("retry").onclick=()=>startQuiz(wr.map(x=>x.q.idx));
-    return;
+    bindCommon(P); return;
   }
-  const q=qs[i];
-  P.innerHTML=`<div class="card"><div class="qhead"><span class="qtype">${quiz.retry?"錯題再練・":""}第 ${i+1} 題／共 ${qs.length} 題${q.src?`<span class="qsrc">${q.src}</span>`:""}</span><div class="progress">${dots()}</div></div>
-    <div class="qtext">${q.q}</div>
-    <div class="opts">${q.opts.map((o,k)=>`<button class="opt" data-k="${k}"><span class="k">${"ABCD"[k]}</span><span>${strip(o)}</span></button>`).join("")}</div>
-    <div id="fb" aria-live="polite"></div><div class="actions" style="justify-content:flex-end"><button class="btn" id="next" hidden>${i===qs.length-1?"看結果":"下一題"}</button></div></div>`;
+  const q=qs[i], picked=quiz.pick[i], locked=res[i]!==undefined, last=i===qs.length-1;
+  const fb = locked ? `<div class="feedback ${res[i]?"ok":"bad"}"><b>${res[i]?"答對了！":"再想想，正確答案是「"+stripL(q.ans)+"」"}</b><span class="why">${q.why}</span></div>` : "";
+  P.innerHTML=`<div class="card"><div class="qhead"><span class="qtype">${quiz.retry?"錯題再練・":""}第 ${i+1} 題／共 ${qs.length} 題${q.src?`<span class="qsrc">${q.src}</span>`:""}</span><button class="btn ghost sm" id="qReset">↺ 重新開始</button></div>
+    <div class="progress" style="margin-top:8px">${dots()}</div>
+    <div class="qtext">${q.q}</div>${q.list?`<div class="qlist">${q.list}</div>`:""}
+    <div class="opts">${q.opts.map((o,k)=>{ let c=""; if(locked){ if(o===q.ans)c=" right"; else if(k===picked)c=" wrong"; } return `<button class="opt${c}" data-k="${k}" ${locked?"disabled":""}><span class="k">${"ABCD"[k]}</span><span>${stripL(o)}</span></button>`; }).join("")}</div>
+    <div id="fb" aria-live="polite">${fb}</div>
+    <div class="qnav"><button class="btn ghost" id="qPrev" ${i===0?"disabled":""}>← 上一題</button><span class="qcount">已作答 ${answered} / ${qs.length}</span><button class="btn" id="qNext">${last?"看結果":"下一題 →"}</button></div></div>`;
   P.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
     if(quiz.res[i]!==undefined) return;
-    const ok=q.opts[+b.dataset.k]===q.ans; quiz.res[i]=ok;
-    P.querySelectorAll(".opt").forEach(x=>{x.disabled=true; if(q.opts[+x.dataset.k]===q.ans) x.classList.add("right");});
-    if(!ok) b.classList.add("wrong");
-    $("fb").innerHTML=`<div class="feedback ${ok?"ok":"bad"}"><b>${ok?"答對了！":"再想想，正確答案是「"+strip(q.ans)+"」"}</b><span class="why">${q.why}</span></div>`;
-    P.querySelector(".progress").innerHTML=dots();
-    $("next").hidden=false; $("next").focus();
+    const k=+b.dataset.k; quiz.pick[i]=k; quiz.res[i]=q.opts[k]===q.ans; renderQuiz();
+    const n=$("qNext"); if(n) n.focus({preventScroll:true});
   });
-  $("next").onclick=()=>{quiz.i++;renderQuiz();window.scrollTo({top:0});};
+  $("qPrev").onclick=()=>{ if(i>0) goQ(i-1); };
+  $("qNext").onclick=()=>{ if(last){ quiz.done=true; renderQuiz(); window.scrollTo({top:0}); } else goQ(i+1); };
+  bindCommon(P);
 }
 
 const openQR=()=>{$("overlay").hidden=false;};
