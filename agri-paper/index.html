@@ -234,6 +234,32 @@ figcaption{font-size:15px;line-height:1.5;margin-top:6px;text-align:center;color
 .mat b{display:block}
 .mat small{color:var(--muted);font-size:14px;line-height:1.5;display:block}
 
+/* 分組實驗 */
+.route{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:8px}
+@media (max-width:720px){.route{grid-template-columns:1fr}}
+.rt{border:2px solid var(--line);border-radius:12px;background:var(--bg);padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.rt .feel{font-size:14px;font-weight:700;color:var(--muted)}
+.rt b.t{font-size:19px}
+.rt .do{border-top:1px dashed var(--line);padding-top:6px;font-size:16px}
+.rt.r1{border-top:6px solid var(--g2)}.rt.r2{border-top:6px solid var(--g1)}.rt.r3{border-top:6px solid var(--bad)}
+.ex3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:8px}
+@media (max-width:820px){.ex3{grid-template-columns:1fr}}
+.exm{border:1px solid var(--line);border-radius:12px;background:var(--paper);overflow:hidden;min-width:0}
+.exm h3{margin:0;padding:10px 14px;font-size:20px;background:var(--accent-soft);color:var(--accent)}
+.exm h3 small{display:block;font-size:13px;font-weight:700;color:var(--muted)}
+.exm dl{margin:0;padding:8px 14px 12px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 10px;font-size:16px}
+.exm dt{font-weight:700;color:var(--soil);white-space:nowrap}
+.exm dd{margin:0}
+.chk{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.chk label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:17px}
+.chk input{width:22px;height:22px;flex:none;margin-top:3px;accent-color:var(--accent)}
+.kw{display:inline-block;font-size:15px;font-weight:700;border:1.5px solid var(--accent);color:var(--accent);border-radius:999px;padding:1px 10px;margin:3px 4px 3px 0}
+table.t td.n{text-align:center;font-variant-numeric:tabular-nums}
+.timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:8px}
+@media (max-width:720px){.timeline{grid-template-columns:1fr 1fr}}
+.tl{border-left:5px solid var(--accent);background:var(--bg);border-radius:0 10px 10px 0;padding:8px 12px;font-size:16px}
+.tl b{display:block;font-size:17px}
+
 /* 排序 */
 .order{display:flex;flex-direction:column;gap:6px;margin-top:8px}
 .oslot{border:2px dashed var(--line);border-radius:10px;padding:8px 12px;min-height:46px;display:flex;align-items:center;gap:10px;font-weight:700}
@@ -325,7 +351,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <div class="brand">
       <div class="eyebrow">農業資源應用・高二</div>
       <h1>再生紙：讓纖維再活一次</h1>
-      <p class="sub">認識原理 → 農業資源應用 → 動手抄紙 → 動手判斷 → 掃 QR 小測驗</p>
+      <p class="sub">認識原理 → 農業資源應用 → 動手抄紙 → 分組實驗 → 動手判斷 → 掃 QR 小測驗</p>
     </div>
     <div class="qr" id="qrBtn" role="button" tabindex="0" aria-label="放大 QR code"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAADWklEQVR4Xu1cQY7bMAwk1wZ6tH/Qp2R/0Cct+rP4KfsD+xjAAQsOqTi7h7W0TQK24RwMGzEMWSNKMxQdFmrB9NJyNxHl/V8j+yf75xrfGA8LO171QdN4Zn5demLmXi9Jz4A+43EX3+j/JrQ+n0TmTgA6yEp2ehz0Ej/Mnf6g0Mtj6/Pz/gjzjwfn8kNwhkiW43Bii2mEuJ0lXxH4qsdnvkTkxHSYz0zT2In8Hj8+K/n9l/k9M/PYCdGia+3CTDSsf7u+NyHHz23Hj/JIVExSt9L0CyKLiA9y7vnw3q9Eg96w5Py8j4jjU6OWNVaJiN/ee4K0Il2O7YUm/I6ZOmL7W/Bs7XfBbACrKp2JoKkxNbu6dmH9bP3zH7yveV1VyIP6I5VWNJw0nNUazcX/pn6uQbTxoPG7kjlcd73uiY1fC2cVWbDDGb831j/3Hg/OL2jU/Aa4dKYt5+GZDtyS/O7h3ny1Pr/kryyJpdTqgquHzRqJzPpayW8FWvv/AfdjrUWuCq7XcGY5qn5GTKtdElFh/Yj2NOEB/dOEaO0pCWdErS2z2/qLJGVJTNst0dqf7dmB2yBQu621Jp0vJqmsycnvHqKNtyt9VfwvRBbsMOLXpbNL7Gjtz/bsxu+2P4j8RgGmZjlikkaSI/1RBaKNNxPHJX9FbnMtk2Xrr3um9L9ViMmvyWSVVtf5SSPek5Tpj6oQk18Xx7YX6Fkrc73bnJ35qxpE49ccL9Mw68HfQGhhEt0VxKaSTK96GLv0v7uIxu9V/VVBMcGmry7+N/VVDWLy66ln4KKabX62mjvPSaf/3UNUfmF+dC72Ssptu8FNUq6/VYjJr7HqhgizclFapqkvJjjzGzsIyO+GLYgv/teyHyiCzvxGBaLx+2LFzV6/gdLYTvARA85QdeWlG4jpgO1vwjO2v3y/gEodLcPhN6vEQpEO8pNas4Pdw2fsnxZE6x/zR6XWyguufGvfPlIp6699uBKt/dmeHXzg1xPO11lJaGpbmHP/dx/RxttWsWHQgnbPWmkRhwb2ypipDxDY0dqf7fka1j9lk99LnzdphY/MSDl3ZH/W9Gc97t2fShzCVLGM+qXKicuBhIl6kumnaBGWLsX3bk8+/7bjR7lsQP4/w437P8fzbcfzs/XnH9kTduN1AW8lAAAAAElFTkSuQmCC"><span>掃我測驗</span></div>
   </header>
@@ -334,6 +360,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <button class="tab" role="tab" id="t1" aria-selected="true">認識再生紙</button>
     <button class="tab" role="tab" id="t2" aria-selected="false">農業資源應用</button>
     <button class="tab" role="tab" id="t3" aria-selected="false">動手做</button>
+    <button class="tab" role="tab" id="t6" aria-selected="false">分組實驗</button>
     <button class="tab" role="tab" id="t4" aria-selected="false">動手判斷</button>
     <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
   </nav>
@@ -496,6 +523,127 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     </div>
   </section>
 
+
+  <!-- ===== 6 分組實驗 ===== -->
+  <section class="panel" id="p6" hidden>
+    <div class="card">
+      <h2>分組實驗：把農業廢棄物抄進再生紙</h2>
+      <p><b>實驗問題：</b>加入不同比例的農業廢棄物纖維，做出來的紙有什麼不同？</p>
+      <div class="three">
+        <div class="box c1"><b class="t">操作變因（改變的）</b>農廢纖維占乾料的比例：0%、25%、50%、100%</div>
+        <div class="box c2"><b class="t">控制變因（固定的）</b>每批乾料共 10 g、水 1000 cc、同一種廢紙、同一個抄紙框、同樣的乾燥方式</div>
+        <div class="box c3"><b class="t">應變變因（觀察的）</b>顏色紋路、厚度、透光度、吸水性、能不能書寫、耐不耐折</div>
+      </div>
+      <div class="note">0% 是<b>對照組</b>（只用廢紙），用來和加了農廢的紙比較。</div>
+    </div>
+
+    <div class="card">
+      <h2>配方表：每組要準備多少？</h2>
+      <div class="tblwrap"><table class="t">
+        <tr><th>批次</th><th>廢紙</th><th>農廢纖維（乾重）</th><th>水</th><th>說明</th></tr>
+        <tr><td><b>對照組 0%</b></td><td class="n">10 g</td><td class="n">0 g</td><td class="n">1000 cc</td><td>只用廢紙</td></tr>
+        <tr><td><b>25%</b></td><td class="n">7.5 g</td><td class="n">2.5 g</td><td class="n">1000 cc</td><td>每種材料都可以做</td></tr>
+        <tr><td><b>50%</b></td><td class="n">5 g</td><td class="n">5 g</td><td class="n">1000 cc</td><td>每種材料都可以做</td></tr>
+        <tr><td><b>100%</b></td><td class="n">0 g</td><td class="n">10 g</td><td class="n">1000 cc</td><td>只有纖維細長強韌的才做（玉米皮、茭白筍殼、鳳梨葉）</td></tr>
+        <tr><td><b>合計</b></td><td class="n">22.5 g</td><td class="n">17.5 g</td><td class="n">4000 cc</td><td>每批抄 2 張，比較好比較</td></tr>
+      </table></div>
+      <div class="tip"><b>每組要帶：</b>農廢材料<b>乾重至少 20 g</b>（多帶一點預備失敗）。新鮮材料水分很多，帶回來先洗淨、晾乾或曬乾，<b>處理前</b>秤乾重並記錄。乾料共 10 g ／ 1000 cc，落在科展建議的 8～15 g 範圍內。</div>
+    </div>
+
+    <div class="card">
+      <h2>先摸摸看：你的材料走哪一條處理路線？</h2>
+      <div class="route">
+        <div class="rt r1"><span class="feel">摸起來軟、用手撕得開</span><b class="t">路線 A：直接打漿</b>例：玉米皮
+          <div class="do">洗淨 → 剪成 2～3 cm → 泡水 → 打漿。想更細可以先煮 1 小時。</div></div>
+        <div class="rt r2"><span class="feel">硬、撕不太開</span><b class="t">路線 B：清水悶煮</b>例：茭白筍殼、竹筍殼、甘蔗渣、芒草
+          <div class="do">洗淨 → 剪成 2～3 cm → <b>清水煮 1～2 小時，再泡一晚</b> → 打漿。</div></div>
+        <div class="rt r3"><span class="feel">很硬、木頭感、煮完還是硬</span><b class="t">路線 C：鹼煮（老師操作）</b>例：稻稈、粗的莖
+          <div class="do">加<b>碳酸鈉（蘇打灰）＝ 乾料重的 20%</b>（20 g 乾料 → 4 g），煮約 3 小時，冷卻後<b>反覆沖洗到石蕊試紙和自來水一樣</b>再打漿。</div></div>
+      </div>
+      <div class="warnbox"><b>鹼煮安全：</b>只由老師操作；戴護目鏡、橡膠手套、圍裙，保持通風；<b>先放水，再把碳酸鈉加進水裡</b>；用不鏽鋼或琺瑯鍋，<b>不要用鋁鍋</b>。</div>
+      <div class="note">鹼會把黏住纖維的木質素溶掉，纖維才會分開變軟。科展實驗中，只用清水悶煮也能讓鳳梨葉從粗硬變細軟。</div>
+    </div>
+
+    <div class="card">
+      <h2>三個例子</h2>
+      <div class="ex3">
+        <div class="exm"><h3>玉米皮<small>路線 A・最容易成功</small></h3><dl>
+          <dt>哪裡找</dt><dd>家裡煮玉米剝下的苞葉、傳統市場玉米攤、學校農場</dd>
+          <dt>帶多少</dt><dd>乾重 20 g 以上</dd>
+          <dt>處理</dt><dd>洗淨、剪 2～3 cm、泡水後直接打漿（可不煮）</dd>
+          <dt>比例</dt><dd>0／25／50／100% 都做</dd>
+          <dt>預期</dt><dd>纖維細長強韌，100% 也能成紙；顏色偏米黃、看得到纖維</dd></dl></div>
+        <div class="exm"><h3>茭白筍殼<small>路線 B・連結埔里案例</small></h3><dl>
+          <dt>哪裡找</dt><dd>市場菜攤剝下的外殼、家裡煮茭白筍剩的殼、自助餐或餐廳</dd>
+          <dt>帶多少</dt><dd>乾重 20 g 以上</dd>
+          <dt>處理</dt><dd>洗淨、剪 2～3 cm、清水煮 1～2 小時再泡一晚、打漿</dd>
+          <dt>比例</dt><dd>0／25／50／100% 都做</dd>
+          <dt>預期</dt><dd>纖維細長強韌，可不加廢紙；保留自然綠褐色</dd></dl></div>
+        <div class="exm"><h3>甘蔗渣<small>路線 B・要加廢紙漿</small></h3><dl>
+          <dt>哪裡找</dt><dd>甘蔗汁攤、果汁店（向老闆要榨完的渣）</dd>
+          <dt>帶多少</dt><dd>乾重 20 g 以上</dd>
+          <dt>處理</dt><dd><b>先用清水搓洗掉糖分</b>（不然容易發霉、發黏）、剪短、清水煮 1～2 小時再泡一晚、打漿</dd>
+          <dt>比例</dt><dd>只做 0／25／50%</dd>
+          <dt>預期</dt><dd>纖維不易緊密交織，要混廢紙漿才有韌性；表面粗、紋路明顯</dd></dl></div>
+      </div>
+      <div class="tip"><b>想用果皮、菜葉？</b>多汁、含糖的材料（鳳梨皮、香蕉皮、菜葉）容易發霉、有異味：要先煮過、洗乾淨，比例從 25% 開始試。不要用油膩的廚餘。</div>
+    </div>
+
+    <div class="card">
+      <h2>怎麼比較？測試與紀錄</h2>
+      <div class="tblwrap"><table class="t">
+        <tr><th>測試</th><th>做法</th><th>記錄</th></tr>
+        <tr><td><b>外觀</b></td><td>拍照、描述顏色和纖維紋路</td><td>照片＋文字</td></tr>
+        <tr><td><b>透光度</b></td><td>拿到燈前看，亮暗是否均勻</td><td>均勻／普通／不均（○△✕）</td></tr>
+        <tr><td><b>吸水性</b></td><td>滴 1 滴水，計時到完全吸進去</td><td>秒數</td></tr>
+        <tr><td><b>書寫</b></td><td>鉛筆、原子筆、水彩各寫一筆</td><td>好寫／會暈／寫不上去</td></tr>
+        <tr><td><b>耐折</b></td><td>同一處反覆對折，數到出現裂縫</td><td>次數</td></tr>
+        <tr><td><b>耐重</b></td><td>剪同樣大小的紙條，下端夾夾子，一枚一枚加硬幣到斷掉</td><td>硬幣數</td></tr>
+      </table></div>
+      <div class="note">同一種測試，每張紙都要用同樣的大小和做法，結果才能比較。最後討論：哪個比例最適合<b>書寫</b>？哪個最適合<b>包裝、卡片、燈罩</b>？</div>
+    </div>
+
+    <div class="card">
+      <h2>給學生：怎麼找材料？</h2>
+      <div class="two">
+        <div>
+          <h3>去哪裡找</h3>
+          <ul>
+            <li><b>家裡廚房：</b>玉米皮、茭白筍殼、竹筍殼、洋蔥外皮</li>
+            <li><b>傳統市場、菜攤：</b>剝下來要丟的外殼、外葉（先問老闆）</li>
+            <li><b>飲料攤、果汁店：</b>甘蔗渣、鳳梨皮</li>
+            <li><b>學校農場、家裡的田：</b>稻稈、玉米稈、修剪下來的葉片</li>
+            <li><b>校園：</b>落葉、芒草、園藝修剪的枝葉</li>
+          </ul>
+          <h3>查資料關鍵字</h3>
+          <div><span class="kw">（材料名）手抄紙</span><span class="kw">（材料名）造紙</span><span class="kw">植物纖維 手抄紙 科展</span><span class="kw">農業廢棄物 再利用</span><span class="kw">埔里 手工紙</span></div>
+          <p class="ex">查科展作品：到「臺灣科學教育館」的全國中小學科展網站，搜尋「再生紙」「手抄紙」。</p>
+        </div>
+        <div>
+          <h3>選材檢查表</h3>
+          <div class="chk">
+            <label><input type="checkbox" id="ck1"> 拿得到乾重 20 g 以上嗎？</label>
+            <label><input type="checkbox" id="ck2"> 是植物纖維（葉、殼、莖、皮），不是肉、骨頭、油？</label>
+            <label><input type="checkbox" id="ck3"> 有查過資料，知道它大概走 A、B、C 哪條路線？</label>
+            <label><input type="checkbox" id="ck4"> 帶回來能馬上洗淨、晾乾，不會發霉發臭？</label>
+            <label><input type="checkbox" id="ck5"> 能說出它原本是怎麼被丟掉或處理的？（焚燒、堆肥、垃圾）</label>
+          </div>
+          <div class="tip"><b>報告加分：</b>說明這種廢棄物在台灣一年大約有多少、目前怎麼處理、做成紙可以減少什麼問題。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>實習時程（建議）</h2>
+      <div class="timeline">
+        <div class="tl"><b>課前一週</b>分組選材、查資料、蒐集並晾乾材料</div>
+        <div class="tl"><b>第 1 節</b>秤乾重、剪段、泡廢紙；路線 B、C 開始煮，泡一晚</div>
+        <div class="tl"><b>第 2 節</b>打漿、依配方調漿、每批抄 2 張、陰乾</div>
+        <div class="tl"><b>一週後</b>測試紀錄、比較結果、各組上台分享</div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== 4 動手判斷 ===== -->
   <section class="panel" id="p4" hidden>
     <div class="card">
@@ -530,7 +678,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
   <!-- ===== 5 小測驗 ===== -->
   <section class="panel" id="p5" hidden></section>
 
-  <footer>資料參考：環境部資源循環署資源回收網（新北市資源回收網轉載）、主婦聯盟環境保護基金會「手工再生紙」、中小學科展作品「起紙回生」「紙復回春」、TVBS／公視／自由時報農業廢棄物報導。</footer>
+  <footer>資料參考：環境部資源循環署資源回收網（新北市資源回收網轉載）、主婦聯盟環境保護基金會「手工再生紙」、中小學科展作品「起紙回生」「紙復回春」、Science Buddies 植物纖維造紙、TVBS／公視／自由時報農業廢棄物報導。</footer>
 </div>
 
 <div class="overlay" id="overlay" hidden><div class="inner"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAADWklEQVR4Xu1cQY7bMAwk1wZ6tH/Qp2R/0Cct+rP4KfsD+xjAAQsOqTi7h7W0TQK24RwMGzEMWSNKMxQdFmrB9NJyNxHl/V8j+yf75xrfGA8LO171QdN4Zn5demLmXi9Jz4A+43EX3+j/JrQ+n0TmTgA6yEp2ehz0Ej/Mnf6g0Mtj6/Pz/gjzjwfn8kNwhkiW43Bii2mEuJ0lXxH4qsdnvkTkxHSYz0zT2In8Hj8+K/n9l/k9M/PYCdGia+3CTDSsf7u+NyHHz23Hj/JIVExSt9L0CyKLiA9y7vnw3q9Eg96w5Py8j4jjU6OWNVaJiN/ee4K0Il2O7YUm/I6ZOmL7W/Bs7XfBbACrKp2JoKkxNbu6dmH9bP3zH7yveV1VyIP6I5VWNJw0nNUazcX/pn6uQbTxoPG7kjlcd73uiY1fC2cVWbDDGb831j/3Hg/OL2jU/Aa4dKYt5+GZDtyS/O7h3ny1Pr/kryyJpdTqgquHzRqJzPpayW8FWvv/AfdjrUWuCq7XcGY5qn5GTKtdElFh/Yj2NOEB/dOEaO0pCWdErS2z2/qLJGVJTNst0dqf7dmB2yBQu621Jp0vJqmsycnvHqKNtyt9VfwvRBbsMOLXpbNL7Gjtz/bsxu+2P4j8RgGmZjlikkaSI/1RBaKNNxPHJX9FbnMtk2Xrr3um9L9ViMmvyWSVVtf5SSPek5Tpj6oQk18Xx7YX6Fkrc73bnJ35qxpE49ccL9Mw68HfQGhhEt0VxKaSTK96GLv0v7uIxu9V/VVBMcGmry7+N/VVDWLy66ln4KKabX62mjvPSaf/3UNUfmF+dC72Ssptu8FNUq6/VYjJr7HqhgizclFapqkvJjjzGzsIyO+GLYgv/teyHyiCzvxGBaLx+2LFzV6/gdLYTvARA85QdeWlG4jpgO1vwjO2v3y/gEodLcPhN6vEQpEO8pNas4Pdw2fsnxZE6x/zR6XWyguufGvfPlIp6699uBKt/dmeHXzg1xPO11lJaGpbmHP/dx/RxttWsWHQgnbPWmkRhwb2ypipDxDY0dqf7fka1j9lk99LnzdphY/MSDl3ZH/W9Gc97t2fShzCVLGM+qXKicuBhIl6kumnaBGWLsX3bk8+/7bjR7lsQP4/w437P8fzbcfzs/XnH9kTduN1AW8lAAAAAElFTkSuQmCC"><p>用平板或手機掃描，開始小測驗！</p><small>https://teacher-liujikan.github.io/yilin-work/agri-paper/#quiz</small></div></div>
@@ -541,7 +689,7 @@ const $ = id => document.getElementById(id);
 const NS="http://www.w3.org/2000/svg";
 
 /* ---------- 分頁 ---------- */
-const TABS=[["t1","p1"],["t2","p2"],["t3","p3"],["t4","p4"],["t5","p5"]];
+const TABS=[["t1","p1"],["t2","p2"],["t3","p3"],["t6","p6"],["t4","p4"],["t5","p5"]];
 function show(t){
   TABS.forEach(([a,b])=>{ const on=a===t; $(a).setAttribute("aria-selected",on); $(b).hidden=!on; });
   $("blankBar").hidden = !(t==="t1"||t==="t2");
@@ -715,10 +863,10 @@ function renderStep(){
   $("sList").innerHTML=s.l.map(x=>`<li>${x}</li>`).join("");
   $("sTip").innerHTML=`<b>小提醒：</b>${s.tip}`;
   $("sPrev").disabled=sIdx===0;
-  $("sNext").textContent=sIdx===STEPS.length-1?"去排排看 →":"下一步 →";
+  $("sNext").textContent=sIdx===STEPS.length-1?"分組實驗 →":"下一步 →";
 }
 $("sPrev").onclick=()=>{ if(sIdx>0){sIdx--; renderStep();} };
-$("sNext").onclick=()=>{ if(sIdx===STEPS.length-1){ show("t4"); return; } sIdx++; seen.add(sIdx); renderStep(); };
+$("sNext").onclick=()=>{ if(sIdx===STEPS.length-1){ show("t6"); return; } sIdx++; seen.add(sIdx); renderStep(); };
 $("sPause").onclick=()=>{ paused=!paused; $("stage").classList.toggle("paused",paused); $("sPause").textContent=paused?"▶ 播放動畫":"⏸ 暫停動畫"; };
 if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches){ paused=true; $("stage").classList.add("paused"); $("sPause").textContent="▶ 播放動畫"; }
 renderStep();
