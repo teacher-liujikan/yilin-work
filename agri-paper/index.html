@@ -88,6 +88,7 @@ body.blank .key.show{color:var(--mark-ink);background:var(--mark);border-bottom-
 table.t{width:100%;border-collapse:collapse;font-size:16px;min-width:520px}
 table.t th,table.t td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
 table.t th{background:var(--accent-soft);white-space:nowrap}
+table.t td:first-child{white-space:nowrap}
 .btn{font:inherit;font-weight:700;font-size:16px;border:0;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:9px 22px;cursor:pointer;min-height:44px}
 .btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
 .btn:disabled{opacity:.45;cursor:default}
@@ -259,6 +260,18 @@ table.t td.n{text-align:center;font-variant-numeric:tabular-nums}
 @media (max-width:720px){.timeline{grid-template-columns:1fr 1fr}}
 .tl{border-left:5px solid var(--accent);background:var(--bg);border-radius:0 10px 10px 0;padding:8px 12px;font-size:16px}
 .tl b{display:block;font-size:17px}
+
+.a-snip{animation:snip .6s ease-in-out infinite alternate;transform-box:view-box;transform-origin:150px 100px}
+@keyframes snip{from{transform:rotate(-14deg)}to{transform:rotate(4deg)}}
+.a-flame{animation:flame .5s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:bottom}
+@keyframes flame{from{transform:scaleY(.8)}to{transform:scaleY(1.15)}}
+.a-bob{animation:bob 3s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(-34px)}40%,60%{transform:translateY(12px)}}
+.a-fold{animation:fold 1.6s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:left center}
+@keyframes fold{from{transform:scaleX(1)}to{transform:scaleX(-1)}}
+.a-pop{animation:pop 3s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pop{0%,30%{transform:scale(0)}45%,100%{transform:scale(1)}}
+.a-blink{animation:fadeio 1.2s ease-in-out infinite}
 
 /* 排序 */
 .order{display:flex;flex-direction:column;gap:6px;margin-top:8px}
@@ -528,40 +541,44 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
   <section class="panel" id="p6" hidden>
     <div class="card">
       <h2>分組實驗：把農業廢棄物抄進再生紙</h2>
-      <p><b>實驗問題：</b>加入不同比例的農業廢棄物纖維，做出來的紙有什麼不同？</p>
-      <div class="three">
-        <div class="box c1"><b class="t">操作變因（改變的）</b>農廢纖維占乾料的比例：0%、25%、50%、100%</div>
-        <div class="box c2"><b class="t">控制變因（固定的）</b>每批乾料共 10 g、水 1000 cc、同一種廢紙、同一個抄紙框、同樣的乾燥方式</div>
-        <div class="box c3"><b class="t">應變變因（觀察的）</b>顏色紋路、厚度、透光度、吸水性、能不能書寫、耐不耐折</div>
+      <p><b>實驗問題：</b>在再生紙裡加入農業廢棄物纖維，做出來的紙和只用廢紙的有什麼不同？</p>
+      <div class="two">
+        <div class="box c2"><b class="t">對照組</b>只用廢紙<br><span class="key">廢紙 10 g</span>＋水 1000 cc</div>
+        <div class="box c1"><b class="t">加料組</b>廢紙加上自己帶的農廢纖維<br><span class="key">廢紙 5 g ＋ 農廢 5 g（乾重）</span>＋水 1000 cc</div>
       </div>
-      <div class="note">0% 是<b>對照組</b>（只用廢紙），用來和加了農廢的紙比較。</div>
-    </div>
-
-    <div class="card">
-      <h2>配方表：每組要準備多少？</h2>
-      <div class="tblwrap"><table class="t">
-        <tr><th>批次</th><th>廢紙</th><th>農廢纖維（乾重）</th><th>水</th><th>說明</th></tr>
-        <tr><td><b>對照組 0%</b></td><td class="n">10 g</td><td class="n">0 g</td><td class="n">1000 cc</td><td>只用廢紙</td></tr>
-        <tr><td><b>25%</b></td><td class="n">7.5 g</td><td class="n">2.5 g</td><td class="n">1000 cc</td><td>每種材料都可以做</td></tr>
-        <tr><td><b>50%</b></td><td class="n">5 g</td><td class="n">5 g</td><td class="n">1000 cc</td><td>每種材料都可以做</td></tr>
-        <tr><td><b>100%</b></td><td class="n">0 g</td><td class="n">10 g</td><td class="n">1000 cc</td><td>只有纖維細長強韌的才做（玉米皮、茭白筍殼、鳳梨葉）</td></tr>
-        <tr><td><b>合計</b></td><td class="n">22.5 g</td><td class="n">17.5 g</td><td class="n">4000 cc</td><td>每批抄 2 張，比較好比較</td></tr>
-      </table></div>
-      <div class="tip"><b>每組要帶：</b>農廢材料<b>乾重至少 20 g</b>（多帶一點預備失敗）。新鮮材料水分很多，帶回來先洗淨、晾乾或曬乾，<b>處理前</b>秤乾重並記錄。乾料共 10 g ／ 1000 cc，落在科展建議的 8～15 g 範圍內。</div>
+      <div class="note"><b>控制變因（兩組要一樣）：</b>乾料都是 10 g、水 1000 cc、同一種廢紙、同一個抄紙框、同樣的乾燥方式。只有「有沒有加料」不同，比較才公平。</div>
+      <div class="tip"><b>每組要帶：</b>農廢材料<b>乾重 10 g 以上</b>（實驗用 5 g，其餘預備）、廢紙約 15 g。新鮮材料先洗淨晾乾，<b>處理前</b>秤好乾重。</div>
     </div>
 
     <div class="card">
       <h2>先摸摸看：你的材料走哪一條處理路線？</h2>
       <div class="route">
         <div class="rt r1"><span class="feel">摸起來軟、用手撕得開</span><b class="t">路線 A：直接打漿</b>例：玉米皮
-          <div class="do">洗淨 → 剪成 2～3 cm → 泡水 → 打漿。想更細可以先煮 1 小時。</div></div>
+          <div class="do">洗淨 → 剪 2～3 cm → 泡水 → 打漿。想更細可以先煮 1 小時。</div></div>
         <div class="rt r2"><span class="feel">硬、撕不太開</span><b class="t">路線 B：清水悶煮</b>例：茭白筍殼、竹筍殼、甘蔗渣、芒草
-          <div class="do">洗淨 → 剪成 2～3 cm → <b>清水煮 1～2 小時，再泡一晚</b> → 打漿。</div></div>
+          <div class="do">洗淨 → 剪 2～3 cm → <b>清水煮 1～2 小時，再泡一晚</b> → 打漿。</div></div>
         <div class="rt r3"><span class="feel">很硬、木頭感、煮完還是硬</span><b class="t">路線 C：鹼煮（老師操作）</b>例：稻稈、粗的莖
-          <div class="do">加<b>碳酸鈉（蘇打灰）＝ 乾料重的 20%</b>（20 g 乾料 → 4 g），煮約 3 小時，冷卻後<b>反覆沖洗到石蕊試紙和自來水一樣</b>再打漿。</div></div>
+          <div class="do">加<b>碳酸鈉＝乾料重的 20%</b>（5 g 乾料 → 1 g），煮約 3 小時，冷卻後<b>反覆沖洗到石蕊試紙和自來水一樣</b>再打漿。</div></div>
       </div>
       <div class="warnbox"><b>鹼煮安全：</b>只由老師操作；戴護目鏡、橡膠手套、圍裙，保持通風；<b>先放水，再把碳酸鈉加進水裡</b>；用不鏽鋼或琺瑯鍋，<b>不要用鋁鍋</b>。</div>
-      <div class="note">鹼會把黏住纖維的木質素溶掉，纖維才會分開變軟。科展實驗中，只用清水悶煮也能讓鳳梨葉從粗硬變細軟。</div>
+    </div>
+
+    <div class="card">
+      <h2>實驗步驟：一步一步來<span class="sec">點數字跳到那一步</span></h2>
+      <div class="stepchips" id="Lchips"></div>
+      <div class="player">
+        <div class="stage" id="Lstage"><span class="badge" id="LBadge"></span><div id="LArt"></div></div>
+        <div class="stxt">
+          <h3 id="LTitle"></h3>
+          <ul id="LList"></ul>
+          <div class="tip" id="LTip"></div>
+          <div class="snav">
+            <button class="btn ghost" id="LPrev">← 上一步</button>
+            <button class="btn ghost sm" id="LPause">⏸ 暫停動畫</button>
+            <button class="btn" id="LNext">下一步 →</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="card">
@@ -569,38 +586,32 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
       <div class="ex3">
         <div class="exm"><h3>玉米皮<small>路線 A・最容易成功</small></h3><dl>
           <dt>哪裡找</dt><dd>家裡煮玉米剝下的苞葉、傳統市場玉米攤、學校農場</dd>
-          <dt>帶多少</dt><dd>乾重 20 g 以上</dd>
           <dt>處理</dt><dd>洗淨、剪 2～3 cm、泡水後直接打漿（可不煮）</dd>
-          <dt>比例</dt><dd>0／25／50／100% 都做</dd>
-          <dt>預期</dt><dd>纖維細長強韌，100% 也能成紙；顏色偏米黃、看得到纖維</dd></dl></div>
+          <dt>預期</dt><dd>纖維細長強韌，加料組也很好成紙；顏色偏米黃、看得到纖維</dd></dl></div>
         <div class="exm"><h3>茭白筍殼<small>路線 B・連結埔里案例</small></h3><dl>
           <dt>哪裡找</dt><dd>市場菜攤剝下的外殼、家裡煮茭白筍剩的殼、自助餐或餐廳</dd>
-          <dt>帶多少</dt><dd>乾重 20 g 以上</dd>
           <dt>處理</dt><dd>洗淨、剪 2～3 cm、清水煮 1～2 小時再泡一晚、打漿</dd>
-          <dt>比例</dt><dd>0／25／50／100% 都做</dd>
-          <dt>預期</dt><dd>纖維細長強韌，可不加廢紙；保留自然綠褐色</dd></dl></div>
-        <div class="exm"><h3>甘蔗渣<small>路線 B・要加廢紙漿</small></h3><dl>
+          <dt>預期</dt><dd>纖維細長強韌；保留自然綠褐色</dd></dl></div>
+        <div class="exm"><h3>甘蔗渣<small>路線 B・先洗掉糖分</small></h3><dl>
           <dt>哪裡找</dt><dd>甘蔗汁攤、果汁店（向老闆要榨完的渣）</dd>
-          <dt>帶多少</dt><dd>乾重 20 g 以上</dd>
           <dt>處理</dt><dd><b>先用清水搓洗掉糖分</b>（不然容易發霉、發黏）、剪短、清水煮 1～2 小時再泡一晚、打漿</dd>
-          <dt>比例</dt><dd>只做 0／25／50%</dd>
-          <dt>預期</dt><dd>纖維不易緊密交織，要混廢紙漿才有韌性；表面粗、紋路明顯</dd></dl></div>
+          <dt>預期</dt><dd>纖維不易緊密交織，靠廢紙漿撐住韌性；表面粗、紋路明顯</dd></dl></div>
       </div>
-      <div class="tip"><b>想用果皮、菜葉？</b>多汁、含糖的材料（鳳梨皮、香蕉皮、菜葉）容易發霉、有異味：要先煮過、洗乾淨，比例從 25% 開始試。不要用油膩的廚餘。</div>
+      <div class="tip"><b>想用果皮、菜葉？</b>多汁、含糖的材料（鳳梨皮、香蕉皮、菜葉）容易發霉、有異味：要先煮過、洗乾淨。不要用油膩的廚餘。</div>
     </div>
 
     <div class="card">
-      <h2>怎麼比較？測試與紀錄</h2>
+      <h2>測試與紀錄表</h2>
+      <p class="ex">兩組各抄 2 張，每張紙用同樣的大小和做法測試。</p>
       <div class="tblwrap"><table class="t">
-        <tr><th>測試</th><th>做法</th><th>記錄</th></tr>
-        <tr><td><b>外觀</b></td><td>拍照、描述顏色和纖維紋路</td><td>照片＋文字</td></tr>
-        <tr><td><b>透光度</b></td><td>拿到燈前看，亮暗是否均勻</td><td>均勻／普通／不均（○△✕）</td></tr>
-        <tr><td><b>吸水性</b></td><td>滴 1 滴水，計時到完全吸進去</td><td>秒數</td></tr>
-        <tr><td><b>書寫</b></td><td>鉛筆、原子筆、水彩各寫一筆</td><td>好寫／會暈／寫不上去</td></tr>
-        <tr><td><b>耐折</b></td><td>同一處反覆對折，數到出現裂縫</td><td>次數</td></tr>
-        <tr><td><b>耐重</b></td><td>剪同樣大小的紙條，下端夾夾子，一枚一枚加硬幣到斷掉</td><td>硬幣數</td></tr>
+        <tr><th>測試</th><th>做法</th><th>對照組 第1張</th><th>對照組 第2張</th><th>加料組 第1張</th><th>加料組 第2張</th></tr>
+        <tr><td><b>外觀</b></td><td>拍照，描述顏色、纖維紋路</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>透光度</b></td><td>拿到燈前看亮暗是否均勻（○△✕）</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>吸水性</b></td><td>滴 1 滴水，計時到完全吸進去（秒）</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>書寫</b></td><td>鉛筆、原子筆、水彩各一筆（好寫／會暈／寫不上）</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>耐折</b></td><td>同一處反覆對折到出現裂縫（次）</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>耐重</b></td><td>剪 2 cm × 10 cm 紙條，下端夾夾子，一枚一枚加 10 元硬幣到斷（枚）</td><td></td><td></td><td></td><td></td></tr>
       </table></div>
-      <div class="note">同一種測試，每張紙都要用同樣的大小和做法，結果才能比較。最後討論：哪個比例最適合<b>書寫</b>？哪個最適合<b>包裝、卡片、燈罩</b>？</div>
     </div>
 
     <div class="card">
@@ -622,24 +633,57 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
         <div>
           <h3>選材檢查表</h3>
           <div class="chk">
-            <label><input type="checkbox" id="ck1"> 拿得到乾重 20 g 以上嗎？</label>
+            <label><input type="checkbox" id="ck1"> 拿得到乾重 10 g 以上嗎？</label>
             <label><input type="checkbox" id="ck2"> 是植物纖維（葉、殼、莖、皮），不是肉、骨頭、油？</label>
             <label><input type="checkbox" id="ck3"> 有查過資料，知道它大概走 A、B、C 哪條路線？</label>
             <label><input type="checkbox" id="ck4"> 帶回來能馬上洗淨、晾乾，不會發霉發臭？</label>
             <label><input type="checkbox" id="ck5"> 能說出它原本是怎麼被丟掉或處理的？（焚燒、堆肥、垃圾）</label>
           </div>
-          <div class="tip"><b>報告加分：</b>說明這種廢棄物在台灣一年大約有多少、目前怎麼處理、做成紙可以減少什麼問題。</div>
         </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>作業報告：「我們的農廢再生紙」</h2>
+      <p><b>繳交：</b>每組一份書面報告或簡報檔，並上台發表 3～5 分鐘。每個人都要有負責的工作，也要在報告裡寫出自己做了什麼。</p>
+      <h3>分工：每個角色負責什麼</h3>
+      <div class="tblwrap"><table class="t">
+        <tr><th>角色</th><th>實驗時負責</th><th>報告中負責</th></tr>
+        <tr><td><b>材料長</b></td><td>選材、蒐集、洗淨晾乾、秤乾重</td><td>二、材料介紹</td></tr>
+        <tr><td><b>資料長</b></td><td>查這種廢棄物的來源、產量、目前怎麼處理、造紙相關資料</td><td>二、材料介紹（背景資料）；八、參考資料</td></tr>
+        <tr><td><b>操作員</b>（1～2 人）</td><td>剪段、軟化、打漿、抄紙、做測試</td><td>四、實驗步驟</td></tr>
+        <tr><td><b>紀錄員</b></td><td>每一步拍照、填測試紀錄表、整理成表格</td><td>五、實驗結果</td></tr>
+        <tr><td><b>發表人</b></td><td>主持討論、整合全組內容、做簡報</td><td>一、封面；三、實驗設計；上台報告</td></tr>
+      </table></div>
+      <p class="ex">人數少的組可以一人兼兩個角色。六、討論和七、結論由全組一起討論完成。</p>
+      <h3>報告內容</h3>
+      <div class="tblwrap"><table class="t">
+        <tr><th>章節</th><th>要寫什麼</th></tr>
+        <tr><td><b>一、封面</b></td><td>題目、組別、組員姓名和角色</td></tr>
+        <tr><td><b>二、材料介紹</b></td><td>用了什麼廢棄物、從哪裡取得、原本怎麼被處理（丟棄、焚燒、堆肥）、為什麼選它</td></tr>
+        <tr><td><b>三、實驗設計</b></td><td>實驗問題、對照組和加料組的配方、哪些條件保持一樣、走哪一條處理路線</td></tr>
+        <tr><td><b>四、實驗步驟</b></td><td>照實際做的順序寫，至少附 4 張照片（軟化、打漿、抄紙、乾燥）</td></tr>
+        <tr><td><b>五、實驗結果</b></td><td>完整的測試紀錄表，加上兩組紙並排的照片</td></tr>
+        <tr><td><b>六、討論</b></td><td>兩種紙哪裡不同？可能的原因（纖維長短、軟化程度、雜質）？遇到什麼困難、下次怎麼改進？</td></tr>
+        <tr><td><b>七、結論與應用</b></td><td>加料紙適合做什麼（書寫、卡片、包裝、燈罩）？這種農業廢棄物值不值得拿來造紙？</td></tr>
+        <tr><td><b>八、參考資料</b></td><td>至少 2 筆，寫出網站或單位名稱、標題、網址</td></tr>
+        <tr><td><b>九、個人心得</b></td><td>每人約 100 字：自己負責什麼、學到什麼</td></tr>
+      </table></div>
+      <h3>評分重點（老師可自行調整）</h3>
+      <div class="three">
+        <div class="box c2"><b class="t">實驗操作與紀錄 30%</b>步驟正確、照片清楚、紀錄表完整</div>
+        <div class="box c3"><b class="t">報告內容 30%</b>章節齊全、資料正確、有寫參考資料</div>
+        <div class="box c1"><b class="t">討論與發表 40%</b>能說明差異的原因、提出改進；分工清楚、上台說得清楚</div>
       </div>
     </div>
 
     <div class="card">
       <h2>實習時程（建議）</h2>
       <div class="timeline">
-        <div class="tl"><b>課前一週</b>分組選材、查資料、蒐集並晾乾材料</div>
-        <div class="tl"><b>第 1 節</b>秤乾重、剪段、泡廢紙；路線 B、C 開始煮，泡一晚</div>
-        <div class="tl"><b>第 2 節</b>打漿、依配方調漿、每批抄 2 張、陰乾</div>
-        <div class="tl"><b>一週後</b>測試紀錄、比較結果、各組上台分享</div>
+        <div class="tl"><b>課前一週</b>分組分工、選材查資料、蒐集並晾乾材料</div>
+        <div class="tl"><b>第 1 節</b>秤乾重、剪段、軟化（路線 B、C 煮完泡一晚）</div>
+        <div class="tl"><b>第 2 節</b>沖洗、兩組分開打漿、抄紙、貼標籤陰乾</div>
+        <div class="tl"><b>一～兩週後</b>測試紀錄、完成報告、上台發表</div>
       </div>
     </div>
   </section>
@@ -870,6 +914,79 @@ $("sNext").onclick=()=>{ if(sIdx===STEPS.length-1){ show("t6"); return; } sIdx++
 $("sPause").onclick=()=>{ paused=!paused; $("stage").classList.toggle("paused",paused); $("sPause").textContent=paused?"▶ 播放動畫":"⏸ 暫停動畫"; };
 if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches){ paused=true; $("stage").classList.add("paused"); $("sPause").textContent="▶ 播放動畫"; }
 renderStep();
+
+/* ---------- 分組實驗：步驟動畫 ---------- */
+const LT=(x,y,t,sz)=>`<text class="s-txt" x="${x}" y="${y}" text-anchor="middle"${sz?` style="font-size:${sz}px"`:""}>${t}</text>`;
+const JAR=(x,lab,fill,extra="")=>`<g class="a-shake"><path d="M${x-40} 30 L${x+40} 30 L${x+30} 120 L${x-30} 120 Z" fill="var(--water)" opacity=".3" stroke="var(--muted)" stroke-width="3"/><path d="M${x-35} 64 L${x+35} 64 L${x+30} 118 L${x-30} 118 Z" fill="${fill}"/>${extra}<g class="a-rot"><line x1="${x-16}" y1="110" x2="${x+16}" y2="110" stroke="var(--muted)" stroke-width="4" stroke-linecap="round"/></g><rect x="${x-34}" y="120" width="68" height="30" rx="6" fill="var(--muted)"/></g>${LT(x,172,lab)}`;
+const LSTEPS=[
+ {t:"課前：蒐集、洗淨、晾乾",l:["依查好的資料蒐集材料，乾重要 10 g 以上","用清水洗掉泥土、糖分、汁液","攤開晾乾或曬乾，裝袋寫上組別"],tip:"<b>負責：</b>材料長。新鮮材料放太久會發霉，蒐集後當天就要洗淨晾開。",
+  art:`<svg viewBox="0 0 340 200"><g class="a-rotslow" style="animation-duration:8s"><circle cx="285" cy="45" r="18" fill="#f2cf3c"/>${[0,45,90,135,180,225,270,315].map(a=>`<line x1="285" y1="17" x2="285" y2="8" stroke="#f2cf3c" stroke-width="3" transform="rotate(${a} 285 45)"/>`).join("")}</g>
+   <rect x="40" y="120" width="220" height="14" rx="3" fill="var(--wood)" opacity=".8"/>
+   ${[70,115,160,205].map((x,i)=>`<path class="a-dry" fill="var(--pulp2)" d="M${x} 118 q15 -40 30 0 z" style="animation-delay:${i*.4}s" stroke="var(--pulp2)"/>`).join("")}
+   ${LT(150,160,"洗淨 → 攤開晾乾")}${LT(150,182,"乾重 10 g 以上",12)}</svg>`},
+ {t:"秤乾重、準備兩組材料",l:["對照組：廢紙 10 g","加料組：廢紙 5 g ＋ 農廢 5 g（乾重）","秤好分裝兩個杯子，貼上「對照」「加料」標籤"],tip:"<b>負責：</b>材料長秤重、紀錄員拍照記錄。一定要在泡水、煮之前秤，泡過水的重量不準。",
+  art:`<svg viewBox="0 0 340 200"><rect x="110" y="110" width="120" height="16" rx="4" fill="var(--muted)"/><rect x="130" y="126" width="80" height="34" rx="6" fill="var(--muted)" opacity=".75"/>
+   <rect x="145" y="132" width="50" height="20" rx="3" fill="var(--paper)"/><text class="s-txt a-blink" x="170" y="147" text-anchor="middle">5.0 g</text>
+   <path class="a-fall" d="M160 40 q10 -20 20 0 z" fill="var(--pulp2)" style="animation-duration:2.2s"/>
+   <rect x="20" y="86" width="60" height="44" rx="6" class="s-sheet"/>${LT(50,112,"對照")}${LT(50,148,"廢紙 10 g",12)}
+   <rect x="260" y="86" width="60" height="44" rx="6" fill="var(--g2s)" stroke="var(--g2)"/>${LT(290,112,"加料")}${LT(290,148,"廢紙5＋農廢5",11)}${LT(170,186,"處理前秤乾重")}</svg>`},
+ {t:"剪段、撕碎",l:["農廢材料剪成 2～3 cm 小段","廢紙撕成約 2 cm 小片，泡水","硬的莖、殼可以先用手壓扁再剪"],tip:"<b>負責：</b>操作員。剪越短，後面越好打漿。用剪刀注意安全。",
+  art:`<svg viewBox="0 0 340 200"><rect x="40" y="96" width="260" height="10" rx="2" fill="var(--pulp2)"/>
+   <g class="a-snip"><line x1="150" y1="100" x2="250" y2="80" stroke="var(--muted)" stroke-width="5" stroke-linecap="round"/><circle cx="135" cy="88" r="12" fill="none" stroke="var(--g3)" stroke-width="5"/></g>
+   <g><line x1="150" y1="100" x2="250" y2="118" stroke="var(--muted)" stroke-width="5" stroke-linecap="round"/><circle cx="135" cy="114" r="12" fill="none" stroke="var(--g3)" stroke-width="5"/></g>
+   ${[70,95,120].map((x,i)=>`<rect class="a-fall" x="${x}" y="110" width="16" height="7" fill="var(--pulp2)" style="animation-delay:${i*.6}s"/>`).join("")}
+   <rect x="200" y="150" width="100" height="14" rx="2" fill="var(--paper)" stroke="var(--muted)"/>${[0,1,2,3,4,5,6,7,8,9,10].map(i=>`<line x1="${205+i*9}" y1="150" x2="${205+i*9}" y2="${i%5?156:160}" stroke="var(--muted)"/>`).join("")}${LT(250,184,"2～3 cm")}</svg>`},
+ {t:"軟化：依路線處理",l:["路線 A：泡水就好，可直接打漿","路線 B：清水煮 1～2 小時，關火後泡一晚","路線 C：老師加碳酸鈉鹼煮約 3 小時"],tip:"<b>負責：</b>操作員顧鍋子、紀錄員記下煮的時間。煮到用手指一捏就散開，代表夠軟了。",
+  art:`<svg viewBox="0 0 340 200"><path d="M100 80 L240 80 L230 150 L110 150 Z" fill="var(--muted)"/><rect x="92" y="72" width="156" height="12" rx="4" fill="var(--muted)"/>
+   <path d="M108 84 L232 84 L228 112 L112 112 Z" fill="var(--water)"/>
+   ${[130,170,210].map((x,i)=>`<path class="a-up" d="M${x} 66 q-6 -8 0 -16 t0 -16" fill="none" stroke="var(--water2)" stroke-width="3" style="animation-delay:${i*.7}s"/>`).join("")}
+   ${[140,170,200].map(x=>`<path class="a-flame" d="M${x-10} 172 q10 -26 20 0 z" fill="#ef8a2c"/>`).join("")}
+   <rect x="100" y="172" width="140" height="8" rx="3" fill="var(--muted)"/>
+   ${LT(290,90,"1～2 小時")}${LT(290,110,"＋泡一晚")}${LT(50,90,"路線 B")}</svg>`},
+ {t:"沖洗、瀝乾",l:["倒進濾網，用清水沖洗","沖到水變清、沒有黏液（路線 C 要沖到 pH 中性）","稍微擠乾，準備打漿"],tip:"<b>負責：</b>操作員。洗掉的煮汁倒進水槽前先冷卻；路線 C 的鹼水由老師處理。",
+  art:`<svg viewBox="0 0 340 200"><rect x="150" y="14" width="60" height="14" rx="4" fill="var(--muted)"/><rect x="196" y="24" width="12" height="20" fill="var(--muted)"/>
+   <line class="a-belt" x1="202" y1="46" x2="202" y2="96" stroke="var(--water2)" stroke-width="6" stroke-dasharray="8 6"/>
+   <path d="M120 96 L260 96 Q250 150 190 150 Q130 150 120 96 Z" fill="none" stroke="var(--mesh)" stroke-width="4" stroke-dasharray="5 3"/>
+   <path d="M135 104 Q190 128 248 104 L244 112 Q190 138 138 112 Z" fill="var(--pulp2)"/>
+   ${[165,190,215].map((x,i)=>`<circle class="a-drop" cx="${x}" cy="152" r="4" fill="var(--water2)" style="animation-delay:${i*.4}s"/>`).join("")}${LT(170,196,"沖到水變清")}</svg>`},
+ {t:"兩組分開打漿",l:["對照組：10 g 廢紙＋水打成紙漿","加料組：5 g 廢紙＋5 g 農廢纖維＋水打成紙漿","先打對照組，洗淨果汁機再打加料組"],tip:"<b>負責：</b>老師或操作員操作果汁機。兩杯不能混到，果汁機中間一定要洗。",
+  art:`<svg viewBox="0 0 340 200">${JAR(90,"對照組","var(--pulp)")}${JAR(250,"加料組","var(--pulp)",[ [228,80],[250,95],[270,85],[240,105],[262,108] ].map(([x,y])=>`<path d="M${x} ${y} q4 -4 8 0" stroke="var(--g2)" stroke-width="3" fill="none"/>`).join(""))}${LT(170,80,"VS",20)}</svg>`},
+ {t:"調漿、抄紙",l:["每組紙漿各倒進一盆，加水到 1000 cc 攪勻","照「動手做」的方法，每組抄 2 張","換另一組前，網框要用清水沖乾淨"],tip:"<b>負責：</b>操作員抄紙、紀錄員拍照。兩組用同一個抄紙框、同樣的手法，比較才公平。",
+  art:`<svg viewBox="0 0 340 200"><path class="s-pulp" d="M24 104 L36 160 L144 160 L156 104 Z"/><path class="s-tub" d="M20 96 L34 164 L146 164 L160 96"/>
+   <path d="M184 104 L196 160 L304 160 L316 104 Z" fill="var(--g2s)"/><path class="s-tub" d="M180 96 L194 164 L306 164 L320 96"/>
+   <g class="a-bob"><rect x="45" y="80" width="90" height="12" rx="2" fill="none" stroke="var(--wood)" stroke-width="5"/></g>
+   <g class="a-bob" style="animation-delay:1.5s"><rect x="205" y="80" width="90" height="12" rx="2" fill="none" stroke="var(--wood)" stroke-width="5"/></g>
+   ${LT(90,186,"對照組 × 2 張")}${LT(250,186,"加料組 × 2 張")}</svg>`},
+ {t:"貼標籤、陰乾",l:["每張濕紙旁邊貼標籤：組別＋對照／加料＋第幾張","放在通風處陰乾 1～2 天","乾了以後從一角輕輕揭下，夾在紙中保存"],tip:"<b>負責：</b>紀錄員貼標籤、記錄日期。沒標籤的紙乾了以後很容易搞混！",
+  art:`<svg viewBox="0 0 340 200"><rect x="20" y="140" width="300" height="10" rx="2" fill="var(--wood)" opacity=".7"/>
+   ${[[30,"對照1"],[100,"對照2"],[175,"加料1"],[245,"加料2"]].map(([x,t],i)=>`<rect class="a-dry" x="${x}" y="96" width="62" height="44" rx="2" stroke="var(--pulp2)" stroke-width="1.5"/><rect x="${x+8}" y="78" width="46" height="18" rx="3" fill="${i<2?"var(--paper)":"var(--g2s)"}" stroke="var(--muted)"/><text class="s-txt" x="${x+31}" y="91" text-anchor="middle" style="font-size:11px">${t}</text>`).join("")}
+   ${[30,55].map((y,i)=>`<path class="a-wind" d="M60 ${y} q20 -8 40 0 t40 0" fill="none" stroke="var(--water2)" stroke-width="3" stroke-linecap="round" style="animation-delay:${i*.6}s"/>`).join("")}${LT(170,180,"通風陰乾 1～2 天")}</svg>`},
+ {t:"測試、填紀錄表",l:["吸水性：滴一滴水，計時幾秒吸完","耐折：同一處對折到裂開，數次數","耐重：紙條夾夾子，一枚一枚加硬幣到斷","再加上外觀、透光、書寫，填進紀錄表"],tip:"<b>負責：</b>操作員做測試、紀錄員讀數字填表。每張紙都要用同樣的大小和方法。",
+  art:`<svg viewBox="0 0 340 200"><rect x="14" y="110" width="90" height="10" class="s-sheet"/><circle class="a-drop" cx="59" cy="40" r="6" fill="var(--water2)" style="animation-duration:1.6s"/>${LT(59,150,"吸水")}${LT(59,170,"幾秒？",12)}
+   <rect class="a-fold" x="140" y="70" width="30" height="50" class="s-sheet" fill="var(--sheet)" stroke="var(--pulp2)"/><rect x="170" y="70" width="30" height="50" fill="var(--sheet)" stroke="var(--pulp2)"/>${LT(170,150,"耐折")}${LT(170,170,"幾次？",12)}
+   <rect x="268" y="20" width="16" height="80" fill="var(--sheet)" stroke="var(--pulp2)"/><rect x="262" y="96" width="28" height="10" rx="2" fill="var(--muted)"/>
+   ${[0,1,2].map(i=>`<ellipse class="a-pop" cx="276" cy="${114+i*8}" rx="12" ry="4" fill="#c9a520" style="animation-delay:${i*.5}s"/>`).join("")}${LT(276,150,"耐重")}${LT(276,170,"幾枚？",12)}</svg>`},
+ {t:"比較、寫報告",l:["把對照組和加料組的紙並排拍照","比較紀錄表：哪裡一樣、哪裡不同","討論原因，完成報告並上台分享"],tip:"<b>負責：</b>全組討論，發表人整合報告。報告內容和分工看下面「作業報告」。",
+  art:`<svg viewBox="0 0 340 200"><rect x="40" y="40" width="100" height="110" rx="3" class="s-sheet"/>${LT(90,100,"對照組")}
+   <rect x="200" y="40" width="100" height="110" rx="3" fill="var(--g2s)" stroke="var(--g2)"/>${[[215,60],[250,80],[230,110],[270,120],[260,60]].map(([x,y])=>`<path d="M${x} ${y} q5 -5 10 0" stroke="var(--g2)" stroke-width="3" fill="none"/>`).join("")}${LT(250,100,"加料組")}
+   ${LT(170,100,"VS",22)}<g class="a-pop"><circle cx="300" cy="40" r="14" fill="var(--ok)"/><path d="M293 40 l5 5 l9 -10" stroke="#fff" stroke-width="3" fill="none"/></g>${LT(170,182,"哪裡不同？為什麼？")}</svg>`}
+];
+(function(){
+  let i=0, pz=false; const seen=new Set([0]);
+  function render(){
+    const s=LSTEPS[i];
+    $("Lchips").innerHTML=LSTEPS.map((x,k)=>`<button class="sc${seen.has(k)?" seen":""}" data-i="${k}" ${k===i?'aria-current="step"':""} aria-label="第 ${k+1} 步 ${x.t}">${k+1}</button>`).join("");
+    $("Lchips").querySelectorAll(".sc").forEach(b=>b.onclick=()=>{ i=+b.dataset.i; seen.add(i); render(); });
+    $("LBadge").textContent=`步驟 ${i+1}／${LSTEPS.length}`; $("LArt").innerHTML=s.art;
+    $("LTitle").textContent=`${i+1}. ${s.t}`; $("LList").innerHTML=s.l.map(x=>`<li>${x}</li>`).join(""); $("LTip").innerHTML=s.tip;
+    $("LPrev").disabled=i===0; $("LNext").disabled=i===LSTEPS.length-1;
+  }
+  $("LPrev").onclick=()=>{ if(i>0){i--; render();} };
+  $("LNext").onclick=()=>{ if(i<LSTEPS.length-1){ i++; seen.add(i); render(); } };
+  $("LPause").onclick=()=>{ pz=!pz; $("Lstage").classList.toggle("paused",pz); $("LPause").textContent=pz?"▶ 播放動畫":"⏸ 暫停動畫"; };
+  if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches){ pz=true; $("Lstage").classList.add("paused"); $("LPause").textContent="▶ 播放動畫"; }
+  render();
+})();
 
 /* ---------- 排序 ---------- */
 const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
