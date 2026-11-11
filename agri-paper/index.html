@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>再生紙動手做</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+/* 同 agri-ch3／agri-ch4 架構：上方標題＋QR，分頁 認識再生紙／農業資源應用／動手做／動手判斷／小測驗 */
+:root{
+  --bg:#f7f3ec; --paper:#ffffff; --ink:#2a2118; --muted:#6c5f52; --line:#e3d9cb; --grid:#efe8dc;
+  --accent:#2f6b3a; --accent-ink:#ffffff; --accent-soft:#e3f0e3;
+  --soil:#8a5a35; --soil-soft:#f4e7da;
+  --mark:#ffe08a; --mark-ink:#2a2118;
+  --ok:#1f7a45; --ok-soft:#e1f4e7; --bad:#b4362c; --bad-soft:#fbe7e4;
+  --g1:#c46a17; --g2:#2f8a57; --g3:#3b6fd1; --g4:#a2408c;
+  --g1s:#fbecdc; --g2s:#e0f2e7; --g3s:#e3ebfb; --g4s:#f6e4f1;
+  --water:#8cc6ef; --water2:#5aa3d9; --pulp:#efe4cf; --pulp2:#d9c7a3; --fiber:#9a6a3c; --wood:#b07a45; --mesh:#7d8a93; --sheet:#fbf7ee;
+  --f:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#17130f; --paper:#211b16; --ink:#efe7dc; --muted:#b4a594; --line:#3a3027; --grid:#1d1813;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  --water:#2c5577; --water2:#4f86b3; --pulp:#5a4c38; --pulp2:#7a6648; --fiber:#d9a46e; --wood:#a8784a; --mesh:#93a0a8; --sheet:#e9e1d0;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#17130f; --paper:#211b16; --ink:#efe7dc; --muted:#b4a594; --line:#3a3027; --grid:#1d1813;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  --water:#2c5577; --water2:#4f86b3; --pulp:#5a4c38; --pulp2:#7a6648; --fiber:#d9a46e; --wood:#a8784a; --mesh:#93a0a8; --sheet:#e9e1d0;
+  color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:17px;line-height:1.7;
+  background-image:radial-gradient(var(--grid) 1.2px,transparent 1.2px);background-size:22px 22px}
+.wrap{max-width:980px;margin:0 auto;padding-block:20px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{display:flex;gap:16px;align-items:flex-start;justify-content:space-between}
+.brand{min-width:0}
+.eyebrow{font-size:14px;letter-spacing:.12em;color:var(--soil);font-weight:700}
+h1{font-size:clamp(30px,6vw,44px);font-weight:900;line-height:1.2;margin:4px 0 6px;text-wrap:balance}
+.sub{color:var(--muted);margin:0;font-size:16px}
+.qr{flex:none;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+.qr img{width:84px;height:84px;image-rendering:pixelated;display:block}
+.qr span{font-size:12px;color:#4a3d31;font-weight:700}
+button:focus-visible,.qr:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:20;background:var(--bg);padding:8px 0;margin:14px 0 10px}
+.tab{font:inherit;font-weight:700;font-size:17px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:999px;padding:7px 18px;cursor:pointer;min-height:44px}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.panel{display:flex;flex-direction:column;gap:16px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px}
+.toolbar .hint{font-size:14px;color:var(--muted)}
+.switch{display:inline-flex;align-items:center;gap:8px;font-weight:700;cursor:pointer;user-select:none}
+.switch input{width:20px;height:20px;accent-color:var(--accent)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;min-width:0}
+.card h2{font-size:24px;font-weight:900;margin:0 0 8px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.card h2 .sec{font-size:13px;font-weight:700;color:var(--soil);background:var(--soil-soft);border-radius:999px;padding:1px 10px}
+.card h3{font-size:19px;margin:14px 0 4px}
+.card p{margin:6px 0}
+.card ul,.card ol{margin:6px 0;padding-left:1.3em}
+.card li{margin:3px 0}
+.key{background:var(--mark);color:var(--mark-ink);border-radius:4px;padding:0 4px;font-weight:700}
+body.blank .key{color:transparent;background:var(--soil-soft);border-bottom:2px solid var(--soil);cursor:pointer;user-select:none}
+body.blank .key.show{color:var(--mark-ink);background:var(--mark);border-bottom-color:transparent}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:720px){.two,.three{grid-template-columns:1fr}}
+.box{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--bg);min-width:0}
+.box b.t{display:block;font-size:17px;margin-bottom:2px}
+.box.c1{border-top:5px solid var(--g1)}.box.c2{border-top:5px solid var(--g2)}.box.c3{border-top:5px solid var(--g3)}.box.c4{border-top:5px solid var(--g4)}
+.note{font-size:15px;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 12px;margin-top:10px}
+.tip{font-size:15px;border:1.5px dashed var(--soil);border-radius:10px;padding:8px 12px;margin-top:10px;background:var(--soil-soft)}
+.tip b{color:var(--soil)}
+.warnbox{font-size:15px;border-left:5px solid var(--bad);border-radius:0 10px 10px 0;padding:8px 12px;margin-top:10px;background:var(--bad-soft)}
+.warnbox b{color:var(--bad)}
+.tblwrap{overflow-x:auto;margin-top:8px}
+table.t{width:100%;border-collapse:collapse;font-size:16px;min-width:520px}
+table.t th,table.t td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+table.t th{background:var(--accent-soft);white-space:nowrap}
+.btn{font:inherit;font-weight:700;font-size:16px;border:0;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:9px 22px;cursor:pointer;min-height:44px}
+.btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.sm{min-height:36px;padding:4px 14px;font-size:14px}
+.btn.warn{background:var(--bad);color:#fff;border-color:var(--bad)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.art{width:100%;height:auto;display:block}
+figure{margin:0}
+figcaption{font-size:15px;line-height:1.5;margin-top:6px;text-align:center;color:var(--muted)}
+.ex{color:var(--muted);font-size:14px}
+
+/* SVG 共用色 */
+.s-water{fill:var(--water);opacity:.75}
+.s-water2{fill:var(--water2)}
+.s-pulp{fill:var(--pulp)}
+.s-pulp2{fill:var(--pulp2)}
+.s-tub{fill:none;stroke:var(--muted);stroke-width:4;stroke-linejoin:round}
+.s-wood{fill:none;stroke:var(--wood);stroke-width:7;stroke-linejoin:round}
+.s-sheet{fill:var(--sheet);stroke:var(--pulp2);stroke-width:1.5}
+.s-ink{fill:var(--ink)}
+.s-muted{fill:var(--muted)}
+.s-line{stroke:var(--muted);stroke-width:2;fill:none}
+.s-txt{fill:var(--ink);font-size:13px;font-weight:700;font-family:var(--f)}
+.s-felt{fill:var(--g3s);stroke:var(--g3);stroke-width:1.5}
+
+/* 纖維動畫 */
+.fiberbox{background:var(--bg);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+#fiberSvg .fb{transition:transform 1.8s cubic-bezier(.5,.1,.3,1)}
+#fiberSvg .fb line{stroke:var(--fiber);stroke-width:4;stroke-linecap:round}
+#fiberSvg .wbg{fill:var(--water);transition:opacity 1.6s}
+#fiberSvg.dry .wbg{opacity:0}
+#fiberSvg .h2o{fill:var(--water2);transition:opacity 1.2s}
+#fiberSvg.dry .h2o{opacity:0}
+#fiberSvg .hb{fill:var(--bad);opacity:0;transition:opacity .8s 1.5s}
+#fiberSvg.dry .hb{opacity:1}
+#fiberSvg:not(.dry) .hb{transition-delay:0s}
+.fstate{font-weight:900;font-size:18px}
+.legend2{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;color:var(--muted);margin-top:6px}
+.legend2 i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+
+/* 工廠流程 */
+.pipe{position:relative;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;margin-top:10px;padding-bottom:18px}
+.pipe .track{position:absolute;left:4%;right:4%;bottom:4px;height:4px;background:var(--line);border-radius:2px;z-index:0}
+.pipe .runner{position:absolute;bottom:-1px;width:14px;height:14px;border-radius:50%;background:var(--g1);z-index:2;animation:run 8s linear infinite;left:4%;pointer-events:none}
+@keyframes run{from{left:3%}to{left:95%}}
+.ps{position:relative;z-index:1;font:inherit;font-weight:900;font-size:16px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:12px;padding:8px 2px;cursor:pointer;min-height:64px;line-height:1.25}
+.ps small{display:block;font-size:11px;font-weight:700;opacity:.75}
+.ps[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.pinfo{margin-top:10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:10px 14px;min-height:72px}
+.pinfo b{font-size:18px}
+@media (max-width:720px){.pipe{grid-template-columns:repeat(4,minmax(0,1fr))}.pipe .track,.pipe .runner{display:none}}
+
+/* 循環圖 */
+.cycle .spin{transform-box:view-box;transform-origin:180px 150px;animation:spin 10s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cycle .node rect{fill:var(--paper);stroke:var(--accent);stroke-width:2.5}
+.cycle .node text{fill:var(--ink);font-size:14px;font-weight:900;text-anchor:middle;font-family:var(--f)}
+.cycle .node text.s{font-size:11px;font-weight:500;fill:var(--muted)}
+.cycle .ring{fill:none;stroke:var(--accent);stroke-width:3;stroke-dasharray:8 7;opacity:.55}
+
+/* 動手做：步驟播放器 */
+.player{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:760px){.player{grid-template-columns:1fr}}
+.stage{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:8px;position:relative}
+.stage svg{width:100%;height:auto;display:block}
+.stage .badge{position:absolute;left:12px;top:10px;background:var(--accent);color:var(--accent-ink);font-weight:900;border-radius:999px;padding:0 12px;font-size:15px}
+.stepchips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.sc{font:inherit;font-weight:700;font-size:15px;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;min-width:44px;min-height:44px;padding:0 12px;cursor:pointer}
+.sc[aria-current="step"]{border-color:var(--accent);background:var(--accent);color:var(--accent-ink)}
+.sc.seen{border-color:var(--accent)}
+.stxt h3{font-size:24px;margin:0 0 6px}
+.stxt ul{padding-left:1.2em;margin:4px 0}
+.stxt li{margin:4px 0;font-size:18px}
+.snav{display:flex;justify-content:space-between;gap:10px;margin-top:12px;flex-wrap:wrap}
+.paused *{animation-play-state:paused!important}
+
+/* 步驟動畫 keyframes */
+.a-fall{animation:fall 2.6s ease-in infinite;transform-box:fill-box;transform-origin:center}
+@keyframes fall{0%{transform:translateY(-70px) rotate(0);opacity:0}15%{opacity:1}70%{transform:translateY(40px) rotate(200deg);opacity:1}100%{transform:translateY(48px) rotate(220deg);opacity:0}}
+.a-ripple{animation:ripple 2.6s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes ripple{0%,60%{transform:scale(.2);opacity:0}70%{opacity:.9}100%{transform:scale(1.6);opacity:0}}
+.a-rot{animation:rot .35s linear infinite;transform-box:fill-box;transform-origin:center}
+.a-rotslow{animation:rot 2.2s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes rot{to{transform:rotate(360deg)}}
+.a-shake{animation:shake .18s linear infinite}
+@keyframes shake{0%,100%{transform:translateX(0)}50%{transform:translateX(1.5px)}}
+.a-pour{animation:pour 3.2s ease-in-out infinite;transform-box:view-box;transform-origin:120px 70px}
+@keyframes pour{0%,10%{transform:rotate(0)}35%,75%{transform:rotate(-58deg)}95%,100%{transform:rotate(0)}}
+.a-stream{animation:stream 3.2s ease-in-out infinite}
+@keyframes stream{0%,30%{opacity:0}38%,72%{opacity:1}80%,100%{opacity:0}}
+.a-stir{animation:stir 1.6s ease-in-out infinite alternate}
+@keyframes stir{from{transform:translateX(-40px)}to{transform:translateX(40px)}}
+.a-dip{animation:dip 5s ease-in-out infinite;transform-box:view-box;transform-origin:170px 90px}
+@keyframes dip{0%{transform:translate(0,-60px) rotate(-35deg)}25%{transform:translate(0,38px) rotate(-30deg)}40%{transform:translate(0,40px) rotate(0)}60%{transform:translate(0,-36px) rotate(0)}66%{transform:translate(-5px,-36px)}72%{transform:translate(5px,-36px)}78%{transform:translate(0,-38px)}84%{transform:translate(0,-36px)}100%{transform:translate(0,-60px) rotate(-35deg)}}
+.a-pulpon{animation:pulpon 5s ease-in-out infinite}
+@keyframes pulpon{0%,50%{opacity:0}62%,92%{opacity:1}100%{opacity:0}}
+.a-drop{animation:drop 1.4s ease-in infinite}
+@keyframes drop{0%{transform:translateY(0);opacity:0}10%{opacity:1}100%{transform:translateY(70px);opacity:0}}
+.a-light{animation:light 2.8s ease-in-out infinite alternate}
+@keyframes light{from{opacity:.25}to{opacity:.9}}
+.a-flip{animation:flip 4.6s ease-in-out infinite;transform-box:view-box;transform-origin:170px 70px}
+@keyframes flip{0%,10%{transform:translateY(-25px) scaleY(1)}40%{transform:translateY(-25px) scaleY(-1)}65%,85%{transform:translateY(60px) scaleY(-1)}100%{transform:translateY(-25px) scaleY(1)}}
+.a-lift{animation:lift 4.6s ease-in-out infinite}
+@keyframes lift{0%,62%{opacity:0}70%,92%{opacity:1}100%{opacity:0}}
+.a-sponge{animation:sponge 3.4s ease-in-out infinite}
+@keyframes sponge{0%{transform:translate(-80px,-20px)}15%{transform:translate(-80px,0)}30%{transform:translate(-80px,-20px)}45%{transform:translate(0,0)}55%{transform:translate(0,-20px)}70%{transform:translate(80px,0)}85%,100%{transform:translate(80px,-20px)}}
+.a-wet{animation:wet 3.4s linear infinite}
+@keyframes wet{0%{opacity:.85}100%{opacity:.1}}
+.a-dry{animation:dryc 6s ease-in-out infinite}
+@keyframes dryc{0%{fill:var(--pulp2)}55%,100%{fill:var(--sheet)}}
+.a-wind{animation:wind 1.8s linear infinite}
+@keyframes wind{from{transform:translateX(-30px);opacity:0}30%{opacity:1}to{transform:translateX(40px);opacity:0}}
+.a-peel{animation:peel 6s ease-in-out infinite;transform-box:view-box;transform-origin:250px 150px}
+@keyframes peel{0%,60%{transform:rotate(0)}80%,92%{transform:rotate(-24deg)}100%{transform:rotate(0)}}
+.a-press{animation:press 2s ease-in-out infinite}
+@keyframes press{0%,100%{transform:translateX(-50px)}50%{transform:translateX(50px)}}
+
+/* 材料 */
+.mats{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:8px}
+.mat{border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:8px 12px}
+.mat b{display:block}
+.mat small{color:var(--muted);font-size:14px;line-height:1.5;display:block}
+
+/* 排序 */
+.order{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.oslot{border:2px dashed var(--line);border-radius:10px;padding:8px 12px;min-height:46px;display:flex;align-items:center;gap:10px;font-weight:700}
+.oslot.fill{border-style:solid;border-color:var(--ok);background:var(--ok-soft)}
+.oslot .n{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--paper);font-size:14px}
+.opool{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ob{font:inherit;font-weight:700;font-size:16px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:10px;padding:8px 14px;cursor:pointer;min-height:44px}
+.ob.bad{animation:nope .4s;border-color:var(--bad);color:var(--bad)}
+@keyframes nope{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.ofb{font-weight:700;margin-top:8px;min-height:1.7em}
+.ofb.ok{color:var(--ok)}.ofb.bad{color:var(--bad)}
+
+/* 診斷卡 */
+.cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:8px}
+.case{font:inherit;color:var(--ink);text-align:left;border:2px solid var(--line);border-radius:12px;background:var(--paper);padding:12px 14px;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-height:140px}
+.case .q{font-size:18px;font-weight:900}
+.case .a{margin-top:auto;font-size:15px;color:var(--muted)}
+.case.open{border-color:var(--accent);background:var(--accent-soft)}
+.case.open .a{color:var(--ink)}
+
+/* 濃度模擬 */
+.conc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.conc{grid-template-columns:1fr}}
+input[type=range]{width:100%;accent-color:var(--accent);margin:8px 0 0;height:32px}
+.cnum{font-size:40px;font-weight:900;line-height:1;color:var(--accent)}
+.cverdict{font-size:20px;font-weight:900;margin-top:6px}
+
+/* 測驗 */
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.progress{display:flex;gap:4px;flex-wrap:wrap}
+.dot{width:18px;height:8px;border-radius:4px;background:var(--line)}
+.dot.ok{background:var(--ok)}.dot.bad{background:var(--bad)}
+button.dot{border:0;padding:0;cursor:pointer;width:22px;height:12px}
+.dot.now{outline:2px solid var(--accent);outline-offset:2px}
+.qtype{font-size:14px;font-weight:700;color:var(--accent);letter-spacing:.06em}
+.qtext{font-size:22px;line-height:1.75;margin:10px 0 14px;font-weight:500}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{font:inherit;font-size:18px;text-align:left;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:12px 14px;cursor:pointer;display:flex;gap:10px;align-items:center;min-height:56px}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt .k{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--bg);font-size:14px;font-weight:700}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt:disabled{cursor:default}
+.feedback{margin-top:14px;border-radius:10px;padding:10px 14px;font-size:16px}
+.feedback.ok{background:var(--ok-soft);color:var(--ok)}
+.feedback.bad{background:var(--bad-soft);color:var(--bad)}
+.feedback .why{color:var(--ink);display:block;margin-top:4px}
+.score{font-size:64px;font-weight:900;color:var(--accent);line-height:1;margin:10px 0}
+.review .item{border-left:4px solid var(--bad);padding:6px 12px;background:var(--bg);border-radius:0 6px 6px 0;font-size:16px;margin-top:8px;text-align:left}
+.qnav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap}
+.qcount{font-size:14px;color:var(--muted);font-weight:700}
+.overlay{position:fixed;inset:0;background:rgba(20,14,8,.72);display:grid;place-items:center;z-index:50;padding:20px}
+.overlay .inner{background:#fff;border-radius:16px;padding:22px;text-align:center;color:#2a2118;max-width:92vw}
+.overlay img{width:min(340px,72vw);height:min(340px,72vw);image-rendering:pixelated;display:block;margin:0 auto}
+.overlay p{font-size:22px;font-weight:700;margin:12px 0 0}
+.overlay small{display:block;color:#6c5f52;margin-top:4px;word-break:break-all}
+footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
+
+@media (min-width:600px) and (max-width:1100px){
+  body{font-size:18px}
+  .card p,.card li{font-size:18px}
+  .qtext{font-size:24px}.opt{font-size:20px}
+}
+@media (max-width:599px){
+  .wrap{padding-block:12px 40px}
+  h1{font-size:30px}
+  .qr img{width:64px;height:64px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:none;font-size:16px;padding:6px 14px}
+  .card{padding:14px}
+  .card h2{font-size:21px}
+  .qtext{font-size:20px}
+  .toolbar .hint{display:none}
+  .stxt li{font-size:17px}
+  .qnav .btn{flex:1}.qcount{order:-1;width:100%;text-align:center}
+}
+@media (min-width:1500px){ .wrap{zoom:1.3} }
+@media (min-width:2200px){ .wrap{zoom:1.75} }
+@media (prefers-reduced-motion:reduce){
+  #fiberSvg .fb,#fiberSvg .wbg,#fiberSvg .h2o,#fiberSvg .hb{transition-duration:.01s!important;transition-delay:0s!important}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="eyebrow">農業資源應用・高二</div>
+      <h1>再生紙：讓纖維再活一次</h1>
+      <p class="sub">認識原理 → 農業資源應用 → 動手抄紙 → 動手判斷 → 掃 QR 小測驗</p>
+    </div>
+    <div class="qr" id="qrBtn" role="button" tabindex="0" aria-label="放大 QR code"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAADWklEQVR4Xu1cQY7bMAwk1wZ6tH/Qp2R/0Cct+rP4KfsD+xjAAQsOqTi7h7W0TQK24RwMGzEMWSNKMxQdFmrB9NJyNxHl/V8j+yf75xrfGA8LO171QdN4Zn5demLmXi9Jz4A+43EX3+j/JrQ+n0TmTgA6yEp2ehz0Ej/Mnf6g0Mtj6/Pz/gjzjwfn8kNwhkiW43Bii2mEuJ0lXxH4qsdnvkTkxHSYz0zT2In8Hj8+K/n9l/k9M/PYCdGia+3CTDSsf7u+NyHHz23Hj/JIVExSt9L0CyKLiA9y7vnw3q9Eg96w5Py8j4jjU6OWNVaJiN/ee4K0Il2O7YUm/I6ZOmL7W/Bs7XfBbACrKp2JoKkxNbu6dmH9bP3zH7yveV1VyIP6I5VWNJw0nNUazcX/pn6uQbTxoPG7kjlcd73uiY1fC2cVWbDDGb831j/3Hg/OL2jU/Aa4dKYt5+GZDtyS/O7h3ny1Pr/kryyJpdTqgquHzRqJzPpayW8FWvv/AfdjrUWuCq7XcGY5qn5GTKtdElFh/Yj2NOEB/dOEaO0pCWdErS2z2/qLJGVJTNst0dqf7dmB2yBQu621Jp0vJqmsycnvHqKNtyt9VfwvRBbsMOLXpbNL7Gjtz/bsxu+2P4j8RgGmZjlikkaSI/1RBaKNNxPHJX9FbnMtk2Xrr3um9L9ViMmvyWSVVtf5SSPek5Tpj6oQk18Xx7YX6Fkrc73bnJ35qxpE49ccL9Mw68HfQGhhEt0VxKaSTK96GLv0v7uIxu9V/VVBMcGmry7+N/VVDWLy66ln4KKabX62mjvPSaf/3UNUfmF+dC72Ssptu8FNUq6/VYjJr7HqhgizclFapqkvJjjzGzsIyO+GLYgv/teyHyiCzvxGBaLx+2LFzV6/gdLYTvARA85QdeWlG4jpgO1vwjO2v3y/gEodLcPhN6vEQpEO8pNas4Pdw2fsnxZE6x/zR6XWyguufGvfPlIp6699uBKt/dmeHXzg1xPO11lJaGpbmHP/dx/RxttWsWHQgnbPWmkRhwb2ypipDxDY0dqf7fka1j9lk99LnzdphY/MSDl3ZH/W9Gc97t2fShzCVLGM+qXKicuBhIl6kumnaBGWLsX3bk8+/7bjR7lsQP4/w437P8fzbcfzs/XnH9kTduN1AW8lAAAAAElFTkSuQmCC"><span>掃我測驗</span></div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" id="t1" aria-selected="true">認識再生紙</button>
+    <button class="tab" role="tab" id="t2" aria-selected="false">農業資源應用</button>
+    <button class="tab" role="tab" id="t3" aria-selected="false">動手做</button>
+    <button class="tab" role="tab" id="t4" aria-selected="false">動手判斷</button>
+    <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
+  </nav>
+
+  <div class="toolbar" id="blankBar">
+    <label class="switch"><input type="checkbox" id="blankToggle"> 挖空模式</label>
+    <span class="hint">打開後，黃色重點會變成空格。先讓學生說出答案，再點空格揭曉。</span>
+  </div>
+
+  <!-- ===== 1 認識再生紙 ===== -->
+  <section class="panel" id="p1">
+    <div class="card">
+      <h2>紙為什麼不用膠也能黏在一起？<span class="sec">原理</span></h2>
+      <div class="two">
+        <div>
+          <ul>
+            <li>紙 ＝ <span class="key">植物纖維</span>交織成的薄片，主成分是<span class="key">纖維素</span></li>
+            <li>纖維素表面有很多 –OH（羥基）</li>
+            <li>水分蒸發、纖維靠在一起 → 交叉處形成<span class="key">氫鍵</span> → 黏成一張紙</li>
+            <li>再泡水 → 水分子鑽進去，氫鍵被打開 → 紙又<span class="key">散成纖維</span></li>
+          </ul>
+          <div class="tip"><b>所以：</b>紙泡水、打散、再撈起來晾乾，就能變成新的紙 ─ 這就是<span class="key">再生紙</span>的原理。</div>
+        </div>
+        <figure>
+          <div class="fiberbox"><svg id="fiberSvg" class="art" viewBox="0 0 360 210" role="img" aria-label="纖維在水中散開、乾燥後靠攏形成氫鍵的動畫"></svg></div>
+          <div class="actions" style="justify-content:center;align-items:center">
+            <span class="fstate" id="fState">💧 泡在水裡：纖維散開</span>
+            <button class="btn" id="fBtn">晾乾 ▶</button>
+          </div>
+          <div class="legend2" style="justify-content:center"><span><i style="background:var(--fiber)"></i>纖維</span><span><i style="background:var(--water2)"></i>水分子</span><span><i style="background:var(--bad)"></i>氫鍵（纖維交叉處）</span></div>
+        </figure>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>原生紙 vs. 再生紙</h2>
+      <div class="tblwrap"><table class="t">
+        <tr><th></th><th>原生紙</th><th>再生紙</th></tr>
+        <tr><td><b>原料</b></td><td>木材、竹、草本植物的纖維直接製漿</td><td><span class="key">廢紙</span>（回收紙）打散成紙漿</td></tr>
+        <tr><td><b>纖維</b></td><td>較長、強度高</td><td>每回收一次就<span class="key">變短、變弱</span></td></tr>
+        <tr><td><b>環境</b></td><td>需砍樹、耗水耗能較多</td><td>少砍樹、<span class="key">省能源</span>、減少垃圾</td></tr>
+      </table></div>
+    </div>
+
+    <div class="card">
+      <h2>紙能無限回收嗎？</h2>
+      <div class="three">
+        <div class="box c1"><b class="t">回收次數有限</b>纖維越回收越短，一般約 <span class="key">4～7 次</span>後短到無法成紙，需補充原生纖維。</div>
+        <div class="box c2"><b class="t">省木材</b>回收 1 噸影印紙，約可省下 <span class="key">2 噸多</span>木材。</div>
+        <div class="box c3"><b class="t">省能源</b>和原生紙相比，估計可省約 <span class="key">40～64%</span> 能源（各機構估法不同）。</div>
+      </div>
+      <div class="note">只能「往下」再生：辦公用紙可以做成紙板，但<b>紙板不能再做成辦公用紙</b>。</div>
+    </div>
+
+    <div class="card">
+      <h2>工廠怎麼做再生紙？<span class="sec">點每一站看說明</span></h2>
+      <div class="pipe" id="pipe"><div class="track"></div><div class="runner"></div></div>
+      <div class="pinfo" id="pinfo" aria-live="polite"></div>
+    </div>
+
+    <div class="card">
+      <h2>哪種廢紙變成什麼？</h2>
+      <div class="tblwrap"><table class="t">
+        <tr><th>廢紙</th><th>再生產品</th></tr>
+        <tr><td>白紙類</td><td>白紙類文化用紙、衛生紙</td></tr>
+        <tr><td>報紙類</td><td>新聞紙、工業用紙</td></tr>
+        <tr><td>牛皮紙類</td><td>紙板、瓦楞紙</td></tr>
+        <tr><td>混合紙類</td><td>再生紙、紙板、瓦楞紙中間芯層</td></tr>
+      </table></div>
+    </div>
+  </section>
+
+  <!-- ===== 2 農業資源應用 ===== -->
+  <section class="panel" id="p2" hidden>
+    <div class="card">
+      <h2>農業廢棄物也是纖維資源</h2>
+      <div class="two">
+        <div>
+          <ul>
+            <li>作物收穫後留下的<span class="key">稻稈、筍殼、蔗渣、果皮</span>都含纖維素 → 可以造紙</li>
+            <li>台灣稻稈每年約 <span class="key">150 萬公噸</span>，常被<span class="key">露天焚燒</span> → 空氣污染、浪費資源</li>
+            <li>南投埔里：茭白筍田約 1800 公頃（占全台約 85%），紙廠把<span class="key">茭白筍殼</span>和<span class="key">甘蔗渣</span>做成手工紙</li>
+            <li>農廢紙通常<span class="key">不漂白</span>，保留植物自然的顏色和紋理</li>
+          </ul>
+        </div>
+        <figure class="cycle">
+          <svg class="art" viewBox="0 0 360 300" role="img" aria-label="農業資源循環圖：作物收穫、農業殘體、蒸煮軟化、打漿抄紙、使用、回收或堆肥再回到田裡">
+            <circle class="ring" cx="180" cy="150" r="110"/>
+            <g class="node"><rect x="125" y="18" width="110" height="44" rx="10"/><text x="180" y="38">🌾 作物收穫</text><text class="s" x="180" y="54">稻、茭白筍、甘蔗</text></g>
+            <g class="node"><rect x="250" y="70" width="104" height="44" rx="10"/><text x="302" y="90">農業殘體</text><text class="s" x="302" y="106">稻稈、筍殼、蔗渣</text></g>
+            <g class="node"><rect x="250" y="190" width="104" height="44" rx="10"/><text x="302" y="210">蒸煮軟化</text><text class="s" x="302" y="226">打碎＋煮爛</text></g>
+            <g class="node"><rect x="125" y="240" width="110" height="44" rx="10"/><text x="180" y="260">打漿・抄紙</text><text class="s" x="180" y="276">手工紙、包材</text></g>
+            <g class="node"><rect x="6" y="190" width="104" height="44" rx="10"/><text x="58" y="210">使用</text><text class="s" x="58" y="226">卡片、燈罩、包裝</text></g>
+            <g class="node"><rect x="6" y="70" width="104" height="44" rx="10"/><text x="58" y="90">回收／堆肥</text><text class="s" x="58" y="106">再回到循環或田裡</text></g>
+            <g class="spin"><circle cx="180" cy="40" r="8" fill="var(--g1)"/></g>
+            <text x="180" y="146" class="s-txt" text-anchor="middle" style="font-size:16px">不燒掉</text>
+            <text x="180" y="166" class="s-txt" text-anchor="middle" style="font-size:16px">變資源</text>
+          </svg>
+        </figure>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>廢紙 vs. 農業纖維：處理有什麼不同？</h2>
+      <div class="tblwrap"><table class="t">
+        <tr><th>步驟</th><th>廢紙</th><th>農業纖維（筍殼、稻稈、芒草…）</th></tr>
+        <tr><td><b>軟化</b></td><td>撕碎泡水就會軟</td><td>纖維粗硬，要先<span class="key">切碎、蒸煮</span>（常加鹼）軟化</td></tr>
+        <tr><td><b>清洗</b></td><td>─</td><td>煮完要洗掉雜質和鹼</td></tr>
+        <tr><td><b>成紙</b></td><td>容易交織成紙</td><td>有些纖維不易緊密交織 → 可<span class="key">混入廢紙漿</span>增加韌性</td></tr>
+        <tr><td><b>成品</b></td><td>較平滑，可書寫</td><td>看得到纖維紋路，適合美術、包裝、卡片</td></tr>
+      </table></div>
+      <div class="tip"><b>紙藥：</b>傳統手工紙會加入植物黏液（例如馬拉巴栗萃取物）當<span class="key">紙藥</span>，讓纖維在水中均勻懸浮、不結團，抄出來的紙比較均勻。</div>
+    </div>
+
+    <div class="card">
+      <h2>一根稻稈的多種出路</h2>
+      <div class="three">
+        <div class="box c2"><b class="t">🐐 飼料</b>畜試所把稻稈做成青貯料、粒狀芻料餵牛羊，成本比進口草料低。</div>
+        <div class="box c1"><b class="t">🌱 堆肥</b>打碎後回到田裡，補充有機質。</div>
+        <div class="box c3"><b class="t">📄 造紙・材料</b>纖維做成手工紙、包材；蔗渣還能做成可堆肥的吸管。</div>
+      </div>
+      <div class="note">共同目標：把「廢棄物」變成「資源」，取代<b>露天焚燒</b>。</div>
+    </div>
+  </section>
+
+  <!-- ===== 3 動手做 ===== -->
+  <section class="panel" id="p3" hidden>
+    <div class="card">
+      <h2>準備材料（每組）</h2>
+      <div class="mats">
+        <div class="mat"><b>📄 廢紙 約 15 g</b><small>影印紙、報紙、作業紙。撕掉膠帶、拔掉釘書針；避開亮面銅版紙</small></div>
+        <div class="mat"><b>💧 水</b><small>泡紙＋打漿＋稀釋用；溫水泡得比較快</small></div>
+        <div class="mat"><b>🌀 果汁機</b><small>建議由老師操作</small></div>
+        <div class="mat"><b>🪣 大水盆</b><small>要比抄紙框大一圈</small></div>
+        <div class="mat"><b>🖼️ 抄紙框</b><small>有紗網的網框＋沒有網的邊框（可用相框＋紗網自製）</small></div>
+        <div class="mat"><b>🧽 海綿、吸水布</b><small>不織布、舊毛巾、舊報紙墊底</small></div>
+        <div class="mat"><b>🌸 加料（可選）</b><small>花瓣、葉片、煮軟的茭白筍殼或稻稈纖維</small></div>
+      </div>
+      <div class="note">紙漿濃度參考：打漿時 <b>紙：水 約 1：3</b>；倒進水盆後再加等量的水稀釋。科展實驗用 <b>8～15 g 廢紙配 1000 cc 水</b>做出來的紙最好用。</div>
+      <div class="warnbox"><b>安全：</b>果汁機由老師操作，打漿時不要把手或湯匙伸進杯裡；手濕的時候不要碰插頭；地上的水隨時擦乾。</div>
+    </div>
+
+    <div class="card">
+      <h2>一步一步抄紙<span class="sec">點數字跳到那一步</span></h2>
+      <div class="stepchips" id="chips"></div>
+      <div class="player">
+        <div class="stage" id="stage"><span class="badge" id="sBadge"></span><div id="sArt"></div></div>
+        <div class="stxt">
+          <h3 id="sTitle"></h3>
+          <ul id="sList"></ul>
+          <div class="tip" id="sTip"></div>
+          <div class="snav">
+            <button class="btn ghost" id="sPrev">← 上一步</button>
+            <button class="btn ghost sm" id="sPause">⏸ 暫停動畫</button>
+            <button class="btn" id="sNext">下一步 →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4 動手判斷 ===== -->
+  <section class="panel" id="p4" hidden>
+    <div class="card">
+      <h2>把步驟排好</h2>
+      <p class="ex">依照正確順序，一個一個點下面的步驟。</p>
+      <div class="order" id="oSlots"></div>
+      <div class="opool" id="oPool"></div>
+      <div class="ofb" id="oFb" aria-live="polite"></div>
+      <div class="actions"><button class="btn ghost" id="oReset">↺ 重新排</button></div>
+    </div>
+
+    <div class="card">
+      <h2>紙漿濃度實驗室</h2>
+      <div class="conc">
+        <div>
+          <div><span class="cnum" id="cNum">10</span> <b>g 廢紙 ／ 1000 cc 水</b></div>
+          <input type="range" id="cRange" min="3" max="25" value="10" aria-label="廢紙克數">
+          <div class="cverdict" id="cVerdict"></div>
+          <p id="cWhy" style="margin:4px 0 0"></p>
+        </div>
+        <figure><svg class="art" id="cSvg" viewBox="0 0 300 170" role="img" aria-label="不同紙漿濃度做出的紙張厚薄示意"></svg>
+          <figcaption>上：從上往下看纖維多寡　下：紙張厚度</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>抄紙出問題了！怎麼辦？<span class="sec">先想，再點開</span></h2>
+      <div class="cases" id="cases"></div>
+    </div>
+  </section>
+
+  <!-- ===== 5 小測驗 ===== -->
+  <section class="panel" id="p5" hidden></section>
+
+  <footer>資料參考：環境部資源循環署資源回收網（新北市資源回收網轉載）、主婦聯盟環境保護基金會「手工再生紙」、中小學科展作品「起紙回生」「紙復回春」、TVBS／公視／自由時報農業廢棄物報導。</footer>
+</div>
+
+<div class="overlay" id="overlay" hidden><div class="inner"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAADWklEQVR4Xu1cQY7bMAwk1wZ6tH/Qp2R/0Cct+rP4KfsD+xjAAQsOqTi7h7W0TQK24RwMGzEMWSNKMxQdFmrB9NJyNxHl/V8j+yf75xrfGA8LO171QdN4Zn5demLmXi9Jz4A+43EX3+j/JrQ+n0TmTgA6yEp2ehz0Ej/Mnf6g0Mtj6/Pz/gjzjwfn8kNwhkiW43Bii2mEuJ0lXxH4qsdnvkTkxHSYz0zT2In8Hj8+K/n9l/k9M/PYCdGia+3CTDSsf7u+NyHHz23Hj/JIVExSt9L0CyKLiA9y7vnw3q9Eg96w5Py8j4jjU6OWNVaJiN/ee4K0Il2O7YUm/I6ZOmL7W/Bs7XfBbACrKp2JoKkxNbu6dmH9bP3zH7yveV1VyIP6I5VWNJw0nNUazcX/pn6uQbTxoPG7kjlcd73uiY1fC2cVWbDDGb831j/3Hg/OL2jU/Aa4dKYt5+GZDtyS/O7h3ny1Pr/kryyJpdTqgquHzRqJzPpayW8FWvv/AfdjrUWuCq7XcGY5qn5GTKtdElFh/Yj2NOEB/dOEaO0pCWdErS2z2/qLJGVJTNst0dqf7dmB2yBQu621Jp0vJqmsycnvHqKNtyt9VfwvRBbsMOLXpbNL7Gjtz/bsxu+2P4j8RgGmZjlikkaSI/1RBaKNNxPHJX9FbnMtk2Xrr3um9L9ViMmvyWSVVtf5SSPek5Tpj6oQk18Xx7YX6Fkrc73bnJ35qxpE49ccL9Mw68HfQGhhEt0VxKaSTK96GLv0v7uIxu9V/VVBMcGmry7+N/VVDWLy66ln4KKabX62mjvPSaf/3UNUfmF+dC72Ssptu8FNUq6/VYjJr7HqhgizclFapqkvJjjzGzsIyO+GLYgv/teyHyiCzvxGBaLx+2LFzV6/gdLYTvARA85QdeWlG4jpgO1vwjO2v3y/gEodLcPhN6vEQpEO8pNas4Pdw2fsnxZE6x/zR6XWyguufGvfPlIp6699uBKt/dmeHXzg1xPO11lJaGpbmHP/dx/RxttWsWHQgnbPWmkRhwb2ypipDxDY0dqf7fka1j9lk99LnzdphY/MSDl3ZH/W9Gc97t2fShzCVLGM+qXKicuBhIl6kumnaBGWLsX3bk8+/7bjR7lsQP4/w437P8fzbcfzs/XnH9kTduN1AW8lAAAAAElFTkSuQmCC"><p>用平板或手機掃描，開始小測驗！</p><small>https://teacher-liujikan.github.io/yilin-work/agri-paper/#quiz</small></div></div>
+
+<script>
+(function(){
+const $ = id => document.getElementById(id);
+const NS="http://www.w3.org/2000/svg";
+
+/* ---------- 分頁 ---------- */
+const TABS=[["t1","p1"],["t2","p2"],["t3","p3"],["t4","p4"],["t5","p5"]];
+function show(t){
+  TABS.forEach(([a,b])=>{ const on=a===t; $(a).setAttribute("aria-selected",on); $(b).hidden=!on; });
+  $("blankBar").hidden = !(t==="t1"||t==="t2");
+  if(t==="t5"&&!quiz) startQuiz();
+  try{ history.replaceState(null,"",t==="t5"?"#quiz":location.pathname+location.search); }catch(e){}
+  window.scrollTo({top:0});
+}
+TABS.forEach(([a])=>$(a).onclick=()=>show(a));
+
+/* ---------- 挖空模式 ---------- */
+$("blankToggle").onchange=e=>{ document.body.classList.toggle("blank",e.target.checked); document.querySelectorAll(".key.show").forEach(k=>k.classList.remove("show")); };
+document.addEventListener("click",e=>{ const k=e.target.closest(".key"); if(k&&document.body.classList.contains("blank")) k.classList.toggle("show"); });
+
+/* ---------- 纖維動畫 ---------- */
+(function(){
+  const svg=$("fiberSvg");
+  let seed=7; const rnd=()=>{ seed=(seed*16807)%2147483647; return seed/2147483647; };
+  svg.innerHTML=`<rect class="wbg" x="0" y="0" width="360" height="210" opacity=".35"/>`;
+  // 水分子
+  for(let i=0;i<34;i++){ const c=document.createElementNS(NS,"circle"); c.setAttribute("class","h2o"); c.setAttribute("cx",(10+rnd()*340).toFixed(1)); c.setAttribute("cy",(10+rnd()*190).toFixed(1)); c.setAttribute("r","3"); svg.appendChild(c); }
+  const F=[];
+  for(let i=0;i<14;i++){
+    const L=70+rnd()*50;
+    const dry={x:110+rnd()*140, y:60+rnd()*90, a:rnd()*180};
+    const wet={x:30+rnd()*300, y:25+rnd()*160, a:rnd()*180};
+    const g=document.createElementNS(NS,"g"); g.setAttribute("class","fb");
+    const ln=document.createElementNS(NS,"line"); ln.setAttribute("x1",-L/2); ln.setAttribute("x2",L/2); ln.setAttribute("y1",0); ln.setAttribute("y2",0);
+    g.appendChild(ln); svg.appendChild(g); F.push({g,L,dry,wet});
+  }
+  // 乾燥時交叉點（氫鍵）
+  const seg=f=>{ const r=f.dry.a*Math.PI/180, dx=Math.cos(r)*f.L/2, dy=Math.sin(r)*f.L/2; return [f.dry.x-dx,f.dry.y-dy,f.dry.x+dx,f.dry.y+dy]; };
+  let n=0;
+  for(let i=0;i<F.length;i++)for(let j=i+1;j<F.length;j++){
+    const [x1,y1,x2,y2]=seg(F[i]), [x3,y3,x4,y4]=seg(F[j]);
+    const d=(x1-x2)*(y3-y4)-(y1-y2)*(x3-x4); if(Math.abs(d)<1e-6) continue;
+    const t=((x1-x3)*(y3-y4)-(y1-y3)*(x3-x4))/d, u=-((x1-x2)*(y1-y3)-(y1-y2)*(x1-x3))/d;
+    if(t>0&&t<1&&u>0&&u<1&&n<40){ const c=document.createElementNS(NS,"circle"); c.setAttribute("class","hb"); c.setAttribute("cx",(x1+t*(x2-x1)).toFixed(1)); c.setAttribute("cy",(y1+t*(y2-y1)).toFixed(1)); c.setAttribute("r","4"); svg.appendChild(c); n++; }
+  }
+  let dry=false;
+  const apply=()=>{ F.forEach(f=>{ const s=dry?f.dry:f.wet; f.g.style.transform=`translate(${s.x}px,${s.y}px) rotate(${s.a}deg)`; }); svg.classList.toggle("dry",dry);
+    $("fState").textContent=dry?"☀️ 晾乾了：纖維靠攏、形成氫鍵":"💧 泡在水裡：纖維散開"; $("fBtn").textContent=dry?"再泡水 ▶":"晾乾 ▶"; };
+  apply(); $("fBtn").onclick=()=>{ dry=!dry; apply(); };
+})();
+
+/* ---------- 工廠流程 ---------- */
+const PIPE=[
+ ["散漿","打散","廢紙加水攪打，散成纖維和水混合的漿。"],
+ ["除雜","篩選","篩掉釘書針、塑膠、膠帶等不是紙的東西。"],
+ ["脫墨","洗墨","用脫墨劑把油墨洗掉。做白紙、新聞紙要脫墨；工業用紙（紙板）不用。"],
+ ["磨漿","帚化","把纖維表面磨得起毛（帚化），增加纖維交織，提高強度。多次回收的短纖維特別需要。"],
+ ["淨漿","離心","利用比重不同，以離心法去除灰塵、銅版紙表面的石粉等細小雜質。"],
+ ["調漿","配比","依產品把不同廢紙漿調勻，必要時加入原木漿增加強韌度。"],
+ ["抄紙","成形","紙漿鋪在網上脫水，纖維交織成濕紙。"],
+ ["乾燥","成紙","壓水、烘乾、捲成紙捲，再生紙完成！"]
+];
+(function(){
+  const box=$("pipe");
+  PIPE.forEach((p,i)=>{ const b=document.createElement("button"); b.className="ps"; b.dataset.i=i; b.innerHTML=`${p[0]}<small>${i+1}・${p[1]}</small>`; b.onclick=()=>pick(i); box.appendChild(b); });
+  function pick(i){ box.querySelectorAll(".ps").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.i===i)); $("pinfo").innerHTML=`<b>${i+1}. ${PIPE[i][0]}</b>　${PIPE[i][2]}`; }
+  pick(2);
+})();
+
+/* ---------- 動手做：步驟動畫 ---------- */
+const TUB=(y=120)=>`<path class="s-tub" d="M40 ${y-30} L60 ${y+40} L280 ${y+40} L300 ${y-30}"/>`;
+const WATER=(cls="s-water",y=110)=>`<path class="${cls}" d="M44 ${y-14} L59 ${y+48} L281 ${y+48} L296 ${y-14} Z"/>`;
+const MOULD=`<g><rect x="105" y="78" width="130" height="20" rx="3" fill="none" stroke="var(--wood)" stroke-width="6"/><line x1="108" y1="88" x2="232" y2="88" stroke="var(--mesh)" stroke-width="2" stroke-dasharray="3 3"/></g>`;
+const STEPS=[
+ {t:"撕碎、浸泡",l:["廢紙撕成約 2 公分的小片","泡在水裡直到泡軟（可前一天先泡）","用溫水會軟得比較快"],tip:"撕越小，打漿越快、紙漿越細。",
+  art:`<svg viewBox="0 0 340 200">${WATER("s-water",120)}${TUB(120)}
+   ${[70,120,165,210,255].map((x,i)=>`<rect class="a-fall s-sheet" x="${x}" y="62" width="22" height="16" style="animation-delay:${i*.5}s"/>`).join("")}
+   ${[80,130,175,220,265].map((x,i)=>`<ellipse class="a-ripple" cx="${x}" cy="108" rx="16" ry="4" fill="none" stroke="var(--water2)" stroke-width="2" style="animation-delay:${i*.5}s"/>`).join("")}
+   <text class="s-txt" x="170" y="186" text-anchor="middle">泡到紙變軟、一撕就爛</text></svg>`},
+ {t:"打成紙漿",l:["泡軟的紙和水以 約 1：3 倒進果汁機","分段打，每次幾秒，打到糊狀、看不到紙片","想要彩色紙：最後加一點色紙或花瓣，稍微打一下"],tip:"安全：老師操作，手和湯匙不要伸進杯裡。",
+  art:`<svg viewBox="0 0 340 200"><g class="a-shake">
+   <path d="M120 30 L220 30 L205 140 L135 140 Z" fill="var(--water)" opacity=".35" stroke="var(--muted)" stroke-width="3"/>
+   <path d="M126 70 L214 70 L205 138 L135 138 Z" class="s-pulp"/>
+   <g class="a-rotslow"><ellipse cx="170" cy="100" rx="28" ry="12" fill="none" stroke="var(--pulp2)" stroke-width="4" stroke-dasharray="12 8"/></g>
+   <g class="a-rot"><line x1="150" y1="130" x2="190" y2="130" stroke="var(--muted)" stroke-width="5" stroke-linecap="round"/></g>
+   <rect x="125" y="140" width="90" height="40" rx="8" fill="var(--muted)"/><circle cx="170" cy="160" r="8" fill="var(--paper)"/>
+   <rect x="115" y="22" width="110" height="10" rx="4" fill="var(--muted)"/></g>
+   <text class="s-txt" x="270" y="80" text-anchor="middle">紙：水</text><text class="s-txt" x="270" y="100" text-anchor="middle" style="font-size:20px">1：3</text></svg>`},
+ {t:"倒進水盆、稀釋",l:["紙漿倒進大水盆","加入和紙漿等量的水，攪拌均勻","可加入紙藥、花瓣、葉片或筍殼纖維"],tip:"漿越濃，紙越厚；漿越稀，紙越薄。",
+  art:`<svg viewBox="0 0 340 200">${WATER("s-pulp",130)}${TUB(130)}
+   <g class="a-pour"><path d="M95 40 L145 40 L140 95 L100 95 Z" fill="var(--pulp)" stroke="var(--muted)" stroke-width="3"/></g>
+   <path class="a-stream" d="M150 52 Q170 80 168 118" fill="none" stroke="var(--pulp2)" stroke-width="8" stroke-linecap="round"/>
+   <g class="a-stir"><line x1="230" y1="60" x2="215" y2="150" stroke="var(--wood)" stroke-width="6" stroke-linecap="round"/></g>
+   <text class="s-txt" x="170" y="192" text-anchor="middle">加等量的水，攪勻</text></svg>`},
+ {t:"抄紙（撈起紙漿）",l:["網框網面朝上，邊框疊在上面，兩手抓緊","從遠端斜斜插入水中，在水裡放平","平平地往上提起，輕輕前後左右搖，讓纖維鋪均勻"],tip:"關鍵：提起時要保持水平，紙才會厚薄一致。",
+  art:`<svg viewBox="0 0 340 200">${TUB(130)}
+   <g class="a-dip">${MOULD}<rect class="a-pulpon s-pulp2" x="108" y="80" width="124" height="7"/></g>
+   <path d="M44 116 L59 178 L281 178 L296 116 Z" class="s-pulp" opacity=".85"/>
+   <text class="s-txt" x="170" y="196" text-anchor="middle">斜插 → 放平 → 水平提起 → 輕搖</text></svg>`},
+ {t:"瀝水、對光檢查",l:["網框稍微斜放，讓多餘的水滴乾","拿到燈下看透光：亮暗均勻代表厚薄平均","有破洞或太薄：倒回去重抄"],tip:"科展技巧：用透光度判斷紙漿分布均不均勻。",
+  art:`<svg viewBox="0 0 340 200"><g transform="rotate(-8 170 70)">${MOULD.replace('y="78"','y="60"').replace(/y1="88" x2="232" y2="88"/,'y1="70" x2="232" y2="70"')}<rect class="s-pulp2" x="108" y="62" width="124" height="7"/></g>
+   ${[130,160,190,215].map((x,i)=>`<circle class="a-drop" cx="${x}" cy="${86-(x-130)*0.14}" r="4" fill="var(--water2)" style="animation-delay:${i*.35}s"/>`).join("")}
+   <g class="a-light"><circle cx="290" cy="35" r="16" fill="#f2cf3c"/><path d="M290 55 L250 75 M290 55 L270 85 M290 55 L290 90" stroke="#f2cf3c" stroke-width="3"/></g>
+   <rect x="80" y="170" width="180" height="8" rx="4" fill="var(--muted)" opacity=".4"/>
+   <text class="s-txt" x="170" y="196" text-anchor="middle">滴乾 → 對光看均勻度</text></svg>`},
+ {t:"伏紙（倒扣轉移）",l:["拿掉上面的邊框","吸水布鋪在舊報紙上","網框翻面，濕紙那面朝下，倒扣在吸水布上"],tip:"倒扣時一次到位，不要左右拖，紙才不會皺。",
+  art:`<svg viewBox="0 0 340 200"><rect x="70" y="150" width="200" height="12" rx="2" class="s-felt"/><rect x="60" y="162" width="220" height="10" fill="var(--muted)" opacity=".35"/>
+   <g class="a-flip"><rect x="105" y="60" width="130" height="16" rx="3" fill="none" stroke="var(--wood)" stroke-width="6"/><line x1="108" y1="68" x2="232" y2="68" stroke="var(--mesh)" stroke-width="2" stroke-dasharray="3 3"/><rect class="s-pulp2" x="108" y="54" width="124" height="6"/></g>
+   <rect class="a-lift s-pulp2" x="108" y="144" width="124" height="6"/>
+   <text class="s-txt" x="170" y="194" text-anchor="middle">網框翻面 → 濕紙貼到吸水布上</text></svg>`},
+ {t:"吸水、壓平",l:["用海綿或乾布在網背上一處一處按壓吸水","吸到不滴水後，從一角慢慢掀起網框","濕紙上再蓋一層布，用擀麵棍輕壓"],tip:"網框掀不起來？代表水還太多，再多吸幾次。",
+  art:`<svg viewBox="0 0 340 200"><rect x="70" y="140" width="200" height="12" rx="2" class="s-felt"/>
+   <rect class="s-pulp2" x="100" y="132" width="140" height="8"/>
+   <rect x="96" y="120" width="148" height="12" rx="3" fill="none" stroke="var(--wood)" stroke-width="5"/>
+   ${[120,150,180,210].map(x=>`<circle class="a-wet" cx="${x}" cy="160" r="3" fill="var(--water2)"/>`).join("")}
+   <g class="a-sponge"><rect x="145" y="88" width="50" height="30" rx="6" fill="#f2cf3c" stroke="#c9a520" stroke-width="2"/><circle cx="158" cy="100" r="2" fill="#c9a520"/><circle cx="175" cy="106" r="2" fill="#c9a520"/><circle cx="185" cy="97" r="2" fill="#c9a520"/></g>
+   <text class="s-txt" x="170" y="190" text-anchor="middle">海綿按壓吸水 → 掀網框</text></svg>`},
+ {t:"陰乾、揭紙",l:["連同吸水布放在通風處陰乾（約 1～2 天）","也可以把濕紙貼在玻璃或平板上，乾了會比較平","完全乾燥後，從一角輕輕揭下來"],tip:"不要用烤箱或火烤，紙會捲曲、變脆。",
+  art:`<svg viewBox="0 0 340 200"><rect x="60" y="150" width="220" height="10" rx="2" fill="var(--wood)" opacity=".7"/>
+   <g class="a-peel"><rect class="a-dry" x="90" y="120" width="160" height="30" rx="2" stroke="var(--pulp2)" stroke-width="1.5"/></g>
+   ${[60,90,120].map((y,i)=>`<path class="a-wind" d="M40 ${y} q20 -8 40 0 t40 0" fill="none" stroke="var(--water2)" stroke-width="3" stroke-linecap="round" style="animation-delay:${i*.5}s"/>`).join("")}
+   <text class="s-txt" x="250" y="60" text-anchor="middle">通風</text><text class="s-txt" x="250" y="80" text-anchor="middle">陰乾</text>
+   <text class="s-txt" x="170" y="190" text-anchor="middle">乾了以後，從一角揭下</text></svg>`}
+];
+let sIdx=0, paused=false; const seen=new Set([0]);
+function renderStep(){
+  const s=STEPS[sIdx];
+  $("chips").innerHTML=STEPS.map((x,i)=>`<button class="sc${seen.has(i)?" seen":""}" data-i="${i}" ${i===sIdx?'aria-current="step"':""} aria-label="第 ${i+1} 步 ${x.t}">${i+1}</button>`).join("");
+  $("chips").querySelectorAll(".sc").forEach(b=>b.onclick=()=>{ sIdx=+b.dataset.i; seen.add(sIdx); renderStep(); });
+  $("sBadge").textContent=`步驟 ${sIdx+1}／${STEPS.length}`;
+  $("sArt").innerHTML=s.art;
+  $("sTitle").textContent=`${sIdx+1}. ${s.t}`;
+  $("sList").innerHTML=s.l.map(x=>`<li>${x}</li>`).join("");
+  $("sTip").innerHTML=`<b>小提醒：</b>${s.tip}`;
+  $("sPrev").disabled=sIdx===0;
+  $("sNext").textContent=sIdx===STEPS.length-1?"去排排看 →":"下一步 →";
+}
+$("sPrev").onclick=()=>{ if(sIdx>0){sIdx--; renderStep();} };
+$("sNext").onclick=()=>{ if(sIdx===STEPS.length-1){ show("t4"); return; } sIdx++; seen.add(sIdx); renderStep(); };
+$("sPause").onclick=()=>{ paused=!paused; $("stage").classList.toggle("paused",paused); $("sPause").textContent=paused?"▶ 播放動畫":"⏸ 暫停動畫"; };
+if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches){ paused=true; $("stage").classList.add("paused"); $("sPause").textContent="▶ 播放動畫"; }
+renderStep();
+
+/* ---------- 排序 ---------- */
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+let oNext=0;
+function renderOrder(){
+  $("oSlots").innerHTML=STEPS.map((s,i)=>`<div class="oslot${i<oNext?" fill":""}"><span class="n">${i+1}</span>${i<oNext?s.t:""}</div>`).join("");
+}
+function resetOrder(){
+  oNext=0; renderOrder(); $("oFb").textContent=""; $("oFb").className="ofb";
+  $("oPool").innerHTML=shuffle(STEPS.map((s,i)=>i)).map(i=>`<button class="ob" data-i="${i}">${STEPS[i].t}</button>`).join("");
+  $("oPool").querySelectorAll(".ob").forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i;
+    if(i===oNext){ b.remove(); oNext++; renderOrder();
+      if(oNext===STEPS.length){ $("oFb").className="ofb ok"; $("oFb").textContent="全部排對了！可以開始動手做囉 🎉"; } else { $("oFb").className="ofb ok"; $("oFb").textContent="對！"; } }
+    else { b.classList.remove("bad"); void b.offsetWidth; b.classList.add("bad"); $("oFb").className="ofb bad"; $("oFb").textContent=`「${STEPS[i].t}」不是第 ${oNext+1} 步，再想想。`; }
+  });
+}
+$("oReset").onclick=resetOrder; resetOrder();
+
+/* ---------- 濃度模擬 ---------- */
+function renderConc(){
+  const g=+$("cRange").value; $("cNum").textContent=g;
+  let v,w,col;
+  if(g<8){ v="太稀：紙太薄、容易破洞"; w="纖維太少，交織不夠，揭紙時容易破。→ 在水盆裡多加紙漿。"; col="var(--bad)"; }
+  else if(g<=15){ v="剛剛好：厚薄適中"; w="科展實驗用 8～15 g 廢紙配 1000 cc 水，做出來的紙最好用。"; col="var(--ok)"; }
+  else { v="太濃：紙偏厚、乾得慢"; w="纖維太多，紙又厚又硬、不易乾，也比較不平整。→ 加水稀釋。"; col="var(--g1)"; }
+  $("cVerdict").textContent=v; $("cVerdict").style.color=col; $("cWhy").textContent=w;
+  let seed=g*97+11; const rnd=()=>{ seed=(seed*16807)%2147483647; return seed/2147483647; };
+  let fib=""; const N=g*6;
+  for(let i=0;i<N;i++){ const x=20+rnd()*260, y=10+rnd()*90, a=rnd()*Math.PI, L=14+rnd()*16; fib+=`<line x1="${(x-Math.cos(a)*L/2).toFixed(1)}" y1="${(y-Math.sin(a)*L/2).toFixed(1)}" x2="${(x+Math.cos(a)*L/2).toFixed(1)}" y2="${(y+Math.sin(a)*L/2).toFixed(1)}" stroke="var(--fiber)" stroke-width="2" stroke-linecap="round"/>`; }
+  let holes=""; if(g<8){ for(let i=0;i<4;i++) holes+=`<ellipse cx="${(50+rnd()*200).toFixed(0)}" cy="${(25+rnd()*60).toFixed(0)}" rx="${(10+rnd()*8).toFixed(0)}" ry="7" fill="var(--bg)" stroke="var(--bad)" stroke-dasharray="3 2"/>`; }
+  const th=Math.max(2,g*1.3);
+  $("cSvg").innerHTML=`<defs><clipPath id="cClip"><rect x="15" y="5" width="270" height="100" rx="4"/></clipPath></defs><rect x="15" y="5" width="270" height="100" rx="4" class="s-sheet"/><g clip-path="url(#cClip)">${fib}${holes}</g>
+    <rect x="15" y="${150-th}" width="270" height="${th}" fill="var(--pulp2)" rx="1"/><line x1="10" y1="150" x2="290" y2="150" stroke="var(--muted)" stroke-width="2"/>
+    <text class="s-txt" x="150" y="166" text-anchor="middle">${g<8?"薄":g<=15?"適中":"厚"}（示意）</text>`;
+}
+$("cRange").oninput=renderConc; renderConc();
+
+/* ---------- 診斷卡 ---------- */
+const CASES=[
+ ["紙有破洞、太薄","紙漿太稀或撈得太快","水盆裡多加紙漿、攪勻；撈起時慢一點、放平"],
+ ["一邊厚、一邊薄","提起網框時沒有保持水平","放平再垂直往上提，提起後輕輕前後左右搖"],
+ ["表面有一團一團的","紙漿沒打細，或水盆裡沒攪勻","多打幾秒、抄每一張前先攪拌；可加紙藥"],
+ ["濕紙黏在網上掀不下來","水分還太多","海綿多吸幾次，再從一角慢慢掀"],
+ ["乾了以後捲起來、皺皺的","乾得太快或用烤箱、火烤","通風處陰乾；貼在玻璃或平板上壓平"],
+ ["紙很脆、一折就裂","纖維太短（例如報紙回收多次）或紙太薄","混入較長的纖維（影印紙漿、筍殼纖維），濃度提高一點"]
+];
+$("cases").innerHTML=CASES.map((c,i)=>`<button class="case" data-i="${i}" aria-expanded="false"><span class="q">${c[0]}</span><span class="a">點一下看原因與解法</span></button>`).join("");
+$("cases").querySelectorAll(".case").forEach(b=>b.onclick=()=>{ const c=CASES[+b.dataset.i]; const o=!b.classList.contains("open"); b.classList.toggle("open",o); b.setAttribute("aria-expanded",o); b.querySelector(".a").innerHTML=o?`<b>原因：</b>${c[1]}<br><b>解法：</b>${c[2]}`:"點一下看原因與解法"; });
+
+/* ---------- 小測驗 ---------- */
+const QS=[
+ {q:"紙張不用加膠，纖維之間也能黏在一起，主要靠什麼力量？",o:["氫鍵","離子鍵","磁力","靜電"],a:0,why:"纖維素表面有很多羥基（–OH），乾燥時纖維靠近，交叉處形成氫鍵。"},
+ {q:"為什麼泡過水的紙可以打散成紙漿？",o:["水分子打開了纖維之間的氫鍵","水把纖維素溶解成液體","水讓紙變成塑膠","水殺死了紙裡的細菌"],a:0,why:"水分子鑽進纖維之間，氫鍵被打開，纖維就散開了；纖維素本身沒有溶解。"},
+ {q:"紙張不能無限次回收，主要原因是什麼？",o:["每回收一次纖維就變短、變弱","油墨永遠洗不掉","紙回收後會變成塑膠","回收工廠不收舊紙"],a:0,why:"纖維越回收越短，一般約 4～7 次後就短到無法成紙，需要補充原生纖維。"},
+ {q:"工廠做再生紙時，用藥劑把油墨洗掉的步驟稱為？",o:["脫墨","磨漿","淨漿","散漿"],a:0,why:"脫墨是洗除油墨；做紙板等工業用紙則不需脫墨。"},
+ {q:"「磨漿」讓纖維表面起毛（帚化），目的是？",o:["增加纖維交織，提高紙的強度","去除油墨","漂白紙張","把釘書針篩掉"],a:0,why:"帚化後纖維之間接觸面增加，交織更緊，紙更強韌。"},
+ {q:"下列敘述何者正確？",o:["辦公用紙可以再生成紙板，但紙板不能再生成辦公用紙","紙板可以再生成高級影印紙","再生紙品質一定比原生紙好","紙可以無限次回收"],a:0,why:"再生通常是往下走：品質好的長纖維紙可以做成較低階的紙板，反過來不行。"},
+ {q:"南投埔里的紙廠利用哪一種當地農業廢棄物做手工紙？",o:["茭白筍殼","花生殼","玉米鬚","香菇太空包"],a:0,why:"埔里盛產茭白筍，紙廠把筍殼（還有甘蔗渣）蒸煮、打漿做成手工紙。"},
+ {q:"台灣稻稈每年約 150 萬公噸，常見哪一種處理方式造成空氣污染？",o:["露天焚燒","做成飼料","打碎堆肥","拿去造紙"],a:0,why:"露天焚燒會產生粒狀污染物；做飼料、堆肥、造紙都是資源化利用。"},
+ {q:"用筍殼、稻稈等植物纖維造紙，比用廢紙多了哪個前處理？",o:["切碎後蒸煮軟化","脫墨","一定要漂白","加入塑膠"],a:0,why:"植物纖維粗硬，要先切碎、蒸煮（常加鹼）軟化；農廢紙通常保留自然色、不漂白。"},
+ {q:"抄紙時把網框提起後輕輕前後左右搖動，目的是？",o:["讓纖維分布均勻、厚薄一致","讓紙變香","讓水溫下降","把紙漿搖回水盆"],a:0,why:"搖動讓纖維在網上鋪平均勻，紙才不會一邊厚一邊薄。"},
+ {q:"抄出來的紙太薄、有破洞，最好的改善方法是？",o:["在水盆中多加一些紙漿","在水盆中多加水","把紙漿打成粉末","直接放進烤箱烤乾"],a:0,why:"紙太薄代表纖維太少（漿太稀），要提高紙漿濃度。"},
+ {q:"抄好的濕紙最適合用哪種方式乾燥？",o:["放在通風處陰乾","放進烤箱高溫烘乾","直接對摺收起來","放回水盆浸泡"],a:0,why:"陰乾讓紙慢慢乾、比較平整；高溫會讓紙捲曲變脆。"},
+ {q:"傳統手工紙加入「紙藥」（植物黏液），主要作用是？",o:["讓纖維在水中均勻懸浮、不結團","讓紙變得有香味","幫紙染色","殺死紙漿裡的微生物"],a:0,why:"紙藥讓纖維均勻分散在水中，抄出來的紙比較均勻。"}
+];
+const KEY="agri-paper-quiz-115-1";
+let quiz=null;
+function startQuiz(only){
+  const base = only ? only.map(k=>QS[k]) : QS;
+  quiz={retry:!!only,qs:base.map(q=>({...q,idx:QS.indexOf(q),opts:shuffle(q.o),ans:q.o[q.a]})),i:0,res:[],pick:[],done:false};
+  renderQuiz();
+}
+function dots(){ return quiz.qs.map((_,k)=>`<button class="dot ${quiz.res[k]===true?"ok":quiz.res[k]===false?"bad":""}${k===quiz.i&&!quiz.done?" now":""}" data-go="${k}" aria-label="第 ${k+1} 題"></button>`).join(""); }
+function saveBest(n,total){ try{ const s=JSON.parse(localStorage.getItem(KEY)||"{}"); if(!s.best||n>s.best)s.best=n; s.total=total; localStorage.setItem(KEY,JSON.stringify(s)); return s; }catch(e){ return null; } }
+function goQ(k){ quiz.i=k; quiz.done=false; renderQuiz(); window.scrollTo({top:0}); }
+function bindCommon(P){
+  P.querySelectorAll(".dot[data-go]").forEach(d=>d.onclick=()=>goQ(+d.dataset.go));
+  const r=P.querySelector("#qReset");
+  if(r) r.onclick=()=>{ if(r.dataset.arm){ startQuiz(); window.scrollTo({top:0}); } else { r.dataset.arm="1"; r.textContent="確定要從頭開始？再按一次"; r.classList.add("warn"); setTimeout(()=>{ if(r.isConnected){ delete r.dataset.arm; r.textContent="↺ 重新開始"; r.classList.remove("warn"); } },3000); } };
+}
+function renderQuiz(){
+  const P=$("p5"), {qs,i,res}=quiz;
+  const answered=res.filter(x=>x!==undefined).length;
+  if(quiz.done){
+    const n=res.filter(Boolean).length, tot=qs.length, skip=tot-answered, s=quiz.retry?null:saveBest(n,tot), r=n/tot;
+    const msg=r===1?(quiz.retry?"錯題全部訂正完成！":"全對！你已經是再生紙達人了！"):r>=.8?"很棒！把錯的題目再訂正一次。":r>=.6?"不錯喔！回到重點頁再看一看。":"別灰心，先回重點頁複習，再來挑戰！";
+    const wr=qs.map((q,k)=>({q,k})).filter(x=>res[x.k]!==true);
+    P.innerHTML=`<div class="card" style="text-align:center"><div class="qtype">${quiz.retry?"錯題再練結果":"測驗結果"}</div><div class="score">${n} / ${tot}</div><p>${msg}${skip?`<br><span style="color:var(--bad)">還有 ${skip} 題沒作答</span>`:""}</p>${s&&s.best?`<p style="color:var(--muted);font-size:15px">這台裝置的最佳紀錄：${s.best} / ${s.total}</p>`:""}<div class="progress" style="justify-content:center">${dots()}</div><p class="ex" style="margin:4px 0 0">點上面的小方塊可以回到那一題。</p>
+      ${wr.length?`<div class="review"><b>訂正一下：</b>${wr.map(({q,k})=>`<div class="item"><b>第 ${k+1} 題</b>${res[k]===undefined?"（未作答）":""}　${q.q}<br><b>正確答案：${q.ans}</b><br><span style="color:var(--muted)">${q.why}</span></div>`).join("")}</div>`:""}
+      <div class="actions" style="justify-content:center">${wr.length?`<button class="btn" id="retry">錯題再練（${wr.length} 題）</button>`:""}<button class="btn ghost" id="qReset">↺ 重新開始</button><button class="btn ghost" id="back1">回去複習</button></div></div>`;
+    $("back1").onclick=()=>show("t1");
+    if($("retry")) $("retry").onclick=()=>startQuiz(wr.map(x=>x.q.idx));
+    bindCommon(P); return;
+  }
+  const q=qs[i], picked=quiz.pick[i], locked=res[i]!==undefined, last=i===qs.length-1;
+  const fb = locked ? `<div class="feedback ${res[i]?"ok":"bad"}"><b>${res[i]?"答對了！":"再想想，正確答案是「"+q.ans+"」"}</b><span class="why">${q.why}</span></div>` : "";
+  P.innerHTML=`<div class="card"><div class="qhead"><span class="qtype">${quiz.retry?"錯題再練・":""}第 ${i+1} 題／共 ${qs.length} 題</span><button class="btn ghost sm" id="qReset">↺ 重新開始</button></div>
+    <div class="progress" style="margin-top:8px">${dots()}</div>
+    <div class="qtext">${q.q}</div>
+    <div class="opts">${q.opts.map((o,k)=>{ let c=""; if(locked){ if(o===q.ans)c=" right"; else if(k===picked)c=" wrong"; } return `<button class="opt${c}" data-k="${k}" ${locked?"disabled":""}><span class="k">${"ABCD"[k]}</span><span>${o}</span></button>`; }).join("")}</div>
+    <div id="fb" aria-live="polite">${fb}</div>
+    <div class="qnav"><button class="btn ghost" id="qPrev" ${i===0?"disabled":""}>← 上一題</button><span class="qcount">已作答 ${answered} / ${qs.length}</span><button class="btn" id="qNext">${last?"看結果":"下一題 →"}</button></div></div>`;
+  P.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    if(quiz.res[i]!==undefined) return;
+    const k=+b.dataset.k; quiz.pick[i]=k; quiz.res[i]=q.opts[k]===q.ans; renderQuiz();
+    const n=$("qNext"); if(n) n.focus({preventScroll:true});
+  });
+  $("qPrev").onclick=()=>{ if(i>0) goQ(i-1); };
+  $("qNext").onclick=()=>{ if(last){ quiz.done=true; renderQuiz(); window.scrollTo({top:0}); } else goQ(i+1); };
+  bindCommon(P);
+}
+
+/* ---------- QR ---------- */
+const openQR=()=>{$("overlay").hidden=false;};
+$("qrBtn").onclick=openQR; $("qrBtn").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openQR();}};
+$("overlay").onclick=()=>{$("overlay").hidden=true;};
+
+if(location.hash==="#quiz") show("t5");
+})();
+</script>
+</body>
+</html>
