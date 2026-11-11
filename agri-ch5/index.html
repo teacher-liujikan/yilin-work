@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>植物保護總複習</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: 同「自然段與意義段」的架構：上方標題＋QR，分頁 土壤重點／肥料重點／動手做／計算練習／小測驗。土色系，投影用大字。 */
+:root{
+  --bg:#f7f3ec; --paper:#ffffff; --ink:#2a2118; --muted:#6c5f52; --line:#e3d9cb; --grid:#efe8dc;
+  --accent:#2f6b3a; --accent-ink:#ffffff; --accent-soft:#e3f0e3;
+  --soil:#8a5a35; --soil-soft:#f4e7da;
+  --mark:#ffe08a; --mark-ink:#2a2118;
+  --ok:#1f7a45; --ok-soft:#e1f4e7; --bad:#b4362c; --bad-soft:#fbe7e4;
+  --g1:#c46a17; --g2:#2f8a57; --g3:#3b6fd1; --g4:#a2408c;
+  --g1s:#fbecdc; --g2s:#e0f2e7; --g3s:#e3ebfb; --g4s:#f6e4f1;
+  --lA:#4a3324; --lB:#8e6038; --lC:#c4a07a; --lR:#8d8a85;
+  --f:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#17130f; --paper:#211b16; --ink:#efe7dc; --muted:#b4a594; --line:#3a3027; --grid:#1d1813;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#17130f; --paper:#211b16; --ink:#efe7dc; --muted:#b4a594; --line:#3a3027; --grid:#1d1813;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:17px;line-height:1.7;
+  background-image:radial-gradient(var(--grid) 1.2px,transparent 1.2px);background-size:22px 22px}
+.wrap{max-width:980px;margin:0 auto;padding-block:20px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{display:flex;gap:16px;align-items:flex-start;justify-content:space-between}
+.brand{min-width:0}
+.eyebrow{font-size:14px;letter-spacing:.12em;color:var(--soil);font-weight:700}
+h1{font-size:clamp(30px,6vw,44px);font-weight:900;line-height:1.2;margin:4px 0 6px;text-wrap:balance}
+.sub{color:var(--muted);margin:0;font-size:16px}
+.qr{flex:none;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+.qr img{width:84px;height:84px;image-rendering:pixelated;display:block}
+.qr span{font-size:12px;color:#4a3d31;font-weight:700}
+button:focus-visible,.qr:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tabs{display:flex;gap:8px;margin:22px 0 14px;flex-wrap:wrap}
+.tab{font:inherit;font-weight:700;font-size:17px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:999px;padding:7px 18px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.tab small{font-weight:500;opacity:.8;margin-left:4px;font-size:13px}
+.panel{display:flex;flex-direction:column;gap:16px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px}
+.toolbar .hint{font-size:14px;color:var(--muted)}
+.switch{display:inline-flex;align-items:center;gap:8px;font-weight:700;cursor:pointer;user-select:none}
+.switch input{width:20px;height:20px;accent-color:var(--accent)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;min-width:0}
+.card h2{font-size:24px;font-weight:900;margin:0 0 8px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.card h2 .sec{font-size:13px;font-weight:700;color:var(--soil);background:var(--soil-soft);border-radius:999px;padding:1px 10px}
+.card h3{font-size:19px;margin:14px 0 4px}
+.card p{margin:6px 0}
+.card ul{margin:6px 0;padding-left:1.3em}
+.card li{margin:3px 0}
+.key{background:var(--mark);color:var(--mark-ink);border-radius:4px;padding:0 4px;font-weight:700;transition:filter .2s}
+body.blank .key{color:transparent;background:var(--soil-soft);border-bottom:2px solid var(--soil);cursor:pointer;user-select:none}
+body.blank .key.show{color:var(--mark-ink);background:var(--mark);border-bottom-color:transparent}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:720px){.two,.three{grid-template-columns:1fr}}
+.box{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--bg);min-width:0}
+.box b.t{display:block;font-size:17px;margin-bottom:2px}
+.box.c1{border-top:5px solid var(--g1)}.box.c2{border-top:5px solid var(--g2)}.box.c3{border-top:5px solid var(--g3)}.box.c4{border-top:5px solid var(--g4)}
+.note{font-size:15px;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 12px;margin-top:10px}
+.tip{font-size:15px;border:1.5px dashed var(--soil);border-radius:10px;padding:8px 12px;margin-top:10px;background:var(--soil-soft)}
+.tip b{color:var(--soil)}
+.tblwrap{overflow-x:auto;margin-top:8px}
+table.t{width:100%;border-collapse:collapse;font-size:16px;min-width:520px}
+table.t th,table.t td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+table.t th{background:var(--accent-soft);white-space:nowrap}
+table.t td.c{text-align:center}
+.pill{display:inline-block;font-size:13px;font-weight:700;border-radius:999px;padding:0 9px;border:1.5px solid currentColor;white-space:nowrap;line-height:1.6}
+.pill.ok{color:var(--ok)}.pill.no{color:var(--bad)}.pill.mid{color:var(--g1)}
+.btn{font:inherit;font-weight:700;font-size:16px;border:0;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:9px 22px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+.btn:disabled{opacity:.45;cursor:default}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+
+/* 組成條 */
+.bar{display:flex;height:44px;border-radius:10px;overflow:hidden;margin-top:8px;font-size:14px;font-weight:700;color:#fff}
+.bar span{display:grid;place-items:center;white-space:nowrap;padding:0 4px;overflow:hidden}
+
+/* 粒徑尺 */
+.scale{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;margin-top:8px}
+.scale div{border-radius:8px;padding:8px 6px;text-align:center;font-size:14px;line-height:1.35;background:var(--bg);border:1px solid var(--line)}
+.scale div b{display:block;font-size:16px}
+.scale .dot{display:block;margin:4px auto;border-radius:50%;background:var(--soil)}
+@media (max-width:560px){.scale{grid-template-columns:1fr 1fr}}
+
+/* 剖面 */
+.profile{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr);gap:16px;align-items:stretch}
+@media (max-width:620px){.profile{grid-template-columns:1fr}}
+.layers{display:flex;flex-direction:column;border-radius:10px;overflow:hidden;border:2px solid var(--line)}
+.layer{font:inherit;border:0;color:#fff;font-weight:900;font-size:18px;cursor:pointer;text-align:left;padding:10px 14px;display:flex;flex-direction:column;justify-content:center;position:relative}
+.layer small{font-weight:500;font-size:13px;opacity:.9}
+.layer[aria-pressed="true"]{box-shadow:inset 0 0 0 4px var(--mark)}
+.layer.A{background:var(--lA);min-height:70px}.layer.B{background:var(--lB);min-height:90px}.layer.C{background:var(--lC);color:#2a2118;min-height:80px}.layer.R{background:var(--lR);min-height:50px;background-image:radial-gradient(#6d6a66 3px,transparent 3.5px);background-size:16px 14px}
+.lay-info{border:1px solid var(--line);border-radius:10px;padding:12px 16px;background:var(--bg)}
+.lay-info h3{margin:0 0 4px}
+
+/* 氮轉化 */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:8px}
+.chem{border:2px solid var(--soil);border-radius:10px;padding:4px 12px;font-weight:900;font-size:18px;background:var(--paper)}
+.arr{display:flex;flex-direction:column;align-items:center;font-size:13px;font-weight:700;color:var(--accent);line-height:1.2;min-width:70px}
+.arr::after{content:"⟶";font-size:22px;line-height:1}
+.arr.bad{color:var(--bad)}
+
+/* 元素格 */
+.egroup{margin-top:10px}
+.egroup .lab{font-size:14px;font-weight:700;color:var(--muted);margin-bottom:4px}
+.els{display:flex;flex-wrap:wrap;gap:8px}
+.el{font:inherit;width:72px;height:72px;border-radius:10px;border:2px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1;position:relative}
+.el b{font-size:24px;font-weight:900}
+.el small{font-size:13px}
+.el.main{border-color:var(--g1)}.el.sec{border-color:var(--g3)}.el.tr{border-color:var(--g2)}
+.el.npk::before{content:"三要素";position:absolute;top:-9px;font-size:11px;font-weight:700;background:var(--g1);color:#fff;border-radius:999px;padding:0 6px}
+.el.mob::after{content:"";position:absolute;right:6px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--g4)}
+.el[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.einfo{margin-top:14px;border:1px solid var(--line);border-radius:10px;padding:12px 16px;background:var(--bg);min-height:120px}
+.einfo h3{margin:0 0 6px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.einfo dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px}
+.einfo dt{font-weight:700;color:var(--soil);white-space:nowrap}
+.einfo dd{margin:0}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;color:var(--muted);margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--g4);margin-right:4px}
+
+/* 木桶 */
+.barrel{display:flex;align-items:flex-end;gap:3px;height:120px;margin:8px 0}
+.barrel span{flex:1;background:var(--soil);border-radius:4px 4px 0 0;color:#fff;font-size:12px;font-weight:700;text-align:center;padding-top:2px}
+.barrel span.low{background:var(--bad)}
+
+/* pH 站 */
+.phwrap{margin-top:6px}
+.phscale{height:22px;border-radius:999px;background:linear-gradient(90deg,#d63b2f,#ef8a2c,#f2cf3c,#5cb85c,#3a8ad6,#5a4bc4);position:relative}
+input[type=range]{width:100%;accent-color:var(--accent);margin:8px 0 0}
+.phnum{font-size:46px;font-weight:900;line-height:1;color:var(--accent)}
+.phzone{font-size:20px;font-weight:900}
+.phgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+@media (max-width:620px){.phgrid{grid-template-columns:1fr}}
+
+/* 診斷卡 */
+.cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.case{font:inherit;color:var(--ink);text-align:left;border:2px solid var(--line);border-radius:12px;background:var(--paper);padding:12px 14px;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-height:150px}
+.case .q{font-size:16px}
+.case .tag{font-size:12px;font-weight:700;color:var(--muted)}
+.case .a{margin-top:auto;font-size:15px;color:var(--muted)}
+.case.open{border-color:var(--accent);background:var(--accent-soft)}
+.case.open .a{color:var(--ink)}
+.case .a b{font-size:22px;color:var(--accent);margin-right:6px}
+
+/* 計算 */
+.picker{display:flex;gap:8px;flex-wrap:wrap}
+.pk{font:inherit;font-size:15px;font-weight:700;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:7px 12px;cursor:pointer;line-height:1.3;text-align:left}
+.pk small{display:block;font-size:12px;font-weight:500;color:var(--muted)}
+.pk[aria-selected="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.problem{font-size:21px;line-height:1.8;font-weight:500}
+.problem b{color:var(--soil)}
+.formula{font-size:18px;font-weight:700;background:var(--soil-soft);border-radius:10px;padding:8px 14px;margin-top:10px}
+.ansrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.ansrow input{font:inherit;font-size:20px;width:180px;border:2px solid var(--line);border-radius:10px;padding:6px 12px;background:var(--paper);color:var(--ink)}
+.ansfb{font-weight:700}
+.ansfb.ok{color:var(--ok)}.ansfb.bad{color:var(--bad)}
+.steps{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.step{border-left:5px solid var(--accent);background:var(--bg);border-radius:0 10px 10px 0;padding:8px 14px;font-size:18px}
+.step .n{font-size:13px;font-weight:700;color:var(--accent);display:block}
+.step.final{border-color:var(--g1);background:var(--g1s);font-weight:900}
+
+/* 測驗 */
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.progress{display:flex;gap:4px;flex-wrap:wrap}
+.dot{width:18px;height:8px;border-radius:4px;background:var(--line)}
+.dot.ok{background:var(--ok)}.dot.bad{background:var(--bad)}.dot.now{background:var(--line)}
+.qtype{font-size:14px;font-weight:700;color:var(--accent);letter-spacing:.06em}
+.qsrc{font-size:13px;font-weight:700;color:var(--soil);background:var(--soil-soft);border-radius:999px;padding:0 8px;margin-left:6px}
+.qtext{font-size:22px;line-height:1.75;margin:10px 0 14px;font-weight:500}
+.qlist{font-size:18px;background:var(--bg);border-radius:10px;padding:8px 14px;margin:-4px 0 14px;line-height:1.9}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{font:inherit;font-size:18px;text-align:left;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:12px 14px;cursor:pointer;display:flex;gap:10px;align-items:center}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt .k{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--bg);font-size:14px;font-weight:700}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt:disabled{cursor:default}
+.feedback{margin-top:14px;border-radius:10px;padding:10px 14px;font-size:16px}
+.feedback.ok{background:var(--ok-soft);color:var(--ok)}
+.feedback.bad{background:var(--bad-soft);color:var(--bad)}
+.feedback .why{color:var(--ink);display:block;margin-top:4px}
+.score{font-size:64px;font-weight:900;color:var(--accent);line-height:1;margin:10px 0}
+.review .item{border-left:4px solid var(--bad);padding:6px 12px;background:var(--bg);border-radius:0 6px 6px 0;font-size:16px;margin-top:8px;text-align:left}
+.overlay{position:fixed;inset:0;background:rgba(20,14,8,.72);display:grid;place-items:center;z-index:50;padding:20px}
+.overlay .inner{background:#fff;border-radius:16px;padding:22px;text-align:center;color:#2a2118;max-width:92vw}
+.overlay img{width:min(340px,72vw);height:min(340px,72vw);image-rendering:pixelated;display:block;margin:0 auto}
+.overlay p{font-size:22px;font-weight:700;margin:12px 0 0}
+.overlay small{display:block;color:#6c5f52;margin-top:4px;word-break:break-all}
+footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
+
+.art{width:100%;height:auto;display:block;color:var(--ink)}
+figure{margin:0}
+figcaption{font-size:15px;line-height:1.5;margin-top:6px;text-align:center}
+figcaption b{display:block;font-size:17px}
+.ex{color:var(--muted);font-size:14px}
+.icons{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:8px}
+.icons.three-up{grid-template-columns:repeat(3,minmax(0,1fr))}
+.icons.two-up{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:620px){.icons.three-up,.icons.two-up{grid-template-columns:1fr}}
+.icons figure{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px}
+.icons figure svg{max-height:180px}
+.two>svg.art{max-height:260px}
+.scene{border-radius:12px;margin-top:6px}
+.legend2{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.lg{font-size:14px;font-weight:700;border-radius:999px;padding:2px 12px}
+.lg.g{background:var(--g2s);color:var(--g2)}.lg.p{background:var(--g4s);color:var(--g4)}
+.phbar{display:flex;border-radius:12px;overflow:hidden;margin-top:6px}
+.phbar .seg{color:#fff;font-weight:900;font-size:15px;text-align:center;padding:8px 4px;line-height:1.3}
+.phbar small{font-weight:500;font-size:12px}
+.phaxis{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:4px}
+
+.defmap .art{border-radius:12px}
+.dchips g{cursor:pointer}
+.dchips rect{fill:#fff;stroke:#2f6b3a;stroke-width:2.5}
+.dchips text{font-size:15px;font-weight:900;text-anchor:middle;fill:#2f6b3a}
+.dchips g.on rect{fill:#2f6b3a}.dchips g.on text{fill:#fff}
+.dchips g:focus{outline:none}.dchips g:focus rect{stroke:#e0a21b;stroke-width:4}
+.defkey{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.dk{border-radius:10px;padding:8px 12px;font-size:15px}
+.dk b{display:block;font-size:16px}
+.dk.new{background:var(--g3s);border-left:5px solid var(--g3)}.dk.old{background:var(--g1s);border-left:5px solid var(--g1)}
+@media (max-width:599px){.defkey{grid-template-columns:1fr}.defmap{overflow-x:auto}.defmap svg{min-width:520px}}
+.einfo .eflex{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;align-items:center}
+.leafpic{background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px;text-align:center}
+.leafpic svg{width:100%;height:auto;display:block}
+.leafpic small{display:block;font-size:13px;font-weight:700;color:#4a3324}
+@media (max-width:520px){.einfo .eflex{grid-template-columns:1fr}.leafpic{max-width:170px;margin:0 auto}}
+.cagal{margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+.cgt{font-size:17px;color:var(--soil)}
+.cgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:6px}
+@media (max-width:720px){.cgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cgrid figure{background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px;color:#2a2118}
+.cgrid svg{width:100%;height:auto;display:block;max-height:110px}
+.cgrid figcaption{font-size:14px;text-align:center}
+.cgrid figcaption b{font-size:16px;display:block}
+.qnav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap}
+.qcount{font-size:14px;color:var(--muted);font-weight:700}
+.btn.sm{min-height:36px;padding:4px 14px;font-size:14px}
+.btn.warn{background:var(--bad);color:#fff;border-color:var(--bad)}
+button.dot{border:0;padding:0;cursor:pointer;width:22px;height:12px}
+.dot.now{outline:2px solid var(--accent);outline-offset:2px}
+.dot.ok.now{background:var(--ok)}.dot.bad.now{background:var(--bad)}
+@media (max-width:599px){.qnav .btn{flex:1}.qcount{order:-1;width:100%;text-align:center}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ===== 多裝置：電視／平板／手機 ===== */
+.tabs{position:sticky;top:0;z-index:20;background:var(--bg);padding:8px 0;margin:14px 0 10px}
+.btn,.pk,.tab{min-height:44px}
+.opt{min-height:56px}
+.widewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+/* 平板 */
+@media (min-width:600px) and (max-width:1100px){
+  body{font-size:18px}
+  .card p,.card li{font-size:18px}
+  .qtext{font-size:24px}.opt{font-size:20px}
+}
+/* 手機 */
+@media (max-width:599px){
+  .wrap{padding-block:12px 40px}
+  h1{font-size:30px}
+  .qr img{width:64px;height:64px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:none;font-size:16px;padding:6px 14px}
+  .tab small{display:none}
+  .card{padding:14px}
+  .card h2{font-size:21px}
+  .qtext{font-size:20px}
+  .toolbar .hint{display:none}
+  .widewrap>svg{min-width:560px}
+}
+/* 電視、大螢幕：整頁放大 */
+@media (min-width:1500px){ .wrap{zoom:1.3} }
+@media (min-width:2200px){ .wrap{zoom:1.75} }
+@media (min-width:3000px){ .wrap{zoom:2.4} }
+
+.phbar .seg{font-size:18px!important;padding:12px 6px!important;line-height:1.4!important}
+.phbar small{font-size:15px!important;font-weight:700!important;display:block;margin-top:4px}
+.phaxis{font-size:14px!important}
+@media (max-width:599px){
+  .phbar{flex-direction:column}
+  .phbar .seg{flex:none!important;display:flex;justify-content:space-between;align-items:center;text-align:left;gap:10px;padding:10px 14px!important}
+  .phbar .seg>br{display:none}
+  .phbar small{margin:0;text-align:right}
+  .phaxis{display:none}
+}
+
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:6px}
+.pcard{font:inherit;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+.pcard svg{max-height:70px}
+.pcard b{font-size:17px}
+.pcard[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:720px){.four{grid-template-columns:1fr 1fr}}
+.pr{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center;font-size:15px;line-height:1.6}
+.pr b{display:block;font-size:22px;margin:2px 0}
+.pn{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-weight:900}
+.meta{display:flex;flex-direction:column;gap:10px}
+.mrow{display:grid;grid-template-columns:130px minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:center;background:var(--bg);border-radius:10px;padding:8px 12px}
+.ml{font-size:17px}.ml small{display:block;font-size:12px;color:var(--muted);font-weight:500}
+.stages{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.st{background:var(--paper);border:2px solid var(--accent);border-radius:999px;padding:2px 12px;font-weight:900}
+.st.pupa{border-color:var(--g1);background:var(--g1s);color:var(--g1)}
+.sa{color:var(--muted)}
+.ex2{font-size:15px}
+@media (max-width:720px){.mrow{grid-template-columns:1fr}}
+.vs{display:flex;flex-direction:column;gap:8px}
+.vsr{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:center}
+.vsa{background:var(--g2s);color:var(--g2);border-radius:10px;padding:8px 12px;font-weight:900;text-align:center}
+.vsb{background:var(--bad-soft);color:var(--bad);border-radius:10px;padding:8px 12px;font-weight:700;text-align:center}
+.vsx{font-size:13px;color:var(--muted);font-weight:700}
+@media (max-width:520px){.vsr{grid-template-columns:1fr}.vsx{text-align:center}}
+.horm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:720px){.horm{grid-template-columns:1fr 1fr}}
+@media (max-width:420px){.horm{grid-template-columns:1fr}}
+.hm{background:var(--bg);border:1px solid var(--line);border-top:5px solid var(--gc,var(--accent));border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:2px;text-align:center}
+.hm.c1{--gc:var(--g1)}.hm.c2{--gc:var(--g2)}.hm.c3{--gc:var(--g3)}.hm.c4{--gc:var(--g4)}
+.hm svg{max-height:80px}
+.hm b{font-size:19px}.hm small{color:var(--muted);font-size:13px}.hm span{font-size:15px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="eyebrow">農業概論・第五章 總複習</div>
+      <h1>植物保護</h1>
+      <p class="sub">重點複習 → 動手判斷 → 計算練習 → 掃 QR 小測驗　<a href="../agri-ch4/" style="color:var(--accent);font-weight:700">← 第四章 土壤肥料</a></p>
+    </div>
+    <div class="qr" id="qrBtn" role="button" tabindex="0" aria-label="放大 QR code"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAADaklEQVR4Xu1cbW6kMAx1FqT+BKkH2KMwV+4NhqPMAVaCnyMxyurZMdB2tYlnSYu0fr9gEkWpX/wZ0xDJgvGHZTYR+fy/w+Xj8tnjifMwh4QLL4TXi/zWEo09kY63ro9ZPCF/E6zrU4xTExk0xIVijAsRdXjlganBAIDXq3V9n38G+yO6SvNL5Kd45U1197DXaf7N+ToDX+UArXtEml+XMEyPlsZ+ijT2zb/afxP8/Bx7fj7yG6hbKI79L4rjJVCkbnJ+DTjb+RR+d0nS8NYugTqiMEw9heHWLnDHsN5un/M4G7/Yz0MC5N3mh9sLGG0S7yOP985vHmfjt03KyZhZkzl+hpH+eQ/sf/clkLPt3/eT9ddzmzLcSwdq6QFNfgTOj2iYNP/1+LkEZztvyH+xbyjsmglL1iv2GZkwRiUd9vw3ry8m1D4PwmrSVS5tEGjspOQhpQ0ZBdPObw61+bKuLwUrIZNZvUpUxSQz3ZuKO795WOVfe37SX7bAbJDFDPMfwkVKsI9Xr08WoTZf1vVFdUVhN68rBhmsQqeVZPe/eVjlX3v+O/+73iWwkZb7BblugBK7fS5Abb6s66vdZfKERuUSgbU44R3x1vV9fjY/NcEqT8mPNoVVS51Ms7heqLP73yJY5V97/nrhq0E0G2RUNdT/Jvvs+W8RavNlXT/VN5jQFCun+FkUW/yvVjo8/83BKv/a85VfToKFZC5YccMGXjWSdv0tQm2+rOtrVXLTX7HUMNJauto5YY+vvjleeoZfjaCkqvGhYLXmv95/VQKr/GvPf1e/0iKWFqzUJ3MJ0/PfEtTmy7q+1je4/syqK0/cNZk6KUWxZYp1fZ///fmv3gVKaCVVya0cvWZKXp8swNnOc1JYgRYktRK9RV/rxcPZ9u/7ydqH7fsF1lpu5+hT/wZ3XaXWDR51eWblaUJteaJ/spF73oDWZxovaMLCE9Fdeu4izejZ4d9q78fXP/b8rLY49Vp9uhpc/a8EXi7/Y+X/tfLUhlhhdU7fl4k7Hv37sgJ8LV95/OH7FJKvBmmI3EnZoN39Hmjg2Pps+/f9lNgTvca/Sxs71zL0CdTe1mPg8iyRZzlqyxPEsZqyQX6NYXjrQyR6tFDXGIhadLpH6DSMdu39+PrHnh9waYD/f4aD5e/n+djz/L/J8zcZ6GA4U8S9rgAAAABJRU5ErkJggg=="><span>掃我測驗</span></div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" id="t1" aria-selected="true">病害<small>5-1・5-2</small></button>
+    <button class="tab" role="tab" id="t2" aria-selected="false">蟲害與草害<small>5-2</small></button>
+    <button class="tab" role="tab" id="t3" aria-selected="false">防治方法<small>5-3</small></button>
+    <button class="tab" role="tab" id="t4" aria-selected="false">農藥<small>5-3</small></button>
+    <button class="tab" role="tab" id="t5" aria-selected="false">其他危害<small>5-4</small></button>
+    <button class="tab" role="tab" id="t6" aria-selected="false">動手判斷</button>
+    <button class="tab" role="tab" id="t7" aria-selected="false">計算練習</button>
+    <button class="tab" role="tab" id="t8" aria-selected="false">小測驗</button>
+  </nav>
+
+  <div class="toolbar" id="blankBar">
+    <label class="switch"><input type="checkbox" id="blankToggle"> 挖空模式</label>
+    <span class="hint">打開後黃色重點變空格，學生先說答案，再點空格揭曉。</span>
+  </div>
+
+  <!-- ===== 病害 ===== -->
+  <section class="panel" id="p1">
+    <div class="card">
+      <h2>病害發生的三個條件<span class="sec">5-1</span></h2>
+      <div class="two" style="align-items:center">
+        <svg viewBox="0 0 300 250" class="art" role="img" aria-label="病害三角形">
+          <path d="M150 20 L280 230 L20 230Z" fill="#fbe7e4" stroke="#b4362c" stroke-width="3"/>
+          <text x="150" y="160" text-anchor="middle" font-size="22" font-weight="900" fill="#b4362c">病害</text>
+          <g font-size="15" font-weight="900" text-anchor="middle">
+            <circle cx="150" cy="30" r="0"/>
+            <rect x="96" y="2" width="108" height="46" rx="12" fill="#fff" stroke="#c46a17" stroke-width="2.5"/><text x="150" y="22" fill="#c46a17">病原</text><text x="150" y="40" font-size="12" fill="#6c5f52">＝主因</text>
+            <rect x="4" y="204" width="108" height="46" rx="12" fill="#fff" stroke="#2f8a57" stroke-width="2.5"/><text x="58" y="224" fill="#2f8a57">宿主（作物）</text><text x="58" y="242" font-size="12" fill="#6c5f52">＝素因（內因）</text>
+            <rect x="188" y="204" width="108" height="46" rx="12" fill="#fff" stroke="#3b6fd1" stroke-width="2.5"/><text x="242" y="224" fill="#3b6fd1">環境</text><text x="242" y="242" font-size="12" fill="#6c5f52">＝誘因（副因）</text>
+          </g>
+        </svg>
+        <div>
+          <p>三個條件<span class="key">同時存在</span>才會發病，破壞其中一個就能防治。</p>
+          <ul>
+            <li><b>主因</b>：細菌、病毒等病原</li>
+            <li><b>誘因</b>：細雨綿綿 → 真菌；乾燥 → <span class="key">白粉病</span>；氮肥太多 → <span class="key">稻熱病</span></li>
+            <li><b>素因</b>：作物本身的遺傳（茄科易得青枯病）</li>
+          </ul>
+          <p class="note">植物保護：<b>狹義</b>＝發生後防治；<b>廣義</b>＝發生前就預防（育種、檢疫）。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>非傳染性 vs 傳染性病害<span class="sec">5-2</span></h2>
+      <div class="two">
+        <div class="box c1"><b class="t">非傳染性（非寄生性）＝環境造成</b>
+          <ul>
+            <li>低溫 → <span class="key">鳳梨黑心病</span></li>
+            <li>缺氧 → <span class="key">馬鈴薯黑心病</span></li>
+            <li>缺硼 → <span class="key">木瓜塊腫病</span></li>
+            <li>水分過多 → 馬鈴薯日燒病</li>
+            <li>二氧化硫 → 葉綠素消失</li>
+          </ul></div>
+        <div class="box c4"><b class="t">傳染性（寄生性）＝生物造成</b>真菌、細菌、病毒、菌質、黏菌、線蟲、蟎類、寄生性顯花植物<p class="note" style="margin-top:8px">病徵分：<b>局部性</b>（葉斑、腐爛、根瘤）、<b>系統性</b>（黃化、矮化、嵌紋、簇葉）</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>病原圖鑑<span class="sec">5-2</span></h2>
+      <p>點卡片看特徵。</p>
+      <div class="pgrid" id="pathoGrid"></div>
+      <div class="einfo" id="pathoInfo"></div>
+    </div>
+
+    <div class="card">
+      <h2>病原怎麼傳播？<span class="sec">5-2</span></h2>
+      <div class="icons">
+        <figure><svg viewBox="0 0 100 70" class="art"><g stroke="#7aa7c4" stroke-width="4" fill="none" stroke-linecap="round"><path d="M8 24 H62 C74 24 74 10 64 10"/><path d="M8 40 H80 C94 40 94 56 82 56"/></g><g fill="#c46a17"><circle cx="70" cy="30" r="3"/><circle cx="50" cy="48" r="3"/><circle cx="30" cy="30" r="3"/></g></svg><figcaption><b>空氣</b>麥類銹病、馬鈴薯疫病、<span class="key">木瓜白粉病</span></figcaption></figure>
+        <figure><svg viewBox="0 0 100 70" class="art"><g fill="#3a8ad6"><path d="M30 6 c-6 12 -10 18 -10 23 a10 10 0 0 0 20 0 c0 -5 -4 -11 -10 -23Z"/><path d="M66 18 c-5 10 -8 15 -8 19 a8 8 0 0 0 16 0 c0 -4 -3 -9 -8 -19Z"/></g><path d="M4 60 C24 52 40 66 60 58 S90 54 98 60" stroke="#3a8ad6" stroke-width="4" fill="none"/></svg><figcaption><b>水</b><span class="key">茄科青枯病</span>、水稻紋枯病、軟腐病</figcaption></figure>
+        <figure><svg viewBox="0 0 100 70" class="art"><ellipse cx="50" cy="40" rx="22" ry="16" fill="#7cc05a" stroke="#3f7a2a" stroke-width="2"/><circle cx="30" cy="34" r="8" fill="#7cc05a" stroke="#3f7a2a" stroke-width="2"/><g stroke="#3f7a2a" stroke-width="2"><path d="M40 54 l-6 10 M50 56 v10 M60 54 l6 10 M24 30 l-10 -10 M28 28 l-4 -14"/></g><circle cx="27" cy="32" r="2" fill="#1a1a1a"/></svg><figcaption><b>昆蟲</b><span class="key">蚜蟲 → 木瓜輪點病</span>；浮塵子 → 黃萎病；<span class="key">木蝨 → 柑橘黃龍病</span></figcaption></figure>
+        <figure><svg viewBox="0 0 100 70" class="art"><ellipse cx="50" cy="44" rx="26" ry="18" fill="#e3c48f" stroke="#8a5a35" stroke-width="2"/><path d="M50 26 C46 14 52 6 60 4" stroke="#4f8a3c" stroke-width="3" fill="none"/><g fill="#b4362c"><circle cx="40" cy="44" r="3"/><circle cx="58" cy="50" r="3"/></g></svg><figcaption><b>種苗</b>稻苗徒長病、麥類黑穗病、香蕉黃萎病</figcaption></figure>
+        <figure><svg viewBox="0 0 100 70" class="art"><rect x="2" y="30" width="96" height="38" fill="#c99a63"/><path d="M50 30 V8 M50 16 l-10 -8 M50 16 l10 -8" stroke="#4f8a3c" stroke-width="3"/><g fill="#6b3a1a"><circle cx="30" cy="48" r="3"/><circle cx="70" cy="54" r="3"/><circle cx="56" cy="44" r="3"/></g></svg><figcaption><b>土壤</b>菸草猝倒病、茄科青枯病</figcaption></figure>
+      </div>
+    </div>
+    <div class="actions"><button class="btn" data-go="t2">下一個：蟲害與草害 →</button></div>
+  </section>
+
+  <!-- ===== 蟲害與草害 ===== -->
+  <section class="panel" id="p2" hidden>
+    <div class="card">
+      <h2>認識昆蟲<span class="sec">5-2</span></h2>
+      <div class="two" style="align-items:center">
+        <svg viewBox="0 0 320 220" class="art" role="img" aria-label="昆蟲身體構造">
+          <g fill="#c9e3b4" stroke="#4f7a2a" stroke-width="2">
+            <path d="M150 110 C140 70 120 40 70 30 C110 60 130 90 146 112Z" opacity=".75"/>
+            <path d="M176 110 C186 70 206 40 256 30 C216 60 196 90 180 112Z" opacity=".75"/>
+          </g>
+          <ellipse cx="80" cy="120" rx="30" ry="26" fill="#f6c3a2" stroke="#a0521b" stroke-width="2.5"/>
+          <ellipse cx="160" cy="120" rx="44" ry="30" fill="#f1c75b" stroke="#b5891c" stroke-width="2.5"/>
+          <ellipse cx="256" cy="122" rx="56" ry="28" fill="#a8d07a" stroke="#4f7a2a" stroke-width="2.5"/>
+          <g stroke="#7a5a3a" stroke-width="1.5" fill="none"><path d="M226 104 v36 M246 98 v48 M266 98 v48 M286 104 v36"/></g>
+          <g stroke="#4a3324" stroke-width="3" fill="none" stroke-linecap="round"><path d="M64 98 C50 70 36 54 20 46"/><path d="M76 96 C70 64 66 44 60 26"/>
+            <path d="M138 146 L120 176 L104 184"/><path d="M160 150 L160 184 L150 200"/><path d="M182 146 L200 176 L216 184"/></g>
+          <circle cx="66" cy="116" r="7" fill="#4a3324"/><path d="M56 136 l-8 8" stroke="#4a3324" stroke-width="3"/>
+          <g font-size="14" font-weight="900" text-anchor="middle"><text x="80" y="170" fill="#a0521b">頭</text><text x="160" y="96" fill="#9a6a0d">胸</text><text x="256" y="168" fill="#3f7a2a">腹</text></g>
+          <g font-size="12" font-weight="700"><text x="4" y="40" fill="#4a3324">觸角 1 對</text><text x="40" y="200" fill="#4a3324">口器</text><text x="196" y="208" fill="#4a3324">足 3 對（在胸）</text><text x="200" y="22" fill="#3f7a2a">翅 2 對（在胸）</text><text x="20" y="96" fill="#4a3324">複眼</text></g>
+        </svg>
+        <ul>
+          <li>節肢動物門・<span class="key">昆蟲綱</span>：身體分<span class="key">頭、胸、腹</span></li>
+          <li>觸角 1 對、<span class="key">足 3 對、翅 2 對</span>都在<span class="key">胸部</span></li>
+          <li>外骨骼含幾丁質 → 要<span class="key">脫皮</span>才能長大</li>
+          <li>用氣孔、氣管呼吸；馬氏管排泄</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>口器：怎麼吃，決定用什麼藥<span class="sec">5-2</span></h2>
+      <div class="icons">
+        <figure><svg viewBox="0 0 100 70" class="art"><path d="M50 10 L30 50 L50 40 L70 50Z" fill="#f1c75b" stroke="#b5891c" stroke-width="2"/><path d="M36 54 L50 44 L64 54" stroke="#a0521b" stroke-width="4" fill="none"/><path d="M76 34 C86 30 92 40 84 48 C78 44 76 40 76 34Z" fill="#7cc05a"/></svg><figcaption><b>咀嚼式</b><span class="key">蝗蟲</span>、天牛、金龜子、鱗翅目幼蟲<br><span class="ex">→ 用<b>胃毒劑</b></span></figcaption></figure>
+        <figure><svg viewBox="0 0 100 70" class="art"><ellipse cx="40" cy="30" rx="18" ry="14" fill="#7cc05a" stroke="#3f7a2a" stroke-width="2"/><path d="M52 38 L80 62" stroke="#4a3324" stroke-width="3"/><path d="M70 66 C80 58 92 58 98 62 L98 70 H70Z" fill="#8cc06e"/></svg><figcaption><b>刺吸式</b><span class="key">蚜蟲、椿象、浮塵子</span>、介殼蟲、蟬<br><span class="ex">→ 用<b>滲透性（官能性）</b>殺蟲劑</span></figcaption></figure>
+        <figure><svg viewBox="0 0 100 70" class="art"><path d="M50 50 C50 30 60 20 66 14 C70 10 76 12 74 18" stroke="#4a3324" stroke-width="3" fill="none"/><path d="M30 60 C40 40 60 40 70 60Z" fill="#f2a7c3"/></svg><figcaption><b>虹吸式</b>蝶、蛾（吸花蜜）</figcaption></figure>
+        <figure><svg viewBox="0 0 100 70" class="art"><path d="M40 20 h20 v20 l-10 14 l-10 -14Z" fill="#c9b18a" stroke="#6b4a2b" stroke-width="2"/><g stroke="#6b4a2b" stroke-width="1"><path d="M42 26 h16 M42 32 h16"/></g></svg><figcaption><b>銼吸式</b><span class="key">薊馬</span>｜<b>舐吮式</b>家蠅｜<b>咀吸式</b>蜜蜂</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>昆蟲的變態<span class="sec">5-2</span></h2>
+      <div class="meta">
+        <div class="mrow"><b class="ml">完全變態<small>有蛹期</small></b><div class="stages"><span class="st">卵</span><span class="sa">→</span><span class="st">幼蟲</span><span class="sa">→</span><span class="st pupa">蛹</span><span class="sa">→</span><span class="st">成蟲</span></div><span class="ex2">蛾、蝶、蜂、蠅、蚊、<span class="key">金龜子、天牛</span></span></div>
+        <div class="mrow"><b class="ml">不完全變態<small>沒有蛹</small></b><div class="stages"><span class="st">卵</span><span class="sa">→</span><span class="st">若蟲</span><span class="sa">→</span><span class="st">成蟲</span></div><span class="ex2"><span class="key">蝗蟲、椿象、蚜蟲</span>、薊馬、蟬（陸生）</span></div>
+        <div class="mrow"><b class="ml">半變態<small>水生幼體</small></b><div class="stages"><span class="st">卵</span><span class="sa">→</span><span class="st">稚蟲</span><span class="sa">→</span><span class="st">成蟲</span></div><span class="ex2">蜻蜓</span></div>
+        <div class="mrow"><b class="ml">無變態</b><div class="stages"><span class="st">卵</span><span class="sa">→</span><span class="st">仔蟲</span><span class="sa">→</span><span class="st">成蟲</span></div><span class="ex2">衣魚、跳蟲</span></div>
+      </div>
+      <p class="note">翅：鞘翅目＝甲蟲｜半翅目＝椿象｜鱗翅目＝蛾蝶｜雙翅目＝果實蠅｜同翅目＝蚜蟲、介殼蟲</p>
+    </div>
+
+    <div class="card">
+      <h2>食性與趨性<span class="sec">5-2</span></h2>
+      <div class="two">
+        <div class="box c1"><b class="t">食性</b>單食：負泥蟲（稻）｜寡食：<span class="key">紋白蝶、小菜蛾（十字花科）</span>｜多食：蝗蟲、夜盜蟲</div>
+        <div class="box c3"><b class="t">趨性</b>趨光：<span class="key">蛾</span>（誘蛾燈）｜趨化：<span class="key">性費洛蒙、甲基丁香油</span>引誘果實蠅｜負趨化：樟腦丸</div>
+      </div>
+      <p class="note">昆蟲適溫約 26℃；38℃ 以上夏眠，15℃ 以下冬眠。</p>
+    </div>
+
+    <div class="card">
+      <h2>雜草<span class="sec">5-2</span></h2>
+      <div class="three">
+        <div class="box c3"><b class="t">水生雜草</b><span class="key">鴨舌草、野茨菰、蘋草、紅骨草</span>、螢藺</div>
+        <div class="box c2"><b class="t">濕生雜草</b>水稗、牛毛氈、球花蒿草</div>
+        <div class="box c1"><b class="t">乾生雜草</b><span class="key">牛筋草、香附子</span>、狗牙根、野莧、藿香薊</div>
+      </div>
+      <div class="tblwrap" style="margin-top:10px"><table class="t">
+        <tr><th>禾本科</th><td>稗草、牛筋草、狗牙根</td><th>莎草科</th><td>香附子、螢藺</td></tr>
+        <tr><th>菊科</th><td>藿香薊、咸豐草、昭和草</td><th>莧科</th><td>滿天星、野莧</td></tr>
+        <tr><th>澤瀉科</th><td>野茨菰</td><th>雨久花科</th><td>鴨舌草</td></tr>
+        <tr><th>茄科</th><td>龍葵</td><th>石竹科</th><td>鵝兒腸</td></tr>
+      </table></div>
+      <p class="note">危害：搶水搶肥搶光、當病蟲的<b>中間寄主</b>、分泌毒素。<b>絕對雜草</b>（車前草）vs <b>相對雜草</b>（稻田裡的蔬菜）。</p>
+    </div>
+    <div class="actions"><button class="btn" data-go="t3">下一個：防治方法 →</button></div>
+  </section>
+
+  <!-- ===== 防治方法 ===== -->
+  <section class="panel" id="p3" hidden>
+    <div class="card">
+      <h2>病害防治四原則<span class="sec">5-3</span></h2>
+      <div class="four">
+        <div class="pr"><span class="pn">1</span><b>禦病</b>不讓病原進來<br><span class="key">檢疫</span>、隔離苗圃</div>
+        <div class="pr"><span class="pn">2</span><b>抗病</b>種抗病品種<br><span class="key">最經濟</span>有效</div>
+        <div class="pr"><span class="pn">3</span><b>除病</b>除去病原<br>拔除病株、清園</div>
+        <div class="pr"><span class="pn">4</span><b>治病</b>用農藥保護<br><span class="key">最有效</span></div>
+      </div>
+      <p class="note">系統性病害要<b>拔除病株</b>；病毒病沒有藥醫，要<b>殺媒介昆蟲</b>、剷除中間寄主。</p>
+    </div>
+
+    <div class="card">
+      <h2>蟲害五大防治法<span class="sec">5-3</span></h2>
+      <div class="icons">
+        <figure><svg viewBox="0 0 100 70" class="art"><rect x="4" y="40" width="92" height="28" fill="#c99a63"/><g fill="#7cc05a"><circle cx="20" cy="34" r="8"/><circle cx="50" cy="34" r="8"/></g><g fill="#e8d35a"><circle cx="80" cy="34" r="8"/></g><path d="M58 20 h14 M66 14 l6 6 l-6 6" stroke="#2f6b3a" stroke-width="2.5" fill="none"/></svg><figcaption><b>農業防治</b>輪作、調整種植期、清園、剷除中間寄主</figcaption></figure>
+        <figure><svg viewBox="0 0 100 70" class="art"><rect x="34" y="10" width="32" height="44" rx="4" fill="#f4e04a" stroke="#b5a02a" stroke-width="2"/><g fill="#3a3a3a"><circle cx="44" cy="24" r="2.5"/><circle cx="56" cy="34" r="2.5"/><circle cx="46" cy="42" r="2.5"/></g><path d="M50 54 V66" stroke="#6b4a2b" stroke-width="3"/></svg><figcaption><b>物理防治</b>黏紙、<span class="key">誘蛾燈</span>、套袋、防蟲網、淹水</figcaption></figure>
+        <figure><svg viewBox="0 0 100 70" class="art"><rect x="36" y="14" width="22" height="44" rx="6" fill="#d9e3ef" stroke="#7aa7c4" stroke-width="2"/><path d="M58 22 h16 l8 -6" stroke="#7aa7c4" stroke-width="3" fill="none"/><g fill="#7aa7c4" opacity=".6"><circle cx="88" cy="12" r="3"/><circle cx="92" cy="20" r="2"/><circle cx="86" cy="24" r="2.5"/></g></svg><figcaption><b>化學防治</b>農藥：<span class="key">最簡便有效</span>，但會殘留、傷天敵</figcaption></figure>
+        <figure><svg viewBox="0 0 100 70" class="art"><ellipse cx="50" cy="40" rx="22" ry="18" fill="#e2483b" stroke="#a52a20" stroke-width="2"/><path d="M50 22 V58" stroke="#3a1a1a" stroke-width="2"/><g fill="#1a1a1a"><circle cx="40" cy="34" r="4"/><circle cx="60" cy="34" r="4"/><circle cx="42" cy="48" r="3.5"/><circle cx="58" cy="48" r="3.5"/></g><circle cx="50" cy="20" r="7" fill="#1a1a1a"/></svg><figcaption><b>生物防治</b>天敵、<span class="key">蘇力菌</span>、性費洛蒙、不孕蟲</figcaption></figure>
+        <figure><svg viewBox="0 0 100 70" class="art"><rect x="20" y="16" width="60" height="40" rx="4" fill="#fff" stroke="#3b6fd1" stroke-width="2"/><path d="M30 30 h40 M30 40 h28" stroke="#3b6fd1" stroke-width="2"/><circle cx="70" cy="46" r="9" fill="none" stroke="#b4362c" stroke-width="3"/><path d="M64 46 l4 4 l8 -8" stroke="#b4362c" stroke-width="3" fill="none"/></svg><figcaption><b>法規防治</b>機場港口<span class="key">檢疫</span>（防檢署）</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>生物防治：誰打誰？<span class="sec">5-3</span></h2>
+      <div class="vs" id="vsList"></div>
+      <p class="note">性費洛蒙是無毒的，用來<b>誘殺雄蟲</b>或干擾交配。有機防治：苦楝、苦茶粕、除蟲菊、<b>波爾多液</b>、草木灰。</p>
+    </div>
+
+    <div class="card">
+      <h2>雜草防除與殺草劑<span class="sec">5-3</span></h2>
+      <p>農業防除（輪作、深水灌溉、覆蓋）｜物理防除（手拔、鐮刀割）｜生物防除（放牧鴨鵝）｜化學防除（殺草劑）</p>
+      <div class="tblwrap"><table class="t">
+        <tr><th>殺草劑</th><th>選擇性</th><th>作用方式</th><th>重點</th></tr>
+        <tr><td><b>2,4-D</b></td><td><span class="pill ok">選擇性</span></td><td>輸導・<span class="key">生長素型</span></td><td>殺<span class="key">闊葉雜草</span>；<b>應用最廣</b></td></tr>
+        <tr><td><b>巴拉刈</b>（克蕪蹤）</td><td><span class="pill no">非選擇</span></td><td><span class="key">接觸型</span></td><td>綠色植物都殺</td></tr>
+        <tr><td><b>嘉磷塞</b>（年年春）</td><td><span class="pill no">非選擇</span></td><td><span class="key">輸導型</span></td><td>萌後處理</td></tr>
+        <tr><td><b>丁基拉草</b>（馬上除）</td><td><span class="pill ok">選擇性</span></td><td>萌前處理</td><td>水田稗草、螢藺</td></tr>
+        <tr><td><b>草霸王</b>（本達隆）</td><td><span class="pill ok">選擇性</span></td><td>水田萌後</td><td>對禾本科無害</td></tr>
+      </table></div>
+      <p class="note"><b>接觸型</b>＝碰到才有效｜<b>輸導型</b>＝吸收後移到全株（較省工）</p>
+    </div>
+    <div class="actions"><button class="btn" data-go="t4">下一個：農藥 →</button></div>
+  </section>
+
+  <!-- ===== 農藥 ===== -->
+  <section class="panel" id="p4" hidden>
+    <div class="card">
+      <h2>殺蟲劑：怎麼殺死害蟲？<span class="sec">5-3</span></h2>
+      <div class="tblwrap"><table class="t">
+        <tr><th>胃毒劑</th><td>吃下去才中毒 → <span class="key">咀嚼式口器</span>（鱗翅目幼蟲、蝗蟲）</td></tr>
+        <tr><th>觸殺劑</th><td>碰到就死（封住氣孔）；除蟲菊、魚藤精、石灰硫黃合劑</td></tr>
+        <tr><th>滲透劑</th><td>又稱<span class="key">官能性</span>，藥進入植物體 → <span class="key">刺吸式口器</span>（蚜蟲）</td></tr>
+        <tr><th>燻蒸劑</th><td>氣體殺蟲；溴化甲烷</td></tr>
+        <tr><th>引誘劑</th><td><span class="key">甲基丁香油</span>（引誘果實蠅雄蟲）</td></tr>
+        <tr><th>忌避劑</th><td>把蟲趕走；樟腦丸</td></tr>
+      </table></div>
+      <div class="two" style="margin-top:12px">
+        <div class="box c2"><b class="t">殺菌劑：預防劑（保護）</b>發病<span class="key">前</span>用：硫黃劑、<span class="key">銅劑（波爾多液）</span></div>
+        <div class="box c1"><b class="t">殺菌劑：治療劑（直接殺菌）</b>發病<span class="key">初期</span>用：抗生素、免賴得</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>植物生長調節劑<span class="sec">5-3</span></h2>
+      <div class="horm">
+        <div class="hm c1"><svg viewBox="0 0 100 80" class="art"><path d="M50 4 V44" stroke="#6b8f3a" stroke-width="5"/><path d="M50 14 C40 8 34 8 30 10 M50 18 C60 12 66 12 70 14" stroke="#4f8a3c" stroke-width="3" fill="none"/><rect x="10" y="44" width="80" height="34" fill="#d9b98c"/><g stroke="#8a5a35" stroke-width="2"><path d="M50 44 l-14 26 M50 44 l14 26 M50 44 v30 M50 52 l-24 10 M50 52 l24 10"/></g></svg><b>生長素</b><small>IAA、<span class="key">IBA、NAA</span>、2,4-D</small><span>扦插<span class="key">發根</span>、頂芽優勢、果實肥大</span></div>
+        <div class="hm c2"><svg viewBox="0 0 100 80" class="art"><path d="M30 78 V54" stroke="#6b8f3a" stroke-width="5"/><path d="M70 78 V8" stroke="#6b8f3a" stroke-width="5"/><g fill="#7cc05a"><ellipse cx="22" cy="58" rx="8" ry="4"/><ellipse cx="80" cy="20" rx="8" ry="4"/><ellipse cx="60" cy="40" rx="8" ry="4"/></g><path d="M86 70 V14 M82 20 l4 -6 l4 6" stroke="#c46a17" stroke-width="2" fill="none"/></svg><b>激勃素</b><small>GA</small><span>莖<span class="key">伸長</span>、<span class="key">打破休眠</span>、單偽結果（無籽）</span></div>
+        <div class="hm c3"><svg viewBox="0 0 100 80" class="art"><g fill="#a8d07a" stroke="#4f7a2a" stroke-width="2"><circle cx="30" cy="40" r="16"/><circle cx="70" cy="40" r="16"/></g><path d="M46 40 h8" stroke="#4f7a2a" stroke-width="2"/><g fill="#4f7a2a"><circle cx="30" cy="40" r="4"/><circle cx="70" cy="40" r="4"/></g></svg><b>細胞分裂素</b><small>Kinetin、BA、玉米素</small><span>細胞分裂、<span class="key">打破頂芽優勢</span>、延遲老化</span></div>
+        <div class="hm c4"><svg viewBox="0 0 100 80" class="art"><path d="M50 4 V60" stroke="#6b4a2b" stroke-width="5"/><path d="M50 20 L70 14" stroke="#6b4a2b" stroke-width="3"/><path d="M74 30 C84 34 86 44 80 50 C72 46 70 38 74 30Z" fill="#c9a24a" stroke="#8a6a2a"/><path d="M80 56 l4 14" stroke="#8a6a2a" stroke-dasharray="3 3"/><text x="10" y="76" font-size="11" font-weight="700" fill="#6b4a2b">休眠・落葉</text></svg><b>離層酸</b><small>ABA</small><span>葉果<span class="key">脫落</span>、誘導<span class="key">休眠</span>、抑制萌芽</span></div>
+        <div class="hm c1"><svg viewBox="0 0 100 80" class="art"><path d="M20 50 C30 20 60 14 80 24 C70 30 50 40 30 60Z" fill="#f4d23a" stroke="#b5891c" stroke-width="2"/><g fill="#6b4a2b"><circle cx="40" cy="40" r="2"/><circle cx="56" cy="32" r="2"/></g><path d="M80 24 l6 -6" stroke="#4a3324" stroke-width="3"/></svg><b>乙烯</b><small>C₂H₄（氣體）</small><span><span class="key">催熟</span>（香蕉、木瓜）、胡瓜多開<span class="key">雌花</span></span></div>
+        <div class="hm c2"><svg viewBox="0 0 100 80" class="art"><path d="M50 78 V40" stroke="#6b8f3a" stroke-width="7"/><g fill="#4f8a3c"><ellipse cx="36" cy="44" rx="12" ry="6"/><ellipse cx="64" cy="44" rx="12" ry="6"/></g><path d="M18 30 H82" stroke="#b4362c" stroke-width="2" stroke-dasharray="4 3"/><circle cx="50" cy="12" r="10" fill="#7cc05a" stroke="#3f7a2a"/><path d="M42 12 h16" stroke="#e2483b" stroke-width="2"/></svg><b>生長抑制劑</b><small>矮壯素 CCC、MH、秋水仙素</small><span>矮化抗倒伏；<span class="key">秋水仙素 → 無籽西瓜</span></span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>安全使用農藥<span class="sec">5-3</span></h2>
+      <div class="two" style="align-items:center">
+        <svg viewBox="0 0 280 150" class="art" role="img" aria-label="逆風倒退噴藥示意">
+          <rect x="0" y="110" width="280" height="40" fill="#e3d6b8"/>
+          <g fill="#7cc05a"><circle cx="30" cy="108" r="10"/><circle cx="70" cy="108" r="10"/><circle cx="110" cy="108" r="10"/></g>
+          <circle cx="170" cy="40" r="12" fill="#f6c3a2" stroke="#a0521b" stroke-width="2"/><rect x="160" y="52" width="20" height="40" rx="6" fill="#3b6fd1"/><path d="M164 92 l-6 18 M176 92 l6 18" stroke="#2a3a6a" stroke-width="5"/>
+          <path d="M162 64 L120 84" stroke="#4a3324" stroke-width="3"/><g fill="#7aa7c4" opacity=".7"><circle cx="112" cy="88" r="4"/><circle cx="100" cy="94" r="3"/><circle cx="106" cy="100" r="3"/><circle cx="92" cy="98" r="2.5"/></g>
+          <g stroke="#6c5f52" stroke-width="2.5" fill="none"><path d="M270 30 H220 M228 24 l-8 6 l8 6"/><path d="M270 46 H230 M238 40 l-8 6 l8 6"/></g><text x="236" y="18" font-size="12" font-weight="700" fill="#6c5f52">風</text>
+          <path d="M196 132 H246 M238 126 l8 6 l-8 6" stroke="#b4362c" stroke-width="3" fill="none"/><text x="196" y="124" font-size="12" font-weight="900" fill="#b4362c">往後退</text>
+        </svg>
+        <ul>
+          <li>噴藥要<span class="key">逆風倒退</span>（不是逆風前進）</li>
+          <li><b>LD50</b>＝<span class="key">半數致死量</span>，數字越小越毒</li>
+          <li>同一種藥一直用 → <span class="key">抗藥性</span>，要輪流用藥</li>
+          <li>劑型：SL 溶液、EC 乳劑、DP 粉劑、<b>WP 可濕性粉劑</b>（先調成糊）</li>
+          <li>臺灣河水偏鹼，稀釋可加少量食醋</li>
+        </ul>
+      </div>
+    </div>
+    <div class="actions"><button class="btn" data-go="t5">下一個：其他危害 →</button></div>
+  </section>
+
+  <!-- ===== 其他危害 ===== -->
+  <section class="panel" id="p5" hidden>
+    <div class="card">
+      <h2>氣象危害<span class="sec">5-4</span></h2>
+      <div class="tblwrap"><table class="t">
+        <tr><th>日照不足</th><td>黃化、徒長、不開花 → 疏苗、修枝、種耐陰作物</td></tr>
+        <tr><th>日照過多</th><td>樹木<span class="key">皮燒</span>、果實曬傷 → 遮陰；<span class="key">鳳梨、花椰菜束葉</span>防曬</td></tr>
+        <tr><th>低溫、霜</th><td>凍害、霜裂 → 燻煙、灑水、風扇、塑膠布覆蓋</td></tr>
+        <tr><th>風</th><td>抗風品種、支柱、防風林</td></tr>
+        <tr><th>空氣污染</th><td>SO₂ → 葉綠素消失｜氟化物 → <span class="key">香蕉葉緣枯</span>｜臭氧 → <span class="key">洋蔥葉尖焦枯</span></td></tr>
+        <tr><th>濕度太高</th><td>病原多 → 溫室原則「<span class="key">頭乾足濕</span>」、通風、無滴膜</td></tr>
+      </table></div>
+      <div class="tip"><b>成霜條件：</b>晴朗無風、有水氣、<span class="key">逆溫層</span>、低溫。防霜就是破壞它（燒火炬、開風扇讓空氣對流）。</div>
+    </div>
+
+    <div class="card">
+      <h2>土壤危害<span class="sec">5-4</span></h2>
+      <ul>
+        <li>氮易流失 → <b>分次施</b>；磷會被土壤固定 → 少次多量</li>
+        <li>高山常缺<b>鈣</b>（施碳酸鈣）；海邊常缺<b>鎂</b>（施碳酸鎂）</li>
+        <li>重金屬：<span class="key">鉛 Pb、鎘 Cd、鉻 Cr、汞 Hg、砷 As</span></li>
+        <li>改良：翻土、客土、<span class="key">植物修復</span>（<b>蜈蚣草吸砷</b>、堇菜吸鉛鎘）</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>動物危害<span class="sec">5-4</span></h2>
+      <div class="icons">
+        <figure><svg viewBox="0 0 100 70" class="art"><path d="M14 56 C20 44 40 42 62 48 L80 56Z" fill="#c9b18a" stroke="#6b4a2b" stroke-width="2"/><circle cx="56" cy="36" r="16" fill="#e3c48f" stroke="#8a5a35" stroke-width="2"/><path d="M56 36 m-8 0 a8 8 0 1 0 8 -8" fill="none" stroke="#8a5a35" stroke-width="2"/><path d="M20 50 l-4 -12 M26 48 l0 -12" stroke="#6b4a2b" stroke-width="2"/></svg><figcaption><b>蝸牛、蛞蝓</b>雨後嚴重 → <span class="key">聚乙醛</span></figcaption></figure>
+        <figure><svg viewBox="0 0 100 70" class="art"><path d="M8 50 C30 40 70 40 92 50 V68 H8Z" fill="#7aa7c4" opacity=".6"/><ellipse cx="50" cy="40" rx="18" ry="14" fill="#c46a17" stroke="#7a3a0d" stroke-width="2"/><path d="M50 40 m-9 0 a9 9 0 1 0 9 -9" fill="none" stroke="#7a3a0d" stroke-width="2"/><g fill="#e2483b"><circle cx="76" cy="20" r="3"/><circle cx="82" cy="24" r="3"/><circle cx="78" cy="28" r="3"/></g></svg><figcaption><b>福壽螺</b>危害水稻 → <span class="key">苦茶粕</span></figcaption></figure>
+        <figure><svg viewBox="0 0 100 70" class="art"><circle cx="50" cy="34" r="20" fill="#d6d6e8" stroke="#8a8aa8" stroke-width="2"/><circle cx="50" cy="34" r="6" fill="#fff"/><g stroke="#f1c75b" stroke-width="2"><path d="M70 20 l10 -8 M74 34 h12 M70 48 l10 8"/></g></svg><figcaption><b>鳥類</b>反光光碟、鞭炮、網室</figcaption></figure>
+        <figure><svg viewBox="0 0 100 70" class="art"><ellipse cx="52" cy="44" rx="26" ry="14" fill="#9a8a7a" stroke="#5a4a3a" stroke-width="2"/><circle cx="28" cy="38" r="10" fill="#9a8a7a" stroke="#5a4a3a" stroke-width="2"/><circle cx="24" cy="30" r="5" fill="#c9a8a8"/><path d="M78 46 C90 46 94 56 90 62" stroke="#5a4a3a" stroke-width="2" fill="none"/><circle cx="24" cy="38" r="2" fill="#1a1a1a"/></svg><figcaption><b>野鼠</b>捕鼠器、毒餌</figcaption></figure>
+      </div>
+    </div>
+    <div class="actions"><button class="btn" data-go="t6">下一個：動手判斷 →</button></div>
+  </section>
+
+  <!-- ===== 動手判斷 ===== -->
+  <section class="panel" id="p6" hidden>
+    <div class="card">
+      <h2>看題目，說答案</h2>
+      <p>選一個主題，全班先說答案，再點卡片揭曉。</p>
+      <div class="picker" id="dPick" role="tablist" aria-label="選擇主題"></div>
+      <div class="actions"><button class="btn ghost" id="dAll">全部揭曉</button><button class="btn ghost" id="dReset">全部蓋回去</button></div>
+    </div>
+    <div class="cases" id="dCases"></div>
+    <div class="actions"><button class="btn" data-go="t7">下一個：計算練習 →</button></div>
+  </section>
+
+  <!-- ===== 計算練習 ===== -->
+  <section class="panel" id="p7" hidden>
+    <div class="card">
+      <h2>農藥稀釋計算</h2>
+      <div class="formula">原藥用量 ＝ 噴霧器容量 ÷ 稀釋倍數</div>
+      <div class="formula">稀釋倍數 ＝ 噴霧器容量 ÷ 原藥用量</div>
+      <div class="formula">1 ppm ＝ 1 mg / L（百萬分之一）</div>
+      <p class="note">先把公升換成 c.c.（毫升）：1 公升 ＝ 1000 c.c.</p>
+      <div class="picker" id="calcPick" role="tablist" aria-label="選擇題型" style="margin-top:10px"></div>
+    </div>
+    <div class="card" id="calcBox"></div>
+  </section>
+
+  <!-- ===== 小測驗 ===== -->
+  <section class="panel" id="p8" hidden></section>
+
+  <footer>農業概論 第五章 植物保護・總複習。測驗紀錄只存在這台裝置。</footer>
+</div>
+
+<div class="overlay" id="overlay" hidden><div class="inner"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAADaklEQVR4Xu1cbW6kMAx1FqT+BKkH2KMwV+4NhqPMAVaCnyMxyurZMdB2tYlnSYu0fr9gEkWpX/wZ0xDJgvGHZTYR+fy/w+Xj8tnjifMwh4QLL4TXi/zWEo09kY63ro9ZPCF/E6zrU4xTExk0xIVijAsRdXjlganBAIDXq3V9n38G+yO6SvNL5Kd45U1197DXaf7N+ToDX+UArXtEml+XMEyPlsZ+ijT2zb/afxP8/Bx7fj7yG6hbKI79L4rjJVCkbnJ+DTjb+RR+d0nS8NYugTqiMEw9heHWLnDHsN5un/M4G7/Yz0MC5N3mh9sLGG0S7yOP985vHmfjt03KyZhZkzl+hpH+eQ/sf/clkLPt3/eT9ddzmzLcSwdq6QFNfgTOj2iYNP/1+LkEZztvyH+xbyjsmglL1iv2GZkwRiUd9vw3ry8m1D4PwmrSVS5tEGjspOQhpQ0ZBdPObw61+bKuLwUrIZNZvUpUxSQz3ZuKO795WOVfe37SX7bAbJDFDPMfwkVKsI9Xr08WoTZf1vVFdUVhN68rBhmsQqeVZPe/eVjlX3v+O/+73iWwkZb7BblugBK7fS5Abb6s66vdZfKERuUSgbU44R3x1vV9fjY/NcEqT8mPNoVVS51Ms7heqLP73yJY5V97/nrhq0E0G2RUNdT/Jvvs+W8RavNlXT/VN5jQFCun+FkUW/yvVjo8/83BKv/a85VfToKFZC5YccMGXjWSdv0tQm2+rOtrVXLTX7HUMNJauto5YY+vvjleeoZfjaCkqvGhYLXmv95/VQKr/GvPf1e/0iKWFqzUJ3MJ0/PfEtTmy7q+1je4/syqK0/cNZk6KUWxZYp1fZ///fmv3gVKaCVVya0cvWZKXp8swNnOc1JYgRYktRK9RV/rxcPZ9u/7ydqH7fsF1lpu5+hT/wZ3XaXWDR51eWblaUJteaJ/spF73oDWZxovaMLCE9Fdeu4izejZ4d9q78fXP/b8rLY49Vp9uhpc/a8EXi7/Y+X/tfLUhlhhdU7fl4k7Hv37sgJ8LV95/OH7FJKvBmmI3EnZoN39Hmjg2Pps+/f9lNgTvca/Sxs71zL0CdTe1mPg8iyRZzlqyxPEsZqyQX6NYXjrQyR6tFDXGIhadLpH6DSMdu39+PrHnh9waYD/f4aD5e/n+djz/L/J8zcZ6GA4U8S9rgAAAABJRU5ErkJggg=="><p>用平板或手機掃描，開始小測驗！</p><small>https://teacher-liujikan.github.io/yilin-work/agri-ch5/#quiz</small></div></div>
+
+<script>
+(function(){
+const $ = id => document.getElementById(id);
+const fmt = (n,d=2) => { const r = Math.round(n*10**d)/10**d; return r.toLocaleString("zh-TW",{maximumFractionDigits:d}); };
+const TABS=[["t1","p1"],["t2","p2"],["t3","p3"],["t4","p4"],["t5","p5"],["t6","p6"],["t7","p7"],["t8","p8"]];
+function show(t){
+  TABS.forEach(([a,b])=>{ const on=a===t; $(a).setAttribute("aria-selected",on); $(b).hidden=!on; });
+  $("blankBar").hidden = ["t6","t7","t8"].includes(t);
+  if(t==="t8"&&!quiz) startQuiz();
+  try{ history.replaceState(null,"",t==="t8"?"#quiz":location.pathname+location.search); }catch(e){}
+  window.scrollTo({top:0});
+}
+TABS.forEach(([a])=>$(a).onclick=()=>show(a));
+document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>show(b.dataset.go));
+$("blankToggle").onchange=e=>{ document.body.classList.toggle("blank",e.target.checked); document.querySelectorAll(".key.show").forEach(k=>k.classList.remove("show")); };
+document.addEventListener("click",e=>{ const k=e.target.closest(".key"); if(k&&document.body.classList.contains("blank")) k.classList.toggle("show"); });
+/* ---------- 病原圖鑑 ---------- */
+const PATHO=[
+ {k:"fungi",n:"真菌",svg:'<g stroke="#8a5a35" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M10 60 C30 50 40 30 60 28 C76 26 84 14 90 6"/><path d="M40 40 C36 26 26 20 16 18"/><path d="M60 28 C66 40 78 46 90 46"/></g><g fill="#c46a17"><circle cx="90" cy="6" r="4"/><circle cx="16" cy="18" r="4"/><circle cx="90" cy="46" r="4"/></g>',
+  t:"最多病害由它引起",d:["菌絲體＋<b>孢子</b>，多靠<b>風</b>傳播","從氣孔、傷口或直接穿入"],ex:"<b>水稻稻熱病</b>、紋枯病、<b>露菌病</b>、白粉病、<b>馬鈴薯晚疫病</b>、花生白絹病、香蕉炭疽病"},
+ {k:"bact",n:"細菌",svg:'<g fill="#7cc05a" stroke="#3f7a2a" stroke-width="2"><rect x="14" y="20" width="30" height="14" rx="7"/><rect x="50" y="34" width="30" height="14" rx="7"/><rect x="30" y="50" width="30" height="14" rx="7"/></g><path d="M80 41 C88 38 92 44 98 40" stroke="#3f7a2a" stroke-width="1.5" fill="none"/>',
+  t:"單細胞、多為桿狀",d:["<b>二分裂</b>繁殖；致死溫度 46～50℃","從<b>傷口、自然開口</b>進入","病徵：萎凋、<b>軟腐</b>、瘤腫"],ex:"<b>番茄青枯病</b>、甘藷／蔬菜<b>軟腐病</b>、<b>柑橘潰瘍病</b>"},
+ {k:"virus",n:"病毒",svg:'<g transform="translate(50 36)"><polygon points="0,-22 19,-11 19,11 0,22 -19,11 -19,-11" fill="#f2a7c3" stroke="#a2408c" stroke-width="2"/><g stroke="#a2408c" stroke-width="2"><path d="M0 -22 v-8 M19 -11 l7 -4 M19 11 l7 4 M0 22 v8 M-19 11 l-7 4 M-19 -11 l-7 -4"/></g></g>',
+  t:"非細胞、只能在活細胞裡活",d:["要用<b>電子顯微鏡</b>才看得到","<b>沒有藥可以治</b>，系統性危害","靠<b>蚜蟲、浮塵子</b>、修剪傷口、種苗傳播"],ex:"<b>菸草嵌紋病</b>、胡瓜嵌紋病、<b>木瓜輪點病</b>、瓜類毒素病"},
+ {k:"phyto",n:"菌質",svg:'<g fill="#e8d35a" stroke="#9a8a2a" stroke-width="2"><path d="M20 30 C26 18 42 22 40 34 C38 46 22 44 20 30Z"/><path d="M54 24 C66 18 76 28 70 38 C64 46 50 40 54 24Z"/><path d="M40 52 C48 44 60 50 56 60 C50 68 36 62 40 52Z"/></g>',
+  t:"沒有細胞壁、形狀不規則",d:["比細菌小、比病毒大","寄生在<b>韌皮部</b>","靠<b>浮塵子</b>傳播；病徵：萎縮、黃化、<b>簇葉</b>"],ex:"<b>水稻黃萎病</b>、<b>甘藷簇葉病</b>、大豆簇葉病、甘蔗白葉病"},
+ {k:"nema",n:"線蟲",svg:'<path d="M10 50 C24 30 36 64 50 44 S76 26 90 40" stroke="#c46a17" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="90" cy="40" r="2" fill="#4a2a1a"/>',
+  t:"圓形動物，口裡有口針",d:["主要危害<b>根部</b>","根部長<b>瘤</b>或腐爛、植株矮化"],ex:"<b>根瘤線蟲</b>、根腐線蟲；北部松樹線蟲枯死"},
+ {k:"slime",n:"黏菌",svg:'<path d="M14 40 C14 22 34 16 46 26 C56 14 82 18 84 36 C92 46 80 62 64 58 C52 68 26 66 20 54 C8 54 8 44 14 40Z" fill="#f6e08a" stroke="#b5891c" stroke-width="2"/><g fill="#b5891c"><circle cx="34" cy="40" r="3"/><circle cx="56" cy="36" r="3"/><circle cx="66" cy="48" r="3"/></g>',
+  t:"像變形蟲一樣移動",d:["多核、無葉綠素","寄生十字花科根部，<b>根膨大</b>"],ex:"<b>白菜根瘤病</b>"},
+ {k:"mite",n:"蟎類",svg:'<ellipse cx="50" cy="40" rx="20" ry="16" fill="#e2483b" stroke="#a52a20" stroke-width="2"/><g stroke="#a52a20" stroke-width="2.5" stroke-linecap="round"><path d="M32 32 l-14 -8 M30 40 h-16 M32 48 l-14 8 M68 32 l14 -8 M70 40 h16 M68 48 l14 8"/></g>',
+  t:"蛛形綱，4 對腳（不是昆蟲）",d:["<b>刺吸</b>新芽、新葉汁液","葉片變形、蟲癭"],ex:"<b>荔枝腫葉病</b>、柑橘黑皮；紅蜘蛛（葉蟎）"},
+ {k:"para",n:"寄生性顯花植物",svg:'<path d="M50 70 V20" stroke="#4f8a3c" stroke-width="6"/><path d="M50 20 C40 8 30 10 26 14" stroke="#4f8a3c" stroke-width="4" fill="none"/><g stroke="#f1a33a" stroke-width="3" fill="none"><path d="M20 66 C40 56 30 44 54 40 C74 36 60 26 82 20"/><path d="M14 50 C36 46 30 34 52 30"/></g>',
+  t:"根退化成吸器，吸寄主養分",d:["吸器插進寄主的木質部、韌皮部"],ex:"<b>菟絲子</b>、檞寄生、野菰"}
+];
+$("pathoGrid").innerHTML=PATHO.map((p,i)=>`<button class="pcard" data-p="${i}" aria-pressed="${i===0}"><svg viewBox="0 0 100 72" class="art">${p.svg}</svg><b>${p.n}</b></button>`).join("");
+function renderPatho(i){ document.querySelectorAll(".pcard").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.p===i)); const p=PATHO[i]; $("pathoInfo").innerHTML=`<h3>${p.n}<span class="pill mid">${p.t}</span></h3><ul>${p.d.map(x=>`<li>${x}</li>`).join("")}</ul><p style="margin:6px 0 0"><b style="color:var(--soil)">代表病害：</b>${p.ex}</p>`; }
+document.querySelectorAll(".pcard").forEach(b=>b.onclick=()=>renderPatho(+b.dataset.p));
+renderPatho(0);
+
+/* ---------- 生物防治配對 ---------- */
+const VS=[["蘇力菌（細菌）","鱗翅目幼蟲：紋白蝶、小菜蛾"],["核多角體病毒","玉米穗蟲"],["白殭菌（真菌）","甜菜夜蛾、松毛蟲"],["赤眼卵寄生蜂","玉米螟（寄生在卵）"],["澳洲瓢蟲","吹綿介殼蟲"],["草蛉","蚜蟲、粉蝨"],["鈷 60 照射的不孕雄蠅","東方果實蠅（卵孵不出來）"],["性費洛蒙／甲基丁香油","誘殺果實蠅雄蟲"]];
+$("vsList").innerHTML=VS.map(([a,b])=>`<div class="vsr"><span class="vsa">${a}</span><span class="vsx">→ 對付 →</span><span class="vsb">${b}</span></div>`).join("");
+
+/* ---------- 動手判斷 ---------- */
+const DECKS=[
+ {name:"病原是誰？",items:[["水稻稻熱病","真菌"],["馬鈴薯晚疫病","真菌（卵菌）"],["玉米露菌病","真菌"],["番茄青枯病","細菌"],["柑橘潰瘍病","細菌"],["蔬菜軟腐病","細菌"],["木瓜輪點病","病毒（蚜蟲傳播）"],["胡瓜嵌紋病","病毒"],["水稻黃萎病","菌質（浮塵子傳播）"],["甘藷簇葉病","菌質"],["白菜根瘤病","黏菌"],["荔枝腫葉病","蟎類"]]},
+ {name:"什麼口器？",items:[["蝗蟲","咀嚼式"],["天牛、金龜子","咀嚼式"],["蚜蟲","刺吸式"],["椿象、浮塵子","刺吸式"],["蝶、蛾","虹吸式"],["薊馬","銼吸式"],["家蠅","舐吮式"],["蜜蜂","咀吸式"]]},
+ {name:"哪一種變態？",items:[["椿象","不完全：卵→若蟲→成蟲"],["蝗蟲","不完全變態"],["斑星天牛","完全：卵→幼蟲→蛹→成蟲"],["紋白蝶","完全變態"],["蜻蜓","半變態：卵→稚蟲→成蟲"],["衣魚","無變態"]]},
+ {name:"用哪種防治法？",items:[["機場檢疫水果","法規防治"],["掛黃色黏紙","物理防治"],["水稻、紅豆輪作","農業防治"],["噴蘇力菌","生物防治"],["拔掉罹病植株","除病"],["種抗病品種","抗病（最經濟）"],["放鴨子吃雜草","生物防除"],["用鐮刀割草","物理防除"]]},
+ {name:"哪個生長調節劑？",items:[["扦插切口沾一下，促進發根","生長素（IBA、NAA）"],["打破種子休眠、讓莖伸長","激勃素"],["香蕉催熟","乙烯"],["胡瓜多開雌花","乙烯"],["讓葉片脫落、芽休眠","離層酸"],["打破頂芽優勢、長側芽","細胞分裂素"],["做無籽西瓜","秋水仙素"],["讓植株矮壯不倒伏","矮壯素 CCC"]]}
+];
+let dCur=0;
+function renderDeck(){
+  $("dPick").innerHTML=DECKS.map((d,i)=>`<button class="pk" role="tab" data-i="${i}" aria-selected="${i===dCur}">${d.name}</button>`).join("");
+  document.querySelectorAll("#dPick .pk").forEach(b=>b.onclick=()=>{dCur=+b.dataset.i;renderDeck();});
+  $("dCases").innerHTML=DECKS[dCur].items.map((c,i)=>`<button class="case" data-c="${i}" style="min-height:110px"><span class="q" style="font-size:20px;font-weight:700">${c[0]}</span><span class="a">點我看答案</span></button>`).join("");
+  document.querySelectorAll("#dCases .case").forEach(b=>b.onclick=()=>flip(b));
+}
+function flip(b,force){ const c=DECKS[dCur].items[+b.dataset.c], open=force!==undefined?force:!b.classList.contains("open"); b.classList.toggle("open",open); b.querySelector(".a").innerHTML=open?`<b style="font-size:20px">${c[1]}</b>`:"點我看答案"; }
+$("dAll").onclick=()=>document.querySelectorAll("#dCases .case").forEach(b=>flip(b,true));
+$("dReset").onclick=()=>document.querySelectorAll("#dCases .case").forEach(b=>flip(b,false));
+renderDeck();
+
+/* ---------- 計算練習 ---------- */
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const CALC=[
+ {name:"原藥用量",sub:"容量 ÷ 倍數",gen(){
+   const L=pick([8,10,16,20,200]); const x=pick([200,400,500,800,1000,1500,2000]); const v=L*1000/x;
+   const drug=pick(["萬生可濕性粉劑","除蟲菊乳劑","大滅松乳劑","免賴得可濕性粉劑"]);
+   return {q:`用 <b>${L} 公升</b>的噴霧器，${drug}要稀釋 <b>${x} 倍</b>，需要加多少原藥？`,f:"原藥用量 ＝ 噴霧器容量 ÷ 稀釋倍數",unit:"c.c.（或公克）",ans:v,
+     steps:[`單位換算：${L} 公升 ＝ ${fmt(L*1000)} c.c.`,`${fmt(L*1000)} ÷ ${x} ＝ ${fmt(v)}`],fin:`需要原藥 ${fmt(v)} c.c.（粉劑就是 ${fmt(v)} 公克）`};}},
+ {name:"稀釋倍數",sub:"容量 ÷ 原藥",gen(){
+   const L=pick([10,16,20,200]); const choices=[5,8,10,16,20,25,40,50,100,200,250,400,500].filter(c=>c<L*1000/50); const c=pick(choices); const x=L*1000/c;
+   return {q:`在 <b>${L} 公升</b>的藥桶中加入 <b>${c} c.c.</b> 原藥，再加滿水。稀釋倍數是多少倍？`,f:"稀釋倍數 ＝ 噴霧器容量 ÷ 原藥用量",unit:"倍",ans:x,
+     steps:[`單位換算：${L} 公升 ＝ ${fmt(L*1000)} c.c.`,`${fmt(L*1000)} ÷ ${c} ＝ ${fmt(x)}`],fin:`稀釋 ${fmt(x)} 倍`};}},
+ {name:"ppm 換算",sub:"1 ppm ＝ 1 mg/L",gen(){
+   const p=pick([5,8,10,20,50,100]); const L=pick([1,2,5,10]); const mg=p*L;
+   return {q:`要配 <b>${p} ppm</b> 的 IAA 溶液 <b>${L} 公升</b>，需要 IAA 多少公克？`,f:"所需藥量（mg）＝ ppm × 公升數；1 公克 ＝ 1000 mg",unit:"公克",ans:mg/1000,
+     steps:[`1 ppm ＝ 每公升 1 mg，所以 ${p} ppm ＝ 每公升 ${p} mg`,`${p} × ${L} ＝ ${mg} mg`,`${mg} mg ÷ 1000 ＝ ${fmt(mg/1000,4)} 公克`],fin:`需要 IAA ${fmt(mg/1000,4)} 公克`};}}
+];
+
+/* ---------- 小測驗 ---------- */
+const QS=[
+ {q:"病害發生需要三個條件同時存在，下列何者「不是」其中之一？",o:["肥料","病原","宿主","環境"],a:0,why:"病害三角：病原（主因）、宿主（素因）、環境（誘因）。"},
+ {q:"「氮肥施太多引起稻熱病」，氮肥過多屬於病害發生的哪一種原因？",o:["誘因","主因","素因","內因"],a:0,why:"環境條件是誘因（副因）；病原是主因；作物本身遺傳是素因（內因）。"},
+ {q:"下列何者屬於非傳染性（非生物性）病害？",o:["馬鈴薯日燒病","甘藍軟腐病","落花生白絹病","水稻立枯病"],a:0,why:"日燒病是環境造成；軟腐病是細菌，白絹病、立枯病是真菌。"},
+ {q:"鳳梨黑心病主要是什麼造成的？",o:["低溫","缺硼","病毒","線蟲"],a:0,why:"低溫（寒害）引起鳳梨黑心病，屬於非傳染性病害。缺硼是木瓜塊腫病。"},
+ {src:"112 統測",q:"下列病害中，哪一組全部是真菌引起的？",list:"①玉米露菌病　②馬鈴薯晚疫病　③胡瓜嵌紋病　④番茄青枯病　⑤水稻稻熱病　⑥水稻黃萎病",o:["(A) ②③⑥","(B) ①④⑥","(C) ④⑤⑥","(D) ①②⑤"],a:3,fixed:1,why:"嵌紋病＝病毒、青枯病＝細菌、黃萎病＝菌質；露菌病、晚疫病、稻熱病是真菌。"},
+ {src:"111 統測",q:"利用生物技術防治「病毒性病害」，目標可能是下列哪一種？",o:["木瓜輪點病","大豆露菌病","甘藷簇葉病","水稻黃萎病"],a:0,why:"木瓜輪點病是病毒；露菌病是真菌，簇葉病、黃萎病是菌質。"},
+ {src:"112 統測",q:"消滅浮塵子和飛蝨，可以減少下列哪一組病害？",o:["水稻黃萎病、甘藷簇葉病","馬鈴薯晚疫病、木瓜輪點病","胡瓜嵌紋病、水稻稻熱病","番茄青枯病、蔬菜軟腐病"],a:0,why:"浮塵子、飛蝨會傳播菌質病害，例如水稻黃萎病、甘藷簇葉病。"},
+ {q:"柑橘黃龍病主要由哪一種昆蟲傳播？",o:["柑橘木蝨","蚜蟲","黃守瓜","浮塵子"],a:0,why:"柑橘木蝨傳播黃龍病；蚜蟲傳播木瓜輪點病。"},
+ {q:"下列哪一種病原「沒有藥劑可以治療」，只能防治媒介昆蟲？",o:["病毒","真菌","細菌","黏菌"],a:0,why:"病毒病目前沒有藥劑可治，要靠殺媒介昆蟲、拔除病株、抗病品種。"},
+ {q:"昆蟲的足和翅長在身體的哪一部分？",o:["胸部","頭部","腹部","頭部和腹部"],a:0,why:"昆蟲足 3 對、翅 2 對，都長在胸部。"},
+ {q:"蚜蟲、椿象、浮塵子屬於哪一種口器？",o:["刺吸式","咀嚼式","虹吸式","銼吸式"],a:0,why:"刺吸式口器吸取植物汁液；蝗蟲是咀嚼式，蝶蛾是虹吸式，薊馬是銼吸式。"},
+ {src:"111 統測",q:"春天危害荔枝、龍眼花穗，應在開花期前後防治的害蟲，和它的變態方式是？",o:["(A) 椿象；卵→若蟲→成蟲","(B) 椿象；卵→稚蟲→成蟲","(C) 斑星天牛；卵→若蟲→成蟲","(D) 斑星天牛；卵→幼蟲→蛹→成蟲"],a:0,fixed:1,why:"荔枝椿象吸食花穗，屬不完全變態：卵→若蟲→成蟲。"},
+ {q:"下列哪一種昆蟲是「完全變態」（有蛹期）？",o:["金龜子","蝗蟲","椿象","蚜蟲"],a:0,why:"完全變態：蛾、蝶、蜂、蠅、蚊、金龜子、天牛。蝗蟲、椿象、蚜蟲是不完全變態。"},
+ {q:"利用性費洛蒙或甲基丁香油誘殺果實蠅，是利用昆蟲的哪一種趨性？",o:["趨化性","趨光性","趨溫性","趨觸性"],a:0,why:"昆蟲受化學物質吸引是正趨化性。誘蛾燈利用的是趨光性。"},
+ {src:"111 統測",q:"稻田裡常見的雜草，依生長特性分類，下列何者正確？",o:["屬於水生雜草的蘋草","屬於水生雜草的水稗","屬於濕生雜草的紅骨草","屬於濕生雜草的鴨舌草"],a:0,why:"水稗是濕生雜草；紅骨草、鴨舌草是水生雜草。"},
+ {q:"龍葵屬於哪一科的雜草？",o:["茄科","菊科","莧科","禾本科"],a:0,why:"龍葵是茄科；藿香薊、咸豐草是菊科，滿天星是莧科。"},
+ {q:"病害防治四原則中，「最經濟有效」的是哪一項？",o:["抗病（種抗病品種）","禦病（檢疫）","除病（拔除病株）","治病（噴農藥）"],a:0,why:"育成抗病品種最經濟；用農藥治病是最有效的方法。"},
+ {q:"在機場、港口執行檢疫，屬於哪一種蟲害防治法？",o:["法規防治","物理防治","農業防治","生物防治"],a:0,why:"由政府依法執行檢疫，是法規防治。"},
+ {q:"蘇力菌主要用來防治哪一類害蟲？",o:["鱗翅目幼蟲（如紋白蝶、小菜蛾）","蚜蟲","介殼蟲","蟎類"],a:0,why:"蘇力菌是細菌性生物農藥，專門防治鱗翅目幼蟲。"},
+ {q:"澳洲瓢蟲在生物防治上被用來捕食哪一種害蟲？",o:["吹綿介殼蟲","玉米螟","東方果實蠅","紋白蝶"],a:0,why:"澳洲瓢蟲捕食吹綿介殼蟲；赤眼卵寄生蜂寄生玉米螟。"},
+ {src:"111 統測",q:"目前世界上應用最廣、具生長素特性、常用於闊葉雜草的選擇性殺草劑是？",o:["(A) 2ip","(B) 2,4-D","(C) CMU","(D) DPA"],a:1,fixed:1,why:"2,4-D 是生長素型、選擇性殺草劑，對闊葉雜草有效。"},
+ {q:"巴拉刈（克蕪蹤）屬於哪一種殺草劑？",o:["非選擇性、接觸型","選擇性、輸導型","選擇性、萌前處理","生長素型"],a:0,why:"巴拉刈碰到的綠色植物都會被殺，是非選擇性接觸型。"},
+ {q:"防治咀嚼式口器害蟲（如鱗翅目幼蟲），最適合用哪一種殺蟲劑？",o:["胃毒劑","滲透劑","燻蒸劑","忌避劑"],a:0,why:"胃毒劑要被吃下去才有效，適合咀嚼式口器。刺吸式口器用滲透性殺蟲劑。"},
+ {src:"112 統測",q:"扦插朱槿時，要促進發根可以怎麼做？",o:["插穗切口沾生長素","葉片噴激勃素","芽點塗離層酸","切口塗細胞分裂素"],a:0,why:"生長素（IBA、NAA）可促進扦插發根。"},
+ {q:"香蕉、木瓜催熟，以及讓胡瓜多開雌花，是利用哪一種植物荷爾蒙？",o:["乙烯","激勃素","離層酸","細胞分裂素"],a:0,why:"乙烯促進果實成熟，也能促使胡瓜多開雌花。"},
+ {src:"107 統測",q:"有關農藥的敘述，下列何者「不正確」？",o:["農藥必須以逆風前進方式噴灑","LD50 是指半數致死藥量","植物生長調節劑為農藥之一類","稀釋農藥時要避免與眼睛、皮膚及衣物接觸"],a:0,why:"噴藥要「逆風倒退」，不是逆風前進。"},
+ {q:"在 10 公升藥桶中加入 20 c.c. 原藥再加滿水，稀釋倍數是多少？",o:["500 倍","200 倍","2 倍","0.5 倍"],a:0,fixed:1,why:"10 公升 ＝ 10,000 c.c.；10,000 ÷ 20 ＝ 500 倍。"},
+ {q:"林木出現「皮燒」現象，最可能是什麼原因？",o:["日照過多","日照不足","天氣太冷","風太大"],a:0,why:"日照過多會造成樹皮皮燒；鳳梨、花椰菜可用束葉防曬。"},
+ {q:"福壽螺危害水稻，常用哪一種資材防治？",o:["苦茶粕","聚乙醛","石灰","尿素"],a:0,why:"福壽螺用苦茶粕；蝸牛、蛞蝓用聚乙醛。"},
+ {q:"利用蜈蚣草吸收土壤中的砷，屬於哪一種重金屬污染改良法？",o:["植物修復","客土法","酸洗法","翻土法"],a:0,why:"種植可吸收重金屬的植物來清除污染，稱為植物修復，最環保但很花時間。"}
+];
+const KEY="agri-ch5-review-115-1";
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+
+let cType=0, cProb=null, cStep=0;
+function renderPick(){ $("calcPick").innerHTML=CALC.map((c,i)=>`<button class="pk" role="tab" data-i="${i}" aria-selected="${i===cType}">${c.name}<small>${c.sub}</small></button>`).join(""); document.querySelectorAll("#calcPick .pk").forEach(b=>b.onclick=()=>{cType=+b.dataset.i; newProb();}); }
+function newProb(){ cProb=CALC[cType].gen(); cStep=0; renderPick(); renderCalc(); }
+function renderCalc(){
+  const p=cProb, total=p.steps.length;
+  const shown=p.steps.slice(0,cStep).map((s,i)=>`<div class="step"><span class="n">步驟 ${i+1}</span>${s}</div>`).join("") + (cStep>total?`<div class="step final"><span class="n">答</span>${p.fin}</div>`:"");
+  $("calcBox").innerHTML=`<div class="problem">${p.q}</div>
+    <div class="ansrow"><input id="ansIn" inputmode="decimal" placeholder="你的答案" aria-label="輸入答案"><span>${p.unit}</span><button class="btn" id="ansBtn">對答案</button><span class="ansfb" id="ansFb" aria-live="polite"></span></div>
+    ${cStep>0?`<div class="formula">${p.f}</div>`:""}
+    <div class="steps">${shown}</div>
+    <div class="actions"><button class="btn ghost" id="stepBtn" ${cStep>total?"disabled":""}>${cStep===0?"看公式":cStep>=total?"看答案":"下一步"}</button><button class="btn ghost" id="newBtn">換一題</button></div>`;
+  $("stepBtn").onclick=()=>{ cStep++; renderCalc(); };
+  $("newBtn").onclick=newProb;
+  const check=()=>{ const v=parseFloat(($("ansIn").value||"").replace(/[,，\s]/g,"")); const fb=$("ansFb"); if(isNaN(v)){fb.className="ansfb bad";fb.textContent="請輸入數字";return;} const ok=Math.abs(v-p.ans)<=Math.max(0.01,Math.abs(p.ans)*0.01); fb.className="ansfb "+(ok?"ok":"bad"); fb.textContent=ok?"答對了！":"再算算看，或按「下一步」看解法"; };
+  $("ansBtn").onclick=check; $("ansIn").onkeydown=e=>{if(e.key==="Enter")check();};
+}
+newProb();
+
+
+let quiz=null;
+function startQuiz(only){
+  const base = only ? only.map(k=>QS[k]) : QS;
+  quiz={retry:!!only,qs:base.map(q=>({...q,idx:QS.indexOf(q),opts:q.fixed?[...q.o]:shuffle(q.o),ans:q.o[q.a]})),i:0,res:[],pick:[],done:false};
+  renderQuiz();
+}
+const stripL=o=>o.replace(/^\([A-D]\)\s*/,"");
+function dots(){ return quiz.qs.map((_,k)=>`<button class="dot ${quiz.res[k]===true?"ok":quiz.res[k]===false?"bad":""}${k===quiz.i&&!quiz.done?" now":""}" data-go="${k}" aria-label="第 ${k+1} 題"></button>`).join(""); }
+function saveBest(n,total){ try{ const s=JSON.parse(localStorage.getItem(KEY)||"{}"); if(!s.best||n>s.best)s.best=n; s.total=total; localStorage.setItem(KEY,JSON.stringify(s)); return s; }catch(e){ return null; } }
+function goQ(k){ quiz.i=k; quiz.done=false; renderQuiz(); window.scrollTo({top:0}); }
+function bindCommon(P){
+  P.querySelectorAll(".dot[data-go]").forEach(d=>d.onclick=()=>goQ(+d.dataset.go));
+  const r=P.querySelector("#qReset");
+  if(r) r.onclick=()=>{ if(r.dataset.arm){ startQuiz(); window.scrollTo({top:0}); } else { r.dataset.arm="1"; r.textContent="確定要從頭開始？再按一次"; r.classList.add("warn"); setTimeout(()=>{ if(r.isConnected){ delete r.dataset.arm; r.textContent="↺ 重新開始"; r.classList.remove("warn"); } },3000); } };
+}
+function renderQuiz(){
+  const P=$("p8"), {qs,i,res}=quiz;
+  const answered=res.filter(x=>x!==undefined).length;
+  if(quiz.done){
+    const n=res.filter(Boolean).length, tot=qs.length, skip=tot-answered, s=quiz.retry?null:saveBest(n,tot), r=n/tot;
+    const msg=r===1?(quiz.retry?"錯題全部訂正完成！":"全對！植物保護你已經掌握了！"):r>=.8?"很棒！把錯的題目再訂正一次。":r>=.6?"不錯喔！回到重點頁再複習一下。":"別灰心，先回重點頁看一看，再來挑戰！";
+    const wr=qs.map((q,k)=>({q,k})).filter(x=>res[x.k]!==true);
+    P.innerHTML=`<div class="card" style="text-align:center"><div class="qtype">${quiz.retry?"錯題再練結果":"測驗結果"}</div><div class="score">${n} / ${tot}</div><p>${msg}${skip?`<br><span style="color:var(--bad)">還有 ${skip} 題沒作答</span>`:""}</p>${s&&s.best?`<p style="color:var(--muted);font-size:15px">這台裝置的最佳紀錄：${s.best} / ${s.total}</p>`:""}<div class="progress" style="justify-content:center">${dots()}</div><p class="ex" style="margin:4px 0 0">點上面的小方塊可以回到那一題。</p>
+      ${wr.length?`<div class="review"><b>訂正一下：</b>${wr.map(({q,k})=>`<div class="item"><b>第 ${k+1} 題</b>${res[k]===undefined?"（未作答）":""}　${q.q}${q.list?`<br>${q.list}`:""}<br><b>正確答案：${stripL(q.ans)}</b><br><span style="color:var(--muted)">${q.why}</span></div>`).join("")}</div>`:""}
+      <div class="actions" style="justify-content:center">${wr.length?`<button class="btn" id="retry">錯題再練（${wr.length} 題）</button>`:""}<button class="btn ghost" id="qReset">↺ 重新開始</button><button class="btn ghost" id="back1">回去複習</button></div></div>`;
+    $("back1").onclick=()=>show("t1");
+    if($("retry")) $("retry").onclick=()=>startQuiz(wr.map(x=>x.q.idx));
+    bindCommon(P); return;
+  }
+  const q=qs[i], picked=quiz.pick[i], locked=res[i]!==undefined, last=i===qs.length-1;
+  const fb = locked ? `<div class="feedback ${res[i]?"ok":"bad"}"><b>${res[i]?"答對了！":"再想想，正確答案是「"+stripL(q.ans)+"」"}</b><span class="why">${q.why}</span></div>` : "";
+  P.innerHTML=`<div class="card"><div class="qhead"><span class="qtype">${quiz.retry?"錯題再練・":""}第 ${i+1} 題／共 ${qs.length} 題${q.src?`<span class="qsrc">${q.src}</span>`:""}</span><button class="btn ghost sm" id="qReset">↺ 重新開始</button></div>
+    <div class="progress" style="margin-top:8px">${dots()}</div>
+    <div class="qtext">${q.q}</div>${q.list?`<div class="qlist">${q.list}</div>`:""}
+    <div class="opts">${q.opts.map((o,k)=>{ let c=""; if(locked){ if(o===q.ans)c=" right"; else if(k===picked)c=" wrong"; } return `<button class="opt${c}" data-k="${k}" ${locked?"disabled":""}><span class="k">${"ABCD"[k]}</span><span>${stripL(o)}</span></button>`; }).join("")}</div>
+    <div id="fb" aria-live="polite">${fb}</div>
+    <div class="qnav"><button class="btn ghost" id="qPrev" ${i===0?"disabled":""}>← 上一題</button><span class="qcount">已作答 ${answered} / ${qs.length}</span><button class="btn" id="qNext">${last?"看結果":"下一題 →"}</button></div></div>`;
+  P.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    if(quiz.res[i]!==undefined) return;
+    const k=+b.dataset.k; quiz.pick[i]=k; quiz.res[i]=q.opts[k]===q.ans; renderQuiz();
+    const n=$("qNext"); if(n) n.focus({preventScroll:true});
+  });
+  $("qPrev").onclick=()=>{ if(i>0) goQ(i-1); };
+  $("qNext").onclick=()=>{ if(last){ quiz.done=true; renderQuiz(); window.scrollTo({top:0}); } else goQ(i+1); };
+  bindCommon(P);
+}
+
+
+const openQR=()=>{$("overlay").hidden=false;};
+$("qrBtn").onclick=openQR; $("qrBtn").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openQR();}};
+$("overlay").onclick=()=>{$("overlay").hidden=true;};
+if(location.hash==="#quiz") show("t8");
+})();
+</script>
+</body>
+</html>
