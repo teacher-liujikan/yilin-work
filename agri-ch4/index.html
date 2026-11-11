@@ -250,6 +250,14 @@ figcaption b{display:block;font-size:17px}
 .leafpic svg{width:100%;height:auto;display:block}
 .leafpic small{display:block;font-size:13px;font-weight:700;color:#4a3324}
 @media (max-width:520px){.einfo .eflex{grid-template-columns:1fr}.leafpic{max-width:170px;margin:0 auto}}
+.cagal{margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+.cgt{font-size:17px;color:var(--soil)}
+.cgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:6px}
+@media (max-width:720px){.cgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cgrid figure{background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px;color:#2a2118}
+.cgrid svg{width:100%;height:auto;display:block;max-height:110px}
+.cgrid figcaption{font-size:14px;text-align:center}
+.cgrid figcaption b{font-size:16px;display:block}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 /* ===== 多裝置：電視／平板／手機 ===== */
@@ -586,7 +594,7 @@ figcaption b{display:block;font-size:17px}
       <div id="elGrid"></div>
       <div class="legend"><span><i></i>移轉型</span><span>無紫點＝非移轉型</span></div>
       <div class="einfo" id="elInfo"></div>
-      <div class="tip">葉綠素構成：<b>鎂</b>｜葉綠素觸媒：<b>鐵</b>｜固氮：<b>鉬</b>｜細胞壁：<b>鈣</b>｜木瓜塊腫病：<b>硼</b></div>
+      <div class="tip">葉綠素構成：<b>鎂</b>｜葉綠素觸媒：<b>鐵</b>｜固氮：<b>鉬</b>｜細胞壁：<b>鈣</b>（缺鈣：番茄尻腐、芹菜黑心、蘋果苦痘）｜木瓜塊腫病：<b>硼</b></div>
     </div>
 
     <div class="card">
@@ -746,7 +754,7 @@ const EL = {
  N:{n:"氮",g:"main",npk:1,mob:1,a:"葉肥",f:"蛋白質的主要成分，也是葉綠素、核酸、酵素的構成元素。葉菜類、觀葉植物需要多。",s:"植株矮小，<b>老葉先黃化</b>（玉米呈 V 字形從葉尖黃化），成熟延遲、穀粒小。"},
  P:{n:"磷",g:"main",npk:1,mob:1,a:"根肥、子實肥",f:"細胞核、核酸的成分，參與醣類合成。生長初期（長根）和後期（結果、結種子）需要多。",s:"根系生長差、植株矮小、<b>葉色暗綠帶紫</b>；後期著果率低、種子小、分蘗少。"},
  K:{n:"鉀",g:"main",npk:1,mob:1,a:"莖肥",f:"和新陳代謝、光合作用、酵素活動有關。澱粉類、油糖類、纖維類作物需要多（提高糖度）。",s:"<b>成熟葉（老葉）葉緣焦枯</b>並向內擴散；莖稈細弱、果實小而酸。"},
- Ca:{n:"鈣",g:"sec",f:"<b>細胞壁</b>的成分；中和有機酸；可改良酸性土壤。",s:"<b>生長點壞死</b>、根短、莖稈瘦弱、花蕾脫落；落花生容易<b>空莢</b>。"},
+ Ca:{n:"鈣",g:"sec",f:"<b>細胞壁</b>的成分；中和有機酸；可改良酸性土壤。",s:"<b>生長點、幼嫩部位、果實先壞</b>：根短、花蕾脫落。常見病害：<b>番茄尻腐病</b>、<b>芹菜黑心病</b>、<b>蘋果苦痘病</b>、落花生<b>空莢</b>。"},
  Mg:{n:"鎂",g:"sec",mob:1,f:"<b>葉綠素的構成元素</b>；光合作用所需、酵素活化劑。",s:"<b>老葉先黃化</b>，葉脈仍綠、脈間黃化；葉片向上捲。"},
  S:{n:"硫",g:"sec",f:"胺基酸、酵素的成分；和蛋白質合成、豆科根瘤形成有關。",s:"<b>幼葉黃綠</b>、葉薄細長，植株矮小。"},
  Fe:{n:"鐵",g:"tr",f:"<b>合成葉綠素的觸媒</b>、酵素成分；促進光合作用和呼吸作用。",s:"<b>幼葉脈間黃化、葉脈綠色</b>，容易得黃化病。"},
@@ -789,15 +797,21 @@ function leafSVG(kind){
   return `<svg viewBox="0 0 120 140">${b}${stem}</svg>`;
 }
 const DEF={N:["vshape","老葉先黃（從葉尖 V 字形）"],P:["purple","老葉暗綠帶紫"],K:["edge","老葉葉緣焦枯"],Mg:["inter","老葉脈間黃、葉脈綠"],Cl:["bronze","葉片青銅色"],
- Ca:["growdie","生長點壞死、落花生空莢"],B:["deform","生長點彎曲、果實壞死"],Fe:["interpale","新葉脈間黃化、葉脈綠"],Mn:["spots","新葉淡綠＋壞死斑點"],Zn:["small","新葉小、叢生"],S:["palegreen","新葉整片黃綠"],Cu:["tipdie","幼枝枯死"],Mo:["curl","像缺氮、葉緣焦捲"],
+ Ca:["growdie","生長點壞死"],B:["deform","生長點彎曲、果實壞死"],Fe:["interpale","新葉脈間黃化、葉脈綠"],Mn:["spots","新葉淡綠＋壞死斑點"],Zn:["small","新葉小、叢生"],S:["palegreen","新葉整片黃綠"],Cu:["tipdie","幼枝枯死"],Mo:["curl","像缺氮、葉緣焦捲"],
  C:["ok","不易缺乏"],H:["ok","不易缺乏"],O:["ok","不易缺乏"],Ni:["ok","症狀不明顯"]};
+const CA_GAL=`<div class="cagal"><b class="cgt">缺鈣常見病害</b><div class="cgrid">
+<figure><svg viewBox="0 0 120 100"><path d="M60 16 C92 16 106 44 98 66 C90 88 30 88 22 66 C14 44 28 16 60 16Z" fill="#e2483b" stroke="#a52a20" stroke-width="2"/><path d="M38 80 C46 90 74 90 82 80 C80 72 72 68 60 68 C48 68 40 72 38 80Z" fill="#3a2418"/><path d="M60 16 L50 6 M60 16 L70 6 M60 16 V4" stroke="#4f8a3c" stroke-width="3"/></svg><figcaption><b>番茄尻腐病</b>果實底部（花落的地方）黑褐腐爛，又叫臍腐病</figcaption></figure>
+<figure><svg viewBox="0 0 120 100"><g stroke="#4f8a3c" stroke-width="5" stroke-linecap="round"><path d="M44 96 C42 70 40 50 34 30"/><path d="M76 96 C78 70 80 50 86 30"/><path d="M52 96 C52 70 50 50 48 34"/><path d="M68 96 C68 70 70 50 72 34"/></g><g fill="#7cc05a"><circle cx="32" cy="24" r="10"/><circle cx="88" cy="24" r="10"/></g><path d="M60 96 V40" stroke="#5a3a28" stroke-width="7" stroke-linecap="round"/><g fill="#2b1a12"><circle cx="54" cy="30" r="8"/><circle cx="66" cy="28" r="8"/><circle cx="60" cy="20" r="8"/></g></svg><figcaption><b>芹菜黑心病</b>中心的嫩葉變黑腐爛</figcaption></figure>
+<figure><svg viewBox="0 0 120 100"><path d="M60 22 C40 8 14 20 16 48 C18 76 40 92 60 86 C80 92 102 76 104 48 C106 20 80 8 60 22Z" fill="#9ccf5a" stroke="#4f8a3c" stroke-width="2"/><path d="M60 22 C60 14 64 8 70 6" stroke="#6b4a2b" stroke-width="3" fill="none"/><g fill="#8a5a35" opacity=".85"><circle cx="40" cy="54" r="5"/><circle cx="56" cy="66" r="4"/><circle cx="76" cy="58" r="5"/><circle cx="84" cy="74" r="4"/><circle cx="46" cy="74" r="3.5"/></g></svg><figcaption><b>蘋果苦痘病</b>果皮下褐色小凹斑，果肉有苦味</figcaption></figure>
+<figure><svg viewBox="0 0 120 100"><path d="M20 50 C20 30 40 26 50 36 C56 28 68 26 76 34 C84 26 104 30 102 52 C100 72 82 74 76 66 C70 74 58 76 50 66 C42 76 20 72 20 50Z" fill="#e3c48f" stroke="#8a5a35" stroke-width="2"/><path d="M40 48 C44 42 52 42 56 48" stroke="#8a5a35" stroke-width="1.5" fill="none"/><text x="60" y="94" text-anchor="middle" font-size="12" font-weight="700" fill="#8a5a35">裡面是空的</text></svg><figcaption><b>落花生空莢</b>有莢沒有種子</figcaption></figure>
+</div><p class="ex" style="margin:6px 0 0">高溫、水分忽多忽少、氮鉀施太多時，鈣不容易送到果實和嫩葉，就會發生。</p></div>`;
 function renderEl(k){
   document.querySelectorAll(".el").forEach(b=>b.setAttribute("aria-pressed",b.dataset.e===k));
   document.querySelectorAll(".dchips g").forEach(g=>g.classList.toggle("on",g.dataset.e===k));
   const e=EL[k], grp={main:"主要元素",sec:"次要元素",tr:"微量元素"}[e.g];
   const mob = k==="Mo"||k==="Ni"||["C","H","O"].includes(k) ? "" : `<span class="pill ${e.mob?"mid":"ok"}">${e.mob?"移轉型：老葉先出現":"非移轉型：新葉先出現"}</span>`;
   const d=DEF[k];
-  $("elInfo").innerHTML=`<h3>${k}　${e.n}<span class="pill ok">${grp}</span>${e.a?`<span class="pill mid">${e.a}</span>`:""}${mob}</h3><div class="eflex"><div class="leafpic">${leafSVG(d[0])}<small>${d[1]}</small></div><dl><dt>功能</dt><dd>${e.f}</dd><dt>缺乏症狀</dt><dd>${e.s}</dd></dl></div>`;
+  $("elInfo").innerHTML=`<h3>${k}　${e.n}<span class="pill ok">${grp}</span>${e.a?`<span class="pill mid">${e.a}</span>`:""}${mob}</h3><div class="eflex"><div class="leafpic">${leafSVG(d[0])}<small>${d[1]}</small></div><dl><dt>功能</dt><dd>${e.f}</dd><dt>缺乏症狀</dt><dd>${e.s}</dd></dl></div>${k==="Ca"?CA_GAL:""}`;
 }
 document.querySelectorAll(".dchips g").forEach(g=>{ g.setAttribute("tabindex","0"); g.setAttribute("role","button"); g.setAttribute("aria-label",EL[g.dataset.e].n); g.onclick=()=>{renderEl(g.dataset.e); $("elInfo").scrollIntoView({behavior:"smooth",block:"nearest"});}; g.onkeydown=ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();g.onclick();}}; });
 document.querySelectorAll(".el").forEach(b=>b.onclick=()=>renderEl(b.dataset.e));
@@ -840,6 +854,8 @@ const CASES=[
  {t:"番薯・葉片",q:"成熟葉的<b>葉緣乾枯焦黃</b>，慢慢往葉子中間擴散；塊根小。",a:"K",w:"缺鉀。鉀是莖肥，和澱粉累積有關。"},
  {t:"幼苗",q:"根長不好、植株矮小，<b>葉色暗綠帶紫色</b>。",a:"P",w:"缺磷。磷是根肥，生長初期最需要。"},
  {t:"落花生",q:"開花結莢了，剝開卻有很多<b>空莢</b>；生長點也壞死。",a:"Ca",w:"缺鈣。鈣是細胞壁成分，不會移動。"},
+ {t:"番茄・果實",q:"番茄果實<b>底部（花落的地方）</b>出現黑褐色凹陷腐爛。",a:"Ca",w:"缺鈣，稱為尻腐病（臍腐病）。高溫、水分不穩時容易發生。"},
+ {t:"芹菜",q:"芹菜<b>中心的嫩葉</b>變黑、腐爛。",a:"Ca",w:"缺鈣，稱為黑心病。鈣送不到生長快速的嫩葉。"},
  {t:"大豆・豆科",q:"有施氮肥，看起來卻<b>很像缺氮</b>，根瘤也不太固氮。",a:"Mo",w:"缺鉬。鉬和根瘤菌固氮有關，症狀像缺氮。"},
  {t:"木瓜",q:"乾旱後果實出現硬塊、壞死斑點，生長點彎曲（<b>塊腫病</b>）。",a:"B",w:"缺硼。硼和分生組織分化有關。"},
 ];
@@ -934,6 +950,7 @@ const QS=[
  {src:"109 統測",q:"下列有關腐植質膠體陽離子交換能力大小的比較，何者正確？",o:["(A) K⁺ ＞ Mg²⁺","(B) Mg²⁺ ＞ Ca²⁺","(C) Na⁺ ＜ H⁺","(D) H⁺ ＜ Ca²⁺"],a:2,fixed:1,why:"交換力：H⁺ ＞ Ca²⁺ ＞ Mg²⁺ ＞ K⁺ ＞ Na⁺ ＞ NH₄⁺（口訣：乞丐謀甲吶喊）。"},
  {q:"被稱為「莖肥」、能提高果實糖度的是哪一種元素？",o:["鉀","氮","磷","鈣"],a:0,why:"氮＝葉肥、磷＝根肥（子實肥）、鉀＝莖肥。"},
  {src:"111 統測",q:"下列何者為葉綠素的構成元素，且缺乏時症狀先出現在老葉，使葉片變黃？",o:["鎂（Mg）","鈣（Ca）","鐵（Fe）","錳（Mn）"],a:0,why:"鎂是葉綠素構成元素，屬移轉型，所以老葉先黃化；鐵是合成葉綠素的觸媒，缺乏時新葉先黃。"},
+ {q:"番茄果實底部黑褐腐爛的「尻腐病」，主要是缺乏哪一種元素？",o:["鈣","氮","鉀","鐵"],a:0,why:"尻腐病是缺鈣的生理病害；芹菜黑心病、蘋果苦痘病也是缺鈣。"},
  {src:"110 統測",q:"種植花生時，出現類似缺氮的特徵，是缺乏下列何種微量元素？",o:["鉬","氯","鋅","錳"],a:0,why:"鉬和根瘤菌固氮有關，缺鉬時症狀和缺氮很像。"},
  {src:"112 統測",q:"阿文經營有機荔枝園，為了提高荔枝糖度，結果期使用哪種資材最有效？",o:["草木灰","石灰","氯化鉀","過期牛奶"],a:0,why:"鉀能提高糖度；有機栽培不能用化學肥料氯化鉀，草木灰（碳酸鉀）可以補充鉀。"},
  {src:"111 統測",q:"下列何者屬於鹼性肥料？",list:"①過磷酸鈣　②重過磷酸鈣　③湯馬斯磷肥　④草木灰",o:["(A) ①④","(B) ③④","(C) ①②④","(D) ①②③"],a:1,fixed:1,why:"過磷酸鈣、重過磷酸鈣是酸性肥料；湯馬斯磷肥、草木灰是鹼性肥料。"},
