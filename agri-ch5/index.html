@@ -280,6 +280,10 @@ button.dot{border:0;padding:0;cursor:pointer;width:22px;height:12px}
 .xex ul{margin:4px 0 0;padding-left:1.2em}.xex li{margin:3px 0;font-size:16px;line-height:1.6}
 .xtag{display:inline-block;font-size:12px;font-weight:900;border-radius:999px;padding:0 8px;margin-right:6px;background:var(--g3);color:#fff;vertical-align:1px}
 .xtag.ex{background:var(--g1)}.xtag.sm{font-size:11px}
+.tri{max-width:640px;margin:0 auto;display:block}
+.tri3 .box{font-size:17px}
+.tri3 .box b.t{font-size:19px}
+@media (max-width:520px){.tri3 .box{font-size:16px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 /* ===== 多裝置：電視／平板／手機 ===== */
@@ -389,27 +393,48 @@ button.dot{border:0;padding:0;cursor:pointer;width:22px;height:12px}
   <section class="panel" id="p1">
     <div class="card">
       <h2>病害發生的三個條件<span class="sec">5-1</span></h2>
-      <div class="two" style="align-items:center">
-        <svg viewBox="0 0 300 250" class="art" role="img" aria-label="病害三角形">
-          <path d="M150 20 L280 230 L20 230Z" fill="#fbe7e4" stroke="#b4362c" stroke-width="3"/>
-          <text x="150" y="160" text-anchor="middle" font-size="22" font-weight="900" fill="#b4362c">病害</text>
-          <g font-size="15" font-weight="900" text-anchor="middle">
-            <circle cx="150" cy="30" r="0"/>
-            <rect x="96" y="2" width="108" height="46" rx="12" fill="#fff" stroke="#c46a17" stroke-width="2.5"/><text x="150" y="22" fill="#c46a17">病原</text><text x="150" y="40" font-size="12" fill="#6c5f52">＝主因</text>
-            <rect x="4" y="204" width="108" height="46" rx="12" fill="#fff" stroke="#2f8a57" stroke-width="2.5"/><text x="58" y="224" fill="#2f8a57">宿主（作物）</text><text x="58" y="242" font-size="12" fill="#6c5f52">＝素因（內因）</text>
-            <rect x="188" y="204" width="108" height="46" rx="12" fill="#fff" stroke="#3b6fd1" stroke-width="2.5"/><text x="242" y="224" fill="#3b6fd1">環境</text><text x="242" y="242" font-size="12" fill="#6c5f52">＝誘因（副因）</text>
-          </g>
-        </svg>
-        <div>
-          <p>三個條件<span class="key">同時存在</span>才會發病，破壞其中一個就能防治。</p>
-          <ul>
-            <li><b>主因</b>：細菌、病毒等病原</li>
-            <li><b>誘因</b>：細雨綿綿 → 真菌；乾燥 → <span class="key">白粉病</span>；氮肥太多 → <span class="key">稻熱病</span></li>
-            <li><b>素因</b>：作物本身的遺傳（茄科易得青枯病）</li>
-          </ul>
-          <p class="note">植物保護：<b>狹義</b>＝發生後防治；<b>廣義</b>＝發生前就預防（育種、檢疫）。</p>
-        </div>
+      <svg viewBox="0 0 560 400" class="art tri" role="img" aria-label="病害三角形：病原、宿主、環境三者同時存在才會發病">
+        <path d="M280 92 L470 318 L90 318Z" fill="#fbe7e4" stroke="#b4362c" stroke-width="4" stroke-linejoin="round"/>
+        <text x="280" y="236" text-anchor="middle" font-size="38" font-weight="900" fill="#b4362c">病害</text>
+        <text x="280" y="270" text-anchor="middle" font-size="17" font-weight="700" fill="#b4362c">三個都有才會發病</text>
+        <!-- 病原 -->
+        <g transform="translate(280 52)">
+          <circle r="46" fill="#fff" stroke="#c46a17" stroke-width="4"/>
+          <g stroke="#8a5a35" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M-30 14 C-14 6 -8 -10 6 -12 C18 -14 22 -24 28 -30"/><path d="M-8 -2 C-12 -14 -22 -18 -30 -18"/></g>
+          <g fill="#c46a17"><circle cx="28" cy="-30" r="5"/><circle cx="-30" cy="-18" r="5"/></g>
+          <g fill="#7cc05a" stroke="#3f7a2a" stroke-width="1.5"><rect x="-6" y="10" width="20" height="9" rx="4.5"/><rect x="12" y="22" width="20" height="9" rx="4.5"/></g>
+        </g>
+        <text x="352" y="44" font-size="26" font-weight="900" fill="#c46a17">病原</text>
+        <text x="352" y="72" font-size="18" font-weight="700" fill="#6c5f52">＝主因</text>
+        <text x="352" y="96" font-size="15" fill="#6c5f52">真菌、細菌、病毒…</text>
+        <!-- 宿主 -->
+        <g transform="translate(90 340)">
+          <circle r="46" fill="#fff" stroke="#2f8a57" stroke-width="4"/>
+          <path d="M0 34 V-18" stroke="#4f8a3c" stroke-width="5"/>
+          <path d="M0 -4 C-14 -16 -26 -16 -32 -10 C-22 2 -8 2 0 -2Z M0 -14 C14 -26 26 -26 32 -20 C22 -8 8 -8 0 -12Z M0 -18 C-6 -30 -2 -38 4 -40 C8 -32 6 -24 0 -18Z" fill="#7cc05a" stroke="#3f7a2a" stroke-width="1.5"/>
+          <path d="M-22 34 H22" stroke="#8a5a35" stroke-width="3"/>
+        </g>
+        <text x="4" y="222" font-size="26" font-weight="900" fill="#2f8a57">宿主</text>
+        <text x="4" y="250" font-size="18" font-weight="700" fill="#6c5f52">＝素因</text><text x="4" y="272" font-size="15" fill="#6c5f52">作物本身</text>
+        
+        <!-- 環境 -->
+        <g transform="translate(470 340)">
+          <circle r="46" fill="#fff" stroke="#3b6fd1" stroke-width="4"/>
+          <circle cx="-14" cy="-16" r="11" fill="#f1c75b" stroke="#c49a1b" stroke-width="2"/>
+          <path d="M-20 4 C-24 -8 -10 -14 -4 -8 C0 -18 18 -18 20 -6 C30 -6 30 8 20 8 H-14 C-24 8 -26 4 -20 4Z" fill="#dfe8f5" stroke="#3b6fd1" stroke-width="2"/>
+          <g stroke="#3a8ad6" stroke-width="3" stroke-linecap="round"><path d="M-8 16 l-4 10 M4 16 l-4 10 M16 16 l-4 10"/></g>
+        </g>
+        <text x="472" y="222" font-size="26" font-weight="900" fill="#3b6fd1">環境</text>
+        <text x="472" y="250" font-size="18" font-weight="700" fill="#6c5f52">＝誘因</text><text x="472" y="272" font-size="15" fill="#6c5f52">溫度、濕度</text>
+        
+      </svg>
+      <div class="three tri3">
+        <div class="box c1"><b class="t">病原＝主因</b>引起病害的生物：真菌、細菌、病毒等</div>
+        <div class="box c2"><b class="t">宿主＝素因（內因）</b>作物本身的遺傳體質：茄科容易得<span class="key">青枯病</span></div>
+        <div class="box c3"><b class="t">環境＝誘因（副因）</b>細雨綿綿 → 真菌；乾燥 → <span class="key">白粉病</span>；氮肥太多 → <span class="key">稻熱病</span></div>
       </div>
+      <div class="tip"><b>記法：</b>「<b>主</b>角病原、<b>素</b>質作物、<b>誘</b>惑環境」——三個<span class="key">同時存在</span>才發病，拿掉任何一個就能防治。</div>
+      <p class="note">植物保護：<b>狹義</b>＝發生後才防治；<b>廣義</b>＝發生前就預防（育種、改進栽培、檢疫）。</p>
     </div>
 
     <div class="card">
