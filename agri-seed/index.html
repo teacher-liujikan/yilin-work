@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>種子創作</title>
+<title>種子創作：種子小精靈</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
@@ -375,6 +375,10 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 :root[data-theme="dark"]{--blk:#6a625c;--sesb:#6a625c;--sunf:#6a6a6a;--clay:#c8784e;--clay2:#a85f3a;--stem:#6dbb57}
 .ready{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
 .rd .bs{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+:root{--nut:#a8743a;--cup:#9a8060;--cupd:#6a5236;--lant:#e3a08e;--lantd:#b0685a;--soap:#c98a3a;--soapd:#7a5226;--gum:#5a3a24;--wing:#c9a46a;--wingd:#7a5a32;--pod:#2e2018;--cone:#8a5a32;--coned:#5a3a1e;--term:#9a7a4a;--termd:#6a5232;--melia:#e0b23a;--star:#8a4a2a;--bark:#7a5232;--barkd:#5a3a20;--slice:#e8d2a8;--ring:#c9a878}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--slice:#cdb78e;--ring:#a8875a;--gum:#7a5236;--pod:#4a3426}}
+:root[data-theme="dark"]{--slice:#cdb78e;--ring:#a8875a;--gum:#7a5236;--pod:#4a3426}
+.flow .fl svg text{font-size:11px}
 
 </style>
 </head>
@@ -383,8 +387,8 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
   <header class="top">
     <div class="brand">
       <div class="eyebrow">實習課・50 分鐘 × 3 節</div>
-      <h1>種子創作</h1>
-      <p class="sub">基本知識 → 實驗過程 → 分組試驗 → 動手判斷 → 掃 QR 小測驗</p>
+      <h1>種子創作：種子小精靈</h1>
+      <p class="sub">基本知識 → 製作過程 → 作品分享 → 動手判斷 → 掃 QR 小測驗</p>
       <nav class="sibs" aria-label="其他實習課">實習課：<a href="../agri-paper/">再生紙</a><a href="../agri-leaf/">葉脈書籤</a><a href="../agri-worm/">蚯蚓堆肥</a><a href="../agri-enzyme/">果皮酵素</a><a href="../agri-flower/">押花乾燥花</a><b aria-current="page">種子創作</b></nav>
     </div>
     <div class="qr" id="qrBtn" role="button" tabindex="0" aria-label="放大 QR code"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAAClUlEQVR42u2cQW7jMAxFH0cGspSBOZBzgx6pmCP1BvZRcoAB5GUABX8Wkmy3uy5mwYICksjWX/GDIvlFxcR3xvaL743ABz7w/xW/Wx93XmO2T5jZBNsMY30Ke7rDI5UkSRJL+61ozVJfKGkslCStYU+P+O6c+wSb3UZIzk+zO9Bc/B72/An4pQDLw4xtTtKfOezjGT99enqZtntqcwND5BL2dM/vtUjKBWue/DFjy2OqkAXsYU+f+J41A0n2/phgKUlA6rxvZmY2hz1d5s/nKElaSYIsac0VIF0RkT+7rI96aqUK5NpmvWa6rAa/Pv33KHjbrB6cd0/unEf963h/HoRKBdr+fGge3Ylz+K9bfleStEL33/bY4i9cOA9+XfLb9uJlaJEwSG6ReD10zODXa/yt3U1bajWyKq1ZB8nBr1v/XY7zhbW97u4sjZy6pWDBr0v/ZSnwNf6q9Mdz4w5+cahPJhm5TraUGYObrCnRbwL2CW1zQuy/a9jTo75xiBd5fF3j76F5RH7l93x/HVrzmU63/bnFX6L+xfP5AvAyrVkym18GuWJ3wO77TQ2yPKI/x2X8zcLIfydbymvS9gZiN/oCoO1OC8JhT6fxl1x7Jdy+TsHqqH9D3/B8fpSlViRpFMFXuUNR//rPr86C9/Ta7sSE/vwD+mPbyJXzaL+127VKKfRJ9/0bDK2qfGa/DLky+HWaX/Gpf+Pa2HE9WAp+PeKP/Xm/Set+G/pVftrYml/Wut/Dni77Yw1SPV9a++QiWz5mGy20NezpHP9ql8x6/N37/bLmzlvcL3N/fwFYVjqrXbhM1chPY1HY0yt+HOP3WtfeJZnNoDU/h/Qc9vSeP48yaMiVujTphH7lEm/x/wyBD7xb/D/NmX1l5/YJfAAAAABJRU5ErkJggg=="><span>掃我測驗</span></div>
@@ -392,8 +396,8 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 
   <nav class="tabs" role="tablist">
     <button class="tab" role="tab" id="t1" aria-selected="true">基本知識</button>
-    <button class="tab" role="tab" id="t2" aria-selected="false">實驗過程</button>
-    <button class="tab" role="tab" id="t3" aria-selected="false">分組試驗</button>
+    <button class="tab" role="tab" id="t2" aria-selected="false">製作過程</button>
+    <button class="tab" role="tab" id="t3" aria-selected="false">作品分享</button>
     <button class="tab" role="tab" id="t4" aria-selected="false">動手判斷</button>
     <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
   </nav>
@@ -406,24 +410,36 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
   <!-- ===== 1 基本知識 ===== -->
   <section class="panel" id="p1">
     <div class="card">
-      <h2>種子：植物的下一代，也是創作材料<span class="sec">總覽</span></h2>
-      <p>這次用農作物種子做兩件作品：<span class="key">種子畫</span>（平面拼貼，一人一幅）和<span class="key">種子球</span>（包在土球裡的種子，分組做配方試驗，最後拿去撒播）。</p>
+      <h2>撿種子，做一隻種子小精靈<span class="sec">總覽</span></h2>
+      <div class="two">
+        <div>
+          <p>到校園、公園<span class="key">蒐集掉落的種子和果實</span>，處理乾淨後，貼上活動眼睛、組合造型，黏在木頭切片上，做成<span class="key">桌面裝飾</span>或<span class="key">名片夾</span>。</p>
+          <p class="ex">每個人做一件作品，最後辦一場小小的作品展。</p>
+        </div>
+        <figure><svg class="art" id="heroSvg" viewBox="0 0 340 230" role="img" aria-label="木頭切片上站著好幾隻貼了眼睛的種子小精靈：戴殼斗帽的橡實、圓圓的無患子、刺刺的楓香果，後面有一根小樹枝"></svg></figure>
+      </div>
       <div class="flow" id="flowBox"></div>
     </div>
 
     <div class="card">
+      <h2>身邊撿得到的種子和果實<span class="sec">秋冬圖鑑</span></h2>
+      <svg class="art" id="seedBook" viewBox="0 0 640 330" role="img" aria-label="青剛櫟、台灣欒樹、無患子、楓香、大葉桃花心木、阿勃勒、松果、樟樹、欖仁、苦楝、八角、廚房的豆子"></svg>
+      <div class="note">秋天到冬天（10～1 月）是撿種子的好季節。撿到不認識的，先拍照，回來請老師或用植物辨識 App 查。<b>廚房的豆子、玉米、南瓜子、八角</b>也可以當小配件。</div>
+    </div>
+
+    <div class="card">
       <h2>種子裡面有什麼？<span class="sec">構造</span></h2>
-      <svg class="art" id="anatomySvg" viewBox="0 0 640 250" role="img" aria-label="菜豆種子：種皮、兩片子葉、胚芽、胚軸、胚根；玉米種子：種皮、胚乳、子葉、胚芽、胚根"></svg>
+      <svg class="art" id="anatomySvg" viewBox="0 0 640 250" role="img" aria-label="菜豆種子：種皮、子葉、胚芽、胚軸、胚根；玉米種子：種皮、胚乳、子葉、胚芽、胚根"></svg>
       <div class="two" style="margin-top:8px;align-items:start">
         <ul>
           <li><span class="key">種皮</span>：最外層，保護裡面</li>
-          <li><span class="key">胚</span>＝小植物：<b>胚芽</b>（長成莖葉）、<b>胚軸</b>、<b>胚根</b>（長成根）、<b>子葉</b></li>
-          <li>種子上的小疤痕叫<span class="key">種臍</span>，是以前連著豆莢的地方</li>
+          <li><span class="key">胚</span>＝小植物：<b>胚芽</b>、<b>胚軸</b>、<b>胚根</b>、<b>子葉</b></li>
+          <li>橡實的「帽子」叫<span class="key">殼斗</span>，是保護果實的構造</li>
         </ul>
         <ul>
-          <li><b>雙子葉</b>（豆類）：養分存在兩片肥厚的<span class="key">子葉</span></li>
-          <li><b>單子葉</b>（玉米、稻）：養分存在<span class="key">胚乳</span>，子葉只有一片</li>
-          <li>發芽需要：<span class="key">水分、適當溫度、空氣</span></li>
+          <li><b>雙子葉</b>（豆類、橡實）：養分存在<span class="key">子葉</span></li>
+          <li><b>單子葉</b>（玉米、稻）：養分存在<span class="key">胚乳</span></li>
+          <li>我們撿的很多其實是<b>果實</b>（裡面包著種子），例如橡實、楓香果、松果</li>
         </ul>
       </div>
     </div>
@@ -431,30 +447,60 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <div class="card">
       <h2>種子怎麼去遠方？<span class="sec">傳播方式</span></h2>
       <div class="four">
-        <div class="box c3"><svg viewBox="0 0 160 100" id="dWind" aria-hidden="true"></svg><b class="t">風</b><span class="key">冠毛、翅膀</span><small>蒲公英像小降落傘；槭樹的翅果會旋轉飛</small></div>
-        <div class="box c1"><svg viewBox="0 0 160 100" id="dAnimal" aria-hidden="true"></svg><b class="t">動物</b><span class="key">倒刺、好吃的果實</span><small>鬼針草黏在衣服、毛上；果實被吃，種子隨糞便排出</small></div>
-        <div class="box c2"><svg viewBox="0 0 160 100" id="dWater" aria-hidden="true"></svg><b class="t">水</b><span class="key">外殼輕、防水</span><small>椰子的纖維殼能浮在海上漂很遠</small></div>
-        <div class="box c4"><svg viewBox="0 0 160 100" id="dPop" aria-hidden="true"></svg><b class="t">彈射</b><span class="key">果實裂開彈出</span><small>鳳仙花、豆莢乾了會突然裂開把種子彈出去</small></div>
+        <div class="box c3"><svg viewBox="0 0 160 100" id="dWind" aria-hidden="true"></svg><b class="t">風</b><span class="key">翅膀、冠毛</span><small>桃花心木的翅狀種子會旋轉飛；欒樹的燈籠果被風吹走</small></div>
+        <div class="box c1"><svg viewBox="0 0 160 100" id="dAnimal" aria-hidden="true"></svg><b class="t">動物</b><span class="key">好吃、會黏</span><small>松鼠搬橡實藏起來忘了吃；鳥吃樟樹果，種子跟著糞便排出</small></div>
+        <div class="box c2"><svg viewBox="0 0 160 100" id="dWater" aria-hidden="true"></svg><b class="t">水</b><span class="key">輕、能浮</span><small>欖仁、椰子的果實有纖維和空氣，能在水上漂</small></div>
+        <div class="box c4"><svg viewBox="0 0 160 100" id="dPop" aria-hidden="true"></svg><b class="t">重力、彈射</b><span class="key">掉落、裂開</span><small>阿勃勒豆莢掉在樹下；羊蹄甲豆莢乾了扭轉裂開彈出種子</small></div>
       </div>
-      <div class="note">種子球就是在模仿大自然：種子先躲在土球裡，等<b>下雨</b>土球吸水軟化才發芽，不容易被鳥吃掉或被風吹走。</div>
+      <div class="tip"><b>做作品時想一想：</b>你撿的種子「長這樣」，跟它怎麼傳播有關係嗎？分享作品時要說出來喔！</div>
     </div>
 
     <div class="card">
-      <h2>認識創作用的種子<span class="sec">種子圖鑑</span></h2>
-      <svg class="art" id="seedBook" viewBox="0 0 640 300" role="img" aria-label="常見農作物種子：紅豆、綠豆、黃豆、黑豆、花豆、薏仁、玉米、糙米、小米、黑芝麻、白芝麻、南瓜子、葵花子、白米"></svg>
-      <div class="tip"><b>排種子畫小技巧：</b>大顆（花豆、南瓜子）適合做輪廓和大面積；小顆（小米、芝麻）適合填細節和背景；同一個顏色可以用不同種子做出深淺。</div>
+      <h2>蒐集守則<span class="sec">出門前先讀</span></h2>
+      <div class="two" style="align-items:start">
+        <div class="box okb"><b class="t">✅ 這樣撿</b>
+          <ul>
+            <li>撿<span class="key">掉在地上</span>的，不要拔、不要搖樹</li>
+            <li>只在校園、公園撿；<b>不進私人土地</b></li>
+            <li>帶夾鏈袋，貼上<span class="key">地點、日期、植物名</span></li>
+            <li>撿<b>完整、乾、沒有洞</b>的；大小、形狀、顏色越多樣越好</li>
+            <li>戴手套；撿完<span class="key">一定要洗手</span></li>
+          </ul></div>
+        <div class="box badb"><b class="t">❌ 有毒，不要撿</b>
+          <svg viewBox="0 0 300 80" id="toxSvg" aria-hidden="true"></svg>
+          <ul>
+            <li><b>雞母珠</b>（紅色、一端黑色）、<b>蓖麻子</b>：種子有劇毒</li>
+            <li><b>海檬果</b>（海邊常見，像小芒果）、<b>夾竹桃</b>的果實：全株有毒</li>
+            <li>不認識的種子<b>不要放進嘴巴</b></li>
+          </ul></div>
+      </div>
     </div>
 
     <div class="card">
-      <h2>種子球是什麼？<span class="sec">原理</span></h2>
-      <div class="two">
-        <figure><svg class="art" id="ballSvg" viewBox="0 0 340 220" role="img" aria-label="種子球剖面：外層黏土，裡面培養土和種子；下雨後吸水軟化，種子發芽"></svg></figure>
+      <h2>撿回來先處理：防蟲、防霉<span class="sec">很重要</span></h2>
+      <svg class="art" id="prepSvg" viewBox="0 0 640 190" role="img" aria-label="刷洗、泡水挑出浮起來的、冷凍或烘烤殺蟲、完全乾燥"></svg>
+      <div class="four" style="margin-top:8px">
+        <div class="box c3"><b class="t">① 刷洗</b>用舊牙刷刷掉泥土，殼斗、刺球可以用水沖</div>
+        <div class="box c1"><b class="t">② 泡水挑選</b>泡 10 分鐘，<span class="key">浮起來</span>的橡實多半被蟲蛀、空心 → 不用</div>
+        <div class="box c4"><b class="t">③ 殺蟲卵</b><span class="key">冷凍 2～3 天</span>，或老師用烤箱低溫烘烤</div>
+        <div class="box c2"><b class="t">④ 完全乾燥</b>攤開陰乾 2～3 天，<span class="key">乾透</span>才不會發霉</div>
+      </div>
+      <div class="note">橡實裡常住著<b>象鼻蟲</b>的幼蟲，不處理的話，作品放幾週就會出現小洞和粉末。</div>
+    </div>
+
+    <div class="card">
+      <h2>讓種子變成小精靈<span class="sec">造型設計</span></h2>
+      <svg class="art" id="designSvg" viewBox="0 0 640 220" role="img" aria-label="用種子形狀想角色：圓的當頭、殼斗當帽子、翅果當翅膀或頭髮、豆莢當手腳；眼睛的位置和方向會改變表情"></svg>
+      <div class="two" style="margin-top:8px;align-items:start">
         <ul>
-          <li><span class="key">黏土</span>：把土和種子黏成球，乾了變硬 → 保護種子不被鳥吃、不被風吹走</li>
-          <li><span class="key">培養土（或蚓糞、堆肥）</span>：提供養分、讓土球鬆一點，根才穿得出來</li>
-          <li>每顆放 <span class="key">3～5 粒</span>種子</li>
-          <li>撒在空地、花圃，等<b>下雨</b>吸水，土球軟化後發芽</li>
-          <li>黏土和土的比例要剛好：太鬆會碎、太硬發芽難 → 這就是我們的分組試驗</li>
+          <li>看形狀找角色：<span class="key">圓</span>的當頭、<span class="key">長</span>的當身體</li>
+          <li><span class="key">殼斗</span>當帽子、<span class="key">翅果</span>當翅膀或頭髮、<b>豆莢、小樹枝</b>當手腳</li>
+          <li>想一個<b>主題</b>：一家人、森林樂團、排隊上學…</li>
+        </ul>
+        <ul>
+          <li>表情的祕密在<span class="key">眼睛</span>：位置、間距、眼珠方向</li>
+          <li>擺放：<span class="key">高的放後面、矮的放前面</span>，大小有變化</li>
+          <li>底座留一塊空間給<b>名片夾</b>或作品名牌</li>
         </ul>
       </div>
     </div>
@@ -462,40 +508,36 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <div class="card">
       <h2>安全守則</h2>
       <div class="four">
-        <div class="box badb"><svg viewBox="0 0 160 90" id="sTox" aria-hidden="true"></svg><b class="t">不用有毒種子</b><small><b>雞母珠</b>（紅黑色的相思子）、<b>蓖麻子</b>有劇毒，不能拿來做作品</small></div>
-        <div class="box c1"><svg viewBox="0 0 160 90" id="sCoat" aria-hidden="true"></svg><b class="t">染色的播種種子</b><small>有顏色包衣的種子可能拌過農藥，<b>不能吃</b>，摸完要洗手</small></div>
-        <div class="box c3"><svg viewBox="0 0 160 90" id="sFreeze" aria-hidden="true"></svg><b class="t">先冷凍防蟲</b><small>豆類、米類先冷凍 2～3 天，殺死裡面的蟲卵，作品才不會長蟲</small></div>
-        <div class="box c2"><svg viewBox="0 0 160 90" id="sNoEat" aria-hidden="true"></svg><b class="t">作品不能吃</b><small>上過白膠、亮光漆的種子不能再食用；噴漆由老師在通風處操作</small></div>
+        <div class="box c1"><svg viewBox="0 0 160 90" id="sGun" aria-hidden="true"></svg><b class="t">熱熔膠槍</b><small>用<b>低溫槍</b>；噴嘴和熱膠很燙，不要碰；不用時立在架子上，墊矽膠墊</small></div>
+        <div class="box c3"><svg viewBox="0 0 160 90" id="sOven" aria-hidden="true"></svg><b class="t">烘烤由老師做</b><small>烤箱低溫、有人顧著；拿出來戴隔熱手套</small></div>
+        <div class="box badb"><svg viewBox="0 0 160 90" id="sTox" aria-hidden="true"></svg><b class="t">有毒種子不撿</b><small>雞母珠、蓖麻子、海檬果、夾竹桃果</small></div>
+        <div class="box c2"><svg viewBox="0 0 160 90" id="sWash" aria-hidden="true"></svg><b class="t">洗手</b><small>撿完、做完都要用肥皂洗手；作品不能吃</small></div>
       </div>
     </div>
   </section>
 
-  <!-- ===== 2 實驗過程 ===== -->
+  <!-- ===== 2 製作過程 ===== -->
   <section class="panel" id="p2" hidden>
     <div class="card">
-      <h2>準備材料</h2>
-      <h3>種子畫（每人）</h3>
+      <h2>準備材料（每人）</h2>
       <div class="mats">
-        <div class="mat"><b>🫘 各色種子</b><small>全班共用，用小盒子分裝</small></div>
-        <div class="mat"><b>🟫 底板</b><small>厚紙板、瓦楞紙板或薄木板（約 15 × 20 cm）</small></div>
-        <div class="mat"><b>✏️ 鉛筆、橡皮擦</b><small>畫草圖</small></div>
-        <div class="mat"><b>🧴 白膠＋小筆刷</b><small>一次只塗一小塊</small></div>
-        <div class="mat"><b>🥢 鑷子、牙籤</b><small>夾、推小種子</small></div>
-        <div class="mat"><b>🧫 調色盤或製冰盒</b><small>放分類好的種子</small></div>
-      </div>
-      <h3>種子球（每組）</h3>
-      <div class="mats">
-        <div class="mat"><b>🟤 黏土粉</b><small>紅黏土或陶土粉（不是紙黏土、油土）</small></div>
-        <div class="mat"><b>🌱 培養土或蚓糞</b><small>過篩，去掉大顆粒</small></div>
-        <div class="mat"><b>🌼 播種用種子</b><small>小白菜、萵苣、波斯菊、向日葵</small></div>
-        <div class="mat"><b>🥄 量匙、量杯、盆</b><small>依配方量體積</small></div>
-        <div class="mat"><b>💧 噴水瓶</b><small>水要慢慢加</small></div>
-        <div class="mat"><b>🥚 蛋盒、標籤</b><small>放種子球陰乾、寫配方</small></div>
+        <div class="mat"><b>🌰 自己撿的種子、果實</b><small>至少 5 種，多撿一些備用</small></div>
+        <div class="mat"><b>🪵 木頭切片</b><small>直徑約 10～12 cm，當底座</small></div>
+        <div class="mat"><b>👀 活動眼睛</b><small>大小各一包（3～10 mm）</small></div>
+        <div class="mat"><b>🔫 低溫熱熔膠槍</b><small>2～3 人共用一支</small></div>
+        <div class="mat"><b>🧴 保麗龍膠或白膠</b><small>黏眼睛、小配件</small></div>
+        <div class="mat"><b>🌿 小樹枝、乾葉子</b><small>當手腳、裝飾</small></div>
+        <div class="mat"><b>📎 名片夾配件</b><small>小木夾、長尾夾或鋁線（做名片夾才需要）</small></div>
+        <div class="mat"><b>🖊️ 油性筆、壓克力顏料</b><small>畫嘴巴、腮紅</small></div>
+        <div class="mat"><b>🥢 鑷子、牙籤</b><small>夾小眼睛、點膠</small></div>
+        <div class="mat"><b>🧽 舊牙刷、夾鏈袋</b><small>清洗、分裝種子</small></div>
+        <div class="mat"><b>🟫 矽膠墊或厚紙板</b><small>墊在桌上，熱膠滴下來不黏桌</small></div>
+        <div class="mat"><b>✨ 透明亮光漆（老師）</b><small>保護作品、防潮</small></div>
       </div>
     </div>
 
     <div class="card">
-      <h2>一步一步做種子畫與種子球<span class="sec">點數字跳到那一步</span></h2>
+      <h2>一步一步做種子小精靈<span class="sec">點數字跳到那一步</span></h2>
       <div class="stepchips" id="chips"></div>
       <div class="player">
         <div class="stage" id="stage"><span class="badge" id="sBadge"></span><div id="sArt"></div></div>
@@ -513,103 +555,93 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     </div>
 
     <div class="card">
-      <h2>種子球配方計算</h2>
-      <div class="lab">
-        <div>
-          <label for="bN">要做幾顆？</label><input type="number" id="bN" value="18" min="1" step="1">
-          <label for="bR">黏土：培養土 ＝ <span id="bRlab">1：1</span></label><input type="range" id="bR" min="0" max="4" value="2" step="1" aria-label="黏土和培養土比例">
-          <p style="margin-top:8px;font-size:19px">黏土粉 <b class="bignum" id="bC" style="font-size:32px">80</b> mL ＋ 培養土 <b class="bignum" id="bS" style="font-size:32px">80</b> mL</p>
-          <p style="margin:4px 0 0;font-size:18px">種子約 <b class="bignum" id="bSeed" style="font-size:28px">72</b> 粒；水先準備約 <b id="bW">40</b> mL，慢慢加</p>
-          <p class="ex" id="bNote"></p>
-        </div>
-        <figure><svg class="art" id="bSvg" viewBox="0 0 300 200" role="img" aria-label="黏土和培養土的比例"></svg></figure>
+      <h2>名片夾三種做法<span class="sec">選一種</span></h2>
+      <svg class="art" id="holderSvg" viewBox="0 0 640 220" role="img" aria-label="三種名片夾：小木夾黏在底座、鋁線彎成螺旋、小精靈雙手夾著名片"></svg>
+      <div class="three" style="margin-top:8px">
+        <div class="box c1"><b class="t">小木夾</b>把小木夾（洗衣夾）用熱熔膠<b>立著</b>黏在底座後方<small>最簡單、最牢</small></div>
+        <div class="box c3"><b class="t">鋁線螺旋</b>鋁線一端繞 2～3 圈成螺旋，另一端插進底座的小洞、點膠固定<small>名片夾在螺旋縫裡；可以加種子當裝飾</small></div>
+        <div class="box c4"><b class="t">小精靈拿名片</b>長尾夾藏在大種子後面，看起來像小精靈抱著名片<small>最有趣，要確認夠穩</small></div>
       </div>
-      <div class="note">算法：一顆直徑約 2.5 cm 的種子球約 8 mL，多抓 10% 損耗 → 總量 ≈ 顆數 × 9 mL，再依比例分給黏土和培養土；每顆 4 粒種子。水量依黏土種類差很多，<b>噴一點、揉一揉</b>，捏起來不黏手、不裂開就對了。</div>
+      <div class="note">名片約 9 × 5.4 cm。名片夾要放在底座<b>後方</b>，放上名片後，前面的小精靈才看得到。</div>
     </div>
   </section>
 
-  <!-- ===== 3 分組試驗 ===== -->
+  <!-- ===== 3 作品分享 ===== -->
   <section class="panel" id="p3" hidden>
     <div class="card">
-      <h2>分組試驗：種子球的黏土要放多少？</h2>
-      <p><b>實驗問題：</b>黏土和培養土的比例不同，種子球的<b>堅固程度</b>和<b>發芽率</b>會怎麼變？有沒有一個「又不碎、又好發芽」的比例？</p>
-      <svg class="art" id="designSvg" viewBox="0 0 640 300" role="img" aria-label="四組各用一種種子，每組做三種比例的種子球加上直接撒播的對照"></svg>
-      <div class="three" style="margin-top:10px">
-        <div class="box c1"><b class="t">操作變因</b><b>組內</b>：黏土：培養土 ＝ 1：2／1：1／2：1，加上「直接撒種子」對照<br><b>組間</b>：種子種類</div>
-        <div class="box c2"><b class="t">控制變因</b>每顆一樣大（約 2.5 cm）、每顆 4 粒種子、一起陰乾 3 天、同一個發芽盤、一樣的澆水量</div>
-        <div class="box c3"><b class="t">應變變因</b>落下測試（碎不碎）、泡水崩解時間、第 7 天和第 14 天的發芽數</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>三個測試怎麼做？</h2>
-      <svg class="art" id="testSvg" viewBox="0 0 640 220" role="img" aria-label="落下測試從一公尺高放下；泡水測試計時多久散開；發芽測試放在濕土上每天噴水"></svg>
-      <div class="three" style="margin-top:8px">
-        <div class="box c1"><b class="t">① 落下測試（每比例 2 顆）</b>陰乾 3 天後，從 1 公尺高放到地上<small>3 完整、2 裂開、1 碎掉</small></div>
-        <div class="box c3"><b class="t">② 泡水測試（每比例 1 顆）</b>放進一杯水，計時到散開<small>模擬下雨：太快散 → 太鬆；一直不散 → 太硬</small></div>
-        <div class="box c2"><b class="t">③ 發芽測試（每比例 3 顆）</b>放在濕培養土盤上，每天噴水<small>第 7、14 天數發芽，算發芽率</small></div>
-      </div>
-      <div class="formula">發芽率 ＝ 發芽數 ÷（3 顆 × 4 粒）× 100%</div>
-    </div>
-
-    <div class="card">
-      <h2>四人一組</h2>
-      <div class="role">
-        <div class="rl"><span class="tag" style="background:var(--g1)">秤量</span><b>配方員</b>量黏土、培養土；三種比例分盆、貼標籤</div>
-        <div class="rl"><span class="tag" style="background:var(--g2)">搓球</span><b>搓球員 A</b>搓 1：2 和 1：1 的球，每顆放 4 粒種子</div>
-        <div class="rl"><span class="tag" style="background:var(--g3)">搓球</span><b>搓球員 B</b>搓 2：1 的球；準備直接撒播的對照盤</div>
-        <div class="rl"><span class="tag" style="background:var(--g4)">紀錄</span><b>紀錄員</b>計時、拍照、填紀錄表；上台發表</div>
-      </div>
-      <p class="ex">每種比例做 6 顆：落下 2、泡水 1、發芽 3。三人組：配方員兼紀錄員。</p>
-    </div>
-
-    <div class="card">
-      <h2>紀錄表</h2>
-      <p class="ex">組別：＿＿　種子：＿＿＿＿　製作日期：＿＿／＿＿</p>
+      <h2>我的種子蒐集紀錄</h2>
+      <p class="ex">姓名：＿＿＿＿　撿拾地點：＿＿＿＿＿＿　日期：＿＿／＿＿</p>
       <div class="tblwrap"><table class="t">
-        <tr><th>項目</th><th>1：2（土多）</th><th>1：1</th><th>2：1（黏土多）</th><th>直接撒（對照）</th></tr>
-        <tr><td><b>好不好搓（1～3）</b></td><td></td><td></td><td></td><td>─</td></tr>
-        <tr><td><b>落下測試（1～3）</b></td><td></td><td></td><td></td><td>─</td></tr>
-        <tr><td><b>泡水散開（分）</b></td><td></td><td></td><td></td><td>─</td></tr>
-        <tr><td><b>第 7 天發芽數</b></td><td>／12</td><td>／12</td><td>／12</td><td>／12</td></tr>
-        <tr><td><b>第 14 天發芽數</b></td><td>／12</td><td>／12</td><td>／12</td><td>／12</td></tr>
-        <tr><td><b>發芽率（%）</b></td><td></td><td></td><td></td><td></td></tr>
+        <tr><th>編號</th><th>種子／果實名稱</th><th>來自什麼植物</th><th>特徵（形狀、顏色、大小）</th><th>可能的傳播方式</th><th>用在作品哪裡</th></tr>
+        <tr><td><b>1</b></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>2</b></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>3</b></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>4</b></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>5</b></td><td></td><td></td><td></td><td></td><td></td></tr>
       </table></div>
-      <h3>討論</h3>
-      <ol>
-        <li>黏土越多，種子球越堅固，發芽也越好嗎？</li>
-        <li>「直接撒種子」發芽率可能比較高，那為什麼還要做種子球？（想想戶外的鳥、風、雨）</li>
-        <li>大顆的向日葵和小顆的萵苣，適合的比例一樣嗎？</li>
-        <li>如果要在校園空地撒種子球，你們組會推薦哪個比例？</li>
-      </ol>
-      <details class="teacher"><summary>老師參考：預期結果</summary>
+      <p class="ex">至少 5 種。不知道名字的先寫特徵，拍照查詢後再補。</p>
+    </div>
+
+    <div class="card">
+      <h2>作品卡<span class="sec">放在作品旁邊</span></h2>
+      <div class="two">
+        <figure><svg class="art" id="cardSvg" viewBox="0 0 340 220" role="img" aria-label="作品卡範例：作品名稱、作者、角色介紹、用了哪些種子"></svg></figure>
         <ul>
-          <li>1：2 好搓但容易碎、泡水很快散；2：1 最堅固，但泡水久久不散，發芽較慢、較少。1：1 常是折衷。</li>
-          <li>對照組在室內發芽率通常最高（沒有阻擋），但戶外會被鳥吃、被風吹走、被雨沖走——種子球的優點在戶外。</li>
-          <li>大顆種子力氣大，比較能突破硬土球；小顆種子適合鬆一點的配方。</li>
-          <li>萵苣是「好光性」種子，見光比較容易發芽；包在土球裡可能發芽率偏低，正好可以和其他組比較、討論。</li>
-          <li>實際比例依黏土種類（紅土、陶土）差很多，以各組結果為準。</li>
+          <li><b>作品名稱</b>：幫你的小精靈或整個場景取名字</li>
+          <li><b>角色介紹</b>：牠們是誰？在做什麼？</li>
+          <li><b>用了哪些種子</b>：寫出名稱，至少 3 種</li>
+          <li><b>我最喜歡的種子</b>：它怎麼傳播？為什麼長這樣？</li>
+          <li><b>用途</b>：桌面裝飾／名片夾</li>
         </ul>
-      </details>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>作品分享：畫廊走讀<span class="sec">Gallery Walk</span></h2>
+      <svg class="art" id="gallerySvg" viewBox="0 0 640 200" role="img" aria-label="作品排在桌上，同學拿著便利貼一桌一桌走過去看、留言"></svg>
+      <div class="three" style="margin-top:10px">
+        <div class="box c1"><b class="t">① 布展（5 分）</b>作品和作品卡放在自己的位子，名片夾放上一張名片</div>
+        <div class="box c3"><b class="t">② 走讀留言（15 分）</b>每人拿 3 張便利貼，到別人的作品留言</div>
+        <div class="box c2"><b class="t">③ 上台分享（20 分）</b>每人 1 分鐘，或抽幾位分享</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>分享的時候可以這樣說</h2>
+      <div class="two" style="align-items:start">
+        <div class="box c3"><b class="t">🎤 介紹自己的作品</b>
+          <ul>
+            <li>我的作品叫「＿＿＿」，它是＿＿＿。</li>
+            <li>我用了＿＿、＿＿、＿＿這幾種種子。</li>
+            <li>我最喜歡＿＿，它是靠＿＿傳播的，因為它＿＿＿。</li>
+            <li>做的時候最難的是＿＿＿，我用＿＿＿解決。</li>
+          </ul></div>
+        <div class="box c1"><b class="t">📝 便利貼留言</b>
+          <ul>
+            <li>我最喜歡你的＿＿＿，因為＿＿＿。</li>
+            <li>你用＿＿當＿＿，好有創意！</li>
+            <li>我想問：＿＿＿是什麼種子？</li>
+          </ul></div>
+      </div>
     </div>
 
     <div class="card">
       <h2>三節課怎麼排</h2>
       <div class="timeline">
-        <div class="tl"><b>課前</b><span class="m">老師</span><ul><li>創作用種子先冷凍 2～3 天</li><li>種子分裝到小盒</li><li>確認黏土粉加水後的黏度</li></ul></div>
-        <div class="tl"><b>第 1 節</b><span class="m">知識＋設計</span><ul><li>基本知識（20 分）</li><li>觀察種子、泡過水的豆子剝開看構造（10 分）</li><li>種子畫草圖、分類種子（20 分）</li></ul></div>
-        <div class="tl"><b>第 2 節</b><span class="m">種子畫</span><ul><li>上膠、排種子（40 分）</li><li>平放陰乾、收拾（10 分）</li></ul></div>
-        <div class="tl"><b>第 3 節</b><span class="m">種子球</span><ul><li>配方計算、量材料（10 分）</li><li>每種比例搓 6 顆（25 分）</li><li>放發芽盤、放蛋盒陰乾（10 分）</li><li>整理（5 分）</li></ul></div>
+        <div class="tl"><b>課前一週</b><span class="m">回家作業</span><ul><li>蒐集種子至少 5 種</li><li>夾鏈袋分裝、寫地點日期</li><li>老師準備木片、眼睛、膠槍</li></ul></div>
+        <div class="tl"><b>第 1 節</b><span class="m">知識＋處理</span><ul><li>基本知識（20 分）</li><li>辨識種子、填蒐集紀錄（15 分）</li><li>刷洗、泡水挑選，交給老師冷凍或烘烤（15 分）</li></ul></div>
+        <div class="tl"><b>第 2 節</b><span class="m">設計＋製作</span><ul><li>試擺、拍照、決定主題（10 分）</li><li>黏眼睛、組合角色（25 分）</li><li>開始固定到木片（15 分）</li></ul></div>
+        <div class="tl"><b>第 3 節</b><span class="m">完成＋分享</span><ul><li>完成固定、名片夾（15 分）</li><li>寫作品卡（10 分）</li><li>畫廊走讀、上台分享（25 分）</li></ul></div>
       </div>
-      <div class="note">之後：第 3 天做落下、泡水測試；每天噴水；第 7、14 天數發芽。種子畫乾了以後由老師在通風處噴亮光漆。剩下的種子球可以撒在校園花圃。</div>
+      <div class="note">第 1 節處理過的種子要冷凍 2～3 天，第 2 節最好隔幾天再上。若連排，請學生<b>提早一週</b>撿好種子，回家先冷凍。</div>
     </div>
 
     <div class="card">
       <h2>評分重點（老師可自行調整）</h2>
       <div class="three">
-        <div class="box c1"><b class="t">種子畫 40%</b>構圖清楚、種子排列緊密整齊、善用顏色與大小</div>
-        <div class="box c2"><b class="t">種子球操作 30%</b>配方正確、大小一致、標籤清楚</div>
-        <div class="box c3"><b class="t">紀錄與討論 30%</b>三項測試數據完整、能說明比例的取捨</div>
+        <div class="box c2"><b class="t">蒐集與辨識 30%</b>至少 5 種、紀錄完整、說得出名稱與傳播方式</div>
+        <div class="box c1"><b class="t">作品 50%</b>造型有創意、擺放有前後高低、黏得牢、整潔</div>
+        <div class="box c3"><b class="t">分享 20%</b>作品卡完整、介紹清楚、給同學具體的回饋</div>
       </div>
     </div>
   </section>
@@ -626,22 +658,23 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     </div>
 
     <div class="card">
-      <h2>這顆種子靠什麼旅行？</h2>
+      <h2>這顆可以撿回來用嗎？</h2>
       <div class="ready" id="ready"></div>
       <div class="actions"><button class="btn ghost" id="readyReset">↺ 重新作答</button></div>
     </div>
 
     <div class="card">
-      <h2>種子球實驗室</h2>
+      <h2>表情實驗室</h2>
       <div class="conc">
         <div>
-          <div><b>黏土：培養土 ＝</b> <span class="cnum" id="mNum">1</span> <b>：1</b></div>
-          <input type="range" id="mRange" min="0" max="8" value="2" aria-label="黏土份數">
-          <div class="cverdict" id="mVerdict"></div>
-          <p id="mWhy" style="margin:4px 0 0"></p>
+          <label style="font-weight:700" for="eyY">眼睛位置：<span id="eyYlab"></span></label><input type="range" id="eyY" min="0" max="2" value="1" aria-label="眼睛高低">
+          <label style="font-weight:700" for="eyG">兩眼距離：<span id="eyGlab"></span></label><input type="range" id="eyG" min="0" max="2" value="1" aria-label="兩眼距離">
+          <label style="font-weight:700" for="eyL">眼珠看哪裡：<span id="eyLlab"></span></label><input type="range" id="eyL" min="0" max="4" value="2" aria-label="眼珠方向">
+          <div class="cverdict" id="eyV"></div>
+          <p id="eyW" style="margin:4px 0 0"></p>
         </div>
-        <figure><svg class="art" id="mSvg" viewBox="0 0 300 200" role="img" aria-label="種子球的堅固程度與發芽"></svg>
-          <figcaption>左：落下測試　右：下雨後發芽</figcaption></figure>
+        <figure><svg class="art" id="eySvg" viewBox="0 0 300 220" role="img" aria-label="戴殼斗帽的橡實小精靈，眼睛位置改變表情"></svg>
+          <figcaption>同一顆橡實，眼睛換個位置就換個個性</figcaption></figure>
       </div>
     </div>
 
@@ -655,7 +688,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
   <!-- ===== 5 小測驗 ===== -->
   <section class="panel" id="p5" hidden></section>
 
-  <footer>內容依一般種子構造、種子傳播與種子球（黏土＋培養土＋種子）製作原則整理。黏土與培養土的最佳比例依黏土種類而異，請以分組試驗結果為準。</footer>
+  <footer>內容依一般種子構造、種子傳播與自然素材手作原則整理。撿拾種子請遵守校園與公園規定，只撿掉落的種子；有毒植物請以老師或植物圖鑑確認為準。</footer>
 </div>
 
 <div class="overlay" id="overlay" hidden><div class="inner"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAAClUlEQVR42u2cQW7jMAxFH0cGspSBOZBzgx6pmCP1BvZRcoAB5GUABX8Wkmy3uy5mwYICksjWX/GDIvlFxcR3xvaL743ABz7w/xW/Wx93XmO2T5jZBNsMY30Ke7rDI5UkSRJL+61ozVJfKGkslCStYU+P+O6c+wSb3UZIzk+zO9Bc/B72/An4pQDLw4xtTtKfOezjGT99enqZtntqcwND5BL2dM/vtUjKBWue/DFjy2OqkAXsYU+f+J41A0n2/phgKUlA6rxvZmY2hz1d5s/nKElaSYIsac0VIF0RkT+7rI96aqUK5NpmvWa6rAa/Pv33KHjbrB6cd0/unEf963h/HoRKBdr+fGge3Ylz+K9bfleStEL33/bY4i9cOA9+XfLb9uJlaJEwSG6ReD10zODXa/yt3U1bajWyKq1ZB8nBr1v/XY7zhbW97u4sjZy6pWDBr0v/ZSnwNf6q9Mdz4w5+cahPJhm5TraUGYObrCnRbwL2CW1zQuy/a9jTo75xiBd5fF3j76F5RH7l93x/HVrzmU63/bnFX6L+xfP5AvAyrVkym18GuWJ3wO77TQ2yPKI/x2X8zcLIfydbymvS9gZiN/oCoO1OC8JhT6fxl1x7Jdy+TsHqqH9D3/B8fpSlViRpFMFXuUNR//rPr86C9/Ta7sSE/vwD+mPbyJXzaL+127VKKfRJ9/0bDK2qfGa/DLky+HWaX/Gpf+Pa2HE9WAp+PeKP/Xm/Set+G/pVftrYml/Wut/Dni77Yw1SPV9a++QiWz5mGy20NezpHP9ql8x6/N37/bLmzlvcL3N/fwFYVjqrXbhM1chPY1HY0yt+HOP3WtfeJZnNoDU/h/Qc9vSeP48yaMiVujTphH7lEm/x/wyBD7xb/D/NmX1l5/YJfAAAAABJRU5ErkJggg=="><p>用平板或手機掃描，開始小測驗！</p><small>https://teacher-liujikan.github.io/yilin-work/agri-seed/#quiz</small></div></div>
@@ -691,19 +724,6 @@ function SEED(k,x,y,s=1,r=0){
   }
   return `<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})">${p}</g>`;
 }
-const SPROUT=(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><g class="a-grow"><path d="M0 0 V-24" stroke="var(--stem)" stroke-width="3"/><path d="M0 -20 q-14 -10 -18 -2 q8 8 18 2 M0 -22 q14 -12 18 -4 q-8 8 -18 4" fill="var(--stem)"/></g></g>`;
-const BALL=(x,y,s=1,o={})=>`<g transform="translate(${x} ${y}) scale(${s})"><g${o.cls?` class="${o.cls}"`:""}><circle r="20" fill="var(--clay)"/><circle r="20" fill="url(#ballg)" opacity="${o.flat?0:.5}"/>${[[-8,-6],[6,-9],[9,6],[-5,8],[0,0]].map(([a,b])=>`<circle cx="${a}" cy="${b}" r="1.6" fill="var(--clay2)"/>`).join("")}${o.crack?`<path d="M-10 -14 l6 10 l-4 6 l8 10" stroke="#3a2416" stroke-width="2" fill="none"/>`:""}</g></g>`;
-const BALLDEF=`<defs><radialGradient id="ballg" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>`;
-
-/* ---------- 總覽 ---------- */
-const FLOW=[
-  ["認識種子",`<svg viewBox="0 0 120 90">${SEED("pinto",36,40,2.4,-10)}${SEED("corn",80,42,2.2,15)}<circle cx="96" cy="22" r="10" fill="none" stroke="var(--muted)" stroke-width="2.4"/><path d="M103 29 l10 10" stroke="var(--muted)" stroke-width="3"/></svg>`,"構造、傳播"],
-  ["分類種子",`<svg viewBox="0 0 120 90">${[0,1,2,3,4,5].map(i=>`<rect x="${16+(i%3)*32}" y="${20+Math.floor(i/3)*32}" width="26" height="26" rx="5" fill="var(--paper)" stroke="var(--line)"/>`).join("")}${SEED("adz",29,33,.9)}${SEED("mung",61,33,1)}${SEED("corn",93,33,.9)}${SEED("soy",29,65,.9)}${SEED("blk",61,65,.9)}${SEED("pump",93,65,.8)}</svg>`,"依顏色、大小"],
-  ["設計草圖",`<svg viewBox="0 0 120 90"><rect x="22" y="12" width="76" height="70" rx="4" fill="#fbf7ee" stroke="var(--cardline)"/><path d="M40 60 Q60 20 80 60 Z M60 60 v14" stroke="var(--muted)" stroke-width="1.6" fill="none" stroke-dasharray="3 2"/><g class="a-walk" style="animation-duration:2s"><path d="M76 34 l12 -12" stroke="var(--g1)" stroke-width="4" stroke-linecap="round"/></g></svg>`,"簡單色塊、外框清楚"],
-  ["黏種子畫",`<svg viewBox="0 0 120 90"><rect x="22" y="12" width="76" height="70" rx="4" fill="#fbf7ee" stroke="var(--cardline)"/>${[[50,40],[58,36],[66,40],[54,48],[62,48],[70,48],[46,48]].map(([a,b],i)=>SEED("adz",a,b,.7,i*20)).join("")}${[0,1,2].map(i=>SEED("mung",60,58+i*7,.6)).join("")}<g class="a-place">${SEED("adz",74,40,.7)}</g></svg>`,"上膠、由外往內"],
-  ["做種子球",`<svg viewBox="0 0 120 90">${BALLDEF}<g class="a-roll2">${BALL(60,50,1)}</g>${SPROUT(96,70,.7)}</svg>`,"分組配方試驗"]
-];
-
 /* ---------- 構造 ---------- */
 fill("anatomySvg",(()=>{
   let s="";
@@ -733,167 +753,240 @@ fill("anatomySvg",(()=>{
   return s;
 })());
 
-/* ---------- 傳播 ---------- */
-fill("dWind",`<g class="a-float" style="animation-duration:4s"><g transform="translate(30 50)"><path d="M0 0 V-22" stroke="#b9a46a" stroke-width="1.2"/>${Array.from({length:9},(_,i)=>`<path d="M0 -22 l${(14*Math.cos((i*20+10)*Math.PI/180)).toFixed(1)} ${(-14*Math.sin((i*20+10)*Math.PI/180)).toFixed(1)}" stroke="#bbb" stroke-width="1"/>`).join("")}<ellipse cy="3" rx="2" ry="4" fill="var(--soil)"/></g></g><g transform="translate(120 34)"><g class="a-spin" style="animation-duration:1.4s"><path d="M0 0 q20 -6 30 4 q-14 6 -30 -4" fill="#c9a46a"/><circle r="4" fill="var(--soil)"/></g></g><path d="M10 88 q20 -8 40 0 t40 0 t40 0" stroke="var(--g3)" stroke-width="2" fill="none" class="a-fade"/>`);
-fill("dAnimal",`<g transform="translate(70 60)"><ellipse rx="40" ry="20" fill="#c9a06a"/><circle cx="38" cy="-14" r="12" fill="#c9a06a"/><path d="M-30 18 v14 M-12 18 v14 M12 18 v14 M30 18 v14" stroke="#9a7a4a" stroke-width="5"/></g>${[[50,52],[70,48],[88,56]].map(([a,b],i)=>`<g transform="translate(${a} ${b}) rotate(${i*30})"><path d="M0 -8 V8 M0 -8 l-3 -4 M0 -8 l3 -4" stroke="var(--blk)" stroke-width="1.8"/></g>`).join("")}`);
-fill("dWater",`<path d="M0 70 q20 -10 40 0 t40 0 t40 0 t40 0 V100 H0 Z" fill="var(--sea)" opacity=".6"/><g class="a-crawl" style="animation-duration:3s"><g transform="translate(80 62)"><ellipse rx="22" ry="16" fill="#9a6a3c"/><ellipse cx="-4" cy="-4" rx="12" ry="8" fill="#b88a5a"/></g></g>`);
-fill("dPop",`<g transform="translate(60 60)"><path d="M-40 0 Q0 -16 40 0 Q0 16 -40 0" fill="#8fbf5a"/><path d="M-36 0 Q0 -22 38 -18" stroke="#6a9a3a" stroke-width="3" fill="none"/></g>${[0,1,2].map(i=>`<g class="a-float" style="animation-duration:1.6s;animation-delay:${i*.3}s">${SEED("mung",60+i*10,56,1)}</g>`).join("")}`);
+/* ---------- 身邊的種子、果實 ---------- */
+const NEXT3="作品分享";
+function WILD(k,x,y,s=1,r=0){
+  let p="";
+  switch(k){
+    case "acorn": p=`<ellipse cy="4" rx="12" ry="16" fill="var(--nut)"/><ellipse cx="-4" cy="2" rx="3" ry="7" fill="#fff" opacity=".22"/><path d="M-14 -6 Q-14 -18 0 -18 Q14 -18 14 -6 Z" fill="var(--cup)"/>${[-15,-11,-7].map(v=>`<path d="M-13 ${v+2} H13" stroke="var(--cupd)" stroke-width="1.3"/>`).join("")}<circle cy="20" r="1.6" fill="var(--cupd)"/>`; break;
+    case "cup": p=`<path d="M-14 -2 Q-14 -14 0 -14 Q14 -14 14 -2 Z" fill="var(--cup)"/>${[-11,-7].map(v=>`<path d="M-13 ${v+2} H13" stroke="var(--cupd)" stroke-width="1.3"/>`).join("")}`; break;
+    case "lantern": p=`<path d="M0 -18 C 14 -12, 16 8, 0 18 C -16 8, -14 -12, 0 -18 Z" fill="var(--lant)"/><path d="M0 -18 V18 M0 -18 C 8 -6 8 6 0 18 M0 -18 C -8 -6 -8 6 0 18" stroke="var(--lantd)" stroke-width="1" fill="none"/><path d="M0 -18 v-6" stroke="var(--lantd)" stroke-width="1.6"/>`; break;
+    case "soap": p=`<circle r="11" fill="var(--soap)"/><ellipse cx="-4" cy="-4" rx="3.5" ry="2.4" fill="#fff" opacity=".45"/><path d="M6 -9 q3 -2 5 0" stroke="var(--soapd)" stroke-width="1.4" fill="none"/>`; break;
+    case "soapseed": p=`<circle r="7" fill="#222"/><ellipse cx="-2.5" cy="-2.5" rx="2" ry="1.4" fill="#fff" opacity=".5"/>`; break;
+    case "gum": p=`${Array.from({length:16},(_,i)=>{const a=i*22.5*Math.PI/180;return `<path d="M${(9*Math.cos(a)).toFixed(1)} ${(9*Math.sin(a)).toFixed(1)} L${(15*Math.cos(a)).toFixed(1)} ${(15*Math.sin(a)).toFixed(1)}" stroke="var(--gum)" stroke-width="2.4" stroke-linecap="round"/>`;}).join("")}<circle r="11" fill="var(--gum)"/>${[[-4,-3],[3,-4],[4,3],[-3,4],[0,0]].map(([a,b])=>`<circle cx="${a}" cy="${b}" r="1.5" fill="#2a1a10"/>`).join("")}<path d="M0 -11 q4 -10 10 -14" stroke="var(--gum)" stroke-width="1.6" fill="none"/>`; break;
+    case "wing": p=`<path d="M-4 18 C -10 0, -8 -22, 4 -30 C 10 -20, 10 0, 4 18 Z" fill="var(--wing)"/><path d="M0 16 C -2 0, 0 -18, 4 -28" stroke="var(--wingd)" stroke-width="1" fill="none"/><ellipse cy="14" rx="5" ry="6" fill="var(--wingd)"/>`; break;
+    case "pod": p=`<rect x="-36" y="-5" width="72" height="10" rx="5" fill="var(--pod)"/>${[-24,-12,0,12,24].map(v=>`<path d="M${v} -5 v10" stroke="#1a120c" stroke-width="1"/>`).join("")}`; break;
+    case "cone": p=`<ellipse rx="12" ry="17" fill="var(--cone)"/>${[-12,-4,4,12].map((v,i)=>`<path d="M-11 ${v} Q-5 ${v-5} 0 ${v} Q5 ${v-5} 11 ${v}" stroke="var(--coned)" stroke-width="1.6" fill="none"/>`).join("")}`; break;
+    case "camph": p=`<circle r="5" fill="#1f1f24"/><ellipse cx="-1.6" cy="-1.6" rx="1.4" ry="1" fill="#fff" opacity=".5"/><path d="M-3 -5 q3 -3 6 0" stroke="var(--stem)" stroke-width="2.2" fill="none"/>`; break;
+    case "term": p=`<path d="M-16 0 Q-14 -10 0 -10 Q14 -10 16 0 Q14 10 0 10 Q-14 10 -16 0 Z" fill="var(--term)"/><path d="M-14 0 H14" stroke="var(--termd)" stroke-width="1.6"/>`; break;
+    case "melia": p=`<ellipse rx="6" ry="7.5" fill="var(--melia)"/><path d="M0 -7.5 v-4" stroke="var(--cupd)" stroke-width="1.2"/>`; break;
+    case "star": p=Array.from({length:8},(_,i)=>`<path transform="rotate(${i*45})" d="M0 0 Q-4 -6 0 -14 Q4 -6 0 0 Z" fill="var(--star)" stroke="#5a2c18" stroke-width=".6"/>`).join("")+`<circle r="2" fill="#5a2c18"/>`; break;
+    case "eggs": p=`<circle r="7" fill="#b85a3a"/>`; break;
+    case "twig": p=`<path d="M-40 4 Q-10 -6 20 0 Q32 2 40 -6 M10 -2 q6 -8 14 -10" stroke="var(--wood)" stroke-width="5" fill="none" stroke-linecap="round"/>`; break;
+    default: return SEED(k,x,y,s,r);
+  }
+  return `<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})">${p}</g>`;
+}
+const EYE=(x,y,r=4,dx=0,dy=0)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="#fff" stroke="#222" stroke-width="${(r*.14).toFixed(2)}"/><circle cx="${(x+dx*r*.42).toFixed(2)}" cy="${(y+dy*r*.42).toFixed(2)}" r="${(r*.52).toFixed(2)}" fill="#111"/>`;
+const EYES=(x,y,r=4,gap=1.4,dx=0,dy=0)=>EYE(x-r*gap,y,r,dx,dy)+EYE(x+r*gap,y,r,dx,dy);
+const SLICE=(x,y,w,h)=>`<g transform="translate(${x} ${y})"><path d="M${-w} 0 V${h*.55} A${w} ${h} 0 0 0 ${w} ${h*.55} V0 Z" fill="var(--bark)"/>${[0,1,2,3].map(i=>`<path d="M${-w+8+i*w*.5} ${h*.4} v${h*.55}" stroke="var(--barkd)" stroke-width="2"/>`).join("")}<ellipse rx="${w}" ry="${h}" fill="var(--slice)"/>${[.75,.5,.28].map(k=>`<ellipse rx="${(w*k).toFixed(1)}" ry="${(h*k).toFixed(1)}" fill="none" stroke="var(--ring)" stroke-width="1.2"/>`).join("")}<ellipse rx="${w}" ry="${h}" fill="none" stroke="var(--barkd)" stroke-width="3"/></g>`;
+const GUN=(sc=1)=>`<g transform="scale(${sc})"><path d="M-30 -14 h44 q8 0 8 8 v4 q0 8 -8 8 h-44 Z" fill="var(--g1)"/><path d="M-12 6 l-6 30 h14 l4 -30 Z" fill="var(--g1)"/><path d="M22 -6 h14 l6 3 l-6 3 h-14 Z" fill="var(--metal)"/><rect x="-46" y="-8" width="18" height="6" rx="3" fill="#f4f0e2"/></g>`;
+const SPRITE=(k,x,y,s=1,o={})=>{
+  const e={acorn:[0,-2,3.6,1.5],soap:[0,-2,3.4,1.4],gum:[0,-1,3.2,1.5],cone:[0,-3,3.4,1.4],term:[0,-2,3.2,1.6],lantern:[0,-2,3,1.5],melia:[0,-1,2.2,1.3],camph:[0,0,1.6,1.3],blk:[0,-1,2.6,1.3],adz:[0,-1,2.4,1.4],pump:[0,-1,2.6,1.5],soapseed:[0,-1,2.4,1.3]}[k]||[0,0,3,1.4];
+  return `<g transform="translate(${x} ${y}) scale(${s})"><g${o.cls?` class="${o.cls}"`:""}${o.style?` style="${o.style}"`:""}>${WILD(k,0,0,1,o.r||0)}${o.nose?"":EYES(e[0],e[1],e[2],e[3],o.dx||0,o.dy||0)}${o.mouth?`<path d="M-3 ${e[1]+6} q3 3 6 0" stroke="#3a1a10" stroke-width="1.2" fill="none"/>`:""}</g></g>`;
+};
 
-/* ---------- 圖鑑 ---------- */
+/* ---------- 封面 ---------- */
+fill("heroSvg",(()=>{
+  let s=SLICE(170,160,150,46);
+  s+=WILD("twig",210,118,1.6,-8);
+  s+=SPRITE("cone",90,112,2.2,{cls:"a-wig",style:"animation-duration:3s"});
+  s+=SPRITE("acorn",150,120,2.6,{dx:.5,dy:.2,mouth:true});
+  s+=SPRITE("soap",214,140,2.2,{dx:-.5,cls:"a-wig",style:"animation-duration:2.2s"});
+  s+=SPRITE("gum",262,104,1.8,{dy:-.6});
+  s+=SPRITE("lantern",300,138,1.8,{dx:-.6});
+  s+=SPRITE("melia",120,170,2,{dx:.6});
+  s+=SPRITE("camph",188,186,2.4,{});
+  s+=SPRITE("adz",244,182,2.2,{dx:-.4});
+  s+=SPRITE("term",70,160,1.8,{dx:.4,dy:.4});
+  s+=`<g transform="translate(150 54)">${WILD("wing",0,0,1,0)}</g>`;
+  return s;
+})());
+
+/* ---------- 總覽 ---------- */
+const FLOW=[
+  ["蒐集種子",`<svg viewBox="0 0 120 90"><path d="M20 30 h40 l-4 50 h-32 Z" fill="var(--film)" opacity=".5" stroke="var(--water)" stroke-width="2"/>${WILD("acorn",34,64,.8,10)}${WILD("gum",48,54,.7)}<g class="a-fall">${WILD("acorn",88,20,.9,-20)}</g><path d="M70 82 h40" stroke="var(--soil)" stroke-width="4"/></svg>`,"撿地上掉落的"],
+  ["清洗處理",`<svg viewBox="0 0 120 90"><path d="M20 40 L26 80 L94 80 L100 40 Z" fill="var(--water)" opacity=".35" stroke="var(--water)" stroke-width="2"/>${WILD("acorn",44,66,.8,90)}<g class="a-up">${WILD("acorn",76,52,.8,80)}</g>${T(76,32,"浮→不用","middle","s-sm")}</svg>`,"泡水挑選、冷凍"],
+  ["設計造型",`<svg viewBox="0 0 120 90">${SPRITE("acorn",40,50,1.5,{dx:.6})}${SPRITE("soap",86,56,1.4,{dx:-.6})}<g class="a-fade">${T(62,20,"?","middle","s-txt",18)}</g></svg>`,"形狀變角色"],
+  ["黏貼組裝",`<svg viewBox="0 0 120 90">${SLICE(60,64,44,14)}${SPRITE("acorn",50,50,1.3)}<g transform="translate(92 30) rotate(-30)"><g class="a-tap">${GUN(.6)}</g></g></svg>`,"眼睛、帽子、底座"],
+  ["作品分享",`<svg viewBox="0 0 120 90">${SLICE(46,66,34,11)}${SPRITE("acorn",40,54,1.1)}${SPRITE("soap",58,58,.9)}<rect x="82" y="40" width="28" height="22" rx="2" fill="#fff8b0" stroke="#d9c96a" class="a-swing" style="transform-origin:96px 40px"/></svg>`,"作品卡、畫廊走讀"]
+];
+
+/* ---------- 秋冬圖鑑 ---------- */
 fill("seedBook",(()=>{
-  const L=[["adz","紅豆"],["mung","綠豆"],["soy","黃豆"],["blk","黑豆"],["pinto","花豆"],["job","薏仁"],["corn","玉米"],["brice","糙米"],["rice","白米"],["millet","小米"],["sesb","黑芝麻"],["sesw","白芝麻"],["pump","南瓜子"],["sunf","葵花子"]];
+  const L=[["acorn","青剛櫟","橡實＋殼斗",2.4],["lantern","台灣欒樹","燈籠蒴果",2.2],["soap","無患子","果皮像肥皂",2.3],["soapseed","無患子種子","黑亮圓球",2.6],["gum","楓香","刺刺球果",2],["wing","桃花心木","翅狀種子",1.5],
+           ["pod","阿勃勒","長豆莢",1],["cone","松果","鱗片一片片",2],["camph","樟樹","小黑果",3.4],["term","欖仁","扁扁的核果",2],["melia","苦楝","黃色小果",3],["star","八角","廚房找得到",2.2]];
   let s="";
-  L.forEach(([k,n],i)=>{ const x=50+(i%7)*90, y=70+Math.floor(i/7)*130;
-    s+=`<rect x="${x-40}" y="${y-56}" width="80" height="108" rx="10" fill="var(--bg)" stroke="var(--line)"/>`;
-    const big=["millet","sesb","sesw","mung","rice","brice"].includes(k)?2.6:1.9;
-    s+=SEED(k,x,y-12,big,-10);
-    for(let j=0;j<3;j++) s+=SEED(k,x-20+j*20,y+18,big*.45,j*40);
-    s+=T(x,y+44,n,"middle","s-txt");
+  L.forEach(([k,n,d,sc],i)=>{ const x=55+(i%6)*106, y=80+Math.floor(i/6)*160;
+    s+=`<rect x="${x-48}" y="${y-66}" width="96" height="140" rx="12" fill="var(--bg)" stroke="var(--line)"/>`;
+    s+=WILD(k,x,y-14,sc,k==="pod"?-20:0);
+    s+=T(x,y+46,n,"middle","s-txt")+T(x,y+64,d,"middle","s-sm");
   });
   return s;
 })());
 
-/* ---------- 種子球原理 ---------- */
-fill("ballSvg",(()=>{
-  let s=BALLDEF+ARROWDEF("arb");
-  s+=`<g transform="translate(80 100)"><circle r="56" fill="var(--clay)"/><circle r="40" fill="var(--pot)"/>${[[-14,-10],[12,-14],[6,12],[-16,14]].map(([a,b],i)=>SEED("sunf",a,b,1,i*60)).join("")}</g>`;
-  s+=`<path class="lbl" d="M120 60 L170 30"/>${T(174,34,"外層：黏土","start","s-sm")}`;
-  s+=`<path class="lbl" d="M100 120 L170 150"/>${T(174,154,"培養土＋種子","start","s-sm")}`;
-  s+=T(80,190,"剖面","middle","s-txt");
-  s+=`<g transform="translate(270 130)">${[0,1,2,3].map(i=>`<path d="M${-30+i*18} -100 l-4 12" stroke="var(--sea)" stroke-width="2.4" class="a-drop" style="animation-delay:${i*.3}s"/>`).join("")}<ellipse cy="20" rx="44" ry="12" fill="var(--pot)" opacity=".6"/>${BALL(0,8,.9,{flat:true})}${SPROUT(0,-6,1.1)}</g>${T(270,200,"下雨 → 軟化 → 發芽","middle","s-txt")}`;
+/* ---------- 傳播 ---------- */
+fill("dWind",`<g transform="translate(40 40)"><g class="a-spin" style="animation-duration:1.2s">${WILD("wing",0,0,1,0)}</g></g><g class="a-float" style="animation-duration:4s">${WILD("lantern",96,44,1.3,20)}</g><path d="M10 88 q20 -8 40 0 t40 0 t40 0" stroke="var(--g3)" stroke-width="2" fill="none" class="a-fade"/>`);
+fill("dAnimal",`<g transform="translate(64 62)"><ellipse rx="26" ry="18" fill="#b8763a"/><circle cx="24" cy="-16" r="12" fill="#b8763a"/><circle cx="28" cy="-19" r="2" fill="#111"/><path d="M-22 -4 C -50 -20, -40 -50, -16 -40 C -26 -30, -20 -14, -22 -4" fill="#c9884a"/><path d="M18 -26 l-2 -8 l6 4 Z" fill="#b8763a"/></g><g class="a-tap">${WILD("acorn",104,58,1,20)}</g><path d="M120 86 h30" stroke="var(--soil)" stroke-width="4"/>`);
+fill("dWater",`<path d="M0 70 q20 -10 40 0 t40 0 t40 0 t40 0 V100 H0 Z" fill="var(--sea)" opacity=".6"/><g class="a-crawl" style="animation-duration:3s">${WILD("term",80,64,2,0)}</g>`);
+fill("dPop",`<g transform="translate(60 58)"><path d="M-40 0 Q0 -14 40 0 Q0 14 -40 0" fill="#9a7a4a"/><path d="M-36 -2 Q0 -24 38 -20" stroke="#7a5a32" stroke-width="3" fill="none"/></g>${[0,1,2].map(i=>`<g class="a-float" style="animation-duration:1.6s;animation-delay:${i*.3}s">${WILD("blk",60+i*10,56,.7)}</g>`).join("")}`);
+
+/* ---------- 有毒 ---------- */
+fill("toxSvg",`<g transform="translate(36 34)"><ellipse rx="13" ry="10" fill="#d8232a"/><path d="M5 -8 a10 10 0 0 1 0 16 a8 10 0 0 0 0 -16" fill="#111"/></g>${T(36,72,"雞母珠","middle","s-sm")}<g transform="translate(106 34)"><ellipse rx="13" ry="9" fill="#9a8a7a"/>${[[-6,-3],[2,2],[7,-4],[-3,5]].map(([a,b])=>`<path d="M${a} ${b} l3 1" stroke="#4a3a2a" stroke-width="2"/>`).join("")}</g>${T(106,72,"蓖麻子","middle","s-sm")}<g transform="translate(180 34)"><ellipse rx="16" ry="20" fill="#5fa85a"/><ellipse cx="4" cy="2" rx="10" ry="14" fill="#c8452f" opacity=".5"/></g>${T(180,72,"海檬果","middle","s-sm")}<g transform="translate(254 34)"><path d="M-20 10 Q0 -16 20 -10 M-20 16 Q0 -10 20 -4" stroke="#7a6a3a" stroke-width="5" fill="none" stroke-linecap="round"/></g>${T(254,72,"夾竹桃果","middle","s-sm")}<path d="M10 6 L290 62" stroke="var(--bad)" stroke-width="3" opacity=".7"/>`);
+
+/* ---------- 前處理 ---------- */
+fill("prepSvg",(()=>{
+  let s=ARROWDEF("arp");
+  const X=[80,240,400,560];
+  // 1 brush
+  s+=`${WILD("acorn",X[0],100,2.4,80)}<g transform="translate(${X[0]} 80)"><g class="a-walk" style="animation-duration:1s"><rect x="-6" y="-60" width="10" height="50" rx="5" fill="var(--g3)"/><rect x="-10" y="-12" width="18" height="8" rx="2" fill="var(--g3)"/>${[-7,-3,1,5].map(d=>`<line x1="${d}" y1="-4" x2="${d}" y2="6" stroke="#fff" stroke-width="2"/>`).join("")}</g></g>`;
+  // 2 float
+  s+=`<path d="M${X[1]-56} 60 L${X[1]-48} 150 L${X[1]+48} 150 L${X[1]+56} 60 Z" fill="var(--water)" opacity=".35" stroke="var(--water)" stroke-width="2"/>${WILD("acorn",X[1]-20,134,1.4,90)}${WILD("acorn",X[1]+12,138,1.4,80)}<g class="a-up" style="animation-duration:3s">${WILD("acorn",X[1]+26,74,1.4,100)}</g><circle cx="${X[1]+30}" cy="70" r="2.4" fill="#2a1a10"/>${T(X[1]+56,52,"浮＝蟲蛀","end","s-sm")}`;
+  // 3 freeze
+  s+=`<rect x="${X[2]-40}" y="30" width="80" height="120" rx="8" fill="#dbe9f2" stroke="var(--metal)" stroke-width="2"/><path d="M${X[2]-40} 70 h80" stroke="var(--metal)" stroke-width="2"/>${WILD("acorn",X[2]-12,110,1,90)}${WILD("gum",X[2]+14,112,.9)}<g transform="translate(${X[2]} 50)"><g class="a-spin" style="animation-duration:5s"><path d="M-10 0 h20 M0 -10 v20 M-7 -7 l14 14 M-7 7 l14 -14" stroke="#5aa3d9" stroke-width="2"/></g></g>`;
+  // 4 dry
+  s+=`<rect x="${X[3]-60}" y="110" width="120" height="30" rx="4" class="s-news"/>${[0,1,2,3].map(i=>WILD(["acorn","soap","gum","term"][i],X[3]-42+i*28,116,1,i*30)).join("")}<circle cx="${X[3]+40}" cy="54" r="14" fill="var(--g1)" opacity=".25"/>${[0,1,2].map(i=>`<path d="M${X[3]-30+i*20} 100 q-4 -10 0 -18" stroke="var(--water)" stroke-width="2" fill="none" class="a-up" style="animation-delay:${i*.5}s"/>`).join("")}`;
+  ["① 刷洗","② 泡水挑選","③ 冷凍 2～3 天","④ 陰乾 2～3 天"].forEach((t,i)=>{ s+=T(X[i],178,t,"middle","s-txt"); if(i<3) s+=ARR(X[i]+60,100,X[i]+96,100,"arp"); });
+  return s;
+})());
+
+/* ---------- 造型設計 ---------- */
+fill("designSvg",(()=>{
+  let s=ARROWDEF("ard");
+  const M=[["soap","圓 → 頭"],["cup","殼斗 → 帽子"],["wing","翅果 → 翅膀、頭髮"],["pod","豆莢、樹枝 → 手腳"]];
+  M.forEach(([k,t],i)=>{ const y=30+i*48; s+=WILD(k,40,y,k==="pod"?.5:k==="wing"?.7:1.2,k==="wing"?90:0)+T(80,y+5,t,"start","s-txt"); });
+  // assembled sprite
+  s+=`<g transform="translate(280 120)"><path d="M-30 30 L-48 50 M30 30 L48 50" stroke="var(--wood)" stroke-width="4" stroke-linecap="round"/>${WILD("wing",-26,-4,1,-70)}${WILD("wing",26,-4,1,70)}${WILD("soap",0,20,2.4)}${WILD("cup",0,-6,2,0)}${EYES(0,16,6,1.5,.3,0)}<path d="M-5 30 q5 4 10 0" stroke="#3a1a10" stroke-width="2" fill="none"/></g>`;
+  s+=ARR(206,120,226,120,"ard");
+  // expressions
+  const E=[["開心",0,-.3,"M-5 34 q5 6 10 0"],["害羞",0,.8,"M-4 34 h8"],["驚訝",0,0,"M0 34 m-3 0 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0"],["偷看",.8,0,"M-3 34 q3 2 6 0"]];
+  E.forEach(([t,dx,dy,m],i)=>{ const x=394+i*70, y=104;
+    s+=`<g transform="translate(${x} ${y})">${WILD("acorn",0,0,1.9)}${EYES(0,i===2?6:8,i===2?5:4,1.5,dx,dy)}<path d="${m}" transform="translate(0 -6) scale(.8)" stroke="#3a1a10" stroke-width="2" fill="${i===2?"#3a1a10":"none"}"/>${i===1?`<ellipse cx="-11" cy="17" rx="4" ry="2.4" fill="#f08a9a" opacity=".7"/><ellipse cx="11" cy="17" rx="4" ry="2.4" fill="#f08a9a" opacity=".7"/>`:""}</g>${T(x,y+60,t,"middle","s-sm")}`;
+  });
   return s;
 })());
 
 /* ---------- 安全 ---------- */
-fill("sTox",`<g transform="translate(60 44)"><ellipse rx="16" ry="12" fill="#d8232a"/><path d="M6 -10 a12 12 0 0 1 0 20 a10 12 0 0 0 0 -20" fill="#111"/></g><g transform="translate(110 44)"><ellipse rx="16" ry="11" fill="#9a8a7a"/>${[[-6,-3],[2,2],[7,-4],[-3,5]].map(([a,b])=>`<path d="M${a} ${b} l3 1" stroke="#4a3a2a" stroke-width="2"/>`).join("")}</g><path d="M40 20 L130 70" stroke="var(--bad)" stroke-width="4"/>${T(60,80,"雞母珠","middle","s-sm")}${T(110,80,"蓖麻子","middle","s-sm")}`);
-fill("sCoat",`${[0,1,2,3,4].map(i=>`<ellipse cx="${46+i*16}" cy="${44+(i%2)*8}" rx="6" ry="4.5" fill="${["#e0457a","#3f7fd0","#e0457a","#4fbf6a","#3f7fd0"][i]}"/>`).join("")}<path d="M120 20 l12 22 h-24 Z" fill="var(--g1)"/><text x="120" y="38" text-anchor="middle" style="fill:#fff;font-size:12px;font-weight:900">!</text>`);
-fill("sFreeze",`<rect x="50" y="10" width="60" height="76" rx="6" fill="#dbe9f2" stroke="var(--metal)" stroke-width="2"/><path d="M50 36 h60" stroke="var(--metal)" stroke-width="2"/><rect x="100" y="16" width="4" height="14" rx="2" fill="var(--metal)"/>${SEED("adz",70,56,1.1)}${SEED("rice",88,62,1.3)}<g class="a-spin" style="animation-duration:5s"><path d="M80 24 m-7 0 h14 m-7 -7 v14 m-5 -5 l10 -10 m-10 0 l10 10" stroke="#5aa3d9" stroke-width="1.6"/></g>${T(80,100,"2～3 天","middle","s-sm")}`);
-fill("sNoEat",`<rect x="40" y="16" width="70" height="60" rx="4" fill="#fbf7ee" stroke="var(--cardline)"/>${[0,1,2,3,4].map(i=>SEED("adz",56+i*10,46,.7,i*20)).join("")}<g transform="translate(124 46)"><path d="M-10 -18 q10 -8 20 0 v30 q-10 8 -20 0 Z" fill="#fff" stroke="var(--muted)"/><path d="M-18 -20 L18 20" stroke="var(--bad)" stroke-width="4"/></g>`);
+fill("sGun",`<g transform="translate(70 40)">${GUN(1.1)}</g><g class="a-drop"><circle cx="118" cy="44" r="3" fill="#f4f0e2" stroke="var(--muted)"/></g><path d="M100 70 h50" stroke="var(--g4)" stroke-width="6" stroke-linecap="round"/>`);
+fill("sOven",`<rect x="40" y="16" width="80" height="62" rx="6" fill="var(--metal)"/><rect x="48" y="26" width="52" height="42" rx="3" fill="#2b3036"/><rect x="48" y="26" width="52" height="42" rx="3" fill="#f2a64a" opacity=".3" class="a-fade"/>${WILD("acorn",64,52,.7,90)}${WILD("gum",84,52,.6)}<circle cx="110" cy="34" r="4" fill="#ddd"/><circle cx="110" cy="50" r="4" fill="#ddd"/>`);
+fill("sTox",`<g transform="translate(60 44)"><ellipse rx="16" ry="12" fill="#d8232a"/><path d="M6 -10 a12 12 0 0 1 0 20 a10 12 0 0 0 0 -20" fill="#111"/></g><g transform="translate(110 44)"><ellipse rx="16" ry="20" fill="#5fa85a"/></g><path d="M40 20 L130 70" stroke="var(--bad)" stroke-width="4"/>`);
+fill("sWash",`<path d="M60 16 h30 v10 h-10 v8" stroke="var(--metal)" stroke-width="6" fill="none"/>${[0,1,2].map(i=>`<circle cx="80" cy="42" r="3" fill="var(--water)" class="a-drop" style="animation-delay:${i*.4}s"/>`).join("")}<g transform="translate(80 70)"><path d="M-22 -6 q-4 14 10 16 h24 q12 -4 8 -16 Z" fill="#f2c9a0" stroke="#b58a62"/>${[0,1,2,3].map(i=>`<circle cx="${-14+i*9}" cy="-8" r="4" fill="#fff" opacity=".9"/>`).join("")}</g>`);
 
 /* ---------- 步驟 ---------- */
 const STEPS=[
- {t:"冷凍防蟲",l:["豆類、米類先裝袋冷凍 2～3 天","殺死種子裡看不見的蟲卵","拿出來回到室溫、擦乾水氣","有洞、發霉的種子挑掉"],tip:"不冷凍的話，作品放幾個月可能會鑽出象鼻蟲。",
-  art:`<svg viewBox="0 0 340 200"><rect x="100" y="20" width="140" height="170" rx="10" fill="#dbe9f2" stroke="var(--metal)" stroke-width="3"/><path d="M100 80 h140" stroke="var(--metal)" stroke-width="3"/><rect x="220" y="30" width="8" height="34" rx="4" fill="var(--metal)"/><rect x="120" y="110" width="100" height="60" rx="8" fill="var(--film)" opacity=".5" stroke="var(--water)"/>${[0,1,2,3,4,5,6].map(i=>SEED(i%2?"adz":"mung",136+(i%4)*22,128+Math.floor(i/4)*22,1.2,i*30)).join("")}<g transform="translate(170 50)"><g class="a-spin" style="animation-duration:6s"><path d="M-14 0 h28 M0 -14 v28 M-10 -10 l20 20 M-10 10 l20 -20" stroke="#5aa3d9" stroke-width="2.4"/></g></g>${T(290,110,"−18 ℃","middle","s-txt")}${T(290,130,"2～3 天","middle","s-sm")}</svg>`},
- {t:"分類種子",l:["依顏色、大小，把種子分到調色盤","深淺一樣的顏色可以用不同種子","每格放一點就好，用完再拿","掉在桌上的種子撿回盒子"],tip:"先想好每個色塊要用哪一種種子，排的時候比較快。",
-  art:`<svg viewBox="0 0 340 200"><rect x="40" y="40" width="260" height="130" rx="14" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/>${["adz","mung","soy","blk","corn","pump","millet","sesb"].map((k,i)=>{const x=80+(i%4)*60,y=78+Math.floor(i/4)*58;return `<circle cx="${x}" cy="${y}" r="24" fill="var(--bg)" stroke="var(--line)"/>${[0,1,2,3].map(j=>SEED(k,x-8+(j%2)*16,y-6+Math.floor(j/2)*12,["millet","sesb","mung"].includes(k)?1.3:.9,j*40)).join("")}`;}).join("")}<g class="a-fall" style="animation-duration:2.4s">${SEED("adz",80,20,1)}</g></svg>`},
- {t:"畫草圖",l:["在底板上用鉛筆畫簡單的圖","線條少、色塊大，不要太細","先決定外框、再決定裡面填什麼","在色塊上寫種子的代號"],tip:"動物、水果、花、幾何圖案都很好做；太細的線條種子排不出來。",
-  art:`<svg viewBox="0 0 340 200"><rect x="90" y="16" width="160" height="176" rx="6" fill="#fbf7ee" stroke="var(--cardline)" stroke-width="2"/><path d="M170 50 C 130 50, 120 110, 170 150 C 220 110, 210 50, 170 50 Z M170 150 v30 M170 160 q20 -6 26 -20" stroke="var(--muted)" stroke-width="2" fill="none" stroke-dasharray="5 3"/>${T(170,100,"紅豆","middle","s-sm")}${T(196,152,"綠豆","middle","s-sm")}<g transform="translate(232 80)"><g class="a-walk" style="animation-duration:2.4s"><path d="M0 0 l26 -26" stroke="var(--g1)" stroke-width="6" stroke-linecap="round"/><path d="M0 0 l4 -10 l6 6 Z" fill="var(--ink)"/></g></g></svg>`},
- {t:"上白膠（一小塊）",l:["從外框開始，一次只塗一小塊","膠塗薄薄一層、塗滿","塗太大塊，還沒排完膠就乾了","細的地方用牙籤沾膠"],tip:"白膠乾了會變透明，所以塗滿沒關係，但不要堆太厚。",
-  art:`<svg viewBox="0 0 340 200"><rect x="90" y="16" width="160" height="176" rx="6" fill="#fbf7ee" stroke="var(--cardline)" stroke-width="2"/><path d="M170 50 C 130 50, 120 110, 170 150 C 220 110, 210 50, 170 50 Z" stroke="var(--muted)" stroke-width="2" fill="none" stroke-dasharray="5 3"/><path d="M170 50 C 140 50, 132 80, 136 96 L 160 96 L 160 56 Z" fill="#fff" stroke="#ddd" class="a-appear"/><g transform="translate(150 76)"><g class="a-walk" style="animation-duration:1.6s"><path d="M0 0 l30 -40" stroke="var(--wood)" stroke-width="5" stroke-linecap="round"/><path d="M-4 2 l8 -8 l6 4 l-8 8 Z" fill="#fff" stroke="var(--muted)"/></g></g></svg>`},
- {t:"排種子：由外往內",l:["先沿著外框排一圈，輪廓才清楚","再往裡面一顆一顆排滿","大顆用手，小顆用鑷子、牙籤推","種子方向排一致，看起來比較整齊"],tip:"背景最後再做，可以用小米、芝麻撒滿再輕壓。",
-  art:`<svg viewBox="0 0 340 200"><rect x="90" y="16" width="160" height="176" rx="6" fill="#fbf7ee" stroke="var(--cardline)" stroke-width="2"/>${(()=>{let r="";for(let i=0;i<22;i++){const t=i/22*Math.PI*2,x=170+34*Math.sin(t)*(1-.2*Math.cos(t)),y=100-46*Math.cos(t)+(Math.cos(t)>0?0:0);r+=SEED("adz",x.toFixed(1),y.toFixed(1),.85,(t*57).toFixed(0));}return r;})()}${[[160,90],[176,90],[168,104],[160,118],[176,118]].map(([a,b],i)=>SEED("adz",a,b,.85,i*30)).join("")}<g class="a-place">${SEED("adz",184,104,.85)}</g><g transform="translate(240 70)"><path d="M0 0 L-50 30 M4 6 L-46 32" stroke="var(--metal)" stroke-width="3"/></g>${[0,1,2,3].map(i=>SEED("mung",170,154+i*10,.8)).join("")}</svg>`},
- {t:"平放陰乾",l:["排完平放，不要立起來（種子會滑掉）","陰乾至少 24 小時","乾了以後輕輕搖，掉下來的再補膠黏回","寫上名字、日期"],tip:"不要用吹風機吹，種子會跳開。",
-  art:`<svg viewBox="0 0 340 200"><rect x="40" y="130" width="260" height="14" rx="4" fill="var(--wood)"/><path d="M80 144 v40 M260 144 v40" stroke="var(--wood)" stroke-width="6"/>${[0,1].map(i=>`<rect x="${70+i*110}" y="114" width="90" height="16" rx="2" fill="#fbf7ee" stroke="var(--cardline)"/>${[0,1,2,3,4,5].map(j=>SEED(j%2?"adz":"corn",80+i*110+j*14,122,.7,j*20)).join("")}`).join("")}<g transform="translate(280 50)"><circle r="26" fill="var(--paper)" stroke="var(--accent)" stroke-width="3"/><g class="a-rot" style="animation-duration:4s"><path d="M0 0 V-18" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/></g>${T(0,44,"24 小時","middle","s-txt")}</g></svg>`},
- {t:"噴亮光漆保護",l:["老師在室外或通風處操作","距離約 30 cm，薄薄噴一層","乾了再噴第二層","保護種子不受潮、顏色更亮"],tip:"沒有亮光漆也可以塗一層稀釋的白膠（白膠：水＝1：1）。",
-  art:`<svg viewBox="0 0 340 200"><rect x="60" y="60" width="120" height="130" rx="6" fill="#fbf7ee" stroke="var(--cardline)" stroke-width="2"/>${[0,1,2,3,4,5,6,7,8].map(i=>SEED(i%3?"adz":"soy",84+(i%3)*36,92+Math.floor(i/3)*30,1,i*20)).join("")}<g transform="translate(270 70) rotate(-30)"><rect x="-14" y="-10" width="28" height="70" rx="8" fill="var(--g3)"/><rect x="-6" y="-22" width="12" height="12" fill="var(--metal)"/></g>${Array.from({length:10},(_,i)=>`<circle cx="${(234-i*7).toFixed(0)}" cy="${(70+(i%3)*8).toFixed(0)}" r="2" fill="#cfe3f2" class="a-fade" style="animation-delay:${(i*.1).toFixed(1)}s"/>`).join("")}${T(240,170,"30 cm、薄噴","middle","s-txt")}</svg>`},
- {t:"種子球：拌勻、加水",l:["依配方量黏土粉、培養土，倒進盆裡拌勻","噴水，一邊噴一邊揉","揉到像麵團：捏起來不黏手、不裂開","三種比例分三盆，貼上標籤"],tip:"水一次加太多會變泥巴，只能再加粉補救，所以要慢慢加。",
-  art:`<svg viewBox="0 0 340 200"><path d="M80 100 Q170 200 260 100 Z" fill="var(--paper)" stroke="var(--muted)" stroke-width="3"/><ellipse cx="170" cy="112" rx="70" ry="18" fill="var(--clay)" class="a-fadeout"/><g class="a-appear"><ellipse cx="170" cy="112" rx="70" ry="18" fill="var(--clay)"/>${[[-30,0],[0,-4],[30,2],[-10,6],[18,8]].map(([a,b])=>`<circle cx="${170+a}" cy="${112+b}" r="3" fill="var(--pot)"/>`).join("")}</g><g transform="translate(280 50)"><path d="M-10 -10 h20 v-8 h-20 Z M-14 -10 h28 l4 60 h-36 Z" fill="var(--g3)" opacity=".8"/></g>${[0,1,2].map(i=>`<circle cx="${250-i*10}" cy="${64+i*6}" r="2" fill="var(--water)" class="a-fade" style="animation-delay:${i*.2}s"/>`).join("")}<g transform="translate(110 70)"><rect x="-20" y="-40" width="40" height="40" rx="4" fill="#d9b48a"/>${T(0,-16,"黏土","middle","s-sm")}</g></svg>`},
- {t:"種子球：包種子、搓圓",l:["取一小塊（約一顆彈珠大）壓扁","中間放 4 粒種子","包起來，在手心搓成直徑約 2.5 cm 的球","放進蛋盒，陰乾 2～3 天"],tip:"每顆大小要一樣，才符合控制變因；可以用量匙取一樣多的土。",
-  art:`<svg viewBox="0 0 340 200">${BALLDEF}<g transform="translate(70 110)"><ellipse rx="40" ry="14" fill="var(--clay)"/>${[[-10,-2],[0,-6],[10,-2],[0,4]].map(([a,b],i)=>SEED("sunf",a,b,.7,i*40)).join("")}</g>${T(70,160,"壓扁、放 4 粒","middle","s-sm")}<g class="a-roll2">${BALL(180,110,1.1)}</g>${T(180,160,"搓圓","middle","s-sm")}<rect x="236" y="100" width="90" height="40" rx="6" fill="#d9c7a3"/>${[0,1,2].map(i=>BALL(254+i*28,104,.55)).join("")}${T(281,160,"陰乾 2～3 天","middle","s-sm")}</svg>`}
+ {t:"蒐集種子",l:["到校園、公園撿掉在地上的種子和果實","至少 5 種，大小、形狀、顏色越多樣越好","夾鏈袋分裝，寫上地點、日期、植物名","不認識的先拍照，有毒的不要撿"],tip:"撿完一定要洗手；不要搖樹、不要摘還長在樹上的。",
+  art:`<svg viewBox="0 0 340 200"><path d="M40 20 Q 140 0 250 30" stroke="var(--wood)" stroke-width="8" fill="none" stroke-linecap="round"/>${[80,140,200].map((x,i)=>`<ellipse cx="${x}" cy="${36+i*2}" rx="26" ry="12" fill="var(--leaf)" opacity=".8"/>`).join("")}<g class="a-fall" style="animation-duration:3.4s">${WILD("acorn",150,40,1.4,30)}</g><g class="a-fall" style="animation-duration:4s;animation-delay:1s">${WILD("lantern",210,40,1.4)}</g><path d="M20 176 H320" stroke="var(--soil)" stroke-width="6"/>${WILD("gum",70,166,1.2)}${WILD("acorn",110,168,1,80)}${WILD("term",250,168,1)}<g transform="translate(290 120)"><path d="M-24 -30 h48 l-4 54 h-40 Z" fill="var(--film)" opacity=".5" stroke="var(--water)" stroke-width="2"/><rect x="-18" y="-24" width="36" height="14" fill="#fff" stroke="var(--muted)"/>${T(0,-13,"校園","middle","s-sm")}${WILD("soap",-6,6,1)}${WILD("acorn",8,12,.8,60)}</g></svg>`},
+ {t:"刷洗、泡水挑選",l:["用舊牙刷刷掉泥土","泡水 10 分鐘","浮起來的橡實多半被蟲蛀或空心 → 不要用","有小洞、發霉、裂開的也挑掉"],tip:"殼斗（橡實帽子）容易掉，先另外收起來，之後再黏回去。",
+  art:`<svg viewBox="0 0 340 200"><path d="M80 50 L90 180 L250 180 L260 50 Z" fill="var(--water)" opacity=".35" stroke="var(--water)" stroke-width="2.4"/>${WILD("acorn",130,160,1.8,90)}${WILD("acorn",170,164,1.8,80)}${WILD("soap",210,162,1.6)}<g class="a-up" style="animation-duration:3s">${WILD("acorn",200,78,1.8,100)}</g><circle cx="206" cy="72" r="3" fill="#2a1a10"/>${T(300,80,"浮起來","middle","s-txt")}${T(300,98,"＝蟲蛀、空心","middle","s-sm")}${T(300,168,"沉下去 ✓","middle","s-txt")}</svg>`},
+ {t:"冷凍或烘烤",l:["裝袋冷凍 2～3 天，殺死裡面的蟲卵","或交給老師用烤箱低溫烘烤","烘烤由老師操作，學生不碰烤箱","拿出來後攤開陰乾 2～3 天，乾透才用"],tip:"沒處理的橡實，幾週後可能鑽出象鼻蟲，在作品上留下小洞和粉末。",
+  art:`<svg viewBox="0 0 340 200"><rect x="40" y="20" width="110" height="160" rx="10" fill="#dbe9f2" stroke="var(--metal)" stroke-width="3"/><path d="M40 76 h110" stroke="var(--metal)" stroke-width="3"/><rect x="134" y="30" width="6" height="30" rx="3" fill="var(--metal)"/><rect x="56" y="104" width="78" height="56" rx="8" fill="var(--film)" opacity=".5" stroke="var(--water)"/>${WILD("acorn",76,132,1.2,90)}${WILD("gum",108,134,1)}<g transform="translate(95 48)"><g class="a-spin" style="animation-duration:6s"><path d="M-12 0 h24 M0 -12 v24 M-8 -8 l16 16 M-8 8 l16 -16" stroke="#5aa3d9" stroke-width="2.4"/></g></g>${T(95,196,"冷凍 2～3 天","middle","s-sm")}${T(180,104,"或","middle","s-txt")}<rect x="200" y="56" width="120" height="90" rx="8" fill="var(--metal)"/><rect x="210" y="68" width="78" height="66" rx="4" fill="#2b3036"/><rect x="210" y="68" width="78" height="66" rx="4" fill="#f2a64a" opacity=".3" class="a-fade"/>${WILD("acorn",232,104,1,90)}${WILD("soap",262,104,1)}<circle cx="304" cy="80" r="5" fill="#ddd"/><circle cx="304" cy="100" r="5" fill="#ddd"/>${T(260,170,"老師低溫烘烤","middle","s-sm")}</svg>`},
+ {t:"試擺、決定主題",l:["把種子倒在木片旁邊，玩玩看","哪顆當頭？哪顆當身體？誰戴帽子？","想一個主題：一家人、樂團、排隊上學…","擺好拍照，等一下照著黏"],tip:"高的放後面、矮的放前面；大小交錯，畫面才有層次。",
+  art:`<svg viewBox="0 0 340 200">${SLICE(170,130,130,40)}<g class="a-place">${WILD("cone",120,104,2,0)}</g>${WILD("acorn",170,110,2.2)}${WILD("soap",218,124,1.8)}${WILD("melia",130,144,1.8)}${WILD("camph",196,150,2.4)}<g transform="translate(296 40)"><rect x="-26" y="-18" width="52" height="40" rx="6" fill="var(--ink)"/><circle r="10" fill="#555" stroke="#ddd" stroke-width="2"/><rect x="10" y="-24" width="10" height="6" rx="2" fill="var(--ink)"/></g><path d="M60 60 L120 60 M70 40 v40" stroke="var(--g1)" stroke-width="2" stroke-dasharray="4 4" class="a-fade"/>${T(60,30,"後面高","middle","s-sm")}${T(60,186,"前面矮","middle","s-sm")}</svg>`},
+ {t:"黏眼睛",l:["用牙籤沾一點保麗龍膠，點在眼睛背面","鑷子夾起，貼到種子上","兩眼高度要一樣；位置不同，表情就不同","等膠乾再動（約 10 分鐘）"],tip:"活動眼睛的背面是平的，用保麗龍膠或白膠比熱熔膠好控制、不會溢出。",
+  art:`<svg viewBox="0 0 340 200">${WILD("acorn",150,110,5)}${EYE(134,100,10)}<g class="a-place">${EYE(166,100,10,.4,0)}</g><g transform="translate(250 60)"><path d="M0 0 L-62 36 M6 8 L-58 40" stroke="var(--metal)" stroke-width="3"/></g><g transform="translate(60 160)"><path d="M0 0 L40 -30" stroke="var(--wood)" stroke-width="3"/><circle cx="40" cy="-30" r="3" fill="#fff" stroke="var(--muted)"/></g>${T(270,150,"點一點膠","middle","s-sm")}${T(270,168,"鑷子夾","middle","s-sm")}</svg>`},
+ {t:"組合角色",l:["用低溫熱熔膠黏殼斗帽子、翅膀、手腳","膠擠一小點就好，馬上黏、壓 10 秒","大的部件先黏，小配件最後","熱膠拉絲用手指捏掉前，先等它冷卻"],tip:"熱熔膠槍噴嘴很燙！不用時立在架子上，桌面墊矽膠墊。",
+  art:`<svg viewBox="0 0 340 200"><rect x="40" y="170" width="260" height="10" rx="3" fill="var(--g4)" opacity=".6"/>${WILD("soap",150,130,3.4)}${EYES(150,124,7,1.5)}<g class="a-place">${WILD("cup",150,98,2.8)}</g>${WILD("wing",108,118,1.3,-70)}${WILD("wing",192,118,1.3,70)}<g transform="translate(270 70) rotate(-20)"><g class="a-tap">${GUN(1.2)}</g></g><g class="a-drop"><circle cx="232" cy="84" r="3" fill="#f4f0e2" stroke="var(--muted)"/></g></svg>`},
+ {t:"固定到木頭底座",l:["照著試擺的照片，從後面高的開始黏","底部接觸面積小的（圓的）多擠一點膠","前面矮的、小的最後放","每黏一個輕輕推推看，確認黏牢"],tip:"圓圓的種子容易滾：先擠一圈膠，等 2～3 秒稍微變稠再放上去。",
+  art:`<svg viewBox="0 0 340 200">${SLICE(170,140,130,40)}${SPRITE("cone",110,104,2.4)}${SPRITE("acorn",170,110,2.4,{dx:.4,mouth:true})}<g class="a-place">${SPRITE("soap",226,128,2)}</g>${SPRITE("melia",136,154,1.8,{dx:.5})}${SPRITE("camph",200,160,2.4)}<ellipse cx="226" cy="146" rx="12" ry="4" fill="#f4f0e2" opacity=".8"/></svg>`},
+ {t:"加名片夾或名牌",l:["要做名片夾：在底座後方黏小木夾、鋁線螺旋或長尾夾","夾子要立直，膠多擠一點、壓 30 秒","放一張名片試試看會不會倒","做桌面裝飾：可以改放作品名牌"],tip:"名片夾一定要放在後面，名片才不會擋住前面的小精靈。",
+  art:`<svg viewBox="0 0 340 200">${SLICE(170,140,130,40)}<g transform="translate(220 108)"><rect x="-8" y="-40" width="16" height="44" rx="2" fill="#e8c88a" stroke="#b8945a"/><path d="M-8 -20 h16" stroke="var(--metal)" stroke-width="3"/><g class="a-place"><rect x="-40" y="-90" width="80" height="50" rx="3" fill="#fff" stroke="var(--muted)"/>${T(0,-70,"王小明","middle","s-txt")}${T(0,-54,"園藝科","middle","s-sm")}</g></g>${SPRITE("acorn",130,124,2.4,{dx:.6,mouth:true})}${SPRITE("soap",170,148,1.8,{dx:.5})}</svg>`},
+ {t:"修飾、保護、寫名字",l:["用油性筆畫嘴巴、腮紅（也可以不畫）","小樹枝、乾葉子當裝飾","老師在通風處噴一層透明亮光漆","底座背面寫上名字和日期"],tip:"亮光漆讓種子更亮、防潮；乾了以後再放名片。",
+  art:`<svg viewBox="0 0 340 200">${SLICE(150,140,120,38)}${WILD("twig",170,110,1.4,-6)}${SPRITE("acorn",120,118,2.4,{dx:.4,mouth:true})}${SPRITE("gum",170,124,1.8,{dy:-.5})}${SPRITE("soap",200,146,1.8,{dx:-.5})}<ellipse cx="108" cy="126" rx="5" ry="3" fill="#f08a9a" opacity=".7"/><ellipse cx="132" cy="126" rx="5" ry="3" fill="#f08a9a" opacity=".7"/><g transform="translate(296 60) rotate(-30)"><rect x="-12" y="-8" width="24" height="60" rx="7" fill="var(--g3)"/><rect x="-5" y="-18" width="10" height="10" fill="var(--metal)"/></g>${Array.from({length:8},(_,i)=>`<circle cx="${270-i*8}" cy="${70+(i%3)*8}" r="2" fill="#cfe3f2" class="a-fade" style="animation-delay:${(i*.12).toFixed(2)}s"/>`).join("")}</svg>`}
 ];
 
-/* ---------- 配方計算 ---------- */
-(function(){
-  const R=[[1,2,"1：2"],[2,3,"2：3"],[1,1,"1：1"],[3,2,"3：2"],[2,1,"2：1"]];
-  function calc(){
-    const n=parseInt($("bN").value,10), k=+$("bR").value, [c,s,lab]=R[k]; $("bRlab").textContent=lab;
-    if(!(n>0)){ ["bC","bS","bSeed","bW"].forEach(i=>$(i).textContent="─"); $("bSvg").innerHTML=""; $("bNote").textContent="請輸入顆數。"; return; }
-    const tot=n*9, cv=tot*c/(c+s), sv=tot-cv;
-    $("bC").textContent=Math.round(cv); $("bS").textContent=Math.round(sv); $("bSeed").textContent=n*4; $("bW").textContent=Math.round(cv*.5);
-    $("bNote").textContent=k===0?"土多：好搓，但乾了容易碎。":k===4?"黏土多：很堅固，但根比較難穿出來。":"";
-    const H=140, hc=H*c/(c+s);
-    $("bSvg").innerHTML=BALLDEF+`<path d="M60 30 L60 180 Q60 190 70 190 L170 190 Q180 190 180 180 L180 30" fill="none" stroke="var(--muted)" stroke-width="3"/>
-      <rect x="63" y="${187-H}" width="114" height="${(H-hc).toFixed(1)}" fill="var(--pot)" opacity=".85"/>
-      <rect x="63" y="${(187-hc).toFixed(1)}" width="114" height="${hc.toFixed(1)}" fill="var(--clay)"/>
-      ${T(186,(187-hc/2+4).toFixed(1),"黏土 "+Math.round(cv),"start","s-sm")}${T(186,(187-H+(H-hc)/2+4).toFixed(1),"培養土 "+Math.round(sv),"start","s-sm")}
-      ${T(120,20,"共約 "+tot+" mL → "+n+" 顆","middle","s-txt")}${BALL(262,60,.9)}`;
-  }
-  $("bN").oninput=calc; $("bR").oninput=calc; calc();
-})();
-
-/* ---------- 分組設計 ---------- */
-fill("designSvg",(()=>{
-  const C=["1：2","1：1","2：1","直接撒"];
-  const G=[["第 1 組","小白菜","millet"],["第 2 組","萵苣","sesw"],["第 3 組","波斯菊","sesb"],["第 4 組","向日葵","sunf"]];
-  let s=BALLDEF;
-  C.forEach((c,j)=>{ s+=T(250+j*110,24,c,"middle","s-txt"); });
-  s+=T(250,40,"土多","middle","s-sm")+T(470,40,"黏土多","middle","s-sm")+T(580,40,"對照","middle","s-sm");
-  G.forEach((g,i)=>{ const y=78+i*54;
-    s+=`<rect x="10" y="${y-24}" width="620" height="48" rx="8" fill="${i%2?"var(--bg)":"var(--paper)"}" stroke="var(--line)"/>`;
-    s+=SEED(g[2],40,y,g[2]==="sunf"?1.4:2.4)+T(66,y-2,g[0],"start","s-txt")+T(66,y+14,g[1],"start","s-sm");
-    [0,1,2].forEach(j=>{ const x=250+j*110; [-24,0,24].forEach(d=>{ s+=`<g transform="translate(${x+d} ${y})"><circle r="10" fill="var(--clay)" opacity="${.55+j*.2}"/><circle r="10" fill="var(--pot)" opacity="${.45-j*.2}"/></g>`; }); });
-    s+=`<ellipse cx="580" cy="${y+4}" rx="36" ry="10" fill="var(--pot)" opacity=".6"/>`+[0,1,2,3].map(d=>SEED(g[2],562+d*12,y+2,g[2]==="sunf"?.6:1)).join("");
-  });
-  s+=T(320,292,"每種比例做 6 顆：落下 2、泡水 1、發芽 3","middle","s-sm");
-  return s;
-})());
-fill("testSvg",(()=>{
-  let s=BALLDEF+ARROWDEF("art");
-  s+=`<path d="M60 20 V180" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4 4"/><path d="M54 20 h12 M54 180 h12" stroke="var(--muted)" stroke-width="1.5"/>${T(50,104,"1 m","end","s-sm")}<g class="a-slide" style="animation-duration:1.6s">${BALL(110,100,.8)}</g><rect x="70" y="180" width="100" height="10" fill="var(--metal)"/>${T(110,212,"① 落下測試","middle","s-txt")}`;
-  s+=`<path d="M280 70 L288 180 L372 180 L380 70" fill="var(--sea)" opacity=".3" stroke="var(--sea)" stroke-width="2.4"/>${BALL(330,150,.9,{cls:"a-fadeout"})}<g class="a-appear"><ellipse cx="330" cy="172" rx="34" ry="8" fill="var(--clay)" opacity=".8"/>${SEED("sunf",320,166,.8,40)}${SEED("sunf",340,168,.8,-30)}</g><g transform="translate(410 70)"><circle r="20" fill="var(--paper)" stroke="var(--accent)" stroke-width="3"/><g class="a-rot" style="animation-duration:3s"><path d="M0 0 V-14" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round"/></g></g>${T(330,212,"② 泡水測試","middle","s-txt")}`;
-  s+=`<rect x="480" y="140" width="140" height="40" rx="6" fill="var(--pot)"/>${[0,1,2].map(i=>BALL(510+i*40,138,.55,{flat:true})+SPROUT(510+i*40,132,.7)).join("")}<g transform="translate(600 70) rotate(-20)"><rect x="-10" y="-20" width="20" height="40" rx="5" fill="var(--g3)" opacity=".8"/></g>${[0,1,2].map(i=>`<circle cx="${580-i*10}" cy="${96+i*6}" r="2" fill="var(--water)" class="a-fade" style="animation-delay:${i*.3}s"/>`).join("")}${T(550,212,"③ 發芽測試","middle","s-txt")}`;
+/* ---------- 名片夾 ---------- */
+fill("holderSvg",(()=>{
+  let s="";
+  const X=[110,320,530];
+  X.forEach((x)=>{ s+=SLICE(x,170,90,26); });
+  // 1 clothespin
+  s+=`<g transform="translate(${X[0]+30} 140)"><rect x="-7" y="-50" width="14" height="54" rx="2" fill="#e8c88a" stroke="#b8945a"/><path d="M-7 -24 h14" stroke="var(--metal)" stroke-width="3"/><rect x="-38" y="-104" width="76" height="54" rx="3" fill="#fff" stroke="var(--muted)"/></g>${SPRITE("acorn",X[0]-30,150,2,{dx:.6})}`;
+  // 2 wire spiral
+  s+=`<g transform="translate(${X[1]+20} 160)"><path d="M0 0 V-60" stroke="#b9c2c9" stroke-width="3"/>${[0,1,2].map(i=>`<ellipse cx="0" cy="${-64-i*6}" rx="${14-i*3}" ry="4" fill="none" stroke="#b9c2c9" stroke-width="3"/>`).join("")}<rect x="-38" y="-130" width="76" height="54" rx="3" fill="#fff" stroke="var(--muted)" transform="rotate(4)"/>${WILD("acorn",0,-6,1)}</g>${SPRITE("soap",X[1]-36,154,2,{dx:.5})}`;
+  // 3 sprite holds card
+  s+=`<g transform="translate(${X[2]} 120)"><rect x="-38" y="-70" width="76" height="54" rx="3" fill="#fff" stroke="var(--muted)"/><rect x="-10" y="-24" width="20" height="14" fill="#2b2b2b"/>${WILD("cone",0,14,3)}${EYES(0,6,6,1.5,0,-.3)}<path d="M-34 14 L-14 -8 M34 14 L14 -8" stroke="var(--wood)" stroke-width="4" stroke-linecap="round"/></g>`;
+  s+=T(X[0],214,"① 小木夾","middle","s-txt")+T(X[1],214,"② 鋁線螺旋","middle","s-txt")+T(X[2],214,"③ 小精靈拿名片","middle","s-txt");
   return s;
 })());
 
-/* ---------- 傳播方式判斷 ---------- */
-const READY_OPTS=["風","動物","水","彈射"];
+/* ---------- 作品卡 ---------- */
+fill("cardSvg",`<rect x="20" y="10" width="300" height="200" rx="10" fill="#fbf7ee" stroke="var(--cardline)" stroke-width="2"/><rect x="20" y="10" width="300" height="40" rx="10" fill="var(--accent)"/><text x="170" y="36" text-anchor="middle" style="fill:var(--accent-ink);font-size:17px;font-weight:900;font-family:var(--f)">《橡實一家去野餐》</text>
+  ${T(36,72,"作者：＿＿＿＿　用途：桌面裝飾","start","s-sm")}${T(36,98,"角色：戴帽子的是橡實爸爸…","start","s-sm")}${T(36,124,"種子：青剛櫟、無患子、楓香、樟樹","start","s-sm")}${T(36,150,"最喜歡：楓香，刺刺的球果…","start","s-sm")}
+  <g transform="translate(270 168)">${SPRITE("acorn",0,0,1.4,{dx:-.4,mouth:true})}${SPRITE("soap",26,8,1.1,{dx:-.6})}</g>`);
+
+/* ---------- 畫廊走讀 ---------- */
+fill("gallerySvg",(()=>{
+  let s="";
+  [110,320,530].forEach((x,i)=>{ s+=`<rect x="${x-90}" y="110" width="180" height="16" rx="4" fill="var(--wood)"/><path d="M${x-80} 126 v50 M${x+80} 126 v50" stroke="var(--wood)" stroke-width="6"/>`+SLICE(x-20,100,40,12)+SPRITE(["acorn","soap","cone"][i],x-26,86,1.6,{dx:(i-1)*.5})+SPRITE(["gum","melia","acorn"][i],x-6,94,1.2)+`<rect x="${x+30}" y="84" width="40" height="26" rx="2" fill="#fff" stroke="var(--muted)"/>`;
+    s+=[0,1].map(j=>`<rect x="${x-80+j*30}" y="${40-j*8}" width="24" height="22" rx="2" fill="${["#fff8b0","#ffd0e0"][j]}" stroke="#d9c96a" transform="rotate(${j?6:-6} ${x-68+j*30} ${50})"/>`).join(""); });
+  s+=`<g class="a-crawl" style="animation-duration:6s"><g transform="translate(220 150)"><circle cy="-30" r="10" fill="var(--g3)"/><rect x="-10" y="-20" width="20" height="30" rx="6" fill="var(--g3)"/><rect x="10" y="-18" width="12" height="10" fill="#fff8b0"/></g></g>`;
+  s+=`<g class="a-crawl" style="animation-duration:7s;animation-delay:1s"><g transform="translate(430 150)"><circle cy="-30" r="10" fill="var(--g4)"/><rect x="-10" y="-20" width="20" height="30" rx="6" fill="var(--g4)"/></g></g>`;
+  s+=T(320,196,"每人 3 張便利貼：我最喜歡…因為…","middle","s-sm");
+  return s;
+})());
+
+/* ---------- 可以撿嗎 ---------- */
+const READY_OPTS=["可以撿","不要撿"];
 const READY=[
- ["蒲公英：種子上有一團白色的毛",0,"冠毛像降落傘，被風吹到遠方。"],
- ["鬼針草：種子尖端有倒刺",1,"倒刺會勾在動物的毛或人的褲管上。"],
- ["椰子：外殼厚、纖維多、很輕",2,"纖維殼裡有空氣，能浮在海上漂流。"],
- ["鳳仙花：果實一碰就裂開",3,"果皮乾燥收縮，裂開時把種子彈出去。"],
- ["槭樹：種子長了一片翅膀",0,"翅果掉落時會旋轉，被風帶到遠處。"],
- ["芒果：果肉香甜，種子很大",1,"動物吃果肉，把種子帶走、丟到別處。"],
- ["大豆：豆莢曬乾後劈啪裂開",3,"豆莢乾燥時扭轉裂開，把豆子彈出去。"],
- ["蒼耳：果實表面都是鉤刺",1,"鉤刺黏在動物身上被帶走。"]
+ ["校園地上完整的青剛櫟橡實",0,"地上掉落的、完整的，可以撿。回來記得泡水挑選、冷凍。"],
+ ["有一個小圓洞的橡實",1,"小洞是象鼻蟲鑽出來的洞，裡面多半被吃空了。"],
+ ["紅色、一端有黑點的亮亮小豆子",1,"這是雞母珠，種子有劇毒，不能撿也不能玩。"],
+ ["公園地上的楓香球果",0,"可以，刺刺的形狀很適合當刺蝟或頭髮。戴手套撿。"],
+ ["爬進別人家院子摘的果實",1,"私人土地的植物不能隨便採，也不要摘樹上的。"],
+ ["海邊撿到、像小芒果的綠色果實",1,"可能是海檬果，全株有毒，不要撿。"],
+ ["台灣欒樹掉下來的燈籠果",0,"可以，粉紅褐色的燈籠很漂亮，裡面還有黑色種子。"],
+ ["長了白毛、軟軟的果實",1,"已經發霉了，會把霉帶進作品。"]
 ];
 
-/* ---------- 種子球實驗室 ---------- */
-function renderBall(){
-  const v=+$("mRange").value/2; $("mNum").textContent=v%1?v.toFixed(1):v;
-  let t,w,col,crack=false,sprout=1;
-  if(v===0){ t="沒有黏土：搓不成球"; w="培養土沒有黏性，一放手就散開，種子會被鳥吃、被風吹走。"; col="var(--bad)"; crack=true; sprout=1; }
-  else if(v<1){ t="偏鬆：容易碎"; w="好搓、發芽快，但乾了以後一摔就碎，撒到戶外保護不了種子。"; col="var(--g1)"; crack=true; sprout=1; }
-  else if(v<=2){ t="剛剛好"; w="乾了夠堅固，下雨時又能吸水軟化，根和芽穿得出來。"; col="var(--ok)"; sprout=1; }
-  else if(v<=3){ t="偏硬"; w="很堅固，但吸水慢、軟化慢，發芽比較慢、比較少。"; col="var(--g1)"; sprout=.6; }
-  else { t="太硬：發芽困難"; w="黏土太多，乾了像磚塊，水進不去、根穿不出來，小顆種子特別吃虧。"; col="var(--bad)"; sprout=.25; }
-  $("mVerdict").textContent=t; $("mVerdict").style.color=col; $("mWhy").textContent=w;
-  $("mSvg").innerHTML=BALLDEF+`<rect x="20" y="160" width="110" height="10" fill="var(--metal)"/>${crack?`<g><circle cx="60" cy="150" r="10" fill="var(--clay)"/><circle cx="84" cy="154" r="7" fill="var(--pot)"/><circle cx="46" cy="156" r="5" fill="var(--clay)"/><circle cx="96" cy="156" r="4" fill="var(--pot)"/></g>`:BALL(75,140,.9)}${T(75,192,crack?"碎掉了":"完整","middle","s-txt")}
-    <ellipse cx="225" cy="164" rx="56" ry="12" fill="var(--pot)" opacity=".6"/>${BALL(225,150,.8,{flat:true})}${sprout>=1?SPROUT(210,140,1)+SPROUT(240,140,.9):sprout>=.5?SPROUT(225,140,.8):`<g opacity=".7">${SPROUT(225,146,.4)}</g>`}${[0,1,2].map(i=>`<path d="M${200+i*20} 30 l-4 12" stroke="var(--sea)" stroke-width="2.4" class="a-drop" style="animation-delay:${i*.3}s"/>`).join("")}${T(225,192,sprout>=1?"發芽順利":sprout>=.5?"發芽較慢":"幾乎不發芽","middle","s-txt")}`;
-}
-$("mRange").oninput=renderBall; renderBall();
+/* ---------- 表情實驗室 ---------- */
+(function(){
+  const PY=["高","中間","低"], PG=["靠近","剛好","分開"], PL=[["往左看",-1,0],["往上看",0,-1],["看前面",0,0],["往下看",0,1],["往右看",1,0]];
+  const NAME=[["嚴肅的老師","穩重的大哥","悠哉的大叔"],["認真的學生","親切的好朋友","呆萌的同學"],["緊張的小寶寶","可愛的小寶寶","天然呆小寶寶"]];
+  const WHY=["眼睛高、額頭小 → 看起來比較成熟。","眼睛在中間 → 自然、普通的表情。","眼睛低、額頭大 → 像小寶寶，最可愛（卡通常用）。"];
+  const GW=["兩眼靠近 → 看起來專心、有點緊張。","",""+"兩眼分開 → 看起來呆呆的、很放鬆。"];
+  const LW={往左看:"往旁邊看：像在偷看朋友，兩隻小精靈可以互相看對方。",往上看:"往上看：在想事情、做白日夢。",看前面:"看前面：直直看著你，最有存在感。",往下看:"往下看：害羞、在找東西。",往右看:"往旁邊看：像在偷看朋友，兩隻小精靈可以互相看對方。"};
+  function draw(){
+    const y=+$("eyY").value, g=+$("eyG").value, l=+$("eyL").value, L=PL[l];
+    $("eyYlab").textContent=PY[y]; $("eyGlab").textContent=PG[g]; $("eyLlab").textContent=L[0];
+    $("eyV").textContent=NAME[y][g]; $("eyV").style.color="var(--accent)";
+    $("eyW").textContent=[WHY[y],GW[g],LW[L[0]]].filter(Boolean).join("");
+    const ey=[-10,6,20][y], gap=[1.25,1.6,2.2][g];
+    $("eySvg").innerHTML=SLICE(150,196,110,20)+`<g transform="translate(150 104)">${WILD("acorn",0,0,4.8)}${EYES(0,ey,13,gap,L[1],L[2])}<path d="M-8 ${ey+30} q8 6 16 0" stroke="#3a1a10" stroke-width="3" fill="none"/></g>`;
+  }
+  ["eyY","eyG","eyL"].forEach(i=>$(i).oninput=draw); draw();
+})();
 
 /* ---------- 診斷卡 ---------- */
 const CASES=[
- ["種子畫的種子一直掉下來","白膠太少、已經乾了，或種子太大顆、太圓","一次只塗一小塊；大顆種子底下多點一點膠；平放陰乾"],
- ["作品放了幾個月長小蟲","種子裡有蟲卵，沒有先冷凍","創作前冷凍 2～3 天；完成後噴亮光漆；放乾燥處"],
- ["白膠痕跡白白的很明顯","膠塗太厚，或還沒乾","塗薄一點；白膠乾了會變透明，等 24 小時再看"],
- ["種子球一搓就裂開","太乾，或黏土太少","噴一點水再揉；增加黏土比例"],
- ["種子球黏手、像泥巴","水加太多","加一點黏土粉和培養土調回來；下次噴水要慢"],
- ["種子球發霉","太濕、陰乾時不通風","放在通風處陰乾，蛋盒底部可以戳洞"],
- ["種子球都不發芽","黏土太多太硬、種子放太深，或沒有持續保濕","調整比例；種子放中間就好；發芽測試每天噴水"]
+ ["活動眼睛一直掉下來","膠太少、種子表面太滑或有灰塵、還沒乾就去碰","擦乾淨再黏；點保麗龍膠後等 1～2 分鐘稍微變黏再貼；乾 10 分鐘再動"],
+ ["熱熔膠拉出一堆細絲","拉開膠槍太快","黏完把膠槍往旁邊轉一下再拿開；細絲等冷了再用手撥掉"],
+ ["作品出現小洞和粉末","種子裡有蟲（多半是橡實的象鼻蟲）","有洞的那顆拆掉換新；之後的種子一定要先冷凍或烘烤"],
+ ["種子長出白毛、發霉","種子沒乾透，或放在潮濕的地方","發霉的拿掉；處理後陰乾 2～3 天；噴亮光漆、放通風處"],
+ ["小精靈一直滾走、站不穩","圓的種子和底座接觸面太小","擠一圈膠、等稍微變稠再放；或在底下墊一小片殼斗、小樹枝撐住"],
+ ["名片一放就倒","夾子沒有立直、膠太少，或放太前面","夾子底部多擠膠、壓 30 秒；移到底座後方中間"],
+ ["被熱熔膠燙到","碰到熱膠或噴嘴","立刻用冷水沖 10 分鐘以上，不要剝掉黏在皮膚上的膠，告訴老師"]
 ];
 
 /* ---------- 小測驗 ---------- */
 const QS=[
+ {q:"撿種子時，下列哪一個做法正確？",o:["撿掉在地上的，不搖樹、不摘","爬樹摘最新鮮的","到別人家院子撿","越多越好，整棵樹搖下來"],a:0,why:"只撿地上掉落的，並且只在校園、公園等可以撿的地方。"},
+ {q:"紅色、一端有黑點的亮亮小豆子是雞母珠，應該怎麼辦？",o:["不要撿，它有劇毒","撿回來當眼睛","放進嘴巴試試看","磨成粉當顏料"],a:0,why:"雞母珠（相思子）種子有劇毒，不能撿也不能玩。"},
+ {q:"橡實泡水時浮起來，通常代表什麼？",o:["被蟲蛀了或空心","特別新鮮","比較重","可以吃"],a:0,why:"裡面被象鼻蟲幼蟲吃空，比較輕，所以會浮起來。"},
+ {q:"撿回來的種子為什麼要冷凍 2～3 天？",o:["殺死裡面的蟲卵","讓種子變硬好黏","讓顏色變深","讓種子發芽"],a:0,why:"冷凍（或老師低溫烘烤）可以殺死蟲卵，作品才不會長蟲。"},
+ {q:"處理完的種子要完全乾燥，主要是為了防止什麼？",o:["發霉","變色變漂亮","太輕","太硬"],a:0,why:"種子沒乾透，放在作品裡容易發霉。"},
+ {q:"橡實上面那頂「帽子」叫什麼？",o:["殼斗","種臍","胚乳","花萼"],a:0,why:"殼斗是殼斗科植物（如青剛櫟）包住果實的構造。"},
  {q:"種子裡將來會長成「根」的部分是？",o:["胚根","胚芽","子葉","種皮"],a:0,why:"胚根長成根；胚芽長成莖和葉。"},
- {q:"菜豆（雙子葉植物）的養分主要存在哪裡？",o:["子葉","胚乳","種皮","種臍"],a:0,why:"豆類的兩片子葉肥厚，儲存發芽需要的養分。"},
- {q:"玉米（單子葉植物）的養分主要存在哪裡？",o:["胚乳","子葉","種皮","胚根"],a:0,why:"玉米、稻的養分存在胚乳，子葉只有一片。"},
- {q:"豆子上那個小疤痕叫什麼？",o:["種臍","胚芽","環帶","果皮"],a:0,why:"種臍是種子原本連在豆莢上的地方。"},
- {q:"種子發芽需要哪三個條件？",o:["水分、適當溫度、空氣","陽光、肥料、土壤","水、糖、鹽","黑暗、冰冷、乾燥"],a:0,why:"多數種子發芽只需要水分、適當溫度和空氣；陽光是長出葉子之後才需要。"},
- {q:"蒲公英的種子靠什麼傳播？",o:["風","水","動物","彈射"],a:0,why:"冠毛像降落傘，被風吹走。"},
- {q:"鬼針草的種子靠什麼傳播？",o:["動物（黏在毛上）","風","水","彈射"],a:0,why:"種子有倒刺，勾在動物的毛或衣服上。"},
- {q:"下列哪一種種子有劇毒，不能拿來做種子畫？",o:["雞母珠（紅黑色的相思子）","紅豆","綠豆","玉米"],a:0,why:"雞母珠和蓖麻子都有劇毒，不能用。"},
- {q:"做種子畫之前，豆類、米類為什麼要先冷凍 2～3 天？",o:["殺死種子裡的蟲卵","讓種子變硬比較好黏","讓顏色變深","讓種子發芽"],a:0,why:"冷凍可以殺死看不見的蟲卵，作品才不會長蟲。"},
- {q:"排種子畫時，通常先排哪裡？",o:["外框輪廓","背景","正中間","隨便都可以"],a:0,why:"先排外框，輪廓才清楚，再往裡面填滿，背景最後做。"},
- {q:"種子球外層的黏土有什麼作用？",o:["保護種子不被鳥吃、不被風吹走","提供陽光","讓種子更快長大","讓種子變甜"],a:0,why:"黏土把種子包住，乾了變硬，下雨時才軟化讓種子發芽。"},
- {q:"種子球的黏土放太多，會發生什麼事？",o:["太硬，吸水慢，根和芽難穿出來","一摔就碎","種子會被鳥吃掉","完全沒有影響"],a:0,why:"黏土太多像磚塊，發芽變慢、變少；太少則容易碎。"},
- {q:"每顆種子球放 4 粒種子，做了 3 顆，共發芽 9 粒，發芽率是？",o:["75%","90%","30%","12%"],a:0,why:"9 ÷（3 × 4）＝ 9 ÷ 12 ＝ 75%。"},
- {q:"種子球分組試驗中，「直接撒種子」那一組的角色是？",o:["對照組","操作變因","應變變因","失敗組"],a:0,why:"用來比較：包成種子球後，發芽率比直接撒多了還是少了。"},
- {q:"上過白膠、亮光漆的種子作品，下列何者正確？",o:["不能再拿來吃","洗一洗就可以煮","可以直接吃","可以拿來播種"],a:0,why:"種子沾了膠和漆，不能再食用。"}
+ {q:"豆類（雙子葉植物）的養分主要存在哪裡？",o:["子葉","胚乳","種皮","殼斗"],a:0,why:"豆類兩片肥厚的子葉儲存發芽需要的養分。"},
+ {q:"大葉桃花心木的種子有一片「翅膀」，它主要靠什麼傳播？",o:["風","水","動物","彈射"],a:0,why:"翅狀種子掉落時會旋轉，被風帶到遠方。"},
+ {q:"松鼠把橡實搬走藏起來，忘了吃，這是哪一種傳播方式？",o:["動物","風","水","彈射"],a:0,why:"動物搬運、儲藏或吃下果實，幫種子到新地方。"},
+ {q:"欖仁的果實扁扁的、有纖維和空氣，主要靠什麼傳播？",o:["水","風","彈射","動物黏附"],a:0,why:"欖仁果實能浮在水上漂流，常見於海邊。"},
+ {q:"想讓小精靈看起來像「可愛的小寶寶」，眼睛應該怎麼放？",o:["放低一點，額頭留大一點","放在最高的地方","只黏一隻","黏在背面"],a:0,why:"眼睛低、額頭大，是卡通常用的可愛比例。"},
+ {q:"黏活動眼睛，最適合用哪一種膠？",o:["保麗龍膠或白膠，點一點","大量熱熔膠","膠帶","口紅膠塗滿"],a:0,why:"眼睛小又平，用一點保麗龍膠或白膠比較好控制、不會溢出來。"},
+ {q:"不小心被熱熔膠燙到，第一步要做什麼？",o:["立刻用冷水沖 10 分鐘以上","馬上把膠剝掉","塗牙膏","不用理它"],a:0,why:"先沖冷水降溫，不要硬剝黏在皮膚上的膠，再告訴老師。"},
+ {q:"做名片夾時，夾子應該放在底座的哪裡？",o:["後方","最前面","底下","側面倒著放"],a:0,why:"放在後方，名片才不會擋住前面的小精靈。"}
 ];
-const KEY="agri-seed-quiz-115-1";
-const MASTER="種子";
+const KEY="agri-seed-sprite-quiz-115-1";
+const MASTER="種子小精靈";
 
 
 /* ---------- 分頁 ---------- */
@@ -937,7 +1030,7 @@ function renderStep(){
   $("sList").innerHTML=s.l.map(x=>`<li>${x}</li>`).join("");
   $("sTip").innerHTML=`<b>小提醒：</b>${s.tip}`;
   $("sPrev").disabled=sIdx===0;
-  $("sNext").textContent=sIdx===STEPS.length-1?"分組試驗 →":"下一步 →";
+  $("sNext").textContent=sIdx===STEPS.length-1?(typeof NEXT3!=="undefined"?NEXT3:"分組試驗")+" →":"下一步 →";
 }
 $("sPrev").onclick=()=>{ if(sIdx>0){sIdx--; renderStep();} };
 $("sNext").onclick=()=>{ if(sIdx===STEPS.length-1){ show("t3"); return; } sIdx++; seen.add(sIdx); renderStep(); };
