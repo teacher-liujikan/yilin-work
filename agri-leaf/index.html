@@ -425,6 +425,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
           <ul>
             <li>刷好的葉脈是<span class="key">褐色</span>的（色素、殘留葉肉）</li>
             <li>漂白水的主成分是<span class="key">次氯酸鈉</span>，會<span class="key">氧化</span>分解色素 → 變白</li>
+            <li>市售家用漂白水濃度約 <span class="key">5%</span>（看瓶身標示）；稀釋 1：5 → 約 <b>0.8%</b>，1：10 → 約 <b>0.5%</b></li>
             <li>要<span class="key">稀釋</span>再用；泡太久、太濃 → 葉脈變<span class="key">脆</span>、斷掉</li>
           </ul>
           <div class="warnbox"><b>千萬不要：</b>把漂白水和<b>酸性清潔劑</b>（潔廁劑、鹽酸）混在一起 → 產生有毒的<b>氯氣</b>。保持通風、戴手套；會讓衣服褪色。</div>
@@ -500,13 +501,15 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
       <div class="dil">
         <div>
           <label for="dTot">要泡多少稀釋液？（mL）</label><input type="number" id="dTot" value="600" min="50" step="50">
+          <label for="dC">漂白水原液濃度（%，看瓶身標示）</label><input type="number" id="dC" value="5" min="0.5" max="15" step="0.5">
           <label for="dN">漂白水 1 份 ＋ 水 <span id="dNlab">5</span> 份</label><input type="range" id="dN" min="3" max="12" value="5" aria-label="水的份數">
           <p style="margin-top:8px;font-size:20px">漂白水 <b class="bignum" id="dB" style="font-size:34px">100</b> mL ＋ 水 <b class="bignum" id="dW" style="font-size:34px">500</b> mL</p>
+          <p style="margin:4px 0 0;font-size:18px">稀釋後次氯酸鈉濃度約 <b class="bignum" id="dPct" style="font-size:30px">0.83</b> <b>%</b>（<span id="dPpm">8300</span> ppm）</p>
           <p class="ex" id="dNote"></p>
         </div>
         <figure><svg class="art" id="dSvg" viewBox="0 0 300 200" role="img" aria-label="量杯裡漂白水和水的比例"></svg></figure>
       </div>
-      <div class="note">算法：漂白水 ＝ 總量 ÷（1 ＋ 水的份數）。建議 1：5～1：10，泡 10～30 分鐘，每 5～10 分鐘看一次。</div>
+      <div class="note">算法：漂白水 ＝ 總量 ÷（1 ＋ 水的份數）；稀釋後濃度 ＝ 原液濃度 ÷（1 ＋ 水的份數）。市售家用漂白水次氯酸鈉約 <b>5%</b>，建議稀釋 1：5～1：10（約 <b>0.5～0.8%</b>），泡 10～30 分鐘，每 5～10 分鐘看一次。<br>參考：疾管署環境消毒用的漂白水是 0.1%（1：50）～0.5%（1：10），泡葉脈用的比消毒稍濃。</div>
     </div>
   </section>
 
@@ -641,7 +644,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
   <!-- ===== 5 小測驗 ===== -->
   <section class="panel" id="p5" hidden></section>
 
-  <footer>資料參考：富山縣綜合教育中心「葉脈標本の作り方」（氫氧化鈉約 10%、加熱不沸騰、適合葉種）、埼玉市 Science Navi、Science Insights「How to Make a Leaf Skeleton」（碳酸鈉法）。肥皂水濃度與煮沸時間為建議起點，請依實際器材先試做調整。</footer>
+  <footer>資料參考：富山縣綜合教育中心「葉脈標本の作り方」（氫氧化鈉約 10%、加熱不沸騰、適合葉種）、埼玉市 Science Navi、Science Insights「How to Make a Leaf Skeleton」（碳酸鈉法）、衛生福利部疾病管制署漂白水稀釋說明（市售家用漂白水次氯酸鈉約 5%）。肥皂水濃度與煮沸時間為建議起點，請依實際器材先試做調整。</footer>
 </div>
 
 <div class="overlay" id="overlay" hidden><div class="inner"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAADgUlEQVR4Xu1cW27bMBBcxgLyKQE5gI8i3yBHKnyk3sA6ig9QQP4MIGGLmSVlJR+W6FYpXe8gMGSHYFY72jedoJKD7iVntYj4+ttw/bh+5rjjebiEiIOM6epSSQihEukawRVRuT0u4g79Z+Ge/XdK2N9pdRA97gdR7fH2XOEzAG/v2j8H98ifg+fcPxrn5VX1GF5TSK4/QjhQeTBxu3pO/axHafqBz71iDNKC3fYcRLv3XqVrdn/q/7NQmn4eXZ7P/IqoXN4GMhLwo1LTLU949Pt9NvmN3y9FUrBIfBqr0J6rQaTGgov752WU+PzErFlEdmphtu13KgjHdkMd0+fG+V1GafyK5c6Gfsqk6ylhTtm14VSa/C7PbbyIWK2LDNkSZiRZ/Rik26tK26f61/PnNSjteYP9DqInM1Nc1Sx94Z8FLzUK43own+32u4RC+bXmBQiFwRqr6GrEF9INn+3+edkfZmHr5yHGX1otjJi2auaMzyy7Nvad3xXYmq/c/ZMvNg8c6Y4kmxGT7rjO7XcJufrfer3F3xmN8/grCMdXkj3+LmNrvnL3n/wz06h5VWQJFdk3n+3+eQVy9b/1+mi/U5hlrI3pNK9S6mxDJM+vHiy/Qn+StdBYsSsZRHZDEBmDdu/sSlaiGDLExvTWz5vvv9ivyEOKvzBOemBz0uQ82a/Xv6tR2vOZ4q/dAOpfBtxUFcX4mzod7p+XUBq/1p+82qoeG5a+apOGcLAhA3qWOMlRovxZKFD/WciV37i10Mtes9Rjxfk+p4L8hXYHvHDSn7u/r/+78TRXn/PmFBNmK4evDaup/uV0yfPnf8zXPfxGhxyjLjOtqSvJ/lUcPHh9tIxc/W+9fjYrSqXvvGsVu868L+d3BbbmK3f/yC9nRQbrVTGJnsZJ5Nz7kyuQq/+t138+v5GO5lj8naYKLId9/rsGW/OVu3/KrwCbFdENJ2qTEbMw9vi7jFz9f8f66dQVa12Uw3Gg/2EHKfWE+tfq5O+QJwcuz21M9e8OEXcMPPAMWoNI3WtofzaRZBGscH3eRun6SefrcBcwWHy/zOJv598vW4HS+P36/QULuGSVXUkbJ8FT84srxclfmj7LlCeN8WNqFX6oKg+064nUsvVMlCn/ejyb/CCOZkqH/IbRbzVI1/yqYK6Kt6LdXuGp4bSfTT+Pfr/B/z/DTTw6vy7//83vbzeXTfhjz5REAAAAAElFTkSuQmCC"><p>用平板或手機掃描，開始小測驗！</p><small>https://teacher-liujikan.github.io/yilin-work/agri-leaf/#quiz</small></div></div>
@@ -779,7 +782,7 @@ $("bleachSvg").innerHTML=`<rect x="30" y="70" width="280" height="110" rx="12" f
   ${SKEL(170,124,.8,90,"var(--skel)",{cls:"a-fadeout"})}${WHITE(170,124,.8,90,{cls:"a-appear"})}
   <g transform="translate(60 6)"><rect x="0" y="10" width="34" height="50" rx="6" fill="#fff" stroke="var(--muted)" stroke-width="2"/><rect x="9" y="0" width="16" height="12" rx="2" fill="var(--g3)"/><text x="17" y="40" text-anchor="middle" style="font-size:9px;font-weight:700;fill:#333;font-family:var(--f)">漂白水</text></g>
   <circle cx="77" cy="72" r="3" fill="var(--bleach)" stroke="var(--muted)" class="a-drop"/>
-  ${T(220,30,"漂白水 1 份＋水 5～10 份","middle","s-txt")}${T(220,50,"泡 10～30 分鐘","middle","s-sm")}${T(170,200,"褐色 → 白色","middle","s-sm")}`;
+  ${T(220,26,"漂白水 1 份＋水 5～10 份","middle","s-txt")}${T(220,44,"原液約 5% → 稀釋後約 0.5～0.8%","middle","s-sm")}${T(220,60,"泡 10～30 分鐘","middle","s-sm")}${T(170,200,"褐色 → 白色","middle","s-sm")}`;
 
 /* ---------- 挑葉子 ---------- */
 $("goodLeaves").innerHTML=LEAF(40,38,.5,0,"var(--leaf2)")+LEAF(105,38,.5,10,"#3f7f35")+LEAF(165,36,.52,-8,"var(--leaf2)")+`<rect x="208" y="4" width="44" height="82" rx="6" fill="var(--base)"/>`+SKEL(230,36,.42,0,"var(--skelw)");
@@ -811,11 +814,11 @@ const STEPS=[
    <g class="a-walk"><g transform="translate(140 108)"><g class="a-tap">${BRUSH(1)}</g></g></g>
    <g transform="translate(286 66)"><circle r="14" fill="var(--ok)"/><path d="M-7 0 l5 5 l9 -10" stroke="#fff" stroke-width="3" fill="none"/>${T(0,32,"垂直輕點","middle","s-sm")}</g>
    <g transform="translate(286 136)"><circle r="14" fill="var(--bad)"/><path d="M-6 -6 l12 12 M6 -6 l-12 12" stroke="#fff" stroke-width="3"/>${T(0,32,"橫向用力刷","middle","s-sm")}</g></svg>`},
- {t:"漂白",l:["漂白水 1 份＋水 5～10 份，倒進塑膠盒","刷好的葉脈完全泡進去","每 5～10 分鐘看一次，變白就撈起來（約 10～30 分鐘）","戴手套、保持通風"],tip:"泡太久或太濃，葉脈會變脆、斷掉。",
+ {t:"漂白",l:["市售漂白水（次氯酸鈉約 5%）1 份＋水 5～10 份，稀釋成約 0.5～0.8%","刷好的葉脈完全泡進去","每 5～10 分鐘看一次，變白就撈起來（約 10～30 分鐘）","戴手套、保持通風"],tip:"泡太久或太濃，葉脈會變脆、斷掉。",
   art:`<svg viewBox="0 0 340 200"><rect x="30" y="70" width="280" height="110" rx="12" fill="var(--bleach)" stroke="var(--muted)" stroke-width="2"/>
    ${SKEL(110,124,.6,90,"var(--skel)",{cls:"a-fadeout"})}${WHITE(110,124,.6,90,{cls:"a-appear"})}
    ${SKEL(230,124,.6,80,"var(--skel)",{cls:"a-fadeout",style:"animation-delay:.6s"})}${SKEL(230,124,.6,80,"#ffffff",{cls:"a-appear",style:"animation-delay:.6s;filter:drop-shadow(0 0 1px #8a7a50)"})}
-   ${T(170,30,"漂白水 1：水 5～10","middle","s-txt")}${T(170,52,"泡 10～30 分，常常看","middle","s-sm")}</svg>`},
+   ${T(170,30,"漂白水 1：水 5～10（約 0.5～0.8%）","middle","s-txt")}${T(170,52,"泡 10～30 分，常常看","middle","s-sm")}</svg>`},
  {t:"沖洗、吸乾、壓平",l:["撈起來用清水沖 2～3 次，沖掉漂白水","放在吸水紙上吸乾，順手把葉脈攤平","夾在吸水紙中，用重物壓，或熨斗低溫隔紙燙乾","想要彩色：乾燥前泡水彩或食用色素"],tip:"一定要乾透再護貝，不然膠膜裡會起霧。",
   art:`<svg viewBox="0 0 340 200"><g transform="translate(0 28)"><g class="a-press" style="animation-duration:2.4s"><path d="M110 50 L230 50 Q 236 16 186 10 L 146 10 Q 116 16 110 50 Z" fill="var(--g4)"/></g></g>
    <rect x="60" y="80" width="220" height="10" class="s-blot"/>${WHITE(170,96,.32,90,{noNet:true})}<rect x="60" y="102" width="220" height="10" class="s-blot"/><rect x="54" y="112" width="232" height="12" class="s-board"/>
@@ -851,7 +854,8 @@ renderStep();
 
 /* ---------- 稀釋計算 ---------- */
 function calcDil(){
-  const tot=parseFloat($("dTot").value), n=+$("dN").value; $("dNlab").textContent=n;
+  const tot=parseFloat($("dTot").value), n=+$("dN").value, c=parseFloat($("dC").value); $("dNlab").textContent=n;
+  if(c>0){ const pc=c/(1+n); $("dPct").textContent=pc.toFixed(2).replace(/0$/,""); $("dPpm").textContent=Math.round(pc*10000); } else { $("dPct").textContent="─"; $("dPpm").textContent="─"; }
   if(!(tot>0)){ $("dB").textContent="─"; $("dW").textContent="─"; $("dNote").textContent="請輸入總量。"; $("dSvg").innerHTML=""; return; }
   const b=tot/(1+n), w=tot-b, r=v=>Math.round(v);
   $("dB").textContent=r(b); $("dW").textContent=r(w);
@@ -863,7 +867,7 @@ function calcDil(){
     ${T(216,(187-hb/2+4).toFixed(1),"漂白水 "+r(b)+" mL","start","s-sm")}${T(216,(187-H+(H-hb)/2).toFixed(1),"水 "+r(w)+" mL","start","s-sm")}
     ${T(150,20,"共 "+r(tot)+" mL","middle","s-txt")}`;
 }
-$("dTot").oninput=calcDil; $("dN").oninput=calcDil; calcDil();
+$("dTot").oninput=calcDil; $("dN").oninput=calcDil; $("dC").oninput=calcDil; calcDil();
 
 /* ---------- 分組設計 ---------- */
 $("designSvg").innerHTML=(()=>{
@@ -968,6 +972,7 @@ const QS=[
  {q:"肥皂水的酸鹼值大約是？",o:["pH 9～10，弱鹼性","pH 1～2，強酸性","pH 7，中性","pH 14，強鹼性"],a:0,why:"肥皂水是弱鹼性，所以葉肉爛得比較慢。"},
  {q:"漂白水讓褐色葉脈變白，主要靠哪種成分？",o:["次氯酸鈉，會氧化分解色素","氫氧化鈉，會溶解葉脈","糖，會把葉子包起來","鹽，會把水吸走"],a:0,why:"次氯酸鈉是氧化劑，會破壞色素，讓葉脈變白。"},
  {q:"漂白水絕對不可以和下列哪一種東西混合？",o:["酸性清潔劑（如潔廁劑）","清水","冷水","自來水"],a:0,why:"漂白水遇到酸會產生有毒的氯氣。"},
+ {q:"市售家用漂白水的次氯酸鈉濃度約 5%，用「漂白水 1 份＋水 9 份」稀釋後，濃度大約是？",o:["0.5%","5%","0.05%","45%"],a:0,why:"5% ÷（1＋9）＝ 0.5%。"},
  {q:"葉脈在漂白水裡泡太久，會發生什麼事？",o:["葉脈變脆、容易斷","葉脈變回綠色","葉脈變得更粗","沒有任何影響"],a:0,why:"漂白水會慢慢破壞纖維，泡太久或太濃，葉脈就變脆。"},
  {q:"要配 600 mL 稀釋漂白水，比例「漂白水 1 份＋水 5 份」，漂白水要量多少？",o:["100 mL","120 mL","500 mL","60 mL"],a:0,why:"600 ÷（1＋5）＝ 100 mL 漂白水，水 500 mL。"},
  {q:"煮鹼水的鍋子，不可以使用哪一種？",o:["鋁鍋","不鏽鋼鍋","琺瑯鍋","耐熱玻璃鍋"],a:0,why:"鋁會和鹼起反應，鍋子會被腐蝕。"},
