@@ -220,6 +220,12 @@ button.dot{border:0;padding:0;cursor:pointer;width:22px;height:12px}
 .dot.now{outline:2px solid var(--accent);outline-offset:2px}
 .dot.ok.now{background:var(--ok)}.dot.bad.now{background:var(--bad)}
 @media (max-width:599px){.qnav .btn{flex:1}.qcount{order:-1;width:100%;text-align:center}}
+.xp{margin-top:8px;color:var(--ink)}
+.xpt{font-weight:700;background:var(--paper);border:1.5px solid var(--g3);border-radius:8px;padding:6px 10px;color:var(--g3)}
+.xex{margin-top:8px;background:var(--paper);border-radius:8px;padding:6px 10px}
+.xex ul{margin:4px 0 0;padding-left:1.2em}.xex li{margin:3px 0;font-size:16px;line-height:1.6}
+.xtag{display:inline-block;font-size:12px;font-weight:900;border-radius:999px;padding:0 8px;margin-right:6px;background:var(--g3);color:#fff;vertical-align:1px}
+.xtag.ex{background:var(--g1)}.xtag.sm{font-size:11px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 .layer.r1{background:#5c7a3a;min-height:74px}.layer.r2{background:#7f9a4c;min-height:56px}.layer.r3{background:#a8b86a;color:#2a2118;min-height:48px}.layer.r4{background:#d8c38a;color:#2a2118;min-height:44px;border-radius:0 0 40px 40px}
@@ -777,6 +783,12 @@ const QS=[
  {q:"養液栽培時，培養液的 pH 值最好保持在？",o:["5.5～6.5","3.5～4.5","7.5～8.5","9 以上"],a:0,fixed:1,why:"pH 5.5～6.5 最適合；太高會黃化，太低會凋萎。"}
 ];
 const KEY="agri-ch3-review-115-1";
+const XP={"龍舌蘭、菊花、仙客來，分別用哪種營養器官繁殖？": {"pt": "3-1 無性繁殖：分割繁殖的營養器官", "ex": ["龍舌蘭 → <b>吸芽</b>（母株基部長出的新芽）", "菊花 → <b>分蘗</b>（莖基部長出的分枝）", "仙客來 → <b>球莖</b>（地上莖縮短膨大），所以選 (B)", "(A) 鱗莖是鬱金香、百合；(C)(D) 塊莖是馬鈴薯、零餘子是山藥、走莖是草莓"]}, "柳樹、蔥的花序，和草莓的果實，依序為？": {"pt": "3-1 花序種類＋果實種類", "ex": ["柳樹 → <b>葇荑花序</b>（花軸下垂）", "蔥 → <b>繖形花序</b>（花梗從同一點長出）", "草莓 → <b>聚合果</b>（一朵花、多個離生子房＋花托），所以選 (D)", "穗狀是小麥、總狀是金魚草；複果是鳳梨、桑椹"]}, "水稻、小麥、芋頭依序屬於何種花序？": {"pt": "3-1 花序：常見糧食作物的花序", "ex": ["水稻 → <b>複總狀（圓錐）花序</b>", "小麥 → <b>穗狀花序</b>（花沒有柄）", "芋頭 → <b>佛焰（肉穗）花序</b>，所以選 (D)", "葇荑是柳樹、繖形是蔥、繖房是梨、隱頭是榕樹、聚繖是石竹"]}, "由一朵花中多數離生子房和花托共同發育的果實是？": {"pt": "3-1 果實種類：單果、複果、聚合果", "ex": ["<b>草莓</b>：一朵花的多個子房＋花托 → <b>聚合果</b> ✔", "桑椹、鳳梨、無花果：整個花序（很多朵花）一起長 → <b>複果</b> ✘"]}, "榕樹屬於哪一種花序？": {"pt": "3-1 花序：隱頭花序", "ex": ["<b>隱頭花序</b>：花藏在膨大的花托裡面，榕樹、無花果 ✔", "頭狀花序是菊花；混合花序是葡萄；葇荑花序是柳樹 ✘"]}, "有關植物根的描述，下列何者正確？": {"pt": "3-1 根的構造：根冠 → 生長點 → 延長部 → 成熟部", "ex": ["<b>生長點</b>在根冠和延長部之間，是分裂能力強的分生組織 ✔", "排列鬆散、容易脫落的是<b>根冠</b>，不是成熟部 ✘", "根毛長在<b>成熟部</b>，不是延長部 ✘", "接在生長點後面的是<b>延長部</b>；根冠由生長點分化補充 ✘"]}, "下列有關作物果實的敘述，何者正確？": {"pt": "3-1 果實種類：複果 vs 聚合果", "ex": ["<b>鳳梨</b>是整個花序長成 → 複果 ✔", "桑椹、無花果也是<b>複果</b>，不是聚合果 ✘", "草莓是<b>聚合果</b>，不是複果 ✘"]}, "下列有關壓條繁殖法的敘述，何者正確？": {"pt": "3-1 壓條繁殖法的種類", "ex": ["<b>頂梢壓條法</b>（屬偃取法）常用於草莓、黑莓 ✔", "偃取法又叫彎取法；<b>高取法</b>才是高空（空中）壓條 ✘", "最常用的壓條法是<b>高取法</b>，不是堆取法 ✘", "壓條的別名是「取木法」，不是取枝法 ✘"]}, "有關植物花序，下列何者正確？": {"pt": "3-1 有限花序 vs 無限花序", "ex": ["<b>石竹</b>：聚繖花序，中間先開 → 有限花序 ✔", "菊花頭狀花序是<b>無限</b>花序 ✘", "甘藍是圓錐花序、小麥是穗狀花序 ✘", "金魚草是總狀花序、水稻是複總狀花序 ✘"]}, "農地目前種辣椒，下一期轉作哪一種作物最不適合？": {"pt": "3-2 連作與忌地現象：茄科最忌連作", "ex": ["辣椒和<b>馬鈴薯</b>都是<b>茄科</b> → 同科連作會有忌地現象、生長弱化 ✔", "蕹菜（旋花科）、青花菜（十字花科）、胡蘿蔔（繖形花科）和辣椒不同科，可以接著種"]}, "同一塊地種一期紅豆收成後，再種一期水稻，這種方式稱為？": {"pt": "3-2 栽培模式的辨別", "ex": ["依順序輪流種<b>不同</b>作物 → <b>輪作</b> ✔", "間作：同時種、有主副作物；混作：同時種、沒有主副；連作：一直種同一種作物 ✘"]}, "同一塊地一年內種了兩期稻米和一期蔬菜，複作指數為？": {"pt": "3-2 複作指數的計算", "ex": ["一年內種植次數：稻 2 次＋蔬菜 1 次 ＝ 3 次", "複作指數 ＝ 3 × 100% ＝ <b>300%</b> ✔"]}, "下列哪一種作物適合連作？": {"pt": "3-2 耐連作 vs 忌連作作物", "ex": ["<b>小白菜</b>是十字花科 → 耐連作 ✔", "馬鈴薯（茄科）、花生（豆科）、苦瓜（葫蘆科）都忌連作 ✘"]}, "種蔥時發現蔥白太少，下次要加強哪一種管理？": {"pt": "3-2 田間管理：培土的目的（軟化）", "ex": ["<b>培土</b>：把土堆在莖基部遮光 → 蔥白（假莖）變長、變白 ✔", "提早移植、多施氮肥、增加灌溉都不能讓蔥白變長 ✘"]}, "想得到最佳蘋果品質，一果應留多少葉片？": {"pt": "3-2 疏果：每果留葉數", "ex": ["桃 25 片、梨 30 片、<b>蘋果 30～35 片</b> ✔", "葉片太少養分不夠、果實小；太多則浪費、留果太少"]}, "落花生收穫後最適合儲藏的含水量是？": {"pt": "3-2 儲藏：含水量與安全期", "ex": ["儲藏含水量要 <b>12% 以下</b> ✔", "含水量每增加 1%（或溫度每升 5℃），安全儲藏期減半；落花生含油、蛋白質多，太濕容易變質"]}, "最適合放在「溫洞子」（低溫溫室）栽培的，是哪裡採集的植物？": {"pt": "3-4 溫室的種類與溫度", "ex": ["<b>溫洞子＝低溫溫室</b>，冬季 5～20℃ → 亞熱帶、溫暖帶植物 ✔", "18～36℃ 是熱洞子（高溫）；12～25℃ 是暖洞子（中溫）；0～15℃ 是冷洞子（冷室）"]}, "臺灣木瓜用網室栽培，最主要的功能是？": {"pt": "3-4 網室栽培的目的", "ex": ["網室阻隔<b>蚜蟲</b> → 減少蚜蟲傳播的<b>木瓜輪點病（病毒）</b> ✔", "網室擋不住颱風；木蝨是傳柑橘黃龍病；網室不會縮短結果期 ✘"]}};
+function detail(q,compact){
+  const x=XP[q.q];
+  if(!x) return `<span class="why">${q.why}</span>`;
+  return `<div class="xp"><div class="xpt"><span class="xtag">考點</span>${x.pt}</div>${compact?`<div class="why">${q.why}</div>`:`<div class="xex"><span class="xtag ex">詳解</span><ul>${x.ex.map(l=>`<li>${l}</li>`).join("")}</ul></div>`}</div>`;
+}
 const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
 let quiz=null;
 function startQuiz(only){
@@ -801,14 +813,14 @@ function renderQuiz(){
     const msg=r===1?(quiz.retry?"錯題全部訂正完成！":"全對！作物生產你已經掌握了！"):r>=.8?"很棒！把錯的題目再訂正一次。":r>=.6?"不錯喔！回到重點頁再複習一下。":"別灰心，先回重點頁看一看，再來挑戰！";
     const wr=qs.map((q,k)=>({q,k})).filter(x=>res[x.k]!==true);
     P.innerHTML=`<div class="card" style="text-align:center"><div class="qtype">${quiz.retry?"錯題再練結果":"測驗結果"}</div><div class="score">${n} / ${tot}</div><p>${msg}${skip?`<br><span style="color:var(--bad)">還有 ${skip} 題沒作答</span>`:""}</p>${s&&s.best?`<p style="color:var(--muted);font-size:15px">這台裝置的最佳紀錄：${s.best} / ${s.total}</p>`:""}<div class="progress" style="justify-content:center">${dots()}</div><p class="ex" style="margin:4px 0 0">點上面的小方塊可以回到那一題。</p>
-      ${wr.length?`<div class="review"><b>訂正一下：</b>${wr.map(({q,k})=>`<div class="item"><b>第 ${k+1} 題</b>${res[k]===undefined?"（未作答）":""}　${q.q}${q.list?`<br>${q.list}`:""}<br><b>正確答案：${stripL(q.ans)}</b><br><span style="color:var(--muted)">${q.why}</span></div>`).join("")}</div>`:""}
+      ${wr.length?`<div class="review"><b>訂正一下：</b>${wr.map(({q,k})=>`<div class="item"><b>第 ${k+1} 題</b>${res[k]===undefined?"（未作答）":""}　${q.q}${q.list?`<br>${q.list}`:""}<br><b>正確答案：${stripL(q.ans)}</b><br>${XP[q.q]?`<span class="xtag sm">考點</span> ${XP[q.q].pt}<br>`:""}<span style="color:var(--muted)">${q.why}</span></div>`).join("")}</div>`:""}
       <div class="actions" style="justify-content:center">${wr.length?`<button class="btn" id="retry">錯題再練（${wr.length} 題）</button>`:""}<button class="btn ghost" id="qReset">↺ 重新開始</button><button class="btn ghost" id="back1">回去複習</button></div></div>`;
     $("back1").onclick=()=>show("t1");
     if($("retry")) $("retry").onclick=()=>startQuiz(wr.map(x=>x.q.idx));
     bindCommon(P); return;
   }
   const q=qs[i], picked=quiz.pick[i], locked=res[i]!==undefined, last=i===qs.length-1;
-  const fb = locked ? `<div class="feedback ${res[i]?"ok":"bad"}"><b>${res[i]?"答對了！":"再想想，正確答案是「"+stripL(q.ans)+"」"}</b><span class="why">${q.why}</span></div>` : "";
+  const fb = locked ? `<div class="feedback ${res[i]?"ok":"bad"}"><b>${res[i]?"答對了！":"再想想，正確答案是「"+stripL(q.ans)+"」"}</b>${detail(q)}</div>` : "";
   P.innerHTML=`<div class="card"><div class="qhead"><span class="qtype">${quiz.retry?"錯題再練・":""}第 ${i+1} 題／共 ${qs.length} 題${q.src?`<span class="qsrc">${q.src}</span>`:""}</span><button class="btn ghost sm" id="qReset">↺ 重新開始</button></div>
     <div class="progress" style="margin-top:8px">${dots()}</div>
     <div class="qtext">${q.q}</div>${q.list?`<div class="qlist">${q.list}</div>`:""}

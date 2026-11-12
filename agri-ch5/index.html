@@ -274,6 +274,12 @@ button.dot{border:0;padding:0;cursor:pointer;width:22px;height:12px}
 .stg.pupa b{color:var(--g1)}
 .diff{display:block;font-size:15px;color:var(--g1);margin-bottom:2px}
 @media (max-width:520px){.stg{min-width:52px;padding:2px 3px}.stg svg{width:46px;height:34px}.stg b{font-size:13px}}
+.xp{margin-top:8px;color:var(--ink)}
+.xpt{font-weight:700;background:var(--paper);border:1.5px solid var(--g3);border-radius:8px;padding:6px 10px;color:var(--g3)}
+.xex{margin-top:8px;background:var(--paper);border-radius:8px;padding:6px 10px}
+.xex ul{margin:4px 0 0;padding-left:1.2em}.xex li{margin:3px 0;font-size:16px;line-height:1.6}
+.xtag{display:inline-block;font-size:12px;font-weight:900;border-radius:999px;padding:0 8px;margin-right:6px;background:var(--g3);color:#fff;vertical-align:1px}
+.xtag.ex{background:var(--g1)}.xtag.sm{font-size:11px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 /* ===== 多裝置：電視／平板／手機 ===== */
@@ -812,6 +818,12 @@ const QS=[
  {q:"利用蜈蚣草吸收土壤中的砷，屬於哪一種重金屬污染改良法？",o:["植物修復","客土法","酸洗法","翻土法"],a:0,why:"種植可吸收重金屬的植物來清除污染，稱為植物修復，最環保但很花時間。"}
 ];
 const KEY="agri-ch5-review-115-1";
+const XP={"下列病害中，哪一組全部是真菌引起的？": {"pt": "5-2 傳染性病害：病原的分類", "ex": ["真菌：①玉米露菌病、②馬鈴薯晚疫病、⑤水稻稻熱病 → 選 (D)", "③胡瓜嵌紋病＝<b>病毒</b>；④番茄青枯病＝<b>細菌</b>；⑥水稻黃萎病＝<b>菌質</b>"]}, "利用生物技術防治「病毒性病害」，目標可能是下列哪一種？": {"pt": "5-2 病原：病毒性病害", "ex": ["<b>木瓜輪點病</b>＝病毒（蚜蟲傳播）✔", "大豆露菌病＝真菌；甘藷簇葉病、水稻黃萎病＝菌質 ✘"]}, "消滅浮塵子和飛蝨，可以減少下列哪一組病害？": {"pt": "5-2 病害的傳播媒介：昆蟲", "ex": ["浮塵子、飛蝨會傳播<b>菌質</b>病害 → 水稻黃萎病、甘藷簇葉病 ✔", "馬鈴薯晚疫病（真菌，靠風雨）、木瓜輪點病（病毒，靠<b>蚜蟲</b>）✘", "番茄青枯病、蔬菜軟腐病是細菌，靠水和土壤傳播 ✘"]}, "春天危害荔枝、龍眼花穗，應在開花期前後防治的害蟲，和它的變態方式是？": {"pt": "5-2 害蟲辨識＋昆蟲的變態", "ex": ["<b>荔枝椿象</b>吸食花穗、嫩梢 → 要在開花期前後防治", "椿象是<b>不完全變態</b>：卵 → 若蟲 → 成蟲，選 (A) ✔", "(B) 「稚蟲」是半變態（幼體住水裡，如蜻蜓）✘", "斑星天牛是完全變態（有蛹），危害枝幹，不是花穗 ✘"]}, "稻田裡常見的雜草，依生長特性分類，下列何者正確？": {"pt": "5-2 雜草依生長特性分類", "ex": ["<b>蘋草</b>是水生雜草 ✔", "水稗是<b>濕生</b>雜草，不是水生 ✘", "紅骨草、鴨舌草是<b>水生</b>雜草，不是濕生 ✘"]}, "目前世界上應用最廣、具生長素特性、常用於闊葉雜草的選擇性殺草劑是？": {"pt": "5-3 殺草劑的分類", "ex": ["<b>2,4-D</b>：生長素型、選擇性，殺闊葉雜草，應用最廣 ✔", "2ip 是細胞分裂素（生長調節劑），不是殺草劑 ✘", "CMU、DPA 是<b>非</b>生長素型殺草劑 ✘"]}, "扦插朱槿時，要促進發根可以怎麼做？": {"pt": "5-3 植物生長調節劑的功能", "ex": ["插穗切口沾<b>生長素</b>（IBA、NAA）→ 促進發根 ✔", "激勃素：莖伸長、打破休眠 ✘", "離層酸：促進休眠、脫落，反而抑制生長 ✘", "細胞分裂素：促進芽的生長，不是根 ✘"]}, "有關農藥的敘述，下列何者「不正確」？": {"pt": "5-3 農藥的安全使用與毒性", "ex": ["噴藥要<b>逆風倒退</b>，人才不會走進藥霧裡 → 「逆風前進」錯誤，選它 ✔", "LD50＝半數致死藥量，正確", "植物生長調節劑屬於農藥的一類，正確", "稀釋時避免接觸眼睛、皮膚、衣物，正確"]}};
+function detail(q,compact){
+  const x=XP[q.q];
+  if(!x) return `<span class="why">${q.why}</span>`;
+  return `<div class="xp"><div class="xpt"><span class="xtag">考點</span>${x.pt}</div>${compact?`<div class="why">${q.why}</div>`:`<div class="xex"><span class="xtag ex">詳解</span><ul>${x.ex.map(l=>`<li>${l}</li>`).join("")}</ul></div>`}</div>`;
+}
 const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
 
 let cType=0, cProb=null, cStep=0;
@@ -856,14 +868,14 @@ function renderQuiz(){
     const msg=r===1?(quiz.retry?"錯題全部訂正完成！":"全對！植物保護你已經掌握了！"):r>=.8?"很棒！把錯的題目再訂正一次。":r>=.6?"不錯喔！回到重點頁再複習一下。":"別灰心，先回重點頁看一看，再來挑戰！";
     const wr=qs.map((q,k)=>({q,k})).filter(x=>res[x.k]!==true);
     P.innerHTML=`<div class="card" style="text-align:center"><div class="qtype">${quiz.retry?"錯題再練結果":"測驗結果"}</div><div class="score">${n} / ${tot}</div><p>${msg}${skip?`<br><span style="color:var(--bad)">還有 ${skip} 題沒作答</span>`:""}</p>${s&&s.best?`<p style="color:var(--muted);font-size:15px">這台裝置的最佳紀錄：${s.best} / ${s.total}</p>`:""}<div class="progress" style="justify-content:center">${dots()}</div><p class="ex" style="margin:4px 0 0">點上面的小方塊可以回到那一題。</p>
-      ${wr.length?`<div class="review"><b>訂正一下：</b>${wr.map(({q,k})=>`<div class="item"><b>第 ${k+1} 題</b>${res[k]===undefined?"（未作答）":""}　${q.q}${q.list?`<br>${q.list}`:""}<br><b>正確答案：${stripL(q.ans)}</b><br><span style="color:var(--muted)">${q.why}</span></div>`).join("")}</div>`:""}
+      ${wr.length?`<div class="review"><b>訂正一下：</b>${wr.map(({q,k})=>`<div class="item"><b>第 ${k+1} 題</b>${res[k]===undefined?"（未作答）":""}　${q.q}${q.list?`<br>${q.list}`:""}<br><b>正確答案：${stripL(q.ans)}</b><br>${XP[q.q]?`<span class="xtag sm">考點</span> ${XP[q.q].pt}<br>`:""}<span style="color:var(--muted)">${q.why}</span></div>`).join("")}</div>`:""}
       <div class="actions" style="justify-content:center">${wr.length?`<button class="btn" id="retry">錯題再練（${wr.length} 題）</button>`:""}<button class="btn ghost" id="qReset">↺ 重新開始</button><button class="btn ghost" id="back1">回去複習</button></div></div>`;
     $("back1").onclick=()=>show("t1");
     if($("retry")) $("retry").onclick=()=>startQuiz(wr.map(x=>x.q.idx));
     bindCommon(P); return;
   }
   const q=qs[i], picked=quiz.pick[i], locked=res[i]!==undefined, last=i===qs.length-1;
-  const fb = locked ? `<div class="feedback ${res[i]?"ok":"bad"}"><b>${res[i]?"答對了！":"再想想，正確答案是「"+stripL(q.ans)+"」"}</b><span class="why">${q.why}</span></div>` : "";
+  const fb = locked ? `<div class="feedback ${res[i]?"ok":"bad"}"><b>${res[i]?"答對了！":"再想想，正確答案是「"+stripL(q.ans)+"」"}</b>${detail(q)}</div>` : "";
   P.innerHTML=`<div class="card"><div class="qhead"><span class="qtype">${quiz.retry?"錯題再練・":""}第 ${i+1} 題／共 ${qs.length} 題${q.src?`<span class="qsrc">${q.src}</span>`:""}</span><button class="btn ghost sm" id="qReset">↺ 重新開始</button></div>
     <div class="progress" style="margin-top:8px">${dots()}</div>
     <div class="qtext">${q.q}</div>${q.list?`<div class="qlist">${q.list}</div>`:""}

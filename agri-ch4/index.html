@@ -266,6 +266,12 @@ button.dot{border:0;padding:0;cursor:pointer;width:22px;height:12px}
 .dot.now{outline:2px solid var(--accent);outline-offset:2px}
 .dot.ok.now{background:var(--ok)}.dot.bad.now{background:var(--bad)}
 @media (max-width:599px){.qnav .btn{flex:1}.qcount{order:-1;width:100%;text-align:center}}
+.xp{margin-top:8px;color:var(--ink)}
+.xpt{font-weight:700;background:var(--paper);border:1.5px solid var(--g3);border-radius:8px;padding:6px 10px;color:var(--g3)}
+.xex{margin-top:8px;background:var(--paper);border-radius:8px;padding:6px 10px}
+.xex ul{margin:4px 0 0;padding-left:1.2em}.xex li{margin:3px 0;font-size:16px;line-height:1.6}
+.xtag{display:inline-block;font-size:12px;font-weight:900;border-radius:999px;padding:0 8px;margin-right:6px;background:var(--g3);color:#fff;vertical-align:1px}
+.xtag.ex{background:var(--g1)}.xtag.sm{font-size:11px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 /* ===== 多裝置：電視／平板／手機 ===== */
@@ -969,6 +975,12 @@ const QS=[
  {q:"施肥量增加到某個限度後，增產率反而下降，這稱為？",o:["報酬遞減法則","最少養分法則","拮抗作用","礦化作用"],a:0,why:"報酬遞減法則；最少養分法則是指生長受「最缺的養分」限制。"}
 ];
 const KEY="agri-ch4-review-115-1";
+const XP={"下列何者屬於「定積土」？": {"pt": "4-1 成土作用：定積土 vs 運積土", "ex": ["定積土＝風化物<b>留在原地</b>：④聚積土、⑤殘積土 → 選 (C)", "①沖積土、⑥冰積土（水力）、②崩積土（重力）、③風積土（風力）都是被搬走的<b>運積土</b>"]}, "下列有關土壤質地的敘述，何者正確？": {"pt": "4-2 土壤粒級與質地", "ex": ["<b>黏土</b>：黏粒 40% 以上，保水保肥佳 ✔", "2.5 mm 超過 2 mm → 屬於<b>礫</b>，不是粗砂 ✘", "1.5 mm 在 2～0.2 mm → 屬於<b>粗砂</b>，不是細砂 ✘", "砂土是含<b>砂粒</b> 85% 以上，不是黏粒 ✘"]}, "土壤質地中，下列何種粒徑占比越多時，澆水或降雨當下所含的重力水較多？": {"pt": "4-2 土壤水分：重力水與粒徑", "ex": ["粒徑越大 → 孔隙越大 → 水越容易被地心引力往下拉 → <b>重力水多</b>", "選項中 <b>2.0 mm</b>（粗砂）最大 ✔；0.002 mm 是黏粒，保水力強、重力水少"]}, "小安有甲（pH 5.0）、乙（pH 6.5）、丙（pH 7.0）、丁（pH 8.5）四塊地，欲種植胡蘿蔔，哪塊地宜使用石灰改良 pH 值？": {"pt": "4-2 土壤反應與改良", "ex": ["石灰是<b>鹼性</b>資材，用來中和<b>酸性</b>土壤", "甲地 pH 5.0 偏酸 → 施石灰 ✔", "乙、丙接近中性不需改良；丁地 pH 8.5 偏鹼，要用石膏、硫磺 ✘"]}, "有關氮循環中硝化作用的過程，下列何者正確？": {"pt": "4-2 微生物與氮的轉化", "ex": ["<b>硝化作用</b>：銨態氮氧化成硝酸態氮，NH₄⁺ → NO₂⁻ → NO₃⁻，選 (B) ✔", "(A)(D) 把 N₂ 變成含氮化合物 → 固氮作用 ✘", "(C) NO₃⁻ → N₂ → <b>脫氮作用</b>（缺氧時發生）✘"]}, "下列有關腐植質膠體陽離子交換能力大小的比較，何者正確？": {"pt": "4-2 陽離子交換力（口訣：乞丐謀甲吶喊）", "ex": ["順序：H⁺ ＞ Ca²⁺ ＞ Mg²⁺ ＞ K⁺ ＞ Na⁺ ＞ NH₄⁺", "(C) Na⁺ ＜ H⁺ ✔", "(A) 應是 Mg²⁺ ＞ K⁺；(B) 應是 Ca²⁺ ＞ Mg²⁺；(D) 應是 H⁺ ＞ Ca²⁺ ✘"]}, "下列何者為葉綠素的構成元素，且缺乏時症狀先出現在老葉，使葉片變黃？": {"pt": "4-3 元素功能與缺乏症：移轉型元素", "ex": ["<b>鎂</b>：葉綠素的構成元素；屬<b>移轉型</b> → 老葉先黃化 ✔", "鐵：合成葉綠素的「觸媒」，非移轉型 → <b>新葉</b>先黃 ✘", "鈣：細胞壁成分，生長點先壞死 ✘；錳：酵素活化劑，新葉有斑點 ✘"]}, "種植花生時，出現類似缺氮的特徵，是缺乏下列何種微量元素？": {"pt": "4-3 微量元素：鉬與固氮", "ex": ["<b>鉬</b>：根瘤菌固氮、硝酸還原酶的成分 → 缺鉬氮素無法利用，症狀<b>像缺氮</b> ✔", "氯：光合作用、很少缺乏；鋅：生長素前驅物；錳：酵素活化劑 ✘"]}, "阿文經營有機荔枝園，為了提高荔枝糖度，結果期使用哪種資材最有效？": {"pt": "4-3 鉀（莖肥）＋有機栽培可用資材", "ex": ["提高糖度要補<b>鉀</b>；<b>草木灰</b>（碳酸鉀）是天然資材，有機栽培可以用 ✔", "氯化鉀雖然含鉀，但屬<b>化學肥料</b>，有機栽培不能用 ✘", "石灰是補鈣、改良酸性土；過期牛奶不能提高糖度 ✘"]}, "下列何者屬於鹼性肥料？": {"pt": "4-4 肥料的化學性質", "ex": ["③湯馬斯磷肥（煉鋼爐渣）、④草木灰（碳酸鉀）→ <b>鹼性</b>，選 (B)", "①過磷酸鈣、②重過磷酸鈣 → <b>酸性</b>肥料"]}};
+function detail(q,compact){
+  const x=XP[q.q];
+  if(!x) return `<span class="why">${q.why}</span>`;
+  return `<div class="xp"><div class="xpt"><span class="xtag">考點</span>${x.pt}</div>${compact?`<div class="why">${q.why}</div>`:`<div class="xex"><span class="xtag ex">詳解</span><ul>${x.ex.map(l=>`<li>${l}</li>`).join("")}</ul></div>`}</div>`;
+}
 const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
 let quiz=null;
 function startQuiz(only){
@@ -993,14 +1005,14 @@ function renderQuiz(){
     const msg=r===1?(quiz.retry?"錯題全部訂正完成！":"全對！土壤肥料你已經掌握了！"):r>=.8?"很棒！把錯的題目再訂正一次。":r>=.6?"不錯喔！回到重點頁再複習一下。":"別灰心，先回重點頁看一看，再來挑戰！";
     const wr=qs.map((q,k)=>({q,k})).filter(x=>res[x.k]!==true);
     P.innerHTML=`<div class="card" style="text-align:center"><div class="qtype">${quiz.retry?"錯題再練結果":"測驗結果"}</div><div class="score">${n} / ${tot}</div><p>${msg}${skip?`<br><span style="color:var(--bad)">還有 ${skip} 題沒作答</span>`:""}</p>${s&&s.best?`<p style="color:var(--muted);font-size:15px">這台裝置的最佳紀錄：${s.best} / ${s.total}</p>`:""}<div class="progress" style="justify-content:center">${dots()}</div><p class="ex" style="margin:4px 0 0">點上面的小方塊可以回到那一題。</p>
-      ${wr.length?`<div class="review"><b>訂正一下：</b>${wr.map(({q,k})=>`<div class="item"><b>第 ${k+1} 題</b>${res[k]===undefined?"（未作答）":""}　${q.q}${q.list?`<br>${q.list}`:""}<br><b>正確答案：${stripL(q.ans)}</b><br><span style="color:var(--muted)">${q.why}</span></div>`).join("")}</div>`:""}
+      ${wr.length?`<div class="review"><b>訂正一下：</b>${wr.map(({q,k})=>`<div class="item"><b>第 ${k+1} 題</b>${res[k]===undefined?"（未作答）":""}　${q.q}${q.list?`<br>${q.list}`:""}<br><b>正確答案：${stripL(q.ans)}</b><br>${XP[q.q]?`<span class="xtag sm">考點</span> ${XP[q.q].pt}<br>`:""}<span style="color:var(--muted)">${q.why}</span></div>`).join("")}</div>`:""}
       <div class="actions" style="justify-content:center">${wr.length?`<button class="btn" id="retry">錯題再練（${wr.length} 題）</button>`:""}<button class="btn ghost" id="qReset">↺ 重新開始</button><button class="btn ghost" id="back1">回去複習</button></div></div>`;
     $("back1").onclick=()=>show("t1");
     if($("retry")) $("retry").onclick=()=>startQuiz(wr.map(x=>x.q.idx));
     bindCommon(P); return;
   }
   const q=qs[i], picked=quiz.pick[i], locked=res[i]!==undefined, last=i===qs.length-1;
-  const fb = locked ? `<div class="feedback ${res[i]?"ok":"bad"}"><b>${res[i]?"答對了！":"再想想，正確答案是「"+stripL(q.ans)+"」"}</b><span class="why">${q.why}</span></div>` : "";
+  const fb = locked ? `<div class="feedback ${res[i]?"ok":"bad"}"><b>${res[i]?"答對了！":"再想想，正確答案是「"+stripL(q.ans)+"」"}</b>${detail(q)}</div>` : "";
   P.innerHTML=`<div class="card"><div class="qhead"><span class="qtype">${quiz.retry?"錯題再練・":""}第 ${i+1} 題／共 ${qs.length} 題${q.src?`<span class="qsrc">${q.src}</span>`:""}</span><button class="btn ghost sm" id="qReset">↺ 重新開始</button></div>
     <div class="progress" style="margin-top:8px">${dots()}</div>
     <div class="qtext">${q.q}</div>${q.list?`<div class="qlist">${q.list}</div>`:""}
