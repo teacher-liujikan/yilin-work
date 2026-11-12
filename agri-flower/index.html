@@ -1,0 +1,994 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>押花與乾燥花</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+/* 同 agri-leaf 架構：上方標題＋QR，分頁 基本知識／實驗過程／分組試驗／動手判斷／小測驗 */
+:root{
+  --bg:#f3f5ec; --paper:#ffffff; --ink:#1f2a1c; --muted:#5e6b58; --line:#d9e0cd; --grid:#e6ebdb;
+  --accent:#2f6b3a; --accent-ink:#ffffff; --accent-soft:#e3f0e3;
+  --soil:#8a5a35; --soil-soft:#f4e7da;
+  --mark:#ffe08a; --mark-ink:#2a2118;
+  --ok:#1f7a45; --ok-soft:#e1f4e7; --bad:#b4362c; --bad-soft:#fbe7e4;
+  --g1:#c46a17; --g2:#2f8a57; --g3:#3b6fd1; --g4:#a2408c;
+  --g1s:#fbecdc; --g2s:#e0f2e7; --g3s:#e3ebfb; --g4s:#f6e4f1;
+  --leaf:#4f9a3c; --leaf2:#2f6b2a; --leafdry:#8aa04a; --leafbrown:#9a6a3c; --leafred:#c8452f; --leafyel:#e0b23a;
+  --water:#5aa3d9; --film:#9fd3f0; --glue:#f2d36b; --card:#fbf7ee; --cardline:#d9c7a3; --wood:#b07a45; --metal:#7d8a93;
+  --f:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121610; --paper:#1b2118; --ink:#e6ecdf; --muted:#a6b29c; --line:#323c2c; --grid:#181d15;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  --leaf:#6dbb57; --leaf2:#9fd88a; --leafdry:#a8bb63; --leafbrown:#c08f5c; --leafred:#e2705a; --leafyel:#e8c45a;
+  --water:#6fb3e6; --film:#3d6f8f; --glue:#8f7a2e; --card:#e9e1d0; --cardline:#a8946c; --wood:#a8784a; --metal:#93a0a8;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121610; --paper:#1b2118; --ink:#e6ecdf; --muted:#a6b29c; --line:#323c2c; --grid:#181d15;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  --leaf:#6dbb57; --leaf2:#9fd88a; --leafdry:#a8bb63; --leafbrown:#c08f5c; --leafred:#e2705a; --leafyel:#e8c45a;
+  --water:#6fb3e6; --film:#3d6f8f; --glue:#8f7a2e; --card:#e9e1d0; --cardline:#a8946c; --wood:#a8784a; --metal:#93a0a8;
+  color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:17px;line-height:1.7;
+  background-image:radial-gradient(var(--grid) 1.2px,transparent 1.2px);background-size:22px 22px}
+.wrap{max-width:980px;margin:0 auto;padding-block:20px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{display:flex;gap:16px;align-items:flex-start;justify-content:space-between}
+.brand{min-width:0}
+.eyebrow{font-size:14px;letter-spacing:.12em;color:var(--soil);font-weight:700}
+h1{font-size:clamp(30px,6vw,44px);font-weight:900;line-height:1.2;margin:4px 0 6px;text-wrap:balance}
+.sub{color:var(--muted);margin:0;font-size:16px}
+.qr{flex:none;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+.qr img{width:84px;height:84px;image-rendering:pixelated;display:block}
+.qr span{font-size:12px;color:#3a4a33;font-weight:700}
+button:focus-visible,.qr:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:20;background:var(--bg);padding:8px 0;margin:14px 0 10px}
+.tab{font:inherit;font-weight:700;font-size:17px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:999px;padding:7px 18px;cursor:pointer;min-height:44px}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.tab small{font-size:12px;opacity:.8;margin-left:4px}
+.panel{display:flex;flex-direction:column;gap:16px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px}
+.toolbar .hint{font-size:14px;color:var(--muted)}
+.switch{display:inline-flex;align-items:center;gap:8px;font-weight:700;cursor:pointer;user-select:none}
+.switch input{width:20px;height:20px;accent-color:var(--accent)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;min-width:0}
+.card h2{font-size:24px;font-weight:900;margin:0 0 8px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.card h2 .sec{font-size:13px;font-weight:700;color:var(--soil);background:var(--soil-soft);border-radius:999px;padding:1px 10px}
+.card h3{font-size:19px;margin:14px 0 4px}
+.card p{margin:6px 0}
+.card ul,.card ol{margin:6px 0;padding-left:1.3em}
+.card li{margin:3px 0}
+.key{background:var(--mark);color:var(--mark-ink);border-radius:4px;padding:0 4px;font-weight:700}
+body.blank .key{color:transparent;background:var(--soil-soft);border-bottom:2px solid var(--soil);cursor:pointer;user-select:none}
+body.blank .key.show{color:var(--mark-ink);background:var(--mark);border-bottom-color:transparent}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:820px){.four{grid-template-columns:1fr 1fr}}
+@media (max-width:720px){.two,.three{grid-template-columns:1fr}}
+.box{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--bg);min-width:0}
+.box b.t{display:block;font-size:17px;margin-bottom:2px}
+.box svg{width:100%;height:auto;display:block;margin-bottom:6px}
+.box small{display:block;color:var(--muted);font-size:14px;line-height:1.5;margin-top:4px}
+.box.c1{border-top:5px solid var(--g1)}.box.c2{border-top:5px solid var(--g2)}.box.c3{border-top:5px solid var(--g3)}.box.c4{border-top:5px solid var(--g4)}
+.box.okb{border-top:5px solid var(--ok)}.box.badb{border-top:5px solid var(--bad)}
+.note{font-size:15px;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 12px;margin-top:10px}
+.tip{font-size:15px;border:1.5px dashed var(--soil);border-radius:10px;padding:8px 12px;margin-top:10px;background:var(--soil-soft)}
+.tip b{color:var(--soil)}
+.warnbox{font-size:15px;border-left:5px solid var(--bad);border-radius:0 10px 10px 0;padding:8px 12px;margin-top:10px;background:var(--bad-soft)}
+.warnbox b{color:var(--bad)}
+.tblwrap{overflow-x:auto;margin-top:8px}
+table.t{width:100%;border-collapse:collapse;font-size:16px;min-width:560px}
+table.t th,table.t td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+table.t th{background:var(--accent-soft);white-space:nowrap}
+table.t td:first-child{white-space:nowrap}
+.btn{font:inherit;font-weight:700;font-size:16px;border:0;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:9px 22px;cursor:pointer;min-height:44px}
+.btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.sm{min-height:36px;padding:4px 14px;font-size:14px}
+.btn.warn{background:var(--bad);color:#fff;border-color:var(--bad)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.art{width:100%;height:auto;display:block}
+figure{margin:0}
+figcaption{font-size:15px;line-height:1.5;margin-top:6px;text-align:center;color:var(--muted)}
+.ex{color:var(--muted);font-size:14px}
+.formula{font-size:22px;font-weight:900;text-align:center;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px;margin:8px 0}
+details.teacher{margin-top:10px;border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--bg)}
+details.teacher summary{cursor:pointer;font-weight:700;color:var(--accent)}
+
+/* SVG 共用 */
+.s-txt{fill:var(--ink);font-size:13px;font-weight:700;font-family:var(--f)}
+.s-sm{fill:var(--muted);font-size:11px;font-weight:500;font-family:var(--f)}
+.s-line{stroke:var(--muted);stroke-width:2;fill:none}
+.s-leaf{fill:var(--leaf)}
+.s-vein{stroke:var(--leaf2);stroke-width:2;fill:none;stroke-linecap:round}
+.s-card{fill:var(--card);stroke:var(--cardline);stroke-width:1.5}
+.s-film{fill:var(--film);opacity:.35;stroke:var(--water);stroke-width:1.5}
+.s-paper{fill:var(--paper);stroke:var(--muted);stroke-width:1.5}
+.s-blot{fill:#f1ead8;stroke:var(--cardline);stroke-width:1.2}
+.s-news{fill:#d9d4c7;stroke:var(--muted);stroke-width:1}
+.s-board{fill:var(--wood)}
+.s-water{fill:var(--water)}
+.lbl{stroke:var(--muted);stroke-width:1.2;fill:none;stroke-dasharray:3 2}
+
+/* 動畫 */
+.paused *{animation-play-state:paused!important}
+.a-fall{animation:fall 3s ease-in infinite;transform-box:fill-box;transform-origin:center}
+@keyframes fall{0%{transform:translate(0,0) rotate(0);opacity:0}10%{opacity:1}50%{transform:translate(-18px,50px) rotate(-40deg)}85%{transform:translate(4px,100px) rotate(10deg);opacity:1}100%{transform:translate(4px,108px) rotate(10deg);opacity:0}}
+.a-wipe{animation:wipe 1.8s ease-in-out infinite alternate}
+@keyframes wipe{from{transform:translate(-60px,0)}to{transform:translate(60px,0)}}
+.a-fade{animation:fadeio 2.4s ease-in-out infinite}
+@keyframes fadeio{0%,100%{opacity:.1}50%{opacity:1}}
+.a-gone{animation:gone 3.6s ease-in infinite}
+@keyframes gone{0%,20%{opacity:1}70%,100%{opacity:0}}
+.a-pop{animation:pop 3.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pop{0%,10%{transform:scale(0);opacity:0}25%,90%{transform:scale(1);opacity:1}100%{transform:scale(1);opacity:0}}
+.a-press{animation:press 3s ease-in-out infinite}
+@keyframes press{0%,15%{transform:translateY(-46px)}40%,85%{transform:translateY(0)}100%{transform:translateY(-46px)}}
+.a-dripL{animation:dripL 3s ease-in infinite}
+@keyframes dripL{0%,40%{transform:translate(0,0);opacity:0}50%{opacity:1}100%{transform:translate(-36px,10px);opacity:0}}
+.a-dripR{animation:dripR 3s ease-in infinite}
+@keyframes dripR{0%,40%{transform:translate(0,0);opacity:0}50%{opacity:1}100%{transform:translate(36px,10px);opacity:0}}
+.a-up{animation:up 2.4s ease-in infinite}
+@keyframes up{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(-30px);opacity:0}}
+.a-feed{animation:feed 5s linear infinite}
+@keyframes feed{0%{transform:translateX(-120px)}10%{transform:translateX(-120px)}80%{transform:translateX(120px)}100%{transform:translateX(120px)}}
+.a-rot{animation:rot 1.2s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes rot{to{transform:rotate(360deg)}}
+.a-snip{animation:snip .6s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:left center}
+@keyframes snip{from{transform:rotate(-12deg)}to{transform:rotate(6deg)}}
+.a-slide{animation:slide 4s linear infinite}
+@keyframes slide{0%{transform:translateY(-70px)}100%{transform:translateY(70px)}}
+.a-swing{animation:swing 2.4s ease-in-out infinite alternate;transform-box:view-box;transform-origin:170px 40px}
+@keyframes swing{from{transform:rotate(-12deg)}to{transform:rotate(12deg)}}
+.a-roll{animation:rot 2s linear infinite;transform-box:fill-box;transform-origin:center}
+.a-melt{animation:melt 3s ease-in-out infinite}
+@keyframes melt{0%,100%{opacity:.35}50%{opacity:1}}
+.a-turn{animation:turn 4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes turn{0%,20%{transform:rotate(0)}50%,70%{transform:rotate(180deg)}100%{transform:rotate(360deg)}}
+
+/* 流程 */
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:8px}
+@media (max-width:640px){.flow{grid-template-columns:1fr 1fr}}
+.fl{border:2px solid var(--accent);border-radius:12px;background:var(--bg);padding:6px 8px 10px;text-align:center;position:relative}
+.fl svg{width:100%;height:auto;display:block}
+.fl b{display:block;font-size:18px}
+.fl small{display:block;font-size:13px;color:var(--muted);line-height:1.4}
+.fl .no{position:absolute;left:8px;top:6px;width:24px;height:24px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:13px;font-weight:900;display:grid;place-items:center}
+
+/* 步驟播放器 */
+.player{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:760px){.player{grid-template-columns:1fr}}
+.stage{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:8px;position:relative}
+.stage svg{width:100%;height:auto;display:block}
+.stage .badge{position:absolute;left:12px;top:10px;background:var(--accent);color:var(--accent-ink);font-weight:900;border-radius:999px;padding:0 12px;font-size:15px}
+.stepchips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.sc{font:inherit;font-weight:700;font-size:15px;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;min-width:44px;min-height:44px;padding:0 12px;cursor:pointer}
+.sc[aria-current="step"]{border-color:var(--accent);background:var(--accent);color:var(--accent-ink)}
+.sc.seen{border-color:var(--accent)}
+.stxt h3{font-size:24px;margin:0 0 6px}
+.stxt ul{padding-left:1.2em;margin:4px 0}
+.stxt li{margin:4px 0;font-size:18px}
+.snav{display:flex;justify-content:space-between;gap:10px;margin-top:12px;flex-wrap:wrap}
+
+/* 材料 */
+.mats{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:8px}
+.mat{border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:8px 12px}
+.mat b{display:block}
+.mat small{color:var(--muted);font-size:14px;line-height:1.5;display:block}
+
+/* 分組 */
+.role{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:8px}
+@media (max-width:820px){.role{grid-template-columns:1fr 1fr}}
+.rl{border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:10px 12px;font-size:16px}
+.rl b{display:block;font-size:18px}
+.rl .tag{display:inline-block;font-size:13px;font-weight:900;border-radius:999px;padding:0 10px;color:#fff;margin-bottom:4px}
+.timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:8px}
+@media (max-width:820px){.timeline{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.timeline{grid-template-columns:1fr}}
+.tl{border-left:5px solid var(--accent);background:var(--bg);border-radius:0 10px 10px 0;padding:8px 12px;font-size:16px}
+.tl>b{display:block;font-size:18px}
+.tl ul{margin:4px 0 0;padding-left:1.1em}
+.tl li{margin:2px 0}
+.tl .m{color:var(--soil);font-weight:700;font-size:14px}
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.calc{grid-template-columns:1fr}}
+.calc label{display:block;font-weight:700;margin-top:6px}
+.calc input[type=number]{font:inherit;font-size:22px;font-weight:700;width:130px;padding:6px 10px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.bignum{font-size:44px;font-weight:900;line-height:1.1;color:var(--accent)}
+
+/* 動手判斷 */
+.order{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.oslot{border:2px dashed var(--line);border-radius:10px;padding:8px 12px;min-height:46px;display:flex;align-items:center;gap:10px;font-weight:700}
+.oslot.fill{border-style:solid;border-color:var(--ok);background:var(--ok-soft)}
+.oslot .n{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--paper);font-size:14px}
+.opool{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ob{font:inherit;font-weight:700;font-size:16px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:10px;padding:8px 14px;cursor:pointer;min-height:44px}
+.ob.bad{animation:nope .4s;border-color:var(--bad);color:var(--bad)}
+@keyframes nope{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.ofb{font-weight:700;margin-top:8px;min-height:1.7em}
+.ofb.ok{color:var(--ok)}.ofb.bad{color:var(--bad)}
+.ready{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:8px}
+.rd{border:2px solid var(--line);border-radius:12px;background:var(--paper);padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.rd .q{font-weight:900;font-size:17px}
+.rd .bs{display:flex;gap:8px}
+.rd .bs button{flex:1;font:inherit;font-weight:700;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:10px;min-height:44px;cursor:pointer}
+.rd.ok{border-color:var(--ok);background:var(--ok-soft)}
+.rd.bad{border-color:var(--bad);background:var(--bad-soft)}
+.rd .a{font-size:15px}
+.conc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.conc{grid-template-columns:1fr}}
+input[type=range]{width:100%;accent-color:var(--accent);margin:8px 0 0;height:32px}
+.cnum{font-size:40px;font-weight:900;line-height:1;color:var(--accent)}
+.cverdict{font-size:20px;font-weight:900;margin-top:6px}
+.cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:8px}
+.case{font:inherit;color:var(--ink);text-align:left;border:2px solid var(--line);border-radius:12px;background:var(--paper);padding:12px 14px;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-height:140px}
+.case .q{font-size:18px;font-weight:900}
+.case .a{margin-top:auto;font-size:15px;color:var(--muted)}
+.case.open{border-color:var(--accent);background:var(--accent-soft)}
+.case.open .a{color:var(--ink)}
+
+/* 測驗 */
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.progress{display:flex;gap:4px;flex-wrap:wrap}
+.dot{width:18px;height:8px;border-radius:4px;background:var(--line)}
+.dot.ok{background:var(--ok)}.dot.bad{background:var(--bad)}
+button.dot{border:0;padding:0;cursor:pointer;width:22px;height:12px}
+.dot.now{outline:2px solid var(--accent);outline-offset:2px}
+.qtype{font-size:14px;font-weight:700;color:var(--accent);letter-spacing:.06em}
+.qtext{font-size:22px;line-height:1.75;margin:10px 0 14px;font-weight:500}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{font:inherit;font-size:18px;text-align:left;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:12px 14px;cursor:pointer;display:flex;gap:10px;align-items:center;min-height:56px}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt .k{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--bg);font-size:14px;font-weight:700}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt:disabled{cursor:default}
+.feedback{margin-top:14px;border-radius:10px;padding:10px 14px;font-size:16px}
+.feedback.ok{background:var(--ok-soft);color:var(--ok)}
+.feedback.bad{background:var(--bad-soft);color:var(--bad)}
+.feedback .why{color:var(--ink);display:block;margin-top:4px}
+.score{font-size:64px;font-weight:900;color:var(--accent);line-height:1;margin:10px 0}
+.review .item{border-left:4px solid var(--bad);padding:6px 12px;background:var(--bg);border-radius:0 6px 6px 0;font-size:16px;margin-top:8px;text-align:left}
+.qnav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap}
+.qcount{font-size:14px;color:var(--muted);font-weight:700}
+.overlay{position:fixed;inset:0;background:rgba(10,16,8,.72);display:grid;place-items:center;z-index:50;padding:20px}
+.overlay .inner{background:#fff;border-radius:16px;padding:22px;text-align:center;color:#1f2a1c;max-width:92vw}
+.overlay img{width:min(340px,72vw);height:min(340px,72vw);image-rendering:pixelated;display:block;margin:0 auto}
+.overlay p{font-size:22px;font-weight:700;margin:12px 0 0}
+.overlay small{display:block;color:#5e6b58;margin-top:4px;word-break:break-all}
+footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
+
+@media (min-width:600px) and (max-width:1100px){
+  body{font-size:18px}
+  .card p,.card li{font-size:18px}
+  .qtext{font-size:24px}.opt{font-size:20px}
+}
+@media (max-width:599px){
+  .wrap{padding-block:12px 40px}
+  h1{font-size:30px}
+  .qr img{width:64px;height:64px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:none;font-size:16px;padding:6px 14px}
+  .card{padding:14px}
+  .card h2{font-size:21px}
+  .qtext{font-size:20px}
+  .toolbar .hint{display:none}
+  .stxt li{font-size:17px}
+  .qnav .btn{flex:1}.qcount{order:-1;width:100%;text-align:center}
+}
+@media (min-width:1500px){ .wrap{zoom:1.3} }
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+@media (max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .box ul{margin:4px 0;padding-left:1.2em}
+.vs .box.na{border-top:5px solid var(--bad)}
+.vs .box.so{border-top:5px solid var(--g3)}
+.a-flame{animation:flame .5s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:bottom}
+@keyframes flame{from{transform:scaleY(.8)}to{transform:scaleY(1.15)}}
+.a-tap{animation:tap .7s ease-in-out infinite}
+@keyframes tap{0%,100%{transform:translateY(-14px)}50%{transform:translateY(0)}}
+.a-walk{animation:walk 4s ease-in-out infinite alternate}
+@keyframes walk{from{transform:translateX(-40px)}to{transform:translateX(40px)}}
+.a-appear{animation:appear 5s ease-in-out infinite}
+@keyframes appear{0%,25%{opacity:0}70%,100%{opacity:1}}
+.a-fadeout{animation:fadeout 5s ease-in-out infinite}
+@keyframes fadeout{0%,25%{opacity:1}70%,100%{opacity:0}}
+.a-drop{animation:drop 1.4s ease-in infinite}
+@keyframes drop{0%{transform:translateY(0);opacity:0}10%{opacity:1}100%{transform:translateY(40px);opacity:0}}
+.a-lift{animation:lift 3.6s ease-in-out infinite}
+@keyframes lift{0%,10%{transform:translate(0,0)}45%{transform:translate(0,-60px)}80%,100%{transform:translate(150px,10px)}}
+.a-clock{animation:rot 4s linear infinite;transform-box:view-box}
+.dil{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.dil{grid-template-columns:1fr}}
+.dil input[type=number]{font:inherit;font-size:22px;font-weight:700;width:140px;padding:6px 10px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.dil label{display:block;font-weight:700;margin-top:6px}
+
+.sibs{margin-top:8px;font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}
+.sibs a,.sibs b{border:1.5px solid var(--line);border-radius:999px;padding:1px 10px;text-decoration:none;color:var(--accent);background:var(--paper);font-weight:700}
+.sibs b{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.sibs a:hover{border-color:var(--accent)}
+.flow{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:720px){.flow{grid-template-columns:1fr 1fr}}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+@media (max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .box ul,.box ul{margin:4px 0;padding-left:1.2em}
+.rd .bs{flex-wrap:wrap}
+.rd .bs button{min-width:84px}
+.lab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.lab{grid-template-columns:1fr}}
+.lab input[type=number]{font:inherit;font-size:22px;font-weight:700;width:140px;padding:6px 10px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.lab label{display:block;font-weight:700;margin-top:6px}
+.a-flame{animation:flame .5s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:bottom}
+@keyframes flame{from{transform:scaleY(.8)}to{transform:scaleY(1.15)}}
+.a-tap{animation:tap .7s ease-in-out infinite}
+@keyframes tap{0%,100%{transform:translateY(-14px)}50%{transform:translateY(0)}}
+.a-walk{animation:walk 4s ease-in-out infinite alternate}
+@keyframes walk{from{transform:translateX(-40px)}to{transform:translateX(40px)}}
+.a-appear{animation:appear 5s ease-in-out infinite}
+@keyframes appear{0%,25%{opacity:0}70%,100%{opacity:1}}
+.a-fadeout{animation:fadeout 5s ease-in-out infinite}
+@keyframes fadeout{0%,25%{opacity:1}70%,100%{opacity:0}}
+.a-drop{animation:drop 1.4s ease-in infinite}
+@keyframes drop{0%{transform:translateY(0);opacity:0}10%{opacity:1}100%{transform:translateY(40px);opacity:0}}
+.a-wig{animation:wig 1.6s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+@keyframes wig{from{transform:skewX(-8deg) translateX(-3px)}to{transform:skewX(8deg) translateX(3px)}}
+.a-crawl{animation:crawl 6s ease-in-out infinite alternate}
+@keyframes crawl{from{transform:translateX(-30px)}to{transform:translateX(30px)}}
+.a-dive{animation:dive 4s ease-in infinite}
+@keyframes dive{0%,20%{transform:translateY(0);opacity:1}80%{transform:translateY(46px);opacity:.2}100%{transform:translateY(46px);opacity:0}}
+.a-shake{animation:shake 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center bottom}
+@keyframes shake{0%,60%,100%{transform:rotate(0)}70%{transform:rotate(-10deg)}80%{transform:rotate(10deg)}90%{transform:rotate(-6deg)}}
+.a-bulge{animation:bulge 3s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes bulge{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.08)}}
+.a-grow{animation:grow 4s ease-out infinite;transform-box:fill-box;transform-origin:bottom}
+@keyframes grow{0%{transform:scaleY(0)}60%,100%{transform:scaleY(1)}}
+.a-place{animation:place 3s ease-in-out infinite}
+@keyframes place{0%{transform:translate(60px,-50px);opacity:0}20%{opacity:1}60%,100%{transform:translate(0,0);opacity:1}}
+.a-spin{animation:spin 3s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes spin{to{transform:rotate(360deg)}}
+.a-float{animation:float 5s ease-in-out infinite}
+@keyframes float{0%{transform:translate(0,0)}50%{transform:translate(60px,-24px)}100%{transform:translate(120px,10px)}}
+.a-roll2{animation:roll2 2s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+@keyframes roll2{from{transform:translateX(-16px) rotate(-90deg)}to{transform:translateX(16px) rotate(90deg)}}
+
+/* 本頁追加 */
+:root{--fp:#8a4fc8;--fpk:#e46a9a;--fy:#f2b81f;--fw:#fbf8f0;--fwline:#c9c1ad;--fbr:#9a6a3c;--fc:#f2c84b;--blot:#f1ead8;--gel:#f4a64a;--gelw:#5fa86a;--fire:#e8742c;--porc:#eef1f4;--stem:#4f8f3c}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--fp:#b07ae6;--fpk:#f08ab4;--blot:#e6dcc4;--porc:#c9d0d6;--stem:#6dbb57}}
+:root[data-theme="dark"]{--fp:#b07ae6;--fpk:#f08ab4;--blot:#e6dcc4;--porc:#c9d0d6;--stem:#6dbb57}
+.ready{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="eyebrow">實習課・50 分鐘 × 3 節</div>
+      <h1>押花與乾燥花</h1>
+      <p class="sub">基本知識 → 實驗過程 → 分組試驗 → 動手判斷 → 掃 QR 小測驗</p>
+      <nav class="sibs" aria-label="其他實習課">實習課：<a href="../agri-paper/">再生紙</a><a href="../agri-leaf/">葉脈書籤</a><a href="../agri-worm/">蚯蚓堆肥</a><a href="../agri-enzyme/">果皮酵素</a><b aria-current="page">押花乾燥花</b><a href="../agri-seed/">種子創作</a></nav>
+    </div>
+    <div class="qr" id="qrBtn" role="button" tabindex="0" aria-label="放大 QR code"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQAAAAAefbjOAAADAElEQVR42u1cMY7cMAwcRgKutIF9wD5F+4P7svWU+4FUHiBjUpCStQgSIOli0YVxwpoNPTcaDkUL8ddX/oF/uDzIgzzoPw2qYterRgA4BcCpS3lVEQBAfyh69u4dBLIEkiSRCmA3cuwmgWQJRCL1Lx6evdsH2f/+RgIIRN4BJMXBt4g8G5RLXp69pYKqCLA18MApyIqDaLzh2VsjKM6LrUVmCU1SOcH8eUYChOS9ePbWQsRUgqbyALMEKj3orzU2YCOA6tlbQFleYAj8/e0Smq4sb84R23jb9VQdgfz81hKUqADzs8004tm7f/WpOMDW+rLXnDw2dqJgAw/niAUQQeqL54GBDf2h6U2tiENBQ0fEIjrCWKCzBW2pvhRJHkDHhmfv/p7lAcBYQOtQ0vgAsL3iMi4dEXffNRpMLtC2DrLYdvLr864jFulraHOj4RKQyhGcCk+4slyHIzgkRCoYS+t+2SOlo8QRsUT1Sdr+oVSA2bXSvQKha0zP3u2rz15ccNgOQzNMDXOvPlf0I+wqRhQTXqwp6jpiER1RgIko0L2qyYoYpyccEat0ui4Du3tVnAqOq0p1RCzAEb+YlHq0zjhCC47j6nV49tZwsbtwaO/qwTpdzhFrKUu1qMtsT0xQGQDx6nM1P6J3vq9NxFwrc7ZdWS4RtDXwqFEnMgCcYm+/xn7bvkVeV6/cs7eAH9F1xEUKygza4cAlNZwj1qg10uRHDCMKwc7JpDdTwhGBm5+zrA/acewamy5TeQCJpxAIFNQdSASQPz1767jYU+/z2MbQ31vVYTuJZ+/+EzypAET9oOQ9NABnJGpoopMbCA2oD88eFpsN72PhfXjnFHM0AejIZ949ewsEDQ9qFBypW1Iiu+Gg98U9e4s4VL2/NXVBZxd7nKrzWmOpoPpBkT1Qt470FYH0ZV8UmUf9PHurzIbjFObXKUSNQN4DmJ8tAluLJjA2z95K35jhVYL2AQ31uMcgh89rLDcbfjmVk4Gd+DYQ6oi4c5D41ws9yIM86A/XT6knLvMtQj/VAAAAAElFTkSuQmCC"><span>掃我測驗</span></div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" id="t1" aria-selected="true">基本知識</button>
+    <button class="tab" role="tab" id="t2" aria-selected="false">實驗過程</button>
+    <button class="tab" role="tab" id="t3" aria-selected="false">分組試驗</button>
+    <button class="tab" role="tab" id="t4" aria-selected="false">動手判斷</button>
+    <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
+  </nav>
+
+  <div class="toolbar" id="blankBar">
+    <label class="switch"><input type="checkbox" id="blankToggle"> 挖空模式</label>
+    <span class="hint">打開後，黃色重點會變成空格。先讓學生說出答案，再點空格揭曉。</span>
+  </div>
+
+  <!-- ===== 1 基本知識 ===== -->
+  <section class="panel" id="p1">
+    <div class="card">
+      <h2>把花的美留下來<span class="sec">總覽</span></h2>
+      <p><span class="key">押花</span>：把花壓平、脫水，變成<b>平面</b>的花材；<span class="key">乾燥花</span>：讓花保持<b>立體</b>形狀脫水。共同的關鍵是：<span class="key">又快又徹底地把水分拿掉</span>。</p>
+      <div class="flow" id="flowBox"></div>
+    </div>
+
+    <div class="card">
+      <h2>為什麼要「快」乾？<span class="sec">原理</span></h2>
+      <svg class="art" id="whySvg" viewBox="0 0 640 230" role="img" aria-label="花瓣含水約八到九成；乾得慢會褐變、發霉；乾得快能保住顏色"></svg>
+      <div class="two" style="margin-top:8px;align-items:start">
+        <ul>
+          <li>花瓣含水約 <span class="key">80～90%</span></li>
+          <li>乾得<b>慢</b>：細胞還活著時，<span class="key">酵素</span>會分解色素 → <span class="key">褐變</span>；潮濕太久還會<b>發霉</b></li>
+        </ul>
+        <ul>
+          <li>乾得<b>快</b>：酵素來不及作用 → 顏色<span class="key">保留</span>得比較好</li>
+          <li>吸水紙、矽膠、加熱，都是在<b>加快脫水</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>什麼顏色最容易保住？<span class="sec">色素</span></h2>
+      <svg class="art" id="colorSvg" viewBox="0 0 640 170" role="img" aria-label="黃橘色的類胡蘿蔔素最穩定；紅紫藍的花青素容易變暗；白色花容易變黃褐"></svg>
+      <ul style="margin-top:8px">
+        <li><span class="key">黃、橘</span>：<b>類胡蘿蔔素</b>，比較穩定 → 最保色</li>
+        <li><span class="key">紅、紫、藍</span>：<b>花青素</b>，遇熱、光、酸鹼會變色 → 紅色容易變暗紅、褐色</li>
+        <li><span class="key">白色</span>：沒有明顯色素，容易變<b>米黃、褐色</b>，而且會變得半透明</li>
+        <li>做好的作品最怕<span class="key">陽光（紫外線）</span>和<span class="key">潮濕</span> → 避光、乾燥保存</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>平面：押花三種方法<span class="sec">比較</span></h2>
+      <div class="three">
+        <div class="box c1"><svg viewBox="0 0 200 110" id="mBook" aria-hidden="true"></svg><b class="t">重物押花</b>吸水紙夾花 → 厚書或押花板 → 壓重物<small>約 <b>1～2 週</b>；前 3 天每天換紙。最簡單，但慢，紅色花容易變暗</small></div>
+        <div class="box c3"><svg viewBox="0 0 200 110" id="mMicro" aria-hidden="true"></svg><b class="t">微波押花</b>兩片瓷盤夾住吸水紙和花 → 微波<small>每次 <b>20～30 秒</b>、拿出散熱、重複；最快、最保色。<b>不能放金屬</b>、要有人顧</small></div>
+        <div class="box c4"><svg viewBox="0 0 200 110" id="mIron" aria-hidden="true"></svg><b class="t">熨斗押花</b>花夾在紙中 → 低溫、<b>關蒸氣</b>按壓<small>每次壓 10～15 秒、拿起來散熱、重複。快，但太熱會焦黃</small></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>立體：乾燥花兩種方法<span class="sec">比較</span></h2>
+      <div class="two" style="align-items:start">
+        <div class="box c2"><svg viewBox="0 0 260 120" id="mGel" aria-hidden="true"></svg><b class="t">矽膠乾燥</b>花埋進<span class="key">乾燥用矽膠</span>，蓋緊 <b>3～7 天</b><small>矽膠會吸走水分，形狀和顏色保得最好。變色矽膠吸滿水會變色，烘乾後可重複使用</small></div>
+        <div class="box c1"><svg viewBox="0 0 260 120" id="mHang" aria-hidden="true"></svg><b class="t">倒掛風乾</b>花莖綁好，<span class="key">倒掛</span>在陰涼通風處 <b>1～3 週</b><small>不花錢，倒掛讓花莖保持挺直；但花會縮小、顏色變暗。適合滿天星、星辰花、薰衣草</small></div>
+      </div>
+      <div class="warnbox"><b>安全：</b>矽膠不能吃、不要揉眼睛，倒的時候慢慢倒、避免揚起粉塵，戴手套；選用<b>不含鈷的橘色變色矽膠</b>比較安全。微波時不能放<b>訂書針、鐵夾</b>，紙冒煙或聞到焦味立刻停。熨斗用完放在架上，手不要碰金屬面。</div>
+    </div>
+
+    <div class="card">
+      <h2>挑什麼花？什麼時候採？</h2>
+      <div class="two" style="align-items:start">
+        <div class="box okb"><b class="t">✅ 適合押花</b>
+          <svg viewBox="0 0 300 80" id="goodFl" aria-hidden="true"></svg>
+          <ul>
+            <li><span class="key">薄、平、水分少</span>的花和葉</li>
+            <li>三色堇、波斯菊、日日春、繡球花（單朵小花）、蕨類、小葉子</li>
+            <li>剛開、新鮮、沒有破損的</li>
+          </ul></div>
+        <div class="box badb"><b class="t">❌ 避免（或要先處理）</b>
+          <svg viewBox="0 0 300 80" id="badFl" aria-hidden="true"></svg>
+          <ul>
+            <li><b>厚重、多肉、多層</b>：整朵玫瑰、百合、蘭花 → 拆成單片花瓣，或改用矽膠</li>
+            <li>雨後、清晨帶露水的花 → 水太多、容易發霉</li>
+            <li>已經凋謝、枯萎的花</li>
+          </ul></div>
+      </div>
+      <div class="tip"><b>採花時間：</b>晴天上午、<span class="key">露水乾了以後</span>（約 10 點後）。在校園採花要先問過老師，不採別人種的、不採保育植物。</div>
+    </div>
+  </section>
+
+  <!-- ===== 2 實驗過程 ===== -->
+  <section class="panel" id="p2" hidden>
+    <div class="card">
+      <h2>準備材料（每組）</h2>
+      <div class="mats">
+        <div class="mat"><b>🌼 花材 4 種以上</b><small>每種至少 8 朵，多採備用</small></div>
+        <div class="mat"><b>✂️ 小剪刀、鑷子</b><small>剪花萼、夾花瓣</small></div>
+        <div class="mat"><b>🧻 吸水紙</b><small>或廚房紙巾、圖畫紙；不要用有花紋的</small></div>
+        <div class="mat"><b>📦 瓦楞紙板</b><small>夾在最外層，幫助透氣、壓平</small></div>
+        <div class="mat"><b>📚 厚書或押花板</b><small>舊電話簿最好用</small></div>
+        <div class="mat"><b>🍽️ 兩片微波用瓷盤</b><small>平底，或微波押花器</small></div>
+        <div class="mat"><b>♨️ 熨斗＋燙衣板</b><small>低溫、關蒸氣</small></div>
+        <div class="mat"><b>💎 乾燥用矽膠＋密封盒</b><small>不含鈷的變色矽膠</small></div>
+        <div class="mat"><b>🎨 卡紙、白膠、牙籤</b><small>做卡片、書籤</small></div>
+        <div class="mat"><b>🎞️ 護貝膠膜或透明貼紙</b><small>保護作品</small></div>
+        <div class="mat"><b>📷 平板拍照</b><small>新鮮時先拍，之後比顏色</small></div>
+        <div class="mat"><b>🧤 手套、口罩</b><small>倒矽膠時使用</small></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>一步一步做押花與乾燥花<span class="sec">點數字跳到那一步</span></h2>
+      <div class="stepchips" id="chips"></div>
+      <div class="player">
+        <div class="stage" id="stage"><span class="badge" id="sBadge"></span><div id="sArt"></div></div>
+        <div class="stxt">
+          <h3 id="sTitle"></h3>
+          <ul id="sList"></ul>
+          <div class="tip" id="sTip"></div>
+          <div class="snav">
+            <button class="btn ghost" id="sPrev">← 上一步</button>
+            <button class="btn ghost sm" id="sPause">⏸ 暫停動畫</button>
+            <button class="btn" id="sNext">下一步 →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>排版小技巧</h2>
+      <svg class="art" id="layoutSvg" viewBox="0 0 640 230" role="img" aria-label="三種排版：一朵主角花加小花和葉子、三角形構圖、留白"></svg>
+      <div class="three" style="margin-top:8px">
+        <div class="box"><b class="t">主角＋配角</b>一朵大花當主角，小花、葉子、蕨類當配角</div>
+        <div class="box"><b class="t">三角形構圖</b>花材排成不等邊三角形，看起來穩又活潑</div>
+        <div class="box"><b class="t">留白</b>不要塞滿；四周留空，護貝時才封得住</div>
+      </div>
+      <div class="note">先排好、<b>拍照</b>，再一片一片用牙籤點<b>一點點白膠</b>黏上去（膠太多會透出來）。</div>
+    </div>
+  </section>
+
+  <!-- ===== 3 分組試驗 ===== -->
+  <section class="panel" id="p3" hidden>
+    <div class="card">
+      <h2>分組試驗：哪一種方法最保色？</h2>
+      <p><b>實驗問題：</b>同一種花，用 4 種方法乾燥，哪一種顏色、形狀保得最好？不同顏色的花，結果一樣嗎？</p>
+      <svg class="art" id="designSvg" viewBox="0 0 640 290" role="img" aria-label="四組各用一種顏色的花，每組都用重物、微波、熨斗、矽膠四種方法"></svg>
+      <div class="three" style="margin-top:10px">
+        <div class="box c1"><b class="t">操作變因</b><b>組內</b>：乾燥方法（重物／微波／熨斗／矽膠）<br><b>組間</b>：花的顏色（紫、粉紅、黃、白）</div>
+        <div class="box c2"><b class="t">控制變因</b>同一株、同時間採的花，大小相近；同款吸水紙；評分用同一張色卡、同一個光線下拍照</div>
+        <div class="box c3"><b class="t">應變變因</b>乾燥所需時間、保色分數、形狀完整分數、有沒有褐變或變透明</div>
+      </div>
+      <div class="note"><b>色卡比對：</b>新鮮時先放在白紙上拍照，乾燥後在<b>同一個位置、同一個光線</b>再拍一次，兩張並排比較。</div>
+    </div>
+
+    <div class="card">
+      <h2>四人一組</h2>
+      <div class="role">
+        <div class="rl"><span class="tag" style="background:var(--g1)">重物</span><b>押花員</b>負責重物押花（前 3 天換紙）；新鮮時拍照</div>
+        <div class="rl"><span class="tag" style="background:var(--g3)">微波</span><b>微波員</b>負責微波押花，記錄加熱次數、總秒數</div>
+        <div class="rl"><span class="tag" style="background:var(--g4)">熨斗</span><b>熨斗員</b>負責熨斗押花，記錄按壓次數</div>
+        <div class="rl"><span class="tag" style="background:var(--g2)">矽膠</span><b>矽膠員</b>負責矽膠乾燥；填紀錄表、上台發表</div>
+      </div>
+      <p class="ex">每個人都用自己做的花材，最後做一張自己的作品。三人組：熨斗員兼押花員。</p>
+    </div>
+
+    <div class="card">
+      <h2>保色分數怎麼打？</h2>
+      <svg class="art" id="scaleSvg" viewBox="0 0 600 140" role="img" aria-label="保色 5 到 1 分：5 分和新鮮時一樣，1 分完全褐色"></svg>
+      <div class="three" style="margin-top:6px">
+        <div class="box"><b class="t">保色 1～5</b>對照上面的圖和新鮮時的照片</div>
+        <div class="box"><b class="t">形狀 1～5</b>5 完整平順；3 有皺摺；1 破碎、黏在紙上</div>
+        <div class="box"><b class="t">乾燥時間</b>記錄到「摸起來像紙一樣乾脆」為止</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>紀錄表</h2>
+      <p class="ex">組別：＿＿　花名：＿＿＿＿　花色：＿＿　採花日期：＿＿／＿＿</p>
+      <div class="tblwrap"><table class="t">
+        <tr><th>項目</th><th>重物押花</th><th>微波押花</th><th>熨斗押花</th><th>矽膠（立體）</th></tr>
+        <tr><td><b>乾燥時間</b></td><td>＿ 天</td><td>＿ 秒 × ＿ 次</td><td>＿ 秒 × ＿ 次</td><td>＿ 天</td></tr>
+        <tr><td><b>保色（1～5）</b></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>形狀（1～5）</b></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>褐變／透明／發霉</b></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>觀察備註</b></td><td></td><td></td><td></td><td></td></tr>
+      </table></div>
+      <h3>全班彙整（保色分數）</h3>
+      <div class="tblwrap"><table class="t">
+        <tr><th>組別／花色</th><th>重物</th><th>微波</th><th>熨斗</th><th>矽膠</th><th>最適合的方法</th></tr>
+        <tr><td>第 1 組：紫</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>第 2 組：粉紅</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>第 3 組：黃</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>第 4 組：白</td><td></td><td></td><td></td><td></td><td></td></tr>
+      </table></div>
+      <h3>討論</h3>
+      <ol>
+        <li>哪一種方法乾得最快？最快的也最保色嗎？</li>
+        <li>哪一種顏色的花最保色？用「類胡蘿蔔素、花青素」解釋。</li>
+        <li>重物押花為什麼前 3 天要每天換紙？</li>
+        <li>延伸：把一張作品放窗邊、一張放抽屜，2 週後比較，你預測會怎樣？</li>
+      </ol>
+      <details class="teacher"><summary>老師參考：預期結果</summary>
+        <ul>
+          <li>乾燥速度：微波 ≈ 熨斗（分鐘）＞ 矽膠（3～7 天）＞ 重物（1～2 週）。</li>
+          <li>保色：通常矽膠、微波最好；重物押花紅紫色容易變暗；熨斗溫度太高會焦黃。</li>
+          <li>花色：黃橘最穩定；紫、藍其次；紅、粉紅容易變暗；白色容易變黃、透明。</li>
+          <li>窗邊的作品 2 週就會明顯褪色，說明紫外線會破壞色素，作品要避光保存。</li>
+          <li>結果依花材、微波功率、熨斗溫度而不同，以實際結果討論即可。</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="card">
+      <h2>三節課怎麼排</h2>
+      <div class="timeline">
+        <div class="tl"><b>課前</b><span class="m">老師</span><ul><li>確認校園可採的花</li><li>先試微波幾秒適合（各台功率不同）</li><li>預先做好一批押花，第 3 節不夠時備用</li></ul></div>
+        <div class="tl"><b>第 1 節</b><span class="m">知識＋採花</span><ul><li>基本知識（20 分）</li><li>校園採花（20 分）</li><li>新鮮時拍照、整理花材（10 分）</li></ul></div>
+        <div class="tl"><b>第 2 節</b><span class="m">四種方法</span><ul><li>重物押花、矽膠先做好放著（15 分）</li><li>微波、熨斗押花＋記錄（30 分）</li><li>收拾（5 分）</li></ul></div>
+        <div class="tl"><b>第 3 節</b><span class="m">一週後</span><ul><li>取出重物押花和矽膠花（10 分）</li><li>拍照、打分數、全班彙整（15 分）</li><li>做卡片或書籤、護貝（25 分）</li></ul></div>
+      </div>
+      <div class="note"><b>三節連排？</b>重物押花改成「老師預先做好的」，現場只比較微波、熨斗、矽膠（矽膠埋 2 節課也能看出差別，再帶回去放到一週）。重物押花前 3 天要換紙，請押花員負責。</div>
+    </div>
+
+    <div class="card">
+      <h2>評分重點（老師可自行調整）</h2>
+      <div class="three">
+        <div class="box c2"><b class="t">實驗操作 30%</b>採花正確、安全使用微波和熨斗、按時換紙</div>
+        <div class="box c3"><b class="t">紀錄與討論 30%</b>照片比對清楚、能用色素解釋結果</div>
+        <div class="box c1"><b class="t">作品 40%</b>花材平整乾淨、排版有主次和留白、封膜完整</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4 動手判斷 ===== -->
+  <section class="panel" id="p4" hidden>
+    <div class="card">
+      <h2>把步驟排好</h2>
+      <p class="ex">依照正確順序，一個一個點下面的步驟。</p>
+      <div class="order" id="oSlots"></div>
+      <div class="opool" id="oPool"></div>
+      <div class="ofb" id="oFb" aria-live="polite"></div>
+      <div class="actions"><button class="btn ghost" id="oReset">↺ 重新排</button></div>
+    </div>
+
+    <div class="card">
+      <h2>這朵花適合直接押嗎？</h2>
+      <div class="ready" id="ready"></div>
+      <div class="actions"><button class="btn ghost" id="readyReset">↺ 重新作答</button></div>
+    </div>
+
+    <div class="card">
+      <h2>微波實驗室</h2>
+      <div class="conc">
+        <div>
+          <div><b>每次連續加熱</b> <span class="cnum" id="mNum">30</span> <b>秒</b></div>
+          <input type="range" id="mRange" min="10" max="120" step="10" value="30" aria-label="每次加熱秒數">
+          <div class="cverdict" id="mVerdict"></div>
+          <p id="mWhy" style="margin:4px 0 0"></p>
+        </div>
+        <figure><svg class="art" id="mSvg" viewBox="0 0 300 200" role="img" aria-label="微波押花：瓷盤夾著花"></svg>
+          <figcaption>以 600 W 左右為例；功率不同，秒數要調整</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>出問題了！怎麼辦？<span class="sec">先想，再點開</span></h2>
+      <div class="cases" id="cases"></div>
+    </div>
+  </section>
+
+
+  <!-- ===== 5 小測驗 ===== -->
+  <section class="panel" id="p5" hidden></section>
+
+  <footer>內容依一般押花與乾燥花製作原則整理（快速脫水、類胡蘿蔔素與花青素的穩定性差異、矽膠與微波乾燥）。微波秒數依機器功率不同，請老師課前先試做調整。</footer>
+</div>
+
+<div class="overlay" id="overlay" hidden><div class="inner"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQAAAAAefbjOAAADAElEQVR42u1cMY7cMAwcRgKutIF9wD5F+4P7svWU+4FUHiBjUpCStQgSIOli0YVxwpoNPTcaDkUL8ddX/oF/uDzIgzzoPw2qYterRgA4BcCpS3lVEQBAfyh69u4dBLIEkiSRCmA3cuwmgWQJRCL1Lx6evdsH2f/+RgIIRN4BJMXBt4g8G5RLXp69pYKqCLA18MApyIqDaLzh2VsjKM6LrUVmCU1SOcH8eUYChOS9ePbWQsRUgqbyALMEKj3orzU2YCOA6tlbQFleYAj8/e0Smq4sb84R23jb9VQdgfz81hKUqADzs8004tm7f/WpOMDW+rLXnDw2dqJgAw/niAUQQeqL54GBDf2h6U2tiENBQ0fEIjrCWKCzBW2pvhRJHkDHhmfv/p7lAcBYQOtQ0vgAsL3iMi4dEXffNRpMLtC2DrLYdvLr864jFulraHOj4RKQyhGcCk+4slyHIzgkRCoYS+t+2SOlo8QRsUT1Sdr+oVSA2bXSvQKha0zP3u2rz15ccNgOQzNMDXOvPlf0I+wqRhQTXqwp6jpiER1RgIko0L2qyYoYpyccEat0ui4Du3tVnAqOq0p1RCzAEb+YlHq0zjhCC47j6nV49tZwsbtwaO/qwTpdzhFrKUu1qMtsT0xQGQDx6nM1P6J3vq9NxFwrc7ZdWS4RtDXwqFEnMgCcYm+/xn7bvkVeV6/cs7eAH9F1xEUKygza4cAlNZwj1qg10uRHDCMKwc7JpDdTwhGBm5+zrA/acewamy5TeQCJpxAIFNQdSASQPz1767jYU+/z2MbQ31vVYTuJZ+/+EzypAET9oOQ9NABnJGpoopMbCA2oD88eFpsN72PhfXjnFHM0AejIZ949ewsEDQ9qFBypW1Iiu+Gg98U9e4s4VL2/NXVBZxd7nKrzWmOpoPpBkT1Qt470FYH0ZV8UmUf9PHurzIbjFObXKUSNQN4DmJ8tAluLJjA2z95K35jhVYL2AQ31uMcgh89rLDcbfjmVk4Gd+DYQ6oi4c5D41ws9yIM86A/XT6knLvMtQj/VAAAAAElFTkSuQmCC"><p>用平板或手機掃描，開始小測驗！</p><small>https://teacher-liujikan.github.io/yilin-work/agri-flower/#quiz</small></div></div>
+
+<script>
+(function(){
+const $ = id => document.getElementById(id);
+const T=(x,y,t,a="middle",cls="s-txt",sz)=>`<text class="${cls}" x="${x}" y="${y}" text-anchor="${a}"${sz?` style="font-size:${sz}px"`:""}>${t}</text>`;
+const ARROWDEF=id=>`<defs><marker id="${id}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--muted)"/></marker></defs>`;
+const ARR=(x1,y1,x2,y2,id)=>`<path d="M${x1} ${y1} L${x2} ${y2}" stroke="var(--muted)" stroke-width="2.4" fill="none" marker-end="url(#${id})"/>`;
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const fill=(id,html)=>{ const e=$(id); if(e) e.innerHTML=html; };
+
+/* ---------- 押花：繪圖小工具 ---------- */
+function FLOWER(x,y,s=1,c="var(--fp)",o={}){
+  const n=o.n||5, r=o.r||0;
+  let p="";
+  for(let i=0;i<n;i++) p+=`<ellipse cx="0" cy="-14" rx="${o.rx||9}" ry="${o.ry||15}" fill="${c}" stroke="${o.sk||"rgba(0,0,0,.12)"}" stroke-width="1" transform="rotate(${i*360/n})"${o.op?` opacity="${o.op}"`:""}/>`;
+  const stem=o.stem?`<path d="M0 6 Q4 40 0 ${o.stem}" stroke="var(--stem)" stroke-width="3" fill="none"/><path d="M2 ${o.stem*.6} q16 -10 20 -2 q-10 10 -20 2" fill="var(--stem)"/>`:"";
+  return `<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><g${o.cls?` class="${o.cls}"`:""}${o.style?` style="${o.style}"`:""}>${stem}${p}<circle r="${o.cr||6}" fill="${o.cc||"var(--fc)"}"/></g></g>`;
+}
+const FERN=(x,y,s=1,r=0)=>`<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><path d="M0 0 L0 -60" stroke="var(--stem)" stroke-width="2"/>${[0,1,2,3,4,5].map(i=>`<ellipse cx="-7" cy="${-8-i*9}" rx="7" ry="3" fill="var(--stem)" transform="rotate(-25 0 ${-8-i*9})"/><ellipse cx="7" cy="${-8-i*9}" rx="7" ry="3" fill="var(--stem)" transform="rotate(25 0 ${-8-i*9})"/>`).join("")}</g>`;
+const LEAFS=(x,y,s=1,r=0)=>`<path transform="translate(${x} ${y}) rotate(${r}) scale(${s})" d="M0 0 Q12 -16 0 -34 Q-12 -16 0 0 Z M0 0 L0 -32" fill="var(--stem)" stroke="var(--leaf2)" stroke-width="1"/>`;
+const PAPER=(x,y,w,h)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" fill="var(--blot)" stroke="var(--cardline)" stroke-width="1.2"/>`;
+const BOOKS=(x,y,w)=>`<rect x="${x}" y="${y}" width="${w}" height="20" rx="3" fill="var(--g3)"/><rect x="${x+4}" y="${y+4}" width="${w-8}" height="12" fill="#f4f0e2"/><rect x="${x+8}" y="${y-22}" width="${w-16}" height="20" rx="3" fill="var(--g4)"/><rect x="${x+12}" y="${y-18}" width="${w-24}" height="12" fill="#f4f0e2"/>`;
+const MICRO=(x,y,s=1,on=true)=>`<g transform="translate(${x} ${y}) scale(${s})"><rect x="-70" y="-44" width="140" height="88" rx="8" fill="var(--metal)"/><rect x="-60" y="-34" width="90" height="68" rx="4" fill="#2b3036"/>${on?`<rect x="-60" y="-34" width="90" height="68" rx="4" fill="#f2d36b" opacity=".25" class="a-fade"/>`:""}<rect x="38" y="-30" width="24" height="10" rx="2" fill="#cfe8cf"/>${[0,1,2].map(i=>`<circle cx="${44+i*8}" cy="${-6+i*0}" r="3" fill="#ddd"/>`).join("")}<circle cx="50" cy="16" r="7" fill="#ddd"/></g>`;
+const IRON=(sc=1)=>`<g transform="scale(${sc})"><path d="M-40 0 L40 0 Q 46 -30 0 -36 L -30 -36 Q -40 -20 -40 0 Z" fill="var(--g4)"/><path d="M-20 -36 Q -10 -56 20 -50 L 22 -36" stroke="var(--g4)" stroke-width="7" fill="none" stroke-linecap="round"/><rect x="-40" y="-4" width="82" height="6" rx="2" fill="var(--metal)"/></g>`;
+const GELS=(x,y,w,h,n,c="var(--gel)")=>Array.from({length:n},(_,i)=>`<circle cx="${(x+((i*97+13)%101)/101*w).toFixed(1)}" cy="${(y+((i*61+7)%89)/89*h).toFixed(1)}" r="2.4" fill="${c}"/>`).join("");
+
+/* ---------- 總覽 ---------- */
+const FLOW=[
+  ["採花",`<svg viewBox="0 0 120 90">${FLOWER(46,36,.9,"var(--fp)",{stem:40})}${FLOWER(80,44,.7,"var(--fy)",{stem:34})}<g transform="translate(96 70)"><g class="a-snip"><path d="M0 0 l14 -6 M0 0 l14 6" stroke="var(--metal)" stroke-width="3"/></g></g></svg>`,"晴天上午、露水乾"],
+  ["整理花材",`<svg viewBox="0 0 120 90">${FLOWER(40,44,.9,"var(--fpk)")}<path d="M66 44 h12" stroke="var(--muted)" stroke-width="2"/>${[0,1,2].map(i=>`<ellipse cx="${92+i*0}" cy="${24+i*20}" rx="8" ry="6" fill="var(--fpk)"/>`).join("")}</svg>`,"厚的拆瓣、剪花萼"],
+  ["夾吸水紙",`<svg viewBox="0 0 120 90">${PAPER(14,58,92,8)}${FLOWER(42,52,.6,"var(--fp)",{ry:12})}${FLOWER(78,52,.6,"var(--fy)",{ry:12})}<g class="a-press" style="animation-duration:2.6s">${PAPER(14,40,92,8)}</g></svg>`,"不重疊、攤開"],
+  ["乾燥",`<svg viewBox="0 0 120 90">${MICRO(60,46,.62)}${[0,1].map(i=>`<path d="M${40+i*30} 14 q-4 -8 0 -14" stroke="var(--water)" stroke-width="2" fill="none" class="a-up" style="animation-delay:${i*.6}s"/>`).join("")}</svg>`,"壓、微波、熨斗、矽膠"],
+  ["做作品",`<svg viewBox="0 0 120 90"><g class="a-swing" style="transform-origin:60px 6px"><rect x="40" y="6" width="40" height="80" rx="4" fill="var(--film)" opacity=".5"/><rect x="44" y="10" width="32" height="72" rx="2" fill="#fbf7ee" stroke="var(--cardline)"/>${FLOWER(60,36,.5,"var(--fp)",{ry:12})}${FERN(60,78,.45)}</g></svg>`,"卡片、書籤、相框"]
+];
+
+/* ---------- 為什麼要快 ---------- */
+fill("whySvg",(()=>{
+  let s=ARROWDEF("arw");
+  s+=`<g transform="translate(90 110)"><ellipse rx="44" ry="66" fill="var(--fpk)" opacity=".9"/>${[[-18,-40],[8,-46],[22,-24],[-6,-22],[-26,-6],[12,-4],[28,8],[-14,14],[4,22],[-22,30],[18,32],[-4,44],[0,-2]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="5" fill="var(--water)" opacity=".85"/>`).join("")}</g>`;
+  s+=T(90,200,"花瓣：水約 80～90%","middle","s-txt");
+  s+=`<path d="M150 90 Q 200 60 250 60" stroke="var(--muted)" stroke-width="2.4" fill="none" marker-end="url(#arw)"/><path d="M150 130 Q 200 160 250 160" stroke="var(--muted)" stroke-width="2.4" fill="none" marker-end="url(#arw)"/>`;
+  s+=T(200,48,"乾得慢（好幾天濕濕的）","middle","s-sm")+T(200,184,"乾得快（吸水紙、矽膠、加熱）","middle","s-sm");
+  // slow
+  s+=`<g transform="translate(330 60)"><ellipse rx="22" ry="34" fill="var(--fpk)" class="a-fadeout"/><ellipse rx="22" ry="34" fill="var(--fbr)" class="a-appear"/><circle cx="8" cy="-10" r="5" fill="#4f7a4a" class="a-appear"/><circle cx="-6" cy="12" r="4" fill="#2f3f2f" class="a-appear"/></g>`;
+  s+=`<g transform="translate(400 30)"><circle r="10" fill="#efe2c4" stroke="var(--fbr)" stroke-width="2"/><path d="M-4 -2 l8 4" stroke="var(--fbr)" stroke-width="2"/></g>${T(430,34,"酵素分解色素","start","s-sm")}`;
+  s+=T(470,70,"→ 褐變、發霉 ✗","start","s-txt");
+  // fast
+  s+=`<g transform="translate(330 160)"><ellipse rx="22" ry="34" fill="var(--fpk)"/></g>${[0,1,2].map(i=>`<circle cx="${318+i*12}" cy="160" r="4" fill="var(--water)" class="a-up" style="animation-delay:${i*.4}s"/>`).join("")}`;
+  s+=T(380,164,"水分很快被帶走","start","s-sm")+T(470,190,"→ 顏色保住 ✓","start","s-txt");
+  return s;
+})());
+
+/* ---------- 色素穩定度 ---------- */
+fill("colorSvg",(()=>{
+  let s=ARROWDEF("arc");
+  const C=[["黃、橘","var(--fy)","#e0a21a","類胡蘿蔔素","最保色"],["紫、藍","var(--fp)","#6a4a8a","花青素","會變暗"],["紅、粉紅","var(--fpk)","#8a4a4a","花青素","容易變暗褐"],["白","var(--fw)","#d9c08a","沒有明顯色素","變米黃、透明"]];
+  C.forEach((c,i)=>{ const x=80+i*160;
+    s+=FLOWER(x-34,62,1.1,c[1],{sk:"var(--fwline)"})+`<path d="M${x-6} 62 h20" stroke="var(--muted)" stroke-width="2" marker-end="url(#arc)"/>`+FLOWER(x+40,62,1,c[2],{sk:"var(--fwline)",ry:13,cc:"#b98a3a"});
+    s+=T(x,118,c[0],"middle","s-txt")+T(x,136,c[3],"middle","s-sm")+T(x,154,c[4],"middle","s-sm");
+  });
+  s+=`<path d="M20 8 H620" stroke="var(--line)" stroke-width="10" stroke-linecap="round"/><path d="M20 8 H160" stroke="var(--ok)" stroke-width="10" stroke-linecap="round"/>`;
+  s+=T(30,28,"穩定","start","s-sm")+T(610,28,"不穩定","end","s-sm");
+  return s;
+})());
+
+/* ---------- 方法圖示 ---------- */
+fill("mBook",`<rect x="30" y="66" width="140" height="24" rx="3" fill="var(--wood)"/>${PAPER(36,58,128,6)}${FLOWER(80,52,.5,"var(--fp)",{ry:12})}${FLOWER(120,52,.5,"var(--fy)",{ry:12})}<g class="a-press" style="animation-duration:3s">${PAPER(36,44,128,6)}${BOOKS(40,22,120)}</g>`);
+fill("mMicro",`${MICRO(100,56,1)}<g transform="translate(70 56)"><ellipse cx="0" cy="10" rx="26" ry="5" fill="var(--porc)"/><ellipse cx="0" cy="2" rx="26" ry="5" fill="var(--porc)"/>${FLOWER(0,6,.3,"var(--fpk)",{ry:12})}</g>`);
+fill("mIron",`<rect x="20" y="80" width="160" height="12" rx="4" fill="var(--metal)"/>${PAPER(40,72,120,8)}${FLOWER(100,70,.4,"var(--fy)",{ry:12})}<g transform="translate(100 66)"><g class="a-tap" style="animation-duration:1.6s">${IRON(.9)}</g></g><path d="M150 30 q-4 -8 0 -14 M160 34 q-4 -8 0 -14" stroke="var(--fire)" stroke-width="2" fill="none" class="a-fade"/>`);
+fill("mGel",`<rect x="40" y="30" width="180" height="80" rx="8" fill="var(--porc)" stroke="var(--metal)" stroke-width="2"/><rect x="44" y="50" width="172" height="56" rx="5" fill="var(--gel)" opacity=".35"/>${GELS(48,52,164,52,60)}${FLOWER(130,60,.9,"var(--fpk)",{n:8,rx:7,ry:13})}<g class="a-fall" style="animation-duration:2s">${GELS(110,20,40,10,8)}</g><rect x="34" y="20" width="192" height="10" rx="4" fill="var(--metal)" class="a-fade"/>`);
+fill("mHang",`<path d="M20 14 H240" stroke="var(--wood)" stroke-width="5" stroke-linecap="round"/>${[0,1,2].map(i=>`<g class="a-swing" style="transform-origin:${70+i*60}px 14px;animation-delay:${i*.3}s"><path d="M${70+i*60} 14 v16" stroke="var(--muted)" stroke-width="1.5"/>${[-6,0,6].map(d=>`<path d="M${70+i*60} 30 L${70+i*60+d} 74" stroke="var(--stem)" stroke-width="2"/>${[0,1,2].map(k=>`<circle cx="${70+i*60+d+((k*5)%7)-3}" cy="${78+k*6}" r="3.4" fill="${["#c8a6e6","#f2d36b","#f5f5f5"][i]}" stroke="var(--fwline)" stroke-width=".6"/>`).join("")}`).join("")}<rect x="${64+i*60}" y="28" width="12" height="5" rx="2" fill="var(--g1)"/></g>`).join("")}`);
+
+/* ---------- 花材 ---------- */
+fill("goodFl",`${FLOWER(30,34,.9,"var(--fp)",{rx:11,ry:13})}${T(30,74,"三色堇","middle","s-sm")}${FLOWER(90,34,.9,"var(--fpk)",{n:8,rx:5,ry:15})}${T(90,74,"波斯菊","middle","s-sm")}${FLOWER(150,34,.9,"var(--fpk)",{n:5,rx:9,ry:12,cc:"#c8452f"})}${T(150,74,"日日春","middle","s-sm")}${FLOWER(210,34,.8,"#7aa6e6",{n:4,rx:9,ry:12})}${T(210,74,"繡球小花","middle","s-sm")}${FERN(270,62,.8)}${T(270,74,"蕨類","middle","s-sm")}`);
+fill("badFl",`<g transform="translate(36 36)">${[0,1,2].map(i=>`<circle r="${20-i*6}" fill="${["#c8323a","#d8454a","#a8222a"][i]}"/>`).join("")}<path d="M-6 -4 q6 -8 12 0 M-10 4 q10 -10 20 0" stroke="#7a1a1a" fill="none"/></g>${T(36,74,"整朵玫瑰","middle","s-sm")}${FLOWER(100,36,.8,"#f8f6f0",{n:6,rx:7,ry:20,sk:"var(--fwline)",cc:"#e8a03a"})}${T(100,74,"百合","middle","s-sm")}${FLOWER(170,36,.9,"var(--fpk)")}${[0,1,2].map(i=>`<path d="M${160+i*10} 10 q-4 6 0 9 q4 -3 0 -9" fill="var(--water)"/>`).join("")}${T(170,74,"帶露水","middle","s-sm")}${FLOWER(240,40,.85,"var(--fbr)",{op:.8,r:40,ry:12})}${T(240,74,"凋謝","middle","s-sm")}`);
+
+/* ---------- 步驟 ---------- */
+const STEPS=[
+ {t:"採花",l:["晴天上午、露水乾了以後採","挑剛開、完整、沒有蟲咬的花","剪下時留一小段莖","放進保鮮盒或夾在舊書裡，避免壓壞、曬乾"],tip:"採完盡快處理；放太久花會軟掉、變色。",
+  art:`<svg viewBox="0 0 340 200"><circle cx="300" cy="34" r="18" fill="var(--g1)" opacity=".7"/>${FLOWER(80,70,1.2,"var(--fp)",{stem:110})}${FLOWER(150,80,1,"var(--fy)",{stem:100})}${FLOWER(210,66,1.1,"var(--fpk)",{n:8,rx:5,ry:15,stem:120})}<g transform="translate(250 130)"><g class="a-snip"><path d="M0 0 l26 -10 M0 0 l26 10" stroke="var(--metal)" stroke-width="4"/><circle cx="-8" cy="-6" r="7" fill="none" stroke="var(--g1)" stroke-width="3"/><circle cx="-8" cy="6" r="7" fill="none" stroke="var(--g1)" stroke-width="3"/></g></g><rect x="20" y="170" width="300" height="20" rx="4" fill="var(--soil)" opacity=".5"/></svg>`},
+ {t:"整理花材",l:["厚的花：剖成兩半，或拆成單片花瓣","花萼太厚的剪掉、壓扁","葉子、蕨類用紙巾擦乾","新鮮時放在白紙上拍照（之後比顏色）"],tip:"押花是把立體變平面，太厚的部分一定要先處理，不然壓不平、乾不了。",
+  art:`<svg viewBox="0 0 340 200">${FLOWER(80,90,1.6,"var(--fpk)",{n:6})}<g transform="translate(150 90)"><g class="a-snip"><path d="M0 0 l26 -10 M0 0 l26 10" stroke="var(--metal)" stroke-width="4"/></g></g>${[0,1,2,3,4,5].map(i=>`<g class="a-place" style="animation-delay:${i*.3}s"><ellipse cx="${220+(i%3)*34}" cy="${70+Math.floor(i/3)*50}" rx="10" ry="18" fill="var(--fpk)"/></g>`).join("")}${T(255,180,"拆成單片花瓣","middle","s-txt")}</svg>`},
+ {t:"排在吸水紙上",l:["由下往上：瓦楞紙 → 吸水紙 → 花 → 吸水紙 → 瓦楞紙","花瓣攤開，不要重疊","同一層放厚度差不多的花","用鑷子調整花瓣形狀"],tip:"想要正面和側面的花都有，可以各押幾朵，排版時比較有變化。",
+  art:`<svg viewBox="0 0 340 200"><rect x="40" y="150" width="260" height="14" rx="2" fill="#c9a26a"/>${PAPER(40,142,260,8)}${FLOWER(100,134,.6,"var(--fp)",{ry:12})}${FLOWER(170,134,.6,"var(--fy)",{ry:12})}${FERN(240,142,.6,90)}<g class="a-press" style="animation-duration:3.2s">${PAPER(40,118,260,8)}<rect x="40" y="104" width="260" height="14" rx="2" fill="#c9a26a"/></g>${T(300,186,"↑ 最外層：瓦楞紙板","end","s-sm")}${T(170,40,"三明治：紙板｜吸水紙｜花｜吸水紙｜紙板","middle","s-txt")}</svg>`},
+ {t:"重物押花",l:["整疊夾進厚書或押花板","上面再壓重物（書、磚塊）","前 3 天每天換乾的吸水紙","約 1～2 週，花摸起來像紙一樣乾脆"],tip:"換紙時動作輕；花瓣黏紙就連紙一起換，不要硬撕。",
+  art:`<svg viewBox="0 0 340 200"><rect x="70" y="150" width="200" height="30" rx="4" fill="var(--g3)"/><rect x="74" y="154" width="192" height="22" fill="#f4f0e2"/>${PAPER(80,142,180,6)}${FLOWER(170,140,.4,"var(--fp)",{ry:12})}<g class="a-press" style="animation-duration:3s"><rect x="70" y="112" width="200" height="30" rx="4" fill="var(--g4)"/><rect x="74" y="116" width="192" height="22" fill="#f4f0e2"/><rect x="110" y="70" width="120" height="42" rx="4" fill="var(--metal)"/></g><g transform="translate(300 60)"><rect x="-34" y="-26" width="68" height="54" rx="4" fill="var(--paper)" stroke="var(--muted)"/>${T(0,-8,"前 3 天","middle","s-sm")}${T(0,14,"每天換紙","middle","s-txt")}</g></svg>`},
+ {t:"微波押花",l:["吸水紙夾好花，放在兩片平底瓷盤中間","微波（600 W）每次 20～30 秒","拿出來打開散熱、讓水氣跑掉，再繼續","重複到乾，共約 1～3 分鐘"],tip:"不能放訂書針、鐵夾！一定要有人在旁邊看，紙冒煙就立刻停。",
+  art:`<svg viewBox="0 0 340 200">${MICRO(130,100,1.6)}<g transform="translate(100 112)"><ellipse cx="0" cy="12" rx="40" ry="7" fill="var(--porc)" stroke="var(--metal)"/><rect x="-34" y="0" width="68" height="6" fill="var(--blot)"/><ellipse cx="0" cy="-4" rx="40" ry="7" fill="var(--porc)" stroke="var(--metal)"/></g>${[0,1,2].map(i=>`<path d="M${90+i*14} 74 q-4 -8 0 -14" stroke="var(--water)" stroke-width="2" fill="none" class="a-up" style="animation-delay:${i*.5}s"/>`).join("")}<g transform="translate(290 60)"><circle r="28" fill="var(--paper)" stroke="var(--accent)" stroke-width="3"/><g class="a-rot" style="animation-duration:3s"><path d="M0 0 L0 -20" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/></g>${T(0,46,"20～30 秒","middle","s-txt")}</g><g transform="translate(290 150)"><circle r="16" fill="var(--bad)"/><path d="M-7 -7 l14 14 M7 -7 l-14 14" stroke="#fff" stroke-width="3"/>${T(0,34,"不放金屬","middle","s-sm")}</g></svg>`},
+ {t:"熨斗押花",l:["熨斗調低溫（絲、尼龍檔），一定要關蒸氣","花夾在吸水紙中，平放在燙衣板上","直接往下壓 10～15 秒，不要來回推","拿起來散熱，重複到乾"],tip:"來回推會讓花瓣移位、皺掉；溫度太高會焦黃。",
+  art:`<svg viewBox="0 0 340 200"><rect x="40" y="150" width="260" height="14" rx="4" fill="var(--metal)"/><path d="M70 164 l-10 30 M270 164 l10 30" stroke="var(--metal)" stroke-width="5"/>${PAPER(80,140,180,10)}${FLOWER(170,138,.5,"var(--fy)",{ry:12})}<g transform="translate(170 136)"><g class="a-tap" style="animation-duration:2s">${IRON(1.4)}</g></g><g transform="translate(60 50)"><rect x="-30" y="-16" width="70" height="32" rx="6" fill="var(--paper)" stroke="var(--muted)"/>${T(5,6,"低溫","middle","s-txt")}</g><g transform="translate(290 50)"><path d="M-10 10 q-4 -10 0 -18 M4 10 q-4 -10 0 -18" stroke="var(--water)" stroke-width="2.4" fill="none"/><path d="M-20 -14 l34 30" stroke="var(--bad)" stroke-width="4"/>${T(0,34,"關蒸氣","middle","s-sm")}</g></svg>`},
+ {t:"矽膠乾燥（立體）",l:["密封盒底部先鋪約 2 cm 矽膠","花朝上放好","用湯匙慢慢把矽膠倒進花瓣之間，直到蓋滿","蓋緊、貼日期，3～7 天後輕輕倒出"],tip:"倒的時候要慢，太快會把花瓣壓扁；變色矽膠變色了就代表吸飽水，要烘乾再用。",
+  art:`<svg viewBox="0 0 340 200"><rect x="70" y="70" width="200" height="110" rx="10" fill="var(--porc)" stroke="var(--metal)" stroke-width="2.5"/><rect x="74" y="110" width="192" height="66" rx="6" fill="var(--gel)" opacity=".3"/>${GELS(78,112,184,60,90)}${FLOWER(170,110,1.2,"var(--fpk)",{n:8,rx:7,ry:14})}<g transform="translate(240 40)"><path d="M0 0 L-50 30" stroke="var(--metal)" stroke-width="5" stroke-linecap="round"/><ellipse cx="-56" cy="34" rx="14" ry="8" fill="var(--metal)"/></g><g class="a-fall" style="animation-duration:1.6s">${GELS(176,52,24,10,6)}</g>${T(170,198,"從旁邊慢慢倒，填滿花瓣縫隙","middle","s-sm")}</svg>`},
+ {t:"確認乾透",l:["花瓣摸起來像紙一樣乾、脆、不涼","拿起來不會軟軟垂下","還有點涼、軟 → 再乾燥一下","乾透的花材夾在乾淨的紙中保存"],tip:"沒乾透就封膜，裡面會起霧、發霉。",
+  art:`<svg viewBox="0 0 340 200"><g transform="translate(100 100)"><rect x="-60" y="-60" width="120" height="120" rx="10" fill="var(--ok-soft)"/>${FLOWER(0,-6,1.4,"var(--fp)",{ry:13})}${T(0,52,"乾、脆、不涼 ✓","middle","s-txt")}</g><g transform="translate(240 100)"><rect x="-60" y="-60" width="120" height="120" rx="10" fill="var(--bad-soft)"/><g transform="rotate(30)">${FLOWER(0,-6,1.3,"var(--fp)",{ry:16,op:.85})}</g>${T(0,52,"軟、涼、垂下 ✗","middle","s-txt")}</g><g transform="translate(100 60)"><g class="a-tap"><path d="M20 -10 q10 -6 14 4 l-8 14" fill="#f2c9a0" stroke="#b58a62"/></g></g></svg>`},
+ {t:"排版、黏貼",l:["先在卡紙上排好、拍照","大花當主角，小花、葉子當配角，留白","用牙籤沾一點點白膠，點在花的背面","鑷子夾起，輕輕放上去"],tip:"膠一多就會透出來、讓花瓣變透明，「點」就好，不要塗。",
+  art:`<svg viewBox="0 0 340 200"><rect x="100" y="20" width="140" height="170" rx="6" fill="#fbf7ee" stroke="var(--cardline)" stroke-width="2"/>${FLOWER(150,80,.9,"var(--fp)",{ry:13})}${FERN(200,170,.9,-10)}${FLOWER(190,120,.5,"var(--fy)",{ry:12})}<g class="a-place">${FLOWER(140,140,.5,"var(--fpk)",{ry:12})}</g><g transform="translate(270 70)"><path d="M0 0 L-60 60" stroke="var(--wood)" stroke-width="3"/><circle cx="-60" cy="60" r="3" fill="#fff" stroke="var(--muted)"/></g>${T(56,100,"點一點","middle","s-sm")}${T(56,118,"白膠","middle","s-sm")}</svg>`},
+ {t:"封膜保存",l:["放進護貝膠膜，四周留 3～5 mm","或貼透明貼紙、裝相框","不要曬太陽（紫外線會褪色）","放在乾燥的地方，可以和乾燥劑一起放"],tip:"立體乾燥花可以放進玻璃瓶，加一包乾燥劑再封起來。",
+  art:`<svg viewBox="0 0 340 200"><rect x="70" y="80" width="120" height="66" rx="10" fill="var(--metal)"/><rect x="70" y="110" width="120" height="8" fill="#2b3036"/><circle cx="174" cy="92" r="5" fill="var(--g1)" class="a-fade"/><g class="a-feed"><rect x="100" y="104" width="60" height="20" rx="2" class="s-film" style="opacity:.9"/><rect x="104" y="106" width="52" height="16" fill="#fbf7ee"/></g><g transform="translate(270 110)"><path d="M-30 -60 h60 v10 q10 10 10 30 v60 q0 10 -10 10 h-60 q-10 0 -10 -10 v-60 q0 -20 10 -30 Z" fill="var(--film)" opacity=".35" stroke="var(--water)" stroke-width="2"/>${FLOWER(0,0,.8,"var(--fpk)",{n:8,rx:6,ry:13,stem:50})}<rect x="-14" y="30" width="28" height="16" rx="3" fill="#fff" stroke="var(--muted)"/>${T(0,42,"乾燥劑","middle","s-sm")}</g></svg>`}
+];
+
+/* ---------- 排版圖 ---------- */
+fill("layoutSvg",(()=>{
+  let s="";
+  const card=(x)=>`<rect x="${x}" y="10" width="180" height="190" rx="8" fill="#fbf7ee" stroke="var(--cardline)" stroke-width="2"/>`;
+  s+=card(20)+FLOWER(110,90,1.5,"var(--fp)",{ry:13})+FLOWER(66,150,.6,"var(--fy)",{ry:12})+FLOWER(160,150,.5,"var(--fpk)",{ry:12})+FERN(76,190,.7,-30)+FERN(146,190,.6,30);
+  s+=card(230)+FLOWER(290,60,.9,"var(--fpk)",{ry:13})+FLOWER(370,110,.7,"var(--fy)",{ry:12})+FLOWER(282,160,.7,"var(--fp)",{ry:12})+`<path d="M290 60 L370 110 L282 160 Z" fill="none" stroke="var(--g1)" stroke-width="2" stroke-dasharray="5 4" class="a-fade"/>`;
+  s+=card(440)+FLOWER(500,70,.8,"var(--fp)",{ry:13})+FERN(520,170,.8,-15)+`<rect x="452" y="22" width="156" height="166" rx="4" fill="none" stroke="var(--g3)" stroke-width="2" stroke-dasharray="4 4"/>`;
+  s+=T(110,222,"主角＋配角","middle","s-txt")+T(320,222,"三角形構圖","middle","s-txt")+T(530,222,"留白","middle","s-txt");
+  return s;
+})());
+
+/* ---------- 分組設計 ---------- */
+fill("designSvg",(()=>{
+  const M=["重物","微波","熨斗","矽膠"];
+  const G=[["第 1 組","紫","var(--fp)","#6a4a8a"],["第 2 組","粉紅","var(--fpk)","#a8505a"],["第 3 組","黃","var(--fy)","#e0a21a"],["第 4 組","白","var(--fw)","#e2cf9a"]];
+  const fade=[[.5,.85,.8,.95],[.4,.85,.7,.9],[.9,.95,.9,1],[.4,.7,.55,.8]];
+  let s="";
+  M.forEach((m,j)=>{ s+=T(250+j*110,24,m,"middle","s-txt"); });
+  G.forEach((g,i)=>{ const y=62+i*56;
+    s+=`<rect x="10" y="${y-24}" width="620" height="50" rx="8" fill="${i%2?"var(--bg)":"var(--paper)"}" stroke="var(--line)"/>`;
+    s+=FLOWER(40,y,.75,g[2],{sk:"var(--fwline)"})+T(70,y-2,g[0],"start","s-txt")+T(70,y+14,g[1]+"色的花","start","s-sm");
+    M.forEach((m,j)=>{ const x=250+j*110; s+=FLOWER(x,y,.75,g[3],{sk:"var(--fwline)",op:1})+FLOWER(x,y,.75,g[2],{sk:"none",op:fade[i][j]}); });
+  });
+  s+=T(320,284,"示意：顏色越接近左邊的新鮮花＝保色越好（實際以你們的結果為準）","middle","s-sm");
+  return s;
+})());
+
+/* ---------- 保色分數 ---------- */
+fill("scaleSvg",(()=>{
+  const C=[[5,"和新鮮時一樣",1],[4,"稍微變淡",.8],[3,"明顯變淡／變暗",.55],[2,"大部分褐色",.3],[1,"完全褐色",0]];
+  return C.map((c,i)=>{ const x=60+i*120; return `<rect x="${x-52}" y="4" width="104" height="132" rx="10" fill="var(--bg)" stroke="var(--line)"/>${FLOWER(x,52,1.15,"var(--fbr)",{ry:14})}${FLOWER(x,52,1.15,"var(--fpk)",{ry:14,op:c[2],sk:"none"})}${T(x,108,c[0]+" 分","middle","s-txt",16)}${T(x,126,c[1],"middle","s-sm")}`; }).join("");
+})());
+
+/* ---------- 適合直接押嗎 ---------- */
+const READY_OPTS=["適合","要先處理／不適合"];
+const READY=[
+ ["三色堇：花瓣薄、平",0,"很適合押花，顏色也漂亮。"],
+ ["一整朵盛開的玫瑰",1,"太厚、太多層，壓不平也乾不了。拆成單片花瓣，或整朵用矽膠乾燥。"],
+ ["蕨類的小葉片",0,"薄、平、水分少，是押花的好配角。"],
+ ["下過雨、濕答答的花",1,"水太多容易發霉。先用紙巾吸乾，或等天晴再採。"],
+ ["百合整朵",1,"花瓣厚、水分多、花粉多，要拆開、剪掉雄蕊，或改用矽膠。"],
+ ["波斯菊",0,"單層花瓣、薄，正面押很漂亮。"],
+ ["已經枯萎、垂下的花",1,"已經開始褐變，押出來顏色不好看。"],
+ ["繡球花：拆成一朵一朵小花",0,"拆開後每朵都很薄，很適合。"]
+];
+
+/* ---------- 微波實驗室 ---------- */
+function renderMicro(){
+  const m=+$("mRange").value; $("mNum").textContent=m;
+  let v,w,col;
+  if(m<=10){ v="可以，但很慢"; w="每次只熱一點點，要重複很多次；適合很薄、很小的花。"; col="var(--g1)"; }
+  else if(m<=30){ v="剛剛好"; w="每次熱一下就拿出來散熱，水氣跑掉，花不會被蒸熟，顏色保得最好。"; col="var(--ok)"; }
+  else if(m<=60){ v="偏久"; w="水氣悶在盤子裡，花瓣容易被「蒸」到變透明、皺掉；邊緣可能開始焦黃。"; col="var(--g1)"; }
+  else { v="太久！危險"; w="紙和花可能焦掉、冒煙甚至起火。一定要分段加熱，人不能離開。"; col="var(--bad)"; }
+  $("mVerdict").textContent=v; $("mVerdict").style.color=col; $("mWhy").textContent=w;
+  const hot=m>60, warm=m>30;
+  $("mSvg").innerHTML=`${MICRO(150,90,1.7)}<g transform="translate(116 104)"><ellipse cx="0" cy="12" rx="44" ry="7" fill="var(--porc)" stroke="var(--metal)"/><rect x="-38" y="0" width="76" height="6" fill="${hot?"#c9a06a":"var(--blot)"}"/><ellipse cx="0" cy="-4" rx="44" ry="7" fill="var(--porc)" stroke="var(--metal)"/></g>${warm?[0,1,2].map(i=>`<path d="M${100+i*16} 80 q-4 -8 0 -14" stroke="${hot?"#555":"var(--water)"}" stroke-width="2.4" fill="none" class="a-up" style="animation-delay:${i*.4}s"/>`).join(""):""}${hot?`<g class="a-flame"><path d="M116 72 q-10 -20 0 -34 q10 14 0 34" fill="var(--fire)"/></g>`:""}${T(150,190,"每次 "+m+" 秒 → 拿出散熱 → 再來","middle","s-sm")}`;
+}
+$("mRange").oninput=renderMicro; renderMicro();
+
+/* ---------- 診斷卡 ---------- */
+const CASES=[
+ ["押完的花發霉了","花太濕、吸水紙沒換、放在潮濕的地方","採乾的花；前 3 天每天換紙；改用微波或矽膠"],
+ ["顏色變成褐色","乾得太慢，酵素讓色素分解；或花本來就快謝了","改用快速乾燥（微波、矽膠）；採新鮮剛開的花"],
+ ["花瓣變透明、皺皺的","微波一次太久被「蒸」到，或熨斗溫度太高","分段加熱、每次拿出散熱；熨斗調低溫、關蒸氣"],
+ ["花瓣黏在紙上撕不下來","用了有塗層的紙，或花還沒乾就去撕","用吸水紙或圖畫紙；乾透再取；連紙一起剪下"],
+ ["矽膠倒出來花瓣都碎了","太乾、太久，或倒的時候太用力","3～5 天就檢查；倒的時候慢慢傾斜，用手接住"],
+ ["作品放一個月就褪色","放在陽光直射的地方","避光保存；封膜或裝框；不要貼在窗邊"],
+ ["護貝後膠膜裡起霧","花材沒乾透","確認乾、脆、不涼再護貝"]
+];
+
+/* ---------- 小測驗 ---------- */
+const QS=[
+ {q:"做押花、乾燥花的共同關鍵是什麼？",o:["又快又徹底地把水分拿掉","讓花吸更多水","把花放在太陽下曬","加糖保存"],a:0,why:"乾得快，酵素和黴菌來不及作用，顏色和形狀才保得住。"},
+ {q:"花乾得太慢，為什麼容易變成褐色？",o:["細胞裡的酵素分解色素，發生褐變","花吸收了泥土的顏色","吸水紙掉色","花在曬太陽"],a:0,why:"潮濕時酵素還在作用，會讓色素分解、褐變，也容易發霉。"},
+ {q:"哪一種顏色的花最容易保住顏色？",o:["黃、橘色（類胡蘿蔔素）","紅色（花青素）","粉紅色","白色"],a:0,why:"類胡蘿蔔素比較穩定；花青素遇熱、光、酸鹼容易變色。"},
+ {q:"白色的花乾燥後，常會變成什麼樣子？",o:["米黃、褐色，或半透明","更白、更亮","變成藍色","完全不會變"],a:0,why:"白色花沒有明顯色素，脫水後容易變米黃、透明。"},
+ {q:"重物押花，為什麼前 3 天要每天換吸水紙？",o:["吸飽水的紙不能再吸水，花會發霉、褐變","讓花比較香","紙會被花吃掉","換紙比較好看"],a:0,why:"前幾天花的水分最多，換乾紙才能持續快速吸水。"},
+ {q:"微波押花，下列做法何者正確？",o:["每次 20～30 秒，拿出散熱後再繼續","一次加熱 5 分鐘","用鐵夾把紙夾緊","放進微波爐就可以離開"],a:0,why:"分段加熱讓水氣散掉，避免蒸熟、焦黃或起火；不能放金屬，要有人顧。"},
+ {q:"用熨斗押花，下列何者正確？",o:["低溫、關蒸氣，直接往下壓","高溫、開蒸氣","來回用力推","直接燙在花上不墊紙"],a:0,why:"蒸氣會讓花變濕；來回推會讓花瓣移位；要隔紙、低溫、垂直下壓。"},
+ {q:"想讓花保持「立體」又保色，最適合哪一種方法？",o:["矽膠乾燥","重物押花","熨斗押花","泡在水裡"],a:0,why:"矽膠會從各方向吸走水分，花的形狀和顏色都保得最好。"},
+ {q:"倒掛風乾適合哪一類花？",o:["滿天星、星辰花、薰衣草等水分少的花","整朵新鮮玫瑰最保色","多肉植物","剛下過雨的花"],a:0,why:"水分少、花小的花材最適合；倒掛讓花莖保持挺直，但顏色會變暗。"},
+ {q:"什麼時候採花最適合做押花？",o:["晴天上午，露水乾了以後","下雨天","清晨露水最多的時候","花已經凋謝以後"],a:0,why:"露水乾了，花的表面水分少，又是剛開、狀態最好的時候。"},
+ {q:"一整朵厚厚的玫瑰想做押花，應該怎麼辦？",o:["拆成單片花瓣押，或整朵改用矽膠","直接整朵用力壓","泡水讓它變軟","丟進微波爐 3 分鐘"],a:0,why:"太厚、太多層壓不平也乾不了，要先拆開或改用立體乾燥法。"},
+ {q:"做好的押花作品，最怕什麼？",o:["陽光（紫外線）和潮濕","黑暗","乾燥劑","冷氣"],a:0,why:"紫外線會破壞色素讓作品褪色，潮濕會發霉。"},
+ {q:"黏貼押花時，白膠應該怎麼用？",o:["用牙籤點一點點在背面","塗滿整片花瓣","整張卡片塗滿再撒花","用膠帶貼在花上面"],a:0,why:"膠太多會透出來、讓花瓣變透明，點一點就好。"},
+ {q:"分組試驗中，「乾燥方法」屬於哪一種變因？",o:["操作變因","控制變因","應變變因","不是變因"],a:0,why:"組內刻意改變的是乾燥方法；保色分數才是觀察的應變變因。"},
+ {q:"變色矽膠吸飽水後顏色改變，代表什麼？",o:["吸水能力用完了，要烘乾後再用","矽膠壞掉要丟","花已經腐爛","矽膠開始發霉"],a:0,why:"變色代表吸飽水，加熱烘乾就能恢復，可以重複使用。"}
+];
+const KEY="agri-flower-quiz-115-1";
+const MASTER="押花";
+
+
+/* ---------- 分頁 ---------- */
+const TABS=[["t1","p1"],["t2","p2"],["t3","p3"],["t4","p4"],["t5","p5"]];
+let quiz=null;
+function show(t){
+  TABS.forEach(([a,b])=>{ const on=a===t; $(a).setAttribute("aria-selected",on); $(b).hidden=!on; });
+  $("blankBar").hidden = t!=="t1";
+  if(t==="t5"&&!quiz) startQuiz();
+  try{ history.replaceState(null,"",t==="t5"?"#quiz":location.pathname+location.search); }catch(e){}
+  window.scrollTo({top:0});
+}
+TABS.forEach(([a])=>$(a).onclick=()=>show(a));
+(function(){
+  let x0=null,y0=null;
+  document.addEventListener("touchstart",e=>{ if(e.target.closest("input,.tabs,.stage,svg")){x0=null;return;} x0=e.touches[0].clientX; y0=e.touches[0].clientY; },{passive:true});
+  document.addEventListener("touchend",e=>{
+    if(x0===null) return; const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0; x0=null;
+    if(Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.5) return;
+    const cur=TABS.findIndex(([a])=>$(a).getAttribute("aria-selected")==="true"), n=cur+(dx<0?1:-1);
+    if(n>=0&&n<TABS.length) show(TABS[n][0]);
+  },{passive:true});
+})();
+
+/* ---------- 挖空模式 ---------- */
+$("blankToggle").onchange=e=>{ document.body.classList.toggle("blank",e.target.checked); document.querySelectorAll(".key.show").forEach(k=>k.classList.remove("show")); };
+document.addEventListener("click",e=>{ const k=e.target.closest(".key"); if(k&&document.body.classList.contains("blank")) k.classList.toggle("show"); });
+
+/* ---------- 總覽流程 ---------- */
+fill("flowBox",FLOW.map((f,i)=>`<div class="fl"><span class="no">${i+1}</span>${f[1]}<b>${f[0]}</b><small>${f[2]}</small></div>`).join(""));
+
+/* ---------- 步驟播放器 ---------- */
+let sIdx=0, paused=false; const seen=new Set([0]);
+function renderStep(){
+  const s=STEPS[sIdx];
+  $("chips").innerHTML=STEPS.map((x,i)=>`<button class="sc${seen.has(i)?" seen":""}" data-i="${i}" ${i===sIdx?'aria-current="step"':""} aria-label="第 ${i+1} 步 ${x.t}">${i+1}</button>`).join("");
+  $("chips").querySelectorAll(".sc").forEach(b=>b.onclick=()=>{ sIdx=+b.dataset.i; seen.add(sIdx); renderStep(); });
+  $("sBadge").textContent=`步驟 ${sIdx+1}／${STEPS.length}`;
+  $("sArt").innerHTML=s.art;
+  $("sTitle").textContent=`${sIdx+1}. ${s.t}`;
+  $("sList").innerHTML=s.l.map(x=>`<li>${x}</li>`).join("");
+  $("sTip").innerHTML=`<b>小提醒：</b>${s.tip}`;
+  $("sPrev").disabled=sIdx===0;
+  $("sNext").textContent=sIdx===STEPS.length-1?"分組試驗 →":"下一步 →";
+}
+$("sPrev").onclick=()=>{ if(sIdx>0){sIdx--; renderStep();} };
+$("sNext").onclick=()=>{ if(sIdx===STEPS.length-1){ show("t3"); return; } sIdx++; seen.add(sIdx); renderStep(); };
+$("sPause").onclick=()=>{ paused=!paused; $("stage").classList.toggle("paused",paused); $("sPause").textContent=paused?"▶ 播放動畫":"⏸ 暫停動畫"; };
+if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches){ paused=true; $("stage").classList.add("paused"); document.body.classList.add("paused"); $("sPause").textContent="▶ 播放動畫"; }
+renderStep();
+
+/* ---------- 排序 ---------- */
+let oNext=0;
+function renderOrder(){ $("oSlots").innerHTML=STEPS.map((s,i)=>`<div class="oslot${i<oNext?" fill":""}"><span class="n">${i+1}</span>${i<oNext?s.t:""}</div>`).join(""); }
+function resetOrder(){
+  oNext=0; renderOrder(); $("oFb").textContent=""; $("oFb").className="ofb";
+  $("oPool").innerHTML=shuffle(STEPS.map((s,i)=>i)).map(i=>`<button class="ob" data-i="${i}">${STEPS[i].t}</button>`).join("");
+  $("oPool").querySelectorAll(".ob").forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i;
+    if(i===oNext){ b.remove(); oNext++; renderOrder(); $("oFb").className="ofb ok"; $("oFb").textContent=oNext===STEPS.length?"全部排對了！可以開始動手做囉 🎉":"對！"; }
+    else { b.classList.remove("bad"); void b.offsetWidth; b.classList.add("bad"); $("oFb").className="ofb bad"; $("oFb").textContent=`「${STEPS[i].t}」不是第 ${oNext+1} 步，再想想。`; }
+  });
+}
+$("oReset").onclick=resetOrder; resetOrder();
+
+/* ---------- 判斷卡 ---------- */
+function renderReady(){
+  $("ready").innerHTML=READY.map((r,i)=>`<div class="rd" data-i="${i}"><span class="q">${r[0]}</span><div class="bs">${(r[3]||READY_OPTS).map((o,k)=>`<button data-v="${k}">${o}</button>`).join("")}</div><span class="a" aria-live="polite"></span></div>`).join("");
+  $("ready").querySelectorAll(".rd").forEach(d=>d.querySelectorAll("button").forEach(b=>b.onclick=()=>{
+    const r=READY[+d.dataset.i], opts=r[3]||READY_OPTS, ok=+b.dataset.v===r[1];
+    d.className="rd "+(ok?"ok":"bad"); d.querySelector(".a").innerHTML=`<b>${ok?"答對！":"再想想："}</b>答案是「${opts[r[1]]}」。${r[2]}`;
+  }));
+}
+renderReady();
+const rr=$("readyReset"); if(rr) rr.onclick=renderReady;
+
+/* ---------- 診斷卡 ---------- */
+$("cases").innerHTML=CASES.map((c,i)=>`<button class="case" data-i="${i}" aria-expanded="false"><span class="q">${c[0]}</span><span class="a">點一下看原因與解法</span></button>`).join("");
+$("cases").querySelectorAll(".case").forEach(b=>b.onclick=()=>{ const c=CASES[+b.dataset.i]; const o=!b.classList.contains("open"); b.classList.toggle("open",o); b.setAttribute("aria-expanded",o); b.querySelector(".a").innerHTML=o?`<b>原因：</b>${c[1]}<br><b>解法：</b>${c[2]}`:"點一下看原因與解法"; });
+
+/* ---------- 小測驗 ---------- */
+function startQuiz(only){
+  const base = only ? only.map(k=>QS[k]) : QS;
+  quiz={retry:!!only,qs:base.map(q=>({...q,idx:QS.indexOf(q),opts:shuffle(q.o),ans:q.o[q.a]})),i:0,res:[],pick:[],done:false};
+  renderQuiz();
+}
+function dots(){ return quiz.qs.map((_,k)=>`<button class="dot ${quiz.res[k]===true?"ok":quiz.res[k]===false?"bad":""}${k===quiz.i&&!quiz.done?" now":""}" data-go="${k}" aria-label="第 ${k+1} 題"></button>`).join(""); }
+function saveBest(n,total){ try{ const s=JSON.parse(localStorage.getItem(KEY)||"{}"); if(!s.best||n>s.best)s.best=n; s.total=total; localStorage.setItem(KEY,JSON.stringify(s)); return s; }catch(e){ return null; } }
+function goQ(k){ quiz.i=k; quiz.done=false; renderQuiz(); window.scrollTo({top:0}); }
+function bindCommon(P){
+  P.querySelectorAll(".dot[data-go]").forEach(d=>d.onclick=()=>goQ(+d.dataset.go));
+  const r=P.querySelector("#qReset");
+  if(r) r.onclick=()=>{ if(r.dataset.arm){ startQuiz(); window.scrollTo({top:0}); } else { r.dataset.arm="1"; r.textContent="確定要從頭開始？再按一次"; r.classList.add("warn"); setTimeout(()=>{ if(r.isConnected){ delete r.dataset.arm; r.textContent="↺ 重新開始"; r.classList.remove("warn"); } },3000); } };
+}
+function renderQuiz(){
+  const P=$("p5"), {qs,i,res}=quiz;
+  const answered=res.filter(x=>x!==undefined).length;
+  if(quiz.done){
+    const n=res.filter(Boolean).length, tot=qs.length, skip=tot-answered, s=quiz.retry?null:saveBest(n,tot), r=n/tot;
+    const msg=r===1?(quiz.retry?"錯題全部訂正完成！":`全對！你已經是${MASTER}達人了！`):r>=.8?"很棒！把錯的題目再訂正一次。":r>=.6?"不錯喔！回到基本知識再看一看。":"別灰心，先回基本知識複習，再來挑戰！";
+    const wr=qs.map((q,k)=>({q,k})).filter(x=>res[x.k]!==true);
+    P.innerHTML=`<div class="card" style="text-align:center"><div class="qtype">${quiz.retry?"錯題再練結果":"測驗結果"}</div><div class="score">${n} / ${tot}</div><p>${msg}${skip?`<br><span style="color:var(--bad)">還有 ${skip} 題沒作答</span>`:""}</p>${s&&s.best?`<p style="color:var(--muted);font-size:15px">這台裝置的最佳紀錄：${s.best} / ${s.total}</p>`:""}<div class="progress" style="justify-content:center">${dots()}</div><p class="ex" style="margin:4px 0 0">點上面的小方塊可以回到那一題。</p>
+      ${wr.length?`<div class="review"><b>訂正一下：</b>${wr.map(({q,k})=>`<div class="item"><b>第 ${k+1} 題</b>${res[k]===undefined?"（未作答）":""}　${q.q}<br><b>正確答案：${q.ans}</b><br><span style="color:var(--muted)">${q.why}</span></div>`).join("")}</div>`:""}
+      <div class="actions" style="justify-content:center">${wr.length?`<button class="btn" id="retry">錯題再練（${wr.length} 題）</button>`:""}<button class="btn ghost" id="qReset">↺ 重新開始</button><button class="btn ghost" id="back1">回去複習</button></div></div>`;
+    $("back1").onclick=()=>show("t1");
+    if($("retry")) $("retry").onclick=()=>startQuiz(wr.map(x=>x.q.idx));
+    bindCommon(P); return;
+  }
+  const q=qs[i], picked=quiz.pick[i], locked=res[i]!==undefined, last=i===qs.length-1;
+  const fb = locked ? `<div class="feedback ${res[i]?"ok":"bad"}"><b>${res[i]?"答對了！":"再想想，正確答案是「"+q.ans+"」"}</b><span class="why">${q.why}</span></div>` : "";
+  P.innerHTML=`<div class="card"><div class="qhead"><span class="qtype">${quiz.retry?"錯題再練・":""}第 ${i+1} 題／共 ${qs.length} 題</span><button class="btn ghost sm" id="qReset">↺ 重新開始</button></div>
+    <div class="progress" style="margin-top:8px">${dots()}</div>
+    <div class="qtext">${q.q}</div>
+    <div class="opts">${q.opts.map((o,k)=>{ let c=""; if(locked){ if(o===q.ans)c=" right"; else if(k===picked)c=" wrong"; } return `<button class="opt${c}" data-k="${k}" ${locked?"disabled":""}><span class="k">${"ABCD"[k]}</span><span>${o}</span></button>`; }).join("")}</div>
+    <div id="fb" aria-live="polite">${fb}</div>
+    <div class="qnav"><button class="btn ghost" id="qPrev" ${i===0?"disabled":""}>← 上一題</button><span class="qcount">已作答 ${answered} / ${qs.length}</span><button class="btn" id="qNext">${last?"看結果":"下一題 →"}</button></div></div>`;
+  P.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    if(quiz.res[i]!==undefined) return;
+    const k=+b.dataset.k; quiz.pick[i]=k; quiz.res[i]=q.opts[k]===q.ans; renderQuiz();
+    const n=$("qNext"); if(n) n.focus({preventScroll:true});
+  });
+  $("qPrev").onclick=()=>{ if(i>0) goQ(i-1); };
+  $("qNext").onclick=()=>{ if(last){ quiz.done=true; renderQuiz(); window.scrollTo({top:0}); } else goQ(i+1); };
+  bindCommon(P);
+}
+
+/* ---------- QR ---------- */
+const openQR=()=>{$("overlay").hidden=false;};
+$("qrBtn").onclick=openQR; $("qrBtn").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openQR();}};
+$("overlay").onclick=()=>{$("overlay").hidden=true;};
+
+if(location.hash==="#quiz") show("t5");
+})();
+
+</script>
+</body>
+</html>

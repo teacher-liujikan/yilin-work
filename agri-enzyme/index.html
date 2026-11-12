@@ -1,0 +1,1046 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>果皮酵素清潔劑</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+/* 同 agri-leaf 架構：上方標題＋QR，分頁 基本知識／實驗過程／分組試驗／動手判斷／小測驗 */
+:root{
+  --bg:#f3f5ec; --paper:#ffffff; --ink:#1f2a1c; --muted:#5e6b58; --line:#d9e0cd; --grid:#e6ebdb;
+  --accent:#2f6b3a; --accent-ink:#ffffff; --accent-soft:#e3f0e3;
+  --soil:#8a5a35; --soil-soft:#f4e7da;
+  --mark:#ffe08a; --mark-ink:#2a2118;
+  --ok:#1f7a45; --ok-soft:#e1f4e7; --bad:#b4362c; --bad-soft:#fbe7e4;
+  --g1:#c46a17; --g2:#2f8a57; --g3:#3b6fd1; --g4:#a2408c;
+  --g1s:#fbecdc; --g2s:#e0f2e7; --g3s:#e3ebfb; --g4s:#f6e4f1;
+  --leaf:#4f9a3c; --leaf2:#2f6b2a; --leafdry:#8aa04a; --leafbrown:#9a6a3c; --leafred:#c8452f; --leafyel:#e0b23a;
+  --water:#5aa3d9; --film:#9fd3f0; --glue:#f2d36b; --card:#fbf7ee; --cardline:#d9c7a3; --wood:#b07a45; --metal:#7d8a93;
+  --f:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121610; --paper:#1b2118; --ink:#e6ecdf; --muted:#a6b29c; --line:#323c2c; --grid:#181d15;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  --leaf:#6dbb57; --leaf2:#9fd88a; --leafdry:#a8bb63; --leafbrown:#c08f5c; --leafred:#e2705a; --leafyel:#e8c45a;
+  --water:#6fb3e6; --film:#3d6f8f; --glue:#8f7a2e; --card:#e9e1d0; --cardline:#a8946c; --wood:#a8784a; --metal:#93a0a8;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121610; --paper:#1b2118; --ink:#e6ecdf; --muted:#a6b29c; --line:#323c2c; --grid:#181d15;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  --leaf:#6dbb57; --leaf2:#9fd88a; --leafdry:#a8bb63; --leafbrown:#c08f5c; --leafred:#e2705a; --leafyel:#e8c45a;
+  --water:#6fb3e6; --film:#3d6f8f; --glue:#8f7a2e; --card:#e9e1d0; --cardline:#a8946c; --wood:#a8784a; --metal:#93a0a8;
+  color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:17px;line-height:1.7;
+  background-image:radial-gradient(var(--grid) 1.2px,transparent 1.2px);background-size:22px 22px}
+.wrap{max-width:980px;margin:0 auto;padding-block:20px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{display:flex;gap:16px;align-items:flex-start;justify-content:space-between}
+.brand{min-width:0}
+.eyebrow{font-size:14px;letter-spacing:.12em;color:var(--soil);font-weight:700}
+h1{font-size:clamp(30px,6vw,44px);font-weight:900;line-height:1.2;margin:4px 0 6px;text-wrap:balance}
+.sub{color:var(--muted);margin:0;font-size:16px}
+.qr{flex:none;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+.qr img{width:84px;height:84px;image-rendering:pixelated;display:block}
+.qr span{font-size:12px;color:#3a4a33;font-weight:700}
+button:focus-visible,.qr:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:20;background:var(--bg);padding:8px 0;margin:14px 0 10px}
+.tab{font:inherit;font-weight:700;font-size:17px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:999px;padding:7px 18px;cursor:pointer;min-height:44px}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.tab small{font-size:12px;opacity:.8;margin-left:4px}
+.panel{display:flex;flex-direction:column;gap:16px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px}
+.toolbar .hint{font-size:14px;color:var(--muted)}
+.switch{display:inline-flex;align-items:center;gap:8px;font-weight:700;cursor:pointer;user-select:none}
+.switch input{width:20px;height:20px;accent-color:var(--accent)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;min-width:0}
+.card h2{font-size:24px;font-weight:900;margin:0 0 8px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.card h2 .sec{font-size:13px;font-weight:700;color:var(--soil);background:var(--soil-soft);border-radius:999px;padding:1px 10px}
+.card h3{font-size:19px;margin:14px 0 4px}
+.card p{margin:6px 0}
+.card ul,.card ol{margin:6px 0;padding-left:1.3em}
+.card li{margin:3px 0}
+.key{background:var(--mark);color:var(--mark-ink);border-radius:4px;padding:0 4px;font-weight:700}
+body.blank .key{color:transparent;background:var(--soil-soft);border-bottom:2px solid var(--soil);cursor:pointer;user-select:none}
+body.blank .key.show{color:var(--mark-ink);background:var(--mark);border-bottom-color:transparent}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:820px){.four{grid-template-columns:1fr 1fr}}
+@media (max-width:720px){.two,.three{grid-template-columns:1fr}}
+.box{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--bg);min-width:0}
+.box b.t{display:block;font-size:17px;margin-bottom:2px}
+.box svg{width:100%;height:auto;display:block;margin-bottom:6px}
+.box small{display:block;color:var(--muted);font-size:14px;line-height:1.5;margin-top:4px}
+.box.c1{border-top:5px solid var(--g1)}.box.c2{border-top:5px solid var(--g2)}.box.c3{border-top:5px solid var(--g3)}.box.c4{border-top:5px solid var(--g4)}
+.box.okb{border-top:5px solid var(--ok)}.box.badb{border-top:5px solid var(--bad)}
+.note{font-size:15px;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 12px;margin-top:10px}
+.tip{font-size:15px;border:1.5px dashed var(--soil);border-radius:10px;padding:8px 12px;margin-top:10px;background:var(--soil-soft)}
+.tip b{color:var(--soil)}
+.warnbox{font-size:15px;border-left:5px solid var(--bad);border-radius:0 10px 10px 0;padding:8px 12px;margin-top:10px;background:var(--bad-soft)}
+.warnbox b{color:var(--bad)}
+.tblwrap{overflow-x:auto;margin-top:8px}
+table.t{width:100%;border-collapse:collapse;font-size:16px;min-width:560px}
+table.t th,table.t td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+table.t th{background:var(--accent-soft);white-space:nowrap}
+table.t td:first-child{white-space:nowrap}
+.btn{font:inherit;font-weight:700;font-size:16px;border:0;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:9px 22px;cursor:pointer;min-height:44px}
+.btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.sm{min-height:36px;padding:4px 14px;font-size:14px}
+.btn.warn{background:var(--bad);color:#fff;border-color:var(--bad)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.art{width:100%;height:auto;display:block}
+figure{margin:0}
+figcaption{font-size:15px;line-height:1.5;margin-top:6px;text-align:center;color:var(--muted)}
+.ex{color:var(--muted);font-size:14px}
+.formula{font-size:22px;font-weight:900;text-align:center;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px;margin:8px 0}
+details.teacher{margin-top:10px;border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--bg)}
+details.teacher summary{cursor:pointer;font-weight:700;color:var(--accent)}
+
+/* SVG 共用 */
+.s-txt{fill:var(--ink);font-size:13px;font-weight:700;font-family:var(--f)}
+.s-sm{fill:var(--muted);font-size:11px;font-weight:500;font-family:var(--f)}
+.s-line{stroke:var(--muted);stroke-width:2;fill:none}
+.s-leaf{fill:var(--leaf)}
+.s-vein{stroke:var(--leaf2);stroke-width:2;fill:none;stroke-linecap:round}
+.s-card{fill:var(--card);stroke:var(--cardline);stroke-width:1.5}
+.s-film{fill:var(--film);opacity:.35;stroke:var(--water);stroke-width:1.5}
+.s-paper{fill:var(--paper);stroke:var(--muted);stroke-width:1.5}
+.s-blot{fill:#f1ead8;stroke:var(--cardline);stroke-width:1.2}
+.s-news{fill:#d9d4c7;stroke:var(--muted);stroke-width:1}
+.s-board{fill:var(--wood)}
+.s-water{fill:var(--water)}
+.lbl{stroke:var(--muted);stroke-width:1.2;fill:none;stroke-dasharray:3 2}
+
+/* 動畫 */
+.paused *{animation-play-state:paused!important}
+.a-fall{animation:fall 3s ease-in infinite;transform-box:fill-box;transform-origin:center}
+@keyframes fall{0%{transform:translate(0,0) rotate(0);opacity:0}10%{opacity:1}50%{transform:translate(-18px,50px) rotate(-40deg)}85%{transform:translate(4px,100px) rotate(10deg);opacity:1}100%{transform:translate(4px,108px) rotate(10deg);opacity:0}}
+.a-wipe{animation:wipe 1.8s ease-in-out infinite alternate}
+@keyframes wipe{from{transform:translate(-60px,0)}to{transform:translate(60px,0)}}
+.a-fade{animation:fadeio 2.4s ease-in-out infinite}
+@keyframes fadeio{0%,100%{opacity:.1}50%{opacity:1}}
+.a-gone{animation:gone 3.6s ease-in infinite}
+@keyframes gone{0%,20%{opacity:1}70%,100%{opacity:0}}
+.a-pop{animation:pop 3.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pop{0%,10%{transform:scale(0);opacity:0}25%,90%{transform:scale(1);opacity:1}100%{transform:scale(1);opacity:0}}
+.a-press{animation:press 3s ease-in-out infinite}
+@keyframes press{0%,15%{transform:translateY(-46px)}40%,85%{transform:translateY(0)}100%{transform:translateY(-46px)}}
+.a-dripL{animation:dripL 3s ease-in infinite}
+@keyframes dripL{0%,40%{transform:translate(0,0);opacity:0}50%{opacity:1}100%{transform:translate(-36px,10px);opacity:0}}
+.a-dripR{animation:dripR 3s ease-in infinite}
+@keyframes dripR{0%,40%{transform:translate(0,0);opacity:0}50%{opacity:1}100%{transform:translate(36px,10px);opacity:0}}
+.a-up{animation:up 2.4s ease-in infinite}
+@keyframes up{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(-30px);opacity:0}}
+.a-feed{animation:feed 5s linear infinite}
+@keyframes feed{0%{transform:translateX(-120px)}10%{transform:translateX(-120px)}80%{transform:translateX(120px)}100%{transform:translateX(120px)}}
+.a-rot{animation:rot 1.2s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes rot{to{transform:rotate(360deg)}}
+.a-snip{animation:snip .6s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:left center}
+@keyframes snip{from{transform:rotate(-12deg)}to{transform:rotate(6deg)}}
+.a-slide{animation:slide 4s linear infinite}
+@keyframes slide{0%{transform:translateY(-70px)}100%{transform:translateY(70px)}}
+.a-swing{animation:swing 2.4s ease-in-out infinite alternate;transform-box:view-box;transform-origin:170px 40px}
+@keyframes swing{from{transform:rotate(-12deg)}to{transform:rotate(12deg)}}
+.a-roll{animation:rot 2s linear infinite;transform-box:fill-box;transform-origin:center}
+.a-melt{animation:melt 3s ease-in-out infinite}
+@keyframes melt{0%,100%{opacity:.35}50%{opacity:1}}
+.a-turn{animation:turn 4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes turn{0%,20%{transform:rotate(0)}50%,70%{transform:rotate(180deg)}100%{transform:rotate(360deg)}}
+
+/* 流程 */
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:8px}
+@media (max-width:640px){.flow{grid-template-columns:1fr 1fr}}
+.fl{border:2px solid var(--accent);border-radius:12px;background:var(--bg);padding:6px 8px 10px;text-align:center;position:relative}
+.fl svg{width:100%;height:auto;display:block}
+.fl b{display:block;font-size:18px}
+.fl small{display:block;font-size:13px;color:var(--muted);line-height:1.4}
+.fl .no{position:absolute;left:8px;top:6px;width:24px;height:24px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:13px;font-weight:900;display:grid;place-items:center}
+
+/* 步驟播放器 */
+.player{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:760px){.player{grid-template-columns:1fr}}
+.stage{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:8px;position:relative}
+.stage svg{width:100%;height:auto;display:block}
+.stage .badge{position:absolute;left:12px;top:10px;background:var(--accent);color:var(--accent-ink);font-weight:900;border-radius:999px;padding:0 12px;font-size:15px}
+.stepchips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.sc{font:inherit;font-weight:700;font-size:15px;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;min-width:44px;min-height:44px;padding:0 12px;cursor:pointer}
+.sc[aria-current="step"]{border-color:var(--accent);background:var(--accent);color:var(--accent-ink)}
+.sc.seen{border-color:var(--accent)}
+.stxt h3{font-size:24px;margin:0 0 6px}
+.stxt ul{padding-left:1.2em;margin:4px 0}
+.stxt li{margin:4px 0;font-size:18px}
+.snav{display:flex;justify-content:space-between;gap:10px;margin-top:12px;flex-wrap:wrap}
+
+/* 材料 */
+.mats{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:8px}
+.mat{border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:8px 12px}
+.mat b{display:block}
+.mat small{color:var(--muted);font-size:14px;line-height:1.5;display:block}
+
+/* 分組 */
+.role{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:8px}
+@media (max-width:820px){.role{grid-template-columns:1fr 1fr}}
+.rl{border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:10px 12px;font-size:16px}
+.rl b{display:block;font-size:18px}
+.rl .tag{display:inline-block;font-size:13px;font-weight:900;border-radius:999px;padding:0 10px;color:#fff;margin-bottom:4px}
+.timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:8px}
+@media (max-width:820px){.timeline{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.timeline{grid-template-columns:1fr}}
+.tl{border-left:5px solid var(--accent);background:var(--bg);border-radius:0 10px 10px 0;padding:8px 12px;font-size:16px}
+.tl>b{display:block;font-size:18px}
+.tl ul{margin:4px 0 0;padding-left:1.1em}
+.tl li{margin:2px 0}
+.tl .m{color:var(--soil);font-weight:700;font-size:14px}
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.calc{grid-template-columns:1fr}}
+.calc label{display:block;font-weight:700;margin-top:6px}
+.calc input[type=number]{font:inherit;font-size:22px;font-weight:700;width:130px;padding:6px 10px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.bignum{font-size:44px;font-weight:900;line-height:1.1;color:var(--accent)}
+
+/* 動手判斷 */
+.order{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.oslot{border:2px dashed var(--line);border-radius:10px;padding:8px 12px;min-height:46px;display:flex;align-items:center;gap:10px;font-weight:700}
+.oslot.fill{border-style:solid;border-color:var(--ok);background:var(--ok-soft)}
+.oslot .n{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--paper);font-size:14px}
+.opool{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ob{font:inherit;font-weight:700;font-size:16px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:10px;padding:8px 14px;cursor:pointer;min-height:44px}
+.ob.bad{animation:nope .4s;border-color:var(--bad);color:var(--bad)}
+@keyframes nope{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.ofb{font-weight:700;margin-top:8px;min-height:1.7em}
+.ofb.ok{color:var(--ok)}.ofb.bad{color:var(--bad)}
+.ready{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:8px}
+.rd{border:2px solid var(--line);border-radius:12px;background:var(--paper);padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.rd .q{font-weight:900;font-size:17px}
+.rd .bs{display:flex;gap:8px}
+.rd .bs button{flex:1;font:inherit;font-weight:700;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:10px;min-height:44px;cursor:pointer}
+.rd.ok{border-color:var(--ok);background:var(--ok-soft)}
+.rd.bad{border-color:var(--bad);background:var(--bad-soft)}
+.rd .a{font-size:15px}
+.conc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.conc{grid-template-columns:1fr}}
+input[type=range]{width:100%;accent-color:var(--accent);margin:8px 0 0;height:32px}
+.cnum{font-size:40px;font-weight:900;line-height:1;color:var(--accent)}
+.cverdict{font-size:20px;font-weight:900;margin-top:6px}
+.cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:8px}
+.case{font:inherit;color:var(--ink);text-align:left;border:2px solid var(--line);border-radius:12px;background:var(--paper);padding:12px 14px;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-height:140px}
+.case .q{font-size:18px;font-weight:900}
+.case .a{margin-top:auto;font-size:15px;color:var(--muted)}
+.case.open{border-color:var(--accent);background:var(--accent-soft)}
+.case.open .a{color:var(--ink)}
+
+/* 測驗 */
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.progress{display:flex;gap:4px;flex-wrap:wrap}
+.dot{width:18px;height:8px;border-radius:4px;background:var(--line)}
+.dot.ok{background:var(--ok)}.dot.bad{background:var(--bad)}
+button.dot{border:0;padding:0;cursor:pointer;width:22px;height:12px}
+.dot.now{outline:2px solid var(--accent);outline-offset:2px}
+.qtype{font-size:14px;font-weight:700;color:var(--accent);letter-spacing:.06em}
+.qtext{font-size:22px;line-height:1.75;margin:10px 0 14px;font-weight:500}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{font:inherit;font-size:18px;text-align:left;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:12px 14px;cursor:pointer;display:flex;gap:10px;align-items:center;min-height:56px}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt .k{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--bg);font-size:14px;font-weight:700}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt:disabled{cursor:default}
+.feedback{margin-top:14px;border-radius:10px;padding:10px 14px;font-size:16px}
+.feedback.ok{background:var(--ok-soft);color:var(--ok)}
+.feedback.bad{background:var(--bad-soft);color:var(--bad)}
+.feedback .why{color:var(--ink);display:block;margin-top:4px}
+.score{font-size:64px;font-weight:900;color:var(--accent);line-height:1;margin:10px 0}
+.review .item{border-left:4px solid var(--bad);padding:6px 12px;background:var(--bg);border-radius:0 6px 6px 0;font-size:16px;margin-top:8px;text-align:left}
+.qnav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap}
+.qcount{font-size:14px;color:var(--muted);font-weight:700}
+.overlay{position:fixed;inset:0;background:rgba(10,16,8,.72);display:grid;place-items:center;z-index:50;padding:20px}
+.overlay .inner{background:#fff;border-radius:16px;padding:22px;text-align:center;color:#1f2a1c;max-width:92vw}
+.overlay img{width:min(340px,72vw);height:min(340px,72vw);image-rendering:pixelated;display:block;margin:0 auto}
+.overlay p{font-size:22px;font-weight:700;margin:12px 0 0}
+.overlay small{display:block;color:#5e6b58;margin-top:4px;word-break:break-all}
+footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
+
+@media (min-width:600px) and (max-width:1100px){
+  body{font-size:18px}
+  .card p,.card li{font-size:18px}
+  .qtext{font-size:24px}.opt{font-size:20px}
+}
+@media (max-width:599px){
+  .wrap{padding-block:12px 40px}
+  h1{font-size:30px}
+  .qr img{width:64px;height:64px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:none;font-size:16px;padding:6px 14px}
+  .card{padding:14px}
+  .card h2{font-size:21px}
+  .qtext{font-size:20px}
+  .toolbar .hint{display:none}
+  .stxt li{font-size:17px}
+  .qnav .btn{flex:1}.qcount{order:-1;width:100%;text-align:center}
+}
+@media (min-width:1500px){ .wrap{zoom:1.3} }
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+@media (max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .box ul{margin:4px 0;padding-left:1.2em}
+.vs .box.na{border-top:5px solid var(--bad)}
+.vs .box.so{border-top:5px solid var(--g3)}
+.a-flame{animation:flame .5s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:bottom}
+@keyframes flame{from{transform:scaleY(.8)}to{transform:scaleY(1.15)}}
+.a-tap{animation:tap .7s ease-in-out infinite}
+@keyframes tap{0%,100%{transform:translateY(-14px)}50%{transform:translateY(0)}}
+.a-walk{animation:walk 4s ease-in-out infinite alternate}
+@keyframes walk{from{transform:translateX(-40px)}to{transform:translateX(40px)}}
+.a-appear{animation:appear 5s ease-in-out infinite}
+@keyframes appear{0%,25%{opacity:0}70%,100%{opacity:1}}
+.a-fadeout{animation:fadeout 5s ease-in-out infinite}
+@keyframes fadeout{0%,25%{opacity:1}70%,100%{opacity:0}}
+.a-drop{animation:drop 1.4s ease-in infinite}
+@keyframes drop{0%{transform:translateY(0);opacity:0}10%{opacity:1}100%{transform:translateY(40px);opacity:0}}
+.a-lift{animation:lift 3.6s ease-in-out infinite}
+@keyframes lift{0%,10%{transform:translate(0,0)}45%{transform:translate(0,-60px)}80%,100%{transform:translate(150px,10px)}}
+.a-clock{animation:rot 4s linear infinite;transform-box:view-box}
+.dil{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.dil{grid-template-columns:1fr}}
+.dil input[type=number]{font:inherit;font-size:22px;font-weight:700;width:140px;padding:6px 10px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.dil label{display:block;font-weight:700;margin-top:6px}
+
+.sibs{margin-top:8px;font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}
+.sibs a,.sibs b{border:1.5px solid var(--line);border-radius:999px;padding:1px 10px;text-decoration:none;color:var(--accent);background:var(--paper);font-weight:700}
+.sibs b{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.sibs a:hover{border-color:var(--accent)}
+.flow{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:720px){.flow{grid-template-columns:1fr 1fr}}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+@media (max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .box ul,.box ul{margin:4px 0;padding-left:1.2em}
+.rd .bs{flex-wrap:wrap}
+.rd .bs button{min-width:84px}
+.lab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.lab{grid-template-columns:1fr}}
+.lab input[type=number]{font:inherit;font-size:22px;font-weight:700;width:140px;padding:6px 10px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.lab label{display:block;font-weight:700;margin-top:6px}
+.a-flame{animation:flame .5s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:bottom}
+@keyframes flame{from{transform:scaleY(.8)}to{transform:scaleY(1.15)}}
+.a-tap{animation:tap .7s ease-in-out infinite}
+@keyframes tap{0%,100%{transform:translateY(-14px)}50%{transform:translateY(0)}}
+.a-walk{animation:walk 4s ease-in-out infinite alternate}
+@keyframes walk{from{transform:translateX(-40px)}to{transform:translateX(40px)}}
+.a-appear{animation:appear 5s ease-in-out infinite}
+@keyframes appear{0%,25%{opacity:0}70%,100%{opacity:1}}
+.a-fadeout{animation:fadeout 5s ease-in-out infinite}
+@keyframes fadeout{0%,25%{opacity:1}70%,100%{opacity:0}}
+.a-drop{animation:drop 1.4s ease-in infinite}
+@keyframes drop{0%{transform:translateY(0);opacity:0}10%{opacity:1}100%{transform:translateY(40px);opacity:0}}
+.a-wig{animation:wig 1.6s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+@keyframes wig{from{transform:skewX(-8deg) translateX(-3px)}to{transform:skewX(8deg) translateX(3px)}}
+.a-crawl{animation:crawl 6s ease-in-out infinite alternate}
+@keyframes crawl{from{transform:translateX(-30px)}to{transform:translateX(30px)}}
+.a-dive{animation:dive 4s ease-in infinite}
+@keyframes dive{0%,20%{transform:translateY(0);opacity:1}80%{transform:translateY(46px);opacity:.2}100%{transform:translateY(46px);opacity:0}}
+.a-shake{animation:shake 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center bottom}
+@keyframes shake{0%,60%,100%{transform:rotate(0)}70%{transform:rotate(-10deg)}80%{transform:rotate(10deg)}90%{transform:rotate(-6deg)}}
+.a-bulge{animation:bulge 3s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes bulge{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.08)}}
+.a-grow{animation:grow 4s ease-out infinite;transform-box:fill-box;transform-origin:bottom}
+@keyframes grow{0%{transform:scaleY(0)}60%,100%{transform:scaleY(1)}}
+.a-place{animation:place 3s ease-in-out infinite}
+@keyframes place{0%{transform:translate(60px,-50px);opacity:0}20%{opacity:1}60%,100%{transform:translate(0,0);opacity:1}}
+.a-spin{animation:spin 3s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes spin{to{transform:rotate(360deg)}}
+.a-float{animation:float 5s ease-in-out infinite}
+@keyframes float{0%{transform:translate(0,0)}50%{transform:translate(60px,-24px)}100%{transform:translate(120px,10px)}}
+.a-roll2{animation:roll2 2s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+@keyframes roll2{from{transform:translateX(-16px) rotate(-90deg)}to{transform:translateX(16px) rotate(90deg)}}
+
+/* 本頁追加 */
+:root{--brew:#c98a3a;--brew2:#e2b26a;--sugar:#5a3a22;--peelO:#f29a2e;--peelY:#f2d35b;--pine:#d9b44a;--apple:#d8453a;--pet:#9fc7dd;--cap:#2f7a4a;--grease:#e8b830;--tea:#9a5a2a;--fire:#e8742c}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--brew:#b8803a;--brew2:#8a6630;--sugar:#7a5236;--pet:#4f7f99;--cap:#4fae73;--tea:#b8794a}}
+:root[data-theme="dark"]{--brew:#b8803a;--brew2:#8a6630;--sugar:#7a5236;--pet:#4f7f99;--cap:#4fae73;--tea:#b8794a}
+.dchip{font:inherit;font-weight:700;font-size:15px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:999px;min-height:40px;padding:0 14px;cursor:pointer}
+.dchip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.ready{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="eyebrow">實習課・50 分鐘 × 3 節</div>
+      <h1>果皮酵素清潔劑</h1>
+      <p class="sub">基本知識 → 實驗過程 → 分組試驗 → 動手判斷 → 掃 QR 小測驗</p>
+      <nav class="sibs" aria-label="其他實習課">實習課：<a href="../agri-paper/">再生紙</a><a href="../agri-leaf/">葉脈書籤</a><a href="../agri-worm/">蚯蚓堆肥</a><b aria-current="page">果皮酵素</b><a href="../agri-flower/">押花乾燥花</a><a href="../agri-seed/">種子創作</a></nav>
+    </div>
+    <div class="qr" id="qrBtn" role="button" tabindex="0" aria-label="放大 QR code"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQAAAAAefbjOAAAC6klEQVR42u1cO64bMQwcRgJcykAO4KNob5Ar7x7FN1iVBmRMClEfuwiQdFlSld8+syFocmY4WiH++hw/8A/HgzzIg/7ToCJ6tiIiGwD9+/4W2UqEyH08k+jZu35QIEkSSBU47gCQKshnBJBe0j5lkuTp2TMRpL/9dt4C9M6A4x4oW6povWTz7JkKKhHcy43kGcg9kdx7gXj2jATF7weZb0HeKySf70iUCByP6tmzEoTWD0gS+ZyIosOKfAYik+w4IpC7Z+/iQe/GIhqi2EoE8jMC+XnjHCc4Gv/w7F1/aqQhUhWlGQov0zor6NmzNTXOwI4jKtrUyCQ7N63rl31qXLwiWME9VXAHoGDiBLh3oaKxjlY0iV4Rl58a5Q4AgYJ0AsfjJQRClXz+bN8RJADHr9pHh2fv8kGyldh6hGzlRtnSS4D0EtUomijhyNLK1OBgn9DRAcxPOkQWWOFTwwCOUDBBzmLoEKIuZaHPPHvX5xp7qrrL2qEAUlkHpp6N/hXP3uV7xFyAzm7RGkXrG2mUik8NGzgCQFgkKCWe51olU9T2ijAwNb61qvxVAgg6NVyPgI29BpBINT8AzTbTSmAYaFoxuGPGRI/opqkBHFYKOnCEa5a2KqLjiAYgM6v+Iw8mMnYdXhFWFKoPFKmCVW8eA0x4jzA0NdQTw048yZVzAq5HWNIj8qJChI9GQQ5aGujs05AeAbS9xlh/q7UOE0dUZ59mpobSjIksF39E/fZjekWYQJaNWq6yw1xt6YWe7sH1irAR9JZ2VWMvsU0I2VJVIy7KrddL8Vt+hrjGghSGyQ5TwIYrVOb0iBOLSUInRBoXORxH2NIslWso3ZwKFcb2yyvC3p2u6Zsbpqm1R8C34Za24doFVufUR20AE1Z49qxUxHBcfltkMDYcjixtBQXOl8q0czxe0lHGsFl59i4f1KVJ9c70N0lErJOkRPgbRexxjX43o66W3D19+PR9alw5SPzthR7kQR70h/MbXHk1IKUg9ccAAAAASUVORK5CYII="><span>掃我測驗</span></div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" id="t1" aria-selected="true">基本知識</button>
+    <button class="tab" role="tab" id="t2" aria-selected="false">實驗過程</button>
+    <button class="tab" role="tab" id="t3" aria-selected="false">分組試驗</button>
+    <button class="tab" role="tab" id="t4" aria-selected="false">動手判斷</button>
+    <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
+  </nav>
+
+  <div class="toolbar" id="blankBar">
+    <label class="switch"><input type="checkbox" id="blankToggle"> 挖空模式</label>
+    <span class="hint">打開後，黃色重點會變成空格。先讓學生說出答案，再點空格揭曉。</span>
+  </div>
+
+  <!-- ===== 1 基本知識 ===== -->
+  <section class="panel" id="p1">
+    <div class="card">
+      <h2>把果皮變成清潔液<span class="sec">總覽</span></h2>
+      <p><span class="key">果皮酵素</span>（也叫環保酵素）：果皮＋黑糖＋水，裝瓶讓<span class="key">微生物發酵</span>約 <span class="key">3 個月</span>，得到帶酸香味的液體，稀釋後可以用來清潔。</p>
+      <div class="flow" id="flowBox"></div>
+    </div>
+
+    <div class="card">
+      <h2>黃金比例 1：3：10<span class="sec">配方</span></h2>
+      <div class="two">
+        <figure><svg class="art" id="ratioSvg" viewBox="0 0 340 200" role="img" aria-label="黑糖 1 份、果皮 3 份、水 10 份，用重量計算"></svg></figure>
+        <ul>
+          <li><span class="key">黑糖 1</span>：<span class="key">果皮 3</span>：<span class="key">水 10</span>（都用<span class="key">重量</span>算）</li>
+          <li>糖是微生物的<b>食物</b>；糖太少容易腐敗發臭</li>
+          <li>果皮帶來<b>微生物</b>和香味、色素</li>
+          <li>只裝到瓶子 <span class="key">6 分滿</span>：發酵會產生大量氣體</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>瓶子裡發生什麼事？<span class="sec">發酵三階段</span></h2>
+      <svg class="art" id="stageSvg" viewBox="0 0 640 260" role="img" aria-label="第一個月酵母菌把糖變成酒精和二氧化碳；第二個月醋酸菌把酒精變成醋酸；第三個月穩定，酸鹼值約三到四"></svg>
+      <div class="three" style="margin-top:8px">
+        <div class="box c1"><b class="t">第 1 個月：酵母菌</b><span class="key">糖 → 酒精＋二氧化碳</span><small>一直冒泡、瓶子鼓起來 → 每天要<b>放氣</b></small></div>
+        <div class="box c2"><b class="t">第 2 個月：醋酸菌</b><span class="key">酒精 → 醋酸</span><small>氣泡變少，聞起來從酒味變成酸味</small></div>
+        <div class="box c3"><b class="t">第 3 個月：穩定</b>pH 約 <span class="key">3～4</span>（酸性）<small>酸香、果香，液體偏琥珀色，可以過濾使用</small></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>為什麼能幫忙清潔？<span class="sec">原理</span></h2>
+      <div class="two">
+        <div>
+          <ul>
+            <li><span class="key">有機酸</span>（醋酸、乳酸…）：溶解<b>水垢</b>、茶垢這類鹼性污垢</li>
+            <li>柑橘皮裡的<span class="key">檸檬烯</span>：能溶解<b>油</b>，幫忙去油汙</li>
+            <li>果皮殘渣的香味，可以蓋掉異味</li>
+          </ul>
+          <div class="note"><b>實話：</b>果皮酵素的清潔力比洗碗精<b>溫和</b>，也<b>不是消毒劑</b>，不能取代漂白水或酒精殺菌。它的價值在「把果皮廢棄物再利用」＋「減少清潔劑用量」。分組試驗就是要親手驗證它到底多有效。</div>
+        </div>
+        <figure><svg class="art" id="cleanSvg" viewBox="0 0 320 210" role="img" aria-label="有機酸溶解水垢，檸檬烯包住油滴"></svg></figure>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>挑什麼果皮？</h2>
+      <div class="two" style="align-items:start">
+        <div class="box okb"><b class="t">✅ 適合</b>
+          <svg viewBox="0 0 300 80" id="goodPeel" aria-hidden="true"></svg>
+          <ul>
+            <li><span class="key">新鮮</span>、沒有爛掉的生果皮</li>
+            <li>柑橘類（橘子、柳丁、檸檬、柚子）→ 去油、香味好</li>
+            <li>鳳梨皮、蘋果皮、芭樂、木瓜皮也可以</li>
+          </ul></div>
+        <div class="box badb"><b class="t">❌ 避免</b>
+          <svg viewBox="0 0 300 80" id="badPeel" aria-hidden="true"></svg>
+          <ul>
+            <li><b>發霉、腐爛</b>的果皮 → 帶進壞菌</li>
+            <li><b>煮過、有油、有鹽</b>的廚餘</li>
+            <li>肉、魚、蛋等<b>動物性</b>的東西 → 發臭</li>
+          </ul></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>安全守則<span class="sec">一定要記</span></h2>
+      <div class="four">
+        <div class="box c1"><svg viewBox="0 0 160 90" id="safe1" aria-hidden="true"></svg><b class="t">用塑膠瓶</b><small>用汽水的寶特瓶（耐壓）；<b>不要用玻璃瓶</b>，氣體太多可能爆裂</small></div>
+        <div class="box c3"><svg viewBox="0 0 160 90" id="safe2" aria-hidden="true"></svg><b class="t">每天放氣</b><small>第 1 個月每天慢慢轉開蓋子放氣，再蓋回去</small></div>
+        <div class="box c4"><svg viewBox="0 0 160 90" id="safe3" aria-hidden="true"></svg><b class="t">不能喝</b><small>貼上「清潔用、不可飲用」標籤和日期</small></div>
+        <div class="box c2"><svg viewBox="0 0 160 90" id="safe4" aria-hidden="true"></svg><b class="t">不和漂白水混</b><small>酸遇到漂白水會產生有毒的<b>氯氣</b></small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 2 實驗過程 ===== -->
+  <section class="panel" id="p2" hidden>
+    <div class="card">
+      <h2>準備材料（每組）</h2>
+      <div class="mats">
+        <div class="mat"><b>🍊 新鮮果皮</b><small>前一天收集，放冰箱保存</small></div>
+        <div class="mat"><b>🟫 黑糖</b><small>也可用紅糖、二砂</small></div>
+        <div class="mat"><b>💧 自來水</b><small>依配方秤重</small></div>
+        <div class="mat"><b>🧴 寶特瓶 600 mL × 3</b><small>汽水瓶最耐壓，洗乾淨</small></div>
+        <div class="mat"><b>⚖️ 電子秤</b><small>精確到 1 g</small></div>
+        <div class="mat"><b>🔪 砧板、刀、剪刀</b><small>果皮切成 2～3 cm</small></div>
+        <div class="mat"><b>🥄 漏斗、攪拌棒、量杯</b><small>糖水比較好倒進瓶子</small></div>
+        <div class="mat"><b>🏷️ 標籤、油性筆</b><small>寫配方、日期、組別</small></div>
+        <div class="mat"><b>🧪 pH 試紙</b><small>每週測一次</small></div>
+        <div class="mat"><b>🧤 手套</b><small>處理果皮、測試時使用</small></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>一步一步做果皮酵素<span class="sec">點數字跳到那一步</span></h2>
+      <div class="stepchips" id="chips"></div>
+      <div class="player">
+        <div class="stage" id="stage"><span class="badge" id="sBadge"></span><div id="sArt"></div></div>
+        <div class="stxt">
+          <h3 id="sTitle"></h3>
+          <ul id="sList"></ul>
+          <div class="tip" id="sTip"></div>
+          <div class="snav">
+            <button class="btn ghost" id="sPrev">← 上一步</button>
+            <button class="btn ghost sm" id="sPause">⏸ 暫停動畫</button>
+            <button class="btn" id="sNext">下一步 →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>配方計算：我的瓶子要放多少？</h2>
+      <div class="lab">
+        <div>
+          <label for="eVol">瓶子容量（mL）</label><input type="number" id="eVol" value="600" min="100" step="50">
+          <label for="eFill">只裝 <span id="eFillLab">60</span>% 滿</label><input type="range" id="eFill" min="40" max="80" step="5" value="60" aria-label="裝多滿">
+          <p style="margin-top:8px;font-size:19px">黑糖 <b class="bignum" id="eS" style="font-size:32px">26</b> g ＋ 果皮 <b class="bignum" id="eP" style="font-size:32px">77</b> g ＋ 水 <b class="bignum" id="eW" style="font-size:32px">257</b> g</p>
+          <p class="ex" id="eNote"></p>
+        </div>
+        <figure><svg class="art" id="eSvg" viewBox="0 0 300 220" role="img" aria-label="瓶子裡糖、果皮、水的比例"></svg></figure>
+      </div>
+      <div class="note">算法：總重量 ≈ 容量 × 裝滿比例（水 1 mL ≈ 1 g，果皮和糖會佔一點空間，抓大概就好）；黑糖 ＝ 總重 ÷ 14，果皮 ＝ 黑糖 × 3，水 ＝ 黑糖 × 10。</div>
+    </div>
+
+    <div class="card">
+      <h2>稀釋計算：做一瓶清潔噴霧</h2>
+      <div class="lab">
+        <div>
+          <label for="dTot">噴瓶容量（mL）</label><input type="number" id="dTot" value="500" min="50" step="50">
+          <label>酵素 1 份 ＋ 水 <span id="dNlab">50</span> 份</label>
+          <div class="actions" id="dChips" style="margin-top:4px"></div>
+          <p style="margin-top:8px;font-size:20px">酵素 <b class="bignum" id="dB" style="font-size:34px">10</b> mL ＋ 水 <b class="bignum" id="dW" style="font-size:34px">490</b> mL</p>
+          <p class="ex" id="dNote"></p>
+        </div>
+        <figure><svg class="art" id="dSvg" viewBox="0 0 300 200" role="img" aria-label="噴瓶裡酵素和水的比例"></svg></figure>
+      </div>
+      <div class="note">算法：酵素 ＝ 總量 ÷（1 ＋ 水的份數）。稀釋比例沒有標準答案，下面的分組試驗就是要找出「多濃才夠用」。稀釋後的噴霧<b>一週內用完</b>。</div>
+    </div>
+  </section>
+
+  <!-- ===== 3 分組試驗 ===== -->
+  <section class="panel" id="p3" hidden>
+    <div class="card">
+      <h2>分組試驗一：稀釋多少倍，清潔效果最好？<span class="sec">課堂完成</span></h2>
+      <p><b>實驗問題：</b>用老師已經發酵 3 個月的果皮酵素，稀釋成不同濃度，去擦一樣的污垢，哪一個最乾淨？跟清水、洗碗精比起來呢？</p>
+      <svg class="art" id="designSvg" viewBox="0 0 640 250" role="img" aria-label="五塊沾了油汙的瓷磚，分別用清水、酵素1比10、1比50、1比100、洗碗精擦拭十下"></svg>
+      <div class="three" style="margin-top:10px">
+        <div class="box c1"><b class="t">操作變因</b><b>組內</b>：清潔液（清水／酵素 1：10／1：50／1：100／洗碗精）<br><b>組間</b>：第 1、2 組油汙；第 3、4 組茶垢</div>
+        <div class="box c2"><b class="t">控制變因</b>污垢量一樣、同款海綿、每種液體 5 mL、都擦 10 下、力道一樣（同一人擦）</div>
+        <div class="box c3"><b class="t">應變變因</b>乾淨程度 1～5 分、摸起來還油不油、剩下的顏色</div>
+      </div>
+      <div class="note"><b>污垢做法：</b>油汙＝沙拉油 2 mL 拌一小撮薑黃粉（看得見顏色），抹在瓷磚上；茶垢＝用濃紅茶泡過、放隔夜的白瓷杯。<b>清水是對照組</b>，洗碗精是比較的標準。</div>
+    </div>
+
+    <div class="card">
+      <h2>分組試驗二：哪種果皮、多少糖最成功？<span class="sec">長期 3 個月</span></h2>
+      <svg class="art" id="longSvg" viewBox="0 0 640 230" role="img" aria-label="四組各用一種果皮，每組做三瓶，黑糖分別放 0.5、1、1.5 份"></svg>
+      <div class="three" style="margin-top:10px">
+        <div class="box c1"><b class="t">操作變因</b><b>組內</b>：黑糖 0.5／1／1.5 份<br><b>組間</b>：果皮種類</div>
+        <div class="box c2"><b class="t">控制變因</b>果皮 3 份、水 10 份、同款瓶子、裝 6 分滿、放同一個地方</div>
+        <div class="box c3"><b class="t">應變變因</b>每週：氣泡多寡、氣味、顏色、pH、有沒有發霉</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>四人一組</h2>
+      <div class="role">
+        <div class="rl"><span class="tag" style="background:var(--g1)">秤量</span><b>秤量員</b>秤果皮、黑糖、水；量清潔液 5 mL</div>
+        <div class="rl"><span class="tag" style="background:var(--g2)">操作</span><b>操作員</b>裝瓶、放氣；清潔試驗時負責擦（全程同一人）</div>
+        <div class="rl"><span class="tag" style="background:var(--g3)">觀察</span><b>觀察員</b>測 pH、聞氣味、打乾淨分數；拍照</div>
+        <div class="rl"><span class="tag" style="background:var(--g4)">紀錄</span><b>紀錄員</b>填紀錄表、貼標籤；上台發表</div>
+      </div>
+      <p class="ex">放氣排班：組員輪流，第 1 個月每天一次（假日前一天放完氣，蓋子轉鬆一點點）。</p>
+    </div>
+
+    <div class="card">
+      <h2>紀錄表</h2>
+      <h3>試驗一：清潔效果（組別：＿＿　污垢：油汙／茶垢）</h3>
+      <div class="tblwrap"><table class="t">
+        <tr><th>項目</th><th>清水</th><th>酵素 1：10</th><th>酵素 1：50</th><th>酵素 1：100</th><th>洗碗精</th></tr>
+        <tr><td><b>pH</b></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>乾淨程度（1～5）</b></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>摸起來油不油</b></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>氣味／備註</b></td><td></td><td></td><td></td><td></td><td></td></tr>
+      </table></div>
+      <h3>試驗二：發酵觀察（果皮：＿＿＿）</h3>
+      <div class="tblwrap"><table class="t">
+        <tr><th>週次</th><th>糖 0.5 份：氣泡／氣味／pH</th><th>糖 1 份：氣泡／氣味／pH</th><th>糖 1.5 份：氣泡／氣味／pH</th><th>發霉？</th></tr>
+        <tr><td><b>第 0 週</b></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>第 1 週</b></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>第 2 週</b></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>第 4 週</b></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>第 8 週</b></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>第 12 週</b></td><td></td><td></td><td></td><td></td></tr>
+      </table></div>
+      <p class="ex">氣泡：0 沒有、1 少、2 中、3 很多；氣味：甜／酒味／酸香／臭。</p>
+      <h3>討論</h3>
+      <ol>
+        <li>酵素越濃一定越乾淨嗎？跟洗碗精比，差多少？</li>
+        <li>果皮酵素對油汙和茶垢，哪一種比較有效？用「酸」和「檸檬烯」解釋。</li>
+        <li>糖放比較少的那瓶，發生了什麼事？為什麼？</li>
+        <li>如果要推廣到家裡用，你會怎麼建議（濃度、用途、注意事項）？</li>
+      </ol>
+      <details class="teacher"><summary>老師參考：預期結果</summary>
+        <ul>
+          <li>油汙：洗碗精最好；酵素 1：10 有一些效果（柑橘類較明顯），1：100 和清水差不多。</li>
+          <li>茶垢：酸性對茶垢、水垢比較有效，酵素濃一點的差異比油汙明顯。</li>
+          <li>糖 0.5 份：發酵弱、pH 下降慢，較容易長黴或發臭；1.5 份：前期氣泡最多，要更勤放氣。</li>
+          <li>柑橘類香味最好、去油較好；鳳梨皮發酵旺盛、氣泡多。實際結果依果皮狀況而定，正好討論變因控制。</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="card">
+      <h2>三節課怎麼排</h2>
+      <div class="timeline">
+        <div class="tl"><b>課前</b><span class="m">老師</span><ul><li><b>3 個月前</b>先做一批酵素，第 3 節清潔試驗要用</li><li>請學生前一天收集果皮</li><li>準備油汙瓷磚、茶垢杯</li></ul></div>
+        <div class="tl"><b>第 1 節</b><span class="m">知識＋配方</span><ul><li>基本知識、安全守則（25 分）</li><li>配方計算（10 分）</li><li>洗、切果皮（15 分）</li></ul></div>
+        <div class="tl"><b>第 2 節</b><span class="m">裝瓶</span><ul><li>秤量、溶糖、裝 3 瓶（25 分）</li><li>貼標籤、測第 0 週 pH（10 分）</li><li>放到陰涼處、排放氣值日表（15 分）</li></ul></div>
+        <div class="tl"><b>第 3 節</b><span class="m">清潔試驗</span><ul><li>稀釋計算、配清潔液（10 分）</li><li>擦 5 塊瓷磚、打分數（25 分）</li><li>全班比較、發表（15 分）</li></ul></div>
+      </div>
+      <div class="note">之後：第 1 個月每天放氣；每週花 5 分鐘觀察紀錄；第 12 週一起過濾，做成噴霧帶回家。</div>
+    </div>
+
+    <div class="card">
+      <h2>評分重點（老師可自行調整）</h2>
+      <div class="three">
+        <div class="box c2"><b class="t">操作 30%</b>秤量正確、裝 6 分滿、安全操作</div>
+        <div class="box c3"><b class="t">紀錄與討論 40%</b>每週紀錄完整、能用原理解釋結果</div>
+        <div class="box c1"><b class="t">發酵管理 30%</b>按時放氣、果皮有壓下去、沒有發霉發臭</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4 動手判斷 ===== -->
+  <section class="panel" id="p4" hidden>
+    <div class="card">
+      <h2>把步驟排好</h2>
+      <p class="ex">依照正確順序，一個一個點下面的步驟。</p>
+      <div class="order" id="oSlots"></div>
+      <div class="opool" id="oPool"></div>
+      <div class="ofb" id="oFb" aria-live="polite"></div>
+      <div class="actions"><button class="btn ghost" id="oReset">↺ 重新排</button></div>
+    </div>
+
+    <div class="card">
+      <h2>這瓶酵素正常嗎？</h2>
+      <div class="ready" id="ready"></div>
+      <div class="actions"><button class="btn ghost" id="readyReset">↺ 重新作答</button></div>
+    </div>
+
+    <div class="card">
+      <h2>裝瓶實驗室</h2>
+      <div class="conc">
+        <div>
+          <div><b>裝到瓶子的</b> <span class="cnum" id="mNum">60</span> <b>%</b></div>
+          <input type="range" id="mRange" min="30" max="100" step="5" value="60" aria-label="裝多滿">
+          <div class="cverdict" id="mVerdict"></div>
+          <p id="mWhy" style="margin:4px 0 0"></p>
+        </div>
+        <figure><svg class="art" id="mSvg" viewBox="0 0 300 220" role="img" aria-label="寶特瓶裝滿程度"></svg>
+          <figcaption>上面的空間要留給發酵產生的氣體</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>出問題了！怎麼辦？<span class="sec">先想，再點開</span></h2>
+      <div class="cases" id="cases"></div>
+    </div>
+  </section>
+
+
+  <!-- ===== 5 小測驗 ===== -->
+  <section class="panel" id="p5" hidden></section>
+
+  <footer>內容依一般環保酵素（果皮酵素）製作原則整理：黑糖、果皮、水 1：3：10，發酵約 3 個月。清潔效果因果皮與稀釋倍數而異，果皮酵素不是消毒劑；稀釋比例為建議起點，請以分組試驗結果為準。</footer>
+</div>
+
+<div class="overlay" id="overlay" hidden><div class="inner"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQAAAAAefbjOAAAC6klEQVR42u1cO64bMQwcRgJcykAO4KNob5Ar7x7FN1iVBmRMClEfuwiQdFlSld8+syFocmY4WiH++hw/8A/HgzzIg/7ToCJ6tiIiGwD9+/4W2UqEyH08k+jZu35QIEkSSBU47gCQKshnBJBe0j5lkuTp2TMRpL/9dt4C9M6A4x4oW6povWTz7JkKKhHcy43kGcg9kdx7gXj2jATF7weZb0HeKySf70iUCByP6tmzEoTWD0gS+ZyIosOKfAYik+w4IpC7Z+/iQe/GIhqi2EoE8jMC+XnjHCc4Gv/w7F1/aqQhUhWlGQov0zor6NmzNTXOwI4jKtrUyCQ7N63rl31qXLwiWME9VXAHoGDiBLh3oaKxjlY0iV4Rl58a5Q4AgYJ0AsfjJQRClXz+bN8RJADHr9pHh2fv8kGyldh6hGzlRtnSS4D0EtUomijhyNLK1OBgn9DRAcxPOkQWWOFTwwCOUDBBzmLoEKIuZaHPPHvX5xp7qrrL2qEAUlkHpp6N/hXP3uV7xFyAzm7RGkXrG2mUik8NGzgCQFgkKCWe51olU9T2ijAwNb61qvxVAgg6NVyPgI29BpBINT8AzTbTSmAYaFoxuGPGRI/opqkBHFYKOnCEa5a2KqLjiAYgM6v+Iw8mMnYdXhFWFKoPFKmCVW8eA0x4jzA0NdQTw048yZVzAq5HWNIj8qJChI9GQQ5aGujs05AeAbS9xlh/q7UOE0dUZ59mpobSjIksF39E/fZjekWYQJaNWq6yw1xt6YWe7sH1irAR9JZ2VWMvsU0I2VJVIy7KrddL8Vt+hrjGghSGyQ5TwIYrVOb0iBOLSUInRBoXORxH2NIslWso3ZwKFcb2yyvC3p2u6Zsbpqm1R8C34Za24doFVufUR20AE1Z49qxUxHBcfltkMDYcjixtBQXOl8q0czxe0lHGsFl59i4f1KVJ9c70N0lErJOkRPgbRexxjX43o66W3D19+PR9alw5SPzthR7kQR70h/MbXHk1IKUg9ccAAAAASUVORK5CYII="><p>用平板或手機掃描，開始小測驗！</p><small>https://teacher-liujikan.github.io/yilin-work/agri-enzyme/#quiz</small></div></div>
+
+<script>
+(function(){
+const $ = id => document.getElementById(id);
+const T=(x,y,t,a="middle",cls="s-txt",sz)=>`<text class="${cls}" x="${x}" y="${y}" text-anchor="${a}"${sz?` style="font-size:${sz}px"`:""}>${t}</text>`;
+const ARROWDEF=id=>`<defs><marker id="${id}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--muted)"/></marker></defs>`;
+const ARR=(x1,y1,x2,y2,id)=>`<path d="M${x1} ${y1} L${x2} ${y2}" stroke="var(--muted)" stroke-width="2.4" fill="none" marker-end="url(#${id})"/>`;
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const fill=(id,html)=>{ const e=$(id); if(e) e.innerHTML=html; };
+
+/* ---------- 果皮酵素：繪圖小工具 ---------- */
+const PEELO=(x,y,s=1,r=0,c="var(--peelO)")=>`<path transform="translate(${x} ${y}) rotate(${r}) scale(${s})" d="M-12 0 A12 12 0 0 1 12 0 L8 0 A8 8 0 0 0 -8 0 Z" fill="${c}"/>`;
+const PEELS=(x,y,s=1,r=0,c="var(--peelY)")=>`<path transform="translate(${x} ${y}) rotate(${r}) scale(${s})" d="M-10 -4 Q0 -10 10 -4 L8 4 Q0 0 -8 4 Z" fill="${c}"/>`;
+const BUBS=(x,y,n=5,w=30)=>Array.from({length:n},(_,i)=>`<circle cx="${(x-w/2+((i*13)%w)).toFixed(1)}" cy="${y}" r="${2+(i%3)}" fill="#fff" opacity=".85" class="a-up" style="animation-delay:${(i*.4).toFixed(1)}s"/>`).join("");
+function BOTTLE(x,y,s=1,lv=.6,o={}){
+  const H=124, top=-3-lv*H;
+  let peels=""; if(o.peel!==false){ const c=o.pc||"var(--peelO)"; peels=PEELO(-12,-18,.8,10,c)+PEELO(10,-30,.7,-30,c)+PEELO(-4,-46,.7,20,c)+PEELS(12,-12,.8,0,o.pc2||"var(--peelY)"); if(o.float) peels+=PEELO(0,top+6,.7,0,c); }
+  const liq=lv>0?`<rect x="-27" y="${top.toFixed(1)}" width="54" height="${(lv*H).toFixed(1)}" rx="9" fill="${o.liq||"var(--brew)"}" opacity="${o.op||.85}"/>`:"";
+  const mold=o.mold?`<g>${[-14,-2,10].map((d,i)=>`<circle cx="${d}" cy="${(top+2).toFixed(1)}" r="${5+i%2*2}" fill="${o.mold}"/>`).join("")}</g>`:"";
+  const film=o.film?`<rect x="-27" y="${(top-1).toFixed(1)}" width="54" height="5" rx="2" fill="#f4f1e6"/>`:"";
+  return `<g transform="translate(${x} ${y}) scale(${s})"><g${o.cls?` class="${o.cls}"`:""}>
+    <path d="M-30 -118 Q-30 -132 -16 -140 L-10 -150 L10 -150 L16 -140 Q30 -132 30 -118 L30 -8 Q30 0 22 0 L-22 0 Q-30 0 -30 -8 Z" fill="var(--pet)" opacity=".25" stroke="var(--pet)" stroke-width="3"/>
+    ${liq}${peels}${film}${mold}${o.bub?BUBS(0,top+30,6,40):""}
+    ${o.noCap?"":`<rect x="-12" y="${o.capUp?-180:-164}" width="24" height="14" rx="3" fill="var(--cap)"/>`}${o.label?`<rect x="-22" y="-90" width="44" height="22" rx="3" fill="#fff" stroke="var(--muted)"/><text x="0" y="-75" text-anchor="middle" style="font-size:9px;font-weight:700;fill:#333;font-family:var(--f)">${o.label}</text>`:""}
+  </g></g>`;
+}
+const SUGAR=(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><path d="M-22 -30 h44 l4 40 h-52 Z" fill="#d9c7a3" stroke="var(--cardline)" stroke-width="2"/><text x="0" y="-4" text-anchor="middle" style="font-size:12px;font-weight:900;fill:var(--sugar);font-family:var(--f)">黑糖</text></g>`;
+
+/* ---------- 總覽 ---------- */
+const FLOW=[
+  ["收果皮",`<svg viewBox="0 0 120 90">${PEELO(40,50,1.6,10)}${PEELS(78,46,1.6,-15)}${PEELO(60,70,1.3,180,"var(--apple)")}</svg>`,"新鮮、切小塊"],
+  ["1：3：10",`<svg viewBox="0 0 120 90"><rect x="18" y="60" width="16" height="16" fill="var(--sugar)"/><rect x="40" y="44" width="16" height="32" fill="var(--peelO)"/><rect x="62" y="14" width="40" height="62" fill="var(--water)" opacity=".6"/>${T(26,86,"1","middle","s-sm")}${T(48,86,"3","middle","s-sm")}${T(82,86,"10","middle","s-sm")}</svg>`,"糖：果皮：水"],
+  ["裝 6 分滿",`<svg viewBox="0 0 120 90">${BOTTLE(60,86,.5,.6)}<path d="M84 34 h14 M84 52 h14" stroke="var(--muted)" stroke-width="1.5"/><path d="M91 36 v14" stroke="var(--g1)" stroke-width="2"/></svg>`,"留空間給氣體"],
+  ["每天放氣",`<svg viewBox="0 0 120 90">${BOTTLE(60,86,.5,.6,{bub:true,cls:"a-bulge"})}<g class="a-up">${T(92,26,"嘶～","middle","s-sm")}</g></svg>`,"第 1 個月"],
+  ["3 個月過濾",`<svg viewBox="0 0 120 90"><path d="M30 20 h60 l-24 30 v14 h-12 v-14 Z" fill="none" stroke="var(--metal)" stroke-width="2.4"/><rect x="34" y="24" width="52" height="6" fill="var(--peelO)"/>${[0,1,2].map(i=>`<circle cx="60" cy="68" r="3" fill="var(--brew)" class="a-drop" style="animation-delay:${i*.45}s"/>`).join("")}</svg>`,"稀釋後清潔"]
+];
+
+/* ---------- 比例 ---------- */
+fill("ratioSvg",(()=>{
+  let s="";
+  const B=[["黑糖",1,"var(--sugar)"],["果皮",3,"var(--peelO)"],["水",10,"var(--water)"]];
+  let y=20;
+  B.forEach(([n,k,c])=>{ for(let i=0;i<k;i++){ s+=`<rect x="${90+i*18}" y="${y}" width="14" height="34" rx="4" fill="${c}" ${n==="水"?'opacity=".7"':""}/>`; } s+=T(80,y+23,n,"end","s-txt")+T(90+k*18+4,y+23,k+" 份","start","s-txt"); y+=56; });
+  s+=T(170,190,"例：糖 50 g、果皮 150 g、水 500 g","middle","s-sm");
+  return s;
+})());
+
+/* ---------- 三階段 ---------- */
+fill("stageSvg",(()=>{
+  let s=ARROWDEF("ars");
+  const X=[110,320,530];
+  s+=`<path d="M40 230 H600" stroke="var(--muted)" stroke-width="3" marker-end="url(#ars)"/>`;
+  ["第 1 個月","第 2 個月","第 3 個月"].forEach((t,i)=>{ s+=`<circle cx="${X[i]}" cy="230" r="6" fill="var(--accent)"/>${T(X[i],252,t,"middle","s-txt")}`; });
+  // 1
+  s+=BOTTLE(X[0]-40,200,.95,.6,{bub:true,cls:"a-bulge",liq:"var(--brew2)"});
+  s+=`<g transform="translate(${X[0]+40} 100)"><ellipse rx="14" ry="11" fill="#f4e9c8" stroke="#b9a46a" stroke-width="2"/><ellipse cx="11" cy="-8" rx="6" ry="5" fill="#f4e9c8" stroke="#b9a46a" stroke-width="2"/>${T(0,32,"酵母菌","middle","s-sm")}</g>`;
+  s+=T(X[0]+40,150,"糖 → 酒精","middle","s-txt")+T(X[0]+40,168,"＋ CO₂（冒泡）","middle","s-sm");
+  // 2
+  s+=BOTTLE(X[1]-40,200,.95,.6,{liq:"var(--brew)"})+BUBS(X[1]-40,120,2,20);
+  s+=`<g transform="translate(${X[1]+40} 100)">${[-10,0,10].map((d,i)=>`<rect x="${d-3}" y="${-10+i*3}" width="6" height="14" rx="3" fill="#cfe3b8" stroke="#7a9a5a" stroke-width="1.5"/>`).join("")}${T(0,32,"醋酸菌","middle","s-sm")}</g>`;
+  s+=T(X[1]+40,150,"酒精 → 醋酸","middle","s-txt")+T(X[1]+40,168,"酒味 → 酸味","middle","s-sm");
+  // 3
+  s+=BOTTLE(X[2]-40,200,.95,.6,{liq:"#a8692a",op:.95});
+  s+=`<g transform="translate(${X[2]+40} 96)"><rect x="-26" y="-14" width="52" height="24" rx="4" fill="#f2a64a"/><rect x="-26" y="-14" width="52" height="24" rx="4" fill="none" stroke="var(--muted)"/>${T(0,3,"pH 3～4","middle","s-txt")}</g>`;
+  s+=T(X[2]+40,150,"穩定、酸香","middle","s-txt")+T(X[2]+40,168,"可以過濾使用","middle","s-sm");
+  return s;
+})());
+
+/* ---------- 清潔原理 ---------- */
+fill("cleanSvg",`<rect x="10" y="150" width="140" height="14" rx="3" fill="var(--metal)"/><g class="a-fadeout">${[0,1,2,3,4].map(i=>`<rect x="${20+i*24}" y="${136-(i%2)*6}" width="18" height="${14+(i%2)*6}" rx="3" fill="#e9e3d2" stroke="#b8ae90"/>`).join("")}</g>${[0,1,2].map(i=>`<circle cx="${40+i*36}" cy="110" r="5" fill="var(--g2)" class="a-drop" style="animation-delay:${i*.4}s"/>`).join("")}${T(80,190,"酸：溶解水垢、茶垢","middle","s-txt")}
+  <g transform="translate(240 110)"><circle r="26" fill="var(--grease)" opacity=".85"/>${Array.from({length:10},(_,i)=>{const a=i*36*Math.PI/180;return `<g transform="translate(${(36*Math.cos(a)).toFixed(1)} ${(36*Math.sin(a)).toFixed(1)}) rotate(${i*36})"><circle r="4" fill="var(--peelO)"/><path d="M-4 0 h-8" stroke="var(--peelO)" stroke-width="2"/></g>`;}).join("")}</g>${T(240,190,"檸檬烯：包住油滴","middle","s-txt")}`);
+
+/* ---------- 果皮 ---------- */
+fill("goodPeel",`${PEELO(30,40,2,0)}${T(30,74,"柑橘","middle","s-sm")}${PEELS(90,36,2.2,-10)}${T(90,74,"檸檬","middle","s-sm")}<g transform="translate(150 38)"><path d="M-16 -18 L16 -18 L12 18 L-12 18 Z" fill="var(--pine)"/>${[-8,0,8].map(d=>`<path d="M${d-6} -12 l6 6 l6 -6 M${d-6} 4 l6 6 l6 -6" stroke="#9a7a2a" stroke-width="1.4" fill="none"/>`).join("")}</g>${T(150,74,"鳳梨皮","middle","s-sm")}${PEELO(212,44,2,180,"var(--apple)")}${T(212,74,"蘋果皮","middle","s-sm")}${PEELO(270,40,1.8,20,"#8fc45c")}${T(270,74,"芭樂","middle","s-sm")}`);
+fill("badPeel",`${PEELO(40,40,2,0,"#8a7a4a")}<circle cx="34" cy="30" r="6" fill="#4f7a4a"/><circle cx="48" cy="34" r="5" fill="#2f3f2f"/>${T(40,74,"發霉","middle","s-sm")}<ellipse cx="110" cy="40" rx="26" ry="12" fill="#f0e6d0" stroke="var(--muted)"/><ellipse cx="110" cy="38" rx="18" ry="6" fill="var(--grease)" opacity=".7"/>${T(110,74,"有油的剩菜","middle","s-sm")}<path d="M160 40 q20 -18 44 0 q-24 18 -44 0 Z M204 40 l12 -10 v20 Z" fill="#9fb8c8"/>${T(188,74,"魚、肉","middle","s-sm")}<ellipse cx="260" cy="40" rx="16" ry="20" fill="#f4ecdc" stroke="var(--muted)"/>${T(260,74,"蛋","middle","s-sm")}`);
+
+/* ---------- 安全 ---------- */
+fill("safe1",`${BOTTLE(50,86,.48,.6)}<g transform="translate(110 50)"><path d="M-14 -30 h28 v8 q10 10 10 24 v30 h-48 v-30 q0 -14 10 -24 Z" fill="#cfe8f0" opacity=".6" stroke="var(--muted)"/><path d="M-20 -30 L20 30" stroke="var(--bad)" stroke-width="4"/></g>`);
+fill("safe2",`${BOTTLE(80,86,.48,.6,{bub:true,capUp:true})}<g class="a-up">${T(118,30,"嘶～","middle","s-txt")}</g>`);
+fill("safe3",`${BOTTLE(60,86,.48,.6,{label:"不可飲用"})}<g transform="translate(118 46)"><path d="M-12 -24 h24 l-4 44 h-16 Z" fill="#fff" stroke="var(--muted)"/><path d="M-22 -26 L22 24" stroke="var(--bad)" stroke-width="4"/></g>`);
+fill("safe4",`${BOTTLE(40,86,.42,.6)}<g transform="translate(120 86) scale(.42)"><rect x="-26" y="-130" width="52" height="130" rx="10" fill="#fff" stroke="var(--g3)" stroke-width="5"/><rect x="-10" y="-150" width="20" height="22" fill="var(--g3)"/></g>${T(80,40,"✕","middle","s-txt",28)}<path d="M74 60 q6 -10 12 0 q6 -10 12 0" stroke="#c8d86a" stroke-width="3" fill="none" class="a-up"/>${T(80,84,"氯氣","middle","s-sm")}`);
+
+/* ---------- 步驟 ---------- */
+const STEPS=[
+ {t:"收集果皮",l:["只收生的、新鮮的果皮","表面沖洗一下，晾乾水分","剪掉爛掉、發霉的部分","切成 2～3 公分小塊"],tip:"柑橘類去油效果好、味道香；可以混合多種果皮。",
+  art:`<svg viewBox="0 0 340 200"><rect x="40" y="120" width="200" height="56" rx="8" fill="var(--wood)"/>${PEELO(90,140,2.4,0)}${PEELS(150,140,2,20)}<g transform="translate(200 120)"><g class="a-tap"><path d="M0 -60 L10 -60 L10 10 L-6 10 Z" fill="var(--metal)"/><rect x="-2" y="-90" width="12" height="30" rx="3" fill="var(--soil)"/></g></g>${[0,1,2,3,4,5].map(i=>PEELO(270+(i%3)*18,130+Math.floor(i/3)*20,.8,i*40)).join("")}${T(170,196,"切成 2～3 cm","middle","s-txt")}</svg>`},
+ {t:"依比例秤重",l:["用配方計算算出糖、果皮、水各多少","秤果皮（扣掉容器重量）","秤黑糖","秤水（1 mL ≈ 1 g）"],tip:"先按「歸零」再放東西，秤出來才是淨重。",
+  art:`<svg viewBox="0 0 340 200"><g transform="translate(110 150)"><rect x="-60" y="0" width="120" height="30" rx="6" fill="var(--metal)"/><rect x="-36" y="6" width="72" height="16" rx="3" fill="#cfe8cf"/><text x="0" y="19" text-anchor="middle" style="font-size:12px;font-weight:700;fill:#1f3a1f;font-family:var(--f)">150 g</text><ellipse cx="0" cy="-4" rx="50" ry="8" fill="var(--paper)" stroke="var(--muted)"/><g class="a-place">${PEELO(-10,-14,1.4)}${PEELO(14,-12,1.2,30)}</g></g>${SUGAR(250,110,1.3)}${T(250,150,"50 g","middle","s-txt")}${T(170,196,"糖 1：果皮 3：水 10","middle","s-txt")}</svg>`},
+ {t:"糖溶進水",l:["把黑糖倒進水裡","用攪拌棒攪到完全溶解","溶解的糖水微生物比較好利用","糖水用漏斗倒比較不會灑"],tip:"可以先用一點溫水溶糖，再加剩下的冷水。",
+  art:`<svg viewBox="0 0 340 200"><path d="M110 70 L120 180 L220 180 L230 70 Z" fill="var(--water)" opacity=".35" stroke="var(--water)" stroke-width="2"/><rect x="114" y="110" width="112" height="68" fill="var(--brew2)" class="a-appear"/><g class="a-swing" style="transform-origin:170px 40px"><path d="M170 40 L190 160" stroke="var(--wood)" stroke-width="6" stroke-linecap="round"/></g>${[0,1,2,3].map(i=>`<rect x="${150+i*10}" y="40" width="6" height="6" fill="var(--sugar)" class="a-drop" style="animation-delay:${i*.35}s"/>`).join("")}${T(170,198,"攪到看不到糖粒","middle","s-txt")}</svg>`},
+ {t:"裝瓶（6 分滿）",l:["果皮先放進瓶子","用漏斗倒入糖水","液面只到瓶子的 6 分滿","果皮要盡量泡在水裡"],tip:"太滿的話，發酵氣體一多就會溢出來，甚至撐破瓶子。",
+  art:`<svg viewBox="0 0 340 200">${BOTTLE(170,190,1.1,.6,{noCap:true})}<g class="a-place">${PEELO(250,40,1.2)}</g><path d="M150 18 h40 l-14 22 v10 h-12 v-10 Z" fill="none" stroke="var(--metal)" stroke-width="2.4"/>${[0,1].map(i=>`<circle cx="170" cy="56" r="3" fill="var(--brew)" class="a-drop" style="animation-delay:${i*.6}s"/>`).join("")}<path d="M220 98 h40 M220 190 h40" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M250 100 v88" stroke="var(--g1)" stroke-width="2"/>${T(266,148,"6 分滿","start","s-txt")}</svg>`},
+ {t:"貼標籤、放陰涼處",l:["寫上：組別、果皮種類、配方、日期","寫「清潔用、不可飲用」","放在陰涼、不曬太陽的地方","不要放在冰箱（太冷不發酵）"],tip:"三瓶放在一起，才符合「控制變因」。",
+  art:`<svg viewBox="0 0 340 200">${[0,1,2].map(i=>BOTTLE(100+i*70,186,.95,.6,{label:["糖 0.5","糖 1","糖 1.5"][i]})).join("")}<circle cx="300" cy="40" r="16" fill="var(--g1)" opacity=".35"/><path d="M276 18 l48 48" stroke="var(--bad)" stroke-width="4"/>${T(170,26,"陰涼、避光","middle","s-txt")}</svg>`},
+ {t:"第 1 個月每天放氣",l:["每天慢慢轉開蓋子，聽到「嘶～」","氣放完再蓋回去","浮起來的果皮壓回水裡（避免發霉）","瓶子鼓得硬硬的 → 要更勤放氣"],tip:"慢慢轉！一次轉開可能噴出來。",
+  art:`<svg viewBox="0 0 340 200">${BOTTLE(130,196,.95,.6,{bub:true,cls:"a-bulge",capUp:true})}<g class="a-up">${T(200,40,"嘶～","middle","s-txt",20)}</g><path d="M200 70 q20 -6 24 -26" stroke="var(--muted)" stroke-width="2" fill="none" stroke-dasharray="4 3"/><g transform="translate(260 120)"><rect x="-36" y="-40" width="72" height="84" rx="6" class="s-paper"/>${[0,1,2,3].map(i=>`<path d="M-24 ${-24+i*18} l4 4 l8 -8" stroke="var(--ok)" stroke-width="2" fill="none"/><path d="M-6 ${-22+i*18} h30" stroke="var(--line)" stroke-width="3"/>`).join("")}</g>${T(260,186,"放氣值日表","middle","s-sm")}</svg>`},
+ {t:"每週觀察紀錄",l:["看：氣泡多寡、顏色、有沒有發霉","聞：甜 → 酒味 → 酸香","測：用乾淨的滴管取一滴測 pH","填紀錄表、拍照"],tip:"pH 會從 5 左右慢慢降到 3～4，表示發酵順利。",
+  art:`<svg viewBox="0 0 340 200">${BOTTLE(90,190,1,.6)}<g transform="translate(200 110)"><rect x="-6" y="-60" width="12" height="70" rx="2" fill="#fff" stroke="var(--muted)"/><rect x="-6" y="-14" width="12" height="24" fill="#f2a64a" class="a-appear"/></g><g transform="translate(270 110)">${["#d9463b","#f2a64a","#f2c84b","#5fb35a","#3f7fd0"].map((c,i)=>`<rect x="-20" y="${-60+i*22}" width="40" height="18" rx="3" fill="${c}"/><text x="28" y="${-46+i*22}" class="s-sm">${[2,4,6,8,10][i]}</text>`).join("")}</g>${T(200,196,"pH 試紙比對","middle","s-sm")}</svg>`},
+ {t:"3 個月後過濾",l:["紗布或濾網鋪在漏斗上","倒出液體，擠乾果皮渣","液體裝進乾淨的瓶子，貼標籤","果皮渣可放進下一批或埋進堆肥"],tip:"過濾後的原液放陰涼處，可以保存很久；蓋子偶爾鬆一下。",
+  art:`<svg viewBox="0 0 340 200"><path d="M120 30 h100 l-40 50 v20 h-20 v-20 Z" fill="none" stroke="var(--metal)" stroke-width="3"/><path d="M126 36 h88" stroke="#e8e2d0" stroke-width="6"/>${PEELO(150,32,.9)}${PEELO(186,30,.8,40)}${[0,1,2].map(i=>`<circle cx="170" cy="110" r="3.4" fill="var(--brew)" class="a-drop" style="animation-delay:${i*.45}s"/>`).join("")}${BOTTLE(170,196,.5,.5,{peel:false,liq:"#a8692a"})}${T(280,120,"果皮渣","middle","s-sm")}${T(280,138,"→ 堆肥","middle","s-sm")}</svg>`},
+ {t:"稀釋使用",l:["原液很酸，一定要稀釋","用稀釋計算算出酵素和水","裝進噴瓶，標示比例和日期","稀釋液一週內用完；不要和漂白水一起用"],tip:"用在大理石、木頭上之前先試一小塊，酸性可能傷表面。",
+  art:`<svg viewBox="0 0 340 200"><g transform="translate(120 100)"><rect x="-30" y="-20" width="60" height="96" rx="10" fill="var(--pet)" opacity=".3" stroke="var(--pet)" stroke-width="3"/><rect x="-27" y="20" width="54" height="53" rx="8" fill="var(--brew2)" opacity=".7"/><path d="M-10 -20 v-20 h40 v12 h-20 v8" fill="var(--cap)"/></g>${[0,1,2,3,4].map(i=>`<circle cx="${180+i*14}" cy="${66+(i%2)*8}" r="2.4" fill="var(--water)" class="a-fade" style="animation-delay:${i*.2}s"/>`).join("")}<rect x="220" y="120" width="90" height="50" rx="4" fill="#e9e3d2" stroke="#b8ae90"/><rect x="230" y="132" width="40" height="16" rx="8" fill="var(--grease)" opacity=".6" class="a-fadeout"/>${T(170,196,"擦一擦，再用清水擦一次","middle","s-txt")}</svg>`}
+];
+
+/* ---------- 配方計算 ---------- */
+(function(){
+  function calc(){
+    const v=parseFloat($("eVol").value), f=+$("eFill").value; $("eFillLab").textContent=f;
+    if(!(v>0)){ ["eS","eP","eW"].forEach(i=>$(i).textContent="─"); $("eNote").textContent="請輸入容量。"; $("eSvg").innerHTML=""; return; }
+    const tot=v*f/100, s=tot/14;
+    $("eS").textContent=Math.round(s); $("eP").textContent=Math.round(s*3); $("eW").textContent=Math.round(s*10);
+    $("eNote").textContent=f>70?"有點滿：發酵旺盛時可能溢出，要更勤放氣。":f<50?"可以，但同一個瓶子做出來的量比較少。":"在建議範圍內。";
+    const lv=f/100;
+    $("eSvg").innerHTML=BOTTLE(110,206,1.25,lv,{peel:true})+`<rect x="200" y="40" width="16" height="16" fill="var(--sugar)"/>${T(222,53,"黑糖 "+Math.round(s)+" g","start","s-sm")}<rect x="200" y="70" width="16" height="16" fill="var(--peelO)"/>${T(222,83,"果皮 "+Math.round(s*3)+" g","start","s-sm")}<rect x="200" y="100" width="16" height="16" fill="var(--brew)"/>${T(222,113,"水 "+Math.round(s*10)+" g","start","s-sm")}${T(222,150,"留 "+(100-f)+"% 給氣體","start","s-txt")}`;
+  }
+  $("eVol").oninput=calc; $("eFill").oninput=calc; calc();
+})();
+
+/* ---------- 稀釋 ---------- */
+(function(){
+  const N=[10,50,100,200,500]; let n=50;
+  const note={10:"很濃：頑固茶垢、水垢。用完再用清水擦一次。",50:"一般擦桌子、流理台可以從這裡試。",100:"比較淡：日常擦拭、除臭。",200:"很淡：清潔效果有限。",500:"澆花等用途常見的稀釋度（酸性太濃會傷根）。"};
+  $("dChips").innerHTML=N.map(k=>`<button class="dchip" data-n="${k}">1：${k}</button>`).join("");
+  $("dChips").querySelectorAll(".dchip").forEach(b=>b.onclick=()=>{ n=+b.dataset.n; calc(); });
+  function calc(){
+    $("dChips").querySelectorAll(".dchip").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.n===n));
+    $("dNlab").textContent=n;
+    const tot=parseFloat($("dTot").value);
+    if(!(tot>0)){ $("dB").textContent="─"; $("dW").textContent="─"; $("dSvg").innerHTML=""; return; }
+    const b=tot/(1+n), w=tot-b;
+    $("dB").textContent=b<10?b.toFixed(1):Math.round(b); $("dW").textContent=Math.round(w); $("dNote").textContent=note[n];
+    const H=140, hb=Math.max(2,H/(1+n));
+    $("dSvg").innerHTML=`<path d="M90 30 L90 180 Q90 190 100 190 L200 190 Q210 190 210 180 L210 30" fill="none" stroke="var(--muted)" stroke-width="3"/>
+      <rect x="93" y="${187-H}" width="114" height="${(H-hb).toFixed(1)}" fill="var(--water)" opacity=".35"/>
+      <rect x="93" y="${(187-hb).toFixed(1)}" width="114" height="${hb.toFixed(1)}" fill="var(--brew)"/>
+      ${T(216,(187-hb/2+4).toFixed(1),"酵素 "+(b<10?b.toFixed(1):Math.round(b))+" mL","start","s-sm")}${T(216,(187-H+(H-hb)/2).toFixed(1),"水 "+Math.round(w)+" mL","start","s-sm")}${T(150,20,"共 "+Math.round(tot)+" mL","middle","s-txt")}`;
+  }
+  $("dTot").oninput=calc; calc();
+})();
+
+/* ---------- 分組設計 ---------- */
+fill("designSvg",(()=>{
+  const L=[["清水","var(--water)"],["酵素 1：10","#a8692a"],["酵素 1：50","var(--brew)"],["酵素 1：100","var(--brew2)"],["洗碗精","var(--g3)"]];
+  const left=[1,.45,.65,.85,.15];
+  let s="";
+  L.forEach(([n,c],i)=>{ const x=20+i*124;
+    s+=`<rect x="${x}" y="40" width="104" height="104" rx="6" fill="#f4f1ea" stroke="#c9c2b0"/><path d="M${x} 92 h104 M${x+52} 40 v104" stroke="#ddd6c4"/>`;
+    s+=`<ellipse cx="${x+52}" cy="92" rx="38" ry="26" fill="var(--grease)" opacity="${left[i]}"/>`;
+    s+=`<g class="a-walk" style="animation-duration:${1.2+i*.1}s"><rect x="${x+36}" y="78" width="32" height="22" rx="5" fill="#f2d35b" stroke="#c9a92e"/></g>`;
+    s+=`<rect x="${x+30}" y="160" width="44" height="40" rx="6" fill="${c}" opacity=".85"/>${T(x+52,222,n,"middle","s-txt")}`;
+    s+=T(x+52,30,["對照","","","","比較標準"][i],"middle","s-sm");
+  });
+  s+=T(320,246,"每塊瓷磚：一樣多的油汙、5 mL 清潔液、擦 10 下","middle","s-sm");
+  return s;
+})());
+fill("longSvg",(()=>{
+  const G=[["第 1 組","柑橘","var(--peelO)","var(--peelY)"],["第 2 組","鳳梨","var(--pine)","var(--pine)"],["第 3 組","蘋果","var(--apple)","#f2e0c0"],["第 4 組","混合","var(--peelO)","var(--apple)"]];
+  let s="";
+  G.forEach((g,i)=>{ const x=10+i*158;
+    s+=`<rect x="${x}" y="6" width="148" height="218" rx="10" fill="${i%2?"var(--bg)":"var(--paper)"}" stroke="var(--line)"/>${T(x+74,28,g[0]+"："+g[1],"middle","s-txt")}`;
+    [.5,1,1.5].forEach((k,j)=>{ s+=BOTTLE(x+28+j*46,190,.62,.6,{pc:g[2],pc2:g[3],bub:k===1.5,liq:["var(--brew2)","var(--brew)","#a8692a"][j]})+T(x+28+j*46,212,"糖 "+k,"middle","s-sm"); });
+  });
+  return s;
+})());
+
+/* ---------- 正常嗎 ---------- */
+const READY_OPTS=["正常","有問題"];
+const READY=[
+ ["第 1 週，瓶子鼓得硬硬的、一直冒泡",0,"酵母菌正在把糖變成二氧化碳，很正常，但要記得放氣。"],
+ ["液面浮著一層薄薄的白膜",0,"多半是產膜酵母，常見；撈掉或搖一搖壓回去即可。"],
+ ["表面長出綠色、黑色的毛",1,"那是發霉，代表被雜菌污染（常是果皮浮出水面），這瓶要丟掉。"],
+ ["聞起來酸酸甜甜、有點酒味",0,"這是酵母菌和醋酸菌作用的味道，發酵順利。"],
+ ["聞起來像餿水的腐臭味",1,"糖太少或混到不該放的東西。加一點黑糖、把果皮壓下去，若還是很臭就丟掉。"],
+ ["第 10 週，pH 3.5，液體偏琥珀色",0,"變酸、顏色變深，就快完成了。"],
+ ["果皮一直浮在表面，沒人壓下去",1,"露出水面的果皮最容易發霉，每次放氣時順便壓下去。"],
+ ["底部有很多沉澱物，液體有點混濁",0,"沉澱是果肉碎屑和微生物，過濾時會去掉。"]
+];
+
+/* ---------- 裝瓶實驗室 ---------- */
+function renderFill(){
+  const m=+$("mRange").value; $("mNum").textContent=m;
+  let v,w,col;
+  if(m>80){ v="太滿了！"; w="發酵產生的氣體沒地方去，液體會溢出，瓶子可能撐破。倒出一些。"; col="var(--bad)"; }
+  else if(m>=55&&m<=70){ v="剛剛好"; w="上面留的空間足夠讓氣體累積，每天放一次氣就安全。"; col="var(--ok)"; }
+  else if(m>70){ v="偏滿"; w="勉強可以，但第一個月氣泡多的時候要放氣兩次。"; col="var(--g1)"; }
+  else { v="可以，但有點浪費"; w="安全沒問題，只是瓶子空間沒用到；空氣多，果皮浮出來更要記得壓下去。"; col="var(--g1)"; }
+  $("mVerdict").textContent=v; $("mVerdict").style.color=col; $("mWhy").textContent=w;
+  $("mSvg").innerHTML=BOTTLE(150,214,1.25,m/100*0.95,{bub:m>80,cls:m>80?"a-bulge":""})+(m>80?`<g class="a-up">${T(150,14,"快爆了！","middle","s-txt")}</g>`:"");
+}
+$("mRange").oninput=renderFill; renderFill();
+
+/* ---------- 診斷卡 ---------- */
+const CASES=[
+ ["打開蓋子噴出來","氣體累積太多，或裝太滿","慢慢轉開、一點一點放；倒出一些液體；放氣改成每天兩次"],
+ ["長出綠色、黑色黴菌","果皮露出水面、果皮不新鮮、器具不乾淨","這瓶丟掉重做；果皮要泡在水裡，每次放氣順便壓"],
+ ["一直有腐臭味","糖太少、混進動物性或煮過的東西","加一點黑糖攪勻；檢查材料；兩週後還臭就丟掉"],
+ ["完全沒有冒泡","太冷、糖太少，或蓋子沒蓋好氣都跑了","移到室溫陰涼處；確認糖量；蓋子轉緊（但要每天放氣）"],
+ ["清潔試驗擦不乾淨","太稀，或污垢種類不適合（例如厚油汙）","改用 1：10 試試；油汙可以搭配少量洗碗精，減少洗碗精用量"],
+ ["手摸久了覺得刺刺的","原液或高濃度酸性刺激皮膚","戴手套；稀釋後再用；用完洗手"]
+];
+
+/* ---------- 小測驗 ---------- */
+const QS=[
+ {q:"果皮酵素的常用配方「黑糖：果皮：水」是？",o:["1：3：10","10：3：1","1：1：1","3：1：10"],a:0,why:"黑糖 1 份、果皮 3 份、水 10 份，用重量計算。"},
+ {q:"配方裡加黑糖的主要目的是？",o:["當微生物的食物","讓液體變甜可以喝","讓顏色變深","防止瓶子破掉"],a:0,why:"微生物靠糖進行發酵；糖太少容易腐敗發臭。"},
+ {q:"為什麼只裝到瓶子的 6 分滿？",o:["留空間給發酵產生的氣體","省材料","果皮會長大","瓶子太重拿不動"],a:0,why:"發酵會產生大量二氧化碳，太滿會溢出甚至撐破瓶子。"},
+ {q:"第 1 個月一直冒泡，主要是誰造成的？",o:["酵母菌把糖變成酒精和二氧化碳","醋酸菌把醋變成糖","果皮在呼吸","水在沸騰"],a:0,why:"第一階段由酵母菌主導：糖 → 酒精＋二氧化碳。"},
+ {q:"第 2 個月，醋酸菌把什麼變成醋酸？",o:["酒精","黑糖","水","果皮"],a:0,why:"醋酸菌把酒精氧化成醋酸，所以氣味從酒味變成酸味。"},
+ {q:"發酵完成的果皮酵素，pH 大約是？",o:["3～4（酸性）","7（中性）","10（鹼性）","14（強鹼）"],a:0,why:"有機酸累積，pH 降到約 3～4。"},
+ {q:"為什麼要用寶特瓶，不要用玻璃瓶？",o:["氣體太多時玻璃瓶可能爆裂","玻璃瓶太貴","玻璃會讓酵素變色","寶特瓶比較香"],a:0,why:"汽水寶特瓶耐壓、有彈性，玻璃瓶受壓可能爆裂傷人。"},
+ {q:"第 1 個月每天要做什麼？",o:["慢慢打開蓋子放氣，並把果皮壓回水裡","加更多水","把瓶子放進冰箱","搖到起泡"],a:0,why:"放氣避免瓶子鼓破；果皮泡在水裡不容易發霉。"},
+ {q:"下列哪一種情況代表酵素失敗了？",o:["表面長出綠色、黑色的毛","有一層白膜","聞起來酸酸甜甜","底部有沉澱"],a:0,why:"彩色的毛是黴菌污染；白膜、酸甜味、沉澱都是常見的正常現象。"},
+ {q:"哪一種東西「不適合」放進果皮酵素？",o:["煮過、有油的剩菜","新鮮的橘子皮","鳳梨皮","蘋果皮"],a:0,why:"煮過、有油、有鹽或動物性的材料容易腐敗發臭。"},
+ {q:"柑橘皮做的酵素比較能去油，是因為含有？",o:["檸檬烯","鹽","澱粉","蛋白質"],a:0,why:"柑橘皮的檸檬烯能溶解油脂。"},
+ {q:"果皮酵素絕對不能和哪一種東西混用？",o:["漂白水","清水","自來水","溫水"],a:0,why:"酸遇到漂白水（次氯酸鈉）會產生有毒的氯氣。"},
+ {q:"要做 500 mL 的 1：49 稀釋噴霧（酵素 1 份＋水 49 份），酵素要量多少？",o:["10 mL","49 mL","50 mL","1 mL"],a:0,why:"500 ÷（1＋49）＝ 10 mL 酵素，水 490 mL。"},
+ {q:"清潔試驗中，「只用清水擦」的那一塊瓷磚是什麼？",o:["對照組","實驗失敗","操作變因","應變變因"],a:0,why:"清水是對照組，用來比較酵素到底有沒有比清水好。"},
+ {q:"關於果皮酵素，下列哪一個說法正確？",o:["清潔力比洗碗精溫和，也不能拿來消毒殺菌","可以取代所有清潔劑和消毒水","稀釋後可以喝","越濃越好，不用稀釋"],a:0,why:"它的價值是把果皮再利用、減少清潔劑用量，但不是消毒劑，原液也要稀釋。"}
+];
+const KEY="agri-enzyme-quiz-115-1";
+const MASTER="果皮酵素";
+
+
+/* ---------- 分頁 ---------- */
+const TABS=[["t1","p1"],["t2","p2"],["t3","p3"],["t4","p4"],["t5","p5"]];
+let quiz=null;
+function show(t){
+  TABS.forEach(([a,b])=>{ const on=a===t; $(a).setAttribute("aria-selected",on); $(b).hidden=!on; });
+  $("blankBar").hidden = t!=="t1";
+  if(t==="t5"&&!quiz) startQuiz();
+  try{ history.replaceState(null,"",t==="t5"?"#quiz":location.pathname+location.search); }catch(e){}
+  window.scrollTo({top:0});
+}
+TABS.forEach(([a])=>$(a).onclick=()=>show(a));
+(function(){
+  let x0=null,y0=null;
+  document.addEventListener("touchstart",e=>{ if(e.target.closest("input,.tabs,.stage,svg")){x0=null;return;} x0=e.touches[0].clientX; y0=e.touches[0].clientY; },{passive:true});
+  document.addEventListener("touchend",e=>{
+    if(x0===null) return; const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0; x0=null;
+    if(Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.5) return;
+    const cur=TABS.findIndex(([a])=>$(a).getAttribute("aria-selected")==="true"), n=cur+(dx<0?1:-1);
+    if(n>=0&&n<TABS.length) show(TABS[n][0]);
+  },{passive:true});
+})();
+
+/* ---------- 挖空模式 ---------- */
+$("blankToggle").onchange=e=>{ document.body.classList.toggle("blank",e.target.checked); document.querySelectorAll(".key.show").forEach(k=>k.classList.remove("show")); };
+document.addEventListener("click",e=>{ const k=e.target.closest(".key"); if(k&&document.body.classList.contains("blank")) k.classList.toggle("show"); });
+
+/* ---------- 總覽流程 ---------- */
+fill("flowBox",FLOW.map((f,i)=>`<div class="fl"><span class="no">${i+1}</span>${f[1]}<b>${f[0]}</b><small>${f[2]}</small></div>`).join(""));
+
+/* ---------- 步驟播放器 ---------- */
+let sIdx=0, paused=false; const seen=new Set([0]);
+function renderStep(){
+  const s=STEPS[sIdx];
+  $("chips").innerHTML=STEPS.map((x,i)=>`<button class="sc${seen.has(i)?" seen":""}" data-i="${i}" ${i===sIdx?'aria-current="step"':""} aria-label="第 ${i+1} 步 ${x.t}">${i+1}</button>`).join("");
+  $("chips").querySelectorAll(".sc").forEach(b=>b.onclick=()=>{ sIdx=+b.dataset.i; seen.add(sIdx); renderStep(); });
+  $("sBadge").textContent=`步驟 ${sIdx+1}／${STEPS.length}`;
+  $("sArt").innerHTML=s.art;
+  $("sTitle").textContent=`${sIdx+1}. ${s.t}`;
+  $("sList").innerHTML=s.l.map(x=>`<li>${x}</li>`).join("");
+  $("sTip").innerHTML=`<b>小提醒：</b>${s.tip}`;
+  $("sPrev").disabled=sIdx===0;
+  $("sNext").textContent=sIdx===STEPS.length-1?"分組試驗 →":"下一步 →";
+}
+$("sPrev").onclick=()=>{ if(sIdx>0){sIdx--; renderStep();} };
+$("sNext").onclick=()=>{ if(sIdx===STEPS.length-1){ show("t3"); return; } sIdx++; seen.add(sIdx); renderStep(); };
+$("sPause").onclick=()=>{ paused=!paused; $("stage").classList.toggle("paused",paused); $("sPause").textContent=paused?"▶ 播放動畫":"⏸ 暫停動畫"; };
+if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches){ paused=true; $("stage").classList.add("paused"); document.body.classList.add("paused"); $("sPause").textContent="▶ 播放動畫"; }
+renderStep();
+
+/* ---------- 排序 ---------- */
+let oNext=0;
+function renderOrder(){ $("oSlots").innerHTML=STEPS.map((s,i)=>`<div class="oslot${i<oNext?" fill":""}"><span class="n">${i+1}</span>${i<oNext?s.t:""}</div>`).join(""); }
+function resetOrder(){
+  oNext=0; renderOrder(); $("oFb").textContent=""; $("oFb").className="ofb";
+  $("oPool").innerHTML=shuffle(STEPS.map((s,i)=>i)).map(i=>`<button class="ob" data-i="${i}">${STEPS[i].t}</button>`).join("");
+  $("oPool").querySelectorAll(".ob").forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i;
+    if(i===oNext){ b.remove(); oNext++; renderOrder(); $("oFb").className="ofb ok"; $("oFb").textContent=oNext===STEPS.length?"全部排對了！可以開始動手做囉 🎉":"對！"; }
+    else { b.classList.remove("bad"); void b.offsetWidth; b.classList.add("bad"); $("oFb").className="ofb bad"; $("oFb").textContent=`「${STEPS[i].t}」不是第 ${oNext+1} 步，再想想。`; }
+  });
+}
+$("oReset").onclick=resetOrder; resetOrder();
+
+/* ---------- 判斷卡 ---------- */
+function renderReady(){
+  $("ready").innerHTML=READY.map((r,i)=>`<div class="rd" data-i="${i}"><span class="q">${r[0]}</span><div class="bs">${(r[3]||READY_OPTS).map((o,k)=>`<button data-v="${k}">${o}</button>`).join("")}</div><span class="a" aria-live="polite"></span></div>`).join("");
+  $("ready").querySelectorAll(".rd").forEach(d=>d.querySelectorAll("button").forEach(b=>b.onclick=()=>{
+    const r=READY[+d.dataset.i], opts=r[3]||READY_OPTS, ok=+b.dataset.v===r[1];
+    d.className="rd "+(ok?"ok":"bad"); d.querySelector(".a").innerHTML=`<b>${ok?"答對！":"再想想："}</b>答案是「${opts[r[1]]}」。${r[2]}`;
+  }));
+}
+renderReady();
+const rr=$("readyReset"); if(rr) rr.onclick=renderReady;
+
+/* ---------- 診斷卡 ---------- */
+$("cases").innerHTML=CASES.map((c,i)=>`<button class="case" data-i="${i}" aria-expanded="false"><span class="q">${c[0]}</span><span class="a">點一下看原因與解法</span></button>`).join("");
+$("cases").querySelectorAll(".case").forEach(b=>b.onclick=()=>{ const c=CASES[+b.dataset.i]; const o=!b.classList.contains("open"); b.classList.toggle("open",o); b.setAttribute("aria-expanded",o); b.querySelector(".a").innerHTML=o?`<b>原因：</b>${c[1]}<br><b>解法：</b>${c[2]}`:"點一下看原因與解法"; });
+
+/* ---------- 小測驗 ---------- */
+function startQuiz(only){
+  const base = only ? only.map(k=>QS[k]) : QS;
+  quiz={retry:!!only,qs:base.map(q=>({...q,idx:QS.indexOf(q),opts:shuffle(q.o),ans:q.o[q.a]})),i:0,res:[],pick:[],done:false};
+  renderQuiz();
+}
+function dots(){ return quiz.qs.map((_,k)=>`<button class="dot ${quiz.res[k]===true?"ok":quiz.res[k]===false?"bad":""}${k===quiz.i&&!quiz.done?" now":""}" data-go="${k}" aria-label="第 ${k+1} 題"></button>`).join(""); }
+function saveBest(n,total){ try{ const s=JSON.parse(localStorage.getItem(KEY)||"{}"); if(!s.best||n>s.best)s.best=n; s.total=total; localStorage.setItem(KEY,JSON.stringify(s)); return s; }catch(e){ return null; } }
+function goQ(k){ quiz.i=k; quiz.done=false; renderQuiz(); window.scrollTo({top:0}); }
+function bindCommon(P){
+  P.querySelectorAll(".dot[data-go]").forEach(d=>d.onclick=()=>goQ(+d.dataset.go));
+  const r=P.querySelector("#qReset");
+  if(r) r.onclick=()=>{ if(r.dataset.arm){ startQuiz(); window.scrollTo({top:0}); } else { r.dataset.arm="1"; r.textContent="確定要從頭開始？再按一次"; r.classList.add("warn"); setTimeout(()=>{ if(r.isConnected){ delete r.dataset.arm; r.textContent="↺ 重新開始"; r.classList.remove("warn"); } },3000); } };
+}
+function renderQuiz(){
+  const P=$("p5"), {qs,i,res}=quiz;
+  const answered=res.filter(x=>x!==undefined).length;
+  if(quiz.done){
+    const n=res.filter(Boolean).length, tot=qs.length, skip=tot-answered, s=quiz.retry?null:saveBest(n,tot), r=n/tot;
+    const msg=r===1?(quiz.retry?"錯題全部訂正完成！":`全對！你已經是${MASTER}達人了！`):r>=.8?"很棒！把錯的題目再訂正一次。":r>=.6?"不錯喔！回到基本知識再看一看。":"別灰心，先回基本知識複習，再來挑戰！";
+    const wr=qs.map((q,k)=>({q,k})).filter(x=>res[x.k]!==true);
+    P.innerHTML=`<div class="card" style="text-align:center"><div class="qtype">${quiz.retry?"錯題再練結果":"測驗結果"}</div><div class="score">${n} / ${tot}</div><p>${msg}${skip?`<br><span style="color:var(--bad)">還有 ${skip} 題沒作答</span>`:""}</p>${s&&s.best?`<p style="color:var(--muted);font-size:15px">這台裝置的最佳紀錄：${s.best} / ${s.total}</p>`:""}<div class="progress" style="justify-content:center">${dots()}</div><p class="ex" style="margin:4px 0 0">點上面的小方塊可以回到那一題。</p>
+      ${wr.length?`<div class="review"><b>訂正一下：</b>${wr.map(({q,k})=>`<div class="item"><b>第 ${k+1} 題</b>${res[k]===undefined?"（未作答）":""}　${q.q}<br><b>正確答案：${q.ans}</b><br><span style="color:var(--muted)">${q.why}</span></div>`).join("")}</div>`:""}
+      <div class="actions" style="justify-content:center">${wr.length?`<button class="btn" id="retry">錯題再練（${wr.length} 題）</button>`:""}<button class="btn ghost" id="qReset">↺ 重新開始</button><button class="btn ghost" id="back1">回去複習</button></div></div>`;
+    $("back1").onclick=()=>show("t1");
+    if($("retry")) $("retry").onclick=()=>startQuiz(wr.map(x=>x.q.idx));
+    bindCommon(P); return;
+  }
+  const q=qs[i], picked=quiz.pick[i], locked=res[i]!==undefined, last=i===qs.length-1;
+  const fb = locked ? `<div class="feedback ${res[i]?"ok":"bad"}"><b>${res[i]?"答對了！":"再想想，正確答案是「"+q.ans+"」"}</b><span class="why">${q.why}</span></div>` : "";
+  P.innerHTML=`<div class="card"><div class="qhead"><span class="qtype">${quiz.retry?"錯題再練・":""}第 ${i+1} 題／共 ${qs.length} 題</span><button class="btn ghost sm" id="qReset">↺ 重新開始</button></div>
+    <div class="progress" style="margin-top:8px">${dots()}</div>
+    <div class="qtext">${q.q}</div>
+    <div class="opts">${q.opts.map((o,k)=>{ let c=""; if(locked){ if(o===q.ans)c=" right"; else if(k===picked)c=" wrong"; } return `<button class="opt${c}" data-k="${k}" ${locked?"disabled":""}><span class="k">${"ABCD"[k]}</span><span>${o}</span></button>`; }).join("")}</div>
+    <div id="fb" aria-live="polite">${fb}</div>
+    <div class="qnav"><button class="btn ghost" id="qPrev" ${i===0?"disabled":""}>← 上一題</button><span class="qcount">已作答 ${answered} / ${qs.length}</span><button class="btn" id="qNext">${last?"看結果":"下一題 →"}</button></div></div>`;
+  P.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    if(quiz.res[i]!==undefined) return;
+    const k=+b.dataset.k; quiz.pick[i]=k; quiz.res[i]=q.opts[k]===q.ans; renderQuiz();
+    const n=$("qNext"); if(n) n.focus({preventScroll:true});
+  });
+  $("qPrev").onclick=()=>{ if(i>0) goQ(i-1); };
+  $("qNext").onclick=()=>{ if(last){ quiz.done=true; renderQuiz(); window.scrollTo({top:0}); } else goQ(i+1); };
+  bindCommon(P);
+}
+
+/* ---------- QR ---------- */
+const openQR=()=>{$("overlay").hidden=false;};
+$("qrBtn").onclick=openQR; $("qrBtn").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openQR();}};
+$("overlay").onclick=()=>{$("overlay").hidden=true;};
+
+if(location.hash==="#quiz") show("t5");
+})();
+
+</script>
+</body>
+</html>

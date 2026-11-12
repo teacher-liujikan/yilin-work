@@ -1,0 +1,1039 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>蚯蚓堆肥</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+/* 同 agri-leaf 架構：上方標題＋QR，分頁 基本知識／實驗過程／分組試驗／動手判斷／小測驗 */
+:root{
+  --bg:#f3f5ec; --paper:#ffffff; --ink:#1f2a1c; --muted:#5e6b58; --line:#d9e0cd; --grid:#e6ebdb;
+  --accent:#2f6b3a; --accent-ink:#ffffff; --accent-soft:#e3f0e3;
+  --soil:#8a5a35; --soil-soft:#f4e7da;
+  --mark:#ffe08a; --mark-ink:#2a2118;
+  --ok:#1f7a45; --ok-soft:#e1f4e7; --bad:#b4362c; --bad-soft:#fbe7e4;
+  --g1:#c46a17; --g2:#2f8a57; --g3:#3b6fd1; --g4:#a2408c;
+  --g1s:#fbecdc; --g2s:#e0f2e7; --g3s:#e3ebfb; --g4s:#f6e4f1;
+  --leaf:#4f9a3c; --leaf2:#2f6b2a; --leafdry:#8aa04a; --leafbrown:#9a6a3c; --leafred:#c8452f; --leafyel:#e0b23a;
+  --water:#5aa3d9; --film:#9fd3f0; --glue:#f2d36b; --card:#fbf7ee; --cardline:#d9c7a3; --wood:#b07a45; --metal:#7d8a93;
+  --f:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121610; --paper:#1b2118; --ink:#e6ecdf; --muted:#a6b29c; --line:#323c2c; --grid:#181d15;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  --leaf:#6dbb57; --leaf2:#9fd88a; --leafdry:#a8bb63; --leafbrown:#c08f5c; --leafred:#e2705a; --leafyel:#e8c45a;
+  --water:#6fb3e6; --film:#3d6f8f; --glue:#8f7a2e; --card:#e9e1d0; --cardline:#a8946c; --wood:#a8784a; --metal:#93a0a8;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121610; --paper:#1b2118; --ink:#e6ecdf; --muted:#a6b29c; --line:#323c2c; --grid:#181d15;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  --leaf:#6dbb57; --leaf2:#9fd88a; --leafdry:#a8bb63; --leafbrown:#c08f5c; --leafred:#e2705a; --leafyel:#e8c45a;
+  --water:#6fb3e6; --film:#3d6f8f; --glue:#8f7a2e; --card:#e9e1d0; --cardline:#a8946c; --wood:#a8784a; --metal:#93a0a8;
+  color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:17px;line-height:1.7;
+  background-image:radial-gradient(var(--grid) 1.2px,transparent 1.2px);background-size:22px 22px}
+.wrap{max-width:980px;margin:0 auto;padding-block:20px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{display:flex;gap:16px;align-items:flex-start;justify-content:space-between}
+.brand{min-width:0}
+.eyebrow{font-size:14px;letter-spacing:.12em;color:var(--soil);font-weight:700}
+h1{font-size:clamp(30px,6vw,44px);font-weight:900;line-height:1.2;margin:4px 0 6px;text-wrap:balance}
+.sub{color:var(--muted);margin:0;font-size:16px}
+.qr{flex:none;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+.qr img{width:84px;height:84px;image-rendering:pixelated;display:block}
+.qr span{font-size:12px;color:#3a4a33;font-weight:700}
+button:focus-visible,.qr:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:20;background:var(--bg);padding:8px 0;margin:14px 0 10px}
+.tab{font:inherit;font-weight:700;font-size:17px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:999px;padding:7px 18px;cursor:pointer;min-height:44px}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.tab small{font-size:12px;opacity:.8;margin-left:4px}
+.panel{display:flex;flex-direction:column;gap:16px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px}
+.toolbar .hint{font-size:14px;color:var(--muted)}
+.switch{display:inline-flex;align-items:center;gap:8px;font-weight:700;cursor:pointer;user-select:none}
+.switch input{width:20px;height:20px;accent-color:var(--accent)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;min-width:0}
+.card h2{font-size:24px;font-weight:900;margin:0 0 8px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.card h2 .sec{font-size:13px;font-weight:700;color:var(--soil);background:var(--soil-soft);border-radius:999px;padding:1px 10px}
+.card h3{font-size:19px;margin:14px 0 4px}
+.card p{margin:6px 0}
+.card ul,.card ol{margin:6px 0;padding-left:1.3em}
+.card li{margin:3px 0}
+.key{background:var(--mark);color:var(--mark-ink);border-radius:4px;padding:0 4px;font-weight:700}
+body.blank .key{color:transparent;background:var(--soil-soft);border-bottom:2px solid var(--soil);cursor:pointer;user-select:none}
+body.blank .key.show{color:var(--mark-ink);background:var(--mark);border-bottom-color:transparent}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:820px){.four{grid-template-columns:1fr 1fr}}
+@media (max-width:720px){.two,.three{grid-template-columns:1fr}}
+.box{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--bg);min-width:0}
+.box b.t{display:block;font-size:17px;margin-bottom:2px}
+.box svg{width:100%;height:auto;display:block;margin-bottom:6px}
+.box small{display:block;color:var(--muted);font-size:14px;line-height:1.5;margin-top:4px}
+.box.c1{border-top:5px solid var(--g1)}.box.c2{border-top:5px solid var(--g2)}.box.c3{border-top:5px solid var(--g3)}.box.c4{border-top:5px solid var(--g4)}
+.box.okb{border-top:5px solid var(--ok)}.box.badb{border-top:5px solid var(--bad)}
+.note{font-size:15px;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 12px;margin-top:10px}
+.tip{font-size:15px;border:1.5px dashed var(--soil);border-radius:10px;padding:8px 12px;margin-top:10px;background:var(--soil-soft)}
+.tip b{color:var(--soil)}
+.warnbox{font-size:15px;border-left:5px solid var(--bad);border-radius:0 10px 10px 0;padding:8px 12px;margin-top:10px;background:var(--bad-soft)}
+.warnbox b{color:var(--bad)}
+.tblwrap{overflow-x:auto;margin-top:8px}
+table.t{width:100%;border-collapse:collapse;font-size:16px;min-width:560px}
+table.t th,table.t td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+table.t th{background:var(--accent-soft);white-space:nowrap}
+table.t td:first-child{white-space:nowrap}
+.btn{font:inherit;font-weight:700;font-size:16px;border:0;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:9px 22px;cursor:pointer;min-height:44px}
+.btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.sm{min-height:36px;padding:4px 14px;font-size:14px}
+.btn.warn{background:var(--bad);color:#fff;border-color:var(--bad)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.art{width:100%;height:auto;display:block}
+figure{margin:0}
+figcaption{font-size:15px;line-height:1.5;margin-top:6px;text-align:center;color:var(--muted)}
+.ex{color:var(--muted);font-size:14px}
+.formula{font-size:22px;font-weight:900;text-align:center;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px;margin:8px 0}
+details.teacher{margin-top:10px;border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--bg)}
+details.teacher summary{cursor:pointer;font-weight:700;color:var(--accent)}
+
+/* SVG 共用 */
+.s-txt{fill:var(--ink);font-size:13px;font-weight:700;font-family:var(--f)}
+.s-sm{fill:var(--muted);font-size:11px;font-weight:500;font-family:var(--f)}
+.s-line{stroke:var(--muted);stroke-width:2;fill:none}
+.s-leaf{fill:var(--leaf)}
+.s-vein{stroke:var(--leaf2);stroke-width:2;fill:none;stroke-linecap:round}
+.s-card{fill:var(--card);stroke:var(--cardline);stroke-width:1.5}
+.s-film{fill:var(--film);opacity:.35;stroke:var(--water);stroke-width:1.5}
+.s-paper{fill:var(--paper);stroke:var(--muted);stroke-width:1.5}
+.s-blot{fill:#f1ead8;stroke:var(--cardline);stroke-width:1.2}
+.s-news{fill:#d9d4c7;stroke:var(--muted);stroke-width:1}
+.s-board{fill:var(--wood)}
+.s-water{fill:var(--water)}
+.lbl{stroke:var(--muted);stroke-width:1.2;fill:none;stroke-dasharray:3 2}
+
+/* 動畫 */
+.paused *{animation-play-state:paused!important}
+.a-fall{animation:fall 3s ease-in infinite;transform-box:fill-box;transform-origin:center}
+@keyframes fall{0%{transform:translate(0,0) rotate(0);opacity:0}10%{opacity:1}50%{transform:translate(-18px,50px) rotate(-40deg)}85%{transform:translate(4px,100px) rotate(10deg);opacity:1}100%{transform:translate(4px,108px) rotate(10deg);opacity:0}}
+.a-wipe{animation:wipe 1.8s ease-in-out infinite alternate}
+@keyframes wipe{from{transform:translate(-60px,0)}to{transform:translate(60px,0)}}
+.a-fade{animation:fadeio 2.4s ease-in-out infinite}
+@keyframes fadeio{0%,100%{opacity:.1}50%{opacity:1}}
+.a-gone{animation:gone 3.6s ease-in infinite}
+@keyframes gone{0%,20%{opacity:1}70%,100%{opacity:0}}
+.a-pop{animation:pop 3.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pop{0%,10%{transform:scale(0);opacity:0}25%,90%{transform:scale(1);opacity:1}100%{transform:scale(1);opacity:0}}
+.a-press{animation:press 3s ease-in-out infinite}
+@keyframes press{0%,15%{transform:translateY(-46px)}40%,85%{transform:translateY(0)}100%{transform:translateY(-46px)}}
+.a-dripL{animation:dripL 3s ease-in infinite}
+@keyframes dripL{0%,40%{transform:translate(0,0);opacity:0}50%{opacity:1}100%{transform:translate(-36px,10px);opacity:0}}
+.a-dripR{animation:dripR 3s ease-in infinite}
+@keyframes dripR{0%,40%{transform:translate(0,0);opacity:0}50%{opacity:1}100%{transform:translate(36px,10px);opacity:0}}
+.a-up{animation:up 2.4s ease-in infinite}
+@keyframes up{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(-30px);opacity:0}}
+.a-feed{animation:feed 5s linear infinite}
+@keyframes feed{0%{transform:translateX(-120px)}10%{transform:translateX(-120px)}80%{transform:translateX(120px)}100%{transform:translateX(120px)}}
+.a-rot{animation:rot 1.2s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes rot{to{transform:rotate(360deg)}}
+.a-snip{animation:snip .6s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:left center}
+@keyframes snip{from{transform:rotate(-12deg)}to{transform:rotate(6deg)}}
+.a-slide{animation:slide 4s linear infinite}
+@keyframes slide{0%{transform:translateY(-70px)}100%{transform:translateY(70px)}}
+.a-swing{animation:swing 2.4s ease-in-out infinite alternate;transform-box:view-box;transform-origin:170px 40px}
+@keyframes swing{from{transform:rotate(-12deg)}to{transform:rotate(12deg)}}
+.a-roll{animation:rot 2s linear infinite;transform-box:fill-box;transform-origin:center}
+.a-melt{animation:melt 3s ease-in-out infinite}
+@keyframes melt{0%,100%{opacity:.35}50%{opacity:1}}
+.a-turn{animation:turn 4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes turn{0%,20%{transform:rotate(0)}50%,70%{transform:rotate(180deg)}100%{transform:rotate(360deg)}}
+
+/* 流程 */
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:8px}
+@media (max-width:640px){.flow{grid-template-columns:1fr 1fr}}
+.fl{border:2px solid var(--accent);border-radius:12px;background:var(--bg);padding:6px 8px 10px;text-align:center;position:relative}
+.fl svg{width:100%;height:auto;display:block}
+.fl b{display:block;font-size:18px}
+.fl small{display:block;font-size:13px;color:var(--muted);line-height:1.4}
+.fl .no{position:absolute;left:8px;top:6px;width:24px;height:24px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:13px;font-weight:900;display:grid;place-items:center}
+
+/* 步驟播放器 */
+.player{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:760px){.player{grid-template-columns:1fr}}
+.stage{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:8px;position:relative}
+.stage svg{width:100%;height:auto;display:block}
+.stage .badge{position:absolute;left:12px;top:10px;background:var(--accent);color:var(--accent-ink);font-weight:900;border-radius:999px;padding:0 12px;font-size:15px}
+.stepchips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.sc{font:inherit;font-weight:700;font-size:15px;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;min-width:44px;min-height:44px;padding:0 12px;cursor:pointer}
+.sc[aria-current="step"]{border-color:var(--accent);background:var(--accent);color:var(--accent-ink)}
+.sc.seen{border-color:var(--accent)}
+.stxt h3{font-size:24px;margin:0 0 6px}
+.stxt ul{padding-left:1.2em;margin:4px 0}
+.stxt li{margin:4px 0;font-size:18px}
+.snav{display:flex;justify-content:space-between;gap:10px;margin-top:12px;flex-wrap:wrap}
+
+/* 材料 */
+.mats{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:8px}
+.mat{border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:8px 12px}
+.mat b{display:block}
+.mat small{color:var(--muted);font-size:14px;line-height:1.5;display:block}
+
+/* 分組 */
+.role{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:8px}
+@media (max-width:820px){.role{grid-template-columns:1fr 1fr}}
+.rl{border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:10px 12px;font-size:16px}
+.rl b{display:block;font-size:18px}
+.rl .tag{display:inline-block;font-size:13px;font-weight:900;border-radius:999px;padding:0 10px;color:#fff;margin-bottom:4px}
+.timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:8px}
+@media (max-width:820px){.timeline{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.timeline{grid-template-columns:1fr}}
+.tl{border-left:5px solid var(--accent);background:var(--bg);border-radius:0 10px 10px 0;padding:8px 12px;font-size:16px}
+.tl>b{display:block;font-size:18px}
+.tl ul{margin:4px 0 0;padding-left:1.1em}
+.tl li{margin:2px 0}
+.tl .m{color:var(--soil);font-weight:700;font-size:14px}
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.calc{grid-template-columns:1fr}}
+.calc label{display:block;font-weight:700;margin-top:6px}
+.calc input[type=number]{font:inherit;font-size:22px;font-weight:700;width:130px;padding:6px 10px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.bignum{font-size:44px;font-weight:900;line-height:1.1;color:var(--accent)}
+
+/* 動手判斷 */
+.order{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.oslot{border:2px dashed var(--line);border-radius:10px;padding:8px 12px;min-height:46px;display:flex;align-items:center;gap:10px;font-weight:700}
+.oslot.fill{border-style:solid;border-color:var(--ok);background:var(--ok-soft)}
+.oslot .n{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--paper);font-size:14px}
+.opool{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ob{font:inherit;font-weight:700;font-size:16px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:10px;padding:8px 14px;cursor:pointer;min-height:44px}
+.ob.bad{animation:nope .4s;border-color:var(--bad);color:var(--bad)}
+@keyframes nope{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.ofb{font-weight:700;margin-top:8px;min-height:1.7em}
+.ofb.ok{color:var(--ok)}.ofb.bad{color:var(--bad)}
+.ready{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:8px}
+.rd{border:2px solid var(--line);border-radius:12px;background:var(--paper);padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.rd .q{font-weight:900;font-size:17px}
+.rd .bs{display:flex;gap:8px}
+.rd .bs button{flex:1;font:inherit;font-weight:700;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:10px;min-height:44px;cursor:pointer}
+.rd.ok{border-color:var(--ok);background:var(--ok-soft)}
+.rd.bad{border-color:var(--bad);background:var(--bad-soft)}
+.rd .a{font-size:15px}
+.conc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.conc{grid-template-columns:1fr}}
+input[type=range]{width:100%;accent-color:var(--accent);margin:8px 0 0;height:32px}
+.cnum{font-size:40px;font-weight:900;line-height:1;color:var(--accent)}
+.cverdict{font-size:20px;font-weight:900;margin-top:6px}
+.cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:8px}
+.case{font:inherit;color:var(--ink);text-align:left;border:2px solid var(--line);border-radius:12px;background:var(--paper);padding:12px 14px;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-height:140px}
+.case .q{font-size:18px;font-weight:900}
+.case .a{margin-top:auto;font-size:15px;color:var(--muted)}
+.case.open{border-color:var(--accent);background:var(--accent-soft)}
+.case.open .a{color:var(--ink)}
+
+/* 測驗 */
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.progress{display:flex;gap:4px;flex-wrap:wrap}
+.dot{width:18px;height:8px;border-radius:4px;background:var(--line)}
+.dot.ok{background:var(--ok)}.dot.bad{background:var(--bad)}
+button.dot{border:0;padding:0;cursor:pointer;width:22px;height:12px}
+.dot.now{outline:2px solid var(--accent);outline-offset:2px}
+.qtype{font-size:14px;font-weight:700;color:var(--accent);letter-spacing:.06em}
+.qtext{font-size:22px;line-height:1.75;margin:10px 0 14px;font-weight:500}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{font:inherit;font-size:18px;text-align:left;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:12px 14px;cursor:pointer;display:flex;gap:10px;align-items:center;min-height:56px}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt .k{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--bg);font-size:14px;font-weight:700}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt:disabled{cursor:default}
+.feedback{margin-top:14px;border-radius:10px;padding:10px 14px;font-size:16px}
+.feedback.ok{background:var(--ok-soft);color:var(--ok)}
+.feedback.bad{background:var(--bad-soft);color:var(--bad)}
+.feedback .why{color:var(--ink);display:block;margin-top:4px}
+.score{font-size:64px;font-weight:900;color:var(--accent);line-height:1;margin:10px 0}
+.review .item{border-left:4px solid var(--bad);padding:6px 12px;background:var(--bg);border-radius:0 6px 6px 0;font-size:16px;margin-top:8px;text-align:left}
+.qnav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap}
+.qcount{font-size:14px;color:var(--muted);font-weight:700}
+.overlay{position:fixed;inset:0;background:rgba(10,16,8,.72);display:grid;place-items:center;z-index:50;padding:20px}
+.overlay .inner{background:#fff;border-radius:16px;padding:22px;text-align:center;color:#1f2a1c;max-width:92vw}
+.overlay img{width:min(340px,72vw);height:min(340px,72vw);image-rendering:pixelated;display:block;margin:0 auto}
+.overlay p{font-size:22px;font-weight:700;margin:12px 0 0}
+.overlay small{display:block;color:#5e6b58;margin-top:4px;word-break:break-all}
+footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
+
+@media (min-width:600px) and (max-width:1100px){
+  body{font-size:18px}
+  .card p,.card li{font-size:18px}
+  .qtext{font-size:24px}.opt{font-size:20px}
+}
+@media (max-width:599px){
+  .wrap{padding-block:12px 40px}
+  h1{font-size:30px}
+  .qr img{width:64px;height:64px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:none;font-size:16px;padding:6px 14px}
+  .card{padding:14px}
+  .card h2{font-size:21px}
+  .qtext{font-size:20px}
+  .toolbar .hint{display:none}
+  .stxt li{font-size:17px}
+  .qnav .btn{flex:1}.qcount{order:-1;width:100%;text-align:center}
+}
+@media (min-width:1500px){ .wrap{zoom:1.3} }
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+@media (max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .box ul{margin:4px 0;padding-left:1.2em}
+.vs .box.na{border-top:5px solid var(--bad)}
+.vs .box.so{border-top:5px solid var(--g3)}
+.a-flame{animation:flame .5s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:bottom}
+@keyframes flame{from{transform:scaleY(.8)}to{transform:scaleY(1.15)}}
+.a-tap{animation:tap .7s ease-in-out infinite}
+@keyframes tap{0%,100%{transform:translateY(-14px)}50%{transform:translateY(0)}}
+.a-walk{animation:walk 4s ease-in-out infinite alternate}
+@keyframes walk{from{transform:translateX(-40px)}to{transform:translateX(40px)}}
+.a-appear{animation:appear 5s ease-in-out infinite}
+@keyframes appear{0%,25%{opacity:0}70%,100%{opacity:1}}
+.a-fadeout{animation:fadeout 5s ease-in-out infinite}
+@keyframes fadeout{0%,25%{opacity:1}70%,100%{opacity:0}}
+.a-drop{animation:drop 1.4s ease-in infinite}
+@keyframes drop{0%{transform:translateY(0);opacity:0}10%{opacity:1}100%{transform:translateY(40px);opacity:0}}
+.a-lift{animation:lift 3.6s ease-in-out infinite}
+@keyframes lift{0%,10%{transform:translate(0,0)}45%{transform:translate(0,-60px)}80%,100%{transform:translate(150px,10px)}}
+.a-clock{animation:rot 4s linear infinite;transform-box:view-box}
+.dil{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.dil{grid-template-columns:1fr}}
+.dil input[type=number]{font:inherit;font-size:22px;font-weight:700;width:140px;padding:6px 10px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.dil label{display:block;font-weight:700;margin-top:6px}
+
+.sibs{margin-top:8px;font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}
+.sibs a,.sibs b{border:1.5px solid var(--line);border-radius:999px;padding:1px 10px;text-decoration:none;color:var(--accent);background:var(--paper);font-weight:700}
+.sibs b{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.sibs a:hover{border-color:var(--accent)}
+.flow{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:720px){.flow{grid-template-columns:1fr 1fr}}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+@media (max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .box ul,.box ul{margin:4px 0;padding-left:1.2em}
+.rd .bs{flex-wrap:wrap}
+.rd .bs button{min-width:84px}
+.lab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.lab{grid-template-columns:1fr}}
+.lab input[type=number]{font:inherit;font-size:22px;font-weight:700;width:140px;padding:6px 10px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.lab label{display:block;font-weight:700;margin-top:6px}
+.a-flame{animation:flame .5s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:bottom}
+@keyframes flame{from{transform:scaleY(.8)}to{transform:scaleY(1.15)}}
+.a-tap{animation:tap .7s ease-in-out infinite}
+@keyframes tap{0%,100%{transform:translateY(-14px)}50%{transform:translateY(0)}}
+.a-walk{animation:walk 4s ease-in-out infinite alternate}
+@keyframes walk{from{transform:translateX(-40px)}to{transform:translateX(40px)}}
+.a-appear{animation:appear 5s ease-in-out infinite}
+@keyframes appear{0%,25%{opacity:0}70%,100%{opacity:1}}
+.a-fadeout{animation:fadeout 5s ease-in-out infinite}
+@keyframes fadeout{0%,25%{opacity:1}70%,100%{opacity:0}}
+.a-drop{animation:drop 1.4s ease-in infinite}
+@keyframes drop{0%{transform:translateY(0);opacity:0}10%{opacity:1}100%{transform:translateY(40px);opacity:0}}
+.a-wig{animation:wig 1.6s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+@keyframes wig{from{transform:skewX(-8deg) translateX(-3px)}to{transform:skewX(8deg) translateX(3px)}}
+.a-crawl{animation:crawl 6s ease-in-out infinite alternate}
+@keyframes crawl{from{transform:translateX(-30px)}to{transform:translateX(30px)}}
+.a-dive{animation:dive 4s ease-in infinite}
+@keyframes dive{0%,20%{transform:translateY(0);opacity:1}80%{transform:translateY(46px);opacity:.2}100%{transform:translateY(46px);opacity:0}}
+.a-shake{animation:shake 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center bottom}
+@keyframes shake{0%,60%,100%{transform:rotate(0)}70%{transform:rotate(-10deg)}80%{transform:rotate(10deg)}90%{transform:rotate(-6deg)}}
+.a-bulge{animation:bulge 3s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes bulge{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.08)}}
+.a-grow{animation:grow 4s ease-out infinite;transform-box:fill-box;transform-origin:bottom}
+@keyframes grow{0%{transform:scaleY(0)}60%,100%{transform:scaleY(1)}}
+.a-place{animation:place 3s ease-in-out infinite}
+@keyframes place{0%{transform:translate(60px,-50px);opacity:0}20%{opacity:1}60%,100%{transform:translate(0,0);opacity:1}}
+.a-spin{animation:spin 3s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes spin{to{transform:rotate(360deg)}}
+.a-float{animation:float 5s ease-in-out infinite}
+@keyframes float{0%{transform:translate(0,0)}50%{transform:translate(60px,-24px)}100%{transform:translate(120px,10px)}}
+.a-roll2{animation:roll2 2s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+@keyframes roll2{from{transform:translateX(-16px) rotate(-90deg)}to{transform:translateX(16px) rotate(90deg)}}
+
+/* 本頁追加 */
+:root{--worm:#c75b63;--wormd:#8a3540;--clit:#eaa27a;--bed:#8a5d3b;--bed2:#6b4529;--cast:#3a2a1f;--scrap:#7cb24a;--box:#5f6b75;--boxl:#7d8a94;--peel:#f0a030;--cold:#8fd0f0;--fire:#e8742c}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--worm:#e07a82;--wormd:#b05560;--clit:#f0b48e;--bed:#a87450;--bed2:#7d5435;--cast:#20160f;--scrap:#8fc45c;--box:#56626b;--boxl:#76838c;--peel:#f0aa45;--cold:#4f8fb0}}
+:root[data-theme="dark"]{--worm:#e07a82;--wormd:#b05560;--clit:#f0b48e;--bed:#a87450;--bed2:#7d5435;--cast:#20160f;--scrap:#8fc45c;--box:#56626b;--boxl:#76838c;--peel:#f0aa45;--cold:#4f8fb0}
+.ready{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="eyebrow">實習課・50 分鐘 × 3 節</div>
+      <h1>蚯蚓堆肥</h1>
+      <p class="sub">基本知識 → 實驗過程 → 分組試驗 → 動手判斷 → 掃 QR 小測驗</p>
+      <nav class="sibs" aria-label="其他實習課">實習課：<a href="../agri-paper/">再生紙</a><a href="../agri-leaf/">葉脈書籤</a><b aria-current="page">蚯蚓堆肥</b><a href="../agri-enzyme/">果皮酵素</a><a href="../agri-flower/">押花乾燥花</a><a href="../agri-seed/">種子創作</a></nav>
+    </div>
+    <div class="qr" id="qrBtn" role="button" tabindex="0" aria-label="放大 QR code"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACdklEQVR42u2cO47jQAxEH7cFOJSAOcAcRbrZwjeTjuIDLNAKDcioDfojOZxgAhrswLDsilgofqppm/jJ2f7wsxP4wAf+V/G71bPwau/KZwNsE7Tvh4inS3ySJNVEPetA9+8DKQPzY4BZUnmMeLrEV3HuN+luNwFJMD7NFqBIfIl4fgJ+Lqo1Y5uSdJ8iPp+DfxnbSehuBuMR8XGMHwDQVb9fGIDNecLmx3DAKGCPePrE164ZSCplds6pFWGAzczMpoinPzy6nJykdZRglLQWQLoi1oinO35zuoxGpeDOOgrxTcnUISn4dcgvaB27Qsejc56KkivnOQW/TvV7+hvVxigilupLTi1nRzz91d8DrYBWUtXvWqR78MZ58OuV36LQuTVZ0EmeO/uK/Oy2fy7iVG5y7j1XaacrycGvW357ra25mFSqblF3kXPkZ+f199TvSlJrrN+yd/Dr1d84beZrar40XlF/nfdXldCxXf1WkrvnEfw69jeohkY1OXp+rsKO+dcvvo+56/gs94O2tM9s2W8CXlY2OSKerv3nOinVS/5mXV3dj4inx/x8nX/zu2HV59/or7z7zxcboxNfb5Ji/nWNt2Uf0N0GSq1llEoR3qYkNhuI/TrP9Xfu+7HVqzq6idUnpai/7vc3+v5kfs/eudmVwa/T/urc0Oiu1XnJH/4kH/H7hd0M9qHt141Pa6n5Vb+IeHqdf9PbmgZ1Prpm6tCve35r6b1cEp5FOPor3O63X872LdgWUJmUSIcxPo1ZEU+v+HaNL0mPAfsryWxqnnSxniOeTvX7svqwfx0GCbbp3yBABgMqmp5yxNMd3uL/GQIfeLf4/1kDfcfX7a5nAAAAAElFTkSuQmCC"><span>掃我測驗</span></div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" id="t1" aria-selected="true">基本知識</button>
+    <button class="tab" role="tab" id="t2" aria-selected="false">實驗過程</button>
+    <button class="tab" role="tab" id="t3" aria-selected="false">分組試驗</button>
+    <button class="tab" role="tab" id="t4" aria-selected="false">動手判斷</button>
+    <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
+  </nav>
+
+  <div class="toolbar" id="blankBar">
+    <label class="switch"><input type="checkbox" id="blankToggle"> 挖空模式</label>
+    <span class="hint">打開後，黃色重點會變成空格。先讓學生說出答案，再點空格揭曉。</span>
+  </div>
+
+  <!-- ===== 1 基本知識 ===== -->
+  <section class="panel" id="p1">
+    <div class="card">
+      <h2>讓蚯蚓幫我們處理廚餘<span class="sec">總覽</span></h2>
+      <p><span class="key">蚯蚓堆肥</span>：讓蚯蚓吃廚餘和有機物，排出的<span class="key">蚓糞</span>是很好的有機肥料。廚餘<span class="key">減量</span>，又把資源<span class="key">回到土壤</span>。</p>
+      <div class="flow" id="flowBox"></div>
+    </div>
+
+    <div class="card">
+      <h2>認識堆肥用的蚯蚓<span class="sec">構造</span></h2>
+      <figure><svg class="art" id="anatomySvg" viewBox="0 0 620 210" role="img" aria-label="蚯蚓構造：頭端有口，靠近頭端有環帶，身體一節一節，每節有剛毛，尾端是肛門"></svg></figure>
+      <div class="two" style="margin-top:8px;align-items:start">
+        <ul>
+          <li><span class="key">環帶</span>：靠近頭端、顏色較淺的一圈 → 成熟的蚯蚓才有，會做出<span class="key">卵繭</span></li>
+          <li><span class="key">剛毛</span>：每節都有短短的毛，幫助抓地爬行</li>
+          <li>沒有眼睛，但皮膚能感光 → <span class="key">怕光</span>，會往暗處鑽</li>
+          <li>用<span class="key">皮膚呼吸</span> → 皮膚一定要保持濕潤</li>
+        </ul>
+        <ul>
+          <li>堆肥要用<span class="key">表層種</span>蚯蚓：住在落葉、腐植層，專吃有機物，繁殖快</li>
+          <li>常用：<b>紅蚯蚓</b>（赤子愛勝蚓）、<b>非洲夜蚯蚓</b></li>
+          <li>院子土裡挖到的多半是<b>深層土壤種</b>，喜歡鑽深洞，養在箱子裡容易跑掉，不適合</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>廚餘怎麼變成蚓糞？<span class="sec">原理</span></h2>
+      <svg class="art" id="digestSvg" viewBox="0 0 640 200" role="img" aria-label="廚餘先被微生物分解變軟，蚯蚓吃進口中，在砂囊磨碎，在腸道消化，排出蚓糞"></svg>
+      <div class="two" style="margin-top:8px;align-items:start">
+        <ul>
+          <li>廚餘先被<span class="key">微生物</span>分解變軟 → 蚯蚓吃的是爛掉的有機物＋微生物</li>
+          <li>蚯蚓沒有牙齒，吃進細沙，靠<span class="key">砂囊</span>把食物磨碎</li>
+          <li>腸道消化吸收，剩下的排出 → <span class="key">蚓糞</span></li>
+        </ul>
+        <ul>
+          <li>蚓糞是一顆一顆的<span class="key">團粒</span> → 保水又透氣</li>
+          <li>養分是植物<span class="key">容易吸收</span>的形式，還帶著很多有益微生物</li>
+          <li>聞起來像<b>森林的泥土味</b>，不臭；性質溫和，不容易燒根</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>蚯蚓喜歡什麼樣的家？<span class="sec">環境</span></h2>
+      <div class="four">
+        <div class="box c1"><svg viewBox="0 0 160 90" id="envT" aria-hidden="true"></svg><b class="t">溫度</b><span class="key">15～25 ℃</span><small>超過 30 ℃ 會逃跑、死亡；夏天放陰涼處，不要曬太陽</small></div>
+        <div class="box c3"><svg viewBox="0 0 160 90" id="envW" aria-hidden="true"></svg><b class="t">濕度</b>像<span class="key">擰乾的海綿</span><small>握一把床材，擠出 1～2 滴水剛好</small></div>
+        <div class="box c4"><svg viewBox="0 0 160 90" id="envD" aria-hidden="true"></svg><b class="t">陰暗</b>蓋蓋子、蓋濕報紙<small>怕光，見光就往下鑽</small></div>
+        <div class="box c2"><svg viewBox="0 0 160 90" id="envA" aria-hidden="true"></svg><b class="t">通氣</b>箱子要<span class="key">打洞</span><small>不通氣 → 缺氧、發臭，蚯蚓往外爬</small></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>可以餵什麼？</h2>
+      <p>廚餘（<span class="key">綠料</span>：濕、含氮多）要配上碎紙、紙箱（<span class="key">棕料</span>：乾、含碳多），才不會太濕、發臭。</p>
+      <div class="two" style="align-items:start">
+        <div class="box okb"><b class="t">✅ 可以餵</b>
+          <svg viewBox="0 0 300 80" id="goodFood" aria-hidden="true"></svg>
+          <ul>
+            <li>菜葉、菜梗、果皮（切小塊）</li>
+            <li>咖啡渣、茶葉渣（拆掉茶包）</li>
+            <li>壓碎的蛋殼（幫助磨碎食物、調整酸鹼）</li>
+            <li>撕碎的報紙、瓦楞紙箱</li>
+          </ul></div>
+        <div class="box badb"><b class="t">❌ 不要餵</b>
+          <svg viewBox="0 0 300 80" id="badFood" aria-hidden="true"></svg>
+          <ul>
+            <li><b>肉、魚、骨頭、牛奶、乳製品</b> → 發臭、招蒼蠅老鼠</li>
+            <li><b>油膩、很鹹</b>的剩菜 → 傷蚯蚓皮膚</li>
+            <li><b>大量</b>柑橘皮、洋蔥、大蒜、辣椒 → 太酸、太刺激</li>
+            <li>亮面印刷紙、塑膠、生病的植株</li>
+          </ul></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>蚓糞怎麼用？</h2>
+      <div class="two">
+        <ul>
+          <li>拌進培養土：約佔 <span class="key">10～20%</span>（體積）</li>
+          <li>撒在盆栽表土當追肥，再澆水</li>
+          <li>箱子底下滴出來的<b>滲出液</b>：稀釋約 10 倍後澆花（不要直接用）</li>
+          <li>收好的蚓糞<span class="key">陰乾</span>、裝袋，不要曬到全乾變硬</li>
+        </ul>
+        <figure><svg class="art" id="useSvg" viewBox="0 0 320 170" role="img" aria-label="蚓糞拌進培養土種菜"></svg></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 2 實驗過程 ===== -->
+  <section class="panel" id="p2" hidden>
+    <div class="card">
+      <h2>準備材料（每組）</h2>
+      <div class="mats">
+        <div class="mat"><b>📦 有蓋塑膠箱</b><small>約 40 × 30 × 25 cm，深色、不透光最好</small></div>
+        <div class="mat"><b>🔩 電鑽或燒熱的鐵釘</b><small>打洞用，由老師操作</small></div>
+        <div class="mat"><b>🪟 紗網、膠帶</b><small>貼住洞口，防蚯蚓跑、防果蠅</small></div>
+        <div class="mat"><b>🟫 椰纖磚 1 塊</b><small>泡水散開當床材</small></div>
+        <div class="mat"><b>📰 報紙、瓦楞紙箱</b><small>撕成 2 cm 寬的條</small></div>
+        <div class="mat"><b>🌱 一把舊培養土</b><small>帶進微生物和細沙</small></div>
+        <div class="mat"><b>🪱 堆肥蚯蚓約 250 g</b><small>紅蚯蚓或非洲夜蚯蚓</small></div>
+        <div class="mat"><b>🥬 廚餘</b><small>菜葉、果皮，前一天收集</small></div>
+        <div class="mat"><b>🔪 砧板、刀、磅秤</b><small>切小塊、秤重記錄</small></div>
+        <div class="mat"><b>🧤 手套、噴水瓶</b><small>手套保護雙手，也保護蚯蚓</small></div>
+        <div class="mat"><b>🍽️ 墊盤</b><small>放在箱子下面接滲出液</small></div>
+        <div class="mat"><b>🌡️ 溫度計、紀錄表</b><small>每週量一次</small></div>
+      </div>
+      <div class="warnbox"><b>衛生：</b>摸完蚯蚓、床材、廚餘，<b>一定要用肥皂洗手</b>。手上有傷口要戴手套。打洞用的電鑽或燒熱鐵釘由老師操作。</div>
+    </div>
+
+    <div class="card">
+      <h2>一步一步做蚯蚓箱<span class="sec">點數字跳到那一步</span></h2>
+      <div class="stepchips" id="chips"></div>
+      <div class="player">
+        <div class="stage" id="stage"><span class="badge" id="sBadge"></span><div id="sArt"></div></div>
+        <div class="stxt">
+          <h3 id="sTitle"></h3>
+          <ul id="sList"></ul>
+          <div class="tip" id="sTip"></div>
+          <div class="snav">
+            <button class="btn ghost" id="sPrev">← 上一步</button>
+            <button class="btn ghost sm" id="sPause">⏸ 暫停動畫</button>
+            <button class="btn" id="sNext">下一步 →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>要養多少蚯蚓？箱子要多大？</h2>
+      <div class="lab">
+        <div>
+          <label for="wFood">每天大約有多少廚餘？（g）</label><input type="number" id="wFood" value="125" min="10" step="5">
+          <label for="wRate">蚯蚓每天吃掉自己體重的 <span id="wRateLab">1/2</span></label><input type="range" id="wRate" min="0" max="2" value="1" step="1" aria-label="每天吃的比例">
+          <p style="margin-top:8px;font-size:20px">需要蚯蚓約 <b class="bignum" id="wW" style="font-size:34px">250</b> g</p>
+          <p style="margin:4px 0 0;font-size:18px">箱子底面積至少約 <b class="bignum" id="wA" style="font-size:30px">1750</b> cm²（例如 <span id="wBox">45 × 39</span> cm）</p>
+          <p class="ex" id="wNote"></p>
+        </div>
+        <figure><svg class="art" id="wSvg" viewBox="0 0 300 200" role="img" aria-label="廚餘量與蚯蚓量的關係"></svg></figure>
+      </div>
+      <div class="note">算法：蚯蚓重量 ＝ 每天廚餘 ÷ 每天吃的比例；箱子底面積 ≈ 每天廚餘（g）× 14 cm²（經驗法則：每週 1 磅廚餘約需 1 平方英尺）。新箱子的蚯蚓還在適應，<b>第一、二週先餵少一點</b>，吃完再加。</div>
+    </div>
+  </section>
+
+  <!-- ===== 3 分組試驗 ===== -->
+  <section class="panel" id="p3" hidden>
+    <div class="card">
+      <h2>分組試驗一：蚯蚓選哪一邊？<span class="sec">課堂完成</span></h2>
+      <p><b>實驗問題：</b>把蚯蚓放在盤子中間，兩邊是不同的環境，蚯蚓會往哪邊爬？用結果推論「蚯蚓箱要怎麼照顧」。</p>
+      <svg class="art" id="designSvg" viewBox="0 0 640 300" role="img" aria-label="四組各測一種環境：光和暗、濕和乾、菜葉和柑橘皮、室溫和冰涼，蚯蚓放在中線"></svg>
+      <div class="three" style="margin-top:10px">
+        <div class="box c1"><b class="t">操作變因</b>每組測一種環境：光／暗、濕／乾、菜葉／柑橘皮、室溫／冰涼</div>
+        <div class="box c2"><b class="t">控制變因</b>蚯蚓數量（10 隻）、盤子大小、觀察時間（10 分鐘）、都從中線出發</div>
+        <div class="box c3"><b class="t">應變變因</b>10 分鐘後，兩邊各有幾隻蚯蚓</div>
+      </div>
+      <div class="tip"><b>做 3 次，每次把兩邊對調。</b>這樣才能排除「蚯蚓只是剛好往左爬」。</div>
+      <div class="warnbox"><b>愛護蚯蚓：</b>手先沾濕再碰、動作輕；盤子墊濕報紙；每次不超過 10 分鐘；冰袋要隔毛巾，不能直接冰到蚯蚓；做完放回蚯蚓箱。</div>
+    </div>
+
+    <div class="card">
+      <h2>四人一組</h2>
+      <div class="role">
+        <div class="rl"><span class="tag" style="background:var(--g1)">計時</span><b>計時員</b>喊開始、10 分鐘到喊停；提醒對調兩邊</div>
+        <div class="rl"><span class="tag" style="background:var(--g2)">放置</span><b>放置員</b>手沾濕，把 10 隻蚯蚓排在中線；結束放回箱子</div>
+        <div class="rl"><span class="tag" style="background:var(--g3)">計數</span><b>計數員</b>數兩邊、中線各幾隻；拍照</div>
+        <div class="rl"><span class="tag" style="background:var(--g4)">紀錄</span><b>紀錄員</b>填紀錄表、算百分比；上台發表</div>
+      </div>
+      <p class="ex">三人組：計時員兼計數員。</p>
+    </div>
+
+    <div class="card">
+      <h2>紀錄表</h2>
+      <p class="ex">組別：＿＿　測試條件：＿＿＿ vs ＿＿＿　</p>
+      <div class="tblwrap"><table class="t">
+        <tr><th>次數</th><th>A 邊（隻）</th><th>B 邊（隻）</th><th>中線不動（隻）</th><th>觀察備註</th></tr>
+        <tr><td><b>第 1 次</b></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>第 2 次（對調）</b></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>第 3 次</b></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>合計</b></td><td></td><td></td><td></td><td>選 A 邊的比例：＿＿ %</td></tr>
+      </table></div>
+      <h3>討論</h3>
+      <ol>
+        <li>你們這組的蚯蚓比較喜歡哪一邊？這和蚯蚓的哪個構造或習性有關？</li>
+        <li>為什麼要做 3 次、還要把兩邊對調？</li>
+        <li>綜合四組的結果，蚯蚓箱要怎麼放、怎麼照顧？</li>
+      </ol>
+      <details class="teacher"><summary>老師參考：預期結果</summary>
+        <ul>
+          <li>光／暗：多數往暗處（皮膚感光、怕光）。</li>
+          <li>濕／乾：多數往濕的一邊（皮膚呼吸需要濕潤）。</li>
+          <li>菜葉／柑橘皮：多數靠近菜葉（柑橘皮酸、精油刺激）。10 分鐘差異可能不大，可延長到下一節再看。</li>
+          <li>室溫／冰涼：多數留在室溫；冰涼那邊蚯蚓動作明顯變慢。</li>
+          <li>蚯蚓個體差異大，數量少時結果會有例外，正好可以討論「為什麼要重複實驗」。</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="card">
+      <h2>分組試驗二：廚餘切多大，分解最快？<span class="sec">長期觀察 4 週</span></h2>
+      <svg class="art" id="sizeSvg" viewBox="0 0 640 200" role="img" aria-label="同一個蚯蚓箱埋三份高麗菜：整片、切一公分、打碎，每週看分解程度"></svg>
+      <div class="three" style="margin-top:10px">
+        <div class="box c1"><b class="t">操作變因</b>廚餘大小：整片（約 5 cm）、切 1 cm、打碎</div>
+        <div class="box c2"><b class="t">控制變因</b>都用高麗菜、各 100 g、埋同一個箱子、埋一樣深</div>
+        <div class="box c3"><b class="t">應變變因</b>每週分解程度 1～5 分、附近的蚯蚓數量</div>
+      </div>
+      <div class="tblwrap"><table class="t">
+        <tr><th>分解程度（1 原樣 → 5 看不出來）</th><th>第 1 週</th><th>第 2 週</th><th>第 3 週</th><th>第 4 週</th></tr>
+        <tr><td><b>整片</b></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>切 1 cm</b></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>打碎</b></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td><b>箱內溫度／氣味</b></td><td></td><td></td><td></td><td></td></tr>
+      </table></div>
+      <details class="teacher"><summary>老師參考：預期結果</summary>
+        <ul><li>切越小，表面積越大，微生物越快分解 → 打碎最快、整片最慢。</li><li>打碎的水分多，太多會讓那一角過濕；可以順便討論「越碎越好嗎？」。</li></ul>
+      </details>
+    </div>
+
+    <div class="card">
+      <h2>三節課怎麼排</h2>
+      <div class="timeline">
+        <div class="tl"><b>課前</b><span class="m">老師</span><ul><li>買蚯蚓或向學校農場借</li><li>先養一箱 2～3 個月的，示範收蚓糞</li><li>箱子先打好洞</li></ul></div>
+        <div class="tl"><b>第 1 節</b><span class="m">知識＋觀察</span><ul><li>基本知識（25 分）</li><li>放大鏡看環帶、手指輕摸感覺剛毛（15 分）</li><li>收集、分類廚餘（10 分）</li></ul></div>
+        <div class="tl"><b>第 2 節</b><span class="m">選擇實驗</span><ul><li>說明實驗設計（10 分）</li><li>每次 10 分鐘 × 3 次（30 分）</li><li>全班彙整、討論（10 分）</li></ul></div>
+        <div class="tl"><b>第 3 節</b><span class="m">架蚯蚓箱</span><ul><li>鋪床材、放蚯蚓（20 分）</li><li>埋三種大小的高麗菜（10 分）</li><li>老師示範收蚓糞、篩蚓糞（15 分）</li><li>整理、洗手（5 分）</li></ul></div>
+      </div>
+      <div class="note">之後每週花 10 分鐘：餵食、量溫度、看分解程度。小測驗可當回家作業掃 QR 做。</div>
+    </div>
+
+    <div class="card">
+      <h2>評分重點（老師可自行調整）</h2>
+      <div class="three">
+        <div class="box c2"><b class="t">實驗操作 30%</b>愛護蚯蚓、計時正確、重複並對調</div>
+        <div class="box c3"><b class="t">紀錄與討論 30%</b>數據完整、能用習性解釋結果</div>
+        <div class="box c1"><b class="t">蚯蚓箱照顧 40%</b>濕度適中、每週餵食與紀錄、沒有臭味</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4 動手判斷 ===== -->
+  <section class="panel" id="p4" hidden>
+    <div class="card">
+      <h2>把步驟排好</h2>
+      <p class="ex">依照正確順序，一個一個點下面的步驟。</p>
+      <div class="order" id="oSlots"></div>
+      <div class="opool" id="oPool"></div>
+      <div class="ofb" id="oFb" aria-live="polite"></div>
+      <div class="actions"><button class="btn ghost" id="oReset">↺ 重新排</button></div>
+    </div>
+
+    <div class="card">
+      <h2>這個可以餵蚯蚓嗎？</h2>
+      <div class="ready" id="ready"></div>
+      <div class="actions"><button class="btn ghost" id="readyReset">↺ 重新作答</button></div>
+    </div>
+
+    <div class="card">
+      <h2>濕度實驗室</h2>
+      <div class="conc">
+        <div>
+          <div><b>握一把床材，擠出</b> <span class="cnum" id="mNum">2</span> <b>滴水</b></div>
+          <input type="range" id="mRange" min="0" max="10" value="2" aria-label="擠出幾滴水">
+          <div class="cverdict" id="mVerdict"></div>
+          <p id="mWhy" style="margin:4px 0 0"></p>
+        </div>
+        <figure><svg class="art" id="mSvg" viewBox="0 0 300 190" role="img" aria-label="手握床材擠出水滴"></svg>
+          <figcaption>像擰乾的海綿：擠出 1～2 滴剛好</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>出問題了！怎麼辦？<span class="sec">先想，再點開</span></h2>
+      <div class="cases" id="cases"></div>
+    </div>
+  </section>
+
+
+  <!-- ===== 5 小測驗 ===== -->
+  <section class="panel" id="p5" hidden></section>
+
+  <footer>內容依一般蚯蚓堆肥操作原則整理（表層種蚯蚓、床材濕度、綠料與棕料搭配、側移法收穫）。蚯蚓量與箱子面積為經驗估算，實際請依蚯蚓種類、氣溫與廚餘含水量調整。</footer>
+</div>
+
+<div class="overlay" id="overlay" hidden><div class="inner"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACdklEQVR42u2cO47jQAxEH7cFOJSAOcAcRbrZwjeTjuIDLNAKDcioDfojOZxgAhrswLDsilgofqppm/jJ2f7wsxP4wAf+V/G71bPwau/KZwNsE7Tvh4inS3ySJNVEPetA9+8DKQPzY4BZUnmMeLrEV3HuN+luNwFJMD7NFqBIfIl4fgJ+Lqo1Y5uSdJ8iPp+DfxnbSehuBuMR8XGMHwDQVb9fGIDNecLmx3DAKGCPePrE164ZSCplds6pFWGAzczMpoinPzy6nJykdZRglLQWQLoi1oinO35zuoxGpeDOOgrxTcnUISn4dcgvaB27Qsejc56KkivnOQW/TvV7+hvVxigilupLTi1nRzz91d8DrYBWUtXvWqR78MZ58OuV36LQuTVZ0EmeO/uK/Oy2fy7iVG5y7j1XaacrycGvW357ra25mFSqblF3kXPkZ+f199TvSlJrrN+yd/Dr1d84beZrar40XlF/nfdXldCxXf1WkrvnEfw69jeohkY1OXp+rsKO+dcvvo+56/gs94O2tM9s2W8CXlY2OSKerv3nOinVS/5mXV3dj4inx/x8nX/zu2HV59/or7z7zxcboxNfb5Ji/nWNt2Uf0N0GSq1llEoR3qYkNhuI/TrP9Xfu+7HVqzq6idUnpai/7vc3+v5kfs/eudmVwa/T/urc0Oiu1XnJH/4kH/H7hd0M9qHt141Pa6n5Vb+IeHqdf9PbmgZ1Prpm6tCve35r6b1cEp5FOPor3O63X872LdgWUJmUSIcxPo1ZEU+v+HaNL0mPAfsryWxqnnSxniOeTvX7svqwfx0GCbbp3yBABgMqmp5yxNMd3uL/GQIfeLf4/1kDfcfX7a5nAAAAAElFTkSuQmCC"><p>用平板或手機掃描，開始小測驗！</p><small>https://teacher-liujikan.github.io/yilin-work/agri-worm/#quiz</small></div></div>
+
+<script>
+(function(){
+const $ = id => document.getElementById(id);
+const T=(x,y,t,a="middle",cls="s-txt",sz)=>`<text class="${cls}" x="${x}" y="${y}" text-anchor="${a}"${sz?` style="font-size:${sz}px"`:""}>${t}</text>`;
+const ARROWDEF=id=>`<defs><marker id="${id}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--muted)"/></marker></defs>`;
+const ARR=(x1,y1,x2,y2,id)=>`<path d="M${x1} ${y1} L${x2} ${y2}" stroke="var(--muted)" stroke-width="2.4" fill="none" marker-end="url(#${id})"/>`;
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const fill=(id,html)=>{ const e=$(id); if(e) e.innerHTML=html; };
+
+/* ---------- 蚯蚓堆肥：繪圖小工具 ---------- */
+const WP="M-44 0 Q-22 -10 0 0 T44 0";
+const WORM=(x,y,s=1,r=0,o={})=>`<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><g${o.cls?` class="${o.cls}"`:""}${o.style?` style="${o.style}"`:""}><path d="${WP}" stroke="var(--worm)" stroke-width="10" fill="none" stroke-linecap="round"/><path d="${WP}" stroke="var(--wormd)" stroke-width="10" fill="none" stroke-dasharray="1 3.2" opacity=".45"/><ellipse cx="27" cy="4.6" rx="6.5" ry="6" fill="var(--clit)"/></g></g>`;
+const SCRAP=(x,y,s=1,r=0,c="var(--scrap)")=>`<path transform="translate(${x} ${y}) rotate(${r}) scale(${s})" d="M-10 -6 Q0 -12 10 -5 Q12 4 4 8 Q-8 10 -11 2 Z" fill="${c}"/>`;
+const PEEL=(x,y,s=1,r=0)=>`<path transform="translate(${x} ${y}) rotate(${r}) scale(${s})" d="M-12 0 A12 12 0 0 1 12 0 L8 0 A8 8 0 0 0 -8 0 Z" fill="var(--peel)"/>`;
+const CAST=(x,y,n=10,sp=14)=>Array.from({length:n},(_,i)=>`<circle cx="${(x+((i*37)%sp)-sp/2).toFixed(1)}" cy="${(y+((i*23)%9)-4).toFixed(1)}" r="${2.4+(i%3)*.8}" fill="var(--cast)"/>`).join("");
+const DOTS=(x,y,w,h,n,c)=>Array.from({length:n},(_,i)=>`<circle cx="${(x+((i*97+13)%101)/101*w).toFixed(1)}" cy="${(y+((i*61+7)%89)/89*h).toFixed(1)}" r="1.6" fill="${c}"/>`).join("");
+function BIN(x,y,w,h,o={}){
+  const bedTop=y+h*(o.bed??.45);
+  let s=`<g>`;
+  s+=`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8" fill="var(--box)" opacity=".25" stroke="var(--box)" stroke-width="3"/>`;
+  if(o.bed!==null&&o.bed!==undefined||!o.empty) s+=`<rect x="${x+3}" y="${bedTop}" width="${w-6}" height="${y+h-bedTop-3}" rx="5" fill="var(--bed)"/>${DOTS(x+8,bedTop+6,w-16,y+h-bedTop-14,Math.round(w*h/260),"var(--bed2)")}`;
+  if(o.lid) s+=`<rect x="${x-6}" y="${y-10}" width="${w+12}" height="12" rx="4" fill="var(--box)"/>`;
+  if(o.holes!==false){ for(let i=0;i<6;i++) s+=`<circle cx="${x+w*(i+.5)/6}" cy="${y+10}" r="2.6" fill="var(--paper)" stroke="var(--box)"/>`; for(let i=0;i<5;i++) s+=`<circle cx="${x+w*(i+.5)/5}" cy="${y+h+1}" r="2.2" fill="var(--box)"/>`; }
+  return s+`</g>`;
+}
+
+/* ---------- 總覽 ---------- */
+const FLOW=[
+  ["準備箱子",`<svg viewBox="0 0 120 90">${BIN(22,26,76,52,{empty:true,bed:null,lid:true})}${[0,1,2].map(i=>`<path d="M${40+i*20} 70 v10" stroke="var(--water)" stroke-width="2" class="a-drop" style="animation-delay:${i*.4}s"/>`).join("")}</svg>`,"打洞：通氣、排水"],
+  ["鋪床材",`<svg viewBox="0 0 120 90">${BIN(22,26,76,52,{bed:.4})}${[0,1,2,3].map(i=>`<rect x="${34+i*14}" y="6" width="5" height="16" fill="#e8e2d0" stroke="var(--muted)" stroke-width=".6" class="a-fall" style="animation-delay:${i*.5}s"/>`).join("")}</svg>`,"椰纖＋碎紙，像擰乾海綿"],
+  ["放蚯蚓",`<svg viewBox="0 0 120 90">${BIN(22,26,76,52,{bed:.3})}<g class="a-dive">${WORM(60,40,.42,-20)}</g><circle cx="98" cy="12" r="7" fill="var(--g1)" class="a-fade"/></svg>`,"怕光，自己鑽下去"],
+  ["埋廚餘",`<svg viewBox="0 0 120 90">${BIN(22,26,76,52,{bed:.3})}<g class="a-fall">${SCRAP(48,20,.7,10)}</g><g class="a-fall" style="animation-delay:.8s">${PEEL(70,20,.6)}</g>${WORM(72,62,.3,10)}</svg>`,"切小塊、埋角落"],
+  ["收蚓糞",`<svg viewBox="0 0 120 90"><ellipse cx="60" cy="40" rx="42" ry="10" fill="none" stroke="var(--metal)" stroke-width="3"/><path d="M22 40 L36 62 L84 62 L98 40" fill="none" stroke="var(--metal)" stroke-width="2" stroke-dasharray="3 3"/>${CAST(60,38,12,40)}${[0,1,2].map(i=>`<circle cx="${50+i*10}" cy="66" r="2.6" fill="var(--cast)" class="a-drop" style="animation-delay:${i*.45}s"/>`).join("")}</svg>`,"2～3 個月後篩出來"]
+];
+
+/* ---------- 構造 ---------- */
+fill("anatomySvg",(()=>{
+  const d="M50 120 C150 70, 250 160, 340 110 S 520 70, 575 105";
+  let s=`<path d="${d}" stroke="var(--worm)" stroke-width="34" fill="none" stroke-linecap="round"/>
+  <path d="${d}" stroke="var(--wormd)" stroke-width="34" fill="none" stroke-dasharray="2 11" opacity=".4"/>
+  <ellipse cx="470" cy="76" rx="26" ry="19" transform="rotate(-6 470 76)" fill="var(--clit)"/>
+  <ellipse cx="590" cy="108" rx="4" ry="6" fill="var(--wormd)"/>
+  <ellipse cx="38" cy="122" rx="3" ry="4" fill="var(--wormd)"/>`;
+  s+=`<g transform="translate(250 176)"><circle r="26" fill="var(--paper)" stroke="var(--muted)" stroke-width="1.5"/><rect x="-22" y="-10" width="44" height="18" rx="6" fill="var(--worm)"/>${[-14,-5,4,13].map(x=>`<path d="M${x} 8 l-3 7 M${x+4} 8 l3 7" stroke="var(--ink)" stroke-width="1.6"/>`).join("")}</g><path class="lbl" d="M250 150 L250 128"/>`;
+  s+=`<path class="lbl" d="M590 98 L600 40"/>${T(600,32,"頭端（口）","end")}`;
+  s+=`<path class="lbl" d="M470 58 L430 22"/>${T(430,16,"環帶（做卵繭）","middle")}`;
+  s+=`<path class="lbl" d="M340 128 L360 170"/>${T(362,186,"一節一節：體節","start")}`;
+  s+=T(286,190,"剛毛","start");
+  s+=`<path class="lbl" d="M42 112 L60 40"/>${T(60,32,"尾端（肛門）","start")}`;
+  s+=`<g class="a-fade"><path d="M120 30 l10 10 M110 40 h-14 M120 50 l10 -10" stroke="var(--g1)" stroke-width="2.4"/><circle cx="140" cy="40" r="7" fill="var(--g1)"/></g>${T(160,44,"怕光：皮膚會感光","start","s-sm")}`;
+  return s;
+})());
+
+/* ---------- 消化 ---------- */
+fill("digestSvg",(()=>{
+  let s=ARROWDEF("ard");
+  s+=`<g transform="translate(70 100)"><g class="a-crawl" style="animation-duration:3s">${SCRAP(-22,-10,1.4,20)}${PEEL(10,8,1.2,15)}${SCRAP(-6,18,1,-30,"#5f9a3a")}</g>${DOTS(-30,-28,60,56,12,"var(--g2)")}</g>${T(70,160,"廚餘＋微生物","middle","s-txt")}${T(70,178,"先爛軟","middle","s-sm")}`;
+  s+=ARR(118,100,150,100,"ard");
+  s+=`<rect x="160" y="70" width="350" height="60" rx="30" fill="var(--worm)" opacity=".22" stroke="var(--worm)" stroke-width="3"/>`;
+  s+=`<path d="M164 100 L200 100" stroke="var(--wormd)" stroke-width="8" stroke-linecap="round"/>`;
+  s+=`<ellipse cx="236" cy="100" rx="30" ry="20" fill="var(--wormd)" class="a-bulge"/>${DOTS(214,90,44,20,9,"#f1e3c4")}`;
+  s+=`<path d="M266 100 C 290 82, 310 118, 334 100 S 380 82, 404 100 S 450 118, 474 100 L 500 100" stroke="var(--wormd)" stroke-width="10" fill="none" stroke-linecap="round"/>`;
+  [0,1,2,3].forEach(i=>{ s+=`<circle cx="270" cy="100" r="3" fill="var(--scrap)" class="a-feed" style="animation-duration:4s;animation-delay:${i}s"/>`; });
+  s+=T(182,62,"口","middle","s-txt")+T(236,62,"砂囊：磨碎","middle","s-txt")+T(390,62,"腸：消化、吸收","middle","s-txt");
+  s+=T(236,150,"吃進細沙幫忙磨","middle","s-sm")+T(390,150,"有益微生物一起作用","middle","s-sm");
+  s+=ARR(516,100,546,100,"ard");
+  s+=`<g transform="translate(590 104)">${CAST(0,0,18,40)}${CAST(0,-10,10,26)}</g>${T(590,150,"蚓糞","middle","s-txt")}${T(590,168,"團粒、不臭","middle","s-sm")}`;
+  return s;
+})());
+
+/* ---------- 環境圖示 ---------- */
+fill("envT",`<rect x="70" y="8" width="16" height="60" rx="8" fill="var(--paper)" stroke="var(--muted)" stroke-width="2"/><circle cx="78" cy="74" r="11" fill="var(--g1)"/><rect x="74" y="34" width="8" height="40" fill="var(--g1)"/><rect x="88" y="28" width="38" height="20" rx="4" fill="var(--ok-soft)" stroke="var(--ok)"/>${T(107,42,"15～25","middle","s-sm")}<path d="M40 20 l-8 -8 M40 36 h-12" stroke="var(--fire)" stroke-width="2.4" class="a-fade"/>${T(30,58,">30 ✗","middle","s-sm")}`);
+fill("envW",`<rect x="44" y="26" width="72" height="36" rx="8" fill="var(--bed)"/>${DOTS(50,30,60,28,14,"var(--bed2)")}<path d="M44 34 q-12 6 0 16 M116 34 q12 6 0 16" stroke="var(--muted)" stroke-width="3" fill="none"/>${[0,1].map(i=>`<path d="M${74+i*14} 66 q-4 6 0 9 q4 -3 0 -9" fill="var(--water)" class="a-drop" style="animation-delay:${i*.6}s"/>`).join("")}`);
+fill("envD",`<rect x="10" y="40" width="140" height="40" rx="6" fill="var(--bed)"/><path d="M30 8 h30 l-6 14 h-18 Z" fill="var(--g1)"/><path d="M45 22 L30 40 M45 22 L60 40" stroke="var(--g1)" stroke-width="1.5" stroke-dasharray="3 3" class="a-fade"/><g class="a-dive" style="transform-origin:center">${WORM(100,46,.45,30)}</g>`);
+fill("envA",`${BIN(40,30,80,50,{bed:.4,lid:true})}${[0,1,2].map(i=>`<path d="M${60+i*20} 26 q-4 -8 0 -16" stroke="var(--g3)" stroke-width="2.4" fill="none" class="a-up" style="animation-delay:${i*.5}s"/>`).join("")}`);
+
+/* ---------- 食物 ---------- */
+fill("goodFood",`${SCRAP(30,36,2.2,10)}${T(30,74,"菜葉","middle","s-sm")}<path d="M74 20 q16 16 4 34 q8 -18 -4 -34 Z M74 20 q-10 22 6 34" fill="#f2d35b" stroke="#c9a92e" stroke-width="1.4"/>${T(80,74,"果皮","middle","s-sm")}<ellipse cx="140" cy="40" rx="22" ry="12" fill="#4a3324"/>${DOTS(122,32,36,16,14,"#6d4c35")}${T(140,74,"咖啡渣","middle","s-sm")}<path d="M186 46 l8 -18 l8 14 l6 -10 l8 16 Z" fill="#f4ecdc" stroke="var(--muted)"/>${T(202,74,"蛋殼","middle","s-sm")}<g>${[0,1,2,3].map(i=>`<rect x="${240+i*12}" y="${18+(i%2)*6}" width="8" height="34" fill="#e8e2d0" stroke="var(--muted)" stroke-width=".8" transform="rotate(${i*6-8} ${244+i*12} 40)"/>`).join("")}</g>${T(262,74,"碎紙","middle","s-sm")}`);
+fill("badFood",`<path d="M14 40 h40 M10 34 a6 6 0 1 1 6 -2 M10 46 a6 6 0 1 0 6 2 M58 34 a6 6 0 1 0 -6 -2 M58 46 a6 6 0 1 1 -6 2" stroke="#e8e0cc" stroke-width="8" stroke-linecap="round" fill="none"/>${T(34,74,"骨頭、肉","middle","s-sm")}<path d="M82 40 q20 -18 44 0 q-24 18 -44 0 Z M126 40 l12 -10 v20 Z" fill="#9fb8c8"/><circle cx="92" cy="37" r="2" fill="var(--ink)"/>${T(108,74,"魚","middle","s-sm")}<path d="M160 22 h22 l6 10 v30 h-34 v-30 Z" fill="#f4f6f8" stroke="var(--muted)"/><rect x="158" y="38" width="30" height="12" fill="var(--g3)"/>${T(172,74,"牛奶","middle","s-sm")}<path d="M214 24 h16 v8 l6 6 v24 h-28 v-24 l6 -6 Z" fill="#e8c45a" opacity=".8" stroke="var(--muted)"/>${T(222,74,"油","middle","s-sm")}<path d="M262 50 q6 -24 22 -30 q-6 20 -22 30 Z" fill="var(--bad)"/><path d="M284 20 l6 -6" stroke="var(--scrap)" stroke-width="3"/>${T(276,74,"辣椒","middle","s-sm")}`);
+
+/* ---------- 用法 ---------- */
+fill("useSvg",`<path d="M40 70 L60 160 L140 160 L160 70 Z" fill="var(--soil)"/>${DOTS(56,80,90,70,26,"var(--cast)")}<g class="a-grow"><path d="M100 70 v-34" stroke="var(--leaf2)" stroke-width="4"/><path d="M100 46 q-24 -14 -30 -4 q12 14 30 4 M100 40 q22 -18 30 -8 q-12 16 -30 8" fill="var(--leaf)"/></g>
+  <g transform="translate(240 110)"><path d="M-34 -50 h68 l6 92 h-80 Z" fill="#d9c7a3" stroke="var(--cardline)" stroke-width="2"/>${CAST(0,10,16,40)}<text x="0" y="-22" text-anchor="middle" style="font-size:15px;font-weight:900;fill:#5a3b22;font-family:var(--f)">蚓糞</text></g>
+  ${T(100,24,"培養土＋蚓糞 10～20%","middle","s-sm")}`);
+
+/* ---------- 步驟 ---------- */
+const STEPS=[
+ {t:"準備蚯蚓箱",l:["有蓋塑膠箱，深色不透光最好","底部打 8～10 個小洞（約 5 mm）排水","側面上方打一排洞通氣","洞口貼紗網；箱子墊高，下面放盤子接滲出液"],tip:"打洞由老師用電鑽或燒熱的鐵釘處理。",
+  art:`<svg viewBox="0 0 340 200">${BIN(70,50,200,110,{empty:true,bed:null})}<g transform="translate(250 34)"><g class="a-shake"><rect x="-6" y="-30" width="40" height="22" rx="6" fill="var(--g1)"/><rect x="-14" y="-12" width="14" height="30" rx="4" fill="var(--g1)"/><path d="M-30 -20 h24" stroke="var(--metal)" stroke-width="4"/></g></g><rect x="60" y="164" width="220" height="10" rx="4" fill="var(--metal)"/>${[0,1,2].map(i=>`<path d="M${120+i*50} 162 v8" stroke="var(--water)" stroke-width="3" class="a-drop" style="animation-delay:${i*.4}s"/>`).join("")}${T(170,192,"上：通氣孔　下：排水孔＋接水盤","middle","s-sm")}</svg>`},
+ {t:"泡椰纖、撕紙",l:["椰纖磚放進水桶泡水，散開","報紙、紙箱撕成約 2 cm 寬的條","兩者混合，再加一把舊培養土","舊土帶進微生物，也帶進細沙給砂囊磨食物"],tip:"亮面印刷的廣告紙、膠帶不要放。",
+  art:`<svg viewBox="0 0 340 200"><path d="M40 80 L56 170 L150 170 L166 80 Z" fill="var(--water)" opacity=".35" stroke="var(--water)" stroke-width="2"/><rect x="66" y="96" width="74" height="44" rx="4" fill="var(--bed)" class="a-fadeout"/><g class="a-appear">${DOTS(54,100,100,66,40,"var(--bed2)")}<rect x="56" y="120" width="94" height="46" rx="4" fill="var(--bed)" opacity=".85"/></g>${T(103,192,"椰纖磚泡水","middle","s-sm")}
+   ${[0,1,2,3,4].map(i=>`<rect x="${210+i*18}" y="${40+(i%2)*14}" width="10" height="60" fill="#e8e2d0" stroke="var(--muted)" stroke-width="1" class="a-fall" style="animation-delay:${i*.4}s"/>`).join("")}<rect x="196" y="120" width="110" height="50" rx="6" class="s-news"/>${T(250,192,"撕成 2 cm 條","middle","s-sm")}</svg>`},
+ {t:"調濕度、鋪床材",l:["握一把擠一擠：擠出 1～2 滴水剛好","太濕 → 加乾碎紙；太乾 → 噴水","鋪進箱子，厚約 10～15 cm","不要壓實，保留空隙給空氣"],tip:"像擰乾的海綿：摸起來濕，但不會一直滴水。",
+  art:`<svg viewBox="0 0 340 200"><g transform="translate(90 70)"><path d="M-40 -20 q-6 30 10 46 h50 q14 -14 10 -46 q-10 -14 -20 0 q-6 -14 -16 0 q-8 -12 -16 0 Z" fill="#f2c9a0" stroke="#b58a62" stroke-width="2"/><rect x="-30" y="22" width="40" height="12" fill="var(--bed)"/>${[0,1].map(i=>`<path d="M${-12+i*12} 40 q-4 6 0 9 q4 -3 0 -9" fill="var(--water)" class="a-drop" style="animation-delay:${i*.7}s"/>`).join("")}</g>${T(90,160,"擠出 1～2 滴","middle","s-txt")}
+   ${BIN(190,60,130,110,{bed:.3})}<path d="M330 93 v74" stroke="var(--ink)" stroke-width="1.5"/><path d="M326 93 h8 M326 167 h8" stroke="var(--ink)" stroke-width="1.5"/>${T(326,86,"10～15 cm","end","s-sm")}</svg>`},
+ {t:"放入蚯蚓",l:["把蚯蚓連同原本的土放在床材表面","不要蓋，打開燈讓牠們自己鑽下去","10～20 分鐘還在表面不動的，可能生病，挑出來","每箱約 250 g 開始"],tip:"不要把蚯蚓埋進去或用手壓，讓牠們自己找位置。",
+  art:`<svg viewBox="0 0 340 200">${BIN(60,70,220,100,{bed:.2})}<path d="M150 20 h40 l-8 16 h-24 Z" fill="var(--g1)"/><path d="M170 36 L120 84 M170 36 L220 84" stroke="var(--g1)" stroke-width="1.5" stroke-dasharray="4 4" class="a-fade"/>${[0,1,2,3].map(i=>`<g class="a-dive" style="animation-delay:${i*.7}s">${WORM(110+i*40,84,.4,(i%2?20:-20))}</g>`).join("")}${T(170,190,"怕光 → 自己往下鑽","middle","s-txt")}</svg>`},
+ {t:"處理廚餘",l:["挑出不能餵的（肉、骨頭、油、太鹹）","切成 1～2 cm 小塊，越小越快被吃掉","瀝乾水分，太濕會讓箱子發臭","秤重記錄；可先冷凍再解凍，細胞破了爛得更快"],tip:"第一、二週少量就好，約蚯蚓重量的 1/4。",
+  art:`<svg viewBox="0 0 340 200"><rect x="40" y="110" width="200" height="60" rx="8" fill="var(--wood)"/>${SCRAP(90,130,2.4,10)}<g transform="translate(150 100)"><g class="a-tap"><path d="M0 -60 L10 -60 L10 10 L-6 10 Z" fill="var(--metal)"/><rect x="-2" y="-90" width="12" height="30" rx="3" fill="var(--soil)"/></g></g>${[0,1,2,3,4].map(i=>SCRAP(180+i*12,150-(i%2)*8,.7,i*40)).join("")}
+   <g transform="translate(290 130)"><rect x="-34" y="0" width="68" height="34" rx="6" fill="var(--metal)"/><rect x="-26" y="6" width="52" height="14" rx="3" fill="#cfe8cf"/><text x="0" y="17" text-anchor="middle" style="font-size:11px;font-weight:700;fill:#1f3a1f;font-family:var(--f)">125 g</text></g>${T(150,192,"切 1～2 cm、瀝乾、秤重","middle","s-txt")}</svg>`},
+ {t:"埋進角落",l:["在床材的一個角落挖一個洞","放入廚餘，上面蓋 2～3 cm 床材","不要撒在表面（會招果蠅）","下一次換另一個角落，順時針輪流"],tip:"上一次的廚餘被吃得差不多了再餵，吃不完就先停。",
+  art:`<svg viewBox="0 0 340 200">${BIN(50,40,240,130,{bed:.15})}<rect x="56" y="64" width="78" height="56" rx="6" fill="var(--bed2)" opacity=".6"/><g class="a-fall" style="animation-duration:3.6s">${SCRAP(84,30,1,10)}${PEEL(104,36,.9)}</g><path d="M146 78 a24 24 0 1 1 0 52" stroke="var(--muted)" stroke-width="2" fill="none" stroke-dasharray="4 4"/><text x="95" y="140" text-anchor="middle" style="fill:#fff;font-size:15px;font-weight:900;font-family:var(--f)">這次</text><text x="250" y="80" text-anchor="middle" style="fill:#fff;font-size:13px;font-weight:700;font-family:var(--f)">下次 →</text><text x="250" y="158" text-anchor="middle" style="fill:#fff;font-size:13px;font-weight:700;font-family:var(--f)">再下次</text>${WORM(200,120,.4,-10,{cls:"a-crawl"})}</svg>`},
+ {t:"蓋濕報紙、加蓋",l:["表面蓋一張噴濕的報紙或麻布","保濕、遮光，也防果蠅","蓋上蓋子（有通氣孔）","放在陰涼、不淋雨、不曬太陽的地方"],tip:"教室走廊陰影處或實習室角落都可以；夏天特別注意溫度。",
+  art:`<svg viewBox="0 0 340 200">${BIN(70,70,200,100,{bed:.15})}<rect x="76" y="80" width="188" height="10" class="s-news"/><g class="a-press" style="animation-duration:3.4s"><rect x="62" y="56" width="216" height="14" rx="5" fill="var(--box)"/></g><circle cx="300" cy="40" r="16" fill="var(--g1)" opacity=".35"/><path d="M276 40 h-20 M300 64 v14" stroke="var(--g1)" stroke-width="2"/><path d="M262 22 l60 60" stroke="var(--bad)" stroke-width="4"/>${T(170,192,"保濕、遮光、陰涼","middle","s-txt")}</svg>`},
+ {t:"每週照顧",l:["看：上次的廚餘吃完了嗎？吃完才再餵","摸：濕度還像擰乾的海綿嗎？","聞：應該是泥土味；有酸臭就停餵、加碎紙","量溫度、填紀錄表"],tip:"偶爾用手輕輕翻鬆床材，讓空氣進去。",
+  art:`<svg viewBox="0 0 340 200">${BIN(40,70,170,100,{bed:.2})}<g transform="translate(250 60)"><rect x="-30" y="-30" width="76" height="110" rx="6" class="s-paper"/>${[0,1,2,3].map(i=>`<path d="M-20 ${-12+i*24} h10" stroke="var(--ok)" stroke-width="3"/><path d="M-6 ${-12+i*24} h40" stroke="var(--line)" stroke-width="3"/>`).join("")}<path d="M-22 -12 l4 4 l8 -8" stroke="var(--ok)" stroke-width="2" fill="none" class="a-fade"/></g>${T(80,58,"👀 看","middle","s-txt")}${T(125,58,"✋ 摸","middle","s-txt")}${T(170,58,"👃 聞","middle","s-txt")}<g transform="translate(180 120)"><rect x="-4" y="-40" width="8" height="46" rx="4" fill="var(--paper)" stroke="var(--muted)"/><circle cy="8" r="7" fill="var(--g1)"/></g>${WORM(90,140,.5,0,{cls:"a-wig"})}</svg>`},
+ {t:"收穫蚓糞",l:["約 2～3 個月，箱子裡大多變成黑褐色顆粒","側移法：之後 2～3 週只餵一邊，蚯蚓搬過去，收另一邊","或倒在塑膠布上堆成小山，照燈，蚯蚓往下鑽，一層一層刮","過篩（約 5 mm）、陰乾後裝袋"],tip:"挑出的蚯蚓和卵繭放回新床材，繼續養下一輪。",
+  art:`<svg viewBox="0 0 340 200">${ARROWDEF("arh")}${BIN(30,60,140,100,{bed:.2})}<rect x="34" y="82" width="64" height="74" fill="var(--cast)" opacity=".9"/>${CAST(66,110,16,50)}<g class="a-crawl" style="animation-duration:3s">${WORM(130,120,.36,0)}</g>${SCRAP(140,96,.8,20)}${T(66,180,"收這邊","middle","s-txt")}${T(134,180,"餵這邊","middle","s-sm")}
+   ${ARR(184,110,214,110,"arh")}<g transform="translate(270 110)"><ellipse rx="44" ry="10" fill="none" stroke="var(--metal)" stroke-width="3"/><path d="M-44 0 L-30 24 L30 24 L44 0" fill="none" stroke="var(--metal)" stroke-width="2" stroke-dasharray="3 3"/>${CAST(0,-2,14,50)}${[0,1,2].map(i=>`<circle cx="${-10+i*10}" cy="30" r="2.6" fill="var(--cast)" class="a-drop" style="animation-delay:${i*.45}s"/>`).join("")}</g>${T(270,180,"過篩、陰乾","middle","s-txt")}</svg>`}
+];
+
+/* ---------- 計算 ---------- */
+(function(){
+  const R=[[.25,"1/4（新箱子）"],[.5,"1/2"],[.75,"3/4（很習慣了）"]];
+  function calc(){
+    const f=parseFloat($("wFood").value), k=+$("wRate").value, r=R[k][0]; $("wRateLab").textContent=R[k][1];
+    if(!(f>0)){ ["wW","wA"].forEach(i=>$(i).textContent="─"); $("wBox").textContent="─"; $("wNote").textContent="請輸入廚餘量。"; $("wSvg").innerHTML=""; return; }
+    const w=f/r, a=f*14, side=Math.sqrt(a/1.33);
+    $("wW").textContent=Math.round(w); $("wA").textContent=Math.round(a); $("wBox").textContent=`${Math.round(side*1.33)} × ${Math.round(side)}`;
+    $("wNote").textContent=w>1500?"蚯蚓很多：可以分成兩箱，比較好照顧。":k===0?"新箱子先保守：吃完再慢慢增加。":"";
+    const n=Math.min(12,Math.max(1,Math.round(w/100))), m=Math.min(10,Math.max(1,Math.round(f/25)));
+    let s=`<rect x="20" y="40" width="120" height="120" rx="10" fill="var(--bg)" stroke="var(--line)"/>${T(80,30,"每天廚餘 "+Math.round(f)+" g","middle","s-txt")}`;
+    for(let i=0;i<m;i++) s+=SCRAP(44+(i%3)*36,64+Math.floor(i/3)*28,1.1,i*35,i%2?"var(--scrap)":"#5f9a3a");
+    s+=`<rect x="160" y="40" width="120" height="120" rx="10" fill="var(--bg)" stroke="var(--line)"/>${T(220,30,"蚯蚓約 "+Math.round(w)+" g","middle","s-txt")}`;
+    for(let i=0;i<n;i++) s+=WORM(192+(i%2)*56,58+Math.floor(i/2)*18,.42,(i%2?8:-8));
+    s+=T(150,186,"每一隻蚯蚓圖 ≈ 100 g","middle","s-sm");
+    $("wSvg").innerHTML=s;
+  }
+  $("wFood").oninput=calc; $("wRate").oninput=calc; calc();
+})();
+
+/* ---------- 分組設計 ---------- */
+fill("designSvg",(()=>{
+  const G=[["第 1 組","光","暗",(x,w)=>`<rect x="${x+w/2}" y="0" width="${w/2}" height="80" fill="#222" opacity=".55"/><circle cx="${x+20}" cy="14" r="8" fill="var(--g1)" class="a-fade"/>`],
+           ["第 2 組","濕","乾",(x,w)=>`<rect x="${x}" y="0" width="${w/2}" height="80" fill="var(--water)" opacity=".3"/>${[0,1,2].map(i=>`<path d="M${x+20+i*30} 18 q-4 6 0 9 q4 -3 0 -9" fill="var(--water)"/>`).join("")}<rect x="${x+w/2}" y="0" width="${w/2}" height="80" fill="#e8e2d0" opacity=".6"/>`],
+           ["第 3 組","菜葉","柑橘皮",(x,w)=>SCRAP(x+30,40,1.4,10)+SCRAP(x+60,58,1.1,-20)+PEEL(x+w-60,40,1.1)+PEEL(x+w-30,60,1,30)],
+           ["第 4 組","室溫","冰涼",(x,w)=>`<rect x="${x+w/2}" y="0" width="${w/2}" height="80" fill="var(--cold)" opacity=".45"/>${T(x+w*3/4,72,"冰袋隔毛巾","middle","s-sm")}`]];
+  let s="";
+  G.forEach((g,i)=>{ const x=10+(i%2)*320, y=10+Math.floor(i/2)*145, w=300;
+    s+=`${T(x+4,y+14,g[0],"start","s-txt")}<g transform="translate(0 ${y+24})"><rect x="${x}" y="0" width="${w}" height="80" rx="8" fill="var(--bed)" opacity=".35" stroke="var(--line)"/>${g[3](x,w)}<path d="M${x+w/2} -4 v88" stroke="var(--ink)" stroke-width="2" stroke-dasharray="5 4"/>`;
+    [0,1,2,3,4].forEach(k=>{ s+=`<g class="a-crawl" style="animation-delay:${k*.5}s;animation-duration:${4+k}s">${WORM(x+w/2,10+k*15,.24,(k%2?180:0))}</g>`; });
+    s+=`</g>${T(x+w/4,y+124,"A："+g[1],"middle","s-txt")}${T(x+w*3/4,y+124,"B："+g[2],"middle","s-txt")}`;
+  });
+  return s;
+})());
+fill("sizeSvg",(()=>{
+  let s=BIN(20,30,600,150,{bed:.12,holes:false});
+  const C=[["整片 5 cm",x=>SCRAP(x,110,3.4,10)],["切 1 cm",x=>[0,1,2,3,4,5].map(i=>SCRAP(x-30+(i%3)*30,96+Math.floor(i/3)*26,.8,i*50)).join("")],["打碎",x=>`<ellipse cx="${x}" cy="110" rx="46" ry="22" fill="#6f9a3e"/>${DOTS(x-40,96,80,28,24,"#9fc46a")}`]];
+  C.forEach((c,i)=>{ const x=120+i*200; s+=`<rect x="${x-70}" y="62" width="140" height="106" rx="10" fill="var(--bed2)" opacity=".5"/>${c[1](x)}<text x="${x}" y="80" text-anchor="middle" style="fill:#fff;font-size:15px;font-weight:900;font-family:var(--f)">${c[0]}</text>${WORM(x+40,150,.3,-10,{cls:"a-wig"})}`; });
+  s+=T(320,198,"同一箱、各 100 g、埋一樣深，每週挖開看一次","middle","s-sm");
+  return s;
+})());
+
+/* ---------- 可以餵嗎 ---------- */
+const READY_OPTS=["可以餵","不要餵"];
+const READY=[
+ ["高麗菜外葉（切小塊）",0,"菜葉是最好的食物，切小塊更快被吃掉。"],
+ ["吃剩的雞骨頭",1,"肉和骨頭會發臭、招蒼蠅和老鼠。"],
+ ["咖啡渣",0,"可以，少量混進床材；太多會偏酸。"],
+ ["滷肉飯剩菜",1,"又油又鹹，會傷蚯蚓的皮膚。"],
+ ["壓碎的蛋殼",0,"可以，提供細砂狀顆粒幫助磨碎，也能中和酸。"],
+ ["一大袋橘子皮",1,"大量柑橘皮太酸、精油刺激；少量切碎才可以。"],
+ ["撕碎的瓦楞紙箱",0,"是很好的棕料，吸水、讓箱子不臭。"],
+ ["過期的牛奶",1,"乳製品會發酸發臭。"],
+ ["拆掉茶包的茶葉渣",0,"可以，茶包的不織布或尼龍不要放。"],
+ ["蟲害嚴重的病葉",1,"可能把病菌、害蟲帶進去，之後蚓糞拿去種菜會傳染。"]
+];
+
+/* ---------- 濕度實驗室 ---------- */
+function renderMoist(){
+  const m=+$("mRange").value; $("mNum").textContent=m;
+  let v,w,col;
+  if(m===0){ v="太乾"; w="蚯蚓用皮膚呼吸，太乾皮膚會乾掉，無法呼吸。噴水後再擠一次看看。"; col="var(--bad)"; }
+  else if(m<=2){ v="剛剛好"; w="像擰乾的海綿：濕潤但不積水，空氣和水分都夠。"; col="var(--ok)"; }
+  else if(m<=5){ v="偏濕"; w="加一些乾的碎紙或紙箱吸水，暫停餵含水多的果皮。"; col="var(--g1)"; }
+  else { v="太濕"; w="空隙被水塞滿 → 缺氧、發臭，蚯蚓會往上爬、想逃出箱子。加大量碎紙、檢查排水孔。"; col="var(--bad)"; }
+  $("mVerdict").textContent=v; $("mVerdict").style.color=col; $("mWhy").textContent=w;
+  let drops=""; for(let i=0;i<Math.min(m,10);i++){ const x=110+(i%5)*20, d=(i*.17).toFixed(2); drops+=`<path d="M${x} 130 q-5 8 0 12 q5 -4 0 -12" fill="var(--water)" class="a-drop" style="animation-delay:${d}s"/>`; }
+  $("mSvg").innerHTML=`<g transform="translate(150 70)"><path d="M-60 -30 q-10 46 14 70 h80 q22 -22 16 -70 q-16 -22 -30 0 q-10 -22 -26 0 q-12 -18 -26 0 Z" fill="#f2c9a0" stroke="#b58a62" stroke-width="2"/><rect x="-46" y="34" width="64" height="16" rx="4" fill="var(--bed)"/></g>${drops}${m>5?`<rect x="70" y="176" width="160" height="8" rx="4" fill="var(--water)" opacity=".6"/>`:""}`;
+}
+$("mRange").oninput=renderMoist; renderMoist();
+
+/* ---------- 診斷卡 ---------- */
+const CASES=[
+ ["箱子有酸臭、腐臭味","廚餘太多吃不完、太濕、不通氣，或放了肉、油","停餵 1～2 週；加乾碎紙、翻鬆；挑出臭的廚餘；檢查通氣孔"],
+ ["蚯蚓一直往箱子外面爬","太濕、太熱、太酸，或是剛搬家還不習慣","檢查濕度和溫度；加碎紙和蛋殼粉；新箱子前幾天晚上開小燈"],
+ ["飛出很多小果蠅","廚餘露在表面，或放了太多水果","廚餘一定要埋起來；表面蓋濕報紙；洞口貼紗網"],
+ ["蚯蚓越來越少、變細","餓了，或環境不對（太乾、太熱）","確認有餵食且廚餘有被吃；移到陰涼處；調整濕度"],
+ ["出現白色小蟲、小跳蟲","跳蟲、蟎類，通常是食物多、偏濕","大部分無害，也在幫忙分解；減少餵食、加碎紙即可"],
+ ["廚餘放了兩週都沒變","切太大、太乾，或蚯蚓太少","切小塊；稍微噴水；確認蚯蚓量足夠"],
+ ["床材表面長白色黴菌","有機物多、偏濕，微生物正在分解","通常無害，翻進床材裡；若有臭味再減少餵食"]
+];
+
+/* ---------- 小測驗 ---------- */
+const QS=[
+ {q:"做蚯蚓堆肥要用哪一類蚯蚓？",o:["表層種，如紅蚯蚓、非洲夜蚯蚓","院子土裡挖的深層蚯蚓","任何蚯蚓都一樣","水裡的水蚯蚓"],a:0,why:"表層種住在落葉、腐植層，專吃有機物、繁殖快，適合養在箱子裡。"},
+ {q:"蚯蚓身上靠近頭端、顏色比較淺的一圈叫什麼？",o:["環帶","砂囊","剛毛","體節"],a:0,why:"成熟的蚯蚓才有環帶，會分泌形成卵繭。"},
+ {q:"蚯蚓箱為什麼一定要保持濕潤？",o:["蚯蚓用皮膚呼吸，皮膚要濕","蚯蚓喜歡游泳","水分可以讓蚯蚓變紅","濕的箱子比較輕"],a:0,why:"蚯蚓沒有肺，靠濕潤的皮膚交換氣體，太乾就無法呼吸。"},
+ {q:"床材濕度怎麼樣才剛好？",o:["像擰乾的海綿，擠出 1～2 滴水","泡在水裡","完全乾燥","擠出一大串水"],a:0,why:"太乾不能呼吸，太濕會缺氧發臭，擰乾海綿的程度剛好。"},
+ {q:"蚯蚓沒有牙齒，靠什麼把食物磨碎？",o:["砂囊，配合吃進去的細沙","舌頭","環帶","剛毛"],a:0,why:"砂囊是肌肉很厚的器官，和細沙一起把食物磨碎。"},
+ {q:"下列哪一種東西「不適合」餵蚯蚓？",o:["吃剩的雞骨頭","菜葉","咖啡渣","撕碎的紙箱"],a:0,why:"肉和骨頭會發臭、招來蒼蠅和老鼠。"},
+ {q:"為什麼廚餘要搭配碎紙、紙箱一起放？",o:["碎紙是棕料，吸水、補充碳，減少發臭","讓蚯蚓看報紙","紙會變成肥料的顏色","紙可以讓箱子變重"],a:0,why:"廚餘（綠料）濕、含氮多；碎紙（棕料）乾、含碳多，兩者搭配才不會太濕發臭。"},
+ {q:"廚餘要怎麼放進蚯蚓箱？",o:["切小塊，埋在角落，上面蓋床材","整顆丟在表面","打成汁倒進去","放在蓋子上"],a:0,why:"埋起來可以避免果蠅和臭味，切小塊分解得比較快。"},
+ {q:"蚯蚓箱應該放在哪裡？",o:["陰涼、不淋雨、不曬太陽的地方","中午的大太陽下","冷凍庫","火爐旁邊"],a:0,why:"蚯蚓適合 15～25 ℃，太熱會逃跑或死亡。"},
+ {q:"蚓糞有什麼特色？",o:["團粒結構、保水透氣、不臭","很臭、會燒根","是白色粉末","有毒不能碰"],a:0,why:"蚓糞是一顆顆團粒，養分容易吸收、帶有益微生物，聞起來像泥土。"},
+ {q:"蚓糞拌進培養土，大約佔多少比例？",o:["10～20%","90%","100%","1%以下"],a:0,why:"約 10～20%（體積）就有效果，太多反而太濃、太保水。"},
+ {q:"側移法收蚓糞的原理是？",o:["只在一邊放新食物，蚯蚓會搬過去","用水把蚯蚓沖走","把蚯蚓冷凍","用磁鐵吸蚯蚓"],a:0,why:"蚯蚓會往有食物的地方移動，另一邊就只剩蚓糞可以收。"},
+ {q:"選擇實驗中，為什麼要把兩邊對調再做一次？",o:["排除蚯蚓只是剛好往某個方向爬","讓蚯蚓運動","讓實驗比較久","沒有理由"],a:0,why:"對調後結果一樣，才能說是環境造成的，而不是位置造成的。"},
+ {q:"「廚餘切多大分解最快」的實驗中，操作變因是？",o:["廚餘的大小","廚餘的種類","分解程度","箱子的大小"],a:0,why:"只改變大小；種類、重量、埋的深度都要一樣，分解程度是觀察結果。"},
+ {q:"箱子發出酸臭味，第一步該怎麼做？",o:["暫停餵食，加乾碎紙、翻鬆","再多餵一點","倒更多水","把蓋子封死"],a:0,why:"臭味通常是吃不完、太濕、缺氧，要減少廚餘、增加棕料和空氣。"}
+];
+const KEY="agri-worm-quiz-115-1";
+const MASTER="蚯蚓堆肥";
+
+
+/* ---------- 分頁 ---------- */
+const TABS=[["t1","p1"],["t2","p2"],["t3","p3"],["t4","p4"],["t5","p5"]];
+let quiz=null;
+function show(t){
+  TABS.forEach(([a,b])=>{ const on=a===t; $(a).setAttribute("aria-selected",on); $(b).hidden=!on; });
+  $("blankBar").hidden = t!=="t1";
+  if(t==="t5"&&!quiz) startQuiz();
+  try{ history.replaceState(null,"",t==="t5"?"#quiz":location.pathname+location.search); }catch(e){}
+  window.scrollTo({top:0});
+}
+TABS.forEach(([a])=>$(a).onclick=()=>show(a));
+(function(){
+  let x0=null,y0=null;
+  document.addEventListener("touchstart",e=>{ if(e.target.closest("input,.tabs,.stage,svg")){x0=null;return;} x0=e.touches[0].clientX; y0=e.touches[0].clientY; },{passive:true});
+  document.addEventListener("touchend",e=>{
+    if(x0===null) return; const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0; x0=null;
+    if(Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.5) return;
+    const cur=TABS.findIndex(([a])=>$(a).getAttribute("aria-selected")==="true"), n=cur+(dx<0?1:-1);
+    if(n>=0&&n<TABS.length) show(TABS[n][0]);
+  },{passive:true});
+})();
+
+/* ---------- 挖空模式 ---------- */
+$("blankToggle").onchange=e=>{ document.body.classList.toggle("blank",e.target.checked); document.querySelectorAll(".key.show").forEach(k=>k.classList.remove("show")); };
+document.addEventListener("click",e=>{ const k=e.target.closest(".key"); if(k&&document.body.classList.contains("blank")) k.classList.toggle("show"); });
+
+/* ---------- 總覽流程 ---------- */
+fill("flowBox",FLOW.map((f,i)=>`<div class="fl"><span class="no">${i+1}</span>${f[1]}<b>${f[0]}</b><small>${f[2]}</small></div>`).join(""));
+
+/* ---------- 步驟播放器 ---------- */
+let sIdx=0, paused=false; const seen=new Set([0]);
+function renderStep(){
+  const s=STEPS[sIdx];
+  $("chips").innerHTML=STEPS.map((x,i)=>`<button class="sc${seen.has(i)?" seen":""}" data-i="${i}" ${i===sIdx?'aria-current="step"':""} aria-label="第 ${i+1} 步 ${x.t}">${i+1}</button>`).join("");
+  $("chips").querySelectorAll(".sc").forEach(b=>b.onclick=()=>{ sIdx=+b.dataset.i; seen.add(sIdx); renderStep(); });
+  $("sBadge").textContent=`步驟 ${sIdx+1}／${STEPS.length}`;
+  $("sArt").innerHTML=s.art;
+  $("sTitle").textContent=`${sIdx+1}. ${s.t}`;
+  $("sList").innerHTML=s.l.map(x=>`<li>${x}</li>`).join("");
+  $("sTip").innerHTML=`<b>小提醒：</b>${s.tip}`;
+  $("sPrev").disabled=sIdx===0;
+  $("sNext").textContent=sIdx===STEPS.length-1?"分組試驗 →":"下一步 →";
+}
+$("sPrev").onclick=()=>{ if(sIdx>0){sIdx--; renderStep();} };
+$("sNext").onclick=()=>{ if(sIdx===STEPS.length-1){ show("t3"); return; } sIdx++; seen.add(sIdx); renderStep(); };
+$("sPause").onclick=()=>{ paused=!paused; $("stage").classList.toggle("paused",paused); $("sPause").textContent=paused?"▶ 播放動畫":"⏸ 暫停動畫"; };
+if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches){ paused=true; $("stage").classList.add("paused"); document.body.classList.add("paused"); $("sPause").textContent="▶ 播放動畫"; }
+renderStep();
+
+/* ---------- 排序 ---------- */
+let oNext=0;
+function renderOrder(){ $("oSlots").innerHTML=STEPS.map((s,i)=>`<div class="oslot${i<oNext?" fill":""}"><span class="n">${i+1}</span>${i<oNext?s.t:""}</div>`).join(""); }
+function resetOrder(){
+  oNext=0; renderOrder(); $("oFb").textContent=""; $("oFb").className="ofb";
+  $("oPool").innerHTML=shuffle(STEPS.map((s,i)=>i)).map(i=>`<button class="ob" data-i="${i}">${STEPS[i].t}</button>`).join("");
+  $("oPool").querySelectorAll(".ob").forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i;
+    if(i===oNext){ b.remove(); oNext++; renderOrder(); $("oFb").className="ofb ok"; $("oFb").textContent=oNext===STEPS.length?"全部排對了！可以開始動手做囉 🎉":"對！"; }
+    else { b.classList.remove("bad"); void b.offsetWidth; b.classList.add("bad"); $("oFb").className="ofb bad"; $("oFb").textContent=`「${STEPS[i].t}」不是第 ${oNext+1} 步，再想想。`; }
+  });
+}
+$("oReset").onclick=resetOrder; resetOrder();
+
+/* ---------- 判斷卡 ---------- */
+function renderReady(){
+  $("ready").innerHTML=READY.map((r,i)=>`<div class="rd" data-i="${i}"><span class="q">${r[0]}</span><div class="bs">${(r[3]||READY_OPTS).map((o,k)=>`<button data-v="${k}">${o}</button>`).join("")}</div><span class="a" aria-live="polite"></span></div>`).join("");
+  $("ready").querySelectorAll(".rd").forEach(d=>d.querySelectorAll("button").forEach(b=>b.onclick=()=>{
+    const r=READY[+d.dataset.i], opts=r[3]||READY_OPTS, ok=+b.dataset.v===r[1];
+    d.className="rd "+(ok?"ok":"bad"); d.querySelector(".a").innerHTML=`<b>${ok?"答對！":"再想想："}</b>答案是「${opts[r[1]]}」。${r[2]}`;
+  }));
+}
+renderReady();
+const rr=$("readyReset"); if(rr) rr.onclick=renderReady;
+
+/* ---------- 診斷卡 ---------- */
+$("cases").innerHTML=CASES.map((c,i)=>`<button class="case" data-i="${i}" aria-expanded="false"><span class="q">${c[0]}</span><span class="a">點一下看原因與解法</span></button>`).join("");
+$("cases").querySelectorAll(".case").forEach(b=>b.onclick=()=>{ const c=CASES[+b.dataset.i]; const o=!b.classList.contains("open"); b.classList.toggle("open",o); b.setAttribute("aria-expanded",o); b.querySelector(".a").innerHTML=o?`<b>原因：</b>${c[1]}<br><b>解法：</b>${c[2]}`:"點一下看原因與解法"; });
+
+/* ---------- 小測驗 ---------- */
+function startQuiz(only){
+  const base = only ? only.map(k=>QS[k]) : QS;
+  quiz={retry:!!only,qs:base.map(q=>({...q,idx:QS.indexOf(q),opts:shuffle(q.o),ans:q.o[q.a]})),i:0,res:[],pick:[],done:false};
+  renderQuiz();
+}
+function dots(){ return quiz.qs.map((_,k)=>`<button class="dot ${quiz.res[k]===true?"ok":quiz.res[k]===false?"bad":""}${k===quiz.i&&!quiz.done?" now":""}" data-go="${k}" aria-label="第 ${k+1} 題"></button>`).join(""); }
+function saveBest(n,total){ try{ const s=JSON.parse(localStorage.getItem(KEY)||"{}"); if(!s.best||n>s.best)s.best=n; s.total=total; localStorage.setItem(KEY,JSON.stringify(s)); return s; }catch(e){ return null; } }
+function goQ(k){ quiz.i=k; quiz.done=false; renderQuiz(); window.scrollTo({top:0}); }
+function bindCommon(P){
+  P.querySelectorAll(".dot[data-go]").forEach(d=>d.onclick=()=>goQ(+d.dataset.go));
+  const r=P.querySelector("#qReset");
+  if(r) r.onclick=()=>{ if(r.dataset.arm){ startQuiz(); window.scrollTo({top:0}); } else { r.dataset.arm="1"; r.textContent="確定要從頭開始？再按一次"; r.classList.add("warn"); setTimeout(()=>{ if(r.isConnected){ delete r.dataset.arm; r.textContent="↺ 重新開始"; r.classList.remove("warn"); } },3000); } };
+}
+function renderQuiz(){
+  const P=$("p5"), {qs,i,res}=quiz;
+  const answered=res.filter(x=>x!==undefined).length;
+  if(quiz.done){
+    const n=res.filter(Boolean).length, tot=qs.length, skip=tot-answered, s=quiz.retry?null:saveBest(n,tot), r=n/tot;
+    const msg=r===1?(quiz.retry?"錯題全部訂正完成！":`全對！你已經是${MASTER}達人了！`):r>=.8?"很棒！把錯的題目再訂正一次。":r>=.6?"不錯喔！回到基本知識再看一看。":"別灰心，先回基本知識複習，再來挑戰！";
+    const wr=qs.map((q,k)=>({q,k})).filter(x=>res[x.k]!==true);
+    P.innerHTML=`<div class="card" style="text-align:center"><div class="qtype">${quiz.retry?"錯題再練結果":"測驗結果"}</div><div class="score">${n} / ${tot}</div><p>${msg}${skip?`<br><span style="color:var(--bad)">還有 ${skip} 題沒作答</span>`:""}</p>${s&&s.best?`<p style="color:var(--muted);font-size:15px">這台裝置的最佳紀錄：${s.best} / ${s.total}</p>`:""}<div class="progress" style="justify-content:center">${dots()}</div><p class="ex" style="margin:4px 0 0">點上面的小方塊可以回到那一題。</p>
+      ${wr.length?`<div class="review"><b>訂正一下：</b>${wr.map(({q,k})=>`<div class="item"><b>第 ${k+1} 題</b>${res[k]===undefined?"（未作答）":""}　${q.q}<br><b>正確答案：${q.ans}</b><br><span style="color:var(--muted)">${q.why}</span></div>`).join("")}</div>`:""}
+      <div class="actions" style="justify-content:center">${wr.length?`<button class="btn" id="retry">錯題再練（${wr.length} 題）</button>`:""}<button class="btn ghost" id="qReset">↺ 重新開始</button><button class="btn ghost" id="back1">回去複習</button></div></div>`;
+    $("back1").onclick=()=>show("t1");
+    if($("retry")) $("retry").onclick=()=>startQuiz(wr.map(x=>x.q.idx));
+    bindCommon(P); return;
+  }
+  const q=qs[i], picked=quiz.pick[i], locked=res[i]!==undefined, last=i===qs.length-1;
+  const fb = locked ? `<div class="feedback ${res[i]?"ok":"bad"}"><b>${res[i]?"答對了！":"再想想，正確答案是「"+q.ans+"」"}</b><span class="why">${q.why}</span></div>` : "";
+  P.innerHTML=`<div class="card"><div class="qhead"><span class="qtype">${quiz.retry?"錯題再練・":""}第 ${i+1} 題／共 ${qs.length} 題</span><button class="btn ghost sm" id="qReset">↺ 重新開始</button></div>
+    <div class="progress" style="margin-top:8px">${dots()}</div>
+    <div class="qtext">${q.q}</div>
+    <div class="opts">${q.opts.map((o,k)=>{ let c=""; if(locked){ if(o===q.ans)c=" right"; else if(k===picked)c=" wrong"; } return `<button class="opt${c}" data-k="${k}" ${locked?"disabled":""}><span class="k">${"ABCD"[k]}</span><span>${o}</span></button>`; }).join("")}</div>
+    <div id="fb" aria-live="polite">${fb}</div>
+    <div class="qnav"><button class="btn ghost" id="qPrev" ${i===0?"disabled":""}>← 上一題</button><span class="qcount">已作答 ${answered} / ${qs.length}</span><button class="btn" id="qNext">${last?"看結果":"下一題 →"}</button></div></div>`;
+  P.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    if(quiz.res[i]!==undefined) return;
+    const k=+b.dataset.k; quiz.pick[i]=k; quiz.res[i]=q.opts[k]===q.ans; renderQuiz();
+    const n=$("qNext"); if(n) n.focus({preventScroll:true});
+  });
+  $("qPrev").onclick=()=>{ if(i>0) goQ(i-1); };
+  $("qNext").onclick=()=>{ if(last){ quiz.done=true; renderQuiz(); window.scrollTo({top:0}); } else goQ(i+1); };
+  bindCommon(P);
+}
+
+/* ---------- QR ---------- */
+const openQR=()=>{$("overlay").hidden=false;};
+$("qrBtn").onclick=openQR; $("qrBtn").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openQR();}};
+$("overlay").onclick=()=>{$("overlay").hidden=true;};
+
+if(location.hash==="#quiz") show("t5");
+})();
+
+</script>
+</body>
+</html>
