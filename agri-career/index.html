@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>園藝職人接案中！｜職業試探 園藝與休閒學程</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{
+  --bg:#f4f8ef; --card:#ffffff; --ink:#22311f; --muted:#61715c;
+  --green:#3f7d3a; --green-d:#2c5b29; --green-l:#e3f0dc;
+  --yellow:#ffe27a; --orange:#f29d4b; --red:#d9534f; --blue:#3b82c4; --purple:#8a63c9;
+  --radius:18px; --shadow:0 4px 14px rgba(40,70,30,.10);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",system-ui,sans-serif;font-size:18px;line-height:1.6}
+button{font-family:inherit;font-size:inherit;cursor:pointer}
+a{color:var(--green-d)}
+.wrap{max-width:1180px;margin:0 auto;padding:16px 18px 60px}
+
+/* header */
+header{display:flex;gap:18px;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#3f7d3a,#6aa84f);color:#fff;border-radius:var(--radius);padding:18px 24px;box-shadow:var(--shadow)}
+header h1{margin:0;font-size:2rem;font-weight:900;letter-spacing:.05em}
+header .sub{opacity:.92;font-size:1rem}
+.qrbox{background:#fff;color:var(--ink);border-radius:14px;padding:8px 10px;text-align:center;font-size:.8rem;font-weight:700;flex-shrink:0}
+#qr{width:96px;height:96px;margin:0 auto 2px}
+#qr img,#qr canvas{width:96px!important;height:96px!important}
+
+/* tabs */
+nav.tabs{display:flex;gap:8px;margin:16px 0;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+nav.tabs button{flex-shrink:0;border:none;background:#fff;color:var(--green-d);padding:12px 18px;border-radius:999px;font-weight:700;box-shadow:var(--shadow);white-space:nowrap}
+nav.tabs button.on{background:var(--green);color:#fff}
+section.page{display:none;animation:fade .25s}
+section.page.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h2{font-size:1.6rem;margin:6px 0 4px;color:var(--green-d)}
+.lead{color:var(--muted);margin:0 0 16px}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.btn{border:none;border-radius:14px;padding:12px 20px;font-weight:700;background:var(--green);color:#fff;box-shadow:var(--shadow);min-height:52px}
+.btn.alt{background:#fff;color:var(--green-d);border:2px solid var(--green)}
+.btn.warn{background:var(--orange)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.tag{display:inline-block;font-size:.8rem;font-weight:700;padding:2px 10px;border-radius:999px;background:var(--green-l);color:var(--green-d)}
+.key{background:var(--yellow);padding:0 4px;border-radius:4px;font-weight:700;transition:.2s}
+body.blank .key{color:transparent;background:#f1d35e;cursor:pointer}
+body.blank .key.show{color:inherit;background:var(--yellow)}
+
+/* flow / timer */
+.timerBox{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;margin-bottom:16px}
+.clock{font-size:4.4rem;font-weight:900;font-variant-numeric:tabular-nums;color:var(--green-d);line-height:1}
+.clock.low{color:var(--red);animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.5}}
+.stageName{font-size:1.3rem;font-weight:700}
+.bar{height:14px;background:var(--green-l);border-radius:999px;overflow:hidden;margin-top:8px}
+.bar>i{display:block;height:100%;background:var(--green);width:0;transition:width .5s linear}
+.stages{display:grid;gap:12px}
+.stage{display:grid;grid-template-columns:110px 1fr auto;gap:14px;align-items:center;background:#fff;border-radius:16px;padding:14px 16px;box-shadow:var(--shadow);border-left:8px solid var(--green-l)}
+.stage.now{border-left-color:var(--orange);background:#fff8ef}
+.stage.done{opacity:.55}
+.stage .t{font-weight:900;color:var(--green-d);font-size:1.05rem}
+.stage h3{margin:0;font-size:1.15rem}
+.stage p{margin:2px 0 0;color:var(--muted);font-size:.95rem}
+.goal{display:flex;gap:12px;align-items:flex-start;margin:8px 0}
+.goal b{background:var(--green);color:#fff;border-radius:50%;width:30px;height:30px;display:grid;place-items:center;flex-shrink:0}
+
+/* jobs */
+.job{position:relative;overflow:hidden}
+.job svg{width:74px;height:74px;float:right;margin:0 0 6px 10px}
+.job h3{margin:0 0 6px;font-size:1.3rem}
+.job ul{margin:6px 0 0;padding-left:1.2em}
+.job li{margin:3px 0}
+.job .lbl{font-weight:700;color:var(--green-d);font-size:.9rem}
+
+/* flip cards */
+.flip{perspective:900px;min-height:180px;cursor:pointer}
+.flip .in{position:relative;width:100%;height:100%;min-height:180px;transition:transform .5s;transform-style:preserve-3d}
+.flip.on .in{transform:rotateY(180deg)}
+.flip .f,.flip .b{position:absolute;inset:0;border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;backface-visibility:hidden}
+.flip .f{background:#fff}
+.flip .b{background:var(--green);color:#fff;transform:rotateY(180deg)}
+.flip .emo{font-size:3rem;line-height:1.1}
+.flip .q{font-weight:700;font-size:1.15rem;margin-top:8px}
+.flip .who{font-size:1.5rem;font-weight:900}
+.flip .ind{opacity:.9;margin-top:4px}
+
+/* videos */
+.vid h3{margin:6px 0;font-size:1.12rem}
+.vid p{margin:4px 0 12px;color:var(--muted);font-size:.95rem}
+.vid .play{display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:#e9473b;color:#fff;padding:10px 18px;border-radius:12px;font-weight:700}
+.vid.rec{outline:3px solid var(--orange)}
+.ask3{background:#fffbe8;border:2px dashed #e6c44a}
+.ask3 ol{margin:6px 0 0;padding-left:1.3em;font-size:1.1rem;font-weight:700}
+
+/* cases */
+.caseGrid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.case{min-height:150px;border-radius:var(--radius);border:none;box-shadow:var(--shadow);background:repeating-linear-gradient(45deg,#4f8f47,#4f8f47 12px,#5b9c52 12px,#5b9c52 24px);color:#fff;font-weight:900;font-size:2.4rem;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:transform .2s}
+.case small{font-size:.9rem;font-weight:700;opacity:.9}
+.case:hover{transform:translateY(-3px)}
+.case.used{opacity:.4}
+.caseShow{display:none;margin-top:18px}
+.caseShow.on{display:block;animation:fade .3s}
+.client{display:flex;gap:16px;align-items:center}
+.client .emo{font-size:3.6rem}
+.client .say{font-size:1.4rem;font-weight:700;background:var(--green-l);border-radius:16px;padding:12px 16px;position:relative}
+.steps3{display:grid;gap:10px;margin-top:14px}
+.steps3 div{background:#fff;border-radius:14px;padding:12px 14px;box-shadow:var(--shadow);font-weight:700;font-size:1.1rem}
+.steps3 b{color:var(--orange);margin-right:6px}
+.hint{display:none;margin-top:12px;background:#fff8ef;border-left:6px solid var(--orange);border-radius:12px;padding:10px 14px}
+.hint.on{display:block}
+
+/* me */
+.stmt{display:flex;gap:12px;align-items:center;background:#fff;border-radius:14px;padding:14px 16px;box-shadow:var(--shadow);border:3px solid transparent;cursor:pointer;user-select:none;text-align:left;width:100%;font-weight:500}
+.stmt .box{width:32px;height:32px;border-radius:9px;border:3px solid var(--green);flex-shrink:0;display:grid;place-items:center;color:#fff;font-weight:900}
+.stmt.on{border-color:var(--green);background:#f1f8ec}
+.stmt.on .box{background:var(--green)}
+.typeRes{display:grid;gap:10px;margin-top:10px}
+.tr{display:grid;grid-template-columns:150px 1fr 40px;gap:10px;align-items:center;font-weight:700}
+.tr .bar{margin:0;height:20px}
+.tr.top{color:var(--orange)}
+.vote{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.vrow{display:flex;align-items:center;gap:10px;background:#fff;border-radius:14px;padding:10px 12px;box-shadow:var(--shadow)}
+.vrow .n{flex:1;font-weight:700}
+.vrow .c{font-size:1.6rem;font-weight:900;color:var(--green-d);min-width:36px;text-align:center}
+.vrow button{width:44px;height:44px;border-radius:12px;border:none;background:var(--green-l);color:var(--green-d);font-size:1.4rem;font-weight:900}
+.dots{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
+.dots i{width:14px;height:14px;border-radius:50%;background:var(--orange);display:block}
+
+/* quiz */
+.qprog{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.qprog button{width:42px;height:42px;border-radius:10px;border:2px solid var(--green);background:#fff;font-weight:700;color:var(--green-d)}
+.qprog button.cur{background:var(--green);color:#fff}
+.qprog button.ok{background:#cfe9c6;border-color:#5aa04d}
+.qprog button.ng{background:#f8d3d1;border-color:var(--red)}
+.qtext{font-size:1.35rem;font-weight:700;margin:6px 0 14px}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;border:3px solid #dfe8d8;background:#fff;border-radius:14px;padding:14px 16px;font-weight:500;min-height:56px}
+.opt.ok{border-color:#5aa04d;background:#e5f4e0}
+.opt.ng{border-color:var(--red);background:#fbe6e5}
+.opt:disabled{cursor:default;color:var(--ink)}
+.expl{margin-top:12px;padding:12px 14px;border-radius:12px;background:#f6f9f2;display:none}
+.expl.on{display:block}
+.qnav{display:flex;justify-content:space-between;gap:10px;margin-top:16px;flex-wrap:wrap}
+.result{text-align:center}
+.score{font-size:4rem;font-weight:900;color:var(--green-d)}
+.review{text-align:left;margin-top:14px;display:grid;gap:10px}
+.review div{background:#fff;border-radius:12px;padding:10px 14px;box-shadow:var(--shadow)}
+.foot{margin-top:30px;color:var(--muted);font-size:.85rem;text-align:center}
+
+@media (max-width:640px){
+  html,body{font-size:16px}
+  header{flex-direction:column;align-items:flex-start}
+  header h1{font-size:1.5rem}
+  .qrbox{align-self:flex-end;margin-top:-70px}
+  #qr,#qr img,#qr canvas{width:72px!important;height:72px!important}
+  .stage{grid-template-columns:1fr;gap:4px}
+  .clock{font-size:3.2rem}
+  .tr{grid-template-columns:110px 1fr 30px}
+}
+@media (min-width:1400px){ html,body{font-size:20px} .wrap{max-width:1400px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <div class="sub">職業試探第二節｜園藝與休閒學程</div>
+    <h1>🌿 園藝職人接案中！</h1>
+    <div class="sub">從真實情境看見園藝與休閒的各種職業</div>
+  </div>
+  <div class="qrbox"><div id="qr"></div>掃我測驗</div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button data-p="flow">⏱ 課程流程</button>
+  <button data-p="jobs">👩‍🌾 認識職人</button>
+  <button data-p="warmup">❓ 這是誰做的</button>
+  <button data-p="videos">▶ 職人影片</button>
+  <button data-p="cases">🃏 接案大挑戰</button>
+  <button data-p="me">🧭 我是哪種園藝人</button>
+  <button data-p="quiz">✏️ 小測驗</button>
+</nav>
+
+<!-- 課程流程 -->
+<section class="page" id="flow">
+  <h2>今天這節課</h2>
+  <p class="lead">點一個階段就開始倒數，讓全班知道還剩多少時間。</p>
+  <div class="card timerBox">
+    <div style="flex:1;min-width:240px">
+      <div class="stageName" id="tName">還沒開始</div>
+      <div class="bar"><i id="tBar"></i></div>
+    </div>
+    <div class="clock" id="tClock">00:00</div>
+    <div class="row">
+      <button class="btn" id="tPause">暫停</button>
+      <button class="btn alt" id="tReset">重來</button>
+    </div>
+  </div>
+  <div class="stages" id="stages"></div>
+  <div class="card" style="margin-top:18px">
+    <h3 style="margin:0 0 6px">🎯 學習目標</h3>
+    <div class="goal"><b>1</b><div>能說出至少 <span class="key">3 種</span>園藝與休閒相關職業，以及他們在做什麼。</div></div>
+    <div class="goal"><b>2</b><div>能在情境中判斷「這個案子需要<span class="key">哪些職人</span>」，知道園藝工作常是<span class="key">團隊合作</span>。</div></div>
+    <div class="goal"><b>3</b><div>能檢視自己的<span class="key">興趣與能力</span>，找到最想試試看的職業方向。</div></div>
+  </div>
+</section>
+
+<!-- 認識職人 -->
+<section class="page" id="jobs">
+  <h2>認識園藝職人</h2>
+  <div class="row" style="justify-content:space-between;margin-bottom:12px">
+    <p class="lead" style="margin:0">上節課認識了產業，今天來看看「人」。</p>
+    <button class="btn alt" id="blankBtn">🙈 挖空模式</button>
+  </div>
+  <div class="grid g2" id="jobGrid"></div>
+  <div class="card" style="margin-top:16px">
+    <h3 style="margin:0 0 6px">🎓 高職之後可以怎麼走？</h3>
+    <div class="grid g3">
+      <div><span class="tag">考證照</span><br>園藝、<span class="key">造園景觀</span>、花藝等<span class="key">技術士證照</span></div>
+      <div><span class="tag">升學</span><br>科大<span class="key">園藝</span>、景觀、休閒相關系所</div>
+      <div><span class="tag">就業</span><br>花店、景觀公司、苗圃、休閒農場、<span class="key">自己創業</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 暖身 -->
+<section class="page" id="warmup">
+  <h2>這是誰做的？</h2>
+  <p class="lead">先猜猜看，再點卡片翻面。答對的同學拿貼紙！</p>
+  <div class="grid g3" id="warmGrid"></div>
+  <div class="card" style="margin-top:16px;font-size:1.15rem">💬 <b>轉場：</b>上節課我們認識了產業，今天來看看「人」——這些工作到底是怎麼做的？</div>
+</section>
+
+<!-- 影片 -->
+<section class="page" id="videos">
+  <h2>職人登場</h2>
+  <p class="lead">挑 3 支，每支播 3–4 分鐘的精華片段。<b style="color:var(--orange)">橘框</b>是推薦組合。</p>
+  <div class="card ask3" style="margin-bottom:16px">
+    <div style="font-weight:900;font-size:1.2rem">📝 邊看邊想「職人三問」</div>
+    <ol>
+      <li>他每天在做什麼？</li>
+      <li>他需要什麼能力？</li>
+      <li>這份工作最酷／最辛苦的地方是？</li>
+    </ol>
+  </div>
+  <div class="grid g3" id="vidGrid"></div>
+  <p class="foot">影片會在 YouTube 開啟。上課前請先預看，確認要播的片段起訖時間。</p>
+</section>
+
+<!-- 接案 -->
+<section class="page" id="cases">
+  <h2>園藝職人接案大挑戰</h2>
+  <p class="lead">每組是一家園藝公司。點一張卡（或按「隨機抽卡」）看看客戶要什麼！</p>
+  <div class="row" style="margin-bottom:14px">
+    <button class="btn" id="drawBtn">🎲 隨機抽卡</button>
+    <button class="btn alt" id="caseTimer">⏱ 討論 8 分鐘</button>
+    <button class="btn alt" id="caseReset">↺ 重新洗牌</button>
+  </div>
+  <div class="caseGrid" id="caseGrid"></div>
+  <div class="card caseShow" id="caseShow">
+    <div class="row" style="justify-content:space-between">
+      <span class="tag" id="csTag"></span>
+      <span class="clock" id="caseClock" style="font-size:2.4rem;display:none">08:00</span>
+    </div>
+    <div class="client" style="margin-top:10px">
+      <div class="emo" id="csEmo"></div>
+      <div>
+        <div style="font-weight:700;color:var(--muted)" id="csWho"></div>
+        <div class="say" id="csSay"></div>
+      </div>
+    </div>
+    <div class="steps3">
+      <div><b>①</b>這個案子需要哪些職人？（至少 2 種）</div>
+      <div><b>②</b>他們各自要做什麼？</div>
+      <div><b>③</b>如果你是員工，想負責哪一部分？為什麼？</div>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <button class="btn warn" id="hintBtn">👀 老師參考</button>
+    </div>
+    <div class="hint" id="csHint"></div>
+  </div>
+  <div class="card" style="margin-top:16px">💡 <b>老師回饋：</b>一個案子常常需要好幾種職人合作。把各組提到的能力（美感、栽培、溝通、企劃）寫在黑板上，下一段會用到。</div>
+</section>
+
+<!-- 我是哪種 -->
+<section class="page" id="me">
+  <h2>我是哪種園藝人？</h2>
+  <p class="lead">勾選符合你的句子，看看你最像哪一型。</p>
+  <div class="grid g2" id="stmtGrid"></div>
+  <div class="row" style="margin-top:14px">
+    <button class="btn" id="meBtn">看結果</button>
+    <button class="btn alt" id="meReset">重新勾選</button>
+  </div>
+  <div class="card" id="meRes" style="display:none;margin-top:14px"></div>
+
+  <h2 style="margin-top:30px">🗳 全班投票：我最想試試看的職業</h2>
+  <p class="lead">老師用 ＋／－ 記錄黑板上的貼紙票數。</p>
+  <div class="vote" id="voteGrid"></div>
+  <div class="row" style="margin-top:10px"><button class="btn alt" id="voteReset">票數歸零</button></div>
+</section>
+
+<!-- 小測驗 -->
+<section class="page" id="quiz">
+  <h2>小測驗</h2>
+  <div class="card" id="quizBox"></div>
+</section>
+
+<p class="foot">職業試探｜園藝與休閒學程・第二節</p>
+</div>
+
+<script>
+/* ---------- 資料 ---------- */
+const STAGES=[
+  {t:"0–5 分",min:5,name:"暖身回顧",desc:"「這是誰做的？」快問快答",tab:"warmup"},
+  {t:"5–20 分",min:15,name:"職人登場",desc:"看 3 支職人短片，想想「職人三問」",tab:"videos"},
+  {t:"20–38 分",min:18,name:"接案大挑戰",desc:"分組抽情境卡、討論 8 分鐘、上台發表",tab:"cases"},
+  {t:"38–46 分",min:8,name:"我是哪種園藝人",desc:"興趣自評＋貼紙投票",tab:"me"},
+  {t:"46–50 分",min:4,name:"總結",desc:"證照與升學路徑、一句話回饋、掃 QR 測驗",tab:"jobs"}
+];
+const ICON={
+  grow:'<svg viewBox="0 0 80 80"><rect x="14" y="52" width="52" height="20" rx="4" fill="#b5784a"/><path d="M40 52V26" stroke="#3f7d3a" stroke-width="5" stroke-linecap="round"/><path d="M40 36c-14 0-20-10-20-18 10 0 20 6 20 18z" fill="#6aa84f"/><path d="M40 30c12 0 18-8 18-16-10 0-18 6-18 16z" fill="#8cc36a"/></svg>',
+  flower:'<svg viewBox="0 0 80 80"><path d="M40 44v28" stroke="#3f7d3a" stroke-width="5"/><g fill="#f28fb0"><circle cx="40" cy="22" r="10"/><circle cx="54" cy="32" r="10"/><circle cx="26" cy="32" r="10"/><circle cx="32" cy="46" r="10"/><circle cx="48" cy="46" r="10"/></g><circle cx="40" cy="36" r="8" fill="#ffd34d"/></svg>',
+  land:'<svg viewBox="0 0 80 80"><rect x="6" y="56" width="68" height="16" rx="4" fill="#8cc36a"/><circle cx="24" cy="34" r="14" fill="#3f7d3a"/><rect x="21" y="42" width="6" height="16" fill="#8b5a33"/><circle cx="56" cy="40" r="10" fill="#6aa84f"/><rect x="53" y="46" width="6" height="12" fill="#8b5a33"/><path d="M6 64h68" stroke="#cfe3c2" stroke-width="3" stroke-dasharray="6 5"/></svg>',
+  care:'<svg viewBox="0 0 80 80"><path d="M40 70S12 52 12 32c0-10 8-18 17-18 5 0 9 3 11 6 2-3 6-6 11-6 9 0 17 8 17 18 0 20-28 38-28 38z" fill="#f29d4b"/><path d="M40 56V36" stroke="#fff" stroke-width="4"/><path d="M40 42c-7 0-11-5-11-10 6 0 11 4 11 10zM40 40c6 0 10-4 10-9-6 0-10 4-10 9z" fill="#fff"/></svg>',
+  farm:'<svg viewBox="0 0 80 80"><path d="M10 40L40 16l30 24v32H10z" fill="#d9534f"/><rect x="30" y="48" width="20" height="24" fill="#fff"/><path d="M30 48l20 24M50 48L30 72" stroke="#d9534f" stroke-width="3"/><circle cx="62" cy="14" r="8" fill="#ffd34d"/></svg>',
+  jam:'<svg viewBox="0 0 80 80"><rect x="22" y="26" width="36" height="44" rx="6" fill="#e05a5a"/><rect x="20" y="16" width="40" height="12" rx="3" fill="#f2c94c"/><rect x="28" y="40" width="24" height="16" rx="3" fill="#fff"/><circle cx="40" cy="48" r="4" fill="#e05a5a"/></svg>',
+  doctor:'<svg viewBox="0 0 80 80"><rect x="34" y="40" width="12" height="32" fill="#8b5a33"/><circle cx="40" cy="30" r="22" fill="#3f7d3a"/><circle cx="56" cy="48" r="12" fill="#fff" stroke="#3b82c4" stroke-width="4"/><path d="M64 56l10 10" stroke="#3b82c4" stroke-width="5" stroke-linecap="round"/></svg>'
+};
+const JOBS=[
+  {n:"園藝栽培人員",i:"grow",d:["種植蔬菜、果樹、花卉","<span class='key'>整地作畦</span>、田間管理","在苗圃、溫室培育種苗"],s:"觀察力、<span class='key'>栽培技術</span>、耐心"},
+  {n:"花藝師",i:"flower",d:["做花束、桌花、婚禮佈置","挑選與<span class='key'>保鮮花材</span>","大型案子要搭鷹架做花牆"],s:"<span class='key'>美感配色</span>、手作、<span class='key'>體力耐力</span>"},
+  {n:"景觀設計師",i:"land",d:["畫景觀設計圖","考量<span class='key'>日照、排水</span>、植栽配置","從庭園到公園都有"],s:"<span class='key'>空間規劃</span>、懂植物、溝通"},
+  {n:"園藝治療師",i:"care",d:["用植物與園藝活動幫助人","對象如長輩、身心障礙者","設計刺激<span class='key'>五感</span>的活動"],s:"<span class='key'>陪伴溝通</span>、懂人也懂植物"},
+  {n:"休閒農場經營者",i:"farm",d:["設計採果、DIY、食農體驗","經營餐飲、住宿","用社群與網站<span class='key'>行銷</span>"],s:"<span class='key'>企劃</span>、服務、經營管理"},
+  {n:"園產品加工",i:"jam",d:["把蔬果做成果乾、果醬","香草做成手工皂、精油膏","包裝設計、讓產品<span class='key'>加值</span>"],s:"<span class='key'>採後處理</span>、衛生安全、創意"}
+];
+const WARM=[
+  {e:"💐",q:"婚禮會場整面的花牆",w:"花藝師",ind:"花卉產業"},
+  {e:"🌳",q:"公園裡的樹要種哪裡、種什麼",w:"景觀設計師",ind:"造園景觀"},
+  {e:"🍓",q:"週末全家去採草莓、做 DIY",w:"休閒農場經營者",ind:"休閒農業"},
+  {e:"🥭",q:"超市架上的芒果乾",w:"園產品加工",ind:"園產品處理與加工"},
+  {e:"👵",q:"長照中心的長輩們在種香草",w:"園藝治療師",ind:"園藝療育"},
+  {e:"🌱",q:"花市裡一盆盆健康的小苗",w:"園藝栽培人員",ind:"蔬菜・花卉・種苗"}
+];
+const VIDS=[
+  {job:"園藝工作者",t:"愛上植物的包羅萬象：園藝工作者｜百工的一天（104 工作世界）",n:"介紹園藝栽培、田間管理、景觀維護，最貼近學程內容。首推！",u:"https://www.youtube.com/watch?v=u-mc1jGt-6o",rec:true},
+  {job:"花藝師",t:"花藝師工作｜整面花牆佈置 沒想到花藝師還要不怕高（HV FLOWER）",n:"打破「花藝很優雅」的想像，看見體力與耐力。可搭配情境卡 B。",u:"https://www.youtube.com/watch?v=ZG4JnQT6vQ4",rec:true},
+  {job:"園藝治療師",t:"園藝治療師 連結人與植物的情感（張博然）",n:"新聞短片，案例具體。可搭配情境卡 C。",u:"https://www.youtube.com/watch?v=aJlwPFU6-s0",rec:true},
+  {job:"景觀設計師",t:"【職覺世代X】職場達人經驗談（台旌景觀設計 江莉琪）",n:"談景觀設計要考量日照、排水、植栽；園藝系有優勢。可搭配情境卡 A、E。",u:"https://www.youtube.com/watch?v=jkZiI8ZqpiA"},
+  {job:"休閒農場／青農",t:"返鄉青農創新經營 淡水農莊以 AI 打造生態棲地（中央社）",n:"青農用 Canva、ChatGPT 做行銷，學生容易有共鳴。可搭配情境卡 D、F。",u:"https://www.youtube.com/watch?v=FcZtORxMAFo"},
+  {job:"休閒農業／食農",t:"把農村變成迪士尼樂園 高學歷農夫為智慧農業鋪路（TVBS）",n:"食農教育＋智慧溫室。",u:"https://www.youtube.com/watch?v=NtZEnrP1Ol4"},
+  {job:"花藝師",t:"花藝師養成與如何成為一名花藝師（延平中學花藝職人講座）",n:"對中學生講職涯，適合挑片段。",u:"https://www.youtube.com/watch?v=_KXYqmo4ZGo"},
+  {job:"園藝治療師",t:"【居心誌】園藝治療師黃盛璘：園藝治療，懂植物更要懂人！",n:"台灣第一位美國認證園藝治療師。",u:"https://www.youtube.com/watch?v=y4UBR8KVnBU"}
+];
+const CASES=[
+  {k:"A",e:"☕",who:"咖啡廳老闆",say:"我的店很小，想讓客人一進來就覺得很療癒。",h:"室內植栽設計、景觀設計師。要考量光線、空間大小、植物好不好維護。"},
+  {k:"B",e:"💍",who:"一對新人",say:"下個月結婚，想要有一面很美的花牆拍照。",h:"花藝師、花卉生產者。要注意花材保鮮、體力與時間控管。"},
+  {k:"C",e:"🏥",who:"長照中心主任",say:"長輩們整天坐著很悶，想辦一個跟植物有關的活動。",h:"園藝治療師。選香草等五感植物，需要溝通與陪伴能力。"},
+  {k:"D",e:"🚜",who:"休閒農場主人",say:"平日都沒人來，想設計讓家庭週末想來玩的活動。",h:"休閒農場經營、食農教育解說員、行銷企劃。"},
+  {k:"E",e:"🏛",who:"市政府公園處",say:"新公園要種樹，希望夏天有涼、不要常常死掉。",h:"景觀設計師、造園施工、樹木醫生。要了解樹種、日照與排水。"},
+  {k:"F",e:"🍊",who:"果農阿伯",say:"今年水果大豐收，賣不完怎麼辦？",h:"園產品加工（果乾、果醬）、產品包裝、網路行銷。"}
+];
+const TYPES=[
+  {k:"g",n:"🌱 栽培研究型",j:"園藝栽培人員、種苗生產、植物組織培養、樹木醫生"},
+  {k:"a",n:"🎨 美感設計型",j:"花藝師、景觀設計師、室內植栽設計"},
+  {k:"c",n:"🤝 陪伴服務型",j:"園藝治療師、食農教育講師、農場解說員"},
+  {k:"b",n:"📈 企劃經營型",j:"休閒農場經營、花店經營、園藝電商"}
+];
+const STMTS=[
+  {t:"g",s:"我喜歡觀察植物怎麼長大"},{t:"a",s:"我喜歡配色、排版，把東西弄得好看"},
+  {t:"c",s:"我喜歡跟人聊天、聽別人說話"},{t:"b",s:"我常常想到新點子"},
+  {t:"g",s:"植物生病了，我會想知道為什麼"},{t:"a",s:"我喜歡布置房間或教室"},
+  {t:"c",s:"我喜歡帶活動、照顧別人"},{t:"b",s:"我對算成本、怎麼賺錢有興趣"},
+  {t:"g",s:"我不怕曬太陽、弄髒手"},{t:"a",s:"我喜歡畫畫或設計"},
+  {t:"c",s:"看到別人開心，我也會很開心"},{t:"b",s:"我喜歡拍照、經營社群"}
+];
+const VOTE=["園藝栽培人員","花藝師","景觀設計師","園藝治療師","休閒農場經營者","園產品加工","樹木醫生","園藝電商"];
+const QUIZ=[
+  {q:"咖啡廳老闆想用植物讓小小的店充滿療癒感，最適合找誰規劃？",a:"室內植栽／景觀設計師",o:["果樹栽培人員","園產品加工人員","植物組織培養人員"],e:"空間綠化要考量光線、空間與維護，是景觀與室內植栽設計的專業。"},
+  {q:"婚禮會場想要一整面花牆，主要由誰負責？",a:"花藝師",o:["樹木醫生","景觀施工人員","園藝治療師"],e:"花藝師負責花材挑選、保鮮與佈置，大型花牆還要搭鷹架、很考驗體力。"},
+  {q:"長照中心想讓長輩透過種植香草改善情緒、刺激記憶，可以找誰？",a:"園藝治療師",o:["花店店長","種苗生產者","園產品加工人員"],e:"園藝治療是用植物和園藝活動來幫助人的身心，常用於長照、失智、身心障礙等族群。"},
+  {q:"果農今年大豐收，水果賣不完。下列哪個做法屬於「園產品加工」？",a:"把水果做成果乾、果醬",o:["把果樹砍掉重種","把水果全部丟掉","改種觀葉植物"],e:"採後處理與加工可以讓產品保存更久、價值更高，也就是「加值」。"},
+  {q:"休閒農場平日沒人來，想設計親子週末活動，最需要哪種能力？",a:"活動企劃與行銷",o:["鷹架攀爬","病蟲害診斷","畫施工圖"],e:"休閒農場經營者要會設計體驗活動、用社群和網站行銷，讓遊客想來。"},
+  {q:"景觀設計師畫設計圖時，下列哪一項是一定要考量的？",a:"日照、排水和植栽配置",o:["花材的保鮮時間","果醬的甜度","長輩的記憶力"],e:"景觀設計要讓植物活得好、空間好用，日照、排水、植栽配置都是關鍵。"},
+  {q:"園藝治療強調「五感刺激」，下列哪一個「不是」五感？",a:"第六感",o:["嗅覺（聞香草）","觸覺（摸葉子）","視覺（看花色）"],e:"五感是視覺、聽覺、嗅覺、味覺、觸覺。"},
+  {q:"高職園藝相關科別，下列哪一張「不是」常見的技術士證照？",a:"汽車修護",o:["園藝","造園景觀","花藝"],e:"園藝、造園景觀、花藝都是園藝相關學生常考的技術士證照。"},
+  {q:"關於園藝相關工作，下列敘述何者正確？",a:"一個案子常常需要多種職人合作",o:["園藝工作就只是種花種菜","園藝工作都不需要跟人溝通","園藝工作和科技完全無關"],e:"像公園綠化就需要景觀設計、施工、樹木醫生一起合作；現在青農也會用 AI 和網路行銷。"}
+];
+
+/* ---------- 工具 ---------- */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const LS="yilin-agri-career-v1";
+function load(){try{return JSON.parse(localStorage.getItem(LS))||{}}catch(e){return {}}}
+function save(o){try{localStorage.setItem(LS,JSON.stringify(Object.assign(load(),o)))}catch(e){}}
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const fmt=s=>String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");
+
+/* ---------- 分頁 ---------- */
+const PAGES=$$("nav.tabs button").map(b=>b.dataset.p);
+function show(p){
+  if(!PAGES.includes(p))p="flow";
+  $$("section.page").forEach(s=>s.classList.toggle("on",s.id===p));
+  $$("nav.tabs button").forEach(b=>{b.classList.toggle("on",b.dataset.p===p);if(b.dataset.p===p)b.scrollIntoView({block:"nearest",inline:"center"})});
+}
+$("#tabs").addEventListener("click",e=>{const b=e.target.closest("button");if(b){location.hash=b.dataset.p}});
+window.addEventListener("hashchange",()=>show(location.hash.slice(1)));
+// 手機左右滑換分頁
+let sx=null,sy=null;
+document.addEventListener("touchstart",e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+document.addEventListener("touchend",e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;
+  if(Math.abs(dx)>80&&Math.abs(dx)>Math.abs(dy)*1.8&&!e.target.closest(".tabs")){const i=PAGES.indexOf(location.hash.slice(1)||"flow");const n=i+(dx<0?1:-1);if(n>=0&&n<PAGES.length)location.hash=PAGES[n]}sx=null},{passive:true});
+
+/* ---------- QR ---------- */
+(function(){
+  const fallback="https://teacher-liujikan.github.io/yilin-work/agri-career/#quiz";
+  const url=/github\.io$/.test(location.hostname)?location.origin+location.pathname+"#quiz":fallback;
+  try{new QRCode($("#qr"),{text:url,width:192,height:192,correctLevel:QRCode.CorrectLevel.M})}catch(e){$("#qr").textContent="QR"}
+})();
+
+/* ---------- 課程流程計時 ---------- */
+let tLeft=0,tTotal=0,tRun=false,tIdx=-1,tInt=null;
+function renderStages(){
+  $("#stages").innerHTML=STAGES.map((s,i)=>`<div class="stage ${i===tIdx?"now":""} ${i<tIdx?"done":""}">
+    <div class="t">${s.t}</div><div><h3>${s.name}</h3><p>${s.desc}</p></div>
+    <div class="row"><button class="btn" data-go="${i}">▶ 開始</button><button class="btn alt" data-tab="${s.tab}">前往</button></div></div>`).join("");
+}
+function tick(){
+  if(!tRun)return;
+  tLeft--; if(tLeft<=0){tLeft=0;tRun=false;$("#tName").textContent=STAGES[tIdx].name+"｜時間到！";beep()}
+  drawT();
+}
+function drawT(){
+  $("#tClock").textContent=fmt(tLeft);
+  $("#tClock").classList.toggle("low",tLeft<=60&&tTotal>0&&tLeft>0);
+  $("#tBar").style.width=tTotal?((tTotal-tLeft)/tTotal*100)+"%":"0";
+  $("#tPause").textContent=tRun?"暫停":"繼續";
+}
+function beep(){try{const c=new (window.AudioContext||window.webkitAudioContext)();[0,.35,.7].forEach(d=>{const o=c.createOscillator(),g=c.createGain();o.frequency.value=880;o.connect(g);g.connect(c.destination);g.gain.setValueAtTime(.2,c.currentTime+d);o.start(c.currentTime+d);o.stop(c.currentTime+d+.2)})}catch(e){}}
+$("#stages").addEventListener("click",e=>{
+  const g=e.target.closest("[data-go]"),t=e.target.closest("[data-tab]");
+  if(g){tIdx=+g.dataset.go;tTotal=tLeft=STAGES[tIdx].min*60;tRun=true;$("#tName").textContent=STAGES[tIdx].t+"｜"+STAGES[tIdx].name;renderStages();drawT();
+    clearInterval(tInt);tInt=setInterval(tick,1000)}
+  if(t)location.hash=t.dataset.tab;
+});
+$("#tPause").onclick=()=>{if(tTotal&&tLeft>0){tRun=!tRun;drawT()}};
+$("#tReset").onclick=()=>{if(tIdx>=0){tLeft=tTotal;tRun=false;drawT()}};
+renderStages();drawT();
+
+/* ---------- 認識職人 ---------- */
+$("#jobGrid").innerHTML=JOBS.map(j=>`<div class="card job">${ICON[j.i]}<h3>${j.n}</h3>
+  <div class="lbl">在做什麼</div><ul>${j.d.map(x=>`<li>${x}</li>`).join("")}</ul>
+  <div class="lbl" style="margin-top:8px">需要的能力</div><div>${j.s}</div></div>`).join("");
+$("#blankBtn").onclick=()=>{document.body.classList.toggle("blank");$$(".key").forEach(k=>k.classList.remove("show"));
+  $("#blankBtn").textContent=document.body.classList.contains("blank")?"👀 顯示重點":"🙈 挖空模式"};
+document.addEventListener("click",e=>{const k=e.target.closest(".key");if(k&&document.body.classList.contains("blank"))k.classList.toggle("show")});
+
+/* ---------- 暖身 ---------- */
+$("#warmGrid").innerHTML=WARM.map(w=>`<div class="flip"><div class="in">
+  <div class="f"><div class="emo">${w.e}</div><div class="q">${w.q}</div><div style="color:var(--muted);font-size:.85rem;margin-top:6px">這是誰做的？點我翻面</div></div>
+  <div class="b"><div class="who">${w.w}</div><div class="ind">產業：${w.ind}</div></div></div></div>`).join("");
+$("#warmGrid").addEventListener("click",e=>{const f=e.target.closest(".flip");if(f)f.classList.toggle("on")});
+
+/* ---------- 影片 ---------- */
+$("#vidGrid").innerHTML=VIDS.map(v=>`<div class="card vid ${v.rec?"rec":""}"><span class="tag">${v.job}</span>${v.rec?' <span class="tag" style="background:#fde3c8;color:#a05a14">推薦</span>':""}
+  <h3>${v.t}</h3><p>${v.n}</p><a class="play" href="${v.u}" target="_blank" rel="noopener">▶ 到 YouTube 觀看</a></div>`).join("");
+
+/* ---------- 接案 ---------- */
+let used=new Set(),cTimer=null,cLeft=480;
+function renderCases(){
+  $("#caseGrid").innerHTML=CASES.map((c,i)=>`<button class="case ${used.has(i)?"used":""}" data-i="${i}">${c.k}<small>${used.has(i)?c.who:"客戶情境卡"}</small></button>`).join("");
+}
+function openCase(i){
+  const c=CASES[i];used.add(i);renderCases();
+  $("#csTag").textContent="情境卡 "+c.k;$("#csEmo").textContent=c.e;$("#csWho").textContent=c.who+"說：";$("#csSay").textContent="「"+c.say+"」";
+  $("#csHint").textContent="參考：" + c.h;$("#csHint").classList.remove("on");
+  $("#caseShow").classList.add("on");$("#caseShow").scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+$("#caseGrid").addEventListener("click",e=>{const b=e.target.closest(".case");if(b)openCase(+b.dataset.i)});
+$("#drawBtn").onclick=()=>{const left=CASES.map((_,i)=>i).filter(i=>!used.has(i));if(!left.length){$("#drawBtn").textContent="卡片抽完了！";return}
+  let n=0;const r=setInterval(()=>{$$(".case").forEach((b,i)=>b.style.outline=i===left[n%left.length]?"5px solid #ffd34d":"");n++;
+    if(n>12){clearInterval(r);$$(".case").forEach(b=>b.style.outline="");openCase(left[Math.floor(Math.random()*left.length)])}},90)};
+$("#caseReset").onclick=()=>{used.clear();renderCases();$("#caseShow").classList.remove("on");$("#drawBtn").textContent="🎲 隨機抽卡"};
+$("#hintBtn").onclick=()=>$("#csHint").classList.toggle("on");
+$("#caseTimer").onclick=()=>{
+  const ck=$("#caseClock");
+  if(cTimer){clearInterval(cTimer);cTimer=null;$("#caseTimer").textContent="⏱ 討論 8 分鐘";ck.style.display="none";return}
+  cLeft=480;ck.style.display="block";ck.textContent=fmt(cLeft);$("#caseShow").classList.add("on");$("#caseTimer").textContent="⏹ 停止計時";
+  cTimer=setInterval(()=>{cLeft--;ck.textContent=fmt(Math.max(cLeft,0));ck.classList.toggle("low",cLeft<=60&&cLeft>0);
+    if(cLeft<=0){clearInterval(cTimer);cTimer=null;ck.textContent="時間到！";beep();$("#caseTimer").textContent="⏱ 討論 8 分鐘"}},1000)};
+renderCases();
+
+/* ---------- 我是哪種 ---------- */
+let picked=new Set(load().picked||[]);
+function renderStmts(){
+  $("#stmtGrid").innerHTML=STMTS.map((s,i)=>`<button class="stmt ${picked.has(i)?"on":""}" data-i="${i}"><span class="box">${picked.has(i)?"✓":""}</span>${s.s}</button>`).join("");
+}
+$("#stmtGrid").addEventListener("click",e=>{const b=e.target.closest(".stmt");if(!b)return;const i=+b.dataset.i;picked.has(i)?picked.delete(i):picked.add(i);save({picked:[...picked]});renderStmts()});
+$("#meBtn").onclick=()=>{
+  const cnt={};TYPES.forEach(t=>cnt[t.k]=0);picked.forEach(i=>cnt[STMTS[i].t]++);
+  const max=Math.max(...Object.values(cnt));
+  if(max===0){$("#meRes").style.display="block";$("#meRes").innerHTML="先勾選幾句符合你的吧！";return}
+  const tops=TYPES.filter(t=>cnt[t.k]===max);
+  $("#meRes").style.display="block";
+  $("#meRes").innerHTML=`<div style="font-size:1.4rem;font-weight:900">你最像：<span style="color:var(--orange)">${tops.map(t=>t.n).join("＋")}</span></div>
+    <div style="margin:6px 0 10px">可以試試看：<b>${tops.map(t=>t.j).join("；")}</b></div>
+    <div class="typeRes">${TYPES.map(t=>`<div class="tr ${cnt[t.k]===max?"top":""}"><span>${t.n}</span><div class="bar"><i style="width:${cnt[t.k]/3*100}%;${cnt[t.k]===max?"background:var(--orange)":""}"></i></div><span>${cnt[t.k]}</span></div>`).join("")}</div>
+    <p style="color:var(--muted);margin:10px 0 0">沒有哪一型比較好！很多園藝人同時具備好幾種能力。</p>`;
+  $("#meRes").scrollIntoView({behavior:"smooth",block:"nearest"});
+};
+$("#meReset").onclick=()=>{picked.clear();save({picked:[]});renderStmts();$("#meRes").style.display="none"};
+renderStmts();
+
+let votes=load().votes||VOTE.map(()=>0);
+function renderVote(){
+  $("#voteGrid").innerHTML=VOTE.map((v,i)=>`<div class="vrow"><div class="n">${v}<div class="dots">${"<i></i>".repeat(Math.min(votes[i],30))}</div></div>
+    <button data-v="${i}" data-d="-1">－</button><span class="c">${votes[i]}</span><button data-v="${i}" data-d="1">＋</button></div>`).join("");
+}
+$("#voteGrid").addEventListener("click",e=>{const b=e.target.closest("[data-v]");if(!b)return;const i=+b.dataset.v;votes[i]=Math.max(0,votes[i]+(+b.dataset.d));save({votes});renderVote()});
+let vrConfirm=false;
+$("#voteReset").onclick=()=>{if(!vrConfirm){vrConfirm=true;$("#voteReset").textContent="再按一次確認歸零";setTimeout(()=>{vrConfirm=false;$("#voteReset").textContent="票數歸零"},3000);return}
+  votes=VOTE.map(()=>0);save({votes});renderVote();vrConfirm=false;$("#voteReset").textContent="票數歸零"};
+renderVote();
+
+/* ---------- 小測驗 ---------- */
+let Q=[],cur=0,ans=[],mode="all",rsConfirm=false;
+function buildQuiz(list){
+  Q=list.map(x=>{const opts=shuffle([x.a,...x.o]);return {q:x.q,opts,a:opts.indexOf(x.a),e:x.e,src:x}});
+  ans=Q.map(()=>null);cur=0;renderQ();
+}
+function renderQ(){
+  const box=$("#quizBox");
+  if(cur>=Q.length){return renderResult()}
+  const q=Q[cur],a=ans[cur];
+  box.innerHTML=`<div class="qprog">${Q.map((_,i)=>`<button data-j="${i}" class="${i===cur?"cur":""} ${ans[i]===null?"":(ans[i]===Q[i].a?"ok":"ng")}">${i+1}</button>`).join("")}</div>
+    <div class="tag">${mode==="wrong"?"錯題再練":"第 "+(cur+1)+" / "+Q.length+" 題"}</div>
+    <div class="qtext">${q.q}</div>
+    <div class="opts">${q.opts.map((o,i)=>`<button class="opt ${a===null?"":(i===q.a?"ok":(i===a?"ng":""))}" data-o="${i}" ${a===null?"":"disabled"}>${"ABCD"[i]}．${o}</button>`).join("")}</div>
+    <div class="expl ${a===null?"":"on"}">${a===null?"":(a===q.a?"✅ 答對了！":"❌ 正確答案是 "+"ABCD"[q.a]+"。")} ${q.e}</div>
+    <div class="qnav"><button class="btn alt" id="qPrev" ${cur===0?"disabled":""}>← 上一題</button>
+      <button class="btn alt" id="qRestart">${rsConfirm?"再按一次確認":"重新開始"}</button>
+      <button class="btn" id="qNext">${cur===Q.length-1?"看結果":"下一題 →"}</button></div>`;
+}
+$("#quizBox").addEventListener("click",e=>{
+  const o=e.target.closest("[data-o]"),j=e.target.closest("[data-j]");
+  if(o&&ans[cur]===null){ans[cur]=+o.dataset.o;renderQ();return}
+  if(j){cur=+j.dataset.j;renderQ();return}
+  if(e.target.id==="qPrev"&&cur>0){cur--;renderQ()}
+  if(e.target.id==="qNext"){cur++;renderQ()}
+  if(e.target.id==="qRestart"){if(!rsConfirm){rsConfirm=true;renderQ();setTimeout(()=>{if(rsConfirm){rsConfirm=false;if(cur<Q.length)renderQ()}},3000);return}
+    rsConfirm=false;mode="all";buildQuiz(shuffle(QUIZ))}
+  if(e.target.id==="qRetry"){mode="wrong";buildQuiz(Q.filter((q,i)=>ans[i]!==q.a).map(q=>q.src))}
+  if(e.target.id==="qAll"){mode="all";buildQuiz(shuffle(QUIZ))}
+});
+function renderResult(){
+  const ok=Q.filter((q,i)=>ans[i]===q.a).length, wrong=Q.filter((q,i)=>ans[i]!==q.a);
+  $("#quizBox").innerHTML=`<div class="result"><div>${mode==="wrong"?"錯題再練結果":"測驗結果"}</div>
+    <div class="score">${ok} / ${Q.length}</div>
+    <div style="font-size:1.2rem;font-weight:700">${ok===Q.length?"🎉 全對！你已經是園藝職人小達人了！":ok>=Q.length*0.7?"👍 很不錯！再看看錯的題目。":"💪 再試一次，你可以的！"}</div>
+    <div class="row" style="justify-content:center;margin-top:14px">
+      ${wrong.length?'<button class="btn warn" id="qRetry">錯題再練（'+wrong.length+' 題）</button>':""}
+      <button class="btn alt" id="qAll">全部重新開始</button></div>
+    ${wrong.length?`<div class="review"><b>📌 訂正</b>${wrong.map(q=>`<div><b>${q.q}</b><br>✅ ${q.opts[q.a]}<br><span style="color:var(--muted)">${q.e}</span></div>`).join("")}</div>`:""}</div>`;
+}
+buildQuiz(shuffle(QUIZ));
+
+show(location.hash.slice(1)||"flow");
+</script>
+</body>
+</html>
