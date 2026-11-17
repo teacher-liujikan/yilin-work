@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>園藝科教甄 複習本</title>
+<style>
+:root{--bg:#f6f3ea;--card:#fffdf7;--ink:#24302a;--mute:#6b766e;--line:#e3dccb;--green:#2f6b4f;--green2:#e3efe6;--sun:#fff1b8;--tag:#f4f1d9;--tag-edge:#c9c39a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;line-height:1.6;
+  padding:max(28px,env(safe-area-inset-top)) max(18px,env(safe-area-inset-right)) max(36px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left))}
+.wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.eyebrow{color:var(--green);font-weight:700;font-size:.8rem;letter-spacing:.14em}
+h1{margin:2px 0 0;font-size:1.8rem;letter-spacing:.03em}
+.sub{color:var(--mute);margin:4px 0 0}
+.grid{display:grid;gap:16px}
+@media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
+a.entry{display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 2px 12px rgba(60,50,20,.06);transition:transform .15s,box-shadow .15s;-webkit-tap-highlight-color:transparent}
+a.entry:active{transform:scale(.98)}
+@media(hover:hover){a.entry:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(60,50,20,.1)}}
+.ico{width:58px;height:58px;border-radius:16px;display:grid;place-items:center}
+.ico svg{width:32px;height:32px}
+.a .ico{background:var(--green2);color:var(--green)}
+.b .ico{background:var(--tag);color:#7a6a1e;border:1px solid var(--tag-edge)}
+.entry h2{margin:0;font-size:1.3rem}
+.entry p{margin:0;color:var(--mute);font-size:.95rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-size:.8rem;background:#f1ece0;border-radius:999px;padding:2px 10px}
+.go{margin-top:auto;align-self:flex-start;background:var(--green);color:#fff;font-weight:700;border-radius:12px;padding:10px 18px}
+.b .go{background:#8a7a2a}
+footer{color:var(--mute);font-size:.8rem;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">HORTICULTURE · 教甄複習</div>
+    <h1>園藝科教甄 複習本</h1>
+    <p class="sub">選一個入口開始複習</p>
+  </header>
+  <div class="grid">
+    <a class="entry a" href="review.html">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/><path d="M8 7h6M8 11h6"/></svg></div>
+      <h2>歷屆考題重點</h2>
+      <p>95–114 年教甄考題整理成 17 章筆記，可挖空自測。</p>
+      <div class="tags"><span>讀筆記</span><span>科別測驗</span><span>名詞閃卡</span></div>
+      <span class="go">進入 →</span>
+    </a>
+    <a class="entry b" href="terms.html">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V5a2 2 0 0 0-2-2H9L4 8v11a2 2 0 0 0 2 2h6"/><path d="M9 3v5H4"/><path d="M15 17l2 2 4-4"/></svg></div>
+      <h2>園藝術語單字測驗</h2>
+      <p>437 個園藝英文術語，看英文選中文，附發音與名詞解釋。</p>
+      <div class="tags"><span>每回 20 題</span><span>錯題本</span><span>題庫進度</span></div>
+      <span class="go">進入 →</span>
+    </a>
+  </div>
+  <footer>進度記錄存在這支手機的瀏覽器裡</footer>
+</div>
+</body>
+</html>

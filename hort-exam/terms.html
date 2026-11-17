@@ -1,0 +1,907 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>園藝術語單字測驗</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,500;1,6..72,600&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+/* Layout: single centered column; the question sits on a nursery plant-label card, answers stacked below. */
+:root{
+  --bg:#eef2ec; --surface:#fbfcf9; --ink:#1d2a22; --muted:#5d6b62; --line:#d3dcd2;
+  --leaf:#2f6b4a; --leaf-soft:#dcebe0; --tag:#f4f1d9; --tag-edge:#c9c39a;
+  --ok:#2f7d4f; --ok-soft:#dff1e5; --bad:#b4472e; --bad-soft:#f8e3dc;
+  --display:"Newsreader",Georgia,"Times New Roman",serif;
+  --body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141a16; --surface:#1c2420; --ink:#e4ebe5; --muted:#9aa89f; --line:#2f3a33;
+  --leaf:#7fc59a; --leaf-soft:#22382b; --tag:#2a2a1f; --tag-edge:#4d4a33;
+  --ok:#7fd29d; --ok-soft:#1f3a2a; --bad:#ef8a70; --bad-soft:#3d241d; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141a16; --surface:#1c2420; --ink:#e4ebe5; --muted:#9aa89f; --line:#2f3a33;
+  --leaf:#7fc59a; --leaf-soft:#22382b; --tag:#2a2a1f; --tag-edge:#4d4a33;
+  --ok:#7fd29d; --ok-soft:#1f3a2a; --bad:#ef8a70; --bad-soft:#3d241d; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+.wrap{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+h1{font-size:1.6rem;margin:0;text-wrap:balance;letter-spacing:.02em}
+.eyebrow{font-size:.78rem;letter-spacing:.12em;color:var(--leaf);font-weight:700;text-transform:uppercase}
+.muted{color:var(--muted)}
+button{font:inherit;cursor:pointer}
+button:focus-visible,.opt:focus-visible{outline:3px solid var(--leaf);outline-offset:2px}
+.btn{background:var(--leaf);color:var(--surface);border:0;border-radius:10px;padding:12px 22px;font-weight:700;font-size:1rem}
+.btn.ghost{background:transparent;color:var(--leaf);border:1.5px solid var(--leaf)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+/* start */
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.choice label{display:flex;flex-direction:column;gap:4px;border:1.5px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;background:var(--surface)}
+.choice input{position:absolute;opacity:0}
+.choice label:has(input:checked){border-color:var(--leaf);background:var(--leaf-soft)}
+.choice label:has(input:focus-visible){outline:3px solid var(--leaf);outline-offset:2px}
+.choice b{font-size:1rem}
+.choice span{font-size:.85rem;color:var(--muted)}
+.facts{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:.9rem;color:var(--muted)}
+.facts strong{color:var(--ink);font-variant-numeric:tabular-nums}
+/* quiz */
+.bar{display:flex;align-items:center;gap:12px;font-size:.9rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.track{flex:1;height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.fill{height:100%;background:var(--leaf);transition:width .25s}
+.label{position:relative;background:var(--tag);border:1px solid var(--tag-edge);border-radius:6px 6px 6px 6px;padding:22px 22px 22px 52px;min-height:130px;display:flex;flex-direction:column;justify-content:center;gap:4px}
+.label::before{content:"";position:absolute;left:20px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:var(--bg);border:1px solid var(--tag-edge)}
+.label .no{font-size:.75rem;letter-spacing:.1em;color:var(--muted);font-variant-numeric:tabular-nums}
+.term{font-family:var(--display);font-style:italic;font-weight:600;font-size:clamp(1.6rem,6vw,2.2rem);line-height:1.2;overflow-wrap:anywhere}
+.alt{font-family:var(--display);font-style:italic;font-size:.95rem;color:var(--muted);overflow-wrap:anywhere}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:center;gap:12px;text-align:left;width:100%;background:var(--surface);color:var(--ink);border:1.5px solid var(--line);border-radius:12px;padding:13px 16px;font-size:1.05rem;transition:border-color .15s,background .15s}
+.opt:hover:not(:disabled){border-color:var(--leaf)}
+.opt .k{flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:.8rem;color:var(--muted);font-weight:700}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.right .k{background:var(--ok);border-color:var(--ok);color:var(--surface)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt.wrong .k{background:var(--bad);border-color:var(--bad);color:var(--surface)}
+.opt.dim{opacity:.55}
+.explain{border-left:4px solid var(--leaf);display:flex;flex-direction:column;gap:6px}
+.explain .verdict{font-weight:700}
+.explain .verdict.ok{color:var(--ok)} .explain .verdict.bad{color:var(--bad)}
+.explain .zh{font-size:1.15rem;font-weight:700}
+.explain p{margin:0}
+.next-row{display:flex;justify-content:flex-end;gap:10px;align-items:center}
+.hint{font-size:.8rem;color:var(--muted)}
+/* result */
+.score{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.score .big{font-family:var(--display);font-size:3.4rem;font-weight:600;line-height:1;color:var(--leaf);font-variant-numeric:tabular-nums}
+.review{display:flex;flex-direction:column;gap:10px}
+.rv{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.rv.bad{border-left:4px solid var(--bad)} .rv.ok{border-left:4px solid var(--ok)}
+.rv .en{font-family:var(--display);font-style:italic;font-size:1.15rem}
+.rv .yours{font-size:.85rem;color:var(--bad)}
+.rv p{margin:0;font-size:.92rem;color:var(--muted)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tabs button{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 14px;font-size:.9rem}
+.tabs button[aria-pressed="true"]{border-color:var(--leaf);background:var(--leaf-soft);color:var(--leaf);font-weight:700}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+footer{font-size:.78rem;color:var(--muted);text-align:center}
+/* nav */
+.nav{display:flex;gap:4px;border-bottom:1px solid var(--line)}
+.nav button{background:none;border:0;border-bottom:3px solid transparent;color:var(--muted);padding:8px 12px;font-size:.95rem;font-weight:500;margin-bottom:-1px}
+.nav button[aria-current="page"]{color:var(--leaf);border-bottom-color:var(--leaf);font-weight:700}
+.badge{display:inline-block;min-width:20px;padding:0 6px;border-radius:999px;background:var(--bad-soft);color:var(--bad);font-size:.75rem;font-weight:700;line-height:20px;text-align:center;font-variant-numeric:tabular-nums}
+.badge:empty{display:none}
+.sync{font-size:.78rem;color:var(--muted)}
+/* progress */
+.stat-row{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:baseline}
+.stat-row .big{font-family:var(--display);font-size:2.6rem;font-weight:600;color:var(--leaf);line-height:1;font-variant-numeric:tabular-nums}
+.stat-row .s{font-size:.9rem;color:var(--muted)} .stat-row .s b{color:var(--ink);font-variant-numeric:tabular-nums}
+.ptrack{height:10px;background:var(--line);border-radius:5px;overflow:hidden}
+.ptrack div{height:100%;background:var(--leaf)}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.tools input{flex:1 1 200px;min-width:0;font:inherit;padding:8px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{position:sticky;top:0;background:var(--surface);font-size:.78rem;color:var(--muted);font-weight:700;letter-spacing:.04em;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.n,th.n{font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
+td.c,th.c{text-align:center;white-space:nowrap;font-variant-numeric:tabular-nums}
+td .e{font-family:var(--display);font-style:italic}
+.tick{color:var(--ok);font-weight:700;font-size:1.05rem}
+.tick.no{color:var(--line)}
+.miss{color:var(--bad);font-weight:700}
+.more{display:flex;justify-content:center}
+.confirm{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.9rem}
+.btn.small{padding:7px 14px;font-size:.88rem}
+.btn.danger{background:var(--bad)}
+.rv .meta{font-size:.8rem;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.rv .rm{margin-left:auto;background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:3px 10px;font-size:.8rem}
+
+/* ---- pronunciation buttons ---- */
+.say{flex:none;display:inline-grid;place-items:center;width:34px;height:34px;padding:0;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--leaf);vertical-align:middle;touch-action:manipulation}
+.say svg{width:18px;height:18px}
+.say.playing{background:var(--leaf);border-color:var(--leaf);color:var(--surface)}
+.label .say{width:52px;height:52px;border-color:var(--tag-edge);background:var(--surface)}
+.label .say svg{width:26px;height:26px}
+.no-speech .say,.no-speech .speech-only{display:none!important}
+.label{flex-direction:row;align-items:center;gap:14px}
+.label .txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.wline{display:flex;align-items:center;gap:8px;min-width:0}
+.wline>span{min-width:0;overflow-wrap:anywhere}
+.check{display:flex;align-items:center;gap:10px;font-size:.95rem;cursor:pointer;min-height:44px}
+.check input{width:20px;height:20px;accent-color:var(--leaf)}
+td .w{display:flex;align-items:center;gap:8px}
+td .w>div{min-width:0;display:flex;flex-direction:column}
+td .w .z{font-size:.88rem}
+
+/* ---- touch sizing ---- */
+button,.choice label{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.opt{min-height:58px}
+.tabs button{min-height:40px}
+.rv .rm{min-height:34px}
+.tools input{font-size:16px;min-height:44px}
+.opt:hover:not(:disabled){border-color:var(--line)}
+@media (hover:hover){.opt:hover:not(:disabled){border-color:var(--leaf)}}
+@media (hover:none){.hint{display:none}}
+
+/* ---- tablet: two-by-two answers ---- */
+@media (min-width:640px){.opts{display:grid;grid-template-columns:1fr 1fr}.opt{min-height:72px}}
+@media (min-width:900px){.wrap{max-width:720px}}
+
+/* ---- phone ---- */
+@media (max-width:700px){
+  body{padding-block:16px calc(84px + env(safe-area-inset-bottom,0px))}
+  body.inquiz{padding-bottom:24px}
+  body.inquiz header{display:none}
+  h1{font-size:1.3rem}
+  .nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);border-bottom:0;gap:0;
+    padding:0 max(8px,env(safe-area-inset-right,0px)) env(safe-area-inset-bottom,0px) max(8px,env(safe-area-inset-left,0px))}
+  .nav button{flex:1;margin:0;padding:12px 4px 14px;border-bottom:0;border-top:3px solid transparent;font-size:.92rem}
+  .nav button[aria-current="page"]{border-top-color:var(--leaf)}
+  .label{padding:18px 16px 18px 42px;min-height:120px}
+  .label::before{left:15px}
+  .next-row{position:sticky;bottom:0;z-index:5;padding-block:12px calc(8px + env(safe-area-inset-bottom,0px));background:linear-gradient(to bottom,transparent,var(--bg) 35%)}
+  .next-row .btn{flex:1;min-height:52px;font-size:1.05rem}
+  .actions .btn{flex:1 1 100%;min-height:48px}
+  .panel{padding:16px}
+  th,td{padding:8px 6px}
+  .stat-row .big{font-size:2.2rem}
+  .score .big{font-size:2.8rem}
+}
+@media (max-width:420px){.choice{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header>
+    <a href="index.html" style="display:inline-block;margin-bottom:8px;color:var(--leaf);font-weight:700;text-decoration:none;font-size:.95rem">← 回首頁</a>
+    <div class="eyebrow">Horticulture Terms · 437</div>
+    <h1>園藝術語單字測驗</h1>
+  </header>
+  <nav class="nav" id="nav">
+    <button data-v="start" aria-current="page">測驗</button>
+    <button data-v="prog">題庫進度</button>
+    <button data-v="book">錯題本 <span class="badge" id="bookN"></span></button>
+  </nav>
+
+  <!-- start -->
+  <section id="start" class="wrap" style="gap:16px">
+    <div class="panel" style="display:flex;flex-direction:column;gap:14px">
+      <div class="facts">
+        <span>題庫 <strong>437</strong> 詞</span>
+        <span>每回 <strong>20</strong> 題</span>
+        <span>題型：看英文，選中文</span>
+      </div>
+      <div style="font-weight:700">答題後要顯示名詞解釋嗎？</div>
+      <div class="choice" role="radiogroup">
+        <label><input type="radio" name="mode" id="mode-on" value="on" checked><b>顯示解釋</b><span>每題作答後看中英全名與名詞說明，按「下一題」繼續</span></label>
+        <label><input type="radio" name="mode" id="mode-off" value="off"><b>快速模式</b><span>關閉解釋，作答後自動跳下一題；解釋留到成績頁再看</span></label>
+      </div>
+      <label class="check speech-only"><input type="checkbox" id="autoSay" checked>出題時自動朗讀英文發音</label>
+      <div class="actions"><button class="btn" id="go">開始測驗</button></div>
+    </div>
+    <p class="muted" style="margin:0;font-size:.88rem">可用鍵盤 1–4 選答，Enter 進入下一題。每回會優先抽出還沒考過的詞，答錯的詞自動收進錯題本。</p>
+  </section>
+
+  <!-- progress table -->
+  <section id="prog" class="wrap" style="gap:14px" hidden>
+    <div class="panel" style="display:flex;flex-direction:column;gap:12px">
+      <div class="stat-row">
+        <span><span class="big" id="pDone">0</span> <span class="s">/ 437 已考過</span></span>
+        <span class="s">作答 <b id="pAns">0</b> 次</span>
+        <span class="s">答對率 <b id="pRate">—</b></span>
+        <span class="s">錯題本 <b id="pBook">0</b> 詞</span>
+      </div>
+      <div class="ptrack"><div id="pBar" style="width:0"></div></div>
+      <div class="sync" id="sync1"></div>
+    </div>
+    <div class="tools">
+      <input type="search" id="pq" placeholder="搜尋英文或中文">
+      <div class="tabs" id="pf">
+        <button data-f="all" aria-pressed="true">全部</button>
+        <button data-f="done" aria-pressed="false">已考過</button>
+        <button data-f="todo" aria-pressed="false">未考過</button>
+        <button data-f="miss" aria-pressed="false">曾答錯</button>
+      </div>
+    </div>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th class="n">No.</th><th>英文／中文</th><th class="c">已考</th><th class="c">答對/作答</th></tr></thead>
+        <tbody id="pBody"></tbody>
+      </table>
+    </div>
+    <div class="more"><span class="muted" id="pCount" style="font-size:.85rem"></span></div>
+    <div class="confirm" id="resetBox"><button class="btn ghost small" id="reset">清除所有作答紀錄</button></div>
+  </section>
+
+  <!-- wrong-answer notebook -->
+  <section id="book" class="wrap" style="gap:14px" hidden>
+    <div class="panel" style="display:flex;flex-direction:column;gap:12px">
+      <div class="stat-row"><span><span class="big" id="bCount">0</span> <span class="s">個詞在錯題本</span></span></div>
+      <div class="muted" style="font-size:.9rem">答錯的詞會自動收進來。在「錯題重測」答對就會移出；也可以手動移出已經記熟的詞。</div>
+      <div class="actions"><button class="btn" id="bQuiz">錯題重測</button></div>
+      <div class="sync" id="sync2"></div>
+    </div>
+    <div class="tools">
+      <div class="tabs" id="bs">
+        <button data-s="wrong" aria-pressed="true">錯最多次</button>
+        <button data-s="recent" aria-pressed="false">最近答錯</button>
+        <button data-s="no" aria-pressed="false">依編號</button>
+      </div>
+    </div>
+    <div class="review" id="bList"></div>
+    <div class="confirm" id="clearBox"></div>
+  </section>
+
+  <!-- quiz -->
+  <section id="quiz" class="wrap" style="gap:16px" hidden>
+    <div class="bar"><span id="count">1 / 20</span><div class="track"><div class="fill" id="fill"></div></div><span id="live">答對 0</span><button class="btn ghost small" id="quit">結束</button></div>
+    <div class="label">
+      <div class="txt">
+        <div class="no" id="no">No. 001</div>
+        <div class="term" id="term"></div>
+        <div class="alt" id="alt"></div>
+      </div>
+      <button class="say" id="sayQ" aria-label="播放發音"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg></button>
+    </div>
+    <div class="opts" id="opts"></div>
+    <div class="panel explain" id="explain" hidden></div>
+    <div class="next-row" id="nextRow" hidden><span class="hint">Enter</span><button class="btn" id="next">下一題</button></div>
+  </section>
+
+  <!-- result -->
+  <section id="result" class="wrap" style="gap:16px" hidden>
+    <div class="panel" style="display:flex;flex-direction:column;gap:12px">
+      <div class="score"><span class="big" id="score">0</span><span class="muted" id="scoreOf">/ 20 題答對</span></div>
+      <div id="comment" class="muted"></div>
+      <div class="actions"><button class="btn" id="again">重新測驗（新的 20 題）</button><button class="btn ghost" id="home">更改模式</button><button class="btn ghost" id="toBook">看錯題本</button></div>
+    </div>
+    <div class="tabs"><button id="tWrong" aria-pressed="true">答錯的題目</button><button id="tAll" aria-pressed="false">全部 20 題</button></div>
+    <div class="review" id="review"></div>
+  </section>
+
+  <footer>題庫來源：常用園藝科技 437 用語中英文對照表（主編 熊同銓老師）</footer>
+</div>
+
+<script>
+const RAW=`abortive pollen|敗育花粉|發育不全、不具受精能力的花粉，常因遺傳、高低溫或營養異常造成，是雄不稔的原因之一。
+abscission zone(abscission layer)|離層(離層區；離層帶)|葉柄、花梗或果柄基部的特化細胞層，細胞壁分解後使器官脫落；乙烯促進、生長素抑制其形成。
+accessory bud(secondary bud；supernumerary bud)|副芽|著生於主芽旁側或上下方的芽，主芽受損時可萌發替代。
+acclimatization|人為馴化|使植物逐步適應新環境的過程，如組培苗出瓶後的馴化，或引種植物適應當地氣候。
+acid soil|酸性土(酸土)|pH 低於 7 的土壤；強酸性時鋁、錳易溶出造成毒害，磷有效性降低，常施石灰改良。
+adventitious bud|不定芽|由非正常芽位（根、葉、節間或癒合組織）產生的芽，是葉插、根插繁殖的基礎。
+adventitious root|不定根|由莖、葉等非根部組織產生的根，扦插與壓條發根即屬之，生長素可促進形成。
+air layering(malcoting；Chinese layering；circumposition；marcottage)|空中壓條(高壓法；中國壓條法；高壓繁殖法)|在枝條上環狀剝皮後包覆濕潤介質，發根後剪離母株成新株，常用於荔枝、龍眼、榕屬植物。
+air-cooled storage(ventilated common storage)|普通通風貯藏|利用自然冷空氣通風降溫的簡易貯藏方式，不使用機械冷凍設備。
+amphimixis(amphimixy)|兩性生殖(兩性融合生殖)|雌雄配子結合（受精）產生後代的生殖方式，與無融合生殖相對。
+angiosperm(flowering plant)|被子植物(開花植物；顯花植物)|胚珠包於子房內、種子包於果實中的種子植物，分為單子葉與雙子葉植物。
+annual plant|一年生植物|在一個生長季內完成發芽、開花、結實到死亡的植物，如萬壽菊、百日草。
+antagonism|拮抗作用|兩種物質或生物的作用相互抵消，如離子吸收互相抑制（鉀與鎂）、拮抗微生物抑制病原。
+anther culture(microspore culture)|花藥培養(小孢子培養)|將未成熟花藥置於培養基，誘導小孢子發育成單倍體植株，加倍後可快速得到純系。
+apical dominance|頂芽優勢(頂端優勢)|頂芽生長抑制側芽萌發的現象，主要由頂芽產生的生長素向下運輸造成；摘心可解除。
+apical meristem culture|頂分生組織培養|切取莖頂分生組織培養，因此區病毒含量極少，常用於生產無病毒苗。
+approach grafting(approaching)|靠接|砧木與接穗都保有自己的根系，削面相貼待癒合後再剪離，成功率高，用於難嫁接的種類。
+artificial crossing|人工雜交|以人工去雄、授粉控制親本組合進行雜交，是育種的基本操作。
+artificial medium(synthetic medium)|人工培養基(合成培養基)|以無機鹽、糖、維生素、生長調節劑等配製的培養基，如 MS 培養基。
+artificial pollination(hand pollination)|人工授粉|以人工將花粉傳至柱頭，用於授粉不良、雜交育種或設施栽培，如梨、奇異果。
+artificial seed(synthetic seed)|人工種子(合成種子)|將體胚或芽體包覆於人工胚乳與種皮（如藻酸鈣膠囊）中，可像種子一樣播種。
+asexual propagation(vegetative propagation)|無性繁殖(營養繁殖)|利用根、莖、葉等營養器官或組織繁殖新株，可保持母株遺傳特性，如扦插、嫁接、壓條、分株。
+atavism(reversion；atavismus)|返祖現象(回復變異)|後代重新出現祖先性狀的現象，如斑葉品種長出全綠枝條。
+autotrophy|自營性(自養性)|能利用光能或化學能將無機物合成有機物的營養方式，綠色植物行光合作用即屬之。
+available water|有效水分|介於田間容水量與永久凋萎點之間、植物可吸收利用的土壤水分。
+backcross|回交|雜交後代再與親本之一交配，常用於把單一優良性狀導入優良品種。
+bearing branch(fruit branch)|結果枝|著生花芽、能開花結果的枝條，修剪時需辨識並保留。
+bending|屈枝(偃枝；曲枝；拉枝)|將枝條拉彎或壓低以抑制營養生長、促進花芽形成，常用於果樹整枝。
+biennial bearing|隔年結果(大小年現象；周期性結果)|果樹一年豐產、次年歉收交替出現的現象，常見於芒果、荔枝、柑橘，可藉疏果調節。
+biennial plant|二年生植物(兩年生植物)|第一年營養生長，經冬季低溫後第二年開花結實而死亡的植物，如甘藍、胡蘿蔔。
+bioassay|生物檢定法(生物測定法)|利用生物的反應（如燕麥芽鞘彎曲）測定物質活性或濃度的方法。
+biological clock|生物時鐘(生理時鐘；生物鐘；生理鐘)|生物體內約 24 小時週期的節律系統，調控開花、氣孔開閉、葉片運動等。
+biological control|生物防治|利用天敵、拮抗微生物或其產物防治病蟲草害，如釋放寄生蜂、使用蘇力菌。
+biological nitrogen fixation|生物固氮作用|固氮微生物（如豆科根瘤菌）將空氣中的氮氣轉為氨供植物利用。
+biosynthesis|生合成(生物合成)|生物體內以簡單前驅物經酵素作用合成複雜化合物的過程。
+biotransformation|生物轉殖(生物轉型)|利用生物體或其酵素將一種化合物轉換成另一種化合物的過程。
+blanching culture(bleaching culture)|軟化栽培|遮光使蔬菜不形成葉綠素而變白變嫩，如韭黃、白蘆筍、軟化芹菜。
+block(cubes)|塊盆|以岩綿、泥炭等壓製成方塊狀的育苗介質，可連塊定植、減少傷根。
+bolting|抽苔|花莖迅速伸長抽出的現象，葉菜類抽苔後品質下降，常由低溫或長日誘發。
+botany|植物學|研究植物形態、構造、生理、分類與生態的科學。
+breaking of dormancy|打破休眠|以低溫、高溫、化學藥劑（如激勃素、氰滿素）或物理處理使休眠的芽或種子恢復生長。
+breeding|育種|利用遺傳原理改良植物性狀、育成新品種的技術。
+bridge grafting|橋接|樹幹基部受損時，以接穗兩端分別接在傷口上下方，恢復養分運輸。
+bud mutation(bud sport；sport)|芽條突變|芽的分生組織發生突變而長出性狀不同的枝條，可經無性繁殖育成新品種。
+bud pollination|蕾期授粉|在花蕾未開、柱頭尚未產生不親和物質前授粉，用以克服自交不親和性。
+budding|芽接|以單一芽為接穗嫁接於砧木上，如 T 字芽接、嵌芽接，可節省接穗材料。
+callus(parenchymatous cell mass)|癒合組織|傷口或培植體上形成的未分化薄壁細胞團，可再分化出芽或根。
+Calvin cycle(Calvin-Benson cycle；C3 cycle)|卡爾文循環(三碳途徑；三碳循環)|光合作用固定 CO₂ 的反應循環，由 Rubisco 催化，第一個產物是三碳的 3-磷酸甘油酸。
+carbon dioxide compensation point|二氧化碳補償點|光合作用吸收的 CO₂ 與呼吸釋放的 CO₂ 相等時的 CO₂ 濃度；C4 植物比 C3 植物低。
+carbon dioxide fertilization|二氧化碳施肥法|在密閉溫室中提高 CO₂ 濃度，以增進光合作用與產量。
+carbon dioxide saturation point|二氧化碳飽和點|CO₂ 濃度再提高，光合速率也不再增加時的濃度。
+cauliflory|幹上開花(老莖開花現象；莖花現象)|花直接著生於主幹或老枝上，如可可、波羅蜜、嘉寶果。
+central-leader training|中央主幹型整枝|保留直立中央主幹、側枝分層排列的樹形，常見於蘋果、梨。
+chemical resistance(resistance to chemical)|抗藥性|病蟲草經長期用藥後對藥劑感受性降低的現象，應輪替不同作用機制的藥劑。
+chemical thinning|藥劑疏剪(化學藥劑疏剪；藥劑間疏)|以化學藥劑（如 NAA、乙烯利）疏除過多的花或幼果，節省人工。
+chemical weed control|化學雜草防治|使用殺草劑防除雜草的方法。
+chilling injury|寒害(冷害；低溫障礙)|熱帶、亞熱帶植物或產品在 0℃ 以上低溫受到的傷害，如香蕉果皮變黑。
+chilling resistance|抗冷性|植物忍受 0℃ 以上低溫而不受害的能力。
+chimera(mosaic)|嵌合體(嵌鑲體)|同一植物體由兩種以上遺傳組成不同的組織構成，許多斑葉植物即屬之。
+chromosome|染色體|細胞核內由 DNA 與蛋白質組成、攜帶遺傳訊息的構造。
+climacteric fruit|更年型果實(有呼吸躍變型果實；高峰型果實)|成熟時呼吸率與乙烯生成急遽上升的果實，可採後催熟，如香蕉、芒果、番茄。
+clonal rootstock|無性砧木|以無性繁殖生產、遺傳一致的砧木，如蘋果矮化砧 M9。
+clonal variation|營養系變異|同一營養系的個體間因突變等原因出現的性狀差異。
+clone|營養系|由單一個體經無性繁殖產生、遺傳組成相同的群體。
+coated seed|包裹種子(覆膜種子)|種子外覆一層薄膜（可含藥劑、色素），形狀大致不變，利於辨識與保護。
+cold stratification(cold moisten stratification)|濕冷層積法|將種子與濕潤介質混合，置於約 0–5℃ 低溫一段時間以打破休眠，如桃、蘋果種子。
+commensalism|片利共生(片利共棲；偏利共棲)|兩種生物共同生活，一方獲益而另一方無利也無害。
+complete fertilizer|完全肥料|同時含氮、磷、鉀三要素的肥料。
+complete flower|完全花|具備花萼、花瓣、雄蕊、雌蕊四部分的花。
+compost|堆肥|有機廢棄物經微生物分解腐熟而成的有機質肥料，可改善土壤構造。
+compound fertilizer|複合肥料|含兩種以上肥料要素的化學肥料，如 N-P-K 15-15-15。
+contact herbicide|接觸性殺草劑|只殺死接觸到藥劑部位、不在植物體內移行的殺草劑。
+container nursery|容器苗圃|以盆、袋等容器培育苗木的苗圃，移植不傷根，可全年出貨。
+continuous cropping|連作|同一田地連續栽培同一或同科作物，容易產生病害累積、養分失衡等連作障礙。
+controlled atmosphere storage(CA storage)|氣調貯藏(人工大氣貯藏；調節氣體貯藏)|精確控制貯藏室 O₂、CO₂ 濃度與溫度，降低呼吸作用以延長貯藏期。
+cooling(precooling)|預冷|採收後迅速移除田間熱、降低產品溫度，以延緩品質劣變。
+cotyledon|子葉|種子胚的葉狀構造，可貯藏養分或在發芽後行光合作用。
+critical night-length(critical dark-period)|臨界暗期(臨界夜長)|決定光週性植物開花與否的連續黑暗時數界限。
+crop growth rate(CGR)|作物生長速率|單位土地面積在單位時間內作物乾物重的增加量。
+crop rotation|輪作|同一田地依序輪流栽培不同科作物，可減少病蟲害與連作障礙。
+cross compatibility|雜交親和性|不同個體或物種間雜交能正常受精結實的能力。
+cultivar(cultivated variety)|栽培品種(栽培變種)|經人為選育、具可區別且穩定性狀的栽培植物群體。
+cultural control|栽培防治|以輪作、清園、調整播期、合理施肥等栽培措施降低病蟲害發生。
+culture medium|栽培介質|供植物根系生長的材料，如土壤、泥炭、椰纖、珍珠石。
+curing|癒傷處理(癒傷；療傷；調理；發汗)|採收後置於較高溫濕環境使傷口癒合、表皮木栓化，如甘藷、洋蔥、馬鈴薯。
+damping-off(bed rot)|猝倒病(腰折病；立枯病；苗枯病)|幼苗莖基部受腐霉菌、立枯絲核菌等危害而軟腐倒伏，高濕密植時易發生。
+day-neutral plant(DNP)|日照中性植物(中性植物；日長鈍感植物)|開花不受日長影響的植物，如番茄、四季開花的玫瑰。
+decapitation|去頂作用|去除莖的頂端以解除頂芽優勢、促進側芽生長。
+defoliating|摘葉(去葉；剪葉；除葉)|摘除葉片以改善通風透光、促進果實著色或誘導開花。
+degreening|催色|以乙烯處理使柑橘等果皮葉綠素分解，顯現黃橙色。
+dehiscent fruit|裂果(開裂果)|成熟後果皮自行開裂散出種子的乾果，如豆莢、蒴果。
+determinate inflorescence|有限花序|花序軸頂端的花先開而停止伸長，花由頂端向下或由中央向外開放，如聚繖花序。
+devernalization|逆春化作用(脫春化作用)|已接受低溫春化的植物再遇高溫，使春化效果消失。
+diagnosis|病害診斷(病害診斷法)|依病徵、病兆及病原鑑定判斷植物病害的種類與原因。
+dichogamy|雌雄異熟|同一朵花的雄蕊與雌蕊成熟時期不同，可促進異花授粉。
+dicotyledon(dicot)|雙子葉植物|胚有兩片子葉的被子植物，多為網狀脈、直根系，花部 4 或 5 數。
+differentiation|分化|細胞發展出特定構造與功能的過程。
+dioecism|雌雄異株(雌雄異體)|雄花與雌花分別著生在不同植株上，如木瓜、奇異果、銀杏。
+diploid|二倍體|細胞含兩套染色體（2n）的個體。
+disbudding|摘芽(除芽)|摘除多餘的芽或花蕾以集中養分，如標準型菊花、康乃馨。
+disease tolerance(tolerance to disease)|耐病性|植物被病原感染後仍能維持產量與品質的能力。
+dominance|顯性(優勢)|異質結合時表現出來的性狀。
+dormancy|休眠|種子、芽或植株暫時停止生長的狀態。
+double cropping|二期作(雙期作；二重作)|同一田地一年栽培兩次作物。
+double dormancy|雙重休眠|種子同時具兩種休眠原因（如種皮不透性加上胚休眠），需分別處理。
+double working|雙重嫁接|在砧木與接穗之間加入中間砧的嫁接方式，可克服不親和或達到矮化。
+drainage|排水|排除土壤或介質中多餘的水分，避免根部缺氧。
+drilling(drill seeding)|條播|將種子沿播溝成條狀播下。
+drought resistance|抗旱性|植物在乾旱逆境下維持生長與存活的能力。
+dry fruit|乾果|成熟時果皮乾燥的果實，分為裂果與閉果。
+dwarf stock|矮化砧|使接穗樹體變小的砧木，利於密植與管理，如蘋果 M9。
+dwarfing culture|矮化栽培|利用矮化砧、生長抑制劑或修剪使植株矮化的栽培方式。
+early variety|早生品種(早熟品種)|生育期短、較早開花或成熟的品種。
+ecodormancy(quiescence；imposed dormancy；external dormancy；environmental dormancy)|生態型休眠(靜止；被動休眠；外生性休眠；環境性休眠)|因低溫、乾旱等環境不適而暫停生長，環境改善即可恢復。
+ecospecies|生態種|同一物種中適應特定生態環境而分化、彼此仍可雜交的群體。
+ectotrophic mycorrhiza(ectomycorrhiza)|外生菌根(外營性菌根)|真菌菌絲包覆根表形成菌套，只侵入皮層細胞間隙，常見於松、櫟。
+edible plant|食用植物(可食植物)|可供人類食用的植物。
+electrical conductivity(EC)|土壤電導度(土壤導電度)|土壤溶液的導電能力，反映可溶性鹽類濃度，過高易造成鹽害。
+emasculation(castration)|去雄|雜交前除去母本花的雄蕊，防止自花授粉。
+embryo culture|胚培養|取出胚置於培養基培養，可救援雜交後容易敗育的胚。
+endocarp|內果皮|果皮最內層，桃、李的硬核即是內果皮。
+endodormancy(rest；true dormancy；spontaneous dormancy；internal dormancy；physiological dormancy)|內生性休眠(休止；真休眠；自動休眠；內在休眠；生理性休眠；內生休眠；內休眠)|由芽本身生理因素造成的休眠，即使環境適宜也不萌發，需滿足低溫需求才能解除。
+endotrophic mycorrhiza(endomycorrhiza)|內生菌根(內營性菌根)|菌絲侵入根皮層細胞內形成叢枝等構造，如叢枝菌根（AM），多數作物都能形成。
+enzyme|酵素(酶)|生物體內催化化學反應的蛋白質。
+epiphyte(aerophyte)|附生植物(氣生植物)|附著在其他植物體上生長但不吸取其養分，如蝴蝶蘭、山蘇。
+espalier training(trellis training)|垣籬式整枝(樹牆式整枝)|將枝條固定在棚架或牆面，使樹冠呈平面，節省空間並利於採光。
+essential element|必需元素|植物完成生活史不可缺少且無法被其他元素取代的元素，共 17 種。
+etiolation|白化(黃化)|植物在黑暗中生長，莖細長、葉黃白不展開的現象。
+evergreen plant|常綠植物|全年保有綠葉的植物。
+exocarp(epicarp；ectocarp；peel；skin)|外果皮|果皮的最外層。
+expanded clay|發泡煉石|黏土經高溫燒製膨脹而成的輕質顆粒，透氣排水佳，用於水耕與盆栽。
+explant|培植體|自植物體切取、用於組織培養的組織或器官。
+F1 generation(F1 hybrid)|雜交一代(子一代；第一子代)|兩親本雜交所產生的第一代子代。
+F1 hybrid|一代雜交種(F1 雜交種)|以兩純系親本雜交生產的商業種子，生長整齊且具雜種優勢，但下一代會分離。
+F1-weakness|雜交弱勢|雜交一代的生長勢反而不如親本的現象。
+fallow|休耕|田地暫停耕作以恢復地力。
+feedback inhibition|回饋抑制(反饋抑制)|代謝產物累積時反過來抑制其合成途徑中酵素的活性。
+fertilization|受精|精細胞與卵細胞結合形成合子的過程；被子植物行雙重受精。
+fertilizer|肥料|提供植物營養或改善土壤性質的物質。
+field capacity|田間容水量|土壤灌飽並排除重力水後，所能保持的最大含水量。
+field heat|田間熱|產品採收時從田間帶來的熱，需靠預冷移除。
+flood irrigation(flooding)|淹灌|使水淹沒整個田面的灌溉方式。
+floral preservative|切花保鮮劑|含糖、殺菌劑、酸化劑等成分，用以延長切花的瓶插壽命。
+flower bud|花芽|將發育成花或花序的芽。
+flower development(floral development)|花芽發育|花芽形成後花器各部分逐步發育的過程。
+flower formation(floral formation)|花芽形成|生長點由營養生長轉為生殖生長、形成花芽的過程。
+flower induction(floral induction)|花芽誘導(催花)|以低溫、日長等環境條件或處理（如鳳梨以乙烯催花）促使植物進入開花狀態。
+flower initiation(floral initiation)|花芽創始(花芽發生；花芽始發)|生長點開始出現花原體的形態變化。
+flower maturation(floral maturation)|花器成熟|花器發育完成，可以開花授粉。
+flower thinning(defloration；deblossoming)|疏花(摘花)|疏除過多的花，減少養分消耗並提高著果品質。
+flowering|開花過程|花芽萌發到花朵開放的過程。
+forcing culture(forcing)|促成栽培|以加溫、電照等方法使作物比自然季節提早開花或收穫。
+freezing injury|凍害|0℃ 以下組織內結冰所造成的傷害。
+freezing resistance|抗凍性|植物忍受結冰溫度而不受害的能力。
+fruit thinning|疏果|疏除過多幼果，提高留存果實的大小與品質，並減少隔年結果。
+fruit tree|果樹|生產可食果實的多年生植物，多為木本。
+fumigation|燻蒸|以氣態藥劑在密閉空間殺滅病蟲害，如檢疫處理、土壤燻蒸。
+fungicide|殺菌劑|防治真菌病害的藥劑。
+fungus|真菌(黴菌)|具菌絲與孢子、無葉綠素的真核生物，是植物病害最主要的病原。
+gene conversion|基因轉換(基因轉變)|減數分裂重組時，一個對偶基因的序列被另一個取代的現象。
+gene mutation|基因突變|DNA 序列改變所造成的遺傳變異。
+genetic transformation|遺傳轉殖(遺傳轉型)|將外源基因導入植物並穩定表現，如農桿菌轉殖法。
+genetics|遺傳學|研究遺傳與變異的科學。
+geotropism|向地性|植物器官受重力影響的生長反應：根向下為正向地性，莖向上為負向地性。
+germination percentage|發芽率|發芽的種子數占供試種子數的百分比。
+graft compatibility(congeniality；grafting affinity)|嫁接親和性|砧木與接穗能癒合並長期正常生長的能力，通常親緣越近越高。
+graft effect|嫁接效應|砧木對接穗生長、產量、品質的影響，或接穗對砧木的影響。
+graft incompatibility|嫁接不親和性|砧穗無法癒合，或癒合後生長不良、接合處斷裂的現象。
+grafted cutting|接插|先嫁接再扦插，使砧木發根與嫁接同時完成，如玫瑰。
+grafting|嫁接(接木)|將接穗接合於砧木使其癒合成一株，可保持品種特性並利用砧木的優點。
+granular structure|團粒構造(團粒結構)|土壤顆粒結合成小團粒，兼具保水與通氣，是理想的土壤構造。
+gravitational water|重力水|受重力作用向下流失的土壤水分，植物難以利用。
+green mature|綠熟(硬熟)|果實已達生理成熟但尚未轉色，採後可後熟，如綠熟番茄、香蕉。
+greenhouse effect|溫室效應|短波輻射透入後轉成長波熱輻射被阻留，使內部溫度上升的現象。
+greenhouse(glasshouse)|溫室|以玻璃或塑膠覆蓋、可控制環境的栽培設施。
+growth curve|生物曲線|生長量隨時間變化的曲線，通常呈 S 形。
+gymnosperm|裸子植物|胚珠裸露、不形成果實的種子植物，如松、柏、蘇鐵、銀杏。
+gynogenesis|孤雌生殖(雌性生殖；雌性單偽生殖)|只由雌配子發育成個體，可用來培育單倍體。
+haploid|單倍體|細胞含配子染色體數的個體，加倍後可快速獲得純系。
+hardening|健化(硬化；鍛鍊)|移植前逐步減少水分、增加光照或降溫，使苗木組織強健以適應田間環境。
+hardwood cutting|硬木插|以休眠期已木質化的枝條扦插，如葡萄、無花果。
+hardy plant|耐寒植物|能忍受低溫甚至霜凍的植物。
+harvesting|採收(收穫)|收穫成熟的園產品。
+heading back|截剪(截枝)|剪去枝條前端一段，促進下方側芽萌發，使樹冠緊密。
+heat treatment|熱處理|以溫熱處理去除病毒、病蟲害，或處理採後產品。
+herb(herbaceous plant)|草本植物|莖部木質化程度低、柔軟多汁的植物。
+herbicide(weed killer)|殺草劑(除草劑)|用來防除雜草的藥劑。
+heterotrophy|異營性(異養性)|需攝取現成有機物作為養分的營養方式，如真菌。
+horticultural maturity(commercial maturity；harvesting maturity)|園藝成熟度(商業成熟；採收成熟)|產品達到適合市場與消費者需求的成熟階段，不一定等於生理成熟。
+host plant|寄主植物|供病原寄生或害蟲取食的植物。
+hot water dip|溫湯處理|將種子或果實浸於一定溫度熱水中殺滅病原或害蟲，如芒果熱水處理防果實蠅。
+humus|腐植質|有機物經微生物分解後形成的暗色穩定有機物，可提高土壤保肥保水力。
+hybrid sterility|雜草不稔性|雜種植物無法產生有效配子或種子的現象。
+hybridization|雜交|遺傳組成不同的個體間交配。
+hydrocooling|冰水預冷|以冷水或冰水噴淋、浸泡產品使其快速降溫，適用於耐濕的產品。
+hydrophyte(aquatic plant；hygrophyte)|水生植物(濕生植物)|生長在水中或濕地的植物，如荷花、睡蓮。
+hydrotropism|向水性|根朝水分較多處生長的現象。
+hygroscopic water|吸著水|被土壤顆粒強力吸附的薄層水，植物無法利用。
+hypobaric storage(vacuum storage；low pressure storage)|減壓貯藏(真空貯藏；低壓貯藏)|降低貯藏室氣壓以減少氧分壓並排出乙烯，延長貯藏壽命。
+immature embryo culture|未成熟胚培養|培養尚未成熟的胚，常用於早熟品種或遠緣雜交的胚救援。
+impermeable dormancy|不透性休眠|種皮不透水或不透氣造成的種子休眠，可用刻傷、濃硫酸處理打破。
+inbreeding depression|近交弱勢|近親交配後代的生長勢與稔性降低的現象。
+incompatibility|不親和性(不相容性)|花粉與雌蕊、或砧木與接穗之間無法正常結合的現象。
+incomplete flower|不完全花|缺少花萼、花瓣、雄蕊、雌蕊其中任一部分的花。
+incomplete leaf|不完全葉|缺少葉片、葉柄、托葉其中任一部分的葉。
+indeterminate inflorescence|無限花序|花序軸可持續延長，花由下往上或由外向內開放，如總狀、穗狀花序。
+indicator plant|指示植物(指標植物)|對特定病毒或環境條件反應敏感、可用於檢測的植物。
+induced mutation|誘發突變|以輻射或化學藥劑人為誘發的突變。
+inflorescence|花序|花在花軸上的排列方式。
+inorganic fertilizer(mineral fertilizer)|無機質肥料(礦物質肥料)|以化學方法製造或礦物加工而成的肥料，如尿素、過磷酸鈣。
+insect pest(pest insect)|害蟲|危害作物的昆蟲。
+insecticide|殺蟲劑|防治害蟲的藥劑。
+intercropping(inter-cropping)|間作|在同一田地的行間同時栽培兩種以上作物。
+intermediate day plant|定日性植物(中日性植物；中間日照性植物)|只在某一特定日長範圍內才開花，日長過長或過短都不開花的植物。
+interspecific hybridization|種間雜交|不同物種之間的雜交。
+interstock|中間砧|雙重嫁接時位於砧木與接穗之間的枝段。
+intertillage|中耕|作物生育期間在行間鬆土，可除草、通氣、保水。
+irradiation|輻照處理(照射處理)|以 γ 射線等照射，用於誘變育種、殺蟲檢疫或抑制發芽。
+juvenility|幼年性(童年性)|實生植物發芽後一段時間無法開花的階段，果樹實生苗常需數年。
+land preparation(tillage)|整地(耕耘)|播種或定植前翻土、碎土、作畦等準備工作。
+latent bud(dormant bud)|潛伏芽(休眠芽)|形成後長期不萌發的芽，受強剪等刺激時才萌發。
+layerage(layering)|壓條|讓枝條在未離開母株時誘導發根，再剪離成新株。
+leaf cutting|葉插|以葉片（或帶葉柄）扦插產生新株，如非洲堇、秋海棠、多肉植物。
+light compensation point|光補償點|光合作用與呼吸作用速率相等時的光度；陰性植物較低。
+light saturation point|光飽和點|光度再增加，光合速率也不再提高時的光度。
+liquid culture|液體培養|以不加洋菜的液體培養基培養，通常需振盪通氣。
+long-day plant(LDP)|長日植物(長日性植物；長日照植物)|日長長於臨界日長（暗期短於臨界暗期）才開花的植物，如菠菜、洋桔梗。
+macronutrient(major element)|巨量元素|植物需求量大的必需元素：碳、氫、氧、氮、磷、鉀、鈣、鎂、硫。
+male sterility|雄不稔性(雄不孕性)|雄蕊或花粉沒有功能，雜交育種時可省去去雄工作。
+manure|天然肥料|動物糞尿等天然來源的肥料（廄肥）。
+maturity|成熟度|產品發育成熟的程度，是決定採收期的依據。
+mechanical harvesting|機械採收|以機械進行採收以節省人力。
+meristem culture(shoot apex culture)|分生組織培養(莖頂培養)|切取極小的莖頂分生組織培養，可獲得無病毒苗。
+mesocarp|中果皮|果皮的中間層，桃、芒果的可食部分主要是中果皮。
+metabolism|代謝(新陳代謝)|生物體內物質合成與分解的化學反應總稱。
+metamorphosis|變態|器官在形態與功能上發生特化，如塊莖、捲鬚、鱗莖。
+metaxenia|果實直感|花粉直接影響母本果實（果皮、果肉）性狀的現象。
+micrografting|微體嫁接|在無菌條件下把極小的莖頂嫁接到試管苗砧木上，常用於脫病毒。
+micropropagation(in vitro propagation)|微體繁殖(體外繁殖)|以組織培養方法大量繁殖植株，如蝴蝶蘭、香蕉組培苗。
+minor nutrient(micro-element)|微量元素|需求量少的必需元素：鐵、錳、鋅、銅、硼、鉬、氯、鎳。
+mist propagation|噴霧繁殖|扦插時間歇噴霧保持高濕，減少插穗失水以促進發根。
+mixed cropping|混作|同一田地同時混合栽培兩種以上作物，沒有明顯的行列安排。
+modified atmosphere storage(MA storage)|氣變貯藏|利用包裝材料使產品周圍 O₂ 降低、CO₂ 升高以延長貯藏期，控制比氣調貯藏粗略。
+monocotyledon|單子葉植物|胚只有一片子葉，多為平行脈、鬚根系，花部 3 數，如蘭花、百合。
+monoculture|單作栽培|田地中只栽培單一作物。
+monoecism|雌雄同株異花|雄花與雌花分別著生在同一植株上，如瓜類、玉米。
+morphogenesis|形態形成(形態發生)|器官與組織發育出特定形態的過程。
+morphological dormancy(rudimentary and undeveloped embryo)|形態性休眠|種子的胚尚未發育完成而造成的休眠，需經後熟。
+MS medium(Murashige and Skoog medium)|MS 培養基|Murashige 與 Skoog 於 1962 年發表，是最常用的植物組織培養基，無機鹽濃度較高。
+mulch|地面覆蓋|以稻草、塑膠布等覆蓋土面，可保濕、抑草並調節地溫。
+multiple cropping|多期作(多作)|同一田地一年內栽培多次作物。
+multiple fruit|複果(聚花果)|由整個花序發育而成的果實，如鳳梨、桑椹、波羅蜜。
+mutation|突變(突變作用)|遺傳物質發生可遺傳的改變。
+mycoplasma|菌質(菌質體；黴漿菌)|沒有細胞壁的原核生物，可引起叢枝、黃化等病害。
+mycorrhiza|菌根|真菌與植物根系形成的互利共生體，可增加磷與水分的吸收。
+natural crossing|自然雜交|在自然條件下藉風或昆蟲傳粉發生的雜交。
+natural enemy|天敵|捕食或寄生害蟲的生物，如瓢蟲、寄生蜂。
+nematocide|殺線蟲劑|防治線蟲的藥劑。
+night break(night interruption)|暗期中斷(夜間斷)|在長暗期中給予短時間照光，使短日植物不開花、長日植物開花，如菊花電照栽培。
+nitrogen fixation|固氮作用(氮固定)|將大氣中的氮氣轉為氨等含氮化合物的作用。
+non-climacteric fruit|非更年型果實(無呼吸躍變型果實；無高峰型果實)|成熟時沒有呼吸急升，採後不會再後熟，需成熟時採收，如柑橘、葡萄、草莓。
+nucellar embryony(nucellar budding)|珠心胚形成|由珠心細胞發育成胚，後代與母株遺傳相同，常見於柑橘、芒果。
+nut|堅果|果皮堅硬、內含一粒種子的乾果，如栗子、榛果。
+nutrient solution|營養液|溶有植物必需元素的水溶液，用於水耕栽培。
+nutritional deficiency symptom(deficiency symptom)|營養缺乏症(缺素症；缺乏症；營養缺乏病徵)|缺乏某元素時出現的病徵，如缺氮老葉黃化、缺鐵新葉脈間黃化。
+organ culture|器官培養|培養植物的根、莖、葉、花、果等器官。
+organic agriculture(organic farming；biological farming；renewable farming；renewable agriculture；regenerative agriculture；gardening agriculture；biological agriculture)|有機農業(有機農法；生物農法；再生性農業；庭園農業；生物性農業)|不使用化學肥料與化學農藥，重視土壤健康與生態平衡的農業。
+organic soil|有機質肥料|來自動植物的肥料，如堆肥、油粕、禽畜糞。
+ornamentals(ornamental plants)|觀賞植物|供觀賞與美化環境的植物。
+orthodox seed(medium-lived seed)|中壽命型種子(易貯型種子)|可乾燥至低含水量並在低溫長期貯藏的種子，如多數蔬菜種子。
+osmotic priming(osmoconditioning)|滲調(萌爆)|以高滲溶液讓種子吸水至萌發前階段再乾燥，播種後發芽快又整齊。
+outcross|異交(異型雜交)|不同個體之間交配授粉。
+ovary culture|子房培養|培養子房以誘導單倍體或救援胚。
+over growth|徒長(過度生長)|莖葉過度生長、組織軟弱，常因氮肥過多、光照不足或高溫高濕。
+ovule culture|胚珠培養|培養胚珠使胚發育，可用於遠緣雜交。
+parasitic plant|寄生植物|從寄主吸取水分或養分的植物，如菟絲子、桑寄生。
+parthenocarpy|單偽結果(單性結實)|未經受精就發育成果實，通常無種子，如香蕉、無子胡瓜。
+parthenogenesis|單偽生殖(處女生殖)|卵細胞未受精便直接發育成胚。
+pathogen|病原(病原體；病原菌)|引起病害的生物，如真菌、細菌、病毒、線蟲。
+peatmoss(moss peat)|泥炭岩(水苔泥炭)|水苔等植物在低溫濕地堆積分解而成，保水力強、偏酸性，是常用的栽培介質。
+pelleted seed|造粒種子|以介質包覆種子成大小一致的球粒，便於機械播種，如萵苣、洋桔梗。
+perennial plant|多年生植物|可存活多年、反覆開花結實的植物。
+perfect flower(bisexual flower；hermaphroditic flower)|兩性花|同一朵花兼具雄蕊與雌蕊。
+pericarp|果皮|由子房壁發育而成，分為外果皮、中果皮、內果皮。
+perlite|珍珠石|火山岩經高溫膨脹而成的白色輕質顆粒，透氣排水佳，常混入介質。
+permanent planting|定植|將苗木移植到最終生長的位置。
+permanent wilting point|永久凋萎點(永久萎凋點；永久凋萎係數)|植物凋萎後即使置於飽和濕度下也無法恢復時的土壤含水量。
+pesticide residue(residue on edible product)|農藥殘留|施藥後殘留在農產品上的農藥。
+phenotype|表現型|遺傳型與環境交互作用後表現出的可觀察性狀。
+photodormancy|光休眠|種子因照光而無法發芽的休眠。
+photomorphogenesis|光形態形成(光形態發生)|光經光敏素等光受器調控植物生長發育形態的現象。
+photoperiodism(photoperiodicity)|光週性(光週期現象)|植物對日夜長短變化的反應，如開花、休眠、塊莖形成。
+photorespiration|光呼吸(光呼吸作用)|照光下 Rubisco 結合氧氣而釋出 CO₂ 的過程，C3 植物較明顯。
+photosynthesis|光合作用|葉綠體利用光能將 CO₂ 和水合成醣類並釋放氧氣。
+photosynthetic rate|光合速率|單位葉面積在單位時間內的 CO₂ 吸收量。
+phototropism(heliotropism)|向光性|植物器官朝光源彎曲生長，因生長素在背光側累積。
+physical control|物理防治|以溫度、光、顏色、套袋、防蟲網等物理方法防治病蟲害，如黃色黏紙。
+physiological age|生理年齡|以發育階段而非時間長短計算的年齡。
+physiological disorder(physiological disease；abiotic disease)|生理障礙(生理障害；生理失調；生理性病害)|非病原引起、由環境或營養失調造成的障礙，如番茄缺鈣造成的尻腐病。
+physiological maturation(physiological maturity；maturation)|生理成熟(成熟；適熟)|果實或種子發育完成、具繁殖能力的階段。
+phytotron|人工氣候室(植物人工氣候室)|可精確控制光、溫、濕度、CO₂ 的植物試驗設施。
+pinching|摘心|摘除枝條頂芽，解除頂芽優勢以促進分枝。
+plant anatomy|植物解剖學|研究植物內部構造的學科。
+plant disease and insect pest control(control of plant disease and insect pest)|植物病蟲害防治|預防與控制植物病害及蟲害的綜合措施。
+plant growth regulator(plant growth substance)|植物生長調節劑(植物生長調節物質)|人工合成或天然、低濃度即可調節植物生長發育的物質。
+plant hormone(phytohormone)|植物荷爾蒙(植物激素)|植物自行合成、微量即可調節生理的物質，如生長素、激勃素、細胞分裂素、離層酸、乙烯。
+plant morphology|植物形態學|研究植物外部形態與構造的學科。
+plant nutrition|植物營養|研究植物吸收、運輸與利用養分的學科。
+plant pathology|植物病理學|研究植物病害成因、發生與防治的學科。
+plant protection|植物保護|防治病蟲草害、保護作物生產的學科與技術。
+plant symptom(disease symptom；symptom of disease)|植物病徵|植物罹病後外觀表現的異常，如萎凋、斑點、黃化。
+plant taxonomy|植物分類學|研究植物命名、鑑定與分類系統的學科。
+plant tissue culture(in vitro culture)|植物組織培養(體外培養)|在無菌條件下以人工培養基培養植物的細胞、組織或器官。
+planting distance(spacing)|種植距離(行株距)|植株之間的行距與株距。
+polycarpic plant|多熟性植物(多次結實植物)|一生中可多次開花結實的植物。
+polyembryony|多胚性(多胚現象)|一粒種子內有兩個以上的胚，如柑橘、芒果。
+polyploid|多元體|具三套以上染色體的個體，器官常較大，如三倍體無子西瓜。
+postharvest handling|採收後處理|採收後的預冷、清洗、分級、包裝、貯運等作業。
+propagation|繁殖|增加植物個體數量的方法，分有性繁殖與無性繁殖。
+protandry|雄蕊先熟|同一朵花中雄蕊比雌蕊先成熟。
+protogyny|雌蕊先熟|同一朵花中雌蕊比雄蕊先成熟，如酪梨。
+protoplast culture(naked cell culture)|原生質體培養|以酵素去除細胞壁後培養原生質體，可用於體細胞融合。
+pruning|修剪(剪定)|剪除部分枝葉以調整樹形、生長與結果。
+pure line|純系|經多代自交、遺傳上同質結合的群體。
+quarantine|檢疫|防止危險病蟲害隨植物或產品傳入或擴散的管制措施。
+ratooning|宿根栽培(再生栽培)|收穫後利用殘留根株再萌芽生長並再次收穫，如甘蔗、香蕉、韭菜。
+recalcitrant seed(short-lived seed)|難貯型種子(短命種子)|不耐乾燥與低溫、壽命短的種子，如荔枝、芒果、酪梨。
+redifferentiation|再分化|已脫分化的癒合組織重新分化出芽、根等器官。
+refrigerated storage|冷藏|以機械冷凍維持低溫來貯藏產品。
+regenerative capacity(regenerative activity)|再生能力|植物組織或細胞再生成器官或完整植株的能力。
+rejuvenation|復幼作用|使成熟植物組織恢復幼年性狀，如強剪、連續嫁接，以提高扦插發根率。
+renewal pruning|更新修剪|剪除衰老枝幹以促發新枝，恢復樹勢。
+reproduction|生殖作用|生物產生後代的作用。
+reproductive growth|生殖生長|花、果實、種子等生殖器官的生長。
+respiration|呼吸(呼吸作用)|分解醣類釋放能量的作用；採後呼吸越旺盛的產品越不耐貯。
+revigoration|復新作用(復勢作用)|使衰弱植株恢復生長勢。
+rhizome|根莖|水平生長於地下的變態莖，有節與芽，如薑、竹、美人蕉。
+ridging(hilling；molding)|培土(土堆法)|將土壤堆在植株基部，可防倒伏、促發根或軟化，如蘆筍、馬鈴薯。
+ringing(cincturing；girdling)|環狀剝皮(輪狀剝皮；環剝)|剝除枝幹一圈樹皮阻斷韌皮部運輸，使養分累積在上方以促進開花著果。
+ripening treatment|催熟(催熟處理)|以乙烯或乙烯利處理使果實均勻後熟，如香蕉。
+rockwool block|岩綿塊(岩綿塊盆)|玄武岩高溫熔融抽絲製成的介質，用於設施養液栽培。
+root ball|根團|移植時根系與周圍土壤或介質結成的整團。
+root cutting|根插|以根段扦插產生不定芽而成新株，如麵包樹、香椿。
+root pressure|根壓|根部主動吸水產生的向上壓力，是泌液現象的原因。
+root pruning(wrenching)|斷根(剪根)|切斷部分根系，以抑制營養生長、促發細根或利於移植。
+rootknot nematode|根瘤線蟲|寄生根部、使根形成瘤狀腫大的線蟲，影響水分與養分吸收。
+salt injury|鹽害|土壤或水中鹽分過高，使植物吸水困難或發生離子毒害。
+salt resistance|抗鹽性|植物在高鹽環境下生長的能力。
+sand culture|砂耕栽培|以砂為介質，供給養液栽培作物。
+scaling|鱗片插|剝下鱗莖的鱗片扦插，基部長出小鱗莖，如百合。
+scion(sion；cion)|接穗|嫁接時接在上方、將形成樹冠的部分。
+secondary tissue|次生組織(後生組織；第二期組織)|由形成層、木栓形成層產生的組織，使莖與根加粗。
+seed treatment|種子處理|播種前對種子進行消毒、打破休眠或促進發芽的處理。
+seed viability|種子活力|種子具有生命力、能夠發芽的能力。
+seedless fruit|無子果實|不含種子或種子退化的果實，可由單偽結果或三倍體產生。
+seedling|實生苗|由種子發芽長成的苗。
+self-incompatibility|自交不親和性|雌雄蕊都正常，但自花授粉無法受精的現象，如十字花科、梨。
+senescence|老化(衰老；衰化)|器官或個體生理機能衰退直到死亡的過程。
+serial micrografting|重複微體嫁接|將微體嫁接苗的莖頂連續多次再嫁接，以達到復幼目的。
+sexual propagation(seed propagation)|有性繁殖(種子繁殖；實生繁殖)|以種子繁殖新植株，後代可能出現遺傳變異。
+short-day plant(SDP)|短日植物(短日性植物；短日照植物)|日長短於臨界日長（暗期長於臨界暗期）才開花的植物，如菊花、聖誕紅。
+simple fruit|單果|由一朵花的一個子房發育成的果實，如桃、番茄。
+sink|積貯(代謝庫)|消耗或貯存光合產物的器官，如果實、塊莖、生長點，與供源（source）相對。
+skotodormancy|暗休眠|種子因處於黑暗而無法發芽的休眠。
+slow release fertilizer|緩效性肥料|養分緩慢釋出、肥效持久的肥料，如樹脂包衣肥料。
+softwood cutting|軟木插|以生長期尚未完全木質化的嫩枝扦插，發根較快但需保濕。
+soil aeration|土壤通氣性|土壤與大氣之間交換氣體的能力。
+soil conditioner(soil amendment)|土壤改良劑(土壤添加物)|改善土壤物理或化學性質的物質，如石灰、泥炭、蛭石。
+soil culture|土耕栽培|以土壤為介質的傳統栽培方式。
+soil disinfection|土壤消毒|以蒸氣、太陽熱或藥劑殺滅土中病原、害蟲與雜草種子。
+soil erosion|土壤沖蝕|土壤受雨水或風力作用而流失。
+soil fertility|土壤肥力|土壤供應作物養分的能力。
+soil management|土壤管理|翻耕、施肥、覆蓋、灌排等維持土壤生產力的措施。
+soil organic matter|土壤有機物|土壤中的動植物殘體及腐植質。
+soil porosity|土壤孔隙度(土壤孔度)|土壤孔隙體積占總體積的比例。
+soil structure|土壤構造|土壤顆粒的排列與團聚狀態。
+soilless medium(soilless mixes)|無土介質|不含土壤的栽培介質，如泥炭、椰纖、珍珠石的混合物。
+somatic cell|體細胞|生殖細胞以外的細胞。
+somatic embryo multiplication|體胚增殖|由體胚反覆產生次級體胚，達到大量增殖。
+somatic embryogenesis|體胚形成|體細胞經過類似合子胚的發育過程形成胚。
+somatic mutation|體細胞突變|體細胞發生的突變，可經無性繁殖保存，如芽條突變。
+spontaneous mutation|自發突變(自然突變)|在自然條件下發生的突變。
+spore propagation|孢子繁殖|以孢子繁殖新株，如蕨類。
+staminate flower|雄花|只有雄蕊、沒有雌蕊或雌蕊退化的花。
+stem cutting|莖插(枝插)|以莖段作插穗扦插繁殖。
+sterility|不稔性|無法產生有效配子或種子的性質。
+stone fruit(drupe)|核果|內果皮硬化成核的果實，如桃、李、梅、芒果。
+straight fertilizer(single fertilizer；single-nutrient fertilizer；simple fertilizer)|單質肥料|只含一種主要肥料要素的肥料，如尿素、氯化鉀。
+stress|逆境|不利於植物生長的環境，如乾旱、高溫、鹽分。
+stress tolerance|逆境忍耐|植物在逆境下仍能生存的能力。
+subculture(passage)|繼代培養|將培養物移到新鮮培養基繼續培養增殖。
+succulent plant|多肉植物(肉質植物)|莖或葉肥厚多汁、能貯藏水分的植物，如仙人掌、景天科。
+sucker|吸芽|自根部或莖基部萌發的芽，可分株繁殖，如鳳梨、香蕉。
+summer pruning(herbaceous pruning)|夏季剪定(生長期剪定)|生長季進行的修剪，如摘心、疏枝，可調節樹勢與通風。
+sun plant(heliophyte)|陽性植物(陽生植物；陽地植物)|需強光才能良好生長的植物，光補償點與光飽和點都高。
+surface irrigation|地表灌溉|讓水流經地表的灌溉方式，如溝灌、淹灌。
+surface runoff|表面逕流|降雨或灌溉水未滲入土中而沿地表流走的水。
+surface soil|表土|土壤最上層，富含有機質，是作物根系主要分布處。
+suspension culture|懸浮培養|將細胞或細胞團懸浮於液體培養基中振盪培養。
+sustainable agriculture(alternative agriculture；eco-agriculture；ecological agriculture；biodynamic agriculture；holistic farming)|永續農業(替代農業；生態農業；生物動態農業；綜合農法)|兼顧生產、環境保護與社會經濟、可長期經營的農業。
+symbiosis|共生(共生現象；互利共生)|兩種生物共同生活並彼此獲益，如根瘤菌與豆科植物。
+temporary planting|假植|苗木定植前暫時植於土中或介質中，以保持活力。
+tender plant|不耐寒植物|無法忍受低溫或霜凍的植物。
+tetraploid|四元體|具四套染色體的個體，可與二倍體雜交產生三倍體。
+thermodormancy|熱休眠|種子因高溫而無法發芽，如萵苣在夏季播種。
+thinning|疏苗(間苗)|拔除過密的幼苗，讓留下的植株有足夠生長空間。
+thinning-out|疏剪|將枝條從基部剪除，改善通風透光而不促發大量新梢。
+tiller(tillow)|分櫱|禾本科等植物基部節上長出的分枝，如水稻、茭白。
+tolerance of pesticide|農藥殘留容許量|法規規定農產品可殘留農藥的最高量。
+top working(topgrafting；topbudding)|高接(頂接)|在已長成植株的枝幹上換接其他品種，如梨的高接。
+training|整枝|藉修剪、拉枝、支架等方式使植株形成特定樹形。
+translocated herbicide|傳導性殺草劑(移行型殺草劑)|被吸收後可在植物體內移行至根部等處，能殺死整株，如嘉磷塞。
+transpiration coefficient|蒸散係數(蒸騰係數；需水量；蒸散比；蒸騰比)|植物生產 1 公克乾物質所消耗的水量。
+transpiration rate|蒸散速率(蒸散強度；蒸騰速率；蒸騰強度)|單位葉面積在單位時間內蒸散的水量。
+transplant|移植|將苗木從一處移到另一處種植。
+trickle irrigation|滴灌(點滴灌溉)|以管路滴頭將水緩慢滴在根部，省水且可結合施肥。
+trimming|修整(整修)|整理產品或植株外形，如切除老葉、修整花莖。
+tubing|管盆(穴植管)|細長管狀的育苗容器，利於根系向下發育，常用於林木育苗。
+vacuum cooling|真空預冷|降低氣壓使產品表面水分蒸發吸熱而快速降溫，適用於葉菜類。
+variety(varietas)|品種(變種)|分類上種以下的單位，或指具一致特性的栽培群體。
+vegetative growth|營養生長|根、莖、葉等營養器官的生長。
+vermiculite|蛭石|雲母類礦物經高溫膨脹而成，保水保肥力強，常用於播種介質。
+vernalization|春化作用|植物需經一段低溫才能開花的現象，如甘藍、蘿蔔、鬱金香。
+vine(climbing plant；climber；trailing plant)|藤蔓植物(蔓性植物；攀緣植物；藤本植物)|莖細長、需攀附或匍匐生長的植物，如葡萄、百香果。
+virus|病毒(過濾性病毒)|由核酸與蛋白質外殼組成、只能在活細胞內增殖的病原。
+vitrification|玻璃質化(水浸現象)|組培苗組織含水過多、呈半透明水浸狀的生理異常。
+vivipary|胎生(母體發芽)|種子在果實內或仍在母株上就發芽，如紅樹林的水筆仔。
+water potential|水勢|水的自由能狀態，水由水勢高處流向水勢低處。
+waxing|塗臘(上臘)|在果實表面塗蠟以減少失水並增加光澤，如柑橘。
+weathering|風化|岩石受物理、化學、生物作用崩解，形成土壤母質。
+weed control|雜草防治|以人工、機械、覆蓋或藥劑控制雜草。
+wilting point(wilting coefficient)|凋萎點(凋萎係數)|植物開始出現凋萎時的土壤含水量。
+windbreak|防風林(風障)|為降低風速、保護作物而栽植的林帶或設置的屏障。
+winter pruning|冬季剪定(休眠期剪定)|落葉果樹在休眠期進行的修剪，通常是主要的整形修剪。
+woody plant|木本植物|莖木質化堅硬的多年生植物，如喬木、灌木。
+xenia|種子直感|花粉直接影響當代種子（胚乳）性狀的現象，如玉米籽粒顏色。
+xerophyte(xerophyta)|旱生植物(耐旱植物)|能適應乾旱環境的植物，如仙人掌。`;
+
+function split(s){const i=s.indexOf('(');return i<0?[s.trim(),'']:[s.slice(0,i).trim(),s.slice(i+1,s.lastIndexOf(')')).trim()]}
+const BANK=RAW.split('\n').map((l,i)=>{const [en,zh,def]=l.split('|');const [e1,e2]=split(en);const [z1,z2]=split(zh);
+  return {no:i+1,en:e1,enAlt:e2,zh:z1,zhAlt:z2,def}});
+const $=id=>document.getElementById(id);
+const BY=Object.fromEntries(BANK.map(q=>[q.no,q]));
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const N=20;
+
+/* ---------- pronunciation (browser speech synthesis) ---------- */
+const ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+const canSpeak=(()=>{try{return 'speechSynthesis' in window&&typeof SpeechSynthesisUtterance!=='undefined'}catch(e){return false}})();
+if(!canSpeak)document.documentElement.classList.add('no-speech');
+let voice=null,autoSay=true,playingBtn=null;
+function pickVoice(){try{const vs=speechSynthesis.getVoices();const en=vs.filter(v=>/^en[-_]US/i.test(v.lang));
+  voice=en.find(v=>/Samantha|Google US|Aria|Jenny|Natural/i.test(v.name))||en.find(v=>v.localService)||en[0]||vs.find(v=>/^en/i.test(v.lang))||null}catch(e){}}
+if(canSpeak){pickVoice();try{speechSynthesis.addEventListener('voiceschanged',pickVoice)}catch(e){}}
+function speak(text,btn){if(!canSpeak||!text)return;try{
+  speechSynthesis.cancel();if(playingBtn)playingBtn.classList.remove('playing');
+  const u=new SpeechSynthesisUtterance(text);u.lang='en-US';if(voice)u.voice=voice;u.rate=.85;
+  if(btn){playingBtn=btn;btn.classList.add('playing');const off=()=>btn.classList.remove('playing');u.onend=off;u.onerror=off}
+  speechSynthesis.speak(u)}catch(e){}}
+function sayBtn(t){return `<button class="say" data-say="${esc(t)}" aria-label="播放 ${esc(t)} 的發音">${ICON}</button>`}
+document.addEventListener('click',e=>{const b=e.target.closest('.say');if(!b)return;e.preventDefault();e.stopPropagation();speak(b.dataset.say,b)},true);
+let round=[],idx=0,right=0,showExp=true,locked=false,timer=null,reviewMode='wrong',mode='normal',view='start';
+
+/* ---------- saved progress ----------
+   P.s[no] = [times asked, times wrong, last result 1/0]
+   P.wb[no] = timestamp of last wrong answer (present = in the notebook) */
+const KEY='yilin-hort-terms-v1';
+let P={updated:0,s:{},wb:{}};
+let dbRef=null,dbState='local',saving=false,pendingDb=false;
+function valid(x){return x&&typeof x==='object'&&x.s&&typeof x.s==='object'&&x.wb&&typeof x.wb==='object'}
+try{const x=JSON.parse(localStorage.getItem(KEY)||'null');if(valid(x))P=x}catch(e){}
+function saveLocal(){try{localStorage.setItem(KEY,JSON.stringify(P))}catch(e){}}
+async function saveDb(){
+  if(!dbRef||dbState!=='cloud')return;
+  if(saving){pendingDb=true;return}
+  saving=true;
+  try{await dbRef.set(JSON.parse(JSON.stringify(P)))}catch(e){if(e&&e.code==='invalid_argument'){dbState='local';syncText()}}
+  saving=false;
+  if(pendingDb){pendingDb=false;saveDb()}
+}
+function save(toCloud=true){P.updated=Date.now();saveLocal();if(toCloud)saveDb()}
+function syncText(){const t=dbState==='cloud'?'作答紀錄已同步到你的帳號，換裝置登入也看得到。':'作答紀錄存在這台裝置的瀏覽器裡；換裝置或清除瀏覽資料後會看不到。';
+  $('sync1').textContent=t;$('sync2').textContent=t}
+(async()=>{
+  try{
+    if(!window.claude||!window.claude.use)return;
+    const db=await window.claude.use('db');const user=await window.claude.use('user');
+    if(!db||!user)return;
+    const uid=await user.id();if(!uid)return;
+    dbRef=db.doc('data/users/'+uid+'/progress');
+    const snap=await dbRef.get();
+    const d=snap.exists?snap.data():null;
+    dbState='cloud';
+    if(valid(d)&&(d.updated||0)>(P.updated||0)){P=JSON.parse(JSON.stringify(d));saveLocal();refresh()}
+    else if(P.updated){await dbRef.set(JSON.parse(JSON.stringify(P)))}
+  }catch(e){dbState='local'}
+  syncText();
+})();
+syncText();
+
+/* ---------- quiz ---------- */
+function pickRound(){
+  if(mode==='review'){return shuffle(Object.keys(P.wb).map(Number)).slice(0,N).map(n=>BY[n])}
+  const todo=shuffle(BANK.filter(q=>!P.s[q.no]));
+  if(todo.length>=N)return todo.slice(0,N);
+  // fewer than 20 untested left: fill with terms asked least often
+  const rest=shuffle(BANK.filter(q=>P.s[q.no])).sort((a,b)=>P.s[a.no][0]-P.s[b.no][0]);
+  return shuffle(todo.concat(rest.slice(0,N-todo.length)));
+}
+function distractors(q){
+  const chars=new Set([...q.zh]);const others=BANK.filter(o=>o.zh!==q.zh);
+  const near=shuffle(others.filter(o=>[...o.zh].some(c=>chars.has(c))));const pick=[];const seen=new Set([q.zh]);
+  for(const o of near){if(pick.length>=2)break;if(!seen.has(o.zh)){pick.push(o.zh);seen.add(o.zh)}}
+  for(const o of shuffle(others.slice())){if(pick.length>=3)break;if(!seen.has(o.zh)){pick.push(o.zh);seen.add(o.zh)}}
+  return pick}
+function show(id){view=id;document.body.classList.toggle('inquiz',id==='quiz');if(id!=='quiz'&&canSpeak)try{speechSynthesis.cancel()}catch(e){}['start','quiz','result','prog','book'].forEach(s=>$(s).hidden=s!==id);
+  $('nav').hidden=id==='quiz';
+  const tab=id==='result'?'start':id;
+  $('nav').querySelectorAll('button').forEach(b=>b.setAttribute('aria-current',b.dataset.v===tab?'page':'false'));
+  if(id==='prog')drawProg();if(id==='book')drawBook();window.scrollTo(0,0)}
+function start(m){mode=m||'normal';showExp=$('mode-on').checked;autoSay=canSpeak&&$('autoSay').checked;
+  const qs=pickRound();if(!qs.length){show('book');return}
+  round=qs.map(q=>({q,opts:shuffle([q.zh,...distractors(q)]),ans:null}));idx=0;right=0;show('quiz');render()}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function render(){locked=false;const it=round[idx],q=it.q,T=round.length;
+  $('count').textContent=`${mode==='review'?'錯題重測 · ':''}${idx+1} / ${T}`;$('fill').style.width=(idx/T*100)+'%';$('live').textContent=`答對 ${right}`;
+  $('no').textContent='No. '+String(q.no).padStart(3,'0');$('term').textContent=q.en;$('alt').textContent='';
+  $('sayQ').dataset.say=q.en;if(autoSay)speak(q.en,$('sayQ'));
+  $('explain').hidden=true;$('nextRow').hidden=true;
+  $('opts').innerHTML=it.opts.map((o,i)=>`<button class="opt" data-i="${i}"><span class="k">${i+1}</span><span>${esc(o)}</span></button>`).join('');
+  $('opts').querySelectorAll('.opt').forEach(b=>b.onclick=()=>answer(+b.dataset.i));
+  $('opts').querySelector('.opt').focus({preventScroll:true})}
+function expHTML(q,ok){return `<div class="verdict ${ok?'ok':'bad'}">${ok?'答對了':'答錯了'}${!ok?' · 已收進錯題本':(mode==='review'?' · 已移出錯題本':'')}</div>
+  <div class="zh">${esc(q.zh)}${q.zhAlt?`<span class="muted" style="font-weight:400;font-size:.9rem">（${esc(q.zhAlt)}）</span>`:''}</div>
+  <div class="wline">${sayBtn(q.en)}<span class="alt">${esc(q.en)}${q.enAlt?' · '+esc(q.enAlt):''}</span></div><p>${esc(q.def)}</p>`}
+function record(no,ok){const s=P.s[no]||[0,0,0];s[0]++;if(!ok)s[1]++;s[2]=ok?1:0;P.s[no]=s;
+  if(!ok)P.wb[no]=Date.now();else if(mode==='review')delete P.wb[no];save(false);updBadge()}
+function answer(i){if(locked)return;locked=true;const it=round[idx];it.ans=it.opts[i];const ok=it.ans===it.q.zh;if(ok)right++;
+  record(it.q.no,ok);
+  $('live').textContent=`答對 ${right}`;
+  $('opts').querySelectorAll('.opt').forEach((b,j)=>{b.disabled=true;const v=it.opts[j];
+    if(v===it.q.zh)b.classList.add('right');else if(j===i)b.classList.add('wrong');else b.classList.add('dim')});
+  if(showExp){$('explain').innerHTML=expHTML(it.q,ok);$('explain').hidden=false;$('nextRow').hidden=false;
+    $('next').textContent=idx===round.length-1?'看成績':'下一題';$('next').focus({preventScroll:true});
+    $('explain').scrollIntoView({block:'nearest',behavior:'smooth'})}
+  else{timer=setTimeout(next,ok?600:1300)}}
+function next(){clearTimeout(timer);if(idx<round.length-1){idx++;render()}else finish()}
+function finish(){save(true);const T=round.length;$('fill').style.width='100%';$('score').textContent=right;$('scoreOf').textContent=`/ ${T} 題答對`;
+  const p=right/T;$('comment').textContent=p===1?(mode==='review'?'這回錯題全部答對，已從錯題本移出。':'全對！這些術語都掌握了。'):p>=.8?'表現很好，答錯的詞已收進錯題本。':p>=.6?'及格了，下方整理了答錯的題目與解釋。':'多看看下方的名詞解釋，再挑戰一回。';
+  const left=Object.keys(P.wb).length;
+  $('again').textContent=mode==='review'?(left?`繼續錯題重測（剩 ${left} 詞）`:'開始新的 20 題'):'重新測驗（新的 20 題）';
+  if(mode==='review'&&!left)mode='normal';
+  reviewMode=right===T?'all':'wrong';drawReview();show('result')}
+function drawReview(){$('tWrong').setAttribute('aria-pressed',reviewMode==='wrong');$('tAll').setAttribute('aria-pressed',reviewMode==='all');
+  $('tAll').textContent=`全部 ${round.length} 題`;
+  const list=round.filter(it=>reviewMode==='all'||it.ans!==it.q.zh);
+  $('review').innerHTML=list.length?list.map(it=>{const ok=it.ans===it.q.zh;return `<div class="rv ${ok?'ok':'bad'}">
+    <div class="wline">${sayBtn(it.q.en)}<span class="en">${esc(it.q.en)}</span></div><div><b>${esc(it.q.zh)}</b>${it.q.zhAlt?`<span class="muted">（${esc(it.q.zhAlt)}）</span>`:''}</div>
+    ${ok?'':`<div class="yours">你選的是：${esc(it.ans||'—')}</div>`}<p>${esc(it.q.def)}</p></div>`}).join('')
+    :'<div class="rv ok"><p>這一回沒有答錯的題目。</p></div>'}
+
+/* ---------- progress table ---------- */
+let pFilter='all',pLimit=100;
+function drawProg(){
+  const asked=BANK.filter(q=>P.s[q.no]);let tot=0,wr=0;asked.forEach(q=>{tot+=P.s[q.no][0];wr+=P.s[q.no][1]});
+  $('pDone').textContent=asked.length;$('pAns').textContent=tot;$('pRate').textContent=tot?Math.round((tot-wr)/tot*100)+'%':'—';
+  $('pBook').textContent=Object.keys(P.wb).length;$('pBar').style.width=(asked.length/BANK.length*100)+'%';
+  const kw=$('pq').value.trim().toLowerCase();
+  const rows=BANK.filter(q=>{const s=P.s[q.no];
+    if(pFilter==='done'&&!s)return false;if(pFilter==='todo'&&s)return false;if(pFilter==='miss'&&!(s&&s[1]))return false;
+    if(kw&&!(q.en+' '+q.enAlt+' '+q.zh+' '+q.zhAlt).toLowerCase().includes(kw))return false;return true});
+  $('pBody').innerHTML=rows.slice(0,pLimit).map(q=>{const s=P.s[q.no];
+    return `<tr><td class="n">${q.no}</td><td><div class="w">${sayBtn(q.en)}<div><span class="e">${esc(q.en)}</span><span class="z">${esc(q.zh)}</span></div></div></td>
+    <td class="c">${s?'<span class="tick" aria-label="已考過">✓</span>':'<span class="tick no" aria-label="未考過">—</span>'}</td>
+    <td class="c">${s?`${s[0]-s[1]}/${s[0]}${s[1]?` <span class="miss" title="答錯次數">✗${s[1]}</span>`:''}`:''}</td></tr>`}).join('')
+    ||'<tr><td colspan="4" class="muted">沒有符合條件的詞。</td></tr>';
+  $('pCount').innerHTML=rows.length>pLimit?`顯示 ${pLimit} / ${rows.length} 筆 <button class="btn ghost small" id="pMore" style="margin-left:8px">再顯示 100 筆</button>`:`共 ${rows.length} 筆`;
+  const m=$('pMore');if(m)m.onclick=()=>{pLimit+=100;drawProg()};
+}
+$('pq').addEventListener('input',()=>{pLimit=100;drawProg()});
+$('pf').querySelectorAll('button').forEach(b=>b.onclick=()=>{pFilter=b.dataset.f;pLimit=100;
+  $('pf').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));drawProg()});
+function resetIdle(){$('resetBox').innerHTML='<button class="btn ghost small" id="reset">清除所有作答紀錄</button>';$('reset').onclick=resetAsk}
+function resetAsk(){$('resetBox').innerHTML='<span>確定要清除全部 437 詞的作答紀錄和錯題本？清除後無法復原。</span><button class="btn danger small" id="rYes">確定清除</button><button class="btn ghost small" id="rNo">取消</button>';
+  $('rYes').onclick=()=>{P={updated:0,s:{},wb:{}};save(true);updBadge();resetIdle();drawProg()};$('rNo').onclick=resetIdle}
+resetIdle();
+
+/* ---------- wrong-answer notebook ---------- */
+let bSort='wrong';
+function updBadge(){const n=Object.keys(P.wb).length;$('bookN').textContent=n||''}
+function drawBook(){
+  const nos=Object.keys(P.wb).map(Number);$('bCount').textContent=nos.length;
+  $('bQuiz').disabled=!nos.length;$('bQuiz').textContent=nos.length?`錯題重測（${Math.min(nos.length,N)} 題）`:'錯題重測';
+  $('bQuiz').style.opacity=nos.length?1:.5;
+  nos.sort((a,b)=>bSort==='no'?a-b:bSort==='recent'?P.wb[b]-P.wb[a]:((P.s[b]||[0,0])[1]-(P.s[a]||[0,0])[1])||a-b);
+  $('bList').innerHTML=nos.length?nos.map(n=>{const q=BY[n],s=P.s[n]||[0,0,0];const d=new Date(P.wb[n]);
+    return `<div class="rv bad"><div class="meta"><span>No. ${String(n).padStart(3,'0')}</span><span>答錯 ${s[1]} 次 / 作答 ${s[0]} 次</span><span>最近答錯 ${d.getMonth()+1}/${d.getDate()}</span><button class="rm" data-n="${n}">已記熟，移出</button></div>
+    <div class="wline">${sayBtn(q.en)}<span class="en">${esc(q.en)}${q.enAlt?`<span class="muted" style="font-size:.85rem"> · ${esc(q.enAlt)}</span>`:''}</span></div>
+    <div><b>${esc(q.zh)}</b>${q.zhAlt?`<span class="muted">（${esc(q.zhAlt)}）</span>`:''}</div><p>${esc(q.def)}</p></div>`}).join('')
+    :'<div class="rv ok"><p>錯題本是空的。測驗中答錯的詞會自動收進這裡。</p></div>';
+  $('bList').querySelectorAll('.rm').forEach(b=>b.onclick=()=>{delete P.wb[b.dataset.n];save(true);updBadge();drawBook()});
+  clearIdle(nos.length);
+}
+function clearIdle(n){$('clearBox').innerHTML=n?'<button class="btn ghost small" id="bClr">清空錯題本</button>':'';const c=$('bClr');if(c)c.onclick=()=>{
+  $('clearBox').innerHTML=`<span>確定把 ${n} 個詞全部移出錯題本？作答次數紀錄會保留。</span><button class="btn danger small" id="cYes">確定清空</button><button class="btn ghost small" id="cNo">取消</button>`;
+  $('cYes').onclick=()=>{P.wb={};save(true);updBadge();drawBook()};$('cNo').onclick=()=>clearIdle(n)}}
+$('bs').querySelectorAll('button').forEach(b=>b.onclick=()=>{bSort=b.dataset.s;$('bs').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));drawBook()});
+$('bQuiz').onclick=()=>{if(Object.keys(P.wb).length)start('review')};
+
+function refresh(){updBadge();if(view==='prog')drawProg();if(view==='book')drawBook()}
+updBadge();
+$('nav').querySelectorAll('button').forEach(b=>b.onclick=()=>show(b.dataset.v));
+$('go').onclick=()=>start('normal');$('next').onclick=next;$('again').onclick=()=>start(mode);$('home').onclick=()=>show('start');
+$('tWrong').onclick=()=>{reviewMode='wrong';drawReview()};$('tAll').onclick=()=>{reviewMode='all';drawReview()};
+document.addEventListener('keydown',e=>{if($('quiz').hidden)return;
+  if(!locked&&/^[1-4]$/.test(e.key)){answer(+e.key-1);e.preventDefault()}
+  else if(locked&&showExp&&e.key==='Enter'&&document.activeElement!==$('next')){next();e.preventDefault()}});
+function quitQuiz(){clearTimeout(timer);const n=idx+(locked?1:0);if(!n){show('start');return}round=round.slice(0,n);finish()}
+$('quit').onclick=quitQuiz;$('toBook').onclick=()=>show('book');
+</script>
+
+</body></html>
