@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>實習課規劃</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+/* 實習課開場：課程規劃（同 agri-leaf 版型） */
+:root{
+  --bg:#f3f5ec; --paper:#ffffff; --ink:#1f2a1c; --muted:#5e6b58; --line:#d9e0cd; --grid:#e6ebdb;
+  --accent:#2f6b3a; --accent-ink:#ffffff; --accent-soft:#e3f0e3;
+  --soil:#8a5a35; --soil-soft:#f4e7da;
+  --mark:#ffe08a; --mark-ink:#2a2118;
+  --ok:#1f7a45; --ok-soft:#e1f4e7; --bad:#b4362c; --bad-soft:#fbe7e4;
+  --g1:#c46a17; --g2:#2f8a57; --g3:#3b6fd1; --g4:#a2408c;
+  --g1s:#fbecdc; --g2s:#e0f2e7; --g3s:#e3ebfb; --g4s:#f6e4f1;
+  --leaf:#4f9a3c; --leaf2:#2f6b2a; --leafdry:#8aa04a; --leafbrown:#9a6a3c; --leafred:#c8452f; --leafyel:#e0b23a;
+  --water:#5aa3d9; --film:#9fd3f0; --glue:#f2d36b; --card:#fbf7ee; --cardline:#d9c7a3; --wood:#b07a45; --metal:#7d8a93;
+  --f:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121610; --paper:#1b2118; --ink:#e6ecdf; --muted:#a6b29c; --line:#323c2c; --grid:#181d15;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  --leaf:#6dbb57; --leaf2:#9fd88a; --leafdry:#a8bb63; --leafbrown:#c08f5c; --leafred:#e2705a; --leafyel:#e8c45a;
+  --water:#6fb3e6; --film:#3d6f8f; --glue:#8f7a2e; --card:#e9e1d0; --cardline:#a8946c; --wood:#a8784a; --metal:#93a0a8;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121610; --paper:#1b2118; --ink:#e6ecdf; --muted:#a6b29c; --line:#323c2c; --grid:#181d15;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  --leaf:#6dbb57; --leaf2:#9fd88a; --leafdry:#a8bb63; --leafbrown:#c08f5c; --leafred:#e2705a; --leafyel:#e8c45a;
+  --water:#6fb3e6; --film:#3d6f8f; --glue:#8f7a2e; --card:#e9e1d0; --cardline:#a8946c; --wood:#a8784a; --metal:#93a0a8;
+  color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:17px;line-height:1.7;
+  background-image:radial-gradient(var(--grid) 1.2px,transparent 1.2px);background-size:22px 22px}
+.wrap{max-width:980px;margin:0 auto;padding-block:20px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{display:flex;gap:16px;align-items:flex-start;justify-content:space-between}
+.brand{min-width:0}
+.eyebrow{font-size:14px;letter-spacing:.12em;color:var(--soil);font-weight:700}
+h1{font-size:clamp(30px,6vw,44px);font-weight:900;line-height:1.2;margin:4px 0 6px;text-wrap:balance}
+.sub{color:var(--muted);margin:0;font-size:16px}
+.qr{flex:none;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+.qr img{width:84px;height:84px;image-rendering:pixelated;display:block}
+.qr span{font-size:12px;color:#3a4a33;font-weight:700}
+button:focus-visible,.qr:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:20;background:var(--bg);padding:8px 0;margin:14px 0 10px}
+.tab{font:inherit;font-weight:700;font-size:17px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:999px;padding:7px 18px;cursor:pointer;min-height:44px}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.tab small{font-size:12px;opacity:.8;margin-left:4px}
+.panel{display:flex;flex-direction:column;gap:16px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px}
+.toolbar .hint{font-size:14px;color:var(--muted)}
+.switch{display:inline-flex;align-items:center;gap:8px;font-weight:700;cursor:pointer;user-select:none}
+.switch input{width:20px;height:20px;accent-color:var(--accent)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;min-width:0}
+.card h2{font-size:24px;font-weight:900;margin:0 0 8px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.card h2 .sec{font-size:13px;font-weight:700;color:var(--soil);background:var(--soil-soft);border-radius:999px;padding:1px 10px}
+.card h3{font-size:19px;margin:14px 0 4px}
+.card p{margin:6px 0}
+.card ul,.card ol{margin:6px 0;padding-left:1.3em}
+.card li{margin:3px 0}
+.key{background:var(--mark);color:var(--mark-ink);border-radius:4px;padding:0 4px;font-weight:700}
+body.blank .key{color:transparent;background:var(--soil-soft);border-bottom:2px solid var(--soil);cursor:pointer;user-select:none}
+body.blank .key.show{color:var(--mark-ink);background:var(--mark);border-bottom-color:transparent}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:820px){.four{grid-template-columns:1fr 1fr}}
+@media (max-width:720px){.two,.three{grid-template-columns:1fr}}
+.box{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--bg);min-width:0}
+.box b.t{display:block;font-size:17px;margin-bottom:2px}
+.box svg{width:100%;height:auto;display:block;margin-bottom:6px}
+.box small{display:block;color:var(--muted);font-size:14px;line-height:1.5;margin-top:4px}
+.box.c1{border-top:5px solid var(--g1)}.box.c2{border-top:5px solid var(--g2)}.box.c3{border-top:5px solid var(--g3)}.box.c4{border-top:5px solid var(--g4)}
+.box.okb{border-top:5px solid var(--ok)}.box.badb{border-top:5px solid var(--bad)}
+.note{font-size:15px;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 12px;margin-top:10px}
+.tip{font-size:15px;border:1.5px dashed var(--soil);border-radius:10px;padding:8px 12px;margin-top:10px;background:var(--soil-soft)}
+.tip b{color:var(--soil)}
+.warnbox{font-size:15px;border-left:5px solid var(--bad);border-radius:0 10px 10px 0;padding:8px 12px;margin-top:10px;background:var(--bad-soft)}
+.warnbox b{color:var(--bad)}
+.tblwrap{overflow-x:auto;margin-top:8px}
+table.t{width:100%;border-collapse:collapse;font-size:16px;min-width:560px}
+table.t th,table.t td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+table.t th{background:var(--accent-soft);white-space:nowrap}
+table.t td:first-child{white-space:nowrap}
+.btn{font:inherit;font-weight:700;font-size:16px;border:0;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:9px 22px;cursor:pointer;min-height:44px}
+.btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.sm{min-height:36px;padding:4px 14px;font-size:14px}
+.btn.warn{background:var(--bad);color:#fff;border-color:var(--bad)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.art{width:100%;height:auto;display:block}
+figure{margin:0}
+figcaption{font-size:15px;line-height:1.5;margin-top:6px;text-align:center;color:var(--muted)}
+.ex{color:var(--muted);font-size:14px}
+.formula{font-size:22px;font-weight:900;text-align:center;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px;margin:8px 0}
+details.teacher{margin-top:10px;border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--bg)}
+details.teacher summary{cursor:pointer;font-weight:700;color:var(--accent)}
+
+/* SVG 共用 */
+.s-txt{fill:var(--ink);font-size:13px;font-weight:700;font-family:var(--f)}
+.s-sm{fill:var(--muted);font-size:11px;font-weight:500;font-family:var(--f)}
+.s-line{stroke:var(--muted);stroke-width:2;fill:none}
+.s-leaf{fill:var(--leaf)}
+.s-vein{stroke:var(--leaf2);stroke-width:2;fill:none;stroke-linecap:round}
+.s-card{fill:var(--card);stroke:var(--cardline);stroke-width:1.5}
+.s-film{fill:var(--film);opacity:.35;stroke:var(--water);stroke-width:1.5}
+.s-paper{fill:var(--paper);stroke:var(--muted);stroke-width:1.5}
+.s-blot{fill:#f1ead8;stroke:var(--cardline);stroke-width:1.2}
+.s-news{fill:#d9d4c7;stroke:var(--muted);stroke-width:1}
+.s-board{fill:var(--wood)}
+.s-water{fill:var(--water)}
+.lbl{stroke:var(--muted);stroke-width:1.2;fill:none;stroke-dasharray:3 2}
+
+/* 動畫 */
+.paused *{animation-play-state:paused!important}
+.a-fall{animation:fall 3s ease-in infinite;transform-box:fill-box;transform-origin:center}
+@keyframes fall{0%{transform:translate(0,0) rotate(0);opacity:0}10%{opacity:1}50%{transform:translate(-18px,50px) rotate(-40deg)}85%{transform:translate(4px,100px) rotate(10deg);opacity:1}100%{transform:translate(4px,108px) rotate(10deg);opacity:0}}
+.a-wipe{animation:wipe 1.8s ease-in-out infinite alternate}
+@keyframes wipe{from{transform:translate(-60px,0)}to{transform:translate(60px,0)}}
+.a-fade{animation:fadeio 2.4s ease-in-out infinite}
+@keyframes fadeio{0%,100%{opacity:.1}50%{opacity:1}}
+.a-gone{animation:gone 3.6s ease-in infinite}
+@keyframes gone{0%,20%{opacity:1}70%,100%{opacity:0}}
+.a-pop{animation:pop 3.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pop{0%,10%{transform:scale(0);opacity:0}25%,90%{transform:scale(1);opacity:1}100%{transform:scale(1);opacity:0}}
+.a-press{animation:press 3s ease-in-out infinite}
+@keyframes press{0%,15%{transform:translateY(-46px)}40%,85%{transform:translateY(0)}100%{transform:translateY(-46px)}}
+.a-dripL{animation:dripL 3s ease-in infinite}
+@keyframes dripL{0%,40%{transform:translate(0,0);opacity:0}50%{opacity:1}100%{transform:translate(-36px,10px);opacity:0}}
+.a-dripR{animation:dripR 3s ease-in infinite}
+@keyframes dripR{0%,40%{transform:translate(0,0);opacity:0}50%{opacity:1}100%{transform:translate(36px,10px);opacity:0}}
+.a-up{animation:up 2.4s ease-in infinite}
+@keyframes up{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(-30px);opacity:0}}
+.a-feed{animation:feed 5s linear infinite}
+@keyframes feed{0%{transform:translateX(-120px)}10%{transform:translateX(-120px)}80%{transform:translateX(120px)}100%{transform:translateX(120px)}}
+.a-rot{animation:rot 1.2s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes rot{to{transform:rotate(360deg)}}
+.a-snip{animation:snip .6s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:left center}
+@keyframes snip{from{transform:rotate(-12deg)}to{transform:rotate(6deg)}}
+.a-slide{animation:slide 4s linear infinite}
+@keyframes slide{0%{transform:translateY(-70px)}100%{transform:translateY(70px)}}
+.a-swing{animation:swing 2.4s ease-in-out infinite alternate;transform-box:view-box;transform-origin:170px 40px}
+@keyframes swing{from{transform:rotate(-12deg)}to{transform:rotate(12deg)}}
+.a-roll{animation:rot 2s linear infinite;transform-box:fill-box;transform-origin:center}
+.a-melt{animation:melt 3s ease-in-out infinite}
+@keyframes melt{0%,100%{opacity:.35}50%{opacity:1}}
+.a-turn{animation:turn 4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes turn{0%,20%{transform:rotate(0)}50%,70%{transform:rotate(180deg)}100%{transform:rotate(360deg)}}
+
+/* 流程 */
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:8px}
+@media (max-width:640px){.flow{grid-template-columns:1fr 1fr}}
+.fl{border:2px solid var(--accent);border-radius:12px;background:var(--bg);padding:6px 8px 10px;text-align:center;position:relative}
+.fl svg{width:100%;height:auto;display:block}
+.fl b{display:block;font-size:18px}
+.fl small{display:block;font-size:13px;color:var(--muted);line-height:1.4}
+.fl .no{position:absolute;left:8px;top:6px;width:24px;height:24px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:13px;font-weight:900;display:grid;place-items:center}
+
+/* 步驟播放器 */
+.player{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:760px){.player{grid-template-columns:1fr}}
+.stage{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:8px;position:relative}
+.stage svg{width:100%;height:auto;display:block}
+.stage .badge{position:absolute;left:12px;top:10px;background:var(--accent);color:var(--accent-ink);font-weight:900;border-radius:999px;padding:0 12px;font-size:15px}
+.stepchips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.sc{font:inherit;font-weight:700;font-size:15px;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;min-width:44px;min-height:44px;padding:0 12px;cursor:pointer}
+.sc[aria-current="step"]{border-color:var(--accent);background:var(--accent);color:var(--accent-ink)}
+.sc.seen{border-color:var(--accent)}
+.stxt h3{font-size:24px;margin:0 0 6px}
+.stxt ul{padding-left:1.2em;margin:4px 0}
+.stxt li{margin:4px 0;font-size:18px}
+.snav{display:flex;justify-content:space-between;gap:10px;margin-top:12px;flex-wrap:wrap}
+
+/* 材料 */
+.mats{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:8px}
+.mat{border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:8px 12px}
+.mat b{display:block}
+.mat small{color:var(--muted);font-size:14px;line-height:1.5;display:block}
+
+/* 分組 */
+.role{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:8px}
+@media (max-width:820px){.role{grid-template-columns:1fr 1fr}}
+.rl{border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:10px 12px;font-size:16px}
+.rl b{display:block;font-size:18px}
+.rl .tag{display:inline-block;font-size:13px;font-weight:900;border-radius:999px;padding:0 10px;color:#fff;margin-bottom:4px}
+.timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:8px}
+@media (max-width:820px){.timeline{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.timeline{grid-template-columns:1fr}}
+.tl{border-left:5px solid var(--accent);background:var(--bg);border-radius:0 10px 10px 0;padding:8px 12px;font-size:16px}
+.tl>b{display:block;font-size:18px}
+.tl ul{margin:4px 0 0;padding-left:1.1em}
+.tl li{margin:2px 0}
+.tl .m{color:var(--soil);font-weight:700;font-size:14px}
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.calc{grid-template-columns:1fr}}
+.calc label{display:block;font-weight:700;margin-top:6px}
+.calc input[type=number]{font:inherit;font-size:22px;font-weight:700;width:130px;padding:6px 10px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.bignum{font-size:44px;font-weight:900;line-height:1.1;color:var(--accent)}
+
+/* 動手判斷 */
+.order{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.oslot{border:2px dashed var(--line);border-radius:10px;padding:8px 12px;min-height:46px;display:flex;align-items:center;gap:10px;font-weight:700}
+.oslot.fill{border-style:solid;border-color:var(--ok);background:var(--ok-soft)}
+.oslot .n{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--paper);font-size:14px}
+.opool{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ob{font:inherit;font-weight:700;font-size:16px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:10px;padding:8px 14px;cursor:pointer;min-height:44px}
+.ob.bad{animation:nope .4s;border-color:var(--bad);color:var(--bad)}
+@keyframes nope{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.ofb{font-weight:700;margin-top:8px;min-height:1.7em}
+.ofb.ok{color:var(--ok)}.ofb.bad{color:var(--bad)}
+.ready{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:8px}
+.rd{border:2px solid var(--line);border-radius:12px;background:var(--paper);padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.rd .q{font-weight:900;font-size:17px}
+.rd .bs{display:flex;gap:8px}
+.rd .bs button{flex:1;font:inherit;font-weight:700;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:10px;min-height:44px;cursor:pointer}
+.rd.ok{border-color:var(--ok);background:var(--ok-soft)}
+.rd.bad{border-color:var(--bad);background:var(--bad-soft)}
+.rd .a{font-size:15px}
+.conc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.conc{grid-template-columns:1fr}}
+input[type=range]{width:100%;accent-color:var(--accent);margin:8px 0 0;height:32px}
+.cnum{font-size:40px;font-weight:900;line-height:1;color:var(--accent)}
+.cverdict{font-size:20px;font-weight:900;margin-top:6px}
+.cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:8px}
+.case{font:inherit;color:var(--ink);text-align:left;border:2px solid var(--line);border-radius:12px;background:var(--paper);padding:12px 14px;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-height:140px}
+.case .q{font-size:18px;font-weight:900}
+.case .a{margin-top:auto;font-size:15px;color:var(--muted)}
+.case.open{border-color:var(--accent);background:var(--accent-soft)}
+.case.open .a{color:var(--ink)}
+
+/* 測驗 */
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.progress{display:flex;gap:4px;flex-wrap:wrap}
+.dot{width:18px;height:8px;border-radius:4px;background:var(--line)}
+.dot.ok{background:var(--ok)}.dot.bad{background:var(--bad)}
+button.dot{border:0;padding:0;cursor:pointer;width:22px;height:12px}
+.dot.now{outline:2px solid var(--accent);outline-offset:2px}
+.qtype{font-size:14px;font-weight:700;color:var(--accent);letter-spacing:.06em}
+.qtext{font-size:22px;line-height:1.75;margin:10px 0 14px;font-weight:500}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{font:inherit;font-size:18px;text-align:left;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:12px 14px;cursor:pointer;display:flex;gap:10px;align-items:center;min-height:56px}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt .k{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--bg);font-size:14px;font-weight:700}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt:disabled{cursor:default}
+.feedback{margin-top:14px;border-radius:10px;padding:10px 14px;font-size:16px}
+.feedback.ok{background:var(--ok-soft);color:var(--ok)}
+.feedback.bad{background:var(--bad-soft);color:var(--bad)}
+.feedback .why{color:var(--ink);display:block;margin-top:4px}
+.score{font-size:64px;font-weight:900;color:var(--accent);line-height:1;margin:10px 0}
+.review .item{border-left:4px solid var(--bad);padding:6px 12px;background:var(--bg);border-radius:0 6px 6px 0;font-size:16px;margin-top:8px;text-align:left}
+.qnav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap}
+.qcount{font-size:14px;color:var(--muted);font-weight:700}
+.overlay{position:fixed;inset:0;background:rgba(10,16,8,.72);display:grid;place-items:center;z-index:50;padding:20px}
+.overlay .inner{background:#fff;border-radius:16px;padding:22px;text-align:center;color:#1f2a1c;max-width:92vw}
+.overlay img{width:min(340px,72vw);height:min(340px,72vw);image-rendering:pixelated;display:block;margin:0 auto}
+.overlay p{font-size:22px;font-weight:700;margin:12px 0 0}
+.overlay small{display:block;color:#5e6b58;margin-top:4px;word-break:break-all}
+footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
+
+@media (min-width:600px) and (max-width:1100px){
+  body{font-size:18px}
+  .card p,.card li{font-size:18px}
+  .qtext{font-size:24px}.opt{font-size:20px}
+}
+@media (max-width:599px){
+  .wrap{padding-block:12px 40px}
+  h1{font-size:30px}
+  .qr img{width:64px;height:64px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:none;font-size:16px;padding:6px 14px}
+  .card{padding:14px}
+  .card h2{font-size:21px}
+  .qtext{font-size:20px}
+  .toolbar .hint{display:none}
+  .stxt li{font-size:17px}
+  .qnav .btn{flex:1}.qcount{order:-1;width:100%;text-align:center}
+}
+@media (min-width:1500px){ .wrap{zoom:1.3} }
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+@media (max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .box ul{margin:4px 0;padding-left:1.2em}
+.vs .box.na{border-top:5px solid var(--bad)}
+.vs .box.so{border-top:5px solid var(--g3)}
+.a-flame{animation:flame .5s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:bottom}
+@keyframes flame{from{transform:scaleY(.8)}to{transform:scaleY(1.15)}}
+.a-tap{animation:tap .7s ease-in-out infinite}
+@keyframes tap{0%,100%{transform:translateY(-14px)}50%{transform:translateY(0)}}
+.a-walk{animation:walk 4s ease-in-out infinite alternate}
+@keyframes walk{from{transform:translateX(-40px)}to{transform:translateX(40px)}}
+.a-appear{animation:appear 5s ease-in-out infinite}
+@keyframes appear{0%,25%{opacity:0}70%,100%{opacity:1}}
+.a-fadeout{animation:fadeout 5s ease-in-out infinite}
+@keyframes fadeout{0%,25%{opacity:1}70%,100%{opacity:0}}
+.a-drop{animation:drop 1.4s ease-in infinite}
+@keyframes drop{0%{transform:translateY(0);opacity:0}10%{opacity:1}100%{transform:translateY(40px);opacity:0}}
+.a-lift{animation:lift 3.6s ease-in-out infinite}
+@keyframes lift{0%,10%{transform:translate(0,0)}45%{transform:translate(0,-60px)}80%,100%{transform:translate(150px,10px)}}
+.a-clock{animation:rot 4s linear infinite;transform-box:view-box}
+.dil{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.dil{grid-template-columns:1fr}}
+.dil input[type=number]{font:inherit;font-size:22px;font-weight:700;width:140px;padding:6px 10px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.dil label{display:block;font-weight:700;margin-top:6px}
+
+.sibs{margin-top:8px;font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}
+.sibs a,.sibs b{border:1.5px solid var(--line);border-radius:999px;padding:1px 10px;text-decoration:none;color:var(--accent);background:var(--paper);font-weight:700}
+.sibs b{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.sibs a:hover{border-color:var(--accent)}
+.flow{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:720px){.flow{grid-template-columns:1fr 1fr}}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+@media (max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .box ul,.box ul{margin:4px 0;padding-left:1.2em}
+.rd .bs{flex-wrap:wrap}
+.rd .bs button{min-width:84px}
+.lab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.lab{grid-template-columns:1fr}}
+.lab input[type=number]{font:inherit;font-size:22px;font-weight:700;width:140px;padding:6px 10px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.lab label{display:block;font-weight:700;margin-top:6px}
+.a-flame{animation:flame .5s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:bottom}
+@keyframes flame{from{transform:scaleY(.8)}to{transform:scaleY(1.15)}}
+.a-tap{animation:tap .7s ease-in-out infinite}
+@keyframes tap{0%,100%{transform:translateY(-14px)}50%{transform:translateY(0)}}
+.a-walk{animation:walk 4s ease-in-out infinite alternate}
+@keyframes walk{from{transform:translateX(-40px)}to{transform:translateX(40px)}}
+.a-appear{animation:appear 5s ease-in-out infinite}
+@keyframes appear{0%,25%{opacity:0}70%,100%{opacity:1}}
+.a-fadeout{animation:fadeout 5s ease-in-out infinite}
+@keyframes fadeout{0%,25%{opacity:1}70%,100%{opacity:0}}
+.a-drop{animation:drop 1.4s ease-in infinite}
+@keyframes drop{0%{transform:translateY(0);opacity:0}10%{opacity:1}100%{transform:translateY(40px);opacity:0}}
+.a-wig{animation:wig 1.6s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+@keyframes wig{from{transform:skewX(-8deg) translateX(-3px)}to{transform:skewX(8deg) translateX(3px)}}
+.a-crawl{animation:crawl 6s ease-in-out infinite alternate}
+@keyframes crawl{from{transform:translateX(-30px)}to{transform:translateX(30px)}}
+.a-dive{animation:dive 4s ease-in infinite}
+@keyframes dive{0%,20%{transform:translateY(0);opacity:1}80%{transform:translateY(46px);opacity:.2}100%{transform:translateY(46px);opacity:0}}
+.a-shake{animation:shake 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center bottom}
+@keyframes shake{0%,60%,100%{transform:rotate(0)}70%{transform:rotate(-10deg)}80%{transform:rotate(10deg)}90%{transform:rotate(-6deg)}}
+.a-bulge{animation:bulge 3s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes bulge{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.08)}}
+.a-grow{animation:grow 4s ease-out infinite;transform-box:fill-box;transform-origin:bottom}
+@keyframes grow{0%{transform:scaleY(0)}60%,100%{transform:scaleY(1)}}
+.a-place{animation:place 3s ease-in-out infinite}
+@keyframes place{0%{transform:translate(60px,-50px);opacity:0}20%{opacity:1}60%,100%{transform:translate(0,0);opacity:1}}
+.a-spin{animation:spin 3s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes spin{to{transform:rotate(360deg)}}
+.a-float{animation:float 5s ease-in-out infinite}
+@keyframes float{0%{transform:translate(0,0)}50%{transform:translate(60px,-24px)}100%{transform:translate(120px,10px)}}
+.a-roll2{animation:roll2 2s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+@keyframes roll2{from{transform:translateX(-16px) rotate(-90deg)}to{transform:translateX(16px) rotate(90deg)}}
+
+:root{--leafc:#4f9a3c;--leafd:#2f6b2a;--skel:#8a6a3c;--straw:#d9b45a;--strawd:#a8843a;--seedc:#a8743a;--cup:#9a8060;--dye1:#c8452f;--dye2:#e0b23a;--dye3:#3f6fb8;--soilc:#8a5d3b;--slice:#e8d2a8;--paperc:#f4efe2}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--leafc:#6dbb57;--leafd:#9fd88a;--soilc:#a87450;--paperc:#e6dfcf;--slice:#cdb78e}}
+:root[data-theme="dark"]{--leafc:#6dbb57;--leafd:#9fd88a;--soilc:#a87450;--paperc:#e6dfcf;--slice:#cdb78e}
+.count{flex:none;background:var(--paper);border:2px solid var(--accent);border-radius:var(--r);padding:8px 14px;text-align:center;min-width:120px}
+.count b{display:block;font-size:34px;font-weight:900;line-height:1.1;color:var(--accent)}
+.count small{display:block;font-size:13px;color:var(--muted);font-weight:700}
+.chain{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:6px}
+@media (max-width:820px){.chain{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.chain{grid-template-columns:1fr}}
+.ch{border-radius:12px;background:var(--bg);border:1px solid var(--line);padding:10px 12px;position:relative;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;gap:4px}
+.ch:hover{border-color:var(--accent)}
+.ch .wk{font-size:13px;font-weight:900;color:#fff;border-radius:999px;padding:0 10px;align-self:flex-start}
+.ch b{font-size:19px}
+.ch svg{width:100%;height:auto;display:block}
+.ch .use{font-size:14px;color:var(--muted);line-height:1.5}
+.ch .link{font-size:14px;font-weight:700;color:var(--accent);margin-top:auto}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;color:var(--muted);margin:2px 0 10px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.weeks{display:flex;flex-direction:column;gap:10px}
+.wkc{border:2px solid var(--line);border-left-width:8px;border-radius:12px;background:var(--paper);overflow:hidden}
+.wkc.now{box-shadow:0 0 0 3px var(--mark)}
+.wkh{width:100%;font:inherit;color:inherit;background:none;border:0;cursor:pointer;display:grid;grid-template-columns:86px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 14px;text-align:left;min-height:64px}
+.wkh .d{text-align:center;line-height:1.15}
+.wkh .d b{display:block;font-size:24px;font-weight:900}
+.wkh .d small{font-size:12px;color:var(--muted);font-weight:700}
+.wkh .t{font-size:19px;font-weight:900;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.wkh .t small{font-size:14px;font-weight:500;color:var(--muted);width:100%}
+.wkh .arrow{font-size:20px;color:var(--muted);transition:transform .2s}
+.wkc.open .arrow{transform:rotate(90deg)}
+.pill{font-size:12px;font-weight:900;border-radius:999px;padding:1px 9px}
+.pill.due{background:var(--bad-soft);color:var(--bad)}
+.pill.now{background:var(--mark);color:var(--mark-ink)}
+.pill.talk{background:var(--accent-soft);color:var(--accent)}
+.wkb{padding:0 14px 14px 14px}
+.periods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (max-width:720px){.periods{grid-template-columns:1fr}}
+.pd{background:var(--bg);border-radius:10px;padding:8px 12px;font-size:16px}
+.pd>b{display:block;font-size:14px;color:var(--soil)}
+.pd ul{margin:2px 0 0;padding-left:1.1em}
+.pd li{margin:2px 0}
+.extra{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+@media (max-width:640px){.extra{grid-template-columns:1fr}}
+.ex2{border-radius:10px;padding:8px 12px;font-size:16px}
+.ex2>b{display:block;font-size:15px}
+.ex2 ul{margin:2px 0 0;padding-left:1.1em}
+.ex2.home{background:var(--soil-soft);border:1.5px dashed var(--soil)}
+.ex2.home>b{color:var(--soil)}
+.ex2.due{background:var(--bad-soft);border-left:5px solid var(--bad)}
+.ex2.due>b{color:var(--bad)}
+.wkb .go{display:inline-block;margin-top:8px;font-weight:700;color:var(--accent)}
+.exam{border:2px solid var(--bad);border-radius:12px;background:var(--bad-soft);padding:12px 16px;display:flex;gap:14px;align-items:center}
+.exam b{font-size:20px;color:var(--bad)}
+.hw{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:820px){.hw{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.hw{grid-template-columns:1fr}}
+.hwc{border-radius:12px;border:1px solid var(--line);border-top:6px solid var(--accent);background:var(--bg);padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.hwc svg{width:100%;height:auto;display:block}
+.hwc b.n{font-size:19px}
+.hwc .row{display:flex;gap:8px;align-items:baseline;font-size:15px}
+.hwc .row span:first-child{flex:none;font-size:13px;font-weight:700;color:var(--muted);width:56px}
+.hwc .date{margin-top:auto;font-size:22px;font-weight:900;color:var(--bad)}
+.hwc .date small{font-size:13px;color:var(--muted);font-weight:700;margin-left:4px}
+.report{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.rp{border-radius:10px;background:var(--bg);border:1px solid var(--line);padding:8px 10px;font-size:15px;line-height:1.5}
+.rp b{display:block;font-size:16px}
+.rp .no{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:12px;font-weight:900;margin-right:4px}
+.box a.more,.box span.more{display:block;margin-top:6px;font-size:14px;font-weight:700;color:var(--accent);text-decoration:none}
+.box small{margin-top:0}
+ol.steps{padding-left:1.3em;margin:4px 0}
+ol.steps li{margin:6px 0}
+@media (max-width:599px){.count b{font-size:26px}.count{min-width:90px;padding:6px 10px}.wkh{grid-template-columns:64px minmax(0,1fr) auto;gap:8px}.wkh .d b{font-size:20px}}
+@media print{.tabs,.count,.sibs{display:none}.panel[hidden]{display:flex!important}.wkb[hidden]{display:block!important}body{background:#fff}}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="eyebrow">農業資源應用實習・開場</div>
+      <h1>接下來我們要做什麼？</h1>
+      <p class="sub">每週四下午・一次三節課・期末考 1/17～1/19</p>
+      <nav class="sibs" aria-label="課程網頁">單元：<a href="../agri-leaf/">葉脈書籤</a><a href="../agri-paper/">再生紙</a><a href="../agri-seed/">種子小精靈</a></nav>
+    </div>
+    <div class="count" id="countBox" aria-live="polite"></div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" id="t1" aria-selected="true">課程主線</button>
+    <button class="tab" role="tab" id="t2" aria-selected="false">每週排程</button>
+    <button class="tab" role="tab" id="t3" aria-selected="false">作業與報告</button>
+  </nav>
+
+  <!-- ===== 1 主線 ===== -->
+  <section class="panel" id="p1">
+    <div class="card">
+      <h2>一株植物，四件作品<span class="sec">課程主線</span></h2>
+      <p>農業不只生產糧食。植物的<span class="key">葉子</span>、<span class="key">莖稈纖維</span>、<span class="key">種子</span>、<span class="key">色素</span>，用完、丟掉之前，都還能再變成有用、好看的東西。這就是<b>農業資源應用</b>。</p>
+      <figure><svg class="art" id="mainSvg" viewBox="0 0 680 352" role="img" aria-label="一株植物：葉子做葉脈書籤、莖稈和農業廢棄物做再生紙、種子做種子小精靈、花和根的色素做植物染"></svg></figure>
+    </div>
+
+    <div class="card">
+      <h2>四個單元怎麼串起來？</h2>
+      <div class="chain" id="chainBox"></div>
+      <div class="tip"><b>每個單元都練同一套功夫：</b>認識原理 → 蒐集材料 → 動手做 → 記錄結果 → 寫報告、上台分享。前一單元學到的，下一單元會再用到。</div>
+    </div>
+
+    <div class="card">
+      <h2>一次三節課，通常這樣上</h2>
+      <div class="three">
+        <div class="box c3"><svg viewBox="0 0 200 90" id="pp1" aria-hidden="true"></svg><b class="t">第 1 節：聽懂</b>原理、步驟、安全，看網頁示範</div>
+        <div class="box c1"><svg viewBox="0 0 200 90" id="pp2" aria-hidden="true"></svg><b class="t">第 2 節：動手</b>分組蒐集材料、開始實作</div>
+        <div class="box c2"><svg viewBox="0 0 200 90" id="pp3" aria-hidden="true"></svg><b class="t">第 3 節：完成</b>做完、整理、拍照記錄、收拾</div>
+      </div>
+      <div class="note">每個單元網頁都有「基本知識／實驗過程／動手判斷／小測驗」，上課看不懂的地方，回家可以再看一次。</div>
+    </div>
+
+    <div class="card">
+      <h2>實習課規則</h2>
+      <div class="four">
+        <div class="box"><svg viewBox="0 0 160 80" id="r1" aria-hidden="true"></svg><b class="t">穿戴好</b><small>手套、圍裙；用漂白水、熱鍋要戴護目鏡</small></div>
+        <div class="box"><svg viewBox="0 0 160 80" id="r2" aria-hidden="true"></svg><b class="t">一定拍照</b><small>每一步都拍，報告要用；組內指定紀錄員</small></div>
+        <div class="box"><svg viewBox="0 0 160 80" id="r3" aria-hidden="true"></svg><b class="t">材料自己找</b><small>樹葉、農業廢棄物、種子都要自己蒐集</small></div>
+        <div class="box"><svg viewBox="0 0 160 80" id="r4" aria-hidden="true"></svg><b class="t">收拾乾淨</b><small>桌面、水槽、器材歸位，最後洗手</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 2 排程 ===== -->
+  <section class="panel" id="p2" hidden>
+    <div class="card">
+      <h2>每週排程<span class="sec">點一週看細節</span></h2>
+      <div class="legend"><span><i style="background:var(--g2)"></i>葉脈書籤</span><span><i style="background:var(--g1)"></i>再生紙</span><span><i style="background:var(--g4)"></i>種子小精靈</span><span><i style="background:var(--g3)"></i>植物染</span><span><i style="background:var(--muted)"></i>其他課程</span></div>
+      <div class="weeks" id="weeks"></div>
+    </div>
+  </section>
+
+  <!-- ===== 3 作業 ===== -->
+  <section class="panel" id="p3" hidden>
+    <div class="card">
+      <h2>要交什麼？什麼時候交？</h2>
+      <div class="hw" id="hwBox"></div>
+      <div class="warnbox"><b>注意：</b>種子小精靈至少要用 <b>5 種</b>種子。種子撿回來要先冷凍 2～3 天，所以 12/3 撿完就要放冷凍庫。</div>
+    </div>
+
+    <div class="card">
+      <h2>紙本報告怎麼寫？<span class="sec">共同格式</span></h2>
+      <div class="report" id="repBox"></div>
+      <div class="note">照片用手機拍，印出來或貼上都可以；每張照片下面寫一句說明。抄網路資料要寫出處。</div>
+    </div>
+
+    <div class="card">
+      <h2>每個作品報告的重點</h2>
+      <div class="four">
+        <div class="box c2"><b class="t">葉脈書籤</b><small>一人一份</small><ul><li>用了什麼葉子</li><li>煮多久、刷的難易</li><li>葉脈完整度（1～5 分）</li><li>書籤成品照片</li></ul><a class="more" href="../agri-leaf/">看單元網頁 →</a></div>
+        <div class="box c1"><b class="t">再生紙</b><small>每組一份＋上台 3～5 分鐘</small><ul><li>用了什麼農業廢棄物、從哪裡來</li><li>加料紙和對照紙的比較</li><li>測試紀錄表、分工與個人心得</li></ul><a class="more" href="../agri-paper/">看單元網頁 →</a></div>
+        <div class="box c4"><b class="t">種子小精靈</b><small>一人一份＋上台分享</small><ul><li>種子蒐集紀錄（至少 5 種）</li><li>每種種子的名稱、傳播方式</li><li>作品卡：作品名稱、角色介紹</li></ul><a class="more" href="../agri-seed/">看單元網頁 →</a></div>
+        <div class="box c3"><b class="t">植物染</b><small>期末前繳交＋上台</small><ul><li>用什麼植物、哪個部位染色</li><li>媒染劑與顏色結果</li><li>成品照片、心得</li></ul><span class="more ex">細節 12/17 說明</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>上台報告小撇步</h2>
+      <div class="two" style="align-items:start">
+        <div>
+          <ol class="steps">
+            <li><b>開場（15 秒）</b>：我們是第＿組，今天要介紹＿＿＿。</li>
+            <li><b>怎麼做（1 分鐘）</b>：用了什麼材料、最重要的步驟，配照片說。</li>
+            <li><b>結果（1 分鐘）</b>：拿出作品，說最成功和最失敗的地方。</li>
+            <li><b>學到什麼（30 秒）</b>：下次會怎麼改、可以用在哪裡。</li>
+          </ol>
+        </div>
+        <figure><svg class="art" id="talkSvg" viewBox="0 0 320 200" role="img" aria-label="學生拿著作品上台報告，台下同學舉手提問"></svg></figure>
+      </div>
+      <div class="note">再生紙每組 3～5 分鐘；種子小精靈每人約 1 分鐘。台下同學要準備一個問題或一句回饋。</div>
+    </div>
+  </section>
+
+  <footer>農業資源應用實習・課程規劃。日期如有調整，以老師上課公布為準。</footer>
+
+</div>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const T=(x,y,t,a="middle",cls="s-txt",sz)=>`<text class="${cls}" x="${x}" y="${y}" text-anchor="${a}"${sz?` style="font-size:${sz}px"`:""}>${t}</text>`;
+const fill=(id,h)=>{const e=$(id); if(e) e.innerHTML=h;};
+
+/* ---------- 分頁 ---------- */
+const TABS=[["t1","p1"],["t2","p2"],["t3","p3"]];
+function show(t){ TABS.forEach(([a,b])=>{ const on=a===t; $(a).setAttribute("aria-selected",on); $(b).hidden=!on; }); try{history.replaceState(null,"",t==="t1"?location.pathname:"#"+t);}catch(e){} window.scrollTo({top:0}); }
+TABS.forEach(([a])=>$(a).onclick=()=>show(a));
+(function(){ let x0=null,y0=null;
+  document.addEventListener("touchstart",e=>{ if(e.target.closest("input,.tabs,svg")){x0=null;return;} x0=e.touches[0].clientX; y0=e.touches[0].clientY; },{passive:true});
+  document.addEventListener("touchend",e=>{ if(x0===null) return; const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0; x0=null;
+    if(Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.5) return;
+    const cur=TABS.findIndex(([a])=>$(a).getAttribute("aria-selected")==="true"), n=cur+(dx<0?1:-1); if(n>=0&&n<TABS.length) show(TABS[n][0]); },{passive:true});
+})();
+
+/* ---------- 小圖 ---------- */
+const LS="M0 -50 C 34 -28, 36 22, 0 46 C -36 22, -34 -28, 0 -50 Z";
+const LEAF=(x,y,s=1,r=0,c="var(--leafc)")=>`<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><path d="M0 46 L0 66" stroke="var(--leafd)" stroke-width="3"/><path d="${LS}" fill="${c}"/><path d="M0 -44 L0 46" stroke="var(--leafd)" stroke-width="2.4"/>${[-28,-12,4,20].map(v=>`<path d="M0 ${v} Q12 ${v-8} 22 ${v-14} M0 ${v} Q-12 ${v-8} -22 ${v-14}" stroke="var(--leafd)" stroke-width="1.6" fill="none"/>`).join("")}</g>`;
+const SKEL=(x,y,s=1,r=0,c="var(--skel)")=>`<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><path d="${LS}" fill="none" stroke="${c}" stroke-width="2"/><path d="M0 -48 L0 66" stroke="${c}" stroke-width="3"/>${[-30,-16,-2,12,26].map(v=>`<path d="M0 ${v} Q12 ${v-8} 24 ${v-14} M0 ${v} Q-12 ${v-8} -24 ${v-14}" stroke="${c}" stroke-width="1.6" fill="none"/>`).join("")}${[-24,-10,4,18].map(v=>`<path d="M8 ${v} l6 8 M-8 ${v} l-6 8 M16 ${v-4} l4 8 M-16 ${v-4} l-4 8" stroke="${c}" stroke-width="1" fill="none"/>`).join("")}</g>`;
+const BOOKMARK=(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><rect x="-20" y="-50" width="40" height="100" rx="4" fill="var(--film)" opacity=".5"/><rect x="-16" y="-46" width="32" height="92" rx="2" fill="#2f5d3a"/><circle cy="-38" r="3" fill="var(--paper)"/><path d="M0 -40 q-8 -14 -16 -6 M0 -40 q8 -14 16 -6" stroke="var(--g4)" stroke-width="2" fill="none"/>${SKEL(0,0,.42,0,"#f7f1e1")}</g>`;
+const PAPER=(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><path d="M-34 -26 q8 -4 16 0 t16 0 t16 0 t20 0 v52 q-8 4 -16 0 t-16 0 t-16 0 t-20 0 Z" fill="var(--paperc)" stroke="var(--cardline)" stroke-width="1.5"/>${[[-20,-12],[6,-16],[18,6],[-10,10],[22,-4],[-24,4],[2,2]].map(([a,b],i)=>`<path d="M${a} ${b} l${6+i%3*2} ${i%2?2:-2}" stroke="var(--strawd)" stroke-width="1.4"/>`).join("")}${LEAF(10,10,.12,30)}</g>`;
+const STRAW=(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})">${[-12,-6,0,6,12].map((d,i)=>`<path d="M${d} 30 L${d*1.8} -30" stroke="${i%2?"var(--strawd)":"var(--straw)"}" stroke-width="4" stroke-linecap="round"/>`).join("")}<path d="M-14 6 h28" stroke="var(--strawd)" stroke-width="3"/></g>`;
+const ACORN=(x,y,s=1,eyes=true)=>`<g transform="translate(${x} ${y}) scale(${s})"><ellipse cy="4" rx="12" ry="16" fill="var(--seedc)"/><path d="M-14 -6 Q-14 -18 0 -18 Q14 -18 14 -6 Z" fill="var(--cup)"/><path d="M-13 -9 H13 M-12 -13 H12" stroke="#6a5236" stroke-width="1.3"/>${eyes?`<circle cx="-5" cy="2" r="3.4" fill="#fff" stroke="#222" stroke-width=".6"/><circle cx="5" cy="2" r="3.4" fill="#fff" stroke="#222" stroke-width=".6"/><circle cx="-4.4" cy="2.6" r="1.8" fill="#111"/><circle cx="5.6" cy="2.6" r="1.8" fill="#111"/>`:""}</g>`;
+const SPRITES=(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><ellipse cy="22" rx="44" ry="11" fill="var(--slice)" stroke="#7a5232" stroke-width="3"/>${ACORN(-14,0,1.3)}<g transform="translate(16 10)"><circle r="10" fill="#c98a3a"/><circle cx="-4" cy="-1" r="3" fill="#fff" stroke="#222" stroke-width=".6"/><circle cx="4" cy="-1" r="3" fill="#fff" stroke="#222" stroke-width=".6"/><circle cx="-4" cy="-.4" r="1.6" fill="#111"/><circle cx="4" cy="-.4" r="1.6" fill="#111"/></g></g>`;
+const CLOTH=(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><path d="M-30 -24 h60 v48 h-60 Z" fill="#f6e2b4"/><path d="M-30 -24 C -10 -10, 10 -30, 30 -14 V0 C 10 -14, -10 6, -30 -8 Z" fill="var(--dye1)" opacity=".75"/><path d="M-30 4 C -10 18, 10 -2, 30 12 V24 H-30 Z" fill="var(--dye3)" opacity=".6"/><circle cx="6" cy="2" r="8" fill="var(--dye2)" opacity=".8"/></g>`;
+
+/* ---------- 主圖 ---------- */
+fill("mainSvg",(()=>{
+  let s=`<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--muted)"/></marker></defs>`;
+  // ground
+  s+=`<rect x="250" y="262" width="180" height="56" rx="10" fill="var(--soilc)" opacity=".85"/>`;
+  s+=`<path d="M340 262 q-10 20 -30 32 M340 262 q8 22 30 30 M340 262 v40" stroke="#e8b06a" stroke-width="3" fill="none"/>`;
+  // stem
+  s+=`<path d="M340 262 C 336 200, 344 140, 340 70" stroke="var(--strawd)" stroke-width="9" fill="none" stroke-linecap="round"/>`;
+  s+=LEAF(300,200,.75,-60)+LEAF(380,170,.75,60)+LEAF(306,128,.6,-50);
+  // flower
+  s+=`<g transform="translate(340 62)">${[0,1,2,3,4].map(i=>`<ellipse cx="0" cy="-14" rx="9" ry="15" fill="var(--dye1)" transform="rotate(${i*72})"/>`).join("")}<circle r="7" fill="var(--dye2)"/></g>`;
+  // seed pod
+  s+=`<g transform="translate(384 112)"><path d="M0 0 q20 -6 30 10" stroke="var(--strawd)" stroke-width="3" fill="none"/>${ACORN(34,22,.9,false)}</g>`;
+  // labels & arrows to products
+  const P=[
+    [300,196,140,74,"葉子","葉脈書籤",BOOKMARK(70,74,.62),"var(--g2)"],
+    [336,240,140,250,"莖稈、農業廢棄物","再生紙",PAPER(70,252,1.1),"var(--g1)"],
+    [420,132,540,74,"種子","種子小精靈",SPRITES(610,78,1),"var(--g4)"],
+    [354,64,540,250,"花、根的色素","植物染",CLOTH(610,252,1.1),"var(--g3)"]
+  ];
+  P.forEach(([x1,y1,x2,y2,part,prod,art,c],i)=>{
+    s+=`<path d="M${x1} ${y1} Q ${(x1+x2)/2} ${(y1+y2)/2 + (i%2?-10:10)} ${x2+(x2<340?24:-24)} ${y2}" stroke="${c}" stroke-width="2.4" fill="none" stroke-dasharray="6 4" marker-end="url(#ar)"/>`;
+    const lx=x2<340?x2:x2;
+    s+=art;
+    s+=`<rect x="${(x2<340?70:610)-62}" y="${y2+50}" width="124" height="44" rx="10" fill="${c}"/>`;
+    s+=`<text x="${x2<340?70:610}" y="${y2+69}" text-anchor="middle" style="fill:#fff;font-size:15px;font-weight:900;font-family:var(--f)">${prod}</text>`;
+    s+=`<text x="${x2<340?70:610}" y="${y2+86}" text-anchor="middle" style="fill:#fff;font-size:11px;font-weight:700;font-family:var(--f);opacity:.9">${part}</text>`;
+  });
+  return s;
+})());
+
+/* ---------- 串聯 ---------- */
+const UNITS=[
+  {wk:"第 1 週 11/26",c:"var(--g2)",name:"葉脈書籤",art:`<svg viewBox="0 0 200 90">${LEAF(60,44,.7,-20)}<path d="M96 46 h20" stroke="var(--muted)" stroke-width="2.4"/>${BOOKMARK(150,46,.8)}</svg>`,use:"認識葉片構造：葉肉、葉脈（纖維）。練習煮、刷、漂白、記錄。",href:"../agri-leaf/"},
+  {wk:"第 2 週 12/3",c:"var(--g1)",name:"再生紙",art:`<svg viewBox="0 0 200 90">${STRAW(56,46,1)}<path d="M96 46 h20" stroke="var(--muted)" stroke-width="2.4"/>${PAPER(152,46,1)}</svg>`,use:"葉脈學到的「纖維」，換成農業廢棄物來造紙。練習分工、對照實驗。",href:"../agri-paper/"},
+  {wk:"第 3 週 12/10",c:"var(--g4)",name:"種子小精靈",art:`<svg viewBox="0 0 200 90">${ACORN(56,48,1.6,false)}<path d="M96 46 h20" stroke="var(--muted)" stroke-width="2.4"/>${SPRITES(152,40,1)}</svg>`,use:"從葉、莖走到種子：構造、傳播方式。自己蒐集、自己設計作品。",href:"../agri-seed/"},
+  {wk:"期末前 1/14",c:"var(--g3)",name:"植物染",art:`<svg viewBox="0 0 200 90"><g transform="translate(56 46)">${[0,1,2,3,4].map(i=>`<ellipse cx="0" cy="-12" rx="8" ry="13" fill="var(--dye1)" transform="rotate(${i*72})"/>`).join("")}<circle r="6" fill="var(--dye2)"/></g><path d="M96 46 h20" stroke="var(--muted)" stroke-width="2.4"/>${CLOTH(152,46,1)}</svg>`,use:"最後用植物的顏色。整學期學到的蒐集、實驗、記錄、報告，一次用上。",href:null}
+];
+fill("chainBox",UNITS.map(u=>`<${u.href?`a href="${u.href}"`:"div"} class="ch" style="border-top:6px solid ${u.c}"><span class="wk" style="background:${u.c}">${u.wk}</span>${u.art}<b>${u.name}</b><span class="use">${u.use}</span>${u.href?`<span class="link">打開單元網頁 →</span>`:`<span class="link" style="color:var(--muted)">作業說明 12/17</span>`}</${u.href?"a":"div"}>`).join(""));
+
+/* ---------- 三節課 ---------- */
+fill("pp1",`<rect x="30" y="10" width="140" height="60" rx="6" fill="var(--metal)"/><rect x="36" y="16" width="128" height="48" rx="3" fill="var(--paper)"/>${LEAF(80,40,.3,0)}<path d="M104 30 h44 M104 40 h36 M104 50 h40" stroke="var(--line)" stroke-width="4"/><path d="M100 70 v14 M80 84 h40" stroke="var(--metal)" stroke-width="3"/>`);
+fill("pp2",`<path d="M20 80 h160" stroke="var(--soilc)" stroke-width="5"/><path d="M50 80 v-30" stroke="var(--strawd)" stroke-width="4"/>${LEAF(50,40,.28,-20)}<g class="a-fall">${LEAF(110,20,.26,30)}</g><path d="M130 50 h40 l-4 30 h-32 Z" fill="var(--film)" opacity=".6" stroke="var(--water)" stroke-width="2"/>`);
+fill("pp3",`${BOOKMARK(60,44,.7)}${PAPER(120,46,.9)}<g transform="translate(168 30)"><rect x="-14" y="-10" width="28" height="22" rx="4" fill="var(--ink)"/><circle r="6" fill="#666" stroke="#ddd" stroke-width="1.5"/></g>`);
+
+/* ---------- 規則 ---------- */
+fill("r1",`<path d="M60 20 q20 -10 40 0 v40 h-40 Z" fill="var(--g3)" opacity=".8"/><path d="M60 32 h-12 v20 M100 32 h12 v20" stroke="var(--g3)" stroke-width="8" stroke-linecap="round"/><rect x="62" y="8" width="36" height="10" rx="5" fill="none" stroke="var(--ink)" stroke-width="2"/>`);
+fill("r2",`<rect x="52" y="20" width="56" height="40" rx="6" fill="var(--ink)"/><circle cx="80" cy="40" r="12" fill="#666" stroke="#ddd" stroke-width="2"/><rect x="92" y="14" width="10" height="7" rx="2" fill="var(--ink)"/><circle cx="80" cy="40" r="20" fill="none" stroke="var(--g1)" stroke-width="2" class="a-fade"/>`);
+fill("r3",`${LEAF(50,40,.28,-20)}${STRAW(84,44,.7)}${ACORN(118,44,1,false)}`);
+fill("r4",`<path d="M50 60 h60" stroke="var(--metal)" stroke-width="6" stroke-linecap="round"/><path d="M70 20 h20 v8 h-8 v6" stroke="var(--metal)" stroke-width="5" fill="none"/>${[0,1,2].map(i=>`<circle cx="82" cy="40" r="2.6" fill="var(--water)" class="a-drop" style="animation-delay:${i*.4}s"/>`).join("")}`);
+
+/* ---------- 排程 ---------- */
+const W=[
+ {d:"2026-11-26",n:"第 1 週",c:"var(--g2)",t:"葉脈書籤",sub:"課程說明＋採葉、煮葉、刷葉脈",href:"../agri-leaf/",
+  p:[["第 1 節：課程說明＋講解",["本頁：這學期的實習課安排","葉脈書籤原理、步驟、安全"]],
+     ["第 2 節：蒐集樹葉",["分組到校園採厚葉（網狀脈）","挑葉、編號，記下植物名稱"]],
+     ["第 3 節：煮葉、刷葉脈",["先蒐集好的組先下鍋煮","牙刷刷葉肉 → 漂白 → 夾吸水紙壓乾"]]],
+  home:["<b>各組蒐集再生紙用的農業廢棄物</b>（稻稈、玉米皮、筍殼、甘蔗渣、落葉…，乾重 10 g 以上，洗淨晾乾）","組內分工：材料長、資料長、操作員、紀錄員、發表人","開始寫葉脈書籤報告（一人一份）"],
+  due:[]},
+ {d:"2026-12-03",n:"第 2 週",c:"var(--g1)",t:"再生紙",sub:"課堂抄紙＋蒐集種子",href:"../agri-paper/",
+  p:[["第 1 節：書籤收尾＋再生紙講解",["葉脈書籤排版、護貝","再生紙原理；廢棄物剪段、軟化"]],
+     ["第 2 節：製作再生紙",["打漿：對照紙、加料紙分開","倒漿法抄紙"]],
+     ["第 3 節：抄紙收尾＋蒐集種子",["壓水、貼標籤、陰乾","種子小精靈說明，到校園蒐集種子"]]],
+  home:["<b>種子至少 5 種</b>：洗淨、泡水挑掉浮起來的，<b>冷凍 2～3 天</b>再晾乾","再生紙乾了做測試，寫小組報告","準備再生紙上台報告（3～5 分鐘）"],
+  due:["葉脈書籤 紙本報告（一人一份）＋書籤成品"]},
+ {d:"2026-12-10",n:"第 3 週",c:"var(--g4)",t:"種子小精靈",sub:"再生紙上台報告＋製作小精靈",href:"../agri-seed/",
+  p:[["第 1 節：再生紙上台報告",["每組 3～5 分鐘，拿再生紙作品說明","台下每人準備一個問題"]],
+     ["第 2 節：設計小精靈",["種子構造、傳播方式","試擺、決定主題，黏眼睛"]],
+     ["第 3 節：組裝完成",["固定到木頭底座","桌面裝飾或名片夾"]]],
+  home:["寫種子小精靈報告（一人一份）：種子蒐集紀錄＋作品卡","準備 1 分鐘作品分享"],
+  due:["再生紙 紙本報告（每組一份）＋上台報告"]},
+ {d:"2026-12-17",n:"第 4 週",c:"var(--g4)",t:"種子小精靈 作品分享",sub:"上台分享＋植物染作業說明",href:"../agri-seed/",
+  p:[["第 1～2 節：作品分享",["畫廊走讀：便利貼留言","每人上台 1 分鐘分享作品"]],
+     ["第 3 節：植物染作業說明",["作業內容、繳交方式","其餘時間依老師安排"]],null],
+  home:["開始準備植物染作業"],
+  due:["種子小精靈 作品（至少 5 種種子）＋紙本報告（一人一份）＋上台分享"]},
+ {d:"2026-12-24",n:"第 5 週",c:"var(--muted)",t:"其他課程",sub:"依老師安排；植物染作業進行中",other:true},
+ {d:"2026-12-31",n:"第 6 週",c:"var(--muted)",t:"其他課程",sub:"依老師安排；植物染作業進行中",other:true},
+ {d:"2027-01-07",n:"第 7 週",c:"var(--muted)",t:"其他課程",sub:"依老師安排；植物染報告準備好了嗎？",other:true},
+ {d:"2027-01-14",n:"第 8 週",c:"var(--g3)",t:"植物染 上台報告",sub:"期末考前最後一次上課",
+  p:[["植物染上台報告",["拿成品上台報告","繳交植物染作業"]],null,null],
+  home:[],due:["植物染作業 繳交＋上台報告"]}
+];
+const ymd=s=>{const [y,m,d]=s.split("-").map(Number); return new Date(y,m-1,d);};
+const md=s=>{const t=ymd(s); return `${t.getMonth()+1}/${t.getDate()}`;};
+const today=new Date(); today.setHours(0,0,0,0);
+let nowIdx=W.findIndex(w=>ymd(w.d)>=today);
+function weekCard(w,i){
+  const isNow=i===nowIdx, isToday=+ymd(w.d)===+today, past=ymd(w.d)<today;
+  const pills=(isNow?`<span class="pill now">${isToday?"今天":"下一次上課"}</span>`:"")+(w.due&&w.due.length?`<span class="pill due">繳交</span>`:"")+(w.due&&w.due.some(x=>x.includes("上台"))?`<span class="pill talk">上台</span>`:"");
+  const head=`<button class="wkh" aria-expanded="${isNow}" ${w.other?"disabled":""}><span class="d"><b>${md(w.d)}</b><small>${w.n}・週四</small></span><span class="t">${w.t}${pills}<small>${w.sub}</small></span><span class="arrow">${w.other?"":"›"}</span></button>`;
+  if(w.other) return `<div class="wkc" style="border-left-color:${w.c};opacity:${past?.5:.85}">${head}</div>`;
+  const per=w.p.filter(Boolean).map(([h,l])=>`<div class="pd"><b>${h}</b><ul>${l.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("");
+  const ex=`<div class="extra">${w.home.length?`<div class="ex2 home"><b>🏠 回家要做</b><ul>${w.home.map(x=>`<li>${x}</li>`).join("")}</ul></div>`:""}${w.due.length?`<div class="ex2 due"><b>📌 這週繳交</b><ul>${w.due.map(x=>`<li>${x}</li>`).join("")}</ul></div>`:""}</div>`;
+  return `<div class="wkc${isNow?" now open":""}" style="border-left-color:${w.c};${past?"opacity:.6":""}">${head}<div class="wkb" ${isNow?"":"hidden"}><div class="periods" style="${w.p.filter(Boolean).length===1?"grid-template-columns:1fr":w.p.filter(Boolean).length===2?"grid-template-columns:2fr 1fr":""}">${per}</div>${ex}${w.href?`<a class="go" href="${w.href}">打開「${w.t.replace(" 作品分享","")}」單元網頁 →</a>`:""}</div></div>`;
+}
+fill("weeks",W.map(weekCard).join("")+`<div class="exam"><svg viewBox="0 0 60 60" width="48" height="48" aria-hidden="true"><rect x="8" y="10" width="44" height="44" rx="6" fill="var(--paper)" stroke="var(--bad)" stroke-width="3"/><rect x="8" y="10" width="44" height="12" fill="var(--bad)"/><path d="M18 34 l6 6 l14 -14" stroke="var(--bad)" stroke-width="4" fill="none"/></svg><div><b>1/17～1/19 期末考</b><br><span class="ex">所有作品和報告都要在期末考前交齊。</span></div></div>`);
+if(nowIdx===-1) nowIdx=W.length;
+document.querySelectorAll(".wkc").forEach(c=>{ const h=c.querySelector(".wkh"), b=c.querySelector(".wkb"); if(!b) return; h.onclick=()=>{ const o=b.hidden; b.hidden=!o; c.classList.toggle("open",o); h.setAttribute("aria-expanded",o); }; });
+
+/* ---------- 倒數 ---------- */
+(function(){
+  const nx=W.find(w=>!w.other&&ymd(w.d)>=today);
+  const exam=ymd("2027-01-17"), dd=Math.round((exam-today)/864e5);
+  let h="";
+  if(nx){ const k=Math.round((ymd(nx.d)-today)/864e5); h=k===0?`<small>今天上課</small><b style="font-size:22px">${nx.t.replace(" 上台報告","").replace(" 作品分享","")}</b>`:`<small>下次實習 ${md(nx.d)}</small><b>${k}</b><small>天後</small>`; }
+  else if(dd>=0) h=`<small>距離期末考</small><b>${dd}</b><small>天</small>`;
+  else h=`<small>這學期</small><b style="font-size:22px">辛苦了！</b>`;
+  fill("countBox",h);
+})();
+
+/* ---------- 作業總表 ---------- */
+const HW=[
+ ["葉脈書籤","var(--g2)",BOOKMARK(100,46,.8),"一人一份","—","書籤成品","11/26 做 → 12/3 交","12/3"],
+ ["再生紙","var(--g1)",PAPER(100,46,1.3),"每組一份","每組 3～5 分鐘","加料紙＋對照紙","12/3 做 → 12/10 交","12/10"],
+ ["種子小精靈","var(--g4)",SPRITES(100,40,1.3),"一人一份","每人約 1 分鐘","至少 5 種種子","12/10 做 → 12/17 交","12/17"],
+ ["植物染","var(--g3)",CLOTH(100,46,1.3),"依老師說明","要上台","植物染成品","12/17 說明 → 1/14 交","1/14"]
+];
+fill("hwBox",HW.map(h=>`<div class="hwc" style="border-top-color:${h[1]}"><svg viewBox="0 0 200 90">${h[2]}</svg><b class="n">${h[0]}</b><div class="row"><span>紙本報告</span><span>${h[3]}</span></div><div class="row"><span>上台</span><span>${h[4]}</span></div><div class="row"><span>作品</span><span>${h[5]}</span></div><div class="row"><span>時程</span><span>${h[6]}</span></div><div class="date">${h[7]}<small>繳交</small></div></div>`).join(""));
+
+/* ---------- 報告格式 ---------- */
+const REP=[["封面","題目、班級座號姓名（小組寫組員和分工）"],["目的","這次要做什麼、想知道什麼"],["材料","用了什麼植物材料、從哪裡來"],["步驟","照實際做的順序，至少 4 張照片"],["結果","成品照片、紀錄表或評分"],["討論","成功和失敗的原因、下次怎麼改"],["心得","約 100 字：學到什麼"],["參考資料","網站或書的名稱、網址"]];
+fill("repBox",REP.map((r,i)=>`<div class="rp"><b><span class="no">${i+1}</span>${r[0]}</b>${r[1]}</div>`).join(""));
+
+/* ---------- 上台 ---------- */
+fill("talkSvg",`<rect x="20" y="150" width="280" height="12" rx="4" fill="var(--wood)"/><g transform="translate(110 100)"><circle cy="-46" r="16" fill="#f2c9a0"/><path d="M-12 -60 q12 -14 24 0" fill="var(--ink)"/><rect x="-18" y="-28" width="36" height="56" rx="10" fill="var(--g2)"/><path d="M18 -18 l26 -12" stroke="#f2c9a0" stroke-width="7" stroke-linecap="round"/>${PAPER(56,-30,.8)}</g><g class="a-wig"><g transform="translate(230 140)"><circle cy="-30" r="12" fill="#f2c9a0"/><rect x="-14" y="-16" width="28" height="30" rx="8" fill="var(--g3)"/><path d="M12 -12 l10 -28" stroke="#f2c9a0" stroke-width="6" stroke-linecap="round"/></g></g><g transform="translate(272 140)"><circle cy="-30" r="12" fill="#f2c9a0"/><rect x="-14" y="-16" width="28" height="30" rx="8" fill="var(--g4)"/></g><g class="a-fade"><rect x="190" y="60" width="54" height="30" rx="8" fill="var(--paper)" stroke="var(--muted)"/>${T(217,80,"？","middle","s-txt",16)}</g>${T(160,190,"開場 → 怎麼做 → 結果 → 學到什麼","middle","s-sm")}`);
+
+if(location.hash==="#t2") show("t2"); else if(location.hash==="#t3") show("t3");
+})();
+
+</script>
+</body>
+</html>
