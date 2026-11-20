@@ -442,6 +442,70 @@ ol.steps li{margin:6px 0}
 @media (max-width:599px){.count b{font-size:26px}.count{min-width:90px;padding:6px 10px}.wkh{grid-template-columns:64px minmax(0,1fr) auto;gap:8px}.wkh .d b{font-size:20px}}
 @media print{.tabs,.count,.sibs{display:none}.panel[hidden]{display:flex!important}.wkb[hidden]{display:block!important}body{background:#fff}}
 
+.dl{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.dl{grid-template-columns:1fr}}
+.dlc{display:flex;gap:14px;align-items:center;border:2px solid var(--line);border-radius:12px;padding:12px 16px;text-decoration:none;color:var(--ink);background:var(--bg);min-height:72px}
+.dlc:hover{border-color:#2b579a}
+.dlc svg{width:40px;height:auto;flex:none}
+.dlc b{display:block;font-size:18px}
+.dlc small{color:var(--muted);font-size:14px}
+.dchip{font:inherit;font-weight:700;font-size:16px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:999px;min-height:44px;padding:0 18px;cursor:pointer}
+.dchip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.rswitch{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.paperwrap{background:#8a9187;border-radius:12px;padding:22px 14px;margin-top:12px;overflow:hidden}
+/* A4 紙：不管深淺色模式都是白紙 */
+.sheet{--pg:#2f6b3a;--ps:#e3f0e3;--pm:#6b7266;--pl:#b9c2b0;--ph:#f3f5ec;--blue:#1f4fa8;
+  background:#fff;color:#1f2a1c;max-width:794px;margin:0 auto;padding:40px 46px;box-shadow:0 6px 24px rgba(0,0,0,.35);border-radius:2px;font-size:15px;line-height:1.6;position:relative}
+.sheet .pgbreak{border-top:2px dashed #c9cfc4;margin:26px -46px;position:relative}
+.sheet .pgbreak span{position:absolute;right:12px;top:-11px;background:#fff;padding:0 6px;font-size:12px;color:#9aa394}
+.sheet .r-top{text-align:center;margin-bottom:12px}
+.sheet .r-top small{display:block;color:var(--pm);font-weight:700;font-size:13px}
+.sheet .r-top b{display:block;color:var(--pg);font-size:26px;font-weight:900;line-height:1.3}
+.sheet .r-top i{font-style:normal;color:var(--pm);font-size:13px}
+.sheet table{width:100%;border-collapse:collapse;table-layout:fixed}
+.sheet td,.sheet th{border:1px solid var(--pl);padding:5px 8px;vertical-align:middle;font-size:14px;word-break:break-word}
+.sheet th,.sheet td.k{background:var(--ps);font-weight:700;text-align:center;color:#1f2a1c}
+.sheet td.k.l{text-align:left}
+.sheet .h{margin:18px 0 4px;background:var(--ps);border-left:6px solid var(--pg);padding:3px 10px;color:var(--pg);font-weight:900;font-size:16px;position:relative}
+.sheet .hint{color:var(--pm);font-size:12.5px;margin:0 0 4px}
+.sheet .ans{color:var(--blue);font-family:"Noto Sans TC",var(--f);font-weight:500}
+.sheet .ln{border-bottom:1.5px dotted var(--pl);min-height:30px;padding:4px 2px 2px;font-size:14.5px}
+.sheet .ln .q{color:var(--pm);font-size:13px;display:block}
+.sheet .photos{display:grid;grid-template-columns:1fr 1fr;border:1px solid #c9d1be}
+.sheet .ph{border:1px solid #c9d1be;display:flex;flex-direction:column}
+.sheet .ph .img{background:var(--ph);height:150px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.sheet .ph .img svg{height:100%;width:100%}
+.sheet .ph .img b{position:absolute;left:6px;top:4px;font-size:12px;background:rgba(255,255,255,.85);border-radius:4px;padding:0 6px;color:var(--pm)}
+.sheet .ph .cap{padding:4px 8px;font-size:13px;min-height:44px}
+.sheet .ph .cap em{font-style:normal;color:var(--pm)}
+.sheet .big{border:1px solid #c9d1be;background:var(--ph);height:230px;position:relative}
+.sheet .big svg{width:100%;height:100%}
+.sheet .big .tag{position:absolute;left:8px;top:6px;font-size:12px;color:var(--pm);background:rgba(255,255,255,.85);border-radius:4px;padding:0 6px}
+.sheet .chk{display:grid;grid-template-columns:1fr 1fr;gap:2px 16px;font-size:14px}
+.sheet .chk span::before{content:"☑ ";color:var(--blue);font-weight:900}
+.sheet .teach td{height:56px}
+.sheet .tick{color:var(--blue);font-weight:900}
+.rtip{display:block;width:fit-content;max-width:100%;background:#fff6b0;border:1px solid #e3d26a;color:#5a4a10;font-size:12.5px;line-height:1.45;padding:4px 8px;border-radius:4px;box-shadow:2px 3px 6px rgba(0,0,0,.15);font-weight:500;margin:4px 0 6px;transform:rotate(-.4deg)}
+.rtip::before{content:"✏️ ";}
+.sheet.notip .rtip{display:none}
+@media (max-width:1180px){
+  .rtip{position:static;transform:none;width:auto;display:block;margin:4px 0 6px;right:auto}
+}
+@media (max-width:640px){
+  .paperwrap{padding:10px 4px;margin-left:-6px;margin-right:-6px}
+  .sheet{padding:20px 14px;font-size:14px}
+  .sheet .pgbreak{margin:20px -14px}
+  .sheet .r-top b{font-size:21px}
+  .sheet td,.sheet th{padding:4px 4px;font-size:12.5px}
+  .sheet .photos{grid-template-columns:1fr}
+  .sheet .ph .img{height:130px}
+  .sheet .chk{grid-template-columns:1fr}
+  .sheet .scroll{overflow-x:auto}
+  .sheet .scroll table{min-width:560px}
+}
+.ans{color:#2b5fc4;font-weight:700}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) p.ex .ans{color:#8fb0f0}}
+
 </style>
 </head>
 <body>
@@ -460,6 +524,7 @@ ol.steps li{margin:6px 0}
     <button class="tab" role="tab" id="t1" aria-selected="true">課程主線</button>
     <button class="tab" role="tab" id="t2" aria-selected="false">每週排程</button>
     <button class="tab" role="tab" id="t3" aria-selected="false">作業與報告</button>
+    <button class="tab" role="tab" id="t4" aria-selected="false">報告範例</button>
   </nav>
 
   <!-- ===== 1 主線 ===== -->
@@ -547,6 +612,29 @@ ol.steps li{margin:6px 0}
     </div>
   </section>
 
+  <!-- ===== 4 報告範例 ===== -->
+  <section class="panel" id="p4" hidden>
+    <div class="card">
+      <h2>個人報告範本下載<span class="sec">Word</span></h2>
+      <div class="dl">
+        <a class="dlc" href="葉脈書籤個人報告範本.docx" download><svg viewBox="0 0 60 70" aria-hidden="true"><path d="M6 2 h34 l14 14 v52 h-48 Z" fill="#fff" stroke="#2b579a" stroke-width="3"/><path d="M40 2 v14 h14" fill="#dbe5f4" stroke="#2b579a" stroke-width="3"/><rect x="0" y="30" width="34" height="22" rx="3" fill="#2b579a"/><text x="17" y="46" text-anchor="middle" style="fill:#fff;font-size:15px;font-weight:900;font-family:Arial">W</text></svg><span><b>葉脈書籤 個人報告範本</b><small>A4・3 頁・12/3 繳交</small></span></a>
+        <a class="dlc" href="種子小精靈個人報告範本.docx" download><svg viewBox="0 0 60 70" aria-hidden="true"><path d="M6 2 h34 l14 14 v52 h-48 Z" fill="#fff" stroke="#2b579a" stroke-width="3"/><path d="M40 2 v14 h14" fill="#dbe5f4" stroke="#2b579a" stroke-width="3"/><rect x="0" y="30" width="34" height="22" rx="3" fill="#2b579a"/><text x="17" y="46" text-anchor="middle" style="fill:#fff;font-size:15px;font-weight:900;font-family:Arial">W</text></svg><span><b>種子小精靈 個人報告範本</b><small>A4・3 頁・12/17 繳交</small></span></a>
+      </div>
+      <div class="note">可以印出來手寫、貼照片，也可以直接在 Word 裡打字、插入照片（點灰色照片格 → 插入 → 圖片）。再生紙是小組報告，格式看<a href="../agri-paper/">再生紙網頁</a>。</div>
+    </div>
+
+    <div class="card">
+      <h2>看一份寫好的範例<span class="sec">照著這樣寫</span></h2>
+      <div class="rswitch" role="group" aria-label="選擇範例">
+        <button class="dchip" data-r="leaf" aria-pressed="true">葉脈書籤</button>
+        <button class="dchip" data-r="seed" aria-pressed="false">種子小精靈</button>
+        <label class="switch" style="margin-left:auto"><input type="checkbox" id="tipToggle" checked> 顯示寫作提示</label>
+      </div>
+      <p class="ex" style="margin:6px 0 0"><span class="ans" style="padding:0 4px">藍色字</span>是學生寫的內容；<span class="rtip" style="display:inline-block;margin:0">黃色便利貼</span>是老師的寫作提示。圖片是示意圖，你的報告要貼自己拍的照片。</p>
+      <div class="paperwrap"><div class="sheet" id="sheet"></div></div>
+    </div>
+  </section>
+
   <footer>農業資源應用實習・課程規劃。日期如有調整，以老師上課公布為準。</footer>
 
 </div>
@@ -557,7 +645,7 @@ const T=(x,y,t,a="middle",cls="s-txt",sz)=>`<text class="${cls}" x="${x}" y="${y
 const fill=(id,h)=>{const e=$(id); if(e) e.innerHTML=h;};
 
 /* ---------- 分頁 ---------- */
-const TABS=[["t1","p1"],["t2","p2"],["t3","p3"]];
+const TABS=[["t1","p1"],["t2","p2"],["t3","p3"],["t4","p4"]];
 function show(t){ TABS.forEach(([a,b])=>{ const on=a===t; $(a).setAttribute("aria-selected",on); $(b).hidden=!on; }); try{history.replaceState(null,"",t==="t1"?location.pathname:"#"+t);}catch(e){} window.scrollTo({top:0}); }
 TABS.forEach(([a])=>$(a).onclick=()=>show(a));
 (function(){ let x0=null,y0=null;
@@ -705,7 +793,110 @@ fill("repBox",REP.map((r,i)=>`<div class="rp"><b><span class="no">${i+1}</span>$
 /* ---------- 上台 ---------- */
 fill("talkSvg",`<rect x="20" y="150" width="280" height="12" rx="4" fill="var(--wood)"/><g transform="translate(110 100)"><circle cy="-46" r="16" fill="#f2c9a0"/><path d="M-12 -60 q12 -14 24 0" fill="var(--ink)"/><rect x="-18" y="-28" width="36" height="56" rx="10" fill="var(--g2)"/><path d="M18 -18 l26 -12" stroke="#f2c9a0" stroke-width="7" stroke-linecap="round"/>${PAPER(56,-30,.8)}</g><g class="a-wig"><g transform="translate(230 140)"><circle cy="-30" r="12" fill="#f2c9a0"/><rect x="-14" y="-16" width="28" height="30" rx="8" fill="var(--g3)"/><path d="M12 -12 l10 -28" stroke="#f2c9a0" stroke-width="6" stroke-linecap="round"/></g></g><g transform="translate(272 140)"><circle cy="-30" r="12" fill="#f2c9a0"/><rect x="-14" y="-16" width="28" height="30" rx="8" fill="var(--g4)"/></g><g class="a-fade"><rect x="190" y="60" width="54" height="30" rx="8" fill="var(--paper)" stroke="var(--muted)"/>${T(217,80,"？","middle","s-txt",16)}</g>${T(160,190,"開場 → 怎麼做 → 結果 → 學到什麼","middle","s-sm")}`);
 
-if(location.hash==="#t2") show("t2"); else if(location.hash==="#t3") show("t3");
+/* ---------- 報告範例 ---------- */
+(function(){
+  const A=t=>`<span class="ans">${t}</span>`;
+  const TIP=t=>`<span class="rtip">${t}</span>`;
+  const H=(t,hint,tip)=>`<div class="h">${t}</div>${hint?`<p class="hint">${hint}</p>`:""}${tip?TIP(tip):""}`;
+  const LN=(t,q)=>`<div class="ln">${q?`<span class="q">${q}</span>`:""}${t?A(t):""}</div>`;
+  const top=(title,sub)=>`<div class="r-top"><small>農業資源應用實習・個人報告</small><b>${title}</b><i>${sub}</i></div>`;
+  const info=(date,due)=>`<table><colgroup><col style="width:15%"><col style="width:35%"><col style="width:15%"><col style="width:35%"></colgroup>
+    <tr><td class="k">班　級</td><td>${A("園藝二甲")}</td><td class="k">座　號</td><td>${A("12")}</td></tr>
+    <tr><td class="k">姓　名</td><td>${A("林○○")}</td><td class="k">組　別</td><td>${A("第 3 組")}</td></tr>
+    <tr><td class="k">實習日期</td><td>${date}</td><td class="k">繳交日期</td><td>${due}</td></tr></table>`;
+  const kv=rows=>`<table><colgroup><col style="width:18%"><col></colgroup>${rows.map(([k,v])=>`<tr><td class="k l">${k}</td><td>${v}</td></tr>`).join("")}</table>`;
+  const photos=list=>`<div class="photos">${list.map(([lab,svg,cap],i)=>`<div class="ph"><div class="img"><b>${i+1}. ${lab}</b>${svg}</div><div class="cap"><em>說明：</em>${A(cap)}</div></div>`).join("")}</div>`;
+  const BRK=n=>`<div class="pgbreak"><span>第 ${n} 頁</span></div>`;
+  const check=items=>`<div class="chk">${items.map(t=>`<span>${t}</span>`).join("")}</div>`;
+  const teacher=`<table class="teach" style="margin-top:12px"><colgroup><col style="width:14%"><col><col style="width:10%"><col style="width:14%"></colgroup><tr><td class="k">老師評語</td><td></td><td class="k">分數</td><td></td></tr></table>`;
+
+  /* 示意照片 */
+  const sv=(inner,vb="0 0 240 150")=>`<svg viewBox="${vb}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">${inner}</svg>`;
+  const POT=(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><rect x="-56" y="-6" width="112" height="64" rx="8" fill="#7d8a93"/><rect x="-50" y="2" width="100" height="50" rx="4" fill="#d8ecf7"/><rect x="-62" y="58" width="124" height="10" rx="3" fill="#3b3f44"/>${[-24,0,24].map(d=>`<path d="M${d} 58 q-5 -10 0 -16 q5 6 0 16" fill="#e8742c"/>`).join("")}</g>`;
+  const BRUSH=`<g><rect x="-5" y="-70" width="10" height="58" rx="5" fill="#3b6fd1"/><rect x="-8" y="-14" width="16" height="8" rx="2" fill="#3b6fd1"/>${[-6,-3,0,3,6].map(d=>`<line x1="${d}" y1="-6" x2="${d}" y2="4" stroke="#fff" stroke-width="2"/>`).join("")}</g>`;
+  const LEAFP=[
+    ["採葉、挑葉",sv(`<rect x="0" y="110" width="240" height="40" fill="#cfe3b8"/>${[50,100,150,200].map((x,i)=>LEAF(x,74,.42,i*8-12,"#3f7f35")).join("")}`),"在中庭挑了 8 片厚又完整的桂花葉，大小差不多，先編號。"],
+    ["煮軟",sv(`${POT(100,60,1)}${[0,1,2].map(i=>LEAF(76+i*24,82,.2,90,"#9a6a3c")).join("")}<g transform="translate(196 50)"><circle r="26" fill="#fff" stroke="#2f6b3a" stroke-width="3"/><path d="M0 0 V-18 M0 0 L12 6" stroke="#222" stroke-width="3" stroke-linecap="round"/></g>`),"肥皂水煮滾後轉小火，30、60、90 分鐘各夾出 2 片。"],
+    ["牙刷刷葉肉",sv(`<rect x="20" y="20" width="200" height="120" rx="6" fill="#e8edf0"/>${SKEL(110,80,.85,90)}<path d="${LS}" transform="translate(110 80) rotate(90) scale(.85)" fill="#9a6a3c" opacity=".45"/><g transform="translate(150 90)">${BRUSH}</g>`),"牙刷垂直輕點，從主脈往葉緣，正反兩面都刷。"],
+    ["漂白、壓乾",sv(`<rect x="16" y="40" width="208" height="90" rx="10" fill="#f4efc2" stroke="#999"/>${SKEL(120,86,.7,90,"#b8a070")}<text x="120" y="28" text-anchor="middle" style="font-size:13px;fill:#555;font-weight:700">漂白水 1：水 8</text>`),"泡稀釋漂白水約 15 分鐘變米白色，夾吸水紙壓一週。"]
+  ];
+  const leafBig=sv(`<rect x="0" y="0" width="400" height="230" fill="#f3f5ec"/>
+    <g transform="translate(200 116)"><rect x="-34" y="-104" width="68" height="208" rx="6" fill="#9fd3f0" opacity=".5"/><rect x="-28" y="-98" width="56" height="196" rx="3" fill="#2f5d3a"/><circle cy="-86" r="5" fill="#f3f5ec"/>${SKEL(0,6,1.15,0,"#f7f1e1")}<text x="0" y="88" text-anchor="middle" style="fill:#f7f1e1;font-size:8px;font-weight:700">桂花 11/26</text></g>
+    <path d="M200 70 L290 44" stroke="#1f4fa8" stroke-width="1.5"/><text x="294" y="48" style="fill:#1f4fa8;font-size:15px;font-weight:700">主脈</text>
+    <path d="M222 100 L290 104" stroke="#1f4fa8" stroke-width="1.5"/><text x="294" y="108" style="fill:#1f4fa8;font-size:15px;font-weight:700">側脈</text>
+    <path d="M186 122 L110 140" stroke="#1f4fa8" stroke-width="1.5"/><text x="106" y="144" text-anchor="end" style="fill:#1f4fa8;font-size:15px;font-weight:700">細脈網</text>`,"0 0 400 230");
+
+  const LEAFREP=()=>top("葉脈標本護貝書籤","一人一份・照片至少 4 張")+info("11/26（四）","12/3（四）")+
+    H("一、實習目的","這次實習要學會什麼？用自己的話寫 1～2 句。","寫「學會什麼」，不要只寫「做書籤」。")+
+    LN("認識葉片的構造（葉肉和葉脈），學會用肥皂水煮軟、牙刷刷掉葉肉，做出完整的葉脈書籤，")+LN("並比較煮的時間長短對葉脈完整度的影響。")+
+    H("二、材料與器材")+kv([["葉子種類",A("桂花")],["採集地點",A("學校中庭花圃")],["煮葉方式",`<span class="tick">☑</span> 肥皂水　☐ 其他：＿＿　　煮了 ${A("30／60／90")} 分鐘`],["使用器材",A("不鏽鋼鍋、電磁爐、長筷子、舊牙刷、瓷磚、漂白水、量杯、吸水紙、護貝膠膜、深綠色卡紙")]])+
+    H("三、實習步驟（附照片）","照實際做的順序貼照片，每張寫一句說明。","說明要寫「怎麼做」：時間、份量、方法，不是只寫「煮葉子」。")+photos(LEAFP)+
+    BRK(2)+
+    H("四、實習結果","填自己這組的結果；完整度對照網頁上的 1～5 分圖。","數字要真的記錄，不要事後用猜的。")+
+    `<div class="scroll"><table><tr><th style="width:28%">項目</th><th>煮 30 分</th><th>煮 60 分</th><th>煮 90 分</th></tr>
+      <tr><td class="k l">刷的難易（1～3）</td><td style="text-align:center">${A("1")}</td><td style="text-align:center">${A("3")}</td><td style="text-align:center">${A("3")}</td></tr>
+      <tr><td class="k l">刷的時間（分鐘）</td><td style="text-align:center">${A("15（沒刷完）")}</td><td style="text-align:center">${A("6")}</td><td style="text-align:center">${A("4")}</td></tr>
+      <tr><td class="k l">葉脈完整度（1～5）</td><td style="text-align:center">${A("2")}</td><td style="text-align:center">${A("5")}</td><td style="text-align:center">${A("3")}</td></tr>
+      <tr><td class="k l">漂白後顏色</td><td style="text-align:center">${A("淡黃，有殘渣")}</td><td style="text-align:center">${A("米白")}</td><td style="text-align:center">${A("白，邊緣破")}</td></tr></table></div>
+    <div class="big" style="margin-top:10px"><span class="tag">我的葉脈書籤成品（標出主脈、側脈、細脈）</span>${leafBig}</div>`+
+    H("五、討論",null,"每題都寫「結果＋原因」，用上課學到的名詞（果膠、木質素）。")+
+    LN("不一定。30 分鐘葉肉還很硬，用力刷反而把細脈刷斷；90 分鐘連葉脈也變軟，邊緣容易破。","1. 煮越久一定越好刷嗎？煮太短、太長各會怎樣？")+LN("我們這組桂花葉煮 60 分鐘最剛好。")+
+    LN("葉肉細胞壁薄，靠果膠黏在一起，鹼性的肥皂水加熱會分解果膠；葉脈是維管束，細胞壁有木質素，又硬又韌。","2. 為什麼葉肉刷得掉，葉脈卻留得下來？")+
+    LN("改成每 15 分鐘夾一片出來，先用指甲輕刮試試看，葉肉會掉了再開始刷，避免硬刷。","3. 如果再做一次，你會怎麼改進？")+
+    BRK(3)+
+    H("六、心得","約 100 字：自己負責什麼、學到什麼、最有成就感或最困難的地方。","寫自己的感受和具體的事，不要只寫「很好玩、學到很多」。")+
+    LN("我在組裡負責刷 60 分鐘的葉子。一開始太用力，刷破了一片，後來改成垂直輕輕點，")+LN("葉肉就一點一點掉下來，看到整片網子出現的時候很有成就感。我也發現同一種葉子煮的")+LN("時間不同，結果差很多，做實驗一定要計時和記錄。下次想試試看山茶花的葉子。")+
+    H("七、參考資料","寫出網站或書的名稱、網址。")+
+    LN("農業資源應用實習網頁「葉脈標本護貝書籤」https://teacher-liujikan.github.io/yilin-work/agri-leaf/")+
+    H("繳交前自我檢查")+check(["班級、座號、姓名都寫了","照片至少 4 張，每張有說明","結果表填完整","成品照片標出葉脈名稱","討論 3 題都回答","心得約 100 字"])+teacher;
+
+  /* 種子小精靈 */
+  const ACO=(x,y,s,eyes=true,dx=0)=>`<g transform="translate(${x} ${y}) scale(${s})"><ellipse cy="4" rx="12" ry="16" fill="#a8743a"/><ellipse cx="-4" cy="2" rx="3" ry="7" fill="#fff" opacity=".2"/><path d="M-14 -6 Q-14 -18 0 -18 Q14 -18 14 -6 Z" fill="#9a8060"/><path d="M-13 -9 H13 M-12 -13 H12" stroke="#6a5236" stroke-width="1.3"/>${eyes?EY(0,2,3.4,dx):""}</g>`;
+  const EY=(x,y,r,dx=0)=>[-1,1].map(k=>`<circle cx="${x+k*r*1.45}" cy="${y}" r="${r}" fill="#fff" stroke="#222" stroke-width="${r*.15}"/><circle cx="${x+k*r*1.45+dx*r*.4}" cy="${y+r*.15}" r="${r*.52}" fill="#111"/>`).join("");
+  const BALL=(x,y,s,c="#c98a3a",dx=0)=>`<g transform="translate(${x} ${y}) scale(${s})"><circle r="11" fill="${c}"/><ellipse cx="-4" cy="-4" rx="3.5" ry="2.4" fill="#fff" opacity=".4"/>${EY(0,-1,3.2,dx)}</g>`;
+  const GUM=(x,y,s)=>`<g transform="translate(${x} ${y}) scale(${s})">${Array.from({length:16},(_,i)=>{const a=i*22.5*Math.PI/180;return `<path d="M${(9*Math.cos(a)).toFixed(1)} ${(9*Math.sin(a)).toFixed(1)} L${(15*Math.cos(a)).toFixed(1)} ${(15*Math.sin(a)).toFixed(1)}" stroke="#5a3a24" stroke-width="2.4" stroke-linecap="round"/>`;}).join("")}<circle r="11" fill="#5a3a24"/>${EY(0,-1,3,0)}</g>`;
+  const LANT=(x,y,s)=>`<g transform="translate(${x} ${y}) scale(${s})"><path d="M0 -18 C 14 -12, 16 8, 0 18 C -16 8, -14 -12, 0 -18 Z" fill="#e3a08e"/><path d="M0 -18 V18 M0 -18 C 8 -6 8 6 0 18 M0 -18 C -8 -6 -8 6 0 18" stroke="#b0685a" stroke-width="1" fill="none"/></g>`;
+  const WING=(x,y,s,r)=>`<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><path d="M-4 18 C -10 0, -8 -22, 4 -30 C 10 -20, 10 0, 4 18 Z" fill="#c9a46a"/><ellipse cy="14" rx="5" ry="6" fill="#7a5a32"/></g>`;
+  const SL=(x,y,w,h)=>`<g transform="translate(${x} ${y})"><path d="M${-w} 0 V${h*.6} A${w} ${h} 0 0 0 ${w} ${h*.6} V0 Z" fill="#7a5232"/><ellipse rx="${w}" ry="${h}" fill="#e8d2a8" stroke="#5a3a20" stroke-width="3"/><ellipse rx="${w*.6}" ry="${h*.6}" fill="none" stroke="#c9a878"/><ellipse rx="${w*.3}" ry="${h*.3}" fill="none" stroke="#c9a878"/></g>`;
+  const CAMPH=(x,y,s)=>`<g transform="translate(${x} ${y}) scale(${s})"><circle r="5" fill="#1f1f24"/>${EY(0,0,1.6,0)}</g>`;
+  const SEEDP=[
+    ["處理種子",sv(`<path d="M50 40 L60 130 L180 130 L190 40 Z" fill="#5aa3d9" opacity=".35" stroke="#5aa3d9" stroke-width="2"/>${ACO(90,110,1.4,false)}${ACO(130,114,1.4,false)}<g transform="rotate(90 150 60)">${ACO(150,60,1.4,false)}</g><text x="196" y="58" style="font-size:12px;fill:#555;font-weight:700">浮起來</text><text x="196" y="74" style="font-size:12px;fill:#555;font-weight:700">不用</text>`),"刷洗後泡水，挑掉浮起來的橡實，裝袋冷凍 3 天再晾乾。"],
+    ["設計、試擺",sv(`${SL(120,104,96,28)}${ACO(80,74,1.8,false)}${ACO(118,78,1.5,false)}${BALL(150,90,1.2,"#c98a3a")}<path d="M150 90 m-12 -10" /><g transform="translate(200 30)"><rect x="-18" y="-12" width="36" height="26" rx="4" fill="#222"/><circle r="7" fill="#666" stroke="#ddd" stroke-width="1.5"/></g>`),"先擺出一家人站成一排，拍照記下位置，高的放後面。"],
+    ["黏眼睛、組合",sv(`${ACO(110,84,3.4,true,.4)}<g transform="translate(190 40)"><path d="M0 0 L-46 30 M5 6 L-42 34" stroke="#7d8a93" stroke-width="3"/></g>`),"用牙籤點保麗龍膠貼眼睛，殼斗帽子用低溫熱熔膠黏回去。"],
+    ["固定到底座",sv(`${SL(120,110,100,28)}<g transform="translate(176 66)"><rect x="-6" y="-32" width="12" height="36" rx="2" fill="#e8c88a" stroke="#b8945a"/><path d="M-6 -16 h12" stroke="#7d8a93" stroke-width="3"/></g>${ACO(76,84,1.8,true,.3)}${ACO(110,90,1.5,true,.3)}${BALL(140,102,1.1)}`),"從後面高的開始黏，最後把小木夾立在底座後方當名片夾。"]
+  ];
+  const seedBig=sv(`<rect width="400" height="230" fill="#f3f5ec"/>${SL(200,182,170,40)}
+    <g transform="translate(300 128)"><rect x="-7" y="-40" width="14" height="46" rx="2" fill="#e8c88a" stroke="#b8945a"/><path d="M-7 -20 h14" stroke="#7d8a93" stroke-width="3"/><rect x="-46" y="-96" width="92" height="56" rx="3" fill="#fff" stroke="#999"/><text x="0" y="-72" text-anchor="middle" style="font-size:13px;font-weight:900;fill:#2f6b3a">林○○</text><text x="0" y="-54" text-anchor="middle" style="font-size:10px;fill:#555">園藝二甲</text></g>
+    ${LANT(96,138,2.6)}${WING(150,96,1.1,-30)}${WING(176,94,1.1,30)}${ACO(164,128,2.8,true,.3)}${ACO(212,140,2.3,true,-.3)}${BALL(130,168,1.3,"#c98a3a",.5)}${GUM(250,170,1.15)}${CAMPH(186,182,2.6)}
+    <path d="M150 140 q14 8 28 0" stroke="#3a1a10" stroke-width="2" fill="none" transform="translate(0 6)"/>`,"0 0 400 230");
+
+  const seedRows=[["1","青剛櫟","青剛櫟（殼斗科）","褐色橢圓形、戴殼斗帽，約 2 cm","動物（松鼠搬運）","爸爸、媽媽"],["2","無患子","無患子","黃褐色圓球、有點透明","動物（鳥吃）","小孩的頭"],["3","楓香球果","楓香","深褐色、刺刺的圓球","風（裡面種子有翅）","寵物刺蝟"],["4","燈籠果","台灣欒樹","粉紅褐色、像紙燈籠","風","野餐帳篷"],["5","樟樹果實","樟樹","黑色小圓果，約 0.7 cm","動物（鳥吃）","小寶寶"],["6","翅狀種子","大葉桃花心木","一片褐色翅膀","風（旋轉）","爸爸的頭髮"]];
+  const SEEDREP=()=>top("種子小精靈","一人一份・作品至少使用 5 種種子・要上台分享")+info("12/10（四）","12/17（四）")+
+    H("一、作品基本資料",null,"作品名稱要有主題，讓人一看就知道在演什麼。")+kv([["作品名稱",A("《橡實一家去野餐》")],["用　　途",`☐ 桌面裝飾　<span class="tick">☑</span> 名片夾　☐ 其他：＿＿`],["使用種子",`共 ${A("6")} 種（至少 5 種）`],["蒐集地點",`${A("校園後山步道、住家附近公園")}　蒐集日期：${A("12／3")}`]])+
+    H("二、種子蒐集紀錄","不知道名字先寫特徵，拍照查詢後再補。傳播方式：風、動物、水、重力、彈射。","特徵寫「形狀＋顏色＋大小」；傳播方式要和特徵對得起來。")+
+    `<div class="scroll"><table><tr><th style="width:7%">編號</th><th style="width:15%">種子／果實</th><th style="width:16%">來自植物</th><th>特徵</th><th style="width:16%">傳播方式</th><th style="width:15%">用在哪裡</th></tr>${seedRows.map(r=>`<tr>${r.map((c,i)=>`<td${i===0?' class="k"':""}>${i?A(c):c}</td>`).join("")}</tr>`).join("")}</table></div>`+
+    BRK(2)+
+    H("三、製作過程（附照片）",null,"四張照片要看得出「順序」，說明寫用了什麼方法。")+photos(SEEDP)+
+    H("四、作品介紹")+`<div class="big"><span class="tag">完成的種子小精靈</span>${seedBig}</div>`+
+    LN("戴殼斗帽的橡實爸爸和媽媽帶著無患子小孩、樟樹小寶寶去野餐，後面是欒樹燈籠果搭的帳篷，","角色介紹：牠們是誰？在做什麼？")+LN("楓香刺蝟是家裡的寵物。爸爸頭上的桃花心木種子是他新剪的髮型。名片夾在帳篷旁邊。")+
+    BRK(3)+
+    H("五、我最喜歡的種子",null,"一定要把「形狀」和「怎麼傳播」連起來說。")+
+    LN(`種子名稱：大葉桃花心木　　傳播方式：風`)+LN("種子一邊有一片薄薄的翅膀，從樹上掉下來會像竹蜻蜓一樣旋轉，掉得比較慢，","它的形狀和傳播方式有什麼關係？")+LN("風一吹就能飄到離媽媽樹比較遠的地方，小樹苗才不會擠在一起搶陽光。")+
+    H("六、遇到的問題與解決")+LN("無患子圓圓的一直滾走：先擠一圈熱熔膠，等兩三秒稍微變稠再放上去就站穩了。")+LN("名片夾一放名片就往前倒：改黏在底座後方中間，多擠一點膠、壓 30 秒。")+
+    H("七、心得","約 100 字：學到什麼、最滿意的地方、聽了同學分享後的想法。")+
+    LN("以前走在路上從來沒注意地上的種子，這次蒐集才發現校園裡就有好多種，每一種形狀都和")+LN("它的傳播方式有關。我最滿意的是橡實爸爸的髮型，同學都笑了。聽了同學分享，我發現有人用")+LN("豆莢當手腳很有創意，下次我也想試試看。")+
+    H("八、參考資料")+LN("農業資源應用實習網頁「種子創作：種子小精靈」https://teacher-liujikan.github.io/yilin-work/agri-seed/")+LN("用植物辨識 App 查詢楓香、桃花心木的名稱")+
+    H("繳交前自我檢查")+check(["班級、座號、姓名都寫了","作品至少用 5 種種子","蒐集紀錄至少填 5 種","製作過程照片 4 張","作品照片清楚","心得約 100 字"])+teacher;
+
+  const sheet=$("sheet"); if(!sheet) return;
+  let cur="leaf";
+  function render(){ sheet.innerHTML=cur==="leaf"?LEAFREP():SEEDREP(); document.querySelectorAll(".rswitch .dchip").forEach(b=>b.setAttribute("aria-pressed",b.dataset.r===cur)); }
+  document.querySelectorAll(".rswitch .dchip").forEach(b=>b.onclick=()=>{ cur=b.dataset.r; render(); });
+  $("tipToggle").onchange=e=>sheet.classList.toggle("notip",!e.target.checked);
+  render();
+})();
+
+if(["#t2","#t3","#t4"].includes(location.hash)) show(location.hash.slice(1));
 })();
 
 </script>
