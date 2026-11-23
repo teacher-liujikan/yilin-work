@@ -384,7 +384,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
       <div class="eyebrow">實習課・50 分鐘 × 3 節</div>
       <h1>押花與乾燥花</h1>
       <p class="sub">基本知識 → 實驗過程 → 分組試驗 → 動手判斷 → 掃 QR 小測驗</p>
-      <nav class="sibs" aria-label="其他實習課">實習課：<a href="../agri-paper/">再生紙</a><a href="../agri-leaf/">葉脈書籤</a><a href="../agri-worm/">蚯蚓堆肥</a><a href="../agri-enzyme/">果皮酵素</a><b aria-current="page">押花乾燥花</b><a href="../agri-seed/">種子創作</a></nav>
+      <nav class="sibs" aria-label="其他實習課">實習課：<a href="../agri-paper/">再生紙</a><a href="../agri-leaf/">葉脈書籤</a><a href="../agri-worm/">蚯蚓堆肥</a><a href="../agri-enzyme/">果皮酵素</a><b aria-current="page">押花乾燥花</b><a href="../agri-seed/">種子創作</a><a href="../agri-dye/">植物染</a></nav>
     </div>
     <div class="qr" id="qrBtn" role="button" tabindex="0" aria-label="放大 QR code"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQAAAAAefbjOAAADAElEQVR42u1cMY7cMAwcRgKutIF9wD5F+4P7svWU+4FUHiBjUpCStQgSIOli0YVxwpoNPTcaDkUL8ddX/oF/uDzIgzzoPw2qYterRgA4BcCpS3lVEQBAfyh69u4dBLIEkiSRCmA3cuwmgWQJRCL1Lx6evdsH2f/+RgIIRN4BJMXBt4g8G5RLXp69pYKqCLA18MApyIqDaLzh2VsjKM6LrUVmCU1SOcH8eUYChOS9ePbWQsRUgqbyALMEKj3orzU2YCOA6tlbQFleYAj8/e0Smq4sb84R23jb9VQdgfz81hKUqADzs8004tm7f/WpOMDW+rLXnDw2dqJgAw/niAUQQeqL54GBDf2h6U2tiENBQ0fEIjrCWKCzBW2pvhRJHkDHhmfv/p7lAcBYQOtQ0vgAsL3iMi4dEXffNRpMLtC2DrLYdvLr864jFulraHOj4RKQyhGcCk+4slyHIzgkRCoYS+t+2SOlo8QRsUT1Sdr+oVSA2bXSvQKha0zP3u2rz15ccNgOQzNMDXOvPlf0I+wqRhQTXqwp6jpiER1RgIko0L2qyYoYpyccEat0ui4Du3tVnAqOq0p1RCzAEb+YlHq0zjhCC47j6nV49tZwsbtwaO/qwTpdzhFrKUu1qMtsT0xQGQDx6nM1P6J3vq9NxFwrc7ZdWS4RtDXwqFEnMgCcYm+/xn7bvkVeV6/cs7eAH9F1xEUKygza4cAlNZwj1qg10uRHDCMKwc7JpDdTwhGBm5+zrA/acewamy5TeQCJpxAIFNQdSASQPz1767jYU+/z2MbQ31vVYTuJZ+/+EzypAET9oOQ9NABnJGpoopMbCA2oD88eFpsN72PhfXjnFHM0AejIZ949ewsEDQ9qFBypW1Iiu+Gg98U9e4s4VL2/NXVBZxd7nKrzWmOpoPpBkT1Qt470FYH0ZV8UmUf9PHurzIbjFObXKUSNQN4DmJ8tAluLJjA2z95K35jhVYL2AQ31uMcgh89rLDcbfjmVk4Gd+DYQ6oi4c5D41ws9yIM86A/XT6knLvMtQj/VAAAAAElFTkSuQmCC"><span>掃我測驗</span></div>
   </header>
@@ -898,7 +898,7 @@ function renderStep(){
   $("sList").innerHTML=s.l.map(x=>`<li>${x}</li>`).join("");
   $("sTip").innerHTML=`<b>小提醒：</b>${s.tip}`;
   $("sPrev").disabled=sIdx===0;
-  $("sNext").textContent=sIdx===STEPS.length-1?"分組試驗 →":"下一步 →";
+  $("sNext").textContent=sIdx===STEPS.length-1?(typeof NEXT3!=="undefined"?NEXT3:"分組試驗")+" →":"下一步 →";
 }
 $("sPrev").onclick=()=>{ if(sIdx>0){sIdx--; renderStep();} };
 $("sNext").onclick=()=>{ if(sIdx===STEPS.length-1){ show("t3"); return; } sIdx++; seen.add(sIdx); renderStep(); };

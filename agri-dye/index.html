@@ -1,0 +1,1050 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>植物染與藍染</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+/* 同 agri-leaf 架構：上方標題＋QR，分頁 基本知識／實驗過程／分組試驗／動手判斷／小測驗 */
+:root{
+  --bg:#f3f5ec; --paper:#ffffff; --ink:#1f2a1c; --muted:#5e6b58; --line:#d9e0cd; --grid:#e6ebdb;
+  --accent:#2f6b3a; --accent-ink:#ffffff; --accent-soft:#e3f0e3;
+  --soil:#8a5a35; --soil-soft:#f4e7da;
+  --mark:#ffe08a; --mark-ink:#2a2118;
+  --ok:#1f7a45; --ok-soft:#e1f4e7; --bad:#b4362c; --bad-soft:#fbe7e4;
+  --g1:#c46a17; --g2:#2f8a57; --g3:#3b6fd1; --g4:#a2408c;
+  --g1s:#fbecdc; --g2s:#e0f2e7; --g3s:#e3ebfb; --g4s:#f6e4f1;
+  --leaf:#4f9a3c; --leaf2:#2f6b2a; --leafdry:#8aa04a; --leafbrown:#9a6a3c; --leafred:#c8452f; --leafyel:#e0b23a;
+  --water:#5aa3d9; --film:#9fd3f0; --glue:#f2d36b; --card:#fbf7ee; --cardline:#d9c7a3; --wood:#b07a45; --metal:#7d8a93;
+  --f:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121610; --paper:#1b2118; --ink:#e6ecdf; --muted:#a6b29c; --line:#323c2c; --grid:#181d15;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  --leaf:#6dbb57; --leaf2:#9fd88a; --leafdry:#a8bb63; --leafbrown:#c08f5c; --leafred:#e2705a; --leafyel:#e8c45a;
+  --water:#6fb3e6; --film:#3d6f8f; --glue:#8f7a2e; --card:#e9e1d0; --cardline:#a8946c; --wood:#a8784a; --metal:#93a0a8;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121610; --paper:#1b2118; --ink:#e6ecdf; --muted:#a6b29c; --line:#323c2c; --grid:#181d15;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  --leaf:#6dbb57; --leaf2:#9fd88a; --leafdry:#a8bb63; --leafbrown:#c08f5c; --leafred:#e2705a; --leafyel:#e8c45a;
+  --water:#6fb3e6; --film:#3d6f8f; --glue:#8f7a2e; --card:#e9e1d0; --cardline:#a8946c; --wood:#a8784a; --metal:#93a0a8;
+  color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:17px;line-height:1.7;
+  background-image:radial-gradient(var(--grid) 1.2px,transparent 1.2px);background-size:22px 22px}
+.wrap{max-width:980px;margin:0 auto;padding-block:20px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{display:flex;gap:16px;align-items:flex-start;justify-content:space-between}
+.brand{min-width:0}
+.eyebrow{font-size:14px;letter-spacing:.12em;color:var(--soil);font-weight:700}
+h1{font-size:clamp(30px,6vw,44px);font-weight:900;line-height:1.2;margin:4px 0 6px;text-wrap:balance}
+.sub{color:var(--muted);margin:0;font-size:16px}
+.qr{flex:none;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+.qr img{width:84px;height:84px;image-rendering:pixelated;display:block}
+.qr span{font-size:12px;color:#3a4a33;font-weight:700}
+button:focus-visible,.qr:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:20;background:var(--bg);padding:8px 0;margin:14px 0 10px}
+.tab{font:inherit;font-weight:700;font-size:17px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:999px;padding:7px 18px;cursor:pointer;min-height:44px}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.tab small{font-size:12px;opacity:.8;margin-left:4px}
+.panel{display:flex;flex-direction:column;gap:16px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px}
+.toolbar .hint{font-size:14px;color:var(--muted)}
+.switch{display:inline-flex;align-items:center;gap:8px;font-weight:700;cursor:pointer;user-select:none}
+.switch input{width:20px;height:20px;accent-color:var(--accent)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;min-width:0}
+.card h2{font-size:24px;font-weight:900;margin:0 0 8px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.card h2 .sec{font-size:13px;font-weight:700;color:var(--soil);background:var(--soil-soft);border-radius:999px;padding:1px 10px}
+.card h3{font-size:19px;margin:14px 0 4px}
+.card p{margin:6px 0}
+.card ul,.card ol{margin:6px 0;padding-left:1.3em}
+.card li{margin:3px 0}
+.key{background:var(--mark);color:var(--mark-ink);border-radius:4px;padding:0 4px;font-weight:700}
+body.blank .key{color:transparent;background:var(--soil-soft);border-bottom:2px solid var(--soil);cursor:pointer;user-select:none}
+body.blank .key.show{color:var(--mark-ink);background:var(--mark);border-bottom-color:transparent}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:820px){.four{grid-template-columns:1fr 1fr}}
+@media (max-width:720px){.two,.three{grid-template-columns:1fr}}
+.box{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--bg);min-width:0}
+.box b.t{display:block;font-size:17px;margin-bottom:2px}
+.box svg{width:100%;height:auto;display:block;margin-bottom:6px}
+.box small{display:block;color:var(--muted);font-size:14px;line-height:1.5;margin-top:4px}
+.box.c1{border-top:5px solid var(--g1)}.box.c2{border-top:5px solid var(--g2)}.box.c3{border-top:5px solid var(--g3)}.box.c4{border-top:5px solid var(--g4)}
+.box.okb{border-top:5px solid var(--ok)}.box.badb{border-top:5px solid var(--bad)}
+.note{font-size:15px;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 12px;margin-top:10px}
+.tip{font-size:15px;border:1.5px dashed var(--soil);border-radius:10px;padding:8px 12px;margin-top:10px;background:var(--soil-soft)}
+.tip b{color:var(--soil)}
+.warnbox{font-size:15px;border-left:5px solid var(--bad);border-radius:0 10px 10px 0;padding:8px 12px;margin-top:10px;background:var(--bad-soft)}
+.warnbox b{color:var(--bad)}
+.tblwrap{overflow-x:auto;margin-top:8px}
+table.t{width:100%;border-collapse:collapse;font-size:16px;min-width:560px}
+table.t th,table.t td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+table.t th{background:var(--accent-soft);white-space:nowrap}
+table.t td:first-child{white-space:nowrap}
+.btn{font:inherit;font-weight:700;font-size:16px;border:0;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:9px 22px;cursor:pointer;min-height:44px}
+.btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.sm{min-height:36px;padding:4px 14px;font-size:14px}
+.btn.warn{background:var(--bad);color:#fff;border-color:var(--bad)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.art{width:100%;height:auto;display:block}
+figure{margin:0}
+figcaption{font-size:15px;line-height:1.5;margin-top:6px;text-align:center;color:var(--muted)}
+.ex{color:var(--muted);font-size:14px}
+.formula{font-size:22px;font-weight:900;text-align:center;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px;margin:8px 0}
+details.teacher{margin-top:10px;border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--bg)}
+details.teacher summary{cursor:pointer;font-weight:700;color:var(--accent)}
+
+/* SVG 共用 */
+.s-txt{fill:var(--ink);font-size:13px;font-weight:700;font-family:var(--f)}
+.s-sm{fill:var(--muted);font-size:11px;font-weight:500;font-family:var(--f)}
+.s-line{stroke:var(--muted);stroke-width:2;fill:none}
+.s-leaf{fill:var(--leaf)}
+.s-vein{stroke:var(--leaf2);stroke-width:2;fill:none;stroke-linecap:round}
+.s-card{fill:var(--card);stroke:var(--cardline);stroke-width:1.5}
+.s-film{fill:var(--film);opacity:.35;stroke:var(--water);stroke-width:1.5}
+.s-paper{fill:var(--paper);stroke:var(--muted);stroke-width:1.5}
+.s-blot{fill:#f1ead8;stroke:var(--cardline);stroke-width:1.2}
+.s-news{fill:#d9d4c7;stroke:var(--muted);stroke-width:1}
+.s-board{fill:var(--wood)}
+.s-water{fill:var(--water)}
+.lbl{stroke:var(--muted);stroke-width:1.2;fill:none;stroke-dasharray:3 2}
+
+/* 動畫 */
+.paused *{animation-play-state:paused!important}
+.a-fall{animation:fall 3s ease-in infinite;transform-box:fill-box;transform-origin:center}
+@keyframes fall{0%{transform:translate(0,0) rotate(0);opacity:0}10%{opacity:1}50%{transform:translate(-18px,50px) rotate(-40deg)}85%{transform:translate(4px,100px) rotate(10deg);opacity:1}100%{transform:translate(4px,108px) rotate(10deg);opacity:0}}
+.a-wipe{animation:wipe 1.8s ease-in-out infinite alternate}
+@keyframes wipe{from{transform:translate(-60px,0)}to{transform:translate(60px,0)}}
+.a-fade{animation:fadeio 2.4s ease-in-out infinite}
+@keyframes fadeio{0%,100%{opacity:.1}50%{opacity:1}}
+.a-gone{animation:gone 3.6s ease-in infinite}
+@keyframes gone{0%,20%{opacity:1}70%,100%{opacity:0}}
+.a-pop{animation:pop 3.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pop{0%,10%{transform:scale(0);opacity:0}25%,90%{transform:scale(1);opacity:1}100%{transform:scale(1);opacity:0}}
+.a-press{animation:press 3s ease-in-out infinite}
+@keyframes press{0%,15%{transform:translateY(-46px)}40%,85%{transform:translateY(0)}100%{transform:translateY(-46px)}}
+.a-dripL{animation:dripL 3s ease-in infinite}
+@keyframes dripL{0%,40%{transform:translate(0,0);opacity:0}50%{opacity:1}100%{transform:translate(-36px,10px);opacity:0}}
+.a-dripR{animation:dripR 3s ease-in infinite}
+@keyframes dripR{0%,40%{transform:translate(0,0);opacity:0}50%{opacity:1}100%{transform:translate(36px,10px);opacity:0}}
+.a-up{animation:up 2.4s ease-in infinite}
+@keyframes up{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(-30px);opacity:0}}
+.a-feed{animation:feed 5s linear infinite}
+@keyframes feed{0%{transform:translateX(-120px)}10%{transform:translateX(-120px)}80%{transform:translateX(120px)}100%{transform:translateX(120px)}}
+.a-rot{animation:rot 1.2s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes rot{to{transform:rotate(360deg)}}
+.a-snip{animation:snip .6s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:left center}
+@keyframes snip{from{transform:rotate(-12deg)}to{transform:rotate(6deg)}}
+.a-slide{animation:slide 4s linear infinite}
+@keyframes slide{0%{transform:translateY(-70px)}100%{transform:translateY(70px)}}
+.a-swing{animation:swing 2.4s ease-in-out infinite alternate;transform-box:view-box;transform-origin:170px 40px}
+@keyframes swing{from{transform:rotate(-12deg)}to{transform:rotate(12deg)}}
+.a-roll{animation:rot 2s linear infinite;transform-box:fill-box;transform-origin:center}
+.a-melt{animation:melt 3s ease-in-out infinite}
+@keyframes melt{0%,100%{opacity:.35}50%{opacity:1}}
+.a-turn{animation:turn 4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes turn{0%,20%{transform:rotate(0)}50%,70%{transform:rotate(180deg)}100%{transform:rotate(360deg)}}
+
+/* 流程 */
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:8px}
+@media (max-width:640px){.flow{grid-template-columns:1fr 1fr}}
+.fl{border:2px solid var(--accent);border-radius:12px;background:var(--bg);padding:6px 8px 10px;text-align:center;position:relative}
+.fl svg{width:100%;height:auto;display:block}
+.fl b{display:block;font-size:18px}
+.fl small{display:block;font-size:13px;color:var(--muted);line-height:1.4}
+.fl .no{position:absolute;left:8px;top:6px;width:24px;height:24px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:13px;font-weight:900;display:grid;place-items:center}
+
+/* 步驟播放器 */
+.player{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:760px){.player{grid-template-columns:1fr}}
+.stage{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:8px;position:relative}
+.stage svg{width:100%;height:auto;display:block}
+.stage .badge{position:absolute;left:12px;top:10px;background:var(--accent);color:var(--accent-ink);font-weight:900;border-radius:999px;padding:0 12px;font-size:15px}
+.stepchips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.sc{font:inherit;font-weight:700;font-size:15px;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;min-width:44px;min-height:44px;padding:0 12px;cursor:pointer}
+.sc[aria-current="step"]{border-color:var(--accent);background:var(--accent);color:var(--accent-ink)}
+.sc.seen{border-color:var(--accent)}
+.stxt h3{font-size:24px;margin:0 0 6px}
+.stxt ul{padding-left:1.2em;margin:4px 0}
+.stxt li{margin:4px 0;font-size:18px}
+.snav{display:flex;justify-content:space-between;gap:10px;margin-top:12px;flex-wrap:wrap}
+
+/* 材料 */
+.mats{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:8px}
+.mat{border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:8px 12px}
+.mat b{display:block}
+.mat small{color:var(--muted);font-size:14px;line-height:1.5;display:block}
+
+/* 分組 */
+.role{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:8px}
+@media (max-width:820px){.role{grid-template-columns:1fr 1fr}}
+.rl{border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:10px 12px;font-size:16px}
+.rl b{display:block;font-size:18px}
+.rl .tag{display:inline-block;font-size:13px;font-weight:900;border-radius:999px;padding:0 10px;color:#fff;margin-bottom:4px}
+.timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:8px}
+@media (max-width:820px){.timeline{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.timeline{grid-template-columns:1fr}}
+.tl{border-left:5px solid var(--accent);background:var(--bg);border-radius:0 10px 10px 0;padding:8px 12px;font-size:16px}
+.tl>b{display:block;font-size:18px}
+.tl ul{margin:4px 0 0;padding-left:1.1em}
+.tl li{margin:2px 0}
+.tl .m{color:var(--soil);font-weight:700;font-size:14px}
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.calc{grid-template-columns:1fr}}
+.calc label{display:block;font-weight:700;margin-top:6px}
+.calc input[type=number]{font:inherit;font-size:22px;font-weight:700;width:130px;padding:6px 10px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.bignum{font-size:44px;font-weight:900;line-height:1.1;color:var(--accent)}
+
+/* 動手判斷 */
+.order{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.oslot{border:2px dashed var(--line);border-radius:10px;padding:8px 12px;min-height:46px;display:flex;align-items:center;gap:10px;font-weight:700}
+.oslot.fill{border-style:solid;border-color:var(--ok);background:var(--ok-soft)}
+.oslot .n{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--paper);font-size:14px}
+.opool{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ob{font:inherit;font-weight:700;font-size:16px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:10px;padding:8px 14px;cursor:pointer;min-height:44px}
+.ob.bad{animation:nope .4s;border-color:var(--bad);color:var(--bad)}
+@keyframes nope{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.ofb{font-weight:700;margin-top:8px;min-height:1.7em}
+.ofb.ok{color:var(--ok)}.ofb.bad{color:var(--bad)}
+.ready{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:8px}
+.rd{border:2px solid var(--line);border-radius:12px;background:var(--paper);padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.rd .q{font-weight:900;font-size:17px}
+.rd .bs{display:flex;gap:8px}
+.rd .bs button{flex:1;font:inherit;font-weight:700;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:10px;min-height:44px;cursor:pointer}
+.rd.ok{border-color:var(--ok);background:var(--ok-soft)}
+.rd.bad{border-color:var(--bad);background:var(--bad-soft)}
+.rd .a{font-size:15px}
+.conc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.conc{grid-template-columns:1fr}}
+input[type=range]{width:100%;accent-color:var(--accent);margin:8px 0 0;height:32px}
+.cnum{font-size:40px;font-weight:900;line-height:1;color:var(--accent)}
+.cverdict{font-size:20px;font-weight:900;margin-top:6px}
+.cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:8px}
+.case{font:inherit;color:var(--ink);text-align:left;border:2px solid var(--line);border-radius:12px;background:var(--paper);padding:12px 14px;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-height:140px}
+.case .q{font-size:18px;font-weight:900}
+.case .a{margin-top:auto;font-size:15px;color:var(--muted)}
+.case.open{border-color:var(--accent);background:var(--accent-soft)}
+.case.open .a{color:var(--ink)}
+
+/* 測驗 */
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.progress{display:flex;gap:4px;flex-wrap:wrap}
+.dot{width:18px;height:8px;border-radius:4px;background:var(--line)}
+.dot.ok{background:var(--ok)}.dot.bad{background:var(--bad)}
+button.dot{border:0;padding:0;cursor:pointer;width:22px;height:12px}
+.dot.now{outline:2px solid var(--accent);outline-offset:2px}
+.qtype{font-size:14px;font-weight:700;color:var(--accent);letter-spacing:.06em}
+.qtext{font-size:22px;line-height:1.75;margin:10px 0 14px;font-weight:500}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{font:inherit;font-size:18px;text-align:left;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:12px 14px;cursor:pointer;display:flex;gap:10px;align-items:center;min-height:56px}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt .k{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--bg);font-size:14px;font-weight:700}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt:disabled{cursor:default}
+.feedback{margin-top:14px;border-radius:10px;padding:10px 14px;font-size:16px}
+.feedback.ok{background:var(--ok-soft);color:var(--ok)}
+.feedback.bad{background:var(--bad-soft);color:var(--bad)}
+.feedback .why{color:var(--ink);display:block;margin-top:4px}
+.score{font-size:64px;font-weight:900;color:var(--accent);line-height:1;margin:10px 0}
+.review .item{border-left:4px solid var(--bad);padding:6px 12px;background:var(--bg);border-radius:0 6px 6px 0;font-size:16px;margin-top:8px;text-align:left}
+.qnav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap}
+.qcount{font-size:14px;color:var(--muted);font-weight:700}
+.overlay{position:fixed;inset:0;background:rgba(10,16,8,.72);display:grid;place-items:center;z-index:50;padding:20px}
+.overlay .inner{background:#fff;border-radius:16px;padding:22px;text-align:center;color:#1f2a1c;max-width:92vw}
+.overlay img{width:min(340px,72vw);height:min(340px,72vw);image-rendering:pixelated;display:block;margin:0 auto}
+.overlay p{font-size:22px;font-weight:700;margin:12px 0 0}
+.overlay small{display:block;color:#5e6b58;margin-top:4px;word-break:break-all}
+footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
+
+@media (min-width:600px) and (max-width:1100px){
+  body{font-size:18px}
+  .card p,.card li{font-size:18px}
+  .qtext{font-size:24px}.opt{font-size:20px}
+}
+@media (max-width:599px){
+  .wrap{padding-block:12px 40px}
+  h1{font-size:30px}
+  .qr img{width:64px;height:64px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:none;font-size:16px;padding:6px 14px}
+  .card{padding:14px}
+  .card h2{font-size:21px}
+  .qtext{font-size:20px}
+  .toolbar .hint{display:none}
+  .stxt li{font-size:17px}
+  .qnav .btn{flex:1}.qcount{order:-1;width:100%;text-align:center}
+}
+@media (min-width:1500px){ .wrap{zoom:1.3} }
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+@media (max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .box ul{margin:4px 0;padding-left:1.2em}
+.vs .box.na{border-top:5px solid var(--bad)}
+.vs .box.so{border-top:5px solid var(--g3)}
+.a-flame{animation:flame .5s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:bottom}
+@keyframes flame{from{transform:scaleY(.8)}to{transform:scaleY(1.15)}}
+.a-tap{animation:tap .7s ease-in-out infinite}
+@keyframes tap{0%,100%{transform:translateY(-14px)}50%{transform:translateY(0)}}
+.a-walk{animation:walk 4s ease-in-out infinite alternate}
+@keyframes walk{from{transform:translateX(-40px)}to{transform:translateX(40px)}}
+.a-appear{animation:appear 5s ease-in-out infinite}
+@keyframes appear{0%,25%{opacity:0}70%,100%{opacity:1}}
+.a-fadeout{animation:fadeout 5s ease-in-out infinite}
+@keyframes fadeout{0%,25%{opacity:1}70%,100%{opacity:0}}
+.a-drop{animation:drop 1.4s ease-in infinite}
+@keyframes drop{0%{transform:translateY(0);opacity:0}10%{opacity:1}100%{transform:translateY(40px);opacity:0}}
+.a-lift{animation:lift 3.6s ease-in-out infinite}
+@keyframes lift{0%,10%{transform:translate(0,0)}45%{transform:translate(0,-60px)}80%,100%{transform:translate(150px,10px)}}
+.a-clock{animation:rot 4s linear infinite;transform-box:view-box}
+.dil{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.dil{grid-template-columns:1fr}}
+.dil input[type=number]{font:inherit;font-size:22px;font-weight:700;width:140px;padding:6px 10px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.dil label{display:block;font-weight:700;margin-top:6px}
+
+.sibs{margin-top:8px;font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}
+.sibs a,.sibs b{border:1.5px solid var(--line);border-radius:999px;padding:1px 10px;text-decoration:none;color:var(--accent);background:var(--paper);font-weight:700}
+.sibs b{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.sibs a:hover{border-color:var(--accent)}
+.flow{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:720px){.flow{grid-template-columns:1fr 1fr}}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+@media (max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .box ul,.box ul{margin:4px 0;padding-left:1.2em}
+.rd .bs{flex-wrap:wrap}
+.rd .bs button{min-width:84px}
+.lab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+@media (max-width:640px){.lab{grid-template-columns:1fr}}
+.lab input[type=number]{font:inherit;font-size:22px;font-weight:700;width:140px;padding:6px 10px;border:2px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.lab label{display:block;font-weight:700;margin-top:6px}
+.a-flame{animation:flame .5s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:bottom}
+@keyframes flame{from{transform:scaleY(.8)}to{transform:scaleY(1.15)}}
+.a-tap{animation:tap .7s ease-in-out infinite}
+@keyframes tap{0%,100%{transform:translateY(-14px)}50%{transform:translateY(0)}}
+.a-walk{animation:walk 4s ease-in-out infinite alternate}
+@keyframes walk{from{transform:translateX(-40px)}to{transform:translateX(40px)}}
+.a-appear{animation:appear 5s ease-in-out infinite}
+@keyframes appear{0%,25%{opacity:0}70%,100%{opacity:1}}
+.a-fadeout{animation:fadeout 5s ease-in-out infinite}
+@keyframes fadeout{0%,25%{opacity:1}70%,100%{opacity:0}}
+.a-drop{animation:drop 1.4s ease-in infinite}
+@keyframes drop{0%{transform:translateY(0);opacity:0}10%{opacity:1}100%{transform:translateY(40px);opacity:0}}
+.a-wig{animation:wig 1.6s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+@keyframes wig{from{transform:skewX(-8deg) translateX(-3px)}to{transform:skewX(8deg) translateX(3px)}}
+.a-crawl{animation:crawl 6s ease-in-out infinite alternate}
+@keyframes crawl{from{transform:translateX(-30px)}to{transform:translateX(30px)}}
+.a-dive{animation:dive 4s ease-in infinite}
+@keyframes dive{0%,20%{transform:translateY(0);opacity:1}80%{transform:translateY(46px);opacity:.2}100%{transform:translateY(46px);opacity:0}}
+.a-shake{animation:shake 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center bottom}
+@keyframes shake{0%,60%,100%{transform:rotate(0)}70%{transform:rotate(-10deg)}80%{transform:rotate(10deg)}90%{transform:rotate(-6deg)}}
+.a-bulge{animation:bulge 3s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes bulge{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.08)}}
+.a-grow{animation:grow 4s ease-out infinite;transform-box:fill-box;transform-origin:bottom}
+@keyframes grow{0%{transform:scaleY(0)}60%,100%{transform:scaleY(1)}}
+.a-place{animation:place 3s ease-in-out infinite}
+@keyframes place{0%{transform:translate(60px,-50px);opacity:0}20%{opacity:1}60%,100%{transform:translate(0,0);opacity:1}}
+.a-spin{animation:spin 3s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes spin{to{transform:rotate(360deg)}}
+.a-float{animation:float 5s ease-in-out infinite}
+@keyframes float{0%{transform:translate(0,0)}50%{transform:translate(60px,-24px)}100%{transform:translate(120px,10px)}}
+.a-roll2{animation:roll2 2s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+@keyframes roll2{from{transform:translateX(-16px) rotate(-90deg)}to{transform:translateX(16px) rotate(90deg)}}
+
+/* 本頁追加 */
+:root{--indigo:#2a4a8a;--indigo2:#3f6fb8;--leuco:#a8b84a;--turm:#e8a81a;--madder:#c8452f;--fukugi:#6a9a3a;--brown:#7a4a2a;--cloth:#f6f1e4;--clothl:#d9cfb6;--vat:#4a5a3a;--river:#5aa3d9;--hill:#7aa65a}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--cloth:#e9e1d0;--clothl:#b8ab8c;--indigo:#5a7ac0;--brown:#a8724a}}
+:root[data-theme="dark"]{--cloth:#e9e1d0;--clothl:#b8ab8c;--indigo:#5a7ac0;--brown:#a8724a}
+.colors{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+@media (max-width:900px){.colors{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.colors{grid-template-columns:1fr 1fr}}
+.cc{border-radius:12px;background:var(--bg);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column}
+.cc .sw{height:64px;position:relative}
+.cc .sw b{position:absolute;left:10px;bottom:6px;color:#fff;font-size:20px;font-weight:900;text-shadow:0 1px 3px rgba(0,0,0,.4)}
+.cc ul{margin:6px 0 8px;padding-left:1.4em;font-size:15px}
+.cc li{margin:2px 0}
+.cc li small{color:var(--muted)}
+.methods{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:760px){.methods{grid-template-columns:1fr}}
+.mth{border-radius:12px;border:1px solid var(--line);background:var(--bg);padding:12px 14px}
+.mth h3{margin:0 0 4px;font-size:19px;display:flex;align-items:center;gap:8px}
+.mth h3 .no{width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-size:15px;flex:none}
+.mth svg{width:100%;height:auto;display:block;margin:4px 0}
+.mth .why{font-size:15px;margin:2px 0 6px}
+.mth ol{margin:4px 0;padding-left:1.3em;font-size:15px}
+.mth ol li{margin:2px 0}
+.mth .eg{font-size:14px;background:var(--paper);border-radius:8px;padding:6px 10px;margin-top:6px;border:1px dashed var(--line)}
+.pick{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.pick>span{font-weight:700;margin-right:4px}
+.pk{font:inherit;font-weight:700;font-size:15px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:999px;min-height:42px;padding:0 14px;cursor:pointer}
+.pk[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.teams{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:6px}
+@media (max-width:760px){.teams{grid-template-columns:1fr 1fr}}
+.tm{border-radius:12px;border:2px dashed var(--line);padding:10px;text-align:center;background:var(--bg)}
+.tm b{display:block;font-size:17px}
+.tm .dot{width:42px;height:42px;border-radius:50%;margin:6px auto;border:3px solid var(--paper);box-shadow:0 0 0 2px var(--line)}
+.tm small{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+.score{display:flex;flex-direction:column;gap:8px}
+.sc2{display:grid;grid-template-columns:190px 70px minmax(0,1fr);gap:10px;align-items:center;background:var(--bg);border-radius:10px;padding:8px 12px}
+@media (max-width:640px){.sc2{grid-template-columns:1fr 60px}.sc2 .d{grid-column:1/-1}}
+.sc2 b{font-size:17px}
+.sc2 .w{font-size:24px;font-weight:900;color:var(--accent);text-align:right}
+.sc2 .bar{grid-column:1/-1;height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.sc2 .bar i{display:block;height:100%;background:var(--accent)}
+.sc2 .d{font-size:15px;color:var(--ink)}
+.dl{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:10px}
+.dlc{display:flex;gap:14px;align-items:center;border:2px solid var(--line);border-radius:12px;padding:12px 16px;text-decoration:none;color:var(--ink);background:var(--bg);min-height:72px;max-width:520px}
+.dlc:hover{border-color:#2b579a}
+.dlc svg{width:40px;height:auto;flex:none}
+.dlc b{display:block;font-size:18px}
+.dlc small{color:var(--muted);font-size:14px}
+.report{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
+.rp{border-radius:10px;background:var(--bg);border:1px solid var(--line);padding:8px 10px;font-size:14.5px;line-height:1.5}
+.rp b{display:block;font-size:16px}
+.rp em{font-style:normal;font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:0 8px}
+.slidesrow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+@media (max-width:900px){.slidesrow{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:480px){.slidesrow{grid-template-columns:1fr 1fr}}
+.sld{border-radius:8px;border:2px solid var(--line);background:var(--paper);padding:6px 8px;font-size:14px;line-height:1.45}
+.sld svg{width:100%;height:auto;display:block;border-radius:4px;background:var(--bg);margin-bottom:4px}
+.sld b{display:block;font-size:15px}
+.sld small{color:var(--muted)}
+.ready{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.rd .bs{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="eyebrow">農業資源應用・期末專題</div>
+      <h1>植物染與藍染</h1>
+      <p class="sub">基本知識 → 染色方法 → 五色尋寶專題 → 動手判斷 → 掃 QR 小測驗</p>
+      <nav class="sibs" aria-label="其他實習課">實習課：<a href="../agri-paper/">再生紙</a><a href="../agri-leaf/">葉脈書籤</a><a href="../agri-worm/">蚯蚓堆肥</a><a href="../agri-enzyme/">果皮酵素</a><a href="../agri-flower/">押花乾燥花</a><a href="../agri-seed/">種子創作</a><b aria-current="page">植物染</b></nav>
+    </div>
+    <div class="qr" id="qrBtn" role="button" tabindex="0" aria-label="放大 QR code"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACrklEQVR42u2cPW7kMAyFP64MpJSBOcAeRb7aHmlvIB8lBwhglwPIeFtItjPpUmzBgKo8HlbvDX8eSY2J75z1F987YR/2Yf9f7XcbZ+Gw/nHp7yZYZzi/nwJPd/ZIW5IkiaKGpAZkibIlSVsSRepPqoGnR/vhnPubWG1CFVDNT7MFGD4deDq0n758trI9mpXtmLQuSaxzCjx/EL+QG1rnDwwOE3kLPN3z+0UkGRko9ZisvE8NsoA98PRpf/TyeLzZJyjvb+rpuKteMzObA0+X/psv791BPeHmhtgPY53Ti3cHnv707zQU7pIbkJ8GHHaKpFP/Rv3sVf9+fupSWFsSkNRJJje6HA7967K/Qen9DUmVJNWsq+cxOh2QFfx65LefhmpuqDJcVzW3FxcPft3yO2Lx1a6scDYp1UY7K/qTXvkdXjsYzFdA7k3Km+Tg123+vWupXkaRzvlCHze0znTw63R+1MnL7RotSL2crmfpPKqvwNOjProdtpdWg1pp0H1H78DTp/7N7aqkR1fjzL8jPof+da1/N+hat0ujT+2Oxp2dg19czheGr+4TFDVsyer1sy19yHAY5T32c1zrI8qVdaXG3br6lITDf73G55tGGPm319TXYlbkX8f69yqjXvPvvXMX+te//r3a0T1cn5uUw6dD/+J3/2qfmhWB9XWd/GGslmTl79jr0GqpBZ5u50dnw+rz/Pfajr5TdOCJ3/sLuY1dZ5sPo2xJZjOM1Y3cAk+X8Tm1sTW5P8S6gNgfDXgOYcx+GP1d4Ol3flSugrneo8HtJY5HfHZtn6Q/88k0+7hf1n8Ca9wv+wn3F8o2imiKDgNSM/LTKAo8vdqfY/xxoUw1q5dWqvl5tp4DT6f+e1xXFx6y1UBwTAJkMKH1t2Cdt8DTnb3F/zOEfdi7tf8H3HRYTHzAfYMAAAAASUVORK5CYII="><span>掃我測驗</span></div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" id="t1" aria-selected="true">基本知識</button>
+    <button class="tab" role="tab" id="t2" aria-selected="false">染色方法</button>
+    <button class="tab" role="tab" id="t3" aria-selected="false">五色尋寶專題</button>
+    <button class="tab" role="tab" id="t4" aria-selected="false">動手判斷</button>
+    <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
+  </nav>
+
+  <div class="toolbar" id="blankBar">
+    <label class="switch"><input type="checkbox" id="blankToggle"> 挖空模式</label>
+    <span class="hint">打開後，黃色重點會變成空格。先讓學生說出答案，再點空格揭曉。</span>
+  </div>
+
+  <!-- ===== 1 基本知識 ===== -->
+  <section class="panel" id="p1">
+    <div class="card">
+      <h2>用植物替布料上色<span class="sec">總覽</span></h2>
+      <p><span class="key">植物染</span>：利用植物的<span class="key">根、莖、葉、花、果實、樹皮</span>提取色素，替紡織品染色。在合成染料（苯胺染料）發明以前，人類已經用了好幾千年。</p>
+      <div class="flow" id="flowBox"></div>
+      <div class="three" style="margin-top:10px">
+        <div class="box c2"><b class="t">環保</b>原料來自植物，可分解</div>
+        <div class="box c1"><b class="t">無毒</b>不用合成化學染料</div>
+        <div class="box c3"><b class="t">自然層次</b>顏色不完全均勻，有獨特美感</div>
+      </div>
+      <div class="note">植物染結合了<b>農業植物學</b>（認識作物）、<b>化學</b>（色素、媒染）與<b>生活美學</b>（紋樣設計）。</div>
+    </div>
+
+    <div class="card">
+      <h2>染料作物在農業裡的位置<span class="sec">農藝作物分類</span></h2>
+      <svg class="art" id="cropSvg" viewBox="0 0 680 270" role="img" aria-label="農藝作物分成食糧作物、特用作物、飼料與綠肥作物、雜糧作物；染料作物屬於特用作物"></svg>
+      <div class="two" style="margin-top:8px;align-items:start">
+        <ul>
+          <li><span class="key">特用作物</span>：作為工業加工、飲料、纖維、藥用或<b>染色</b>等特殊用途的經濟作物</li>
+          <li>例：茶、甘蔗、花生、芝麻、黃麻、<b>馬藍</b></li>
+        </ul>
+        <ul>
+          <li><b>藍色系</b>（靛藍色素）：蓼藍、山藍（馬藍）</li>
+          <li><b>黃色系</b>（薑黃素、梔子黃）：薑黃、黃梔</li>
+          <li><b>紅色系</b>（紅花素）：紅花</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>什麼植物染出什麼顏色？<span class="sec">五色植物</span></h2>
+      <div class="colors" id="colorBox"></div>
+      <div class="tip"><b>期末「五色尋寶」：</b>每組選一種顏色，找出能染出這個顏色的植物。上面就是尋寶線索！</div>
+    </div>
+
+    <div class="card">
+      <h2>明礬：讓顏色「黏住」的橋樑<span class="sec">媒染劑</span></h2>
+      <div class="two">
+        <figure><svg class="art" id="alumSvg" viewBox="0 0 340 210" role="img" aria-label="鋁離子像橋樑一樣，一手抓住色素、一手抓住纖維"></svg></figure>
+        <div>
+          <p><span class="key">明礬</span>＝硫酸鋁鉀，扮演<span class="key">媒染劑</span>的角色。</p>
+          <ul>
+            <li><b>固色防褪</b>：鋁離子當「橋樑」，連結色素和布料纖維，比較耐洗、不易褪色</li>
+            <li><b>顯色提亮</b>：先泡明礬水，顏色更鮮豔飽和</li>
+            <li><b>軟化釋色</b>：敲拓染時，植物組織變軟，色素更容易轉印</li>
+          </ul>
+          <div class="note">不同金屬離子會變出不同顏色：<b>鋁（明礬）</b>→ 明亮；<b>鐵（鐵水）</b>→ 變暗、變灰黑；銅 → 偏綠。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>認識藍染<span class="sec">青出於藍</span></h2>
+      <div class="two">
+        <div>
+          <p>「<span class="key">青取之於藍，而青於藍</span>」：荀子看到染匠從<b>綠色</b>的藍草，染出比藍草更鮮豔的<b>青色</b>，覺得不可思議，這就是成語「青出於藍」的由來。</p>
+          <ul>
+            <li>全世界只有四種植物可以提煉藍色素：<span class="key">馬藍、木藍、蓼藍、菘藍</span></li>
+            <li>北臺灣以<b>馬藍（山藍）</b>為主，南臺灣是<b>木藍</b></li>
+            <li><span class="key">藍靛</span>：從藍草萃取出來的泥狀物，看起來像暗藍色的泥土</li>
+          </ul>
+        </div>
+        <figure><svg class="art" id="indigoPlantSvg" viewBox="0 0 320 200" role="img" aria-label="綠色的藍草葉子，變成深藍色的布"></svg></figure>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>藍染的科學秘密<span class="sec">還原與氧化</span></h2>
+      <svg class="art" id="chemSvg" viewBox="0 0 680 230" role="img" aria-label="藍草的藍苷經發酵生成靛藍；靛藍還原成黃綠色的隱色體溶在水中；布料泡進去拿出來接觸空氣，氧化變回藍色"></svg>
+      <div class="three" style="margin-top:8px">
+        <div class="box c2"><b class="t">① 藍苷 → 靛藍</b>藍草裡的色素前驅物<span class="key">藍苷</span>，經發酵加工生成<span class="key">靛藍</span></div>
+        <div class="box c1"><b class="t">② 還原：黃綠色</b>靛藍不溶於水，要<b>還原</b>成<span class="key">隱色體</span>，是<b>黃綠色</b>的水溶液，才染得上</div>
+        <div class="box c3"><b class="t">③ 氧化：變藍</b>布拿出染缸接觸<span class="key">空氣（氧氣）</span>，馬上氧化成不溶於水的靛藍</div>
+      </div>
+      <div class="note">所以藍染剛出缸時是<b>黃綠色</b>，在空氣中幾分鐘後才慢慢變成<b>藍色</b>。</div>
+    </div>
+
+    <div class="card">
+      <h2>從藍草到染缸<span class="sec">採藍取靛・建藍</span></h2>
+      <div class="flow" id="indigoFlow"></div>
+      <div class="note"><b>建藍（起缸）</b>：藍靛不能直接染，要加<b>木灰水</b>（鹼水，pH 約 12 最好）、營養劑、米酒等，讓染液<b>發酵還原</b>成暗綠色的「染水」才能用。</div>
+    </div>
+
+    <div class="card">
+      <h2>台灣的藍染<span class="sec">藍染之都：三峽</span></h2>
+      <div class="two">
+        <figure><svg class="art" id="sanxiaSvg" viewBox="0 0 340 220" role="img" aria-label="三峽：三條河流交會，山區多霧適合種馬藍，溪水清澈適合洗布，靠淡水河航運外銷"></svg></figure>
+        <ul>
+          <li>清朝時大陸移民把藍染技術帶來台灣，藍靛曾是台灣<span class="key">重要出口品</span>之一</li>
+          <li>後來歐洲<b>化學染料</b>引進，加上茶、糖排擠藍草耕地，藍染產業沒落</li>
+          <li>三峽（舊稱三角湧）是北臺灣染布業的集散地：
+            <ul>
+              <li><b>山區多霧濕潤</b>：適合種馬藍</li>
+              <li><b>溪水清澈</b>：適合洗布</li>
+              <li><b>靠淡水河航運</b>：布料運往大稻埕、外銷</li>
+            </ul></li>
+          <li>現在三峽有許多藍染教室，讓這項工藝重新被看見</li>
+        </ul>
+      </div>
+      <div class="note">影片：<a href="https://www.youtube.com/watch?v=QS5Q7puF1jQ" target="_blank" rel="noopener">什麼是藍染？藍染植物？認識藍染（YouTube）</a></div>
+    </div>
+  </section>
+
+  <!-- ===== 2 染色方法 ===== -->
+  <section class="panel" id="p2" hidden>
+    <div class="card">
+      <h2>植物染的四大染色方式</h2>
+      <div class="methods" id="methodBox"></div>
+    </div>
+
+    <div class="card">
+      <h2>同一種植物，換個媒染劑就換個顏色<span class="sec">媒染實驗室</span></h2>
+      <div class="conc">
+        <div>
+          <div class="pick" id="plantPick" role="group" aria-label="選植物"></div>
+          <div class="pick" id="mordPick" role="group" aria-label="選媒染劑" style="margin-top:8px"></div>
+          <div class="cverdict" id="mordV"></div>
+          <p id="mordW" style="margin:4px 0 0"></p>
+        </div>
+        <figure><svg class="art" id="mordSvg" viewBox="0 0 300 200" role="img" aria-label="染出來的布料顏色"></svg>
+          <figcaption>示意顏色，實際依植物、濃度和布料而不同</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>紋樣怎麼來？<span class="sec">防染工藝</span></h2>
+      <p><span class="key">防染</span>：在常溫下用<b>綁紮、夾扣、防染膏</b>把一些地方遮住，染液進不去，就留下白色花紋。</p>
+      <div class="three">
+        <div class="box c3"><svg viewBox="0 0 200 120" id="pat1" aria-hidden="true"></svg><b class="t">絞染（紮染）</b>用橡皮筋、棉線綁緊布料<small>綁越緊，留白越清楚；可做放射狀、條紋、圓點</small></div>
+        <div class="box c1"><svg viewBox="0 0 200 120" id="pat2" aria-hidden="true"></svg><b class="t">夾染</b>布摺好後用冰棒棍、木板夾住<small>摺法左右對稱，打開就是對稱圖案</small></div>
+        <div class="box c4"><svg viewBox="0 0 200 120" id="pat3" aria-hidden="true"></svg><b class="t">蠟染、型染</b>用蠟或防染膏畫圖案<small>適合細緻線條，需要老師協助</small></div>
+      </div>
+      <div class="tip"><b>設計小技巧：</b>先把布<b>對摺再對摺</b>（像剪紙），夾或綁在摺線上，打開就會出現<b>對稱</b>的花紋。</div>
+    </div>
+
+    <div class="card">
+      <h2>藍染方巾一步一步<span class="sec">點數字跳到那一步</span></h2>
+      <div class="stepchips" id="chips"></div>
+      <div class="player">
+        <div class="stage" id="stage"><span class="badge" id="sBadge"></span><div id="sArt"></div></div>
+        <div class="stxt">
+          <h3 id="sTitle"></h3>
+          <ul id="sList"></ul>
+          <div class="tip" id="sTip"></div>
+          <div class="snav">
+            <button class="btn ghost" id="sPrev">← 上一步</button>
+            <button class="btn ghost sm" id="sPause">⏸ 暫停動畫</button>
+            <button class="btn" id="sNext">下一步 →</button>
+          </div>
+        </div>
+      </div>
+      <div class="warnbox"><b>安全：</b>染液是<b>鹼性</b>，全程戴手套、圍裙；濺到眼睛立刻用大量清水沖。煮染液時注意燙傷；鐵媒染劑（鐵水）會讓手和桌面變黑，用完要清洗。</div>
+    </div>
+  </section>
+
+  <!-- ===== 3 五色尋寶專題 ===== -->
+  <section class="panel" id="p3" hidden>
+    <div class="card">
+      <h2>期末專題：「五色尋寶」<span class="sec">分組作業</span></h2>
+      <p><b>任務：</b>全班分成 <span class="key">5 組</span>，每組選一種<span class="key">目標顏色</span>，找出能染出這個顏色的天然植物，完成<b>染色作品</b>和<b>研究報告</b>。</p>
+      <div class="teams" id="teamBox"></div>
+      <p class="ex">各組顏色和植物在 12/24 分組時決定。可以用課堂介紹的植物，也鼓勵找<b>家裡、校園、在地</b>的植物。</p>
+    </div>
+
+    <div class="card">
+      <h2>要交什麼？<span class="sec">1/14 繳交＋上台</span></h2>
+      <div class="three">
+        <div class="box c2"><svg viewBox="0 0 200 110" id="d1" aria-hidden="true"></svg><b class="t">① 實體染色作品</b>100% <b>純棉或麻</b>布料，尺寸<b>至少 30 × 30 cm</b></div>
+        <div class="box c3"><svg viewBox="0 0 200 110" id="d2" aria-hidden="true"></svg><b class="t">② 專案報告（每組一份）</b>採集、萃取、染色過程紀錄與心得<small>彩色紙本＋Classroom 上傳 PDF</small></div>
+        <div class="box c1"><svg viewBox="0 0 200 110" id="d3" aria-hidden="true"></svg><b class="t">③ 3 分鐘成果分享</b>配合簡報上台，拿作品說明</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>評分項目</h2>
+      <div class="score" id="scoreBox"></div>
+    </div>
+
+    <div class="card">
+      <h2>小組報告範本下載<span class="sec">Word</span></h2>
+      <div class="dl">
+        <a class="dlc" href="植物染五色尋寶小組報告範本.docx" download><svg viewBox="0 0 60 70" aria-hidden="true"><path d="M6 2 h34 l14 14 v52 h-48 Z" fill="#fff" stroke="#2b579a" stroke-width="3"/><path d="M40 2 v14 h14" fill="#dbe5f4" stroke="#2b579a" stroke-width="3"/><rect x="0" y="30" width="34" height="22" rx="3" fill="#2b579a"/><text x="17" y="46" text-anchor="middle" style="fill:#fff;font-size:15px;font-weight:900;font-family:Arial">W</text></svg><span><b>植物染「五色尋寶」小組報告範本</b><small>A4・每組一份・1/14 繳交</small></span></a>
+      </div>
+      <div class="report" id="repOutline"></div>
+    </div>
+
+    <div class="card">
+      <h2>3 分鐘簡報怎麼排？<span class="sec">約 6 張</span></h2>
+      <div class="slidesrow" id="slideRow"></div>
+      <div class="note">一張一個重點、圖多字少，用自己拍的照片。最後拿出染好的布展示。簡報檔一起上傳 Classroom。</div>
+    </div>
+
+    <div class="card">
+      <h2>小組時程建議</h2>
+      <div class="timeline">
+        <div class="tl"><b>12/24</b><span class="m">上課</span><ul><li>植物染講解</li><li>分組、選目標顏色</li><li>分工</li></ul></div>
+        <div class="tl"><b>12/31 前</b><span class="m">小組</span><ul><li>查資料：植物學名、色素種類</li><li>採集或購買植物、布料</li></ul></div>
+        <div class="tl"><b>1/7 前</b><span class="m">小組</span><ul><li>小塊布試染</li><li>正式染 30 × 30 cm 作品</li><li>每一步拍照、記時間溫度</li></ul></div>
+        <div class="tl"><b>1/14</b><span class="m">上課</span><ul><li>繳交作品、報告</li><li>3 分鐘簡報上台</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4 動手判斷 ===== -->
+  <section class="panel" id="p4" hidden>
+    <div class="card">
+      <h2>藍染方巾：把步驟排好</h2>
+      <p class="ex">依照正確順序，一個一個點下面的步驟。</p>
+      <div class="order" id="oSlots"></div>
+      <div class="opool" id="oPool"></div>
+      <div class="ofb" id="oFb" aria-live="polite"></div>
+      <div class="actions"><button class="btn ghost" id="oReset">↺ 重新排</button></div>
+    </div>
+
+    <div class="card">
+      <h2>這是哪一種染色方式？</h2>
+      <div class="ready" id="ready"></div>
+      <div class="actions"><button class="btn ghost" id="readyReset">↺ 重新作答</button></div>
+    </div>
+
+    <div class="card">
+      <h2>出問題了！怎麼辦？<span class="sec">先想，再點開</span></h2>
+      <div class="cases" id="cases"></div>
+    </div>
+  </section>
+
+
+  <!-- ===== 5 小測驗 ===== -->
+  <section class="panel" id="p5" hidden></section>
+
+  <footer>內容整理自本課程「植物染與藍染工藝」簡報（植物與顏色對應、四大染色方式、明礬媒染、藍染原理與三峽藍染、五色尋寶專題）。示意圖為自繪，顏色僅供參考，實際依植物、濃度與布料而不同。</footer>
+</div>
+
+<div class="overlay" id="overlay" hidden><div class="inner"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACrklEQVR42u2cPW7kMAyFP64MpJSBOcAeRb7aHmlvIB8lBwhglwPIeFtItjPpUmzBgKo8HlbvDX8eSY2J75z1F987YR/2Yf9f7XcbZ+Gw/nHp7yZYZzi/nwJPd/ZIW5IkiaKGpAZkibIlSVsSRepPqoGnR/vhnPubWG1CFVDNT7MFGD4deDq0n758trI9mpXtmLQuSaxzCjx/EL+QG1rnDwwOE3kLPN3z+0UkGRko9ZisvE8NsoA98PRpf/TyeLzZJyjvb+rpuKteMzObA0+X/psv791BPeHmhtgPY53Ti3cHnv707zQU7pIbkJ8GHHaKpFP/Rv3sVf9+fupSWFsSkNRJJje6HA7967K/Qen9DUmVJNWsq+cxOh2QFfx65LefhmpuqDJcVzW3FxcPft3yO2Lx1a6scDYp1UY7K/qTXvkdXjsYzFdA7k3Km+Tg123+vWupXkaRzvlCHze0znTw63R+1MnL7RotSL2crmfpPKqvwNOjProdtpdWg1pp0H1H78DTp/7N7aqkR1fjzL8jPof+da1/N+hat0ujT+2Oxp2dg19czheGr+4TFDVsyer1sy19yHAY5T32c1zrI8qVdaXG3br6lITDf73G55tGGPm319TXYlbkX8f69yqjXvPvvXMX+te//r3a0T1cn5uUw6dD/+J3/2qfmhWB9XWd/GGslmTl79jr0GqpBZ5u50dnw+rz/Pfajr5TdOCJ3/sLuY1dZ5sPo2xJZjOM1Y3cAk+X8Tm1sTW5P8S6gNgfDXgOYcx+GP1d4Ol3flSugrneo8HtJY5HfHZtn6Q/88k0+7hf1n8Ca9wv+wn3F8o2imiKDgNSM/LTKAo8vdqfY/xxoUw1q5dWqvl5tp4DT6f+e1xXFx6y1UBwTAJkMKH1t2Cdt8DTnb3F/zOEfdi7tf8H3HRYTHzAfYMAAAAASUVORK5CYII="><p>用平板或手機掃描，開始小測驗！</p><small>https://teacher-liujikan.github.io/yilin-work/agri-dye/#quiz</small></div></div>
+
+<script>
+(function(){
+const $ = id => document.getElementById(id);
+const T=(x,y,t,a="middle",cls="s-txt",sz)=>`<text class="${cls}" x="${x}" y="${y}" text-anchor="${a}"${sz?` style="font-size:${sz}px"`:""}>${t}</text>`;
+const ARROWDEF=id=>`<defs><marker id="${id}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--muted)"/></marker></defs>`;
+const ARR=(x1,y1,x2,y2,id)=>`<path d="M${x1} ${y1} L${x2} ${y2}" stroke="var(--muted)" stroke-width="2.4" fill="none" marker-end="url(#${id})"/>`;
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const fill=(id,html)=>{ const e=$(id); if(e) e.innerHTML=html; };
+
+/* ---------- 植物染：繪圖小工具 ---------- */
+const NEXT3="五色尋寶專題";
+const LS="M0 -50 C 34 -28, 36 22, 0 46 C -36 22, -34 -28, 0 -50 Z";
+const LEAF=(x,y,s=1,r=0,c="var(--leaf)")=>`<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><path d="M0 46 L0 66" stroke="var(--leaf2)" stroke-width="3"/><path d="${LS}" fill="${c}"/><path d="M0 -44 L0 46" stroke="var(--leaf2)" stroke-width="2.4"/>${[-28,-12,4,20].map(v=>`<path d="M0 ${v} Q12 ${v-8} 22 ${v-14} M0 ${v} Q-12 ${v-8} -22 ${v-14}" stroke="var(--leaf2)" stroke-width="1.6" fill="none"/>`).join("")}</g>`;
+const CLOTH=(x,y,w,h,c,o={})=>{
+  let s=`<g transform="translate(${x} ${y})"><path d="M${-w/2} ${-h/2} h${w} v${h} h${-w} Z" fill="${c}" stroke="rgba(0,0,0,.15)"/>`;
+  if(o.ripple) s+=[.25,.5,.75].map(k=>`<path d="M${-w/2} ${-h/2+h*k} q${w/4} -4 ${w/2} 0 t${w/2} 0" stroke="rgba(255,255,255,.25)" stroke-width="2" fill="none"/>`).join("");
+  if(o.tie) s+=[0,1,2].map(i=>`<circle r="${(i+1)*Math.min(w,h)*.13}" fill="none" stroke="#fff" stroke-width="${3-i*.6}" stroke-dasharray="${2+i} ${3+i}" opacity=".9"/>`).join("");
+  if(o.leaf) s+=LEAF(0,-4,Math.min(w,h)/150,20,o.leaf);
+  return s+`</g>`;
+};
+const POT=(x,y,s=1,liq="var(--turm)")=>`<g transform="translate(${x} ${y}) scale(${s})"><rect x="-56" y="-6" width="112" height="64" rx="8" fill="var(--metal)"/><rect x="-50" y="2" width="100" height="50" rx="4" fill="${liq}"/><rect x="-62" y="58" width="124" height="10" rx="3" fill="#3b3f44"/>${[-24,0,24].map((d,i)=>`<path d="M${d} 58 q-5 -10 0 -16 q5 6 0 16" fill="var(--fire,#e8742c)" class="a-flame" style="animation-delay:${i*.12}s"/>`).join("")}</g>`;
+const VAT=(x,y,s=1,liq="var(--leuco)")=>`<g transform="translate(${x} ${y}) scale(${s})"><path d="M-50 -30 L-42 40 Q0 50 42 40 L50 -30 Z" fill="#8a6a4a"/><ellipse cy="-30" rx="50" ry="10" fill="#6a4a2a"/><ellipse cy="-28" rx="44" ry="8" fill="${liq}"/><path d="M-46 0 Q0 8 46 0 M-44 20 Q0 28 44 20" stroke="#6a4a2a" stroke-width="2" fill="none"/></g>`;
+const GLOVE=(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><path d="M-10 20 v-24 q0 -6 4 -6 v-10 q0 -4 3 -4 q3 0 3 4 v8 v-12 q0 -4 3 -4 q3 0 3 4 v12 v-10 q0 -4 3 -4 q3 0 3 4 v14 q6 -6 9 -2 q2 3 -4 10 l-8 18 Z" fill="#f2b84a" stroke="#c48a2a"/></g>`;
+
+/* ---------- 總覽 ---------- */
+const FLOW=[
+  ["採集植物",`<svg viewBox="0 0 120 90">${LEAF(40,40,.4,-20)}<g transform="translate(84 46)"><path d="M-14 -6 q14 -18 28 0 q-6 22 -14 22 q-8 0 -14 -22" fill="var(--turm)"/><path d="M0 -14 v-12" stroke="var(--leaf2)" stroke-width="3"/></g></svg>`,"根、莖、葉、花、果、樹皮"],
+  ["萃取色素",`<svg viewBox="0 0 120 90"><g transform="translate(60 26) scale(.55)">${POT(0,0,1,"var(--turm)")}</g>${[0,1,2].map(i=>`<circle cx="${48+i*12}" cy="34" r="3" fill="#fff" class="a-up" style="animation-delay:${i*.4}s"/>`).join("")}</svg>`,"切碎、加水煎煮"],
+  ["媒染／防染",`<svg viewBox="0 0 120 90"><path d="M24 30 L30 80 L90 80 L96 30 Z" fill="var(--water)" opacity=".4" stroke="var(--water)" stroke-width="2"/>${[0,1,2,3].map(i=>`<rect x="${48+i*7}" y="20" width="5" height="5" fill="#fff" stroke="var(--muted)" stroke-width=".6" class="a-drop" style="animation-delay:${i*.3}s"/>`).join("")}${T(60,64,"明礬水","middle","s-sm")}</svg>`,"固色、變色、做紋樣"],
+  ["浸染",`<svg viewBox="0 0 120 90"><g transform="translate(60 50) scale(.7)">${VAT(0,0,1,"var(--turm)")}</g><g class="a-press" style="animation-duration:2.6s">${CLOTH(60,30,40,30,"var(--cloth)")}</g></svg>`,"翻動、控制溫度時間"],
+  ["水洗晾乾",`<svg viewBox="0 0 120 90"><path d="M10 16 H110" stroke="var(--wood)" stroke-width="3"/><g class="a-swing" style="transform-origin:60px 16px">${CLOTH(60,46,56,52,"var(--turm)",{tie:true})}</g></svg>`,"陰涼處晾乾"]
+];
+
+/* ---------- 作物分類 ---------- */
+fill("cropSvg",(()=>{
+  let s=ARROWDEF("arc");
+  s+=`<rect x="250" y="8" width="180" height="40" rx="10" fill="var(--accent)"/><text x="340" y="34" text-anchor="middle" style="fill:var(--accent-ink);font-size:17px;font-weight:900;font-family:var(--f)">農藝作物</text>`;
+  const C=[["食糧作物","水稻、小麥、玉米、甘薯"],["特用作物","茶、甘蔗、黃麻、馬藍"],["飼料與綠肥","苜蓿、狼尾草、太陽麻"],["雜糧作物","大豆、綠豆、高粱"]];
+  C.forEach((c,i)=>{ const x=90+i*167, on=i===1;
+    s+=`<path d="M340 48 L${x} 82" stroke="var(--muted)" stroke-width="2" fill="none"/>`;
+    s+=`<rect x="${x-76}" y="84" width="152" height="62" rx="10" fill="${on?"var(--mark)":"var(--bg)"}" stroke="${on?"var(--soil)":"var(--line)"}" stroke-width="${on?3:1}"/>${T(x,108,c[0],"middle","s-txt",15)}${T(x,130,c[1],"middle","s-sm")}`;
+  });
+  s+=`<path d="M257 146 L257 170" stroke="var(--soil)" stroke-width="2.4" marker-end="url(#arc)"/>`;
+  s+=`<rect x="120" y="174" width="440" height="88" rx="12" fill="var(--soil-soft)" stroke="var(--soil)" stroke-width="2"/>${T(340,196,"特用作物：染料類","middle","s-txt",15)}`;
+  [["藍","var(--indigo)","蓼藍、山藍"],["黃","var(--turm)","薑黃、黃梔"],["紅","var(--madder)","紅花"]].forEach(([n,c,p],i)=>{ const x=200+i*140; s+=`<circle cx="${x-34}" cy="232" r="16" fill="${c}"/><text x="${x-34}" y="238" text-anchor="middle" style="fill:#fff;font-size:15px;font-weight:900;font-family:var(--f)">${n}</text>${T(x-12,237,p,"start","s-txt")}`; });
+  return s;
+})());
+
+/* ---------- 五色植物 ---------- */
+const COLORS=[["藍","var(--indigo)",[["馬藍／山藍","葉"],["木藍","葉"],["蓼藍、菘藍","葉"]]],
+  ["紅／粉","var(--madder)",[["茜草","根"],["蘇木","心材"],["紅花","花瓣"]]],
+  ["黃／橙","var(--turm)",[["薑黃","根莖"],["洋蔥皮","外皮"],["梔子","果實"],["槐米","花蕾"]]],
+  ["綠","var(--fukugi)",[["福木","葉"],["茶葉",""],["洋蔥皮＋藍染","複合染"]]],
+  ["棕／灰／黑","var(--brown)",[["檳榔","果實"],["柿子","柿漆"],["薯榔","塊莖"],["茶葉＋鐵媒染",""]]]];
+fill("colorBox",COLORS.map(([n,c,l])=>`<div class="cc"><div class="sw" style="background:${c}"><b>${n}</b></div><ul>${l.map(([p,part])=>`<li>${p}${part?` <small>（${part}）</small>`:""}</li>`).join("")}</ul></div>`).join(""));
+
+/* ---------- 明礬橋樑 ---------- */
+fill("alumSvg",`<rect x="20" y="150" width="300" height="40" rx="6" fill="var(--cloth)" stroke="var(--clothl)"/>${[0,1,2,3,4,5,6,7].map(i=>`<path d="M${30+i*36} 156 q10 14 0 28" stroke="var(--clothl)" stroke-width="3" fill="none"/>`).join("")}${T(170,206,"布料纖維","middle","s-sm")}
+  <g class="a-fade"><circle cx="170" cy="100" r="22" fill="#c9d1d8" stroke="#7d8a93" stroke-width="2"/><text x="170" y="106" text-anchor="middle" style="font-size:15px;font-weight:900;fill:#333;font-family:Arial">Al</text></g>
+  <path d="M154 116 L120 150 M186 116 L220 150" stroke="#7d8a93" stroke-width="4" stroke-linecap="round"/>
+  <path d="M154 84 L110 46 M186 84 L230 46" stroke="#7d8a93" stroke-width="4" stroke-linecap="round"/>
+  ${[[100,36],[240,36]].map(([x,y])=>`<g transform="translate(${x} ${y})"><path d="M0 -12 l10 6 v12 l-10 6 l-10 -6 v-12 Z" fill="var(--turm)"/></g>`).join("")}${T(170,22,"植物色素","middle","s-sm")}${T(214,104,"鋁離子＝橋樑","start","s-txt")}`);
+
+/* ---------- 藍草 ---------- */
+fill("indigoPlantSvg",`${LEAF(70,100,.9,-20,"#4f8a3c")}${LEAF(110,96,.8,25,"#3f7a32")}<defs><marker id="ari" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--muted)"/></marker></defs><path d="M150 100 h36" stroke="var(--muted)" stroke-width="3" marker-end="url(#ari)"/>${CLOTH(250,100,100,120,"var(--indigo)",{ripple:true})}${T(90,186,"綠色的藍草","middle","s-sm")}${T(250,186,"更深的青藍色","middle","s-sm")}`);
+
+/* ---------- 化學 ---------- */
+fill("chemSvg",(()=>{
+  let s=ARROWDEF("arch");
+  s+=`${LEAF(70,96,.8,0,"#4f8a3c")}${T(70,182,"藍草：藍苷","middle","s-txt")}${T(70,200,"（色素前驅物）","middle","s-sm")}`;
+  s+=ARR(122,100,160,100,"arch")+T(141,88,"發酵","middle","s-sm");
+  s+=`<g transform="translate(220 100)"><path d="M-40 10 q-6 -30 20 -34 q14 -14 30 0 q30 -2 26 26 q8 20 -20 22 h-40 q-22 0 -16 -14 Z" fill="var(--indigo)"/></g>${T(220,182,"靛藍（藍靛）","middle","s-txt")}${T(220,200,"不溶於水","middle","s-sm")}`;
+  s+=ARR(272,100,310,100,"arch")+T(291,88,"還原","middle","s-sm");
+  s+=VAT(380,104,.95,"var(--leuco)")+`${T(380,182,"隱色體：黃綠色","middle","s-txt")}${T(380,200,"溶在水裡，染得上","middle","s-sm")}`;
+  s+=ARR(440,100,478,100,"arch")+T(459,84,"接觸空氣","middle","s-sm");
+  s+=`<g transform="translate(570 96)">${CLOTH(0,0,110,90,"var(--leuco)",{})}<g class="a-appear">${CLOTH(0,0,110,90,"var(--indigo)",{ripple:true})}</g>${[0,1,2].map(i=>`<text x="${-40+i*36}" y="-56" class="a-up" style="animation-delay:${i*.5}s;font-size:13px;font-weight:900;fill:var(--g3);font-family:Arial">O₂</text>`).join("")}</g>${T(570,182,"氧化 → 變成藍色","middle","s-txt")}${T(570,200,"不溶於水、固定在布上","middle","s-sm")}`;
+  return s;
+})());
+
+/* ---------- 採藍取靛 ---------- */
+fill("indigoFlow",[
+  ["浸泡藍草",`<svg viewBox="0 0 120 90"><g transform="translate(60 50) scale(.7)">${VAT(0,0,1,"#9a8a3a")}</g>${LEAF(50,34,.25,-30,"#4f8a3c")}${LEAF(72,34,.25,30,"#4f8a3c")}</svg>`,"洗淨、泡水 1～2 天"],
+  ["打藍",`<svg viewBox="0 0 120 90"><g transform="translate(60 54) scale(.7)">${VAT(0,0,1,"var(--indigo2)")}</g><g class="a-swing" style="transform-origin:60px 10px"><path d="M60 10 L60 52" stroke="var(--wood)" stroke-width="5" stroke-linecap="round"/></g>${[0,1,2].map(i=>`<circle cx="${46+i*14}" cy="32" r="4" fill="var(--indigo2)" opacity=".7" class="a-up" style="animation-delay:${i*.3}s"/>`).join("")}</svg>`,"撈出葉子，加石灰攪拌"],
+  ["沉澱",`<svg viewBox="0 0 120 90"><path d="M30 20 L36 80 L84 80 L90 20 Z" fill="#c9b86a" opacity=".5" stroke="var(--muted)" stroke-width="2"/><rect x="36" y="64" width="48" height="16" fill="var(--indigo)"/>${[0,1,2].map(i=>`<circle cx="${50+i*10}" cy="40" r="2.6" fill="var(--indigo)" class="a-drop" style="animation-delay:${i*.4}s"/>`).join("")}</svg>`,"靜置一天，倒掉上層水"],
+  ["藍靛",`<svg viewBox="0 0 120 90"><path d="M30 30 q30 -20 60 0 q4 30 -30 44 q-34 -14 -30 -44" fill="var(--indigo)"/>${T(60,86,"膏狀藍泥","middle","s-sm")}</svg>`,"瀝乾變成膏狀"],
+  ["建藍",`<svg viewBox="0 0 120 90"><g transform="translate(60 50) scale(.7)">${VAT(0,0,1,"var(--leuco)")}</g>${T(60,14,"木灰水＋米酒","middle","s-sm")}</svg>`,"發酵還原成染水"]
+].map((f,i)=>`<div class="fl"><span class="no">${i+1}</span>${f[1]}<b>${f[0]}</b><small>${f[2]}</small></div>`).join(""));
+
+/* ---------- 三峽 ---------- */
+fill("sanxiaSvg",`<path d="M0 60 Q60 20 120 50 T240 40 T340 60 V0 H0 Z" fill="var(--hill)" opacity=".5"/>${[40,110,180,250,310].map((x,i)=>`<ellipse cx="${x}" cy="${30+i%2*8}" rx="30" ry="8" fill="#fff" opacity=".7" class="a-fade" style="animation-delay:${i*.4}s"/>`).join("")}
+  <path d="M10 120 Q90 140 170 160" stroke="var(--river)" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M170 60 Q170 120 170 160" stroke="var(--river)" stroke-width="10" fill="none"/><path d="M330 110 Q250 140 170 160" stroke="var(--river)" stroke-width="10" fill="none"/><path d="M170 160 Q200 200 240 216" stroke="var(--river)" stroke-width="14" fill="none"/>
+  <polygon points="150,150 190,150 170,172" fill="var(--soil)"/>${T(170,190,"三角湧","middle","s-txt")}
+  ${LEAF(70,84,.25,0,"#4f8a3c")}${LEAF(90,90,.22,20,"#4f8a3c")}${T(80,112,"馬藍","middle","s-sm")}
+  <g transform="translate(270 190)"><path d="M-20 0 h40 l-6 10 h-28 Z" fill="var(--wood)"/><path d="M0 0 v-26 l14 18 Z" fill="#fff" stroke="var(--muted)"/></g>${T(300,214,"航運外銷","middle","s-sm")}
+  ${T(56,150,"大漢溪","middle","s-sm")}${T(190,90,"三峽溪","start","s-sm")}${T(300,100,"橫溪","middle","s-sm")}`);
+
+/* ---------- 四大染色方式 ---------- */
+const MTH=[
+  ["直接染","利用色素對纖維的強親和力（黃酮類、單寧酸），高溫煎煮後直接染上，不用其他化學物質。",
+   `<svg viewBox="0 0 300 110">${POT(70,40,.75,"var(--turm)")}${CLOTH(220,52,90,70,"var(--turm)",{ripple:true})}${T(150,104,"80～90 °C 浸染 30 分鐘","middle","s-sm")}</svg>`,
+   ["切碎煮液：植物切碎，加水煎煮 45～60 分鐘萃取染液","濾渣退漿：過濾殘渣；精練去雜質的棉布先預熱","高溫浸染：80～90 °C 恆溫，翻動浸染 30 分鐘","水洗晾乾：清水洗掉多餘的色，陰涼處晾乾"],
+   "<b>薑黃</b>：薑黃素水溶性佳，染出鮮豔黃色（怕曬，常加明礬固色）。<b>薯榔</b>：單寧酸多，染出防腐耐洗的紅棕色；早期漁民塗在漁網、船帆上。"],
+  ["媒染法（最常見）","用金屬離子（鋁、鐵、銅）當「橋樑」，連結色素和纖維，達到固色、顯色或變色。",
+   `<svg viewBox="0 0 300 110">${CLOTH(50,52,70,70,"#e8c070")}<path d="M90 52 h20" stroke="var(--muted)" stroke-width="2"/>${CLOTH(150,30,60,40,"#e8a81a")}${CLOTH(150,82,60,40,"#5a5a3a")}${T(214,34,"明礬（鋁）","start","s-sm")}${T(214,86,"鐵水（鐵）","start","s-sm")}</svg>`,
+   ["萃取染液：煮出植物原色染液並升溫","首輪浸染：布先泡染液吸附色素","金屬媒染：移到媒染劑水溶液泡 15～20 分鐘","顯色定色：觀察顏色變化，最後清洗晾乾"],
+   "<b>洋蔥皮、茶葉</b>：明礬 → 明亮金黃、暖橙；鐵水 → 沉穩灰黑、軍綠色。"],
+  ["醱酵還原染（藍染）","藍染專用！靛藍不溶於水，要先發酵還原成黃綠色染液，染後靠空氣氧化變藍。",
+   `<svg viewBox="0 0 300 110">${VAT(70,56,.8,"var(--leuco)")}<path d="M120 52 h20" stroke="var(--muted)" stroke-width="2"/>${CLOTH(200,52,80,70,"var(--leuco)")}<g class="a-appear">${CLOTH(200,52,80,70,"var(--indigo)",{ripple:true})}</g></svg>`,
+   ["建藍：藍靛＋鹼水＋營養劑發酵還原","布浸水後放入染液","拿出來接觸空氣，氧化變藍","重複染、清洗、定色"],
+   "<b>馬藍、木藍</b>：染得越多次，藍色越深。"],
+  ["葉拓染／敲拓染","用槌子敲擊，把鮮葉的汁液、葉綠素、單寧和花青素直接壓進布裡，留下葉子的形狀和葉脈。",
+   `<svg viewBox="0 0 300 110">${CLOTH(150,60,160,80,"var(--cloth)",{leaf:"#6a9a3a"})}<g transform="translate(200 30)"><g class="a-tap"><rect x="-6" y="-30" width="10" height="34" rx="3" fill="var(--wood)"/><rect x="-16" y="0" width="30" height="14" rx="6" fill="#d8453a"/></g></g></svg>`,
+   ["採集選葉：葉脈明顯、水分適中、平整的鮮葉","固定擺設：布鋪平，葉背朝下，上面蓋塑膠膜","均勻敲拓：橡皮槌從粗葉脈往邊緣敲","定色：揭開葉子，泡鹽水或熨斗燙定色"],
+   "<b>蕨類、楓葉、台灣肖楠</b>：保留清晰葉脈，不用煮染設備。先泡明礬水，顏色更鮮豔。"]
+];
+fill("methodBox",MTH.map((m,i)=>`<div class="mth"><h3><span class="no">${i+1}</span>${m[0]}</h3><p class="why">${m[1]}</p>${m[2]}<ol>${m[3].map(x=>`<li>${x}</li>`).join("")}</ol><div class="eg">例：${m[4]}</div></div>`).join(""));
+
+/* ---------- 媒染實驗室 ---------- */
+(function(){
+  const PL=[["洋蔥皮",["#e9b04a","#e89a1a","#6a6a3a"]],["茶葉",["#c9a06a","#d9a64a","#4a4a3a"]],["薑黃",["#f2c41a","#f0b81a","#8a7a2a"]]];
+  const MD=[["不加（直接染）","顏色比較淡，洗了容易褪色。"],["明礬（鋁）","顏色變得明亮、飽和，比較耐洗。"],["鐵水（鐵）","顏色變暗，偏向灰黑、軍綠、咖啡色。"]];
+  let p=0,m=1;
+  function draw(){
+    $("plantPick").innerHTML=`<span>植物：</span>`+PL.map((x,i)=>`<button class="pk" data-i="${i}" aria-pressed="${i===p}">${x[0]}</button>`).join("");
+    $("mordPick").innerHTML=`<span>媒染劑：</span>`+MD.map((x,i)=>`<button class="pk" data-i="${i}" aria-pressed="${i===m}">${x[0]}</button>`).join("");
+    $("plantPick").querySelectorAll(".pk").forEach(b=>b.onclick=()=>{p=+b.dataset.i;draw();});
+    $("mordPick").querySelectorAll(".pk").forEach(b=>b.onclick=()=>{m=+b.dataset.i;draw();});
+    const c=PL[p][1][m];
+    $("mordV").textContent=`${PL[p][0]} ＋ ${MD[m][0]}`; $("mordV").style.color="var(--accent)";
+    $("mordW").textContent=MD[m][1];
+    $("mordSvg").innerHTML=`${CLOTH(150,92,200,150,c,{ripple:true})}<g opacity=".8">${CLOTH(150,92,200,150,"transparent",{})}</g>`;
+  }
+  draw();
+})();
+
+/* ---------- 紋樣 ---------- */
+fill("pat1",CLOTH(100,60,150,100,"var(--indigo)",{tie:true}));
+fill("pat2",`${CLOTH(100,60,150,100,"var(--indigo)")}<g fill="#fff" opacity=".92">${[[-1,-1],[1,-1],[-1,1],[1,1]].map(([a,b])=>`<rect x="${100+a*36-10}" y="${60+b*24-6}" width="20" height="12" rx="3"/>`).join("")}<rect x="92" y="18" width="16" height="84" rx="3" opacity=".7"/></g>`);
+fill("pat3",`${CLOTH(100,60,150,100,"var(--indigo)")}<g stroke="#fff" stroke-width="3" fill="none" opacity=".95"><path d="M60 60 q20 -30 40 0 t40 0"/><circle cx="100" cy="60" r="10"/><path d="M50 30 l10 10 M140 30 l10 10 M50 90 l10 -10 M140 90 l10 -10"/></g>`);
+
+/* ---------- 步驟：藍染方巾 ---------- */
+const STEPS=[
+ {t:"設計圖案、綁紮",l:["先想好要什麼花紋：放射狀、條紋、對稱幾何","對摺、扇形摺或捲起來","用橡皮筋、棉線綁緊，或冰棒棍夾住","綁越緊，留白越清楚"],tip:"摺之前先在布角寫上自己的號碼（用不會掉色的筆），洗完才找得到。",
+  art:`<svg viewBox="0 0 340 200">${CLOTH(90,100,120,120,"var(--cloth)")}<path d="M30 40 L150 160 M150 40 L30 160" stroke="var(--clothl)" stroke-dasharray="5 4"/><path d="M170 100 h30" stroke="var(--muted)" stroke-width="3"/><g transform="translate(270 100)"><path d="M-14 -70 L14 -70 L18 70 L-18 70 Z" fill="var(--cloth)" stroke="var(--clothl)"/>${[-44,-10,24,56].map((y,i)=>`<rect x="-20" y="${y}" width="40" height="7" rx="3" fill="#d8453a" class="a-fade" style="animation-delay:${i*.3}s"/>`).join("")}</g></svg>`},
+ {t:"浸水",l:["綁好的布整個泡進清水","擠掉多餘的水，不要滴水","布濕了，染液才能均勻滲進去"],tip:"乾布直接下染缸，顏色容易不均勻。",
+  art:`<svg viewBox="0 0 340 200"><path d="M70 70 L84 180 L256 180 L270 70 Z" fill="var(--water)" opacity=".35" stroke="var(--water)" stroke-width="2.4"/><g class="a-press" style="animation-duration:3s"><g transform="translate(170 110)"><path d="M-12 -40 L12 -40 L14 40 L-14 40 Z" fill="var(--cloth)" stroke="var(--clothl)"/>${[-26,2,26].map(y=>`<rect x="-16" y="${y}" width="32" height="6" rx="3" fill="#d8453a"/>`).join("")}</g></g>${GLOVE(260,60,1.4)}</svg>`},
+ {t:"染布 3 分鐘",l:["戴手套，把布放進染缸","在染液裡輕輕搓揉，讓每個地方都吃到染液","泡約 3 分鐘","拿出來時布是黃綠色的"],tip:"不要在染缸裡用力攪出泡泡，空氣跑進去會讓染液變差。",
+  art:`<svg viewBox="0 0 340 200">${VAT(170,120,1.6,"var(--leuco)")}<g class="a-tap" style="animation-duration:1.6s">${GLOVE(160,74,1.4)}</g><g transform="translate(290 50)"><circle r="28" fill="var(--paper)" stroke="var(--accent)" stroke-width="3"/><g class="a-rot" style="animation-duration:3s"><path d="M0 0 V-20" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/></g>${T(0,46,"3 分鐘","middle","s-txt")}</g></svg>`},
+ {t:"氧化 10～15 分鐘",l:["把布拿出來，攤開或掛起來接觸空氣","看著它從黃綠色慢慢變成藍色","等 10～15 分鐘","想要更深：再染一次、再氧化（可重複 2～3 次）"],tip:"這就是「還原 → 氧化」：染液裡是黃綠色的隱色體，碰到氧氣才變藍。",
+  art:`<svg viewBox="0 0 340 200"><path d="M40 30 H300" stroke="var(--wood)" stroke-width="4"/><g transform="translate(170 104)">${CLOTH(0,0,150,130,"var(--leuco)")}<g class="a-appear">${CLOTH(0,0,150,130,"var(--indigo)",{tie:true})}</g></g>${[0,1,2,3].map(i=>`<text x="${60+i*70}" y="190" class="a-up" style="animation-delay:${i*.4}s;font-size:15px;font-weight:900;fill:var(--g3);font-family:Arial">O₂</text>`).join("")}</svg>`},
+ {t:"清洗",l:["用清水沖洗、搓洗","一直洗到流下來的水不再是藍色","把多餘、沒固定的染料洗掉"],tip:"洗不乾淨，之後會一直掉色、染到別的衣服。",
+  art:`<svg viewBox="0 0 340 200"><path d="M200 20 v30 h-30" stroke="var(--metal)" stroke-width="10" fill="none"/>${[0,1,2,3].map(i=>`<circle cx="170" cy="62" r="3.4" class="s-water a-drop" style="animation-delay:${i*.35}s"/>`).join("")}<g transform="translate(170 120)">${CLOTH(0,0,120,70,"var(--indigo)")}</g><path d="M80 170 Q170 190 260 170" stroke="var(--indigo2)" stroke-width="6" fill="none" class="a-fadeout"/><path d="M80 170 Q170 190 260 170" stroke="var(--water)" stroke-width="6" fill="none" class="a-appear"/>${T(170,196,"藍色的水 → 清水","middle","s-sm")}</svg>`},
+ {t:"拆開、陰乾",l:["剪開橡皮筋、棉線，拿掉冰棒棍","把布攤開，欣賞花紋","掛在陰涼通風處晾乾，不要曬太陽","找到自己的號碼"],tip:"拆線時用剪刀小心，不要剪到布。",
+  art:`<svg viewBox="0 0 340 200"><path d="M30 26 H310" stroke="var(--wood)" stroke-width="4"/><g class="a-swing" style="transform-origin:170px 26px"><g transform="translate(170 110)">${CLOTH(0,0,170,150,"var(--indigo)",{tie:true})}</g></g><text x="236" y="176" style="font-size:12px;font-weight:700;fill:#fff;font-family:var(--f)">No.12</text></svg>`},
+ {t:"泡醋定色",l:["三天後，把布泡進稀釋的白醋水","泡一段時間後再清洗、晾乾","中和殘留的鹼，讓顏色更穩定"],tip:"第一次清洗時，藍染作品最好和其他衣服分開洗。",
+  art:`<svg viewBox="0 0 340 200"><path d="M80 80 L92 180 L248 180 L260 80 Z" fill="#f4efc2" opacity=".7" stroke="var(--muted)" stroke-width="2"/><g transform="translate(170 140)">${CLOTH(0,0,120,50,"var(--indigo)",{ripple:true})}</g><g transform="translate(290 70)"><rect x="-16" y="-10" width="32" height="70" rx="8" fill="#fff" stroke="var(--muted)" stroke-width="2"/><rect x="-7" y="-24" width="14" height="14" fill="var(--soil)"/><text x="0" y="30" text-anchor="middle" style="font-size:12px;font-weight:900;fill:#333;font-family:var(--f)">白醋</text></g>${T(90,50,"三天後","middle","s-txt")}</svg>`}
+];
+
+/* ---------- 專題：五組 ---------- */
+fill("teamBox",[1,2,3,4,5].map(n=>`<div class="tm"><b>第 ${n} 組</b><div class="dot" style="background:conic-gradient(var(--indigo) 0 20%,var(--madder) 0 40%,var(--turm) 0 60%,var(--fukugi) 0 80%,var(--brown) 0)"></div><small>目標顏色：＿＿＿<br>植物：＿＿＿＿</small></div>`).join(""));
+fill("d1",`${CLOTH(100,55,96,90,"var(--turm)",{tie:true})}<path d="M52 104 h96" stroke="var(--ink)" stroke-width="1.5"/><path d="M52 100 v8 M148 100 v8" stroke="var(--ink)" stroke-width="1.5"/>${T(100,10,"","middle")}<text x="152" y="58" style="font-size:11px;font-weight:700;fill:var(--muted);font-family:var(--f)">≥30cm</text>`);
+fill("d2",`<g transform="translate(100 55)"><rect x="-34" y="-46" width="68" height="92" rx="3" fill="#fff" stroke="var(--muted)"/><rect x="-26" y="-36" width="52" height="24" fill="var(--turm)" opacity=".7"/><path d="M-26 -2 h52 M-26 8 h40 M-26 18 h48 M-26 28 h30" stroke="var(--line)" stroke-width="4"/></g><g transform="translate(160 76)"><path d="M-14 -20 h18 l10 10 v30 h-28 Z" fill="#fff" stroke="#c8322c" stroke-width="2"/><rect x="-18" y="-2" width="24" height="12" rx="2" fill="#c8322c"/><text x="-6" y="7" text-anchor="middle" style="fill:#fff;font-size:8px;font-weight:900;font-family:Arial">PDF</text></g>`);
+fill("d3",`<rect x="40" y="14" width="120" height="70" rx="6" fill="#fff" stroke="var(--muted)" stroke-width="2"/>${CLOTH(80,48,50,44,"var(--indigo)",{tie:true})}<path d="M114 34 h36 M114 48 h30 M114 62 h34" stroke="var(--line)" stroke-width="5" stroke-linecap="round"/><g transform="translate(176 70)"><circle r="18" fill="var(--paper)" stroke="var(--accent)" stroke-width="3"/>${T(0,5,"3'","middle","s-txt",14)}</g>`);
+
+/* ---------- 評分 ---------- */
+const SCORE=[["植物選擇與對應",25,"找到能染出目標顏色的天然植物，報告中正確說明植物學名與色素種類"],["染色技術與成品美感",30,"上色均勻度、固色程度（不易褪色）、防染技巧（紋樣設計）、整體視覺美感"],["實驗過程紀錄（報告）",25,"完整記錄萃取色素、媒染劑使用（如有）、染色時間、溫度控制等步驟與照片"],["團隊合作與發表",10,"組員分工明確，3 分鐘課堂成果分享"],["創新與探索思考",10,"分析失敗、成功的經驗；或嘗試複合染、在地生活植物採集等創新做法"]];
+fill("scoreBox",SCORE.map(s=>`<div class="sc2"><b>${s[0]}</b><span class="w">${s[1]}%</span><span class="d">${s[2]}</span><span class="bar"><i style="width:${s[1]/30*100}%"></i></span></div>`).join(""));
+
+/* ---------- 報告大綱 ---------- */
+const OUT=[["封面＋分工","組別、目標顏色、組員和分工","團隊 10%"],["植物選擇","植物名稱、學名、部位、色素種類、來源","植物 25%"],["材料與方法","染色方式、布料（材質、尺寸）、媒染劑","紀錄 25%"],["過程紀錄","萃取、染色、媒染的時間與溫度＋照片","紀錄 25%"],["紋樣設計","防染技巧、草圖","技術 30%"],["成果","作品照片、顏色、均勻度、水洗測試","技術 30%"],["成功與失敗分析","哪裡成功、哪裡失敗、為什麼","創新 10%"],["創新探索＋心得","複合染、在地植物；每人心得","創新 10%"]];
+fill("repOutline",OUT.map((o,i)=>`<div class="rp"><b>${i+1}. ${o[0]}</b>${o[1]}<br><em>${o[2]}</em></div>`).join(""));
+
+/* ---------- 3 分鐘簡報 ---------- */
+const SL=[["封面","組別、目標顏色、組員分工",`${CLOTH(50,30,50,36,"var(--madder)")}<path d="M84 20 h40 M84 32 h30" stroke="var(--line)" stroke-width="5"/>`],["我們的植物","照片、學名、部位、色素",`${LEAF(40,30,.3,-10,"#c8452f")}<path d="M74 20 h50 M74 32 h40 M74 44 h46" stroke="var(--line)" stroke-width="5"/>`],["怎麼染","萃取、媒染、時間溫度",`<g transform="translate(46 26) scale(.4)">${POT(0,0,1,"var(--madder)")}</g><path d="M90 20 h40 M90 32 h34" stroke="var(--line)" stroke-width="5"/>`],["紋樣設計","怎麼綁、怎麼夾",`${CLOTH(70,32,90,44,"var(--indigo)",{tie:true})}`],["成果","作品照片、顏色",`${CLOTH(70,32,100,48,"var(--madder)",{ripple:true})}`],["分析與心得","成功、失敗、下次",`<path d="M20 18 h100 M20 30 h80 M20 42 h90" stroke="var(--line)" stroke-width="5"/>`]];
+fill("slideRow",SL.map((s,i)=>`<div class="sld"><svg viewBox="0 0 140 60">${s[2]}</svg><b>${i+1}. ${s[0]}</b><small>${s[1]}</small></div>`).join(""));
+
+/* ---------- 判斷 ---------- */
+const READY_OPTS=["直接染","媒染法","還原染","敲拓染"];
+const READY=[
+ ["薑黃根莖切碎煮水，布放進去 80～90 °C 浸染 30 分鐘",0,"薑黃素水溶性佳，煮了就能直接染上。"],
+ ["洋蔥皮染好後，再泡明礬水 15～20 分鐘",1,"用金屬離子（鋁）當橋樑，固色、顯色。"],
+ ["藍靛加木灰水發酵，布拿出來後慢慢從黃綠變藍",2,"靛藍要先還原才溶於水，出缸後氧化變藍。"],
+ ["把蕨類葉子放在布上，用橡皮槌敲",3,"把葉子的汁液、色素直接壓到布裡。"],
+ ["茶葉染液染完，泡鐵水變成灰黑色",1,"鐵離子讓顏色變暗，是媒染的變色效果。"],
+ ["薯榔塊莖打碎壓汁，直接塗染漁網",0,"薯榔單寧酸多，不必媒染就能上色、防腐。"]
+];
+
+/* ---------- 診斷卡 ---------- */
+const CASES=[
+ ["顏色斑斑點點、不均勻","布沒有先浸濕、精練不夠，或染的時候沒有翻動","染前先浸水擠乾；新布先洗過去漿；浸染時持續翻動"],
+ ["洗一次就褪很多色","沒有媒染固色，或沒洗乾淨多餘染料","加明礬媒染；染後清洗到水變清；陰乾、避免曝曬"],
+ ["藍染不夠藍","只染一次、氧化時間太短，或染液活性變弱","延長氧化 10～15 分鐘，重複染 2～3 次；請老師檢查染缸"],
+ ["綁的地方也染進去了","綁得不夠緊","橡皮筋多纏幾圈、綁緊；用冰棒棍夾時夾緊"],
+ ["敲拓染只有一團綠，看不到葉脈","葉子太濕、太厚，或敲太大力","挑水分適中、葉脈明顯的葉子；上面蓋塑膠膜，從葉脈往外均勻敲"],
+ ["染出來顏色跟預期不一樣","媒染劑不同、植物部位不同，或鍋子材質影響","記錄媒染劑和鍋子材質；先用小塊布試染再做正式作品"],
+ ["手和桌子都變色了","沒戴手套、染液或鐵水濺出","全程戴手套、圍裙；桌面鋪報紙；用完立刻清洗"]
+];
+
+/* ---------- 小測驗 ---------- */
+const QS=[
+ {q:"植物染是利用植物的哪些部位取得色素？",o:["根、莖、葉、花、果實、樹皮都可以","只有花瓣","只有葉子","只有種子"],a:0,why:"不同植物的色素藏在不同部位，例如薑黃在根莖、茜草在根、紅花在花瓣。"},
+ {q:"染料作物在農藝作物分類中屬於哪一類？",o:["特用作物","食糧作物","飼料作物","雜糧作物"],a:0,why:"特用作物用於工業、飲料、纖維、藥用或染色等特殊用途，如馬藍。"},
+ {q:"下列哪一種植物主要染出「黃色」？",o:["薑黃","馬藍","茜草","檳榔"],a:0,why:"薑黃的薑黃素染出鮮豔黃色；馬藍染藍、茜草染紅、檳榔染棕。"},
+ {q:"想染出「藍色」，應該選哪一種植物？",o:["馬藍（山藍）","紅花","福木","梔子"],a:0,why:"馬藍、木藍、蓼藍、菘藍是提煉藍色素的植物。"},
+ {q:"明礬在植物染中扮演什麼角色？",o:["媒染劑，像橋樑連結色素和纖維","染料本身","漂白劑","防腐劑"],a:0,why:"明礬的鋁離子連結色素與纖維，能固色、顯色。"},
+ {q:"洋蔥皮染液，媒染劑從明礬換成鐵水，顏色會怎麼變？",o:["變暗，偏灰黑、軍綠","變得更亮","變成藍色","完全不會變"],a:0,why:"鐵離子會讓顏色變暗沉；明礬（鋁）則讓顏色明亮。"},
+ {q:"直接染的染色溫度大約是多少？",o:["80～90 °C","20 °C 室溫","零下","150 °C"],a:0,why:"直接染要維持 80～90 °C 恆溫，翻動浸染約 30 分鐘。"},
+ {q:"藍染的布剛從染缸拿出來時是什麼顏色？",o:["黃綠色","深藍色","紅色","白色"],a:0,why:"染液裡是黃綠色的隱色體，接觸空氣氧化後才變藍。"},
+ {q:"藍染布離開染缸後變藍，是因為發生了什麼反應？",o:["和空氣中的氧氣發生氧化","被陽光曬乾","和水結合","被醋漂白"],a:0,why:"隱色體接觸氧氣，氧化成不溶於水的靛藍。"},
+ {q:"全世界可以提煉藍色素的四種植物，不包括下列哪一種？",o:["薑黃","馬藍","木藍","蓼藍"],a:0,why:"四種藍草是馬藍、木藍、蓼藍、菘藍；薑黃染黃色。"},
+ {q:"「青出於藍」這句成語和什麼工藝有關？",o:["藍染","陶藝","造紙","木雕"],a:0,why:"荀子看到染匠從藍草染出更鮮豔的青色，說「青取之於藍，而青於藍」。"},
+ {q:"北臺灣藍染業的重要集散地是哪裡？",o:["三峽","鹿港","美濃","鶯歌"],a:0,why:"三峽山區適合種馬藍、溪水適合洗布、靠淡水河航運，舊稱三角湧。"},
+ {q:"絞染（紮染）為什麼能做出白色花紋？",o:["綁緊的地方染液進不去，留下白色","白色是另外畫上去的","綁的地方會被漂白","布料本來就有花紋"],a:0,why:"這是防染：用綁紮、夾扣遮住，阻止染液滲入。"},
+ {q:"敲拓染最適合選什麼樣的葉子？",o:["葉脈明顯、水分適中、平整的鮮葉","枯黃的落葉","很厚的多肉葉","被蟲咬爛的葉子"],a:0,why:"這樣的葉子敲擊後色素轉印清楚，能保留葉脈細節。"},
+ {q:"期末「五色尋寶」的染色作品，布料規定是？",o:["100% 純棉或麻，至少 30 × 30 cm","任何布料都可以","尼龍布 10 × 10 cm","紙張"],a:0,why:"天然纖維才容易吸附植物色素；尺寸至少 30 × 30 cm。"}
+];
+const KEY="agri-dye-quiz-115-1";
+const MASTER="植物染";
+
+
+/* ---------- 分頁 ---------- */
+const TABS=[["t1","p1"],["t2","p2"],["t3","p3"],["t4","p4"],["t5","p5"]];
+let quiz=null;
+function show(t){
+  TABS.forEach(([a,b])=>{ const on=a===t; $(a).setAttribute("aria-selected",on); $(b).hidden=!on; });
+  $("blankBar").hidden = t!=="t1";
+  if(t==="t5"&&!quiz) startQuiz();
+  try{ history.replaceState(null,"",t==="t5"?"#quiz":location.pathname+location.search); }catch(e){}
+  window.scrollTo({top:0});
+}
+TABS.forEach(([a])=>$(a).onclick=()=>show(a));
+(function(){
+  let x0=null,y0=null;
+  document.addEventListener("touchstart",e=>{ if(e.target.closest("input,.tabs,.stage,svg")){x0=null;return;} x0=e.touches[0].clientX; y0=e.touches[0].clientY; },{passive:true});
+  document.addEventListener("touchend",e=>{
+    if(x0===null) return; const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0; x0=null;
+    if(Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.5) return;
+    const cur=TABS.findIndex(([a])=>$(a).getAttribute("aria-selected")==="true"), n=cur+(dx<0?1:-1);
+    if(n>=0&&n<TABS.length) show(TABS[n][0]);
+  },{passive:true});
+})();
+
+/* ---------- 挖空模式 ---------- */
+$("blankToggle").onchange=e=>{ document.body.classList.toggle("blank",e.target.checked); document.querySelectorAll(".key.show").forEach(k=>k.classList.remove("show")); };
+document.addEventListener("click",e=>{ const k=e.target.closest(".key"); if(k&&document.body.classList.contains("blank")) k.classList.toggle("show"); });
+
+/* ---------- 總覽流程 ---------- */
+fill("flowBox",FLOW.map((f,i)=>`<div class="fl"><span class="no">${i+1}</span>${f[1]}<b>${f[0]}</b><small>${f[2]}</small></div>`).join(""));
+
+/* ---------- 步驟播放器 ---------- */
+let sIdx=0, paused=false; const seen=new Set([0]);
+function renderStep(){
+  const s=STEPS[sIdx];
+  $("chips").innerHTML=STEPS.map((x,i)=>`<button class="sc${seen.has(i)?" seen":""}" data-i="${i}" ${i===sIdx?'aria-current="step"':""} aria-label="第 ${i+1} 步 ${x.t}">${i+1}</button>`).join("");
+  $("chips").querySelectorAll(".sc").forEach(b=>b.onclick=()=>{ sIdx=+b.dataset.i; seen.add(sIdx); renderStep(); });
+  $("sBadge").textContent=`步驟 ${sIdx+1}／${STEPS.length}`;
+  $("sArt").innerHTML=s.art;
+  $("sTitle").textContent=`${sIdx+1}. ${s.t}`;
+  $("sList").innerHTML=s.l.map(x=>`<li>${x}</li>`).join("");
+  $("sTip").innerHTML=`<b>小提醒：</b>${s.tip}`;
+  $("sPrev").disabled=sIdx===0;
+  $("sNext").textContent=sIdx===STEPS.length-1?(typeof NEXT3!=="undefined"?NEXT3:"分組試驗")+" →":"下一步 →";
+}
+$("sPrev").onclick=()=>{ if(sIdx>0){sIdx--; renderStep();} };
+$("sNext").onclick=()=>{ if(sIdx===STEPS.length-1){ show("t3"); return; } sIdx++; seen.add(sIdx); renderStep(); };
+$("sPause").onclick=()=>{ paused=!paused; $("stage").classList.toggle("paused",paused); $("sPause").textContent=paused?"▶ 播放動畫":"⏸ 暫停動畫"; };
+if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches){ paused=true; $("stage").classList.add("paused"); document.body.classList.add("paused"); $("sPause").textContent="▶ 播放動畫"; }
+renderStep();
+
+/* ---------- 排序 ---------- */
+let oNext=0;
+function renderOrder(){ $("oSlots").innerHTML=STEPS.map((s,i)=>`<div class="oslot${i<oNext?" fill":""}"><span class="n">${i+1}</span>${i<oNext?s.t:""}</div>`).join(""); }
+function resetOrder(){
+  oNext=0; renderOrder(); $("oFb").textContent=""; $("oFb").className="ofb";
+  $("oPool").innerHTML=shuffle(STEPS.map((s,i)=>i)).map(i=>`<button class="ob" data-i="${i}">${STEPS[i].t}</button>`).join("");
+  $("oPool").querySelectorAll(".ob").forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i;
+    if(i===oNext){ b.remove(); oNext++; renderOrder(); $("oFb").className="ofb ok"; $("oFb").textContent=oNext===STEPS.length?"全部排對了！可以開始動手做囉 🎉":"對！"; }
+    else { b.classList.remove("bad"); void b.offsetWidth; b.classList.add("bad"); $("oFb").className="ofb bad"; $("oFb").textContent=`「${STEPS[i].t}」不是第 ${oNext+1} 步，再想想。`; }
+  });
+}
+$("oReset").onclick=resetOrder; resetOrder();
+
+/* ---------- 判斷卡 ---------- */
+function renderReady(){
+  $("ready").innerHTML=READY.map((r,i)=>`<div class="rd" data-i="${i}"><span class="q">${r[0]}</span><div class="bs">${(r[3]||READY_OPTS).map((o,k)=>`<button data-v="${k}">${o}</button>`).join("")}</div><span class="a" aria-live="polite"></span></div>`).join("");
+  $("ready").querySelectorAll(".rd").forEach(d=>d.querySelectorAll("button").forEach(b=>b.onclick=()=>{
+    const r=READY[+d.dataset.i], opts=r[3]||READY_OPTS, ok=+b.dataset.v===r[1];
+    d.className="rd "+(ok?"ok":"bad"); d.querySelector(".a").innerHTML=`<b>${ok?"答對！":"再想想："}</b>答案是「${opts[r[1]]}」。${r[2]}`;
+  }));
+}
+renderReady();
+const rr=$("readyReset"); if(rr) rr.onclick=renderReady;
+
+/* ---------- 診斷卡 ---------- */
+$("cases").innerHTML=CASES.map((c,i)=>`<button class="case" data-i="${i}" aria-expanded="false"><span class="q">${c[0]}</span><span class="a">點一下看原因與解法</span></button>`).join("");
+$("cases").querySelectorAll(".case").forEach(b=>b.onclick=()=>{ const c=CASES[+b.dataset.i]; const o=!b.classList.contains("open"); b.classList.toggle("open",o); b.setAttribute("aria-expanded",o); b.querySelector(".a").innerHTML=o?`<b>原因：</b>${c[1]}<br><b>解法：</b>${c[2]}`:"點一下看原因與解法"; });
+
+/* ---------- 小測驗 ---------- */
+function startQuiz(only){
+  const base = only ? only.map(k=>QS[k]) : QS;
+  quiz={retry:!!only,qs:base.map(q=>({...q,idx:QS.indexOf(q),opts:shuffle(q.o),ans:q.o[q.a]})),i:0,res:[],pick:[],done:false};
+  renderQuiz();
+}
+function dots(){ return quiz.qs.map((_,k)=>`<button class="dot ${quiz.res[k]===true?"ok":quiz.res[k]===false?"bad":""}${k===quiz.i&&!quiz.done?" now":""}" data-go="${k}" aria-label="第 ${k+1} 題"></button>`).join(""); }
+function saveBest(n,total){ try{ const s=JSON.parse(localStorage.getItem(KEY)||"{}"); if(!s.best||n>s.best)s.best=n; s.total=total; localStorage.setItem(KEY,JSON.stringify(s)); return s; }catch(e){ return null; } }
+function goQ(k){ quiz.i=k; quiz.done=false; renderQuiz(); window.scrollTo({top:0}); }
+function bindCommon(P){
+  P.querySelectorAll(".dot[data-go]").forEach(d=>d.onclick=()=>goQ(+d.dataset.go));
+  const r=P.querySelector("#qReset");
+  if(r) r.onclick=()=>{ if(r.dataset.arm){ startQuiz(); window.scrollTo({top:0}); } else { r.dataset.arm="1"; r.textContent="確定要從頭開始？再按一次"; r.classList.add("warn"); setTimeout(()=>{ if(r.isConnected){ delete r.dataset.arm; r.textContent="↺ 重新開始"; r.classList.remove("warn"); } },3000); } };
+}
+function renderQuiz(){
+  const P=$("p5"), {qs,i,res}=quiz;
+  const answered=res.filter(x=>x!==undefined).length;
+  if(quiz.done){
+    const n=res.filter(Boolean).length, tot=qs.length, skip=tot-answered, s=quiz.retry?null:saveBest(n,tot), r=n/tot;
+    const msg=r===1?(quiz.retry?"錯題全部訂正完成！":`全對！你已經是${MASTER}達人了！`):r>=.8?"很棒！把錯的題目再訂正一次。":r>=.6?"不錯喔！回到基本知識再看一看。":"別灰心，先回基本知識複習，再來挑戰！";
+    const wr=qs.map((q,k)=>({q,k})).filter(x=>res[x.k]!==true);
+    P.innerHTML=`<div class="card" style="text-align:center"><div class="qtype">${quiz.retry?"錯題再練結果":"測驗結果"}</div><div class="score">${n} / ${tot}</div><p>${msg}${skip?`<br><span style="color:var(--bad)">還有 ${skip} 題沒作答</span>`:""}</p>${s&&s.best?`<p style="color:var(--muted);font-size:15px">這台裝置的最佳紀錄：${s.best} / ${s.total}</p>`:""}<div class="progress" style="justify-content:center">${dots()}</div><p class="ex" style="margin:4px 0 0">點上面的小方塊可以回到那一題。</p>
+      ${wr.length?`<div class="review"><b>訂正一下：</b>${wr.map(({q,k})=>`<div class="item"><b>第 ${k+1} 題</b>${res[k]===undefined?"（未作答）":""}　${q.q}<br><b>正確答案：${q.ans}</b><br><span style="color:var(--muted)">${q.why}</span></div>`).join("")}</div>`:""}
+      <div class="actions" style="justify-content:center">${wr.length?`<button class="btn" id="retry">錯題再練（${wr.length} 題）</button>`:""}<button class="btn ghost" id="qReset">↺ 重新開始</button><button class="btn ghost" id="back1">回去複習</button></div></div>`;
+    $("back1").onclick=()=>show("t1");
+    if($("retry")) $("retry").onclick=()=>startQuiz(wr.map(x=>x.q.idx));
+    bindCommon(P); return;
+  }
+  const q=qs[i], picked=quiz.pick[i], locked=res[i]!==undefined, last=i===qs.length-1;
+  const fb = locked ? `<div class="feedback ${res[i]?"ok":"bad"}"><b>${res[i]?"答對了！":"再想想，正確答案是「"+q.ans+"」"}</b><span class="why">${q.why}</span></div>` : "";
+  P.innerHTML=`<div class="card"><div class="qhead"><span class="qtype">${quiz.retry?"錯題再練・":""}第 ${i+1} 題／共 ${qs.length} 題</span><button class="btn ghost sm" id="qReset">↺ 重新開始</button></div>
+    <div class="progress" style="margin-top:8px">${dots()}</div>
+    <div class="qtext">${q.q}</div>
+    <div class="opts">${q.opts.map((o,k)=>{ let c=""; if(locked){ if(o===q.ans)c=" right"; else if(k===picked)c=" wrong"; } return `<button class="opt${c}" data-k="${k}" ${locked?"disabled":""}><span class="k">${"ABCD"[k]}</span><span>${o}</span></button>`; }).join("")}</div>
+    <div id="fb" aria-live="polite">${fb}</div>
+    <div class="qnav"><button class="btn ghost" id="qPrev" ${i===0?"disabled":""}>← 上一題</button><span class="qcount">已作答 ${answered} / ${qs.length}</span><button class="btn" id="qNext">${last?"看結果":"下一題 →"}</button></div></div>`;
+  P.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    if(quiz.res[i]!==undefined) return;
+    const k=+b.dataset.k; quiz.pick[i]=k; quiz.res[i]=q.opts[k]===q.ans; renderQuiz();
+    const n=$("qNext"); if(n) n.focus({preventScroll:true});
+  });
+  $("qPrev").onclick=()=>{ if(i>0) goQ(i-1); };
+  $("qNext").onclick=()=>{ if(last){ quiz.done=true; renderQuiz(); window.scrollTo({top:0}); } else goQ(i+1); };
+  bindCommon(P);
+}
+
+/* ---------- QR ---------- */
+const openQR=()=>{$("overlay").hidden=false;};
+$("qrBtn").onclick=openQR; $("qrBtn").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openQR();}};
+$("overlay").onclick=()=>{$("overlay").hidden=true;};
+
+if(location.hash==="#quiz") show("t5");
+})();
+
+</script>
+</body>
+</html>
