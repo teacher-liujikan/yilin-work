@@ -470,7 +470,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
         <div class="mat"><b>🧱 平盤、瓷磚或玻璃板</b><small>墊在葉子下面刷</small></div>
         <div class="mat"><b>🧪 漂白水、量杯、塑膠盒</b><small>稀釋後泡葉脈</small></div>
         <div class="mat"><b>🧤 手套、護目鏡、圍裙</b><small>每人都要</small></div>
-        <div class="mat"><b>🧻 吸水紙、舊報紙、重物</b><small>吸乾、壓平</small></div>
+        <div class="mat"><b>🧻 吸水紙、熨斗</b><small>吸乾後低溫隔紙燙乾，30 分鐘內</small></div>
         <div class="mat"><b>🟩 深色卡紙 5 × 15 cm</b><small>白色葉脈放深色底最明顯</small></div>
         <div class="mat"><b>🎞️ 護貝膠膜、打洞器、緞帶</b><small>護貝機全班共用</small></div>
       </div>
@@ -590,9 +590,9 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
         <div class="tl"><b>課前</b><span class="m">老師</span><ul><li>試煮肥皂水，確認時間</li><li>準備氫氧化鈉示範</li></ul></div>
         <div class="tl"><b>第 1 節</b><span class="m">知識＋下鍋</span><ul><li>基本知識（15 分）</li><li>採葉、挑葉、編號（15 分）</li><li>最後 20 分：<b>肥皂水下鍋開始計時</b>；老師示範氫氧化鈉煮、刷</li></ul></div>
         <div class="tl"><b>第 2 節</b><span class="m">刷葉肉</span><ul><li>上課鐘 ≈ <b>30 分</b>：取出 2 片，沖水、刷</li><li>上課 30 分 ≈ <b>60 分</b>：取出 2 片，沖水、刷</li><li>記錄難易、時間；刷好的泡清水</li></ul></div>
-        <div class="tl"><b>第 3 節</b><span class="m">漂白＋護貝</span><ul><li>上課鐘 ≈ <b>90 分</b>：取出、刷</li><li>全部漂白、沖洗（20 分）</li><li>吸乾，熨斗低溫隔紙燙乾、排版護貝（20 分）</li><li>比較、發表（10 分）</li></ul></div>
+        <div class="tl"><b>第 3 節</b><span class="m">漂白＋護貝</span><ul><li>上課鐘 ≈ <b>90 分</b>：取出、刷</li><li>全部漂白、沖洗（20 分）</li><li>吸水紙吸乾，熨斗低溫隔紙燙乾，<b>當節護貝</b>（20～30 分）</li><li>比較、發表（10 分）</li></ul></div>
       </div>
-      <div class="note"><b>不是連排？</b>把時間改成同一節內的 15／30／45 分鐘（或老師在前一節先下鍋）；漂白後的葉脈夾在吸水紙裡壓乾，下次上課再護貝。小測驗可當回家作業掃 QR 做。</div>
+      <div class="note"><b>不是連排？</b>把時間改成同一節內的 15／30／45 分鐘（或老師在前一節先下鍋）；漂白後一樣用吸水紙吸乾、熨斗燙乾，30 分鐘內當節護貝完成。小測驗可當回家作業掃 QR 做。</div>
     </div>
 
     <div class="card">
@@ -819,10 +819,10 @@ const STEPS=[
    ${SKEL(110,124,.6,90,"var(--skel)",{cls:"a-fadeout"})}${WHITE(110,124,.6,90,{cls:"a-appear"})}
    ${SKEL(230,124,.6,80,"var(--skel)",{cls:"a-fadeout",style:"animation-delay:.6s"})}${SKEL(230,124,.6,80,"#ffffff",{cls:"a-appear",style:"animation-delay:.6s;filter:drop-shadow(0 0 1px #8a7a50)"})}
    ${T(170,30,"漂白水 1：水 5～10（約 0.5～0.8%）","middle","s-txt")}${T(170,52,"泡 10～30 分，常常看","middle","s-sm")}</svg>`},
- {t:"沖洗、吸乾、壓平",l:["撈起來用清水沖 2～3 次，沖掉漂白水","放在吸水紙上吸乾，順手把葉脈攤平","夾在吸水紙中，用重物壓，或熨斗低溫隔紙燙乾","想要彩色：乾燥前泡水彩或食用色素"],tip:"一定要乾透再護貝，不然膠膜裡會起霧。",
+ {t:"沖洗、吸乾、燙乾",l:["撈起來用清水沖 2～3 次，沖掉漂白水","放在吸水紙上，上下各夾一張吸乾，順手把葉脈攤平","換乾的吸水紙夾住，熨斗低溫、關蒸氣，隔紙燙乾","30 分鐘內完成，當節課就護貝"],tip:"一定要乾透再護貝，不然膠膜裡會起霧；摸起來涼涼的就再燙一下。",
   art:`<svg viewBox="0 0 340 200"><g transform="translate(0 28)"><g class="a-press" style="animation-duration:2.4s"><path d="M110 50 L230 50 Q 236 16 186 10 L 146 10 Q 116 16 110 50 Z" fill="var(--g4)"/></g></g>
    <rect x="60" y="80" width="220" height="10" class="s-blot"/>${WHITE(170,96,.32,90,{noNet:true})}<rect x="60" y="102" width="220" height="10" class="s-blot"/><rect x="54" y="112" width="232" height="12" class="s-board"/>
-   ${T(170,150,"吸水紙夾住 → 重物或熨斗（低溫、關蒸氣）","middle","s-txt")}
+   ${T(170,150,"吸水紙夾住 → 熨斗隔紙燙乾（低溫、關蒸氣）","middle","s-txt")}
    ${[["#e2705a",90],["#3f7fd0",140],["#e0b23a",190],["#a2408c",240]].map(([c,x],i)=>`<circle cx="${x}" cy="180" r="8" fill="${c}" class="a-fade" style="animation-delay:${i*.3}s"/>`).join("")}${T(262,184,"可染色","start","s-sm")}</svg>`},
  {t:"排版、護貝",l:["深色卡紙裁 5 × 15 cm，把葉脈放上去","寫上植物名稱、日期","放進護貝膠膜，四周留 3～5 mm","護貝機預熱到燈亮，封口端先進"],tip:"白色葉脈配深綠、深藍、黑色底卡最漂亮。",
   art:`<svg viewBox="0 0 340 200">${ARROWDEF("ar3")}<rect x="110" y="70" width="120" height="66" rx="10" fill="var(--metal)"/><rect x="110" y="100" width="120" height="8" fill="#2b3036"/><circle cx="214" cy="82" r="5" fill="var(--g1)" class="a-fade"/>${T(170,90,"護貝機","middle","s-txt")}
@@ -954,7 +954,7 @@ const CASES=[
  ["一刷葉脈就破","煮太久、刷太用力，或葉子太薄","縮短煮的時間；改成垂直輕點；換厚一點的葉子"],
  ["漂白後一邊白、一邊黃","葉肉沒刷乾淨，或沒有完全泡進漂白水","刷乾淨兩面；用東西壓著讓葉脈全部泡到"],
  ["漂白後葉脈變脆、斷掉","漂白水太濃或泡太久","稀釋到 1：5～1：10；每 5～10 分鐘看一次，變白就撈"],
- ["乾了以後皺縮、捲起來","沒有攤平就乾燥","濕的時候攤平，夾吸水紙重壓，或熨斗低溫隔紙燙"],
+ ["乾了以後皺縮、捲起來","沒有攤平就乾燥","濕的時候先攤平，再夾吸水紙用熨斗低溫隔紙燙乾"],
  ["護貝後膠膜裡起霧","葉脈還沒乾透","確定乾透再護貝；摸起來涼涼的就還有水"],
  ["手摸起來滑滑的、發紅","碰到鹼水或漂白水","立刻用大量清水沖；之後全程戴手套"]
 ];
