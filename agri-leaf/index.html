@@ -438,6 +438,10 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 .tab#t7[aria-selected="true"]::after{display:none}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tab#t7:not([aria-selected="true"]){background:#3a2814;color:#ffb36b;border-color:#e0954a;box-shadow:0 2px 0 #e0954a}}
 :root[data-theme="dark"] .tab#t7:not([aria-selected="true"]){background:#3a2814;color:#ffb36b;border-color:#e0954a;box-shadow:0 2px 0 #e0954a}
+.sibs{margin-top:8px;font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}
+.sibs a,.sibs b{border:1.5px solid var(--line);border-radius:999px;padding:1px 10px;text-decoration:none;color:var(--accent);background:var(--paper);font-weight:700}
+.sibs b{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.sibs a:hover{border-color:var(--accent)}
 
 /*/RPT-CSS*/
 </style>
@@ -448,7 +452,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <div class="brand">
       <div class="eyebrow">實習課・50 分鐘 × 3 節</div>
       <h1>葉脈標本護貝書籤</h1>
-      <p class="sub">基本知識 → 實驗過程 → 紀錄與分工 → 動手判斷 → 掃 QR 小測驗</p><!--RPT--><a class="planbtn" href="../agri-plan/">🧭 農業資源應用實習・開場</a><!--/RPT-->
+      <p class="sub">基本知識 → 實驗過程 → 紀錄與分工 → 動手判斷 → 掃 QR 小測驗</p><!--RPT--><a class="planbtn" href="../agri-plan/">🧭 農業資源應用實習・開場</a><!--/RPT--><!--RPT--><nav class="sibs" aria-label="其他實習課">實習課：<b aria-current="page">葉脈書籤</b><a href="../agri-paper/">再生紙</a><a href="../agri-seed/">種子創作</a><a href="../agri-dye/">植物染</a></nav><!--/RPT-->
     </div>
     <div class="qr" id="qrBtn" role="button" tabindex="0" aria-label="放大 QR code"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAADgUlEQVR4Xu1cW27bMBBcxgLyKQE5gI8i3yBHKnyk3sA6ig9QQP4MIGGLmSVlJR+W6FYpXe8gMGSHYFY72jedoJKD7iVntYj4+ttw/bh+5rjjebiEiIOM6epSSQihEukawRVRuT0u4g79Z+Ge/XdK2N9pdRA97gdR7fH2XOEzAG/v2j8H98ifg+fcPxrn5VX1GF5TSK4/QjhQeTBxu3pO/axHafqBz71iDNKC3fYcRLv3XqVrdn/q/7NQmn4eXZ7P/IqoXN4GMhLwo1LTLU949Pt9NvmN3y9FUrBIfBqr0J6rQaTGgov752WU+PzErFlEdmphtu13KgjHdkMd0+fG+V1GafyK5c6Gfsqk6ylhTtm14VSa/C7PbbyIWK2LDNkSZiRZ/Rik26tK26f61/PnNSjteYP9DqInM1Nc1Sx94Z8FLzUK43own+32u4RC+bXmBQiFwRqr6GrEF9INn+3+edkfZmHr5yHGX1otjJi2auaMzyy7Nvad3xXYmq/c/ZMvNg8c6Y4kmxGT7rjO7XcJufrfer3F3xmN8/grCMdXkj3+LmNrvnL3n/wz06h5VWQJFdk3n+3+eQVy9b/1+mi/U5hlrI3pNK9S6mxDJM+vHiy/Qn+StdBYsSsZRHZDEBmDdu/sSlaiGDLExvTWz5vvv9ivyEOKvzBOemBz0uQ82a/Xv6tR2vOZ4q/dAOpfBtxUFcX4mzod7p+XUBq/1p+82qoeG5a+apOGcLAhA3qWOMlRovxZKFD/WciV37i10Mtes9Rjxfk+p4L8hXYHvHDSn7u/r/+78TRXn/PmFBNmK4evDaup/uV0yfPnf8zXPfxGhxyjLjOtqSvJ/lUcPHh9tIxc/W+9fjYrSqXvvGsVu868L+d3BbbmK3f/yC9nRQbrVTGJnsZJ5Nz7kyuQq/+t138+v5GO5lj8naYKLId9/rsGW/OVu3/KrwCbFdENJ2qTEbMw9vi7jFz9f8f66dQVa12Uw3Gg/2EHKfWE+tfq5O+QJwcuz21M9e8OEXcMPPAMWoNI3WtofzaRZBGscH3eRun6SefrcBcwWHy/zOJv598vW4HS+P36/QULuGSVXUkbJ8FT84srxclfmj7LlCeN8WNqFX6oKg+064nUsvVMlCn/ejyb/CCOZkqH/IbRbzVI1/yqYK6Kt6LdXuGp4bSfTT+Pfr/B/z/DTTw6vy7//83vbzeXTfhjz5REAAAAAElFTkSuQmCC"><span>掃我測驗</span></div>
   </header>
@@ -473,7 +477,103 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <!--RPT--><button class="tab" role="tab" id="t7" aria-selected="false"><span aria-hidden="true">📝</span> 報告與繳交</button><!--/RPT-->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -773,6 +873,8 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
   </section>
 
   <!-- ===== 5 小測驗 ===== -->
+  
+  
   
   
   

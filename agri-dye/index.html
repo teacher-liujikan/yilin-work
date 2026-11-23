@@ -540,6 +540,10 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 .tab#t7[aria-selected="true"]::after{display:none}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tab#t7:not([aria-selected="true"]){background:#3a2814;color:#ffb36b;border-color:#e0954a;box-shadow:0 2px 0 #e0954a}}
 :root[data-theme="dark"] .tab#t7:not([aria-selected="true"]){background:#3a2814;color:#ffb36b;border-color:#e0954a;box-shadow:0 2px 0 #e0954a}
+.sibs{margin-top:8px;font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}
+.sibs a,.sibs b{border:1.5px solid var(--line);border-radius:999px;padding:1px 10px;text-decoration:none;color:var(--accent);background:var(--paper);font-weight:700}
+.sibs b{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.sibs a:hover{border-color:var(--accent)}
 
 /*/RPT-CSS*/
 </style>
@@ -562,7 +566,11 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <button class="tab" role="tab" id="t3" aria-selected="false">五色尋寶專題</button>
     <button class="tab" role="tab" id="t4" aria-selected="false">動手判斷</button>
     
+    
+    
     <!--RPT--><button class="tab" role="tab" id="t7" aria-selected="false"><span aria-hidden="true">📝</span> 報告與繳交</button><!--/RPT-->
+    
+    
     
     <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
   </nav>
@@ -803,6 +811,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 
 
   <!-- ===== 5 小測驗 ===== -->
+  
   
   <!--RPT-->
 <section class="panel" id="p7" hidden>
