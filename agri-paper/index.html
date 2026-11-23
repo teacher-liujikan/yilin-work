@@ -465,6 +465,8 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 .more2{margin:0;font-size:15px;color:var(--muted)}
 .more2 a{color:var(--accent);font-weight:700}
 .rbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;font-size:15.5px}
+.planbtn{display:inline-flex;align-items:center;gap:6px;margin:4px 0 6px;padding:6px 16px;min-height:40px;border:2px solid var(--accent);border-radius:999px;background:var(--paper);color:var(--accent);font-weight:700;font-size:16px;text-decoration:none}
+.planbtn:hover,.planbtn:focus-visible{background:var(--accent);color:var(--accent-ink);outline:none}
 
 /*/RPT-CSS*/
 </style>
@@ -475,7 +477,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <div class="brand">
       <div class="eyebrow">農業資源應用・高二</div>
       <h1>再生紙：讓纖維再活一次</h1>
-      <p class="sub">認識原理 → 農業資源應用 → 動手抄紙 → 分組實驗 → 動手判斷 → 掃 QR 小測驗</p>
+      <p class="sub">認識原理 → 農業資源應用 → 動手抄紙 → 分組實驗 → 動手判斷 → 掃 QR 小測驗</p><!--RPT--><a class="planbtn" href="../agri-plan/">🧭 農業資源應用實習・開場</a><!--/RPT-->
     </div>
     <div class="qr" id="qrBtn" role="button" tabindex="0" aria-label="放大 QR code"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAADWklEQVR4Xu1cQY7bMAwk1wZ6tH/Qp2R/0Cct+rP4KfsD+xjAAQsOqTi7h7W0TQK24RwMGzEMWSNKMxQdFmrB9NJyNxHl/V8j+yf75xrfGA8LO171QdN4Zn5demLmXi9Jz4A+43EX3+j/JrQ+n0TmTgA6yEp2ehz0Ej/Mnf6g0Mtj6/Pz/gjzjwfn8kNwhkiW43Bii2mEuJ0lXxH4qsdnvkTkxHSYz0zT2In8Hj8+K/n9l/k9M/PYCdGia+3CTDSsf7u+NyHHz23Hj/JIVExSt9L0CyKLiA9y7vnw3q9Eg96w5Py8j4jjU6OWNVaJiN/ee4K0Il2O7YUm/I6ZOmL7W/Bs7XfBbACrKp2JoKkxNbu6dmH9bP3zH7yveV1VyIP6I5VWNJw0nNUazcX/pn6uQbTxoPG7kjlcd73uiY1fC2cVWbDDGb831j/3Hg/OL2jU/Aa4dKYt5+GZDtyS/O7h3ny1Pr/kryyJpdTqgquHzRqJzPpayW8FWvv/AfdjrUWuCq7XcGY5qn5GTKtdElFh/Yj2NOEB/dOEaO0pCWdErS2z2/qLJGVJTNst0dqf7dmB2yBQu621Jp0vJqmsycnvHqKNtyt9VfwvRBbsMOLXpbNL7Gjtz/bsxu+2P4j8RgGmZjlikkaSI/1RBaKNNxPHJX9FbnMtk2Xrr3um9L9ViMmvyWSVVtf5SSPek5Tpj6oQk18Xx7YX6Fkrc73bnJ35qxpE49ccL9Mw68HfQGhhEt0VxKaSTK96GLv0v7uIxu9V/VVBMcGmry7+N/VVDWLy66ln4KKabX62mjvPSaf/3UNUfmF+dC72Ssptu8FNUq6/VYjJr7HqhgizclFapqkvJjjzGzsIyO+GLYgv/teyHyiCzvxGBaLx+2LFzV6/gdLYTvARA85QdeWlG4jpgO1vwjO2v3y/gEodLcPhN6vEQpEO8pNas4Pdw2fsnxZE6x/zR6XWyguufGvfPlIp6699uBKt/dmeHXzg1xPO11lJaGpbmHP/dx/RxttWsWHQgnbPWmkRhwb2ypipDxDY0dqf7fka1j9lk99LnzdphY/MSDl3ZH/W9Gc97t2fShzCVLGM+qXKicuBhIl6kumnaBGWLsX3bk8+/7bjR7lsQP4/w437P8fzbcfzs/XnH9kTduN1AW8lAAAAAElFTkSuQmCC"><span>掃我測驗</span></div>
   </header>
@@ -486,7 +488,13 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <button class="tab" role="tab" id="t3" aria-selected="false">動手做</button>
     <button class="tab" role="tab" id="t6" aria-selected="false">分組實驗</button>
     <button class="tab" role="tab" id="t4" aria-selected="false">動手判斷</button>
+    
+    
+    
     <!--RPT--><button class="tab" role="tab" id="t7" aria-selected="false">報告與繳交</button><!--/RPT-->
+    
+    
+    
     <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
   </nav>
 
@@ -816,7 +824,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
       <div class="tblwrap"><table class="t">
         <tr><th>角色</th><th>實驗時負責</th><th>報告中負責</th></tr>
         <tr><td><b>材料長</b></td><td>選材、蒐集、洗淨晾乾、秤乾重</td><td>二、材料介紹</td></tr>
-        <tr><td><b>資料長</b></td><td>查這種廢棄物的來源、產量、目前怎麼處理、造紙相關資料</td><td>二、材料介紹（背景資料）；八、參考資料</td></tr>
+        <tr><td><b>資料長</b></td><td>查這種廢棄物的來源、產量、目前怎麼處理、造紙相關資料</td><td>二、材料介紹（背景資料）</td></tr>
         <tr><td><b>操作員</b>（1～2 人）</td><td>剪段、軟化、打漿、抄紙、做測試</td><td>四、實驗步驟</td></tr>
         <tr><td><b>紀錄員</b></td><td>每一步拍照、填測試紀錄表、整理成表格</td><td>五、實驗結果</td></tr>
         <tr><td><b>發表人</b></td><td>主持討論、整合全組內容、做簡報</td><td>一、封面；三、實驗設計；上台報告</td></tr>
@@ -832,13 +840,12 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
         <tr><td><b>五、實驗結果</b></td><td>完整的測試紀錄表，加上兩組紙並排的照片</td></tr>
         <tr><td><b>六、討論</b></td><td>兩種紙哪裡不同？可能的原因（纖維長短、軟化程度、雜質）？遇到什麼困難、下次怎麼改進？</td></tr>
         <tr><td><b>七、結論與應用</b></td><td>加料紙適合做什麼（書寫、卡片、包裝、燈罩）？這種農業廢棄物值不值得拿來造紙？</td></tr>
-        <tr><td><b>八、參考資料</b></td><td>至少 2 筆，寫出網站或單位名稱、標題、網址</td></tr>
-        <tr><td><b>九、個人心得</b></td><td>每人約 100 字：自己負責什麼、學到什麼</td></tr>
+        <tr><td><b>八、個人心得</b></td><td>每人約 100 字：自己負責什麼、學到什麼</td></tr>
       </table></div>
       <h3>評分重點（老師可自行調整）</h3>
       <div class="three">
         <div class="box c2"><b class="t">實驗操作與紀錄 30%</b>步驟正確、照片清楚、紀錄表完整</div>
-        <div class="box c3"><b class="t">報告內容 30%</b>章節齊全、資料正確、有寫參考資料</div>
+        <div class="box c3"><b class="t">報告內容 30%</b>章節齊全、資料正確</div>
         <div class="box c1"><b class="t">討論與發表 40%</b>能說明差異的原因、提出改進；分工清楚、上台說得清楚</div>
       </div>
     </div>
@@ -886,6 +893,8 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
   </section>
 
   <!-- ===== 5 小測驗 ===== -->
+  
+  
   <!--RPT-->
 <section class="panel" id="p7" hidden>
 <div class="card">
@@ -902,7 +911,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 <div class="card">
 <h2>報告要寫什麼<span class="sec">A4・約 4 頁</span></h2>
 <div class="rsec">
-<ol class="seclist"><li><b>一、組員與角色</b><small>材料長、資料長、操作員、紀錄員、發表人，寫出實際負責的工作</small></li><li><b>二、材料介紹</b><small>用了什麼廢棄物、從哪裡來、原本怎麼處理、為什麼選它、乾重</small></li><li><b>三、實驗設計</b><small>實驗問題、對照組和加料組配方、控制變因、處理路線</small></li><li><b>四、實驗步驟</b><small>至少 4 張照片：軟化、打漿、抄紙、乾燥</small></li><li><b>五、實驗結果</b><small>完整測試紀錄表＋兩組紙並排照片</small></li><li><b>六、討論</b><small>兩種紙哪裡不同、可能原因、困難與改進</small></li><li><b>七、結論與應用</b><small>適合做什麼？值不值得拿來造紙？</small></li><li><b>八、參考資料</b><small>至少 2 筆：網站或單位名稱、標題、網址</small></li><li><b>九、個人心得</b><small>每人約 100 字</small></li></ol>
+<ol class="seclist"><li><b>一、組員與角色</b><small>材料長、資料長、操作員、紀錄員、發表人，寫出實際負責的工作</small></li><li><b>二、材料介紹</b><small>用了什麼廢棄物、從哪裡來、原本怎麼處理、為什麼選它、乾重</small></li><li><b>三、實驗設計</b><small>實驗問題、對照組和加料組配方、控制變因、處理路線</small></li><li><b>四、實驗步驟</b><small>至少 4 張照片：軟化、打漿、抄紙、乾燥</small></li><li><b>五、實驗結果</b><small>完整測試紀錄表＋兩組紙並排照片</small></li><li><b>六、討論</b><small>兩種紙哪裡不同、可能原因、困難與改進</small></li><li><b>七、結論與應用</b><small>適合做什麼？值不值得拿來造紙？</small></li><li><b>八、個人心得</b><small>每人約 100 字</small></li></ol>
 <div class="rside">
 <a class="dlc" href="再生紙小組報告範本.docx" download><svg viewBox="0 0 60 70" aria-hidden="true"><path d="M6 2 h34 l14 14 v52 h-48 Z" fill="#fff" stroke="#2b579a" stroke-width="3"/><path d="M40 2 v14 h14" fill="#dbe5f4" stroke="#2b579a" stroke-width="3"/><rect x="0" y="30" width="34" height="22" rx="3" fill="#2b579a"/><text x="17" y="46" text-anchor="middle" style="fill:#fff;font-size:15px;font-weight:900;font-family:Arial">W</text></svg><span><b>下載 Word 報告範本</b><small>再生紙小組報告範本.docx</small></span></a>
 <div class="ftbl"><div><b>紙張</b><span>A4 直式，上下左右邊界 2 cm</span></div><div><b>字型</b><span>整份（含標題、表格）標楷體</span></div><div><b>字級</b><span>大標題 20 pt、章節標題 14 pt、內文 12 pt、表格與照片說明 11 pt</span></div><div><b>行距、頁碼</b><span>單行間距；頁尾置中頁碼（範本已有）</span></div><div><b>照片</b><span>手機橫拍、清楚；步驟照片高 4 cm、作品照片高 5.5 cm，鎖定長寬比，每張寫一句說明</span></div><div><b>PDF</b><span>壓縮圖片 220 ppi，檔案 20 MB 內</span></div></div>
@@ -1486,9 +1495,7 @@ const REPORTS=(function(){
     HQ("3. 遇到什麼困難？下次怎麼改進？",["哪一步最難？紙有沒有破洞、厚薄不均？","具體寫出下次要怎麼做"])+
     H("七、結論與應用",null,"回答兩件事：適合做什麼？值不值得拿來造紙？")+
     LN("加了玉米皮的紙比較厚、比較強韌，耐折和耐重都比只用廢紙的高，但表面有纖維，原子筆寫起來會卡。")+LN("適合做卡片、書籤或包裝紙。玉米皮很容易拿到又不用煮，我們覺得很值得拿來造紙。")+
-    H("八、參考資料","至少 2 筆：網站或單位名稱、標題、網址。")+
-    LN("實習課網頁「農業資源應用 再生紙」，https://teacher-liujikan.github.io/yilin-work/agri-paper/")+LN("","第 2 筆：（網站或單位名稱）〈標題〉，網址")+
-    H("九、個人心得","每人約 100 字：自己負責什麼、學到什麼。","範例只寫一句，實際每人要寫約 100 字。")+
+    H("八、個人心得","每人約 100 字：自己負責什麼、學到什麼。","範例只寫一句，實際每人要寫約 100 字。")+
     THOUGHTS([["陳○○","我負責蒐集玉米皮，才發現玉米攤每天丟掉這麼多…"],["林○○","查資料知道埔里有用茭白筍殼做紙，農業廢棄物也能變成產品…"],["黃○○","打漿的時候水太少果汁機會卡住，加到 500 cc 就順了…"],["張○○","耐重測試一枚一枚加硬幣很緊張，數字證明加料紙真的比較強…"],["吳○○","做簡報時把照片排好，上台講的時候比較不會忘記…"]]);
 
   /* ===== 蚯蚓堆肥（小組） ===== */

@@ -476,6 +476,8 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 .more2{margin:0;font-size:15px;color:var(--muted)}
 .more2 a{color:var(--accent);font-weight:700}
 .rbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;font-size:15.5px}
+.planbtn{display:inline-flex;align-items:center;gap:6px;margin:4px 0 6px;padding:6px 16px;min-height:40px;border:2px solid var(--accent);border-radius:999px;background:var(--paper);color:var(--accent);font-weight:700;font-size:16px;text-decoration:none}
+.planbtn:hover,.planbtn:focus-visible{background:var(--accent);color:var(--accent-ink);outline:none}
 
 /*/RPT-CSS*/
 </style>
@@ -486,7 +488,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <div class="brand">
       <div class="eyebrow">實習課・50 分鐘 × 3 節</div>
       <h1>押花與乾燥花</h1>
-      <p class="sub">基本知識 → 實驗過程 → 分組試驗 → 動手判斷 → 掃 QR 小測驗</p>
+      <p class="sub">基本知識 → 實驗過程 → 分組試驗 → 動手判斷 → 掃 QR 小測驗</p><!--RPT--><a class="planbtn" href="../agri-plan/">🧭 農業資源應用實習・開場</a><!--/RPT-->
       <nav class="sibs" aria-label="其他實習課">實習課：<a href="../agri-paper/">再生紙</a><a href="../agri-leaf/">葉脈書籤</a><a href="../agri-worm/">蚯蚓堆肥</a><a href="../agri-enzyme/">果皮酵素</a><b aria-current="page">押花乾燥花</b><a href="../agri-seed/">種子創作</a><a href="../agri-dye/">植物染</a></nav>
     </div>
     <div class="qr" id="qrBtn" role="button" tabindex="0" aria-label="放大 QR code"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQAAAAAefbjOAAADAElEQVR42u1cMY7cMAwcRgKutIF9wD5F+4P7svWU+4FUHiBjUpCStQgSIOli0YVxwpoNPTcaDkUL8ddX/oF/uDzIgzzoPw2qYterRgA4BcCpS3lVEQBAfyh69u4dBLIEkiSRCmA3cuwmgWQJRCL1Lx6evdsH2f/+RgIIRN4BJMXBt4g8G5RLXp69pYKqCLA18MApyIqDaLzh2VsjKM6LrUVmCU1SOcH8eUYChOS9ePbWQsRUgqbyALMEKj3orzU2YCOA6tlbQFleYAj8/e0Smq4sb84R23jb9VQdgfz81hKUqADzs8004tm7f/WpOMDW+rLXnDw2dqJgAw/niAUQQeqL54GBDf2h6U2tiENBQ0fEIjrCWKCzBW2pvhRJHkDHhmfv/p7lAcBYQOtQ0vgAsL3iMi4dEXffNRpMLtC2DrLYdvLr864jFulraHOj4RKQyhGcCk+4slyHIzgkRCoYS+t+2SOlo8QRsUT1Sdr+oVSA2bXSvQKha0zP3u2rz15ccNgOQzNMDXOvPlf0I+wqRhQTXqwp6jpiER1RgIko0L2qyYoYpyccEat0ui4Du3tVnAqOq0p1RCzAEb+YlHq0zjhCC47j6nV49tZwsbtwaO/qwTpdzhFrKUu1qMtsT0xQGQDx6nM1P6J3vq9NxFwrc7ZdWS4RtDXwqFEnMgCcYm+/xn7bvkVeV6/cs7eAH9F1xEUKygza4cAlNZwj1qg10uRHDCMKwc7JpDdTwhGBm5+zrA/acewamy5TeQCJpxAIFNQdSASQPz1767jYU+/z2MbQ31vVYTuJZ+/+EzypAET9oOQ9NABnJGpoopMbCA2oD88eFpsN72PhfXjnFHM0AejIZ949ewsEDQ9qFBypW1Iiu+Gg98U9e4s4VL2/NXVBZxd7nKrzWmOpoPpBkT1Qt470FYH0ZV8UmUf9PHurzIbjFObXKUSNQN4DmJ8tAluLJjA2z95K35jhVYL2AQ31uMcgh89rLDcbfjmVk4Gd+DYQ6oi4c5D41ws9yIM86A/XT6knLvMtQj/VAAAAAElFTkSuQmCC"><span>掃我測驗</span></div>
@@ -497,7 +499,13 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <button class="tab" role="tab" id="t2" aria-selected="false">實驗過程</button>
     <button class="tab" role="tab" id="t3" aria-selected="false">分組試驗</button>
     <button class="tab" role="tab" id="t4" aria-selected="false">動手判斷</button>
+    
+    
+    
     <!--RPT--><button class="tab" role="tab" id="t7" aria-selected="false">報告與繳交</button><!--/RPT-->
+    
+    
+    
     <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
   </nav>
 
@@ -762,6 +770,8 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 
 
   <!-- ===== 5 小測驗 ===== -->
+  
+  
   <!--RPT-->
 <section class="panel" id="p7" hidden>
 <div class="card">
@@ -1305,9 +1315,7 @@ const REPORTS=(function(){
     HQ("3. 遇到什麼困難？下次怎麼改進？",["哪一步最難？紙有沒有破洞、厚薄不均？","具體寫出下次要怎麼做"])+
     H("七、結論與應用",null,"回答兩件事：適合做什麼？值不值得拿來造紙？")+
     LN("加了玉米皮的紙比較厚、比較強韌，耐折和耐重都比只用廢紙的高，但表面有纖維，原子筆寫起來會卡。")+LN("適合做卡片、書籤或包裝紙。玉米皮很容易拿到又不用煮，我們覺得很值得拿來造紙。")+
-    H("八、參考資料","至少 2 筆：網站或單位名稱、標題、網址。")+
-    LN("實習課網頁「農業資源應用 再生紙」，https://teacher-liujikan.github.io/yilin-work/agri-paper/")+LN("","第 2 筆：（網站或單位名稱）〈標題〉，網址")+
-    H("九、個人心得","每人約 100 字：自己負責什麼、學到什麼。","範例只寫一句，實際每人要寫約 100 字。")+
+    H("八、個人心得","每人約 100 字：自己負責什麼、學到什麼。","範例只寫一句，實際每人要寫約 100 字。")+
     THOUGHTS([["陳○○","我負責蒐集玉米皮，才發現玉米攤每天丟掉這麼多…"],["林○○","查資料知道埔里有用茭白筍殼做紙，農業廢棄物也能變成產品…"],["黃○○","打漿的時候水太少果汁機會卡住，加到 500 cc 就順了…"],["張○○","耐重測試一枚一枚加硬幣很緊張，數字證明加料紙真的比較強…"],["吳○○","做簡報時把照片排好，上台講的時候比較不會忘記…"]]);
 
   /* ===== 蚯蚓堆肥（小組） ===== */

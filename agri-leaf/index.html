@@ -429,6 +429,8 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 .more2{margin:0;font-size:15px;color:var(--muted)}
 .more2 a{color:var(--accent);font-weight:700}
 .rbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;font-size:15.5px}
+.planbtn{display:inline-flex;align-items:center;gap:6px;margin:4px 0 6px;padding:6px 16px;min-height:40px;border:2px solid var(--accent);border-radius:999px;background:var(--paper);color:var(--accent);font-weight:700;font-size:16px;text-decoration:none}
+.planbtn:hover,.planbtn:focus-visible{background:var(--accent);color:var(--accent-ink);outline:none}
 
 /*/RPT-CSS*/
 </style>
@@ -439,7 +441,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <div class="brand">
       <div class="eyebrow">實習課・50 分鐘 × 3 節</div>
       <h1>葉脈標本護貝書籤</h1>
-      <p class="sub">基本知識 → 實驗過程 → 紀錄與分工 → 動手判斷 → 掃 QR 小測驗</p>
+      <p class="sub">基本知識 → 實驗過程 → 紀錄與分工 → 動手判斷 → 掃 QR 小測驗</p><!--RPT--><a class="planbtn" href="../agri-plan/">🧭 農業資源應用實習・開場</a><!--/RPT-->
     </div>
     <div class="qr" id="qrBtn" role="button" tabindex="0" aria-label="放大 QR code"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAADgUlEQVR4Xu1cW27bMBBcxgLyKQE5gI8i3yBHKnyk3sA6ig9QQP4MIGGLmSVlJR+W6FYpXe8gMGSHYFY72jedoJKD7iVntYj4+ttw/bh+5rjjebiEiIOM6epSSQihEukawRVRuT0u4g79Z+Ge/XdK2N9pdRA97gdR7fH2XOEzAG/v2j8H98ifg+fcPxrn5VX1GF5TSK4/QjhQeTBxu3pO/axHafqBz71iDNKC3fYcRLv3XqVrdn/q/7NQmn4eXZ7P/IqoXN4GMhLwo1LTLU949Pt9NvmN3y9FUrBIfBqr0J6rQaTGgov752WU+PzErFlEdmphtu13KgjHdkMd0+fG+V1GafyK5c6Gfsqk6ylhTtm14VSa/C7PbbyIWK2LDNkSZiRZ/Rik26tK26f61/PnNSjteYP9DqInM1Nc1Sx94Z8FLzUK43own+32u4RC+bXmBQiFwRqr6GrEF9INn+3+edkfZmHr5yHGX1otjJi2auaMzyy7Nvad3xXYmq/c/ZMvNg8c6Y4kmxGT7rjO7XcJufrfer3F3xmN8/grCMdXkj3+LmNrvnL3n/wz06h5VWQJFdk3n+3+eQVy9b/1+mi/U5hlrI3pNK9S6mxDJM+vHiy/Qn+StdBYsSsZRHZDEBmDdu/sSlaiGDLExvTWz5vvv9ivyEOKvzBOemBz0uQ82a/Xv6tR2vOZ4q/dAOpfBtxUFcX4mzod7p+XUBq/1p+82qoeG5a+apOGcLAhA3qWOMlRovxZKFD/WciV37i10Mtes9Rjxfk+p4L8hXYHvHDSn7u/r/+78TRXn/PmFBNmK4evDaup/uV0yfPnf8zXPfxGhxyjLjOtqSvJ/lUcPHh9tIxc/W+9fjYrSqXvvGsVu868L+d3BbbmK3f/yC9nRQbrVTGJnsZJ5Nz7kyuQq/+t138+v5GO5lj8naYKLId9/rsGW/OVu3/KrwCbFdENJ2qTEbMw9vi7jFz9f8f66dQVa12Uw3Gg/2EHKfWE+tfq5O+QJwcuz21M9e8OEXcMPPAMWoNI3WtofzaRZBGscH3eRun6SefrcBcwWHy/zOJv598vW4HS+P36/QULuGSVXUkbJ8FT84srxclfmj7LlCeN8WNqFX6oKg+064nUsvVMlCn/ejyb/CCOZkqH/IbRbzVI1/yqYK6Kt6LdXuGp4bSfTT+Pfr/B/z/DTTw6vy7//83vbzeXTfhjz5REAAAAAElFTkSuQmCC"><span>掃我測驗</span></div>
   </header>
@@ -449,7 +451,13 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <button class="tab" role="tab" id="t2" aria-selected="false">實驗過程</button>
     <button class="tab" role="tab" id="t3" aria-selected="false">紀錄與分工</button>
     <button class="tab" role="tab" id="t4" aria-selected="false">動手判斷</button>
+    
+    
+    
     <!--RPT--><button class="tab" role="tab" id="t7" aria-selected="false">報告與繳交</button><!--/RPT-->
+    
+    
+    
     <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
   </nav>
 
@@ -734,6 +742,8 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
   </section>
 
   <!-- ===== 5 小測驗 ===== -->
+  
+  
   <!--RPT-->
 <section class="panel" id="p7" hidden>
 <div class="card">
@@ -1322,9 +1332,7 @@ const REPORTS=(function(){
     HQ("3. 遇到什麼困難？下次怎麼改進？",["哪一步最難？紙有沒有破洞、厚薄不均？","具體寫出下次要怎麼做"])+
     H("七、結論與應用",null,"回答兩件事：適合做什麼？值不值得拿來造紙？")+
     LN("加了玉米皮的紙比較厚、比較強韌，耐折和耐重都比只用廢紙的高，但表面有纖維，原子筆寫起來會卡。")+LN("適合做卡片、書籤或包裝紙。玉米皮很容易拿到又不用煮，我們覺得很值得拿來造紙。")+
-    H("八、參考資料","至少 2 筆：網站或單位名稱、標題、網址。")+
-    LN("實習課網頁「農業資源應用 再生紙」，https://teacher-liujikan.github.io/yilin-work/agri-paper/")+LN("","第 2 筆：（網站或單位名稱）〈標題〉，網址")+
-    H("九、個人心得","每人約 100 字：自己負責什麼、學到什麼。","範例只寫一句，實際每人要寫約 100 字。")+
+    H("八、個人心得","每人約 100 字：自己負責什麼、學到什麼。","範例只寫一句，實際每人要寫約 100 字。")+
     THOUGHTS([["陳○○","我負責蒐集玉米皮，才發現玉米攤每天丟掉這麼多…"],["林○○","查資料知道埔里有用茭白筍殼做紙，農業廢棄物也能變成產品…"],["黃○○","打漿的時候水太少果汁機會卡住，加到 500 cc 就順了…"],["張○○","耐重測試一枚一枚加硬幣很緊張，數字證明加料紙真的比較強…"],["吳○○","做簡報時把照片排好，上台講的時候比較不會忘記…"]]);
 
   /* ===== 蚯蚓堆肥（小組） ===== */
