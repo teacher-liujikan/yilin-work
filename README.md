@@ -25,6 +25,7 @@
 ## 規則
 
 - 每個網頁放在自己的資料夾，檔名用 `index.html`，網址就是 `https://teacher-liujikan.github.io/yilin-work/<資料夾>/`。
-- 新增網頁時，同時在根目錄的 `index.html` 加一筆連結。
+- 首頁是可展開的資料夾分類：新增網頁時，在根目錄 `index.html` 的 `PAGES` 清單加一筆（id、title、desc），並在 `folders.json` 把 id 放進某個資料夾（沒放的會自動出現在「未分類」）。
+- 老師可在首頁按「整理分類」自行調整（先存在該裝置），按「發布給大家」複製設定碼給 Claude，或下載 `folders.json` 上傳取代即可公開。
 - 每個網頁的 localStorage KEY 要不一樣，避免作答紀錄互相覆蓋。
 - 網頁裡 QR code 的備用網址要改成該網頁自己的網址。

@@ -6,40 +6,303 @@
 <title>易霖的教學網頁</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;700&display=swap">
 <style>
-:root{--bg:#f2f4ee;--card:#fff;--ink:#1b2a21;--muted:#5d6b62;--line:#d4dcd2;--accent:#2d6a4c}
-@media (prefers-color-scheme: dark){:root{--bg:#111713;--card:#19211c;--ink:#e4ebe5;--muted:#9aa89e;--line:#2d3a31;--accent:#7cc39d;color-scheme:dark}}
+:root{--bg:#f2f4ee;--card:#fff;--ink:#1b2a21;--muted:#5d6b62;--line:#d4dcd2;--accent:#2d6a4c;--accent-ink:#fff;--soft:#e4efe7;--folder:#e9b949;--folder2:#d39e2a;--warn:#fff3cd;--warnline:#e3c15a;--bad:#b4362c}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#111713;--card:#19211c;--ink:#e4ebe5;--muted:#9aa89e;--line:#2d3a31;--accent:#7cc39d;--accent-ink:#0f1a13;--soft:#1f2e25;--folder:#c99a32;--folder2:#a87e22;--warn:#3a321a;--warnline:#8a7430;--bad:#ff8f84;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#111713;--card:#19211c;--ink:#e4ebe5;--muted:#9aa89e;--line:#2d3a31;--accent:#7cc39d;--accent-ink:#0f1a13;--soft:#1f2e25;--folder:#c99a32;--folder2:#a87e22;--warn:#3a321a;--warnline:#8a7430;--bad:#ff8f84;color-scheme:dark}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.7}
-.wrap{max-width:720px;margin:0 auto;padding:32px max(16px,env(safe-area-inset-right,0px)) 60px max(16px,env(safe-area-inset-left,0px))}
+.wrap{max-width:760px;margin:0 auto;padding:32px max(16px,env(safe-area-inset-right,0px)) 60px max(16px,env(safe-area-inset-left,0px))}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
 h1{font-family:"Huninn","Noto Sans TC",sans-serif;font-weight:400;font-size:clamp(28px,6vw,36px);margin:0 0 4px}
-p.lead{color:var(--muted);margin:0 0 24px}
-h2{font-size:15px;color:var(--muted);letter-spacing:.06em;margin:24px 0 8px}
-a.item{display:block;text-decoration:none;color:inherit;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:8px}
+p.lead{color:var(--muted);margin:0 0 16px}
+.btn{font:inherit;font-weight:700;font-size:15px;border:2px solid var(--accent);background:var(--card);color:var(--accent);border-radius:999px;padding:6px 16px;cursor:pointer;min-height:40px}
+.btn.on{background:var(--accent);color:var(--accent-ink)}
+.btn.sm{font-size:13px;min-height:32px;padding:2px 12px}
+.btn.danger{border-color:var(--bad);color:var(--bad)}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 14px}
+.tools input{font:inherit;font-size:15px;flex:1;min-width:180px;border:1.5px solid var(--line);border-radius:999px;padding:7px 14px;background:var(--card);color:var(--ink)}
+.notice{background:var(--warn);border:1.5px solid var(--warnline);border-radius:12px;padding:10px 14px;margin:0 0 14px;font-size:15px}
+.notice .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.folder{background:var(--card);border:1.5px solid var(--line);border-radius:16px;margin-bottom:12px;overflow:hidden}
+.fhead{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;user-select:none;min-height:56px}
+.fhead:hover{background:var(--soft)}
+.ficon{width:30px;height:24px;flex:none;position:relative}
+.ficon::before{content:"";position:absolute;left:0;top:0;width:13px;height:7px;background:var(--folder2);border-radius:3px 3px 0 0}
+.ficon::after{content:"";position:absolute;left:0;top:4px;width:30px;height:20px;background:var(--folder);border-radius:3px 4px 4px 4px;transition:transform .2s;transform-origin:bottom}
+.folder.open .ficon::after{transform:skewX(-10deg) scaleY(.85)}
+.fname{font-size:19px;font-weight:700;flex:1;min-width:0}
+.fcount{font-size:13px;color:var(--muted);background:var(--soft);border-radius:999px;padding:1px 10px;flex:none}
+.chev{color:var(--muted);transition:transform .2s;flex:none;font-size:18px}
+.folder.open .chev{transform:rotate(90deg)}
+.fbody{padding:2px 12px 10px}
+.folder:not(.open) .fbody{display:none}
+a.item{display:block;text-decoration:none;color:inherit;background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;margin:6px 0}
 a.item:hover,a.item:focus-visible{border-color:var(--accent);outline:none}
-a.item b{display:block;font-size:18px}
-a.item small{color:var(--muted);font-size:14px}
+a.item b{display:block;font-size:17px}
+a.item small{color:var(--muted);font-size:14px;display:block;line-height:1.55}
+.empty{color:var(--muted);font-size:14px;padding:6px 4px}
+/* 整理模式 */
+.edit .fhead{cursor:default}
+.ftools{display:none;gap:4px;flex:none}
+.edit .ftools{display:flex}
+.edit .chev{display:none}
+.fname input{font:inherit;font-weight:700;width:100%;border:1.5px dashed var(--accent);border-radius:8px;padding:2px 8px;background:var(--card);color:var(--ink)}
+.erow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:8px 10px;margin:6px 0}
+.erow b{font-size:16px;display:block;line-height:1.4}
+.erow small{color:var(--muted);font-size:12.5px}
+.ectl{display:flex;gap:4px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.ectl select{font:inherit;font-size:14px;border:1.5px solid var(--accent);border-radius:8px;padding:4px 6px;background:var(--card);color:var(--ink);max-width:180px}
+.ib{font:inherit;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;width:34px;height:34px;cursor:pointer;font-size:15px}
+.ib:hover{border-color:var(--accent)}
+.ib:disabled{opacity:.35;cursor:default}
+.editbar{position:sticky;top:0;z-index:5;background:var(--accent);color:var(--accent-ink);border-radius:12px;padding:10px 14px;margin:0 0 14px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.editbar b{flex:1;min-width:160px}
+.editbar .btn{border-color:var(--accent-ink);background:transparent;color:var(--accent-ink)}
+.editbar .btn.solid{background:var(--accent-ink);color:var(--accent)}
+.pub{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:12px 16px;margin:0 0 14px;font-size:15px}
+.pub ol{margin:6px 0;padding-left:1.4em}
+.pub textarea{width:100%;height:90px;font:13px/1.4 ui-monospace,Menlo,Consolas,monospace;border:1.5px solid var(--line);border-radius:8px;padding:6px;background:var(--bg);color:var(--ink)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 18px;border-radius:999px;font-size:15px;z-index:20}
+footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
+@media (max-width:560px){.erow{grid-template-columns:1fr}.ectl{justify-content:flex-start}.edit .fhead{flex-wrap:wrap}.edit .fname{flex:1 1 calc(100% - 90px)}.edit .ftools{margin-left:40px}.editbar b{font-size:13.5px;font-weight:500;flex-basis:100%}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>易霖的教學網頁</h1>
-  <p class="lead">高職園藝・農業群教學用的線上測驗和檢討網頁。</p>
-  <h2>115 學年度第一學期</h2>
-  <a class="item" href="agri-plan/"><b>實習課開場：課程規劃</b><small>葉脈書籤 11/26 →（12/3 期中考）→ 再生紙 12/10 → 種子小精靈 12/17 → 植物染 1/14；每週排程、回家作業、報告繳交日一次看清楚；報告 Word 範本、格式規定（字型、字級、照片規格）＋三份寫好的範例</small></a>
-  <a class="item" href="agri-quest/"><b>農業概論 闖關測驗</b><small>第一次聯合模擬考 50 題・5 關，錯題回收全對才過關</small></a>
-  <a class="item" href="agri-ch3/"><b>農業概論 第三章 作物生產 總複習</b><small>構造、繁殖、栽培管理、設施重點＋動手判斷＋QR 小測驗</small></a>
-  <a class="item" href="agri-ch4/"><b>農業概論 第四章 土壤肥料 總複習</b><small>上課帶著複習重點、動手判斷、計算練習，最後掃 QR code 做小測驗</small></a>
-  <a class="item" href="agri-ch5/"><b>農業概論 第五章 植物保護 總複習</b><small>病害、蟲害草害、防治、農藥、其他危害＋動手判斷＋稀釋計算＋QR 小測驗</small></a>
-  <a class="item" href="agri-paper/"><b>農業資源應用 再生紙</b><small>原理、農業廢棄物造紙、動畫步驟帶著抄紙，最後掃 QR code 做小測驗</small></a>
-  <a class="item" href="agri-leaf/"><b>實習課 葉脈標本護貝書籤</b><small>三節課：煮軟、刷葉肉、漂白的原理與動畫步驟，分組比較葉子種類和煮的時間，最後掃 QR code 做小測驗</small></a>
-  <a class="item" href="agri-worm/"><b>實習課 蚯蚓堆肥</b><small>三節課：蚯蚓構造、廚餘變蚓糞、架蚯蚓箱，分組做「蚯蚓選哪一邊」選擇實驗，最後掃 QR code 做小測驗</small></a>
-  <a class="item" href="agri-enzyme/"><b>實習課 果皮酵素清潔劑</b><small>三節課：1：3：10 配方、發酵三階段、配方與稀釋計算，分組比較清潔效果和果皮種類，最後掃 QR code 做小測驗</small></a>
-  <a class="item" href="agri-flower/"><b>實習課 押花與乾燥花</b><small>三節課：快速脫水與保色原理、重物／微波／熨斗／矽膠四種方法，分組比較哪種最保色，最後掃 QR code 做小測驗</small></a>
-  <a class="item" href="agri-seed/"><b>實習課 種子創作：種子小精靈</b><small>三節課：蒐集校園種子、防蟲處理、種子構造與傳播，做成種子小精靈桌面裝飾或名片夾，最後畫廊走讀分享、掃 QR code 做小測驗</small></a>
-  <a class="item" href="agri-dye/"><b>植物染與藍染（期末專題）</b><small>植物與顏色、四大染色方式、明礬媒染、藍染原理與三峽藍染、藍染方巾步驟；期末「五色尋寶」分組專題與小組報告範本，最後掃 QR code 做小測驗</small></a>
-  <a class="item" href="agri-career/"><b>職業試探 園藝職人接案中！</b><small>第二節課：認識園藝職人、職人影片、分組抽情境卡接案、我是哪種園藝人自評＋全班投票，最後掃 QR code 做小測驗</small></a>
-  <a class="item" href="hort-exam/"><b>園藝科教甄＋技藝競賽 複習本</b><small>三個入口：歷屆考題重點（95–114 年 17 章筆記、科別測驗、名詞閃卡）＋園藝術語單字測驗（437 詞、錯題本）＋技藝競賽造園考題重點（100–114 年 16 章、分類測驗、錯誤選項卡）</small></a>
-  <a class="item" href="agri-review/"><b>農業概論 模擬考檢討</b><small>拿改好的考卷，10 題一大題自己檢討</small></a>
+<div class="wrap" id="app">
+  <header>
+    <div>
+      <h1>易霖的教學網頁</h1>
+      <p class="lead">高職園藝・農業群教學用的線上測驗和檢討網頁。</p>
+    </div>
+    <button class="btn" id="editBtn" type="button">✏️ 整理分類</button>
+  </header>
+
+  <div class="notice" id="localNote" hidden>
+    這台裝置正在使用<b>自己整理的分類</b>（還沒發布，其他人看到的仍是原本的分類）。
+    <div class="row"><button class="btn sm" id="notePub" type="button">怎麼發布給大家？</button><button class="btn sm danger" id="noteReset" type="button">還原成網站分類</button></div>
+  </div>
+
+  <div class="editbar" id="editBar" hidden>
+    <b>整理模式：選擇每個網頁要放的資料夾、改資料夾名稱與順序，會自動存在這台裝置。</b>
+    <button class="btn sm" id="addFolder" type="button">＋ 新增資料夾</button>
+    <button class="btn sm" id="pubBtn" type="button">發布給大家</button>
+    <button class="btn sm solid" id="doneBtn" type="button">完成</button>
+  </div>
+
+  <div class="pub" id="pubBox" hidden>
+    <b>把分類發布給所有人看（二選一）</b>
+    <ol>
+      <li><b>交給 Claude：</b>按「複製設定碼」，貼給 Claude 說「幫我發布首頁分類」。</li>
+      <li><b>自己上傳：</b>按「下載 folders.json」，到 GitHub 的 <code>teacher-liujikan/yilin-work</code> → Add file → Upload files，上傳這個檔案取代舊的，按 Commit changes。約 1～2 分鐘後所有人都會看到。</li>
+    </ol>
+    <div class="row" style="display:flex;gap:8px;flex-wrap:wrap;margin:6px 0"><button class="btn sm" id="copyBtn" type="button">複製設定碼</button><button class="btn sm" id="dlBtn" type="button">下載 folders.json</button><button class="btn sm" id="pubClose" type="button">關閉</button></div>
+    <textarea id="pubText" readonly aria-label="分類設定碼"></textarea>
+  </div>
+
+  <div class="tools" id="viewTools">
+    <input id="q" type="search" placeholder="搜尋網頁名稱…" aria-label="搜尋網頁">
+    <button class="btn sm" id="openAll" type="button">全部展開</button>
+    <button class="btn sm" id="closeAll" type="button">全部收合</button>
+  </div>
+
+  <div id="folders"></div>
+  <footer>點資料夾可以展開或收合。</footer>
 </div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+/* ================= 網頁清單（新增網頁時在這裡加一筆） ================= */
+const PAGES = [
+ {
+  "id": "agri-plan",
+  "title": "實習課開場：課程規劃",
+  "desc": "葉脈書籤 11/26 →（12/3 期中考）→ 再生紙 12/10 → 種子小精靈 12/17 → 植物染 1/14；每週排程、回家作業、報告繳交日一次看清楚；報告 Word 範本、格式規定（字型、字級、照片規格）＋三份寫好的範例"
+ },
+ {
+  "id": "agri-quest",
+  "title": "農業概論 闖關測驗",
+  "desc": "第一次聯合模擬考 50 題・5 關，錯題回收全對才過關"
+ },
+ {
+  "id": "agri-ch3",
+  "title": "農業概論 第三章 作物生產 總複習",
+  "desc": "構造、繁殖、栽培管理、設施重點＋動手判斷＋QR 小測驗"
+ },
+ {
+  "id": "agri-ch4",
+  "title": "農業概論 第四章 土壤肥料 總複習",
+  "desc": "上課帶著複習重點、動手判斷、計算練習，最後掃 QR code 做小測驗"
+ },
+ {
+  "id": "agri-ch5",
+  "title": "農業概論 第五章 植物保護 總複習",
+  "desc": "病害、蟲害草害、防治、農藥、其他危害＋動手判斷＋稀釋計算＋QR 小測驗"
+ },
+ {
+  "id": "agri-paper",
+  "title": "農業資源應用 再生紙",
+  "desc": "原理、農業廢棄物造紙、動畫步驟帶著抄紙，最後掃 QR code 做小測驗"
+ },
+ {
+  "id": "agri-leaf",
+  "title": "實習課 葉脈標本護貝書籤",
+  "desc": "三節課：煮軟、刷葉肉、漂白的原理與動畫步驟，分組比較葉子種類和煮的時間，最後掃 QR code 做小測驗"
+ },
+ {
+  "id": "agri-worm",
+  "title": "實習課 蚯蚓堆肥",
+  "desc": "三節課：蚯蚓構造、廚餘變蚓糞、架蚯蚓箱，分組做「蚯蚓選哪一邊」選擇實驗，最後掃 QR code 做小測驗"
+ },
+ {
+  "id": "agri-enzyme",
+  "title": "實習課 果皮酵素清潔劑",
+  "desc": "三節課：1：3：10 配方、發酵三階段、配方與稀釋計算，分組比較清潔效果和果皮種類，最後掃 QR code 做小測驗"
+ },
+ {
+  "id": "agri-flower",
+  "title": "實習課 押花與乾燥花",
+  "desc": "三節課：快速脫水與保色原理、重物／微波／熨斗／矽膠四種方法，分組比較哪種最保色，最後掃 QR code 做小測驗"
+ },
+ {
+  "id": "agri-seed",
+  "title": "實習課 種子創作：種子小精靈",
+  "desc": "三節課：蒐集校園種子、防蟲處理、種子構造與傳播，做成種子小精靈桌面裝飾或名片夾，最後畫廊走讀分享、掃 QR code 做小測驗"
+ },
+ {
+  "id": "agri-dye",
+  "title": "植物染與藍染（期末專題）",
+  "desc": "植物與顏色、四大染色方式、明礬媒染、藍染原理與三峽藍染、藍染方巾步驟；期末「五色尋寶」分組專題與小組報告範本，最後掃 QR code 做小測驗"
+ },
+ {
+  "id": "agri-career",
+  "title": "職業試探 園藝職人接案中！",
+  "desc": "第二節課：認識園藝職人、職人影片、分組抽情境卡接案、我是哪種園藝人自評＋全班投票，最後掃 QR code 做小測驗"
+ },
+ {
+  "id": "hort-exam",
+  "title": "園藝科教甄＋技藝競賽 複習本",
+  "desc": "三個入口：歷屆考題重點（95–114 年 17 章筆記、科別測驗、名詞閃卡）＋園藝術語單字測驗（437 詞、錯題本）＋技藝競賽造園考題重點（100–114 年 16 章、分類測驗、錯誤選項卡）"
+ },
+ {
+  "id": "agri-review",
+  "title": "農業概論 模擬考檢討",
+  "desc": "拿改好的考卷，10 題一大題自己檢討"
+ }
+];
+
+/* ================= 預設分類（和 folders.json 相同；讀不到檔案時使用） ================= */
+const DEFAULT_FOLDERS = {"folders": [{"name": "115-1 農業資源應用實習", "open": true, "items": ["agri-plan", "agri-leaf", "agri-paper", "agri-seed", "agri-dye"]}, {"name": "農業概論 總複習與測驗", "open": false, "items": ["agri-ch3", "agri-ch4", "agri-ch5", "agri-quest", "agri-review"]}, {"name": "實習課備用單元", "open": false, "items": ["agri-worm", "agri-enzyme", "agri-flower"]}, {"name": "職業試探", "open": false, "items": ["agri-career"]}, {"name": "教師自修", "open": false, "items": ["hort-exam"]}]};
+
+(function(){
+const $=id=>document.getElementById(id);
+const LS_KEY="yilin-home-folders-v1", OPEN_KEY="yilin-home-open-v1";
+const byId=Object.fromEntries(PAGES.map(p=>[p.id,p]));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const clone=o=>JSON.parse(JSON.stringify(o));
+const store={get(k){try{return localStorage.getItem(k);}catch(e){return null;}},set(k,v){try{localStorage.setItem(k,v);}catch(e){}},del(k){try{localStorage.removeItem(k);}catch(e){}}};
+
+let site=clone(DEFAULT_FOLDERS), data=null, editing=false, openState={};
+try{ openState=JSON.parse(store.get(OPEN_KEY)||"{}"); }catch(e){ openState={}; }
+
+function normalize(d){
+  const out={folders:(d&&Array.isArray(d.folders)?d.folders:[]).map(f=>({name:String(f.name||"未命名資料夾"),open:!!f.open,items:(f.items||[]).filter(id=>byId[id])}))};
+  const seen=new Set(); out.folders.forEach(f=>{ f.items=f.items.filter(id=>!seen.has(id)&&seen.add(id)); });
+  const rest=PAGES.map(p=>p.id).filter(id=>!seen.has(id));
+  if(rest.length){ let u=out.folders.find(f=>f.name==="未分類"); if(!u){ u={name:"未分類",open:true,items:[]}; out.folders.push(u); } u.items.push(...rest); }
+  return out;
+}
+const same=(a,b)=>JSON.stringify(normalize(a))===JSON.stringify(normalize(b));
+function useLocal(){ try{ const l=store.get(LS_KEY); return l?JSON.parse(l):null; }catch(e){ return null; } }
+function save(){ store.set(LS_KEY,JSON.stringify(data)); updateNote(); }
+function updateNote(){ $("localNote").hidden = editing || !store.get(LS_KEY) || same(data,site); }
+function isOpen(f,i){ const k=f.name; return k in openState ? openState[k] : f.open; }
+function toast(t){ const e=$("toast"); e.textContent=t; e.hidden=false; clearTimeout(toast.t); toast.t=setTimeout(()=>e.hidden=true,1800); }
+
+function render(){
+  const q=$("q").value.trim().toLowerCase();
+  const box=$("folders");
+  box.innerHTML=data.folders.map((f,fi)=>{
+    const items=f.items.map(id=>byId[id]).filter(Boolean);
+    const shown=q?items.filter(p=>(p.title+p.desc).toLowerCase().includes(q)):items;
+    if(q&&!shown.length&&!editing) return "";
+    const open=editing||q?true:isOpen(f,fi);
+    let body;
+    if(editing){
+      body=items.length?items.map((p,ii)=>`<div class="erow"><div><b>${esc(p.title)}</b><small>${esc(p.id)}/</small></div><div class="ectl">
+        <button class="ib" data-act="up" data-f="${fi}" data-i="${ii}" ${ii===0?"disabled":""} aria-label="上移">↑</button>
+        <button class="ib" data-act="down" data-f="${fi}" data-i="${ii}" ${ii===items.length-1?"disabled":""} aria-label="下移">↓</button>
+        <select data-act="move" data-f="${fi}" data-i="${ii}" aria-label="移到資料夾">${data.folders.map((g,gi)=>`<option value="${gi}" ${gi===fi?"selected":""}>📁 ${esc(g.name)}</option>`).join("")}</select></div></div>`).join("")
+        :`<div class="empty">（空資料夾）</div>`;
+    } else {
+      body=shown.length?shown.map(p=>`<a class="item" href="${esc(p.id)}/"><b>${esc(p.title)}</b><small>${esc(p.desc)}</small></a>`).join(""):`<div class="empty">（這個資料夾還沒有網頁）</div>`;
+    }
+    const head= editing
+      ? `<span class="ficon"></span><span class="fname"><input value="${esc(f.name)}" data-act="rename" data-f="${fi}" aria-label="資料夾名稱"></span><span class="fcount">${items.length}</span>
+         <span class="ftools"><button class="ib" data-act="fup" data-f="${fi}" ${fi===0?"disabled":""} aria-label="資料夾上移">↑</button><button class="ib" data-act="fdown" data-f="${fi}" ${fi===data.folders.length-1?"disabled":""} aria-label="資料夾下移">↓</button><button class="ib" data-act="fdel" data-f="${fi}" aria-label="刪除資料夾" title="刪除資料夾（要先清空）">🗑</button></span>`
+      : `<span class="ficon"></span><span class="fname">${esc(f.name)}</span><span class="fcount">${q?shown.length+" / ":""}${items.length}</span><span class="chev">›</span>`;
+    return `<section class="folder${open?" open":""}" data-f="${fi}"><div class="fhead" ${editing?"":`role="button" tabindex="0" aria-expanded="${open}"`} data-act="toggle" data-f="${fi}">${head}</div><div class="fbody">${body}</div></section>`;
+  }).join("") || `<div class="empty">找不到符合的網頁。</div>`;
+}
+
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-act]"); if(!t) return;
+  const act=t.dataset.act, fi=+t.dataset.f, ii=+t.dataset.i;
+  if(act==="toggle"){ if(editing||$("q").value) return; const f=data.folders[fi]; openState[f.name]=!isOpen(f,fi); store.set(OPEN_KEY,JSON.stringify(openState)); render(); return; }
+  if(!editing) return;
+  const F=data.folders;
+  if(act==="up"||act==="down"){ const a=F[fi].items, j=ii+(act==="up"?-1:1); [a[ii],a[j]]=[a[j],a[ii]]; }
+  else if(act==="fup"||act==="fdown"){ const j=fi+(act==="fup"?-1:1); [F[fi],F[j]]=[F[j],F[fi]]; }
+  else if(act==="fdel"){ if(F[fi].items.length){ toast("資料夾裡還有網頁，先把網頁移到別的資料夾"); return; } F.splice(fi,1); }
+  else return;
+  save(); render();
+});
+document.addEventListener("keydown",e=>{ const t=e.target.closest('.fhead[role="button"]'); if(t&&(e.key==="Enter"||e.key===" ")){ e.preventDefault(); t.click(); } });
+document.addEventListener("change",e=>{
+  const t=e.target; if(!editing||t.dataset.act!=="move") return;
+  const fi=+t.dataset.f, ii=+t.dataset.i, to=+t.value; if(to===fi) return;
+  const [id]=data.folders[fi].items.splice(ii,1); data.folders[to].items.push(id); save(); render();
+  toast(`已移到「${data.folders[to].name}」`);
+});
+document.addEventListener("input",e=>{
+  const t=e.target; if(!editing||t.dataset.act!=="rename") return;
+  const f=data.folders[+t.dataset.f], old=f.name; f.name=t.value||"未命名資料夾";
+  if(old in openState){ openState[f.name]=openState[old]; delete openState[old]; store.set(OPEN_KEY,JSON.stringify(openState)); }
+  save();
+  document.querySelectorAll(".ectl select").forEach(sel=>{ const o=sel.options[+t.dataset.f]; if(o) o.textContent="📁 "+f.name; });
+});
+
+function setEdit(on){
+  editing=on; document.body.classList.toggle("edit",on);
+  $("editBar").hidden=!on; $("viewTools").hidden=on; $("editBtn").classList.toggle("on",on); $("editBtn").textContent=on?"✏️ 整理中…":"✏️ 整理分類";
+  if(!on) $("pubBox").hidden=true;
+  if(on) $("q").value="";
+  updateNote(); render();
+}
+$("editBtn").onclick=()=>setEdit(!editing);
+$("doneBtn").onclick=()=>setEdit(false);
+$("addFolder").onclick=()=>{ let n=1, name; do{ name="新資料夾"+(n>1?" "+n:""); n++; }while(data.folders.some(f=>f.name===name)); data.folders.push({name,open:true,items:[]}); save(); render(); const inp=document.querySelectorAll('[data-act="rename"]'); const last=inp[inp.length-1]; if(last){ last.focus(); last.select(); } };
+function exportText(){ return JSON.stringify({folders:data.folders.map(f=>({name:f.name,open:isOpen(f),items:f.items}))},null,2); }
+function showPub(){ $("pubText").value=exportText(); $("pubBox").hidden=false; $("pubBox").scrollIntoView({behavior:"smooth",block:"nearest"}); }
+$("pubBtn").onclick=showPub;
+$("notePub").onclick=()=>{ setEdit(true); showPub(); };
+$("pubClose").onclick=()=>$("pubBox").hidden=true;
+$("copyBtn").onclick=async()=>{ const t=exportText(); $("pubText").value=t; try{ await navigator.clipboard.writeText(t); toast("已複製設定碼"); }catch(e){ $("pubText").select(); document.execCommand&&document.execCommand("copy"); toast("已選取，請按 Ctrl+C 複製"); } };
+$("dlBtn").onclick=()=>{ const b=new Blob([exportText()+"\n"],{type:"application/json"}); const a=document.createElement("a"); a.href=URL.createObjectURL(b); a.download="folders.json"; document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(a.href); a.remove();},500); };
+$("noteReset").onclick=()=>{ if(!confirm("要清除這台裝置的自訂分類，還原成網站上的分類嗎？")) return; store.del(LS_KEY); data=normalize(site); updateNote(); render(); toast("已還原"); };
+$("q").oninput=render;
+$("openAll").onclick=()=>{ data.folders.forEach(f=>openState[f.name]=true); store.set(OPEN_KEY,JSON.stringify(openState)); render(); };
+$("closeAll").onclick=()=>{ data.folders.forEach(f=>openState[f.name]=false); store.set(OPEN_KEY,JSON.stringify(openState)); render(); };
+
+function boot(siteData){
+  site=normalize(siteData||DEFAULT_FOLDERS);
+  const l=useLocal();
+  data=normalize(l||site);
+  updateNote(); render();
+}
+boot(DEFAULT_FOLDERS);
+fetch("folders.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{ if(j&&j.folders) boot(j); }).catch(()=>{});
+})();
+</script>
 </body>
 </html>

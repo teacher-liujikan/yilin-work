@@ -1,0 +1,9 @@
+{
+  "folders": [
+    { "name": "115-1 農業資源應用實習", "open": true, "items": ["agri-plan", "agri-leaf", "agri-paper", "agri-seed", "agri-dye"] },
+    { "name": "農業概論 總複習與測驗", "open": false, "items": ["agri-ch3", "agri-ch4", "agri-ch5", "agri-quest", "agri-review"] },
+    { "name": "實習課備用單元", "open": false, "items": ["agri-worm", "agri-enzyme", "agri-flower"] },
+    { "name": "職業試探", "open": false, "items": ["agri-career"] },
+    { "name": "教師自修", "open": false, "items": ["hort-exam"] }
+  ]
+}
