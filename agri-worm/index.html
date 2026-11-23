@@ -375,6 +375,109 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 :root[data-theme="dark"]{--worm:#e07a82;--wormd:#b05560;--clit:#f0b48e;--bed:#a87450;--bed2:#7d5435;--cast:#20160f;--scrap:#8fc45c;--box:#56626b;--boxl:#76838c;--peel:#f0aa45;--cold:#4f8fb0}
 .ready{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
 
+/*RPT-CSS*/
+.dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:900px){.dl{grid-template-columns:1fr}}
+@media (max-width:640px){.dl{grid-template-columns:1fr}}
+.dlc{display:flex;gap:14px;align-items:center;border:2px solid var(--line);border-radius:12px;padding:12px 16px;text-decoration:none;color:var(--ink);background:var(--bg);min-height:72px}
+.dlc:hover{border-color:#2b579a}
+.dlc svg{width:40px;height:auto;flex:none}
+.dlc b{display:block;font-size:18px}
+.dlc small{color:var(--muted);font-size:14px}
+.dchip{font:inherit;font-weight:700;font-size:16px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:999px;min-height:44px;padding:0 18px;cursor:pointer}
+.dchip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.rswitch{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.paperwrap{background:#8a9187;border-radius:12px;padding:22px 14px;margin-top:12px;overflow:hidden}
+/* A4 紙：不管深淺色模式都是白紙 */
+.sheet{--pg:#2f6b3a;--ps:#e3f0e3;--pm:#6b7266;--pl:#b9c2b0;--ph:#f3f5ec;--blue:#1f4fa8;
+  background:#fff;color:#1f2a1c;max-width:794px;margin:0 auto;padding:40px 46px;box-shadow:0 6px 24px rgba(0,0,0,.35);border-radius:2px;font-size:15px;line-height:1.6;position:relative}
+.sheet .pgbreak{border-top:2px dashed #c9cfc4;margin:26px -46px;position:relative}
+.sheet .pgbreak span{position:absolute;right:12px;top:-11px;background:#fff;padding:0 6px;font-size:12px;color:#9aa394}
+.sheet .r-top{text-align:center;margin-bottom:12px}
+.sheet .r-top small{display:block;color:var(--pm);font-weight:700;font-size:13px}
+.sheet .r-top b{display:block;color:var(--pg);font-size:26px;font-weight:900;line-height:1.3}
+.sheet .r-top i{font-style:normal;color:var(--pm);font-size:13px}
+.sheet table{width:100%;border-collapse:collapse;table-layout:fixed}
+.sheet td,.sheet th{border:1px solid var(--pl);padding:5px 8px;vertical-align:middle;font-size:14px;word-break:break-word}
+.sheet th,.sheet td.k{background:var(--ps);font-weight:700;text-align:center;color:#1f2a1c}
+.sheet td.k.l{text-align:left}
+.sheet .h{margin:18px 0 4px;background:var(--ps);border-left:6px solid var(--pg);padding:3px 10px;color:var(--pg);font-weight:900;font-size:16px;position:relative}
+.sheet .hint{color:var(--pm);font-size:12.5px;margin:0 0 4px}
+.sheet .ans{color:var(--blue);font-weight:500}
+.sheet .ln{border-bottom:1.5px dotted var(--pl);min-height:30px;padding:4px 2px 2px;font-size:14.5px}
+.sheet .ln .q{color:var(--pm);font-size:13px;display:block}
+.sheet .photos{display:grid;grid-template-columns:1fr 1fr;border:1px solid #c9d1be}
+.sheet .ph{border:1px solid #c9d1be;display:flex;flex-direction:column}
+.sheet .ph .img{background:var(--ph);height:150px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.sheet .ph .img svg{height:100%;width:100%}
+.sheet .ph .img b{position:absolute;left:6px;top:4px;font-size:12px;background:rgba(255,255,255,.85);border-radius:4px;padding:0 6px;color:var(--pm)}
+.sheet .ph .cap{padding:4px 8px;font-size:13px;min-height:44px}
+.sheet .ph .cap em{font-style:normal;color:var(--pm)}
+.sheet .big{border:1px solid #c9d1be;background:var(--ph);height:230px;position:relative}
+.sheet .big svg{width:100%;height:100%}
+.sheet .big .tag{position:absolute;left:8px;top:6px;font-size:12px;color:var(--pm);background:rgba(255,255,255,.85);border-radius:4px;padding:0 6px}
+.sheet .chk{display:grid;grid-template-columns:1fr 1fr;gap:2px 16px;font-size:14px}
+.sheet .chk span::before{content:"☑ ";color:var(--blue);font-weight:900}
+.sheet .teach td{height:56px}
+.sheet .tick{color:var(--blue);font-weight:900}
+.rtip{display:block;width:fit-content;max-width:100%;background:#fff6b0;border:1px solid #e3d26a;color:#5a4a10;font-size:12.5px;line-height:1.45;padding:4px 8px;border-radius:4px;box-shadow:2px 3px 6px rgba(0,0,0,.15);font-weight:500;margin:4px 0 6px;transform:rotate(-.4deg)}
+.rtip::before{content:"✏️ ";}
+.sheet.notip .rtip{display:none}
+@media (max-width:1180px){
+  .rtip{position:static;transform:none;width:auto;display:block;margin:4px 0 6px;right:auto}
+}
+@media (max-width:640px){
+  .paperwrap{padding:10px 4px;margin-left:-6px;margin-right:-6px}
+  .sheet{padding:20px 14px;font-size:14px}
+  .sheet .pgbreak{margin:20px -14px}
+  .sheet .r-top b{font-size:21px}
+  .sheet td,.sheet th{padding:4px 4px;font-size:12.5px}
+  .sheet .photos{grid-template-columns:1fr}
+  .sheet .ph .img{height:130px}
+  .sheet .chk{grid-template-columns:1fr}
+  .sheet .scroll{overflow-x:auto}
+  .sheet .scroll table{min-width:560px}
+}
+
+.sheet .dq{margin:6px 0 10px}
+.sheet .dq-q{font-weight:700;font-size:14.5px}
+.sheet .dq-h{background:#eef3fb;border:1px dashed #9bb3dc;border-radius:6px;padding:4px 10px;margin:4px 0;font-size:13px;color:#2a3f66}
+.sheet .dq-h b{font-size:12.5px;color:#1f4fa8}
+.sheet .dq-h ul{margin:2px 0 0;padding-left:1.2em}
+.sheet .dq-h li{margin:1px 0}
+
+.fmt{display:grid;grid-template-columns:260px minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:700px){.fmt{grid-template-columns:1fr}.fmt figure{max-width:260px;margin:0 auto}}
+.ftbl{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.ftbl>div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:10px;padding:7px 12px;border-bottom:1px solid var(--line);font-size:16px}
+.ftbl>div:last-child{border-bottom:0}
+.ftbl>div:nth-child(odd){background:var(--bg)}
+.ftbl>div>b{color:var(--accent)}
+
+/* 範例紙張：整份標楷體（含標題） */
+.sheet,.sheet *{font-family:"DFKai-SB","BiauKai","標楷體","TW-Kai","Kaiti TC","STKaiti","AR PL UKai TW","Noto Serif TC",serif !important}
+/* 報告與繳交分頁 */
+.rq{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:6px 0 10px}
+.rqc{border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--bg);display:flex;flex-direction:column;gap:2px;min-width:0}
+.rqc .rqi{font-size:24px;line-height:1}
+.rqc b{color:var(--accent);font-size:16px}
+.rqc span{font-size:15.5px;line-height:1.55;word-break:break-word}
+.rqc small{color:var(--muted);font-size:14px}
+.slist{margin:6px 0 10px;padding-left:1.6em;columns:2;column-gap:28px}
+.slist li{margin:3px 0;break-inside:avoid;font-size:16px}
+@media (max-width:700px){.slist{columns:1}}
+.rsec{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:800px){.rsec{grid-template-columns:1fr}}
+.seclist{margin:0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.seclist li{border-left:5px solid var(--accent);background:var(--bg);border-radius:0 8px 8px 0;padding:6px 10px;font-size:16px}
+.seclist li small{display:block;color:var(--muted);font-size:14px;line-height:1.5}
+.rside{display:flex;flex-direction:column;gap:10px}
+.rside .ftbl>div{grid-template-columns:96px minmax(0,1fr);font-size:15px}
+.more2{margin:0;font-size:15px;color:var(--muted)}
+.more2 a{color:var(--accent);font-weight:700}
+.rbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;font-size:15.5px}
+
+/*/RPT-CSS*/
 </style>
 </head>
 <body>
@@ -394,6 +497,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <button class="tab" role="tab" id="t2" aria-selected="false">實驗過程</button>
     <button class="tab" role="tab" id="t3" aria-selected="false">分組試驗</button>
     <button class="tab" role="tab" id="t4" aria-selected="false">動手判斷</button>
+    <!--RPT--><button class="tab" role="tab" id="t7" aria-selected="false">報告與繳交</button><!--/RPT-->
     <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
   </nav>
 
@@ -680,6 +784,35 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 
 
   <!-- ===== 5 小測驗 ===== -->
+  <!--RPT-->
+<section class="panel" id="p7" hidden>
+<div class="card">
+<h2>報告怎麼交？<span class="sec">小組報告・每組一份</span></h2>
+<div class="rq"><div class="rqc"><span class="rqi" aria-hidden="true">📅</span><b>繳交日</b><span>依老師公布（上課時交紙本＋上台；當天 23:59 前上傳 PDF）</span></div><div class="rqc"><span class="rqi" aria-hidden="true">🖨️</span><b>① 彩色紙本</b><span>每組一份，彩色列印，照片才看得清楚</span></div><div class="rqc"><span class="rqi" aria-hidden="true">💻</span><b>② Classroom 上傳 PDF</b><span>組長上傳；Word 另存成 PDF 再上傳</span></div><div class="rqc"><span class="rqi" aria-hidden="true">🏷️</span><b>檔名</b><span><b>第○組_蚯蚓堆肥</b><br><small>例：第3組_蚯蚓堆肥</small></span></div><div class="rqc"><span class="rqi" aria-hidden="true">🎤</span><b>上台簡報</b><span>3 分鐘・約 5 張<br><small>簡報也由組長上傳，檔名同上</small></span></div></div>
+<div class="tip"><b>Word 存 PDF：</b>檔案 → 另存新檔 → 檔案類型選「PDF」。Google 文件：檔案 → 下載 → PDF 文件。<b>小組報告和簡報都由組長上傳</b>，其他組員不用重複交。</div>
+</div>
+<div class="card">
+<h2>上台簡報怎麼做<span class="sec">3 分鐘・約 5 張</span></h2>
+<p>Google 簡報或 PowerPoint 都可以。簡報是幫你「說」的，不是把報告整篇貼上去。</p>
+<ol class="slist"><li><b>封面</b>：題目、組別、組員分工</li><li><b>實驗設計</b>：實驗問題、操作／控制／應變變因</li><li><b>實驗過程</b>：3～4 張照片，一張一個步驟</li><li><b>結果</b>：紀錄表或長條圖，圈出最重要的數字</li><li><b>結論與心得</b>：發現了什麼、可以怎麼應用、每人一句</li></ol>
+<div class="tip">一張一個重點、圖多字少（每張最多 3 行、字級 24 以上）、用自己拍的照片、上台前計時練習一次，不要照著唸。</div>
+</div>
+<div class="card">
+<h2>報告要寫什麼<span class="sec">A4・約 3～4 頁</span></h2>
+<div class="rsec">
+<ol class="seclist"><li><b>一、組員與分工</b><small>計時員、放置員、計數員、紀錄員</small></li><li><b>二、實驗設計</b><small>實驗問題、測試條件、操作／控制／應變變因</small></li><li><b>三、實驗過程</b><small>4 張照片：觀察構造、排中線、計數、架蚯蚓箱</small></li><li><b>四、實驗結果</b><small>選擇實驗 3 次紀錄表與比例；廚餘大小 4 週分解紀錄</small></li><li><b>五、討論</b><small>3 題，每題 2～3 句（範例只給提示）</small></li><li><b>六、結論</b><small>蚯蚓箱怎麼照顧＋蚯蚓箱照片</small></li><li><b>七、個人心得</b><small>每人約 100 字</small></li></ol>
+<div class="rside">
+<a class="dlc" href="蚯蚓堆肥小組報告範本.docx" download><svg viewBox="0 0 60 70" aria-hidden="true"><path d="M6 2 h34 l14 14 v52 h-48 Z" fill="#fff" stroke="#2b579a" stroke-width="3"/><path d="M40 2 v14 h14" fill="#dbe5f4" stroke="#2b579a" stroke-width="3"/><rect x="0" y="30" width="34" height="22" rx="3" fill="#2b579a"/><text x="17" y="46" text-anchor="middle" style="fill:#fff;font-size:15px;font-weight:900;font-family:Arial">W</text></svg><span><b>下載 Word 報告範本</b><small>蚯蚓堆肥小組報告範本.docx</small></span></a>
+<div class="ftbl"><div><b>紙張</b><span>A4 直式，上下左右邊界 2 cm</span></div><div><b>字型</b><span>整份（含標題、表格）標楷體</span></div><div><b>字級</b><span>大標題 20 pt、章節標題 14 pt、內文 12 pt、表格與照片說明 11 pt</span></div><div><b>行距、頁碼</b><span>單行間距；頁尾置中頁碼（範本已有）</span></div><div><b>照片</b><span>手機橫拍、清楚；步驟照片高 4 cm、作品照片高 5.5 cm，鎖定長寬比，每張寫一句說明</span></div><div><b>PDF</b><span>壓縮圖片 220 ppi，檔案 20 MB 內</span></div></div>
+<p class="more2">完整的格式與照片規定，看 <a href="../agri-plan/">實習課開場 → 報告範例</a>。</p>
+</div></div></div>
+<div class="card">
+<h2>報告範例<span class="sec">藍色字＝範例內容</span></h2>
+<div class="rbar"><span>這是寫好的範例，照著格式寫自己的內容，<b>不要照抄</b>。</span><label class="switch"><input type="checkbox" id="tipToggle" checked> 顯示寫作提示</label></div>
+<div class="paperwrap"><div class="sheet" id="sheet" data-r="worm"></div></div>
+</div>
+</section>
+<!--/RPT-->
   <section class="panel" id="p5" hidden></section>
 
   <footer>內容依一般蚯蚓堆肥操作原則整理（表層種蚯蚓、床材濕度、綠料與棕料搭配、側移法收穫）。蚯蚓量與箱子面積為經驗估算，實際請依蚯蚓種類、氣溫與廚餘含水量調整。</footer>
@@ -903,7 +1036,7 @@ const MASTER="蚯蚓堆肥";
 
 
 /* ---------- 分頁 ---------- */
-const TABS=[["t1","p1"],["t2","p2"],["t3","p3"],["t4","p4"],["t5","p5"]];
+const TABS=[["t1","p1"],["t2","p2"],["t3","p3"],["t4","p4"],["t7","p7"],["t5","p5"]];
 let quiz=null;
 function show(t){
   TABS.forEach(([a,b])=>{ const on=a===t; $(a).setAttribute("aria-selected",on); $(b).hidden=!on; });
@@ -1035,5 +1168,295 @@ if(location.hash==="#quiz") show("t5");
 })();
 
 </script>
+<!--RPT--><script>
+/* ===== 報告範例共用模組（agri-plan 與各實習單元共用；改這裡＝全部同步） ===== */
+const REPORTS=(function(){
+  const LS="M0 -50 C 34 -28, 36 22, 0 46 C -36 22, -34 -28, 0 -50 Z";
+  const LEAF=(x,y,s=1,r=0,c="#4f9a3c")=>`<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><path d="M0 46 L0 66" stroke="#2f6b2a" stroke-width="3"/><path d="${LS}" fill="${c}"/><path d="M0 -44 L0 46" stroke="#2f6b2a" stroke-width="2.4"/>${[-28,-12,4,20].map(v=>`<path d="M0 ${v} Q12 ${v-8} 22 ${v-14} M0 ${v} Q-12 ${v-8} -22 ${v-14}" stroke="#2f6b2a" stroke-width="1.6" fill="none"/>`).join("")}</g>`;
+  const SKEL=(x,y,s=1,r=0,c="#8a6a3c")=>`<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><path d="${LS}" fill="none" stroke="${c}" stroke-width="2"/><path d="M0 -48 L0 66" stroke="${c}" stroke-width="3"/>${[-30,-16,-2,12,26].map(v=>`<path d="M0 ${v} Q12 ${v-8} 24 ${v-14} M0 ${v} Q-12 ${v-8} -24 ${v-14}" stroke="${c}" stroke-width="1.6" fill="none"/>`).join("")}${[-24,-10,4,18].map(v=>`<path d="M8 ${v} l6 8 M-8 ${v} l-6 8 M16 ${v-4} l4 8 M-16 ${v-4} l-4 8" stroke="${c}" stroke-width="1" fill="none"/>`).join("")}</g>`;
+
+  const A=t=>`<span class="ans">${t}</span>`;
+  const TIP=t=>`<span class="rtip">${t}</span>`;
+  const H=(t,hint,tip)=>`<div class="h">${t}</div>${hint?`<p class="hint">${hint}</p>`:""}${tip?TIP(tip):""}`;
+  const LN=(t,q)=>`<div class="ln">${q?`<span class="q">${q}</span>`:""}${t?A(t):""}</div>`;
+  const top=(title,sub)=>`<div class="r-top"><small>農業資源應用實習・個人報告</small><b>${title}</b><i>${sub}</i></div>`;
+  const info=(date,due)=>`<table><colgroup><col style="width:15%"><col style="width:35%"><col style="width:15%"><col style="width:35%"></colgroup>
+    <tr><td class="k">班　級</td><td>${A("園藝二甲")}</td><td class="k">座　號</td><td>${A("12")}</td></tr>
+    <tr><td class="k">姓　名</td><td>${A("林○○")}</td><td class="k">組　別</td><td>${A("第 3 組")}</td></tr>
+    <tr><td class="k">實習日期</td><td>${date}</td><td class="k">繳交日期</td><td>${due}</td></tr></table>`;
+  const kv=rows=>`<table><colgroup><col style="width:18%"><col></colgroup>${rows.map(([k,v])=>`<tr><td class="k l">${k}</td><td>${v}</td></tr>`).join("")}</table>`;
+  const photos=list=>`<div class="photos">${list.map(([lab,svg,cap],i)=>`<div class="ph"><div class="img"><b>${i+1}. ${lab}</b>${svg}</div><div class="cap"><em>說明：</em>${A(cap)}</div></div>`).join("")}</div>`;
+  const HQ=(q,hints)=>`<div class="dq"><div class="dq-q">${q}</div><div class="dq-h"><b>內容提示</b><ul>${hints.map(h=>`<li>${h}</li>`).join("")}</ul></div><div class="ln"></div><div class="ln"></div></div>`;
+  const BRK=n=>`<div class="pgbreak"><span>第 ${n} 頁</span></div>`;
+  const check=items=>`<div class="chk">${items.map(t=>`<span>${t}</span>`).join("")}</div>`;
+  const teacher=`<table class="teach" style="margin-top:12px"><colgroup><col style="width:14%"><col><col style="width:10%"><col style="width:14%"></colgroup><tr><td class="k">老師評語</td><td></td><td class="k">分數</td><td></td></tr></table>`;
+
+  /* 示意照片 */
+  const sv=(inner,vb="0 0 240 150")=>`<svg viewBox="${vb}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">${inner}</svg>`;
+  const POT=(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})"><rect x="-56" y="-6" width="112" height="64" rx="8" fill="#7d8a93"/><rect x="-50" y="2" width="100" height="50" rx="4" fill="#d8ecf7"/><rect x="-62" y="58" width="124" height="10" rx="3" fill="#3b3f44"/>${[-24,0,24].map(d=>`<path d="M${d} 58 q-5 -10 0 -16 q5 6 0 16" fill="#e8742c"/>`).join("")}</g>`;
+  const BRUSH=`<g><rect x="-5" y="-70" width="10" height="58" rx="5" fill="#3b6fd1"/><rect x="-8" y="-14" width="16" height="8" rx="2" fill="#3b6fd1"/>${[-6,-3,0,3,6].map(d=>`<line x1="${d}" y1="-6" x2="${d}" y2="4" stroke="#fff" stroke-width="2"/>`).join("")}</g>`;
+  const LEAFP=[
+    ["採葉、挑葉",sv(`<rect x="0" y="110" width="240" height="40" fill="#cfe3b8"/>${[50,100,150,200].map((x,i)=>LEAF(x,74,.42,i*8-12,"#3f7f35")).join("")}`),"在中庭採了 3 片厚又完整的桂花葉，挑最好的一片做書籤。"],
+    ["煮軟",sv(`${POT(100,60,1)}${[0,1,2].map(i=>LEAF(76+i*24,82,.2,90,"#9a6a3c")).join("")}<g transform="translate(196 50)"><circle r="26" fill="#fff" stroke="#2f6b3a" stroke-width="3"/><path d="M0 0 V-18 M0 0 L12 6" stroke="#222" stroke-width="3" stroke-linecap="round"/></g>`),"肥皂水煮滾後轉小火，每 15 分鐘試刷一角，煮到 60 分鐘剛好。"],
+    ["牙刷刷葉肉",sv(`<rect x="20" y="20" width="200" height="120" rx="6" fill="#e8edf0"/>${SKEL(110,80,.85,90)}<path d="${LS}" transform="translate(110 80) rotate(90) scale(.85)" fill="#9a6a3c" opacity=".45"/><g transform="translate(150 90)">${BRUSH}</g>`),"牙刷垂直輕點，從主脈往葉緣，正反兩面都刷。"],
+    ["漂白、吸乾、護貝",sv(`<rect x="16" y="40" width="208" height="90" rx="10" fill="#f4efc2" stroke="#999"/>${SKEL(120,86,.7,90,"#b8a070")}<text x="120" y="28" text-anchor="middle" style="font-size:13px;fill:#555;font-weight:700">漂白水 1：水 8</text>`),"泡稀釋漂白水 15 分鐘變米白色，吸水紙吸乾、熨斗隔紙燙乾，20 分鐘內當節護貝。"]
+  ];
+  const leafBig=sv(`<rect x="0" y="0" width="400" height="230" fill="#f3f5ec"/>
+    <g transform="translate(200 116)"><rect x="-34" y="-104" width="68" height="208" rx="6" fill="#9fd3f0" opacity=".5"/><rect x="-28" y="-98" width="56" height="196" rx="3" fill="#2f5d3a"/><circle cy="-86" r="5" fill="#f3f5ec"/>${SKEL(0,6,1.15,0,"#f7f1e1")}<text x="0" y="88" text-anchor="middle" style="fill:#f7f1e1;font-size:8px;font-weight:700">桂花 11/26</text></g>
+    <path d="M200 70 L290 44" stroke="#1f4fa8" stroke-width="1.5"/><text x="294" y="48" style="fill:#1f4fa8;font-size:15px;font-weight:700">主脈</text>
+    <path d="M222 100 L290 104" stroke="#1f4fa8" stroke-width="1.5"/><text x="294" y="108" style="fill:#1f4fa8;font-size:15px;font-weight:700">側脈</text>
+    <path d="M186 122 L110 140" stroke="#1f4fa8" stroke-width="1.5"/><text x="106" y="144" text-anchor="end" style="fill:#1f4fa8;font-size:15px;font-weight:700">細脈網</text>`,"0 0 400 230");
+
+  const LEAFREP=()=>top("葉脈標本護貝書籤","一人一份・照片至少 4 張・繳交彩色紙本＋Classroom 上傳 PDF")+info("11/26（四）","12/10（四）")+
+    H("一、材料與器材")+kv([["葉子種類",A("桂花")],["採集地點",A("學校中庭花圃")],["煮葉方式",A("肥皂水（水 1 公升＋肥皂絲 30 g），小火保持冒小泡")],["使用器材",A("不鏽鋼鍋、電磁爐、長筷子、舊牙刷、瓷磚、漂白水、量杯、吸水紙、熨斗、護貝膠膜、深綠色卡紙")]])+
+    H("二、實習步驟（附照片）","照實際做的順序貼照片，每張寫一句說明。","說明要寫「怎麼做」：時間、份量、方法，不是只寫「煮葉子」。")+photos(LEAFP)+
+    BRK(2)+
+    H("三、實習結果","記錄自己作品的結果；完整度對照網頁上的 1～5 分圖。","數字要當場記，不要事後用猜的。")+
+    `<table><colgroup><col style="width:36%"><col></colgroup><tr><th>項目</th><th>我的紀錄</th></tr>
+      <tr><td class="k l">煮的時間（分鐘）</td><td>${A("60")}</td></tr>
+      <tr><td class="k l">刷的難易（1～3）</td><td>${A("3（一點就掉）")}</td></tr>
+      <tr><td class="k l">刷的時間（分鐘）</td><td>${A("8")}</td></tr>
+      <tr><td class="k l">葉脈完整度（1～5）</td><td>${A("4（右下角有一個小破洞）")}</td></tr>
+      <tr><td class="k l">漂白時間（分鐘）</td><td>${A("15")}</td></tr>
+      <tr><td class="k l">漂白後顏色</td><td>${A("米白")}</td></tr></table>
+    <div class="big" style="margin-top:10px"><span class="tag">我的葉脈書籤成品（標出主脈、側脈、細脈）</span>${leafBig}</div>`+
+    H("四、討論","每題寫 2～3 句，用自己的話回答。")+
+    HQ("1. 我的葉子煮的時間剛好嗎？從刷葉肉的情形說說看。",["刷的時候葉肉好不好掉？要多用力？","有沒有刷破、刷斷細脈？發生在哪裡？","判斷：太短、剛好、還是太久？"])+
+    HQ("2. 為什麼葉肉刷得掉，葉脈卻留得下來？",["葉肉和葉脈的細胞壁有什麼不同？","用上這些詞：果膠、鹼、加熱、維管束、木質素"])+
+    HQ("3. 如果再做一次，我會怎麼改進？",["挑葉子、煮的時間、刷法、漂白，哪一步可以更好？","具體寫出要怎麼做，不要只寫「更小心」"])+
+    BRK(3)+
+    H("五、心得","約 100 字：自己負責什麼、學到什麼、最有成就感或最困難的地方。","寫自己的感受和具體的事，不要只寫「很好玩、學到很多」。")+
+    LN("我在組裡負責顧鍋和計時，每 15 分鐘提醒大家試刷。一開始刷太用力，刷破了一片，後來改成")+LN("垂直輕輕點，葉肉就一點一點掉下來，看到整片網子出現的時候很有成就感。我發現煮的時間")+LN("要一直試、一直看，刷之前先試一角很重要。下次想試試看山茶花的葉子。");
+
+  /* 種子小精靈 */
+  const ACO=(x,y,s,eyes=true,dx=0)=>`<g transform="translate(${x} ${y}) scale(${s})"><ellipse cy="4" rx="12" ry="16" fill="#a8743a"/><ellipse cx="-4" cy="2" rx="3" ry="7" fill="#fff" opacity=".2"/><path d="M-14 -6 Q-14 -18 0 -18 Q14 -18 14 -6 Z" fill="#9a8060"/><path d="M-13 -9 H13 M-12 -13 H12" stroke="#6a5236" stroke-width="1.3"/>${eyes?EY(0,2,3.4,dx):""}</g>`;
+  const EY=(x,y,r,dx=0)=>[-1,1].map(k=>`<circle cx="${x+k*r*1.45}" cy="${y}" r="${r}" fill="#fff" stroke="#222" stroke-width="${r*.15}"/><circle cx="${x+k*r*1.45+dx*r*.4}" cy="${y+r*.15}" r="${r*.52}" fill="#111"/>`).join("");
+  const BALL=(x,y,s,c="#c98a3a",dx=0)=>`<g transform="translate(${x} ${y}) scale(${s})"><circle r="11" fill="${c}"/><ellipse cx="-4" cy="-4" rx="3.5" ry="2.4" fill="#fff" opacity=".4"/>${EY(0,-1,3.2,dx)}</g>`;
+  const GUM=(x,y,s)=>`<g transform="translate(${x} ${y}) scale(${s})">${Array.from({length:16},(_,i)=>{const a=i*22.5*Math.PI/180;return `<path d="M${(9*Math.cos(a)).toFixed(1)} ${(9*Math.sin(a)).toFixed(1)} L${(15*Math.cos(a)).toFixed(1)} ${(15*Math.sin(a)).toFixed(1)}" stroke="#5a3a24" stroke-width="2.4" stroke-linecap="round"/>`;}).join("")}<circle r="11" fill="#5a3a24"/>${EY(0,-1,3,0)}</g>`;
+  const LANT=(x,y,s)=>`<g transform="translate(${x} ${y}) scale(${s})"><path d="M0 -18 C 14 -12, 16 8, 0 18 C -16 8, -14 -12, 0 -18 Z" fill="#e3a08e"/><path d="M0 -18 V18 M0 -18 C 8 -6 8 6 0 18 M0 -18 C -8 -6 -8 6 0 18" stroke="#b0685a" stroke-width="1" fill="none"/></g>`;
+  const WING=(x,y,s,r)=>`<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><path d="M-4 18 C -10 0, -8 -22, 4 -30 C 10 -20, 10 0, 4 18 Z" fill="#c9a46a"/><ellipse cy="14" rx="5" ry="6" fill="#7a5a32"/></g>`;
+  const SL=(x,y,w,h)=>`<g transform="translate(${x} ${y})"><path d="M${-w} 0 V${h*.6} A${w} ${h} 0 0 0 ${w} ${h*.6} V0 Z" fill="#7a5232"/><ellipse rx="${w}" ry="${h}" fill="#e8d2a8" stroke="#5a3a20" stroke-width="3"/><ellipse rx="${w*.6}" ry="${h*.6}" fill="none" stroke="#c9a878"/><ellipse rx="${w*.3}" ry="${h*.3}" fill="none" stroke="#c9a878"/></g>`;
+  const CAMPH=(x,y,s)=>`<g transform="translate(${x} ${y}) scale(${s})"><circle r="5" fill="#1f1f24"/>${EY(0,0,1.6,0)}</g>`;
+  const SEEDP=[
+    ["處理種子",sv(`<path d="M50 40 L60 130 L180 130 L190 40 Z" fill="#5aa3d9" opacity=".35" stroke="#5aa3d9" stroke-width="2"/>${ACO(90,110,1.4,false)}${ACO(130,114,1.4,false)}<g transform="rotate(90 150 60)">${ACO(150,60,1.4,false)}</g><text x="196" y="58" style="font-size:12px;fill:#555;font-weight:700">浮起來</text><text x="196" y="74" style="font-size:12px;fill:#555;font-weight:700">不用</text>`),"刷洗後泡水，挑掉浮起來的橡實，裝袋冷凍 3 天再晾乾。"],
+    ["設計、試擺",sv(`${SL(120,104,96,28)}${ACO(80,74,1.8,false)}${ACO(118,78,1.5,false)}${BALL(150,90,1.2,"#c98a3a")}<path d="M150 90 m-12 -10" /><g transform="translate(200 30)"><rect x="-18" y="-12" width="36" height="26" rx="4" fill="#222"/><circle r="7" fill="#666" stroke="#ddd" stroke-width="1.5"/></g>`),"先擺出一家人站成一排，拍照記下位置，高的放後面。"],
+    ["黏眼睛、組合",sv(`${ACO(110,84,3.4,true,.4)}<g transform="translate(190 40)"><path d="M0 0 L-46 30 M5 6 L-42 34" stroke="#7d8a93" stroke-width="3"/></g>`),"用牙籤點保麗龍膠貼眼睛，殼斗帽子用低溫熱熔膠黏回去。"],
+    ["固定到底座",sv(`${SL(120,110,100,28)}<g transform="translate(176 66)"><rect x="-6" y="-32" width="12" height="36" rx="2" fill="#e8c88a" stroke="#b8945a"/><path d="M-6 -16 h12" stroke="#7d8a93" stroke-width="3"/></g>${ACO(76,84,1.8,true,.3)}${ACO(110,90,1.5,true,.3)}${BALL(140,102,1.1)}`),"從後面高的開始黏，最後把小木夾立在底座後方當名片夾。"]
+  ];
+  const seedBig=sv(`<rect width="400" height="230" fill="#f3f5ec"/>${SL(200,182,170,40)}
+    <g transform="translate(300 128)"><rect x="-7" y="-40" width="14" height="46" rx="2" fill="#e8c88a" stroke="#b8945a"/><path d="M-7 -20 h14" stroke="#7d8a93" stroke-width="3"/><rect x="-46" y="-96" width="92" height="56" rx="3" fill="#fff" stroke="#999"/><text x="0" y="-72" text-anchor="middle" style="font-size:13px;font-weight:900;fill:#2f6b3a">林○○</text><text x="0" y="-54" text-anchor="middle" style="font-size:10px;fill:#555">園藝二甲</text></g>
+    ${LANT(96,138,2.6)}${WING(150,96,1.1,-30)}${WING(176,94,1.1,30)}${ACO(164,128,2.8,true,.3)}${ACO(212,140,2.3,true,-.3)}${BALL(130,168,1.3,"#c98a3a",.5)}${GUM(250,170,1.15)}${CAMPH(186,182,2.6)}
+    <path d="M150 140 q14 8 28 0" stroke="#3a1a10" stroke-width="2" fill="none" transform="translate(0 6)"/>`,"0 0 400 230");
+
+  const seedRows=[["1","青剛櫟","青剛櫟（殼斗科）","褐色橢圓形、戴殼斗帽，約 2 cm","動物（松鼠搬運）","爸爸、媽媽"],["2","無患子","無患子","黃褐色圓球、有點透明","動物（鳥吃）","小孩的頭"],["3","楓香球果","楓香","深褐色、刺刺的圓球","風（裡面種子有翅）","寵物刺蝟"],["4","燈籠果","台灣欒樹","粉紅褐色、像紙燈籠","風","野餐帳篷"],["5","樟樹果實","樟樹","黑色小圓果，約 0.7 cm","動物（鳥吃）","小寶寶"],["6","翅狀種子","大葉桃花心木","一片褐色翅膀","風（旋轉）","爸爸的頭髮"]];
+  const SEEDREP=()=>top("種子小精靈","一人一份・至少 5 種種子・上台分享・繳交彩色紙本＋Classroom 上傳 PDF")+info("12/17（四）","12/24（四）")+
+    H("一、作品基本資料",null,"作品名稱要有主題，讓人一看就知道在演什麼。")+kv([["作品名稱",A("《橡實一家去野餐》")],["用　　途",`☐ 桌面裝飾　<span class="tick">☑</span> 名片夾　☐ 其他：＿＿`],["使用種子",`共 ${A("6")} 種（至少 5 種）`],["蒐集地點",`${A("校園後山步道、住家附近公園")}　蒐集日期：${A("12／10")}`]])+
+    H("二、種子蒐集紀錄","不知道名字先寫特徵，拍照查詢後再補。傳播方式：風、動物、水、重力、彈射。","特徵寫「形狀＋顏色＋大小」；傳播方式要和特徵對得起來。")+
+    `<div class="scroll"><table><tr><th style="width:7%">編號</th><th style="width:15%">種子／果實</th><th style="width:16%">來自植物</th><th>特徵</th><th style="width:16%">傳播方式</th><th style="width:15%">用在哪裡</th></tr>${seedRows.map(r=>`<tr>${r.map((c,i)=>`<td${i===0?' class="k"':""}>${i?A(c):c}</td>`).join("")}</tr>`).join("")}</table></div>`+
+    BRK(2)+
+    H("三、製作過程（附照片）",null,"四張照片要看得出「順序」，說明寫用了什麼方法。")+photos(SEEDP)+
+    H("四、作品介紹")+`<div class="big"><span class="tag">完成的種子小精靈</span>${seedBig}</div>`+
+    LN("戴殼斗帽的橡實爸爸和媽媽帶著無患子小孩、樟樹小寶寶去野餐，後面是欒樹燈籠果搭的帳篷，","角色介紹：牠們是誰？在做什麼？")+LN("楓香刺蝟是家裡的寵物。爸爸頭上的桃花心木種子是他新剪的髮型。名片夾在帳篷旁邊。")+
+    BRK(3)+
+    H("五、我最喜歡的種子",null,"一定要把「形狀」和「怎麼傳播」連起來說。")+
+    LN(`種子名稱：大葉桃花心木　　傳播方式：風`)+LN("種子一邊有一片薄薄的翅膀，從樹上掉下來會像竹蜻蜓一樣旋轉，掉得比較慢，","它的形狀和傳播方式有什麼關係？")+LN("風一吹就能飄到離媽媽樹比較遠的地方，小樹苗才不會擠在一起搶陽光。")+
+    H("六、遇到的問題與解決")+LN("無患子圓圓的一直滾走：先擠一圈熱熔膠，等兩三秒稍微變稠再放上去就站穩了。")+LN("名片夾一放名片就往前倒：改黏在底座後方中間，多擠一點膠、壓 30 秒。")+
+    H("七、心得","約 100 字：學到什麼、最滿意的地方、聽了同學分享後的想法。")+
+    LN("以前走在路上從來沒注意地上的種子，這次蒐集才發現校園裡就有好多種，每一種形狀都和")+LN("它的傳播方式有關。我最滿意的是橡實爸爸的髮型，同學都笑了。聽了同學分享，我發現有人用")+LN("豆莢當手腳很有創意，下次我也想試試看。");
+
+
+  /* 植物染（小組） */
+  const SW=(x,y,w,h,c,o={})=>{ let r=`<g transform="translate(${x} ${y})"><rect x="${-w/2}" y="${-h/2}" width="${w}" height="${h}" fill="${c}" stroke="rgba(0,0,0,.15)"/>`;
+    if(o.tie) r+=[0,1,2].map(i=>`<circle r="${(i+1)*Math.min(w,h)*.13}" fill="none" stroke="#fffbe8" stroke-width="${3-i*.6}" stroke-dasharray="${2+i} ${3+i}"/>`).join("");
+    if(o.ripple) r+=[.3,.6].map(k=>`<path d="M${-w/2} ${-h/2+h*k} q${w/4} -4 ${w/2} 0 t${w/2} 0" stroke="rgba(255,255,255,.3)" stroke-width="2" fill="none"/>`).join("");
+    return r+`</g>`; };
+  const TURM=(x,y,s)=>`<g transform="translate(${x} ${y}) scale(${s})"><path d="M-30 6 q-6 -14 8 -18 q10 -8 22 -2 q18 -6 24 6 q10 10 -4 18 q-20 8 -50 -4 Z" fill="#c98a3a"/><path d="M-16 -2 q16 6 34 0" stroke="#a8682a" stroke-width="2" fill="none"/><path d="M8 -12 q4 -14 14 -18" stroke="#6a9a3a" stroke-width="3" fill="none"/></g>`;
+  const KPOT=(x,y,s,liq)=>`<g transform="translate(${x} ${y}) scale(${s})"><rect x="-56" y="-6" width="112" height="64" rx="8" fill="#7d8a93"/><rect x="-50" y="2" width="100" height="50" rx="4" fill="${liq}"/><rect x="-62" y="58" width="124" height="10" rx="3" fill="#3b3f44"/>${[-24,0,24].map(d=>`<path d="M${d} 58 q-5 -10 0 -16 q5 6 0 16" fill="#e8742c"/>`).join("")}</g>`;
+  const DYEP=[
+    ["採集、處理植物",sv(`${TURM(80,80,1.6)}${TURM(150,90,1.3)}<rect x="40" y="110" width="160" height="22" rx="4" fill="#b07a45"/>${[0,1,2,3].map(i=>`<circle cx="${180+(i%2)*12}" cy="${60+Math.floor(i/2)*14}" r="5" fill="#e8a81a"/>`).join("")}`),"在傳統市場買新鮮薑黃 300 g，洗淨後切成薄片。"],
+    ["萃取色素（煮液）",sv(`${KPOT(110,60,1,"#e8a81a")}<g transform="translate(200 50)"><rect x="-8" y="-34" width="16" height="56" rx="8" fill="#fff" stroke="#999"/><circle cy="28" r="10" fill="#d8453a"/><rect x="-4" y="-10" width="8" height="38" fill="#d8453a"/></g>`),"薑黃片加水 3 公升，小火煮 50 分鐘，濾掉殘渣。"],
+    ["染色、媒染",sv(`<path d="M30 40 L40 130 L130 130 L140 40 Z" fill="#e8a81a" opacity=".85" stroke="#999"/><path d="M150 40 L160 130 L230 130 L236 40 Z" fill="#dbe9f2" stroke="#999"/><text x="194" y="90" text-anchor="middle" style="font-size:13px;font-weight:700;fill:#555">明礬水</text>`),"布先綁好，85 °C 浸染 30 分鐘，再泡明礬水 20 分鐘。"],
+    ["水洗、晾乾",sv(`<path d="M20 22 H220" stroke="#b07a45" stroke-width="4"/>${SW(120,82,120,100,"#f0b81a",{tie:true})}`),"拆開橡皮筋，清水洗到不掉色，陰涼處晾乾。"]
+  ];
+  const dyeBig=sv(`<rect width="400" height="230" fill="#f3f5ec"/>${SW(200,115,200,190,"#f0b81a",{tie:true})}<path d="M100 216 h200" stroke="#1f4fa8" stroke-width="1.5"/><text x="200" y="228" text-anchor="middle" style="font-size:11px;fill:#1f4fa8;font-weight:700">35 cm</text>`,"0 0 400 230");
+  const DYEREP=()=>`<div class="r-top"><small>農業資源應用・期末專題・小組報告</small><b>植物染「五色尋寶」專題報告</b><i>每組一份・作品 100% 純棉或麻、至少 30×30 cm・3 分鐘簡報上台・繳交彩色紙本＋Classroom 上傳 PDF</i></div>`+
+    `<table><colgroup><col style="width:15%"><col style="width:35%"><col style="width:15%"><col style="width:35%"></colgroup><tr><td class="k">班　級</td><td>${A("園藝二甲")}</td><td class="k">組　別</td><td>${A("第 3 組")}</td></tr><tr><td class="k">目標顏色</td><td>${A("黃色")}</td><td class="k">繳交日期</td><td>1/14（四）</td></tr></table>`+
+    H("一、組員與分工","每個人都要有負責的工作。","分工要寫具體做了什麼，不要只寫「幫忙」。")+
+    `<table><colgroup><col style="width:12%"><col style="width:22%"><col></colgroup><tr><th>座號</th><th>姓名</th><th>負責工作</th></tr>${[["5","陳○○","查資料（學名、色素）、寫植物選擇"],["12","林○○","買薑黃、切片、顧火煮染液"],["18","黃○○","綁紮設計、染色、媒染"],["23","張○○","拍照、記錄時間溫度、整理報告"],["30","吳○○","做簡報、上台報告"]].map(r=>`<tr><td style="text-align:center">${A(r[0])}</td><td>${A(r[1])}</td><td>${A(r[2])}</td></tr>`).join("")}</table>`+
+    H("二、植物選擇","找到能染出目標顏色的植物，寫出學名和色素種類（評分 25%）。","學名用斜體或括號寫清楚；色素種類要查資料，不要猜。")+
+    kv([["植物名稱",A("薑黃")],["學　　名",A("Curcuma longa（薑科薑黃屬）")],["使用部位",A("地下根莖")],["色素種類",A("薑黃素（Curcumin），水溶性佳、上色快")],["取得方式",A("傳統市場購買新鮮薑黃 300 g")],["選擇原因",A("容易買到、直接染就能染出鮮豔黃色")],["資料來源",A("植物染與藍染工藝課程簡報；實習課網頁「植物染與藍染」")]])+
+    H("三、材料與方法")+kv([["染色方式",A("直接染＋明礬媒染")],["布　　料",`材質：${A("100% 純棉")}　尺寸：${A("35")} × ${A("35")} cm`],["媒 染 劑",A("明礬 15 g＋溫水 1 公升")],["其他材料器材",A("不鏽鋼鍋、電磁爐、溫度計、濾網、橡皮筋、手套")]])+
+    BRK(2)+
+    H("四、實驗過程紀錄","照實際做的順序填寫時間、溫度和做法（評分 25%）。","時間和溫度要當場記，最好每一步都拍照。")+
+    `<div class="scroll"><table><colgroup><col style="width:22%"><col><col style="width:14%"><col style="width:14%"></colgroup><tr><th>步驟</th><th>做法</th><th>時間</th><th>溫度</th></tr>${[["萃取色素","薑黃切片加水 3 公升，小火煮，濾渣","50 分","約 95 °C"],["前處理","新布先洗過去漿；綁好後泡水擠乾","20 分","室溫"],["染色","放入染液，一直翻動","30 分","85 °C"],["媒染","移到明礬水浸泡","20 分","約 40 °C"],["水洗、晾乾","清水洗到水變清，陰乾","1 天","室溫"]].map(r=>`<tr><td class="k l">${r[0]}</td><td>${A(r[1])}</td><td style="text-align:center">${A(r[2])}</td><td style="text-align:center">${A(r[3])}</td></tr>`).join("")}</table></div>`+
+    `<div style="margin-top:10px">${photos(DYEP)}</div>`+
+    H("五、紋樣設計","防染技巧：絞染、夾染、蠟染、型染…畫出設計草圖。")+
+    `<table><colgroup><col style="width:42%"><col></colgroup><tr><td style="background:#f3f5ec;height:150px;padding:0">${sv(`${SW(120,75,130,130,"#fffbe8")}<path d="M120 75 m-10 0 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 M120 75 m-30 0 a30 30 0 1 0 60 0 a30 30 0 1 0 -60 0 M120 75 m-50 0 a50 50 0 1 0 100 0 a50 50 0 1 0 -100 0" stroke="#1f4fa8" stroke-width="2" fill="none" stroke-dasharray="4 3"/>`)}</td><td style="vertical-align:top">${A("絞染（放射狀）：抓住布的正中央往上拉，捲成長條，每隔 4 cm 用橡皮筋綁緊，共綁 4 圈。打開後是一圈一圈的同心圓。")}</td></tr></table>`+
+    BRK(3)+
+    H("六、成果","評分 30%：上色均勻度、固色程度、紋樣、整體美感。")+`<div class="big"><span class="tag">染色作品照片（攤平、正面拍）</span>${dyeBig}</div>`+
+    `<div style="margin-top:8px">${kv([["染出的顏色",A("鮮豔的金黃色，比預期更亮")],["上色均勻度",`☐ 很均勻　<span class="tick">☑</span> 大部分均勻　☐ 不太均勻`],["水洗測試",`洗一次後：☐ 幾乎不掉色　<span class="tick">☑</span> 稍微掉色　☐ 掉很多`]])}</div>`+
+    H("七、成功與失敗分析","評分 10%：哪裡成功、哪裡失敗？原因是什麼？下次怎麼改？","失敗也很有價值，寫出原因和改進方法就能得分。")+
+    LN("成功：同心圓紋樣很清楚，因為橡皮筋綁得很緊。失敗：布的一角顏色比較淡，可能是染色時那一角")+LN("浮在水面上沒有泡到。水洗後稍微掉色，薑黃怕曬、固色較弱。下次要用重物壓住讓布全部泡到，媒染泡久一點。")+
+    H("八、創新與探索","例：複合染、換媒染劑比較、在地植物、特別的紋樣。")+
+    LN("我們多剪了兩塊小布做比較：一塊泡明礬水、一塊泡鐵水。泡鐵水的變成土黃偏咖啡色，證明不同金屬離子會讓顏色改變。")+
+    H("九、個人心得","每人約 50 字。")+
+    `<table><colgroup><col style="width:16%"><col></colgroup><tr><th>姓名</th><th>心得</th></tr>${[["陳○○","查資料才知道咖哩的黃色和染布的黃色是同一種色素，薑黃同時是食物也是染料。"],["林○○","顧火要很有耐心，溫度太高會一直滾，要轉小火慢慢煮。"],["黃○○","綁的時候很怕綁不緊，打開看到同心圓那一刻很感動。"],["張○○","每一步都要拍照記時間，寫報告的時候才發現紀錄有多重要。"],["吳○○","上台前練習了三次，把時間控制在 3 分鐘內，講得比以前順。"]].map(r=>`<tr><td style="text-align:center">${A(r[0])}</td><td>${A(r[1])}</td></tr>`).join("")}</table>`;
+
+
+  /* ===== 小組報告共用 ===== */
+  const GTOP=(title,sub,label="農業資源應用實習・小組報告")=>`<div class="r-top"><small>${label}</small><b>${title}</b><i>${sub}</i></div>`;
+  const TBD=`<span style="color:#6b7266">依老師公布</span>`;
+  const GINFO=(date,due,extra)=>`<table><colgroup><col style="width:15%"><col style="width:35%"><col style="width:15%"><col style="width:35%"></colgroup>
+    <tr><td class="k">班　級</td><td>${A("園藝二甲")}</td><td class="k">組　別</td><td>${A("第 2 組")}</td></tr>
+    ${extra||""}<tr><td class="k">實習日期</td><td>${date}</td><td class="k">繳交日期</td><td>${due}</td></tr></table>`;
+  const TEAM=rows=>`<table><colgroup><col style="width:10%"><col style="width:17%"><col style="width:17%"><col></colgroup><tr><th>座號</th><th>姓名</th><th>角色</th><th>負責工作</th></tr>${rows.map(r=>`<tr><td style="text-align:center">${A(r[0])}</td><td>${A(r[1])}</td><td style="text-align:center">${r[2]}</td><td>${A(r[3])}</td></tr>`).join("")}</table>`;
+  const GRID=(head,rows,cols,firstK=true)=>`<div class="scroll"><table><colgroup>${cols.map(c=>`<col${c?` style="width:${c}%"`:""}>`).join("")}</colgroup><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr>${rows.map(r=>`<tr>${r.map((c,i)=>i===0&&firstK?`<td class="k l">${c}</td>`:`<td style="text-align:center">${c===""?"":A(c)}</td>`).join("")}</tr>`).join("")}</table></div>`;
+  const THOUGHTS=rows=>`<table><colgroup><col style="width:16%"><col></colgroup><tr><th>姓名</th><th>心得（每人約 100 字）</th></tr>${rows.map(r=>`<tr><td style="text-align:center">${A(r[0])}</td><td>${A(r[1])}</td></tr>`).join("")}</table>`;
+  const T=(x,y,t,o="")=>`<text x="${x}" y="${y}" text-anchor="middle" style="font-size:12px;font-weight:700;fill:#555;${o}">${t}</text>`;
+
+  /* ===== 再生紙（小組） ===== */
+  const HUSK=(x,y,r=0,s=1)=>`<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><path d="M0 -40 C 12 -20, 12 20, 0 40 C -12 20, -12 -20, 0 -40 Z" fill="#e9d79a" stroke="#b9a25a" stroke-width="1.5"/><path d="M0 -36 V36 M-4 -26 C -6 0 -6 10 -4 30 M4 -26 C 6 0 6 10 4 30" stroke="#c7b06a" stroke-width="1" fill="none"/></g>`;
+  const SHEETP=(x,y,w,h,c,fib)=>`<g transform="translate(${x} ${y})"><path d="M${-w/2} ${-h/2} q${w/8} -3 ${w/4} 0 t${w/4} 0 t${w/4} 0 t${w/4} 0 v${h} q${-w/8} 3 ${-w/4} 0 t${-w/4} 0 t${-w/4} 0 t${-w/4} 0 Z" fill="${c}" stroke="#bbb"/>${fib?Array.from({length:14},(_,i)=>`<path d="M${(-w/2+8+((i*37)%(w-16))).toFixed(0)} ${(-h/2+8+((i*53)%(h-16))).toFixed(0)} l${8+i%4*3} ${i%2?3:-3}" stroke="#b9a25a" stroke-width="1.6"/>`).join(""):""}</g>`;
+  const PAPERP=[
+    ["軟化：剪段、泡水",sv(`<path d="M40 70 L52 130 L188 130 L200 70 Z" fill="#5aa3d9" opacity=".35" stroke="#5aa3d9" stroke-width="2"/>${[0,1,2,3,4,5].map(i=>HUSK(70+i*20,100,80+i*8,.32)).join("")}${HUSK(70,40,-30,.7)}<g transform="translate(150 36) rotate(20)"><circle cx="-8" cy="10" r="7" fill="none" stroke="#c8452f" stroke-width="3"/><circle cx="8" cy="10" r="7" fill="none" stroke="#c8452f" stroke-width="3"/><path d="M-4 4 L10 -26 M4 4 L-10 -26" stroke="#7d8a93" stroke-width="3"/></g>`),"玉米皮剪成 2～3 cm，泡水一晚，手撕得開就可以打漿。"],
+    ["打漿",sv(`<g transform="translate(120 78)"><path d="M-30 -56 H30 L24 30 H-24 Z" fill="#dbeef8" stroke="#7d8a93" stroke-width="2.5"/><path d="M-26 -10 H26 L22 28 H-22 Z" fill="#efe6c6"/><rect x="-36" y="30" width="72" height="34" rx="6" fill="#3b3f44"/><circle cy="47" r="7" fill="#e0b23a"/></g>${T(200,40,"約 500 cc")}`),"泡軟的紙和玉米皮一起放進果汁機，加水到 500 cc，打 30 秒。"],
+    ["抄紙（倒漿法）",sv(`<rect x="40" y="82" width="160" height="46" rx="6" fill="#5aa3d9" opacity=".3" stroke="#5aa3d9" stroke-width="2"/><rect x="64" y="70" width="112" height="16" fill="none" stroke="#b07a45" stroke-width="5"/><g transform="translate(150 30) rotate(30)"><path d="M-16 -18 H16 L12 18 H-12 Z" fill="#efe6c6" stroke="#999"/></g><path d="M140 52 q-6 10 -14 18" stroke="#efe6c6" stroke-width="6" fill="none" stroke-linecap="round"/>`),"每張紙倒 500 cc 紙漿到網框上，左右輕搖讓纖維鋪平。"],
+    ["乾燥",sv(`<rect x="24" y="30" width="192" height="100" rx="6" fill="#e8edf0" stroke="#bbb"/>${SHEETP(78,80,70,60,"#fbfbf6",false)}${SHEETP(162,80,70,60,"#f2e8c8",true)}${T(78,124,"對照組")}${T(162,124,"加料組")}`),"用海綿壓出水分，翻到不織布上，貼標籤後陰乾 3 天。"]
+  ];
+  const paperBig=sv(`<rect width="400" height="230" fill="#f3f5ec"/>${SHEETP(110,112,150,170,"#fbfbf6",false)}${SHEETP(290,112,150,170,"#f2e8c8",true)}<text x="110" y="214" text-anchor="middle" style="font-size:14px;font-weight:700;fill:#1f4fa8">對照組（只用廢紙）</text><text x="290" y="214" text-anchor="middle" style="font-size:14px;font-weight:700;fill:#1f4fa8">加料組（＋玉米皮）</text>`,"0 0 400 230");
+  const PAPERREP=()=>GTOP("我們的農廢再生紙：玉米皮手抄紙","每組一份・照片至少 4 張・3～5 分鐘簡報上台・繳交彩色紙本＋Classroom 上傳 PDF（組長上傳）")+GINFO("12/10（四）","12/17（四）")+
+    H("一、組員與角色","每個人都要有角色，寫出實際做了什麼。","「負責工作」寫具體的事，不要只寫「幫忙」。")+
+    TEAM([["3","陳○○","材料長","蒐集玉米皮、洗淨晾乾、秤乾重 12 g"],["12","林○○","資料長","查玉米皮的來源與處理方式、造紙資料"],["18","黃○○","操作員","剪段、泡水、打漿、抄紙"],["23","張○○","紀錄員","每一步拍照、做測試、整理紀錄表"],["30","吳○○","發表人","整合內容、做簡報、上台報告"]])+
+    H("二、材料介紹",null,"要寫出「原本怎麼被丟掉」，才看得出再利用的意義。")+
+    kv([["農業廢棄物",A("玉米皮（玉米的苞葉）")],["從哪裡取得",A("家裡煮玉米剝下來的，加上傳統市場玉米攤老闆送的")],["原本怎麼處理",A("當一般垃圾或廚餘丟掉，玉米攤每天都有一大袋")],["為什麼選它",A("容易拿到、摸起來軟、手撕得開，纖維細長")],["乾　　重",A("洗淨晾乾後 12 g（實驗用 5 g，其餘備用）")]])+
+    H("三、實驗設計",null,"兩組只有「有沒有加料」不同，其他條件都要一樣。")+
+    kv([["實驗問題",A("加入玉米皮纖維做出來的紙，和只用廢紙的有什麼不同？")],["對 照 組",A("影印紙 10 g＋水 1000 cc")],["加 料 組",A("影印紙 5 g＋玉米皮 5 g（乾重）＋水 1000 cc")],["控制變因",A("乾料都是 10 g、水 1000 cc、同一種影印紙、同一個 A5 抄紙框、倒漿法每張 500 cc、一起陰乾")],["處理路線",A("路線 A：剪 2～3 cm → 泡水一晚 → 直接打漿")]])+
+    BRK(2)+
+    H("四、實驗步驟（附照片）","照實際做的順序，至少 4 張：軟化、打漿、抄紙、乾燥。","說明寫份量和時間，別人照著做也做得出來。")+photos(PAPERP)+
+    H("五、實驗結果","兩組各抄 2 張，用同樣的方法測試。","數字當場記；厚薄＝A5 重量 × 32（g/m²）。")+
+    GRID(["測試","對照 1","對照 2","加料 1","加料 2"],[
+      ["外觀","白、平滑","白、平滑","米黃、看得到纖維","米黃、看得到纖維"],
+      ["透光度（○△✕）","○","○","△","△"],
+      ["吸水性（秒）","4","5","9","8"],
+      ["書寫","好寫，水彩會暈","好寫，水彩會暈","鉛筆好寫，原子筆會卡","鉛筆好寫，原子筆會卡"],
+      ["耐折（次）","6","5","11","12"],
+      ["耐重（10 元硬幣，枚）","9","8","15","14"],
+      ["厚薄（g/m²）","147","154","166","160"]],[24,19,19,19,19])+
+    `<div class="big" style="margin-top:10px"><span class="tag">兩組紙並排（同一個光線下拍）</span>${paperBig}</div>`+
+    BRK(3)+
+    H("六、討論","全組一起討論，每題寫 2～3 句。")+
+    HQ("1. 兩種紙哪裡不同？",["從外觀、透光、吸水、耐折、耐重的數字比一比","哪一組比較強？差多少？"])+
+    HQ("2. 為什麼會有這些差異？",["想想纖維的長短、粗細","軟化夠不夠？有沒有雜質（葉肉、表皮）？"])+
+    HQ("3. 遇到什麼困難？下次怎麼改進？",["哪一步最難？紙有沒有破洞、厚薄不均？","具體寫出下次要怎麼做"])+
+    H("七、結論與應用",null,"回答兩件事：適合做什麼？值不值得拿來造紙？")+
+    LN("加了玉米皮的紙比較厚、比較強韌，耐折和耐重都比只用廢紙的高，但表面有纖維，原子筆寫起來會卡。")+LN("適合做卡片、書籤或包裝紙。玉米皮很容易拿到又不用煮，我們覺得很值得拿來造紙。")+
+    H("八、參考資料","至少 2 筆：網站或單位名稱、標題、網址。")+
+    LN("實習課網頁「農業資源應用 再生紙」，https://teacher-liujikan.github.io/yilin-work/agri-paper/")+LN("","第 2 筆：（網站或單位名稱）〈標題〉，網址")+
+    H("九、個人心得","每人約 100 字：自己負責什麼、學到什麼。","範例只寫一句，實際每人要寫約 100 字。")+
+    THOUGHTS([["陳○○","我負責蒐集玉米皮，才發現玉米攤每天丟掉這麼多…"],["林○○","查資料知道埔里有用茭白筍殼做紙，農業廢棄物也能變成產品…"],["黃○○","打漿的時候水太少果汁機會卡住，加到 500 cc 就順了…"],["張○○","耐重測試一枚一枚加硬幣很緊張，數字證明加料紙真的比較強…"],["吳○○","做簡報時把照片排好，上台講的時候比較不會忘記…"]]);
+
+  /* ===== 蚯蚓堆肥（小組） ===== */
+  const WORM=(x,y,r=0,s=1)=>`<g transform="translate(${x} ${y}) rotate(${r}) scale(${s})"><path d="M-22 0 q6 -6 12 0 t12 0 t12 0 t10 0" stroke="#c46a6a" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M-6 -2 v4" stroke="#e8a0a0" stroke-width="5"/></g>`;
+  const WORMP=[
+    ["觀察構造",sv(`<rect x="20" y="30" width="200" height="100" rx="10" fill="#e8d8c4"/>${WORM(110,84,0,3)}<circle cx="70" cy="70" r="30" fill="none" stroke="#555" stroke-width="4"/><path d="M48 92 L28 116" stroke="#555" stroke-width="6" stroke-linecap="round"/>`),"用放大鏡看環帶，手指輕摸感覺到剛毛刺刺的。"],
+    ["排在中線",sv(`<rect x="20" y="24" width="200" height="112" rx="8" fill="#efe6d4" stroke="#999"/><rect x="20" y="24" width="100" height="112" rx="8" fill="#fff8d0"/><path d="M120 24 V136" stroke="#c8452f" stroke-width="2" stroke-dasharray="5 4"/>${[0,1,2,3,4].map(i=>WORM(120,40+i*22,90,.55)).join("")}${T(70,128,"亮")}${T(170,128,"暗")}`),"手沾濕，把 10 隻蚯蚓排在中線，一邊用檯燈照、一邊用紙箱蓋住。"],
+    ["10 分鐘後計數",sv(`<rect x="20" y="24" width="200" height="112" rx="8" fill="#efe6d4" stroke="#999"/><rect x="20" y="24" width="100" height="112" rx="8" fill="#fff8d0"/><path d="M120 24 V136" stroke="#c8452f" stroke-width="2" stroke-dasharray="5 4"/>${WORM(70,60,20,.55)}${WORM(80,100,-10,.55)}${[0,1,2,3,4,5,6].map(i=>WORM(150+(i%3)*22,44+Math.floor(i/3)*30,i*25,.55)).join("")}${WORM(120,124,90,.5)}`),"計時員喊停，計數員數兩邊和中線各幾隻，再把兩邊對調做第 2 次。"],
+    ["架蚯蚓箱、埋廚餘",sv(`<path d="M30 50 L44 132 H196 L210 50 Z" fill="#7a5a3a"/><path d="M30 50 H210" stroke="#555" stroke-width="3"/>${[0,1,2].map(i=>`<rect x="${58+i*46}" y="74" width="32" height="24" rx="4" fill="#9fc46a" opacity="${1-i*.25}"/>`).join("")}${T(74,120,"整片","fill:#fff")}${T(120,120,"1 cm","fill:#fff")}${T(166,120,"打碎","fill:#fff")}`),"鋪濕報紙床材，把三種大小的高麗菜各 100 g 埋在同一箱。"]
+  ];
+  const wormBig=sv(`<rect width="400" height="230" fill="#f3f5ec"/><path d="M60 60 L84 200 H316 L340 60 Z" fill="#6a4a2e"/><path d="M60 60 H340" stroke="#444" stroke-width="4"/>${Array.from({length:10},(_,i)=>WORM(110+(i*53)%190,100+(i*31)%80,i*37,.9)).join("")}<path d="M120 40 h160" stroke="#1f4fa8" stroke-width="1.5"/><text x="200" y="32" text-anchor="middle" style="font-size:13px;font-weight:700;fill:#1f4fa8">放陰暗處、蓋濕報紙、保持濕潤</text>`,"0 0 400 230");
+  const WORMREP=()=>GTOP("蚯蚓堆肥 分組試驗報告","每組一份・照片至少 4 張・3 分鐘簡報上台・繳交彩色紙本＋Classroom 上傳 PDF（組長上傳）")+GINFO(TBD,TBD,`<tr><td class="k">測試條件</td><td colspan="3">${A("光（檯燈照）vs. 暗（紙箱蓋住）")}</td></tr>`)+
+    H("一、組員與分工","依網頁上的四個角色分工，三人組：計時員兼計數員。")+
+    TEAM([["5","陳○○","計時員","喊開始、10 分鐘到喊停，提醒對調兩邊"],["12","林○○","放置員","手沾濕排蚯蚓，結束放回箱子"],["18","黃○○","計數員","數兩邊、中線各幾隻，拍照"],["23","張○○","紀錄員","填紀錄表、算百分比、上台發表"]])+
+    H("二、實驗設計",null,"三種變因要分清楚：改變的、保持一樣的、觀察的。")+
+    kv([["實驗問題",A("蚯蚓喜歡亮的地方還是暗的地方？")],["操作變因",A("光線：一邊檯燈照、一邊紙箱蓋住")],["控制變因",A("蚯蚓 10 隻、同一個盤子、墊濕報紙、每次 10 分鐘、都從中線出發")],["應變變因",A("10 分鐘後兩邊各有幾隻蚯蚓")],["重複次數",A("3 次，每次把亮暗兩邊對調")]])+
+    H("三、實驗過程（附照片）",null,"照片要看得出蚯蚓的位置，拍完立刻放回箱子。")+photos(WORMP)+
+    BRK(2)+
+    H("四、實驗結果","試驗一當節完成；試驗二每週記錄一次。","比例＝選暗邊的隻數 ÷（亮邊＋暗邊）× 100%。")+
+    GRID(["次數","亮邊（隻）","暗邊（隻）","中線（隻）","觀察備註"],[["第 1 次","2","7","1","暗邊的蚯蚓很快鑽到報紙下"],["第 2 次（對調）","1","8","1","對調後還是往暗處爬"],["第 3 次","2","8","0",""],["合計","5","23","2",""]],[22,14,14,14,36])+
+    `<p style="margin:6px 0">選暗邊的比例：${A("23 ÷ 28 × 100% ≈ 82 %")}</p>`+
+    GRID(["廚餘大小","第 1 週","第 2 週","第 3 週","第 4 週"],[["整片（約 5 cm）","1","2","2","3"],["切 1 cm","1","2","3","4"],["打碎","2","3","4","5"],["箱內溫度／氣味","22 °C／土味","21 °C／土味","22 °C／土味","20 °C／土味"]],[28,18,18,18,18])+
+    `<p class="hint" style="margin-top:4px">分解程度：1 原樣 → 5 看不出來</p>`+
+    BRK(3)+
+    H("五、討論","每題寫 2～3 句，用自己的話回答。")+
+    HQ("1. 我們這組的蚯蚓比較喜歡哪一邊？和蚯蚓的哪個構造或習性有關？",["看合計和比例","想想蚯蚓的皮膚：怎麼感光？怎麼呼吸？"])+
+    HQ("2. 為什麼要做 3 次，還要把兩邊對調？",["如果只做 1 次、不對調，會有什麼問題？","用上「重複實驗、排除偶然」"])+
+    HQ("3. 廚餘切多大分解最快？為什麼？",["比較三種大小第 4 週的分數","想想「表面積」和微生物"])+
+    H("六、結論：蚯蚓箱怎麼照顧？","綜合全班四組的結果，寫出照顧建議。")+
+    `<div class="big"><span class="tag">我們的蚯蚓箱</span>${wormBig}</div>`+
+    LN("蚯蚓箱要放在陰暗、不會曬到太陽的地方，上面蓋濕報紙保持濕潤；廚餘切小塊再埋，分解比較快，")+LN("不要放柑橘皮和太多水分的廚餘。")+
+    H("七、個人心得","每人約 100 字。","範例只寫一句，實際每人要寫約 100 字。")+
+    THOUGHTS([["陳○○","計時的時候要一直看錶，還要提醒對調，才知道實驗要很有規矩…"],["林○○","一開始不敢摸蚯蚓，手沾濕之後發現牠們滑滑涼涼的…"],["黃○○","數蚯蚓時有一隻一直在中線不動，我們討論後算在中線…"],["張○○","算出 82% 選暗邊，數字比用說的更有說服力…"]]);
+
+  /* ===== 果皮酵素（小組） ===== */
+  const BOTTLE=(x,y,lv,c,lab)=>`<g transform="translate(${x} ${y})"><rect x="-16" y="-50" width="32" height="96" rx="8" fill="#eef6f8" stroke="#7d8a93" stroke-width="2"/><rect x="-8" y="-62" width="16" height="14" rx="3" fill="#3b6fd1"/><rect x="-15" y="${46-lv}" width="30" height="${lv}" rx="6" fill="${c}"/>${[0,1,2].map(i=>`<circle cx="${-6+i*6}" cy="${40-lv+10+i*4}" r="2" fill="#fff" opacity=".7"/>`).join("")}${lab?`<text x="0" y="62" text-anchor="middle" style="font-size:11px;font-weight:700;fill:#555">${lab}</text>`:""}</g>`;
+  const ENZP=[
+    ["洗、切果皮",sv(`<rect x="30" y="96" width="180" height="22" rx="4" fill="#b07a45"/>${[0,1,2,3,4].map(i=>`<path d="M${50+i*30} 96 q10 -18 22 0" fill="#f0a020" stroke="#c87a10"/>`).join("")}<path d="M180 40 L130 90" stroke="#7d8a93" stroke-width="6" stroke-linecap="round"/><path d="M186 34 l10 -10" stroke="#222" stroke-width="8" stroke-linecap="round"/>`),"柳丁皮洗淨、去掉爛的部分，切成 2～3 cm 小塊。"],
+    ["秤量、裝瓶",sv(`<rect x="24" y="100" width="70" height="20" rx="4" fill="#3b3f44"/><rect x="30" y="86" width="58" height="14" rx="3" fill="#ddd"/><text x="59" y="114" text-anchor="middle" style="font-size:11px;fill:#7cf;font-weight:700">100 g</text>${BOTTLE(150,74,52,"#c9973a","糖 1 份")}`),"黑糖 100 g 先用溫水溶化，再放果皮 300 g、水 1000 mL，裝 6 分滿。"],
+    ["每天放氣",sv(`${BOTTLE(100,78,58,"#b9873a","")}<path d="M100 10 a14 14 0 1 1 -1 0" stroke="#c8452f" stroke-width="3" fill="none"/><path d="M128 20 q14 -6 22 4 M134 34 q16 0 22 10" stroke="#9aa" stroke-width="2" fill="none"/>${T(180,80,"第 1 個月")}${T(180,96,"每天一次")}`),"組員輪流排班，第 1 個月每天把蓋子轉開放氣，再鎖回去。"],
+    ["清潔試驗",sv(`${[0,1,2,3,4].map(i=>`<rect x="${18+i*42}" y="50" width="36" height="36" fill="#fff" stroke="#bbb"/><circle cx="${36+i*42}" cy="68" r="${12-[0,6,3,1,10][i]}" fill="#e0b23a" opacity=".8"/>`).join("")}${["清水","1:10","1:50","1:100","洗碗精"].map((t,i)=>T(36+i*42,104,t,"font-size:10px")).join("")}`),"每種清潔液 5 mL，同一個人用同款海綿各擦 10 下。"]
+  ];
+  const ENZREP=()=>GTOP("果皮酵素清潔劑 分組試驗報告","每組一份・照片至少 4 張・3 分鐘簡報上台・繳交彩色紙本＋Classroom 上傳 PDF（組長上傳）")+GINFO(TBD,TBD,`<tr><td class="k">果皮種類</td><td>${A("柳丁皮")}</td><td class="k">污　垢</td><td>${A("油汙（沙拉油＋薑黃粉）")}</td></tr>`)+
+    H("一、組員與分工","依網頁上的四個角色分工。")+
+    TEAM([["5","陳○○","秤量員","秤果皮、黑糖、水；量清潔液 5 mL"],["12","林○○","操作員","裝瓶、放氣；清潔試驗全程負責擦"],["18","黃○○","觀察員","測 pH、聞氣味、打乾淨分數、拍照"],["23","張○○","紀錄員","填紀錄表、貼標籤、上台發表"]])+
+    H("二、配方與計算",null,"寫出計算過程：糖 1：果皮 3：水 10。")+
+    kv([["果　　皮",A("柳丁皮 300 g（每瓶一樣）")],["黑　　糖",A("0.5 份＝50 g、1 份＝100 g、1.5 份＝150 g（三瓶不同）")],["水",A("1000 mL（每瓶一樣）")],["瓶子與位置",A("同款 2 公升寶特瓶，裝 6 分滿，放教室後面陰涼的櫃子")],["稀釋計算",A("1：10＝酵素 10 mL＋水 100 mL；1：50＝酵素 2 mL＋水 100 mL；1：100＝酵素 1 mL＋水 100 mL")]])+
+    H("三、實驗過程（附照片）")+photos(ENZP)+
+    BRK(2)+
+    H("四、實驗結果","試驗一當節完成；試驗二每週記錄（第 8、12 週之後補上）。","氣泡：0 沒有、1 少、2 中、3 很多。")+
+    `<p style="margin:4px 0;font-weight:700">試驗一：清潔效果（老師發酵 3 個月的酵素）</p>`+
+    GRID(["項目","清水","酵素 1：10","酵素 1：50","酵素 1：100","洗碗精"],[["pH","7","3.8","4.6","5.2","9"],["乾淨程度（1～5）","1","3","2","1","5"],["摸起來油不油","很油","有點油","油","很油","不油"],["氣味／備註","─","淡淡柳丁香","─","─","香精味"]],[20,13,17,17,17,16])+
+    `<p style="margin:10px 0 4px;font-weight:700">試驗二：發酵觀察（氣泡／氣味／pH）</p>`+
+    GRID(["週次","糖 0.5 份","糖 1 份","糖 1.5 份","發霉？"],[["第 0 週","0／甜／5.0","0／甜／5.0","0／甜／5.0","無"],["第 1 週","1／酒味／4.5","2／酒味／4.3","3／酒味／4.2","無"],["第 2 週","1／酸／4.2","2／酸香／3.9","3／酸香／3.8","無"],["第 4 週","0／微臭／4.1","1／酸香／3.7","2／酸香／3.6","0.5 份表面有白點"],["第 8 週","","","",""],["第 12 週","","","",""]],[16,22,22,22,18])+
+    BRK(3)+
+    H("五、討論","每題寫 2～3 句，用自己的話回答。")+
+    HQ("1. 酵素越濃一定越乾淨嗎？跟洗碗精比，差多少？",["比較 1：10、1：50、1：100 的分數","洗碗精是比較的標準，差幾分？"])+
+    HQ("2. 果皮酵素對油汙有效嗎？為什麼？",["用上「酸」和「檸檬烯」","油汙和茶垢、水垢哪個比較怕酸？"])+
+    HQ("3. 糖放比較少的那瓶，發生了什麼事？為什麼？",["看第 4 週的氣泡、氣味、pH 和發霉","糖是誰的食物？"])+
+    H("六、居家使用建議",null,"寫出濃度、適合的用途和注意事項。")+
+    LN("建議稀釋 1：10 擦廚房檯面、洗碗槽的水垢，重油汙還是要用洗碗精。酵素是酸性，不要用在大理石上，")+LN("裝瓶要留空間、記得放氣，放陰涼處。")+
+    H("七、個人心得","每人約 100 字。","範例只寫一句，實際每人要寫約 100 字。")+
+    THOUGHTS([["陳○○","秤量要很準，差一點點比例就不一樣…"],["林○○","第一週放氣時「噗」一聲嚇一跳，才知道發酵會產生氣體…"],["黃○○","pH 每週都在下降，親眼看到變酸的過程…"],["張○○","糖少的那瓶發霉了，我們討論出是微生物食物不夠…"]]);
+
+  /* ===== 押花乾燥花（小組） ===== */
+  const PANSY=(x,y,s,c="#7a4bb0",dull=0)=>`<g transform="translate(${x} ${y}) scale(${s})" ${dull?`opacity="${1-dull}"`:""}>${[0,72,144,216,288].map(a=>`<ellipse cx="0" cy="-12" rx="10" ry="13" fill="${c}" transform="rotate(${a})"/>`).join("")}<circle r="5" fill="#f2c94c"/><path d="M0 -3 v-8 M-3 -2 l-6 -6 M3 -2 l6 -6" stroke="#3a2050" stroke-width="1.2"/></g>`;
+  const FLOWP=[
+    ["重物押花",sv(`<rect x="40" y="96" width="160" height="16" fill="#f4efe2" stroke="#bbb"/>${PANSY(120,104,.9)}<rect x="40" y="112" width="160" height="10" fill="#f4efe2" stroke="#bbb"/><rect x="56" y="44" width="128" height="50" rx="4" fill="#3b6fd1"/><rect x="66" y="52" width="108" height="34" fill="#5a8ae0"/><path d="M120 20 v18 M110 30 l10 10 l10 -10" stroke="#555" stroke-width="3" fill="none"/>`),"夾在吸水紙中間，上面壓厚書，前 3 天每天換紙。"],
+    ["微波押花",sv(`<rect x="30" y="24" width="180" height="110" rx="10" fill="#d0d6db" stroke="#7d8a93" stroke-width="2"/><rect x="42" y="36" width="120" height="86" rx="6" fill="#2f3438"/>${PANSY(102,80,.8)}<rect x="172" y="44" width="28" height="70" rx="4" fill="#bbc3c9"/>${T(186,62,"30 秒","font-size:10px")}`),"夾在吸水紙和瓷盤中間，每次微波 30 秒，共 3 次，每次打開散熱。"],
+    ["熨斗押花",sv(`<rect x="30" y="100" width="180" height="16" fill="#f4efe2" stroke="#bbb"/>${PANSY(120,108,.7)}<path d="M70 96 L170 96 Q186 96 186 80 L150 54 H84 Q70 54 70 70 Z" fill="#c8452f"/><rect x="100" y="38" width="50" height="14" rx="6" fill="#3b3f44"/>`),"隔著吸水紙，熨斗中低溫每次壓 20 秒，不要來回滑，共 4 次。"],
+    ["矽膠乾燥（立體）",sv(`<rect x="50" y="50" width="140" height="80" rx="8" fill="#eef6f8" stroke="#7d8a93" stroke-width="2"/>${Array.from({length:60},(_,i)=>`<circle cx="${58+(i*23)%124}" cy="${72+(i*17)%52}" r="3" fill="${i%5?"#e8eef2":"#8ab4f8"}"/>`).join("")}${PANSY(120,72,.8)}`),"花朵朝上放進矽膠，再慢慢倒矽膠蓋滿，加蓋放 5 天。"]
+  ];
+  const flowBig=sv(`<rect width="400" height="230" fill="#f3f5ec"/><rect x="130" y="14" width="140" height="204" rx="6" fill="#9fd3f0" opacity=".5"/><rect x="138" y="22" width="124" height="188" rx="3" fill="#fbf7ee" stroke="#d9c7a3"/>${PANSY(200,74,1.3)}${PANSY(176,138,.9,"#9a6ad0")}${PANSY(226,150,.8,"#7a4bb0",.15)}${LEAF(160,180,.28,-30,"#5f9a3a")}${LEAF(240,100,.24,40,"#5f9a3a")}<text x="200" y="200" text-anchor="middle" style="font-size:11px;fill:#6b7266">押花書籤（護貝）</text>`,"0 0 400 230");
+  const FLOWREP=()=>GTOP("押花與乾燥花 分組試驗報告","每組一份・照片至少 4 張＋作品照・3 分鐘簡報上台・繳交彩色紙本＋Classroom 上傳 PDF（組長上傳）")+GINFO(TBD,TBD,`<tr><td class="k">花　名</td><td>${A("三色堇")}</td><td class="k">花　色</td><td>${A("紫色")}</td></tr>`)+
+    H("一、組員與分工","依網頁上的四個角色分工；每個人最後都要做一張自己的作品。")+
+    TEAM([["5","陳○○","押花員","重物押花、前 3 天換紙；新鮮時拍照"],["12","林○○","微波員","微波押花，記錄加熱次數、總秒數"],["18","黃○○","熨斗員","熨斗押花，記錄按壓次數"],["23","張○○","矽膠員","矽膠乾燥；填紀錄表、上台發表"]])+
+    H("二、實驗設計")+
+    kv([["實驗問題",A("同一種花用 4 種方法乾燥，哪一種顏色、形狀保得最好？")],["操作變因",A("乾燥方法：重物、微波、熨斗、矽膠")],["控制變因",A("同一株、同時間採的三色堇，大小相近；同款吸水紙；同一張白紙、同一個窗邊光線拍照比對")],["應變變因",A("乾燥時間、保色分數、形狀分數、有沒有褐變或變透明")],["採花地點",A("校園花圃（先問過老師），早上露水乾了再採")]])+
+    H("三、實驗過程（附照片）",null,"每種方法一張，照片旁寫出時間或次數。")+photos(FLOWP)+
+    BRK(2)+
+    H("四、實驗結果","新鮮時和乾燥後，在同一個位置、同一個光線拍照比較。","保色、形狀都用 1～5 分，對照網頁上的評分圖。")+
+    GRID(["項目","重物押花","微波押花","熨斗押花","矽膠（立體）"],[["乾燥時間","9 天","30 秒 × 3 次","20 秒 × 4 次","5 天"],["保色（1～5）","3","4","3","5"],["形狀（1～5）","5","4","3","4"],["褐變／透明／發霉","花瓣邊緣變暗","無","一片花瓣邊緣焦黃","無"],["觀察備註","最平整","乾得最快","溫度太高","保持立體"]],[22,19,20,20,19])+
+    `<p style="margin:6px 0">我們這組最保色的方法：${A("矽膠乾燥；押成平面的話，微波押花最好")}</p>`+
+    H("五、我的押花作品",null,"排版有主角、有留白，封膜沒有氣泡。")+`<div class="big"><span class="tag">作品照片（護貝後正面拍）</span>${flowBig}</div>`+
+    BRK(3)+
+    H("六、討論","每題寫 2～3 句，用自己的話回答。")+
+    HQ("1. 哪一種方法乾得最快？最快的也最保色嗎？",["比較乾燥時間和保色分數","快速脫水對顏色有什麼好處？"])+
+    HQ("2. 為什麼紫色、粉紅色的花比較容易變暗？",["用上「花青素、類胡蘿蔔素」","看全班四種花色的結果"])+
+    HQ("3. 重物押花為什麼前 3 天要每天換紙？",["吸水紙吸飽水之後會怎樣？","想想褐變和發霉"])+
+    H("七、個人心得","每人約 100 字。","範例只寫一句，實際每人要寫約 100 字。")+
+    THOUGHTS([["陳○○","每天換紙很麻煩，但打開看到花平平整整的很值得…"],["林○○","微波第一次只開 10 秒還是濕的，試了幾次才知道要 30 秒…"],["黃○○","熨斗太燙把花瓣燙焦了，下次要調低溫度…"],["張○○","矽膠裡的花拿出來還是立體的，顏色幾乎沒變…"]]);
+
+  return {leaf:LEAFREP,seed:SEEDREP,dye:DYEREP,paper:PAPERREP,worm:WORMREP,enzyme:ENZREP,flower:FLOWREP};
+})();
+
+(function(){
+  const sheet=document.getElementById("sheet"); if(!sheet||typeof REPORTS==="undefined") return;
+  sheet.innerHTML=REPORTS[sheet.dataset.r]();
+  const tg=document.getElementById("tipToggle"); if(tg) tg.onchange=e=>sheet.classList.toggle("notip",!e.target.checked);
+  const t7=document.getElementById("t7");
+  t7.addEventListener("click",()=>{ try{ history.replaceState(null,"","#report"); }catch(e){} });
+  if(location.hash==="#report") t7.click();
+})();
+
+</script><!--/RPT-->
 </body>
 </html>
