@@ -801,11 +801,11 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 <section class="panel" id="p7" hidden>
 <div class="card">
 <h2>報告怎麼交？<span class="sec">小組報告・每組一份</span></h2>
-<div class="rq"><div class="rqc"><span class="rqi" aria-hidden="true">📅</span><b>繳交日</b><span>依老師公布（上課時交紙本＋上台；當天 23:59 前上傳 PDF）</span></div><div class="rqc"><span class="rqi" aria-hidden="true">🖨️</span><b>① 彩色紙本</b><span>每組一份，彩色列印，照片才看得清楚</span></div><div class="rqc"><span class="rqi" aria-hidden="true">💻</span><b>② Classroom 上傳 PDF</b><span>組長上傳；<b>只上傳 PDF 檔</b>，不要上傳 Word 檔（Word 先另存成 PDF）</span></div><div class="rqc"><span class="rqi" aria-hidden="true">🏷️</span><b>檔名</b><span><b>第○組_蚯蚓堆肥</b><br><small>例：第3組_蚯蚓堆肥</small></span></div><div class="rqc"><span class="rqi" aria-hidden="true">🎤</span><b>上台簡報</b><span>3 分鐘・約 5 張<br><small>簡報也由組長上傳，檔名同上</small></span></div></div>
+<div class="rq"><div class="rqc"><span class="rqi" aria-hidden="true">📅</span><b>繳交日</b><span>依老師公布（上課時交紙本＋上台；當天 23:59 前上傳 PDF）</span></div><div class="rqc"><span class="rqi" aria-hidden="true">🖨️</span><b>① 彩色紙本</b><span>每組一份，彩色列印，照片才看得清楚</span></div><div class="rqc"><span class="rqi" aria-hidden="true">💻</span><b>② Classroom 上傳 PDF</b><span>組長上傳；<b>只上傳 PDF 檔</b>，不要上傳 Word 檔（Word 先另存成 PDF）</span></div><div class="rqc"><span class="rqi" aria-hidden="true">🏷️</span><b>檔名</b><span><b>第○組_蚯蚓堆肥</b><br><small>例：第3組_蚯蚓堆肥</small></span></div><div class="rqc"><span class="rqi" aria-hidden="true">🎤</span><b>上台簡報</b><span>至少 8 分鐘・約 5 張以上<br><small>簡報也由組長上傳，檔名同上</small></span></div></div>
 <div class="tip"><b>Word 存 PDF：</b>檔案 → 另存新檔 → 檔案類型選「PDF」。Google 文件：檔案 → 下載 → PDF 文件。<b>小組報告和簡報都由組長上傳</b>，其他組員不用重複交。</div>
 </div>
 <div class="card">
-<h2>上台簡報怎麼做<span class="sec">3 分鐘・約 5 張</span></h2>
+<h2>上台簡報怎麼做<span class="sec">至少 8 分鐘・約 5 張以上</span></h2>
 <p>Google 簡報或 PowerPoint 都可以。簡報是幫你「說」的，不是把報告整篇貼上去。</p>
 <ol class="slist"><li><b>封面</b>：題目、組別、組員分工</li><li><b>實驗設計</b>：實驗問題、操作／控制／應變變因</li><li><b>實驗過程</b>：3～4 張照片，一張一個步驟</li><li><b>結果</b>：紀錄表或長條圖，圈出最重要的數字</li><li><b>結論與心得</b>：發現了什麼、可以怎麼應用、每人一句</li></ol>
 <div class="tip">一張一個重點、圖多字少（每張最多 3 行、字級 24 以上）、用自己拍的照片、上台前計時練習一次，不要照著唸。</div>
@@ -1292,7 +1292,7 @@ const REPORTS=(function(){
     ["水洗、晾乾",sv(`<path d="M20 22 H220" stroke="#b07a45" stroke-width="4"/>${SW(120,82,120,100,"#f0b81a",{tie:true})}`),"拆開橡皮筋，清水洗到不掉色，陰涼處晾乾。"]
   ];
   const dyeBig=sv(`<rect width="400" height="230" fill="#f3f5ec"/>${SW(200,115,200,190,"#f0b81a",{tie:true})}<path d="M100 216 h200" stroke="#1f4fa8" stroke-width="1.5"/><text x="200" y="228" text-anchor="middle" style="font-size:11px;fill:#1f4fa8;font-weight:700">20 cm</text>`,"0 0 400 230");
-  const DYEREP=()=>`<div class="r-top"><small>農業資源應用・期末專題・小組報告</small><b>植物染「五色尋寶」專題報告</b><i>每組一份・作品 20×20 cm 棉布・3 分鐘簡報上台・繳交彩色紙本＋Classroom 上傳 PDF</i></div>`+
+  const DYEREP=()=>`<div class="r-top"><small>農業資源應用・期末專題・小組報告</small><b>植物染「五色尋寶」專題報告</b><i>每組一份・作品 20×20 cm 棉布・至少 8 分鐘簡報上台・繳交彩色紙本＋Classroom 上傳 PDF</i></div>`+
     `<table><colgroup><col style="width:15%"><col style="width:35%"><col style="width:15%"><col style="width:35%"></colgroup><tr><td class="k">班　級</td><td>${A("307")}</td><td class="k">組　別</td><td>${A("第 3 組")}</td></tr><tr><td class="k">目標顏色</td><td>${A("黃色")}</td><td class="k">繳交日期</td><td>1/14（四）</td></tr></table>`+
     H("一、組員與分工","每個人都要有負責的工作。","分工要寫具體做了什麼，不要只寫「幫忙」。")+
     `<table><colgroup><col style="width:12%"><col style="width:22%"><col></colgroup><tr><th>座號</th><th>姓名</th><th>負責工作</th></tr>${[["5","陳○○","查資料（學名、色素）、寫植物選擇"],["12","林○○","買薑黃、切片、顧火煮染液"],["18","黃○○","綁紮設計、染色、媒染"],["23","張○○","拍照、記錄時間溫度、整理報告"],["30","吳○○","做簡報、上台報告"]].map(r=>`<tr><td style="text-align:center">${A(r[0])}</td><td>${A(r[1])}</td><td>${A(r[2])}</td></tr>`).join("")}</table>`+
@@ -1313,7 +1313,7 @@ const REPORTS=(function(){
     H("八、創新與探索","例：複合染、換媒染劑比較、在地植物、特別的紋樣。")+
     LN("我們多剪了兩塊小布做比較：一塊泡明礬水、一塊泡鐵水。泡鐵水的變成土黃偏咖啡色，證明不同金屬離子會讓顏色改變。")+
     H("九、個人心得","每人約 50 字。")+
-    `<table><colgroup><col style="width:16%"><col></colgroup><tr><th>姓名</th><th>心得</th></tr>${[["陳○○","查資料才知道咖哩的黃色和染布的黃色是同一種色素，薑黃同時是食物也是染料。"],["林○○","顧火要很有耐心，溫度太高會一直滾，要轉小火慢慢煮。"],["黃○○","綁的時候很怕綁不緊，打開看到同心圓那一刻很感動。"],["張○○","每一步都要拍照記時間，寫報告的時候才發現紀錄有多重要。"],["吳○○","上台前練習了三次，把時間控制在 3 分鐘內，講得比以前順。"]].map(r=>`<tr><td style="text-align:center">${A(r[0])}</td><td>${A(r[1])}</td></tr>`).join("")}</table>`;
+    `<table><colgroup><col style="width:16%"><col></colgroup><tr><th>姓名</th><th>心得</th></tr>${[["陳○○","查資料才知道咖哩的黃色和染布的黃色是同一種色素，薑黃同時是食物也是染料。"],["林○○","顧火要很有耐心，溫度太高會一直滾，要轉小火慢慢煮。"],["黃○○","綁的時候很怕綁不緊，打開看到同心圓那一刻很感動。"],["張○○","每一步都要拍照記時間，寫報告的時候才發現紀錄有多重要。"],["吳○○","上台前練習了三次，把時間控制在 8 分鐘以上，講得比以前順。"]].map(r=>`<tr><td style="text-align:center">${A(r[0])}</td><td>${A(r[1])}</td></tr>`).join("")}</table>`;
 
 
   /* ===== 小組報告共用 ===== */
@@ -1337,7 +1337,7 @@ const REPORTS=(function(){
     ["乾燥",sv(`<rect x="24" y="30" width="192" height="100" rx="6" fill="#e8edf0" stroke="#bbb"/>${SHEETP(78,80,70,60,"#fbfbf6",false)}${SHEETP(162,80,70,60,"#f2e8c8",true)}${T(78,124,"對照組")}${T(162,124,"加料組")}`),"用海綿壓出水分，翻到不織布上，貼標籤後陰乾 3 天。"]
   ];
   const paperBig=sv(`<rect width="400" height="230" fill="#f3f5ec"/>${SHEETP(110,112,150,170,"#fbfbf6",false)}${SHEETP(290,112,150,170,"#f2e8c8",true)}<text x="110" y="214" text-anchor="middle" style="font-size:14px;font-weight:700;fill:#1f4fa8">對照組（只用廢紙）</text><text x="290" y="214" text-anchor="middle" style="font-size:14px;font-weight:700;fill:#1f4fa8">加料組（＋玉米皮）</text>`,"0 0 400 230");
-  const PAPERREP=()=>GTOP("我們的農廢再生紙：玉米皮手抄紙","每組一份・照片至少 4 張・3～5 分鐘簡報上台・繳交彩色紙本＋Classroom 上傳 PDF（組長上傳）")+GINFO("12/10（四）","12/17（四）")+
+  const PAPERREP=()=>GTOP("我們的農廢再生紙：玉米皮手抄紙","每組一份・照片至少 4 張・至少 8 分鐘簡報上台・繳交彩色紙本＋Classroom 上傳 PDF（組長上傳）")+GINFO("12/10（四）","12/17（四）")+
     H("一、組員與角色","每個人都要有角色，寫出實際做了什麼。","「負責工作」寫具體的事，不要只寫「幫忙」。")+
     TEAM([["3","陳○○","材料長","蒐集玉米皮、洗淨晾乾、秤乾重 12 g"],["12","林○○","資料長","查玉米皮的來源與處理方式、造紙資料"],["18","黃○○","操作員","剪段、泡水、打漿、抄紙"],["23","張○○","紀錄員","每一步拍照、做測試、整理紀錄表"],["30","吳○○","發表人","整合內容、做簡報、上台報告"]])+
     H("二、材料介紹",null,"要寫出「原本怎麼被丟掉」，才看得出再利用的意義。")+
@@ -1375,7 +1375,7 @@ const REPORTS=(function(){
     ["架蚯蚓箱、埋廚餘",sv(`<path d="M30 50 L44 132 H196 L210 50 Z" fill="#7a5a3a"/><path d="M30 50 H210" stroke="#555" stroke-width="3"/>${[0,1,2].map(i=>`<rect x="${58+i*46}" y="74" width="32" height="24" rx="4" fill="#9fc46a" opacity="${1-i*.25}"/>`).join("")}${T(74,120,"整片","fill:#fff")}${T(120,120,"1 cm","fill:#fff")}${T(166,120,"打碎","fill:#fff")}`),"鋪濕報紙床材，把三種大小的高麗菜各 100 g 埋在同一箱。"]
   ];
   const wormBig=sv(`<rect width="400" height="230" fill="#f3f5ec"/><path d="M60 60 L84 200 H316 L340 60 Z" fill="#6a4a2e"/><path d="M60 60 H340" stroke="#444" stroke-width="4"/>${Array.from({length:10},(_,i)=>WORM(110+(i*53)%190,100+(i*31)%80,i*37,.9)).join("")}<path d="M120 40 h160" stroke="#1f4fa8" stroke-width="1.5"/><text x="200" y="32" text-anchor="middle" style="font-size:13px;font-weight:700;fill:#1f4fa8">放陰暗處、蓋濕報紙、保持濕潤</text>`,"0 0 400 230");
-  const WORMREP=()=>GTOP("蚯蚓堆肥 分組試驗報告","每組一份・照片至少 4 張・3 分鐘簡報上台・繳交彩色紙本＋Classroom 上傳 PDF（組長上傳）")+GINFO(TBD,TBD,`<tr><td class="k">測試條件</td><td colspan="3">${A("光（檯燈照）vs. 暗（紙箱蓋住）")}</td></tr>`)+
+  const WORMREP=()=>GTOP("蚯蚓堆肥 分組試驗報告","每組一份・照片至少 4 張・至少 8 分鐘簡報上台・繳交彩色紙本＋Classroom 上傳 PDF（組長上傳）")+GINFO(TBD,TBD,`<tr><td class="k">測試條件</td><td colspan="3">${A("光（檯燈照）vs. 暗（紙箱蓋住）")}</td></tr>`)+
     H("一、組員與分工","依網頁上的四個角色分工，三人組：計時員兼計數員。")+
     TEAM([["5","陳○○","計時員","喊開始、10 分鐘到喊停，提醒對調兩邊"],["12","林○○","放置員","手沾濕排蚯蚓，結束放回箱子"],["18","黃○○","計數員","數兩邊、中線各幾隻，拍照"],["23","張○○","紀錄員","填紀錄表、算百分比、上台發表"]])+
     H("二、實驗設計",null,"三種變因要分清楚：改變的、保持一樣的、觀察的。")+
@@ -1406,7 +1406,7 @@ const REPORTS=(function(){
     ["每天放氣",sv(`${BOTTLE(100,78,58,"#b9873a","")}<path d="M100 10 a14 14 0 1 1 -1 0" stroke="#c8452f" stroke-width="3" fill="none"/><path d="M128 20 q14 -6 22 4 M134 34 q16 0 22 10" stroke="#9aa" stroke-width="2" fill="none"/>${T(180,80,"第 1 個月")}${T(180,96,"每天一次")}`),"組員輪流排班，第 1 個月每天把蓋子轉開放氣，再鎖回去。"],
     ["清潔試驗",sv(`${[0,1,2,3,4].map(i=>`<rect x="${18+i*42}" y="50" width="36" height="36" fill="#fff" stroke="#bbb"/><circle cx="${36+i*42}" cy="68" r="${12-[0,6,3,1,10][i]}" fill="#e0b23a" opacity=".8"/>`).join("")}${["清水","1:10","1:50","1:100","洗碗精"].map((t,i)=>T(36+i*42,104,t,"font-size:10px")).join("")}`),"每種清潔液 5 mL，同一個人用同款海綿各擦 10 下。"]
   ];
-  const ENZREP=()=>GTOP("果皮酵素清潔劑 分組試驗報告","每組一份・照片至少 4 張・3 分鐘簡報上台・繳交彩色紙本＋Classroom 上傳 PDF（組長上傳）")+GINFO(TBD,TBD,`<tr><td class="k">果皮種類</td><td>${A("柳丁皮")}</td><td class="k">污　垢</td><td>${A("油汙（沙拉油＋薑黃粉）")}</td></tr>`)+
+  const ENZREP=()=>GTOP("果皮酵素清潔劑 分組試驗報告","每組一份・照片至少 4 張・至少 8 分鐘簡報上台・繳交彩色紙本＋Classroom 上傳 PDF（組長上傳）")+GINFO(TBD,TBD,`<tr><td class="k">果皮種類</td><td>${A("柳丁皮")}</td><td class="k">污　垢</td><td>${A("油汙（沙拉油＋薑黃粉）")}</td></tr>`)+
     H("一、組員與分工","依網頁上的四個角色分工。")+
     TEAM([["5","陳○○","秤量員","秤果皮、黑糖、水；量清潔液 5 mL"],["12","林○○","操作員","裝瓶、放氣；清潔試驗全程負責擦"],["18","黃○○","觀察員","測 pH、聞氣味、打乾淨分數、拍照"],["23","張○○","紀錄員","填紀錄表、貼標籤、上台發表"]])+
     H("二、配方與計算",null,"寫出計算過程：糖 1：果皮 3：水 10。")+
@@ -1437,7 +1437,7 @@ const REPORTS=(function(){
     ["矽膠乾燥（立體）",sv(`<rect x="50" y="50" width="140" height="80" rx="8" fill="#eef6f8" stroke="#7d8a93" stroke-width="2"/>${Array.from({length:60},(_,i)=>`<circle cx="${58+(i*23)%124}" cy="${72+(i*17)%52}" r="3" fill="${i%5?"#e8eef2":"#8ab4f8"}"/>`).join("")}${PANSY(120,72,.8)}`),"花朵朝上放進矽膠，再慢慢倒矽膠蓋滿，加蓋放 5 天。"]
   ];
   const flowBig=sv(`<rect width="400" height="230" fill="#f3f5ec"/><rect x="130" y="14" width="140" height="204" rx="6" fill="#9fd3f0" opacity=".5"/><rect x="138" y="22" width="124" height="188" rx="3" fill="#fbf7ee" stroke="#d9c7a3"/>${PANSY(200,74,1.3)}${PANSY(176,138,.9,"#9a6ad0")}${PANSY(226,150,.8,"#7a4bb0",.15)}${LEAF(160,180,.28,-30,"#5f9a3a")}${LEAF(240,100,.24,40,"#5f9a3a")}<text x="200" y="200" text-anchor="middle" style="font-size:11px;fill:#6b7266">押花書籤（護貝）</text>`,"0 0 400 230");
-  const FLOWREP=()=>GTOP("押花與乾燥花 分組試驗報告","每組一份・照片至少 4 張＋作品照・3 分鐘簡報上台・繳交彩色紙本＋Classroom 上傳 PDF（組長上傳）")+GINFO(TBD,TBD,`<tr><td class="k">花　名</td><td>${A("三色堇")}</td><td class="k">花　色</td><td>${A("紫色")}</td></tr>`)+
+  const FLOWREP=()=>GTOP("押花與乾燥花 分組試驗報告","每組一份・照片至少 4 張＋作品照・至少 8 分鐘簡報上台・繳交彩色紙本＋Classroom 上傳 PDF（組長上傳）")+GINFO(TBD,TBD,`<tr><td class="k">花　名</td><td>${A("三色堇")}</td><td class="k">花　色</td><td>${A("紫色")}</td></tr>`)+
     H("一、組員與分工","依網頁上的四個角色分工；每個人最後都要做一張自己的作品。")+
     TEAM([["5","陳○○","押花員","重物押花、前 3 天換紙；新鮮時拍照"],["12","林○○","微波員","微波押花，記錄加熱次數、總秒數"],["18","黃○○","熨斗員","熨斗押花，記錄按壓次數"],["23","張○○","矽膠員","矽膠乾燥；填紀錄表、上台發表"]])+
     H("二、實驗設計")+
