@@ -480,6 +480,13 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 .rbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;font-size:15.5px}
 .planbtn{display:inline-flex;align-items:center;gap:6px;margin:4px 0 6px;padding:6px 16px;min-height:40px;border:2px solid var(--accent);border-radius:999px;background:var(--paper);color:var(--accent);font-weight:700;font-size:16px;text-decoration:none}
 .planbtn:hover,.planbtn:focus-visible{background:var(--accent);color:var(--accent-ink);outline:none}
+/* 「報告與繳交」分頁按鈕：橘色醒目 */
+.tab#t7{border-color:#d9822b;background:#fff1de;color:#a4520c;box-shadow:0 2px 0 #d9822b;position:relative}
+.tab#t7::after{content:"";position:absolute;top:-3px;right:-3px;width:11px;height:11px;border-radius:50%;background:#e5484d;border:2px solid var(--paper)}
+.tab#t7[aria-selected="true"]{background:#d9822b;color:#fff;border-color:#d9822b}
+.tab#t7[aria-selected="true"]::after{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tab#t7:not([aria-selected="true"]){background:#3a2814;color:#ffb36b;border-color:#e0954a;box-shadow:0 2px 0 #e0954a}}
+:root[data-theme="dark"] .tab#t7:not([aria-selected="true"]){background:#3a2814;color:#ffb36b;border-color:#e0954a;box-shadow:0 2px 0 #e0954a}
 
 /*/RPT-CSS*/
 </style>
@@ -501,7 +508,9 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <button class="tab" role="tab" id="t2" aria-selected="false">實驗過程</button>
     <button class="tab" role="tab" id="t3" aria-selected="false">分組試驗</button>
     <button class="tab" role="tab" id="t4" aria-selected="false">動手判斷</button>
-    <!--RPT--><button class="tab" role="tab" id="t7" aria-selected="false">報告與繳交</button><!--/RPT-->
+    
+    <!--RPT--><button class="tab" role="tab" id="t7" aria-selected="false"><span aria-hidden="true">📝</span> 報告與繳交</button><!--/RPT-->
+    
     <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
   </nav>
 
@@ -786,6 +795,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 
 
   <!-- ===== 5 小測驗 ===== -->
+  
   <!--RPT-->
 <section class="panel" id="p7" hidden>
 <div class="card">
