@@ -493,6 +493,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     
     
     
+    
     <!--RPT--><button class="tab" role="tab" id="t7" aria-selected="false"><span aria-hidden="true">📝</span> 報告與繳交</button><!--/RPT-->
     <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
   </nav>
@@ -1265,11 +1266,11 @@ const REPORTS=(function(){
     ${LANT(96,138,2.6)}${WING(150,96,1.1,-30)}${WING(176,94,1.1,30)}${ACO(164,128,2.8,true,.3)}${ACO(212,140,2.3,true,-.3)}${BALL(130,168,1.3,"#c98a3a",.5)}${GUM(250,170,1.15)}${CAMPH(186,182,2.6)}
     <path d="M150 140 q14 8 28 0" stroke="#3a1a10" stroke-width="2" fill="none" transform="translate(0 6)"/>`,"0 0 400 230");
 
-  const seedRows=[["1","青剛櫟","青剛櫟（殼斗科）","褐色橢圓形、戴殼斗帽，約 2 cm","動物（松鼠搬運）","爸爸、媽媽"],["2","無患子","無患子","黃褐色圓球、有點透明","動物（鳥吃）","小孩的頭"],["3","楓香球果","楓香","深褐色、刺刺的圓球","風（裡面種子有翅）","寵物刺蝟"],["4","燈籠果","台灣欒樹","粉紅褐色、像紙燈籠","風","野餐帳篷"],["5","樟樹果實","樟樹","黑色小圓果，約 0.7 cm","動物（鳥吃）","小寶寶"],["6","翅狀種子","大葉桃花心木","一片褐色翅膀","風（旋轉）","爸爸的頭髮"]];
+  const seedRows=[["1","青剛櫟（殼斗科）","褐色橢圓形、戴殼斗帽，約 2 cm","動物（松鼠搬運）"],["2","無患子","黃褐色圓球、有點透明","動物（鳥吃）"],["3","楓香（球果）","深褐色、刺刺的圓球","風（裡面種子有翅）"],["4","台灣欒樹（燈籠果）","粉紅褐色、像紙燈籠","風"],["5","樟樹","黑色小圓果，約 0.7 cm","動物（鳥吃）"],["6","大葉桃花心木","一片褐色翅膀","風（旋轉）"]];
   const SEEDREP=()=>top("種子小精靈","一人一份・至少 5 種種子・上台分享・繳交彩色紙本＋Classroom 上傳 PDF")+info("12/24（四）","12/31（四）")+
     H("一、作品基本資料",null,"作品名稱要有主題，讓人一看就知道在演什麼。")+kv([["作品名稱",A("《橡實一家去野餐》")],["用　　途",`☐ 桌面裝飾　<span class="tick">☑</span> 名片夾　☐ 其他：＿＿`],["使用種子",`共 ${A("6")} 種（至少 5 種）`],["蒐集地點",`${A("校園後山步道、住家附近公園")}　蒐集日期：${A("12／17")}`]])+
     H("二、種子蒐集紀錄","不知道名字先寫特徵，拍照查詢後再補。傳播方式：風、動物、水、重力、彈射。","特徵寫「形狀＋顏色＋大小」；傳播方式要和特徵對得起來。")+
-    `<div class="scroll"><table><tr><th style="width:7%">編號</th><th style="width:15%">種子／果實</th><th style="width:16%">來自植物</th><th>特徵</th><th style="width:16%">傳播方式</th><th style="width:15%">用在哪裡</th></tr>${seedRows.map(r=>`<tr>${r.map((c,i)=>`<td${i===0?' class="k"':""}>${i?A(c):c}</td>`).join("")}</tr>`).join("")}</table></div>`+
+    `<div class="scroll"><table><tr><th style="width:8%">編號</th><th style="width:24%">植物名稱</th><th>特徵（形狀、顏色、大小）</th><th style="width:22%">傳播方式</th></tr>${seedRows.map(r=>`<tr>${r.map((c,i)=>`<td${i===0?' class="k"':""}>${i?A(c):c}</td>`).join("")}</tr>`).join("")}</table></div>`+
     BRK(2)+
     H("三、製作過程（附照片）",null,"四張照片要看得出「順序」，說明寫用了什麼方法。")+photos(SEEDP)+
     H("四、作品介紹")+`<div class="big"><span class="tag">完成的種子小精靈</span>${seedBig}</div>`+
