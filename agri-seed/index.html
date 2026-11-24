@@ -540,40 +540,6 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <button class="tab" role="tab" id="t2" aria-selected="false">製作過程</button>
     <button class="tab" role="tab" id="t3" aria-selected="false">作品分享</button>
     <button class="tab" role="tab" id="t4" aria-selected="false">動手判斷</button>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <!--RPT--><button class="tab" role="tab" id="t7" aria-selected="false"><span aria-hidden="true">📝</span> 報告與繳交</button><!--/RPT-->
     <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
   </nav>
@@ -642,12 +608,13 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
             <li>撿<b>完整、乾、沒有洞</b>的；大小、形狀、顏色越多樣越好</li>
             <li>戴手套；撿完<span class="key">一定要洗手</span></li>
           </ul></div>
-        <div class="box badb"><b class="t">❌ 有毒，不要撿</b>
+        <div class="box badb"><b class="t">⚠️ 注意有毒植物</b>
           <svg viewBox="0 0 300 80" id="toxSvg" aria-hidden="true"></svg>
           <ul>
             <li><b>雞母珠</b>（紅色、一端黑色）、<b>蓖麻子</b>：種子有劇毒</li>
             <li><b>海檬果</b>（海邊常見，像小芒果）、<b>夾竹桃</b>的果實：全株有毒</li>
-            <li>不認識的種子<b>不要放進嘴巴</b></li>
+            <li>仍可以拿來做作品，但<b>一定要戴手套</b>，做完<b>用肥皂洗手</b></li>
+            <li>種子<b>不要放進嘴巴</b>；作品放在小小孩、寵物拿不到的地方</li>
           </ul></div>
       </div>
     </div>
@@ -686,7 +653,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
       <div class="four">
         <div class="box c1"><svg viewBox="0 0 160 90" id="sGun" aria-hidden="true"></svg><b class="t">熱熔膠槍</b><small>用<b>低溫槍</b>；噴嘴和熱膠很燙，不要碰；不用時立在架子上，墊矽膠墊</small></div>
         <div class="box c3"><svg viewBox="0 0 160 90" id="sOven" aria-hidden="true"></svg><b class="t">烘烤由老師做</b><small>烤箱低溫、有人顧著；拿出來戴隔熱手套</small></div>
-        <div class="box badb"><svg viewBox="0 0 160 90" id="sTox" aria-hidden="true"></svg><b class="t">有毒種子不撿</b><small>雞母珠、蓖麻子、海檬果、夾竹桃果</small></div>
+        <div class="box badb"><svg viewBox="0 0 160 90" id="sTox" aria-hidden="true"></svg><b class="t">注意有毒植物</b><small>雞母珠、蓖麻子、海檬果、夾竹桃果：可用，戴手套、洗手</small></div>
         <div class="box c2"><svg viewBox="0 0 160 90" id="sWash" aria-hidden="true"></svg><b class="t">洗手</b><small>撿完、做完都要用肥皂洗手；作品不能吃</small></div>
       </div>
     </div>
@@ -1038,7 +1005,7 @@ fill("dWater",`<path d="M0 70 q20 -10 40 0 t40 0 t40 0 t40 0 V100 H0 Z" fill="va
 fill("dPop",`<g transform="translate(60 58)"><path d="M-40 0 Q0 -14 40 0 Q0 14 -40 0" fill="#9a7a4a"/><path d="M-36 -2 Q0 -24 38 -20" stroke="#7a5a32" stroke-width="3" fill="none"/></g>${[0,1,2].map(i=>`<g class="a-float" style="animation-duration:1.6s;animation-delay:${i*.3}s">${WILD("blk",60+i*10,56,.7)}</g>`).join("")}`);
 
 /* ---------- 有毒 ---------- */
-fill("toxSvg",`<g transform="translate(36 34)"><ellipse rx="13" ry="10" fill="#d8232a"/><path d="M5 -8 a10 10 0 0 1 0 16 a8 10 0 0 0 0 -16" fill="#111"/></g>${T(36,72,"雞母珠","middle","s-sm")}<g transform="translate(106 34)"><ellipse rx="13" ry="9" fill="#9a8a7a"/>${[[-6,-3],[2,2],[7,-4],[-3,5]].map(([a,b])=>`<path d="M${a} ${b} l3 1" stroke="#4a3a2a" stroke-width="2"/>`).join("")}</g>${T(106,72,"蓖麻子","middle","s-sm")}<g transform="translate(180 34)"><ellipse rx="16" ry="20" fill="#5fa85a"/><ellipse cx="4" cy="2" rx="10" ry="14" fill="#c8452f" opacity=".5"/></g>${T(180,72,"海檬果","middle","s-sm")}<g transform="translate(254 34)"><path d="M-20 10 Q0 -16 20 -10 M-20 16 Q0 -10 20 -4" stroke="#7a6a3a" stroke-width="5" fill="none" stroke-linecap="round"/></g>${T(254,72,"夾竹桃果","middle","s-sm")}<path d="M10 6 L290 62" stroke="var(--bad)" stroke-width="3" opacity=".7"/>`);
+fill("toxSvg",`<g transform="translate(36 34)"><ellipse rx="13" ry="10" fill="#d8232a"/><path d="M5 -8 a10 10 0 0 1 0 16 a8 10 0 0 0 0 -16" fill="#111"/></g>${T(36,72,"雞母珠","middle","s-sm")}<g transform="translate(106 34)"><ellipse rx="13" ry="9" fill="#9a8a7a"/>${[[-6,-3],[2,2],[7,-4],[-3,5]].map(([a,b])=>`<path d="M${a} ${b} l3 1" stroke="#4a3a2a" stroke-width="2"/>`).join("")}</g>${T(106,72,"蓖麻子","middle","s-sm")}<g transform="translate(180 34)"><ellipse rx="16" ry="20" fill="#5fa85a"/><ellipse cx="4" cy="2" rx="10" ry="14" fill="#c8452f" opacity=".5"/></g>${T(180,72,"海檬果","middle","s-sm")}<g transform="translate(254 34)"><path d="M-20 10 Q0 -16 20 -10 M-20 16 Q0 -10 20 -4" stroke="#7a6a3a" stroke-width="5" fill="none" stroke-linecap="round"/></g>${T(254,72,"夾竹桃果","middle","s-sm")}`);
 
 /* ---------- 前處理 ---------- */
 fill("prepSvg",(()=>{
@@ -1075,12 +1042,12 @@ fill("designSvg",(()=>{
 /* ---------- 安全 ---------- */
 fill("sGun",`<g transform="translate(70 40)">${GUN(1.1)}</g><g class="a-drop"><circle cx="118" cy="44" r="3" fill="#f4f0e2" stroke="var(--muted)"/></g><path d="M100 70 h50" stroke="var(--g4)" stroke-width="6" stroke-linecap="round"/>`);
 fill("sOven",`<rect x="40" y="16" width="80" height="62" rx="6" fill="var(--metal)"/><rect x="48" y="26" width="52" height="42" rx="3" fill="#2b3036"/><rect x="48" y="26" width="52" height="42" rx="3" fill="#f2a64a" opacity=".3" class="a-fade"/>${WILD("acorn",64,52,.7,90)}${WILD("gum",84,52,.6)}<circle cx="110" cy="34" r="4" fill="#ddd"/><circle cx="110" cy="50" r="4" fill="#ddd"/>`);
-fill("sTox",`<g transform="translate(60 44)"><ellipse rx="16" ry="12" fill="#d8232a"/><path d="M6 -10 a12 12 0 0 1 0 20 a10 12 0 0 0 0 -20" fill="#111"/></g><g transform="translate(110 44)"><ellipse rx="16" ry="20" fill="#5fa85a"/></g><path d="M40 20 L130 70" stroke="var(--bad)" stroke-width="4"/>`);
+fill("sTox",`<g transform="translate(60 44)"><ellipse rx="16" ry="12" fill="#d8232a"/><path d="M6 -10 a12 12 0 0 1 0 20 a10 12 0 0 0 0 -20" fill="#111"/></g><g transform="translate(110 44)"><ellipse rx="16" ry="20" fill="#5fa85a"/></g><text x="134" y="58" style="font-size:24px">🧤</text>`);
 fill("sWash",`<path d="M60 16 h30 v10 h-10 v8" stroke="var(--metal)" stroke-width="6" fill="none"/>${[0,1,2].map(i=>`<circle cx="80" cy="42" r="3" fill="var(--water)" class="a-drop" style="animation-delay:${i*.4}s"/>`).join("")}<g transform="translate(80 70)"><path d="M-22 -6 q-4 14 10 16 h24 q12 -4 8 -16 Z" fill="#f2c9a0" stroke="#b58a62"/>${[0,1,2,3].map(i=>`<circle cx="${-14+i*9}" cy="-8" r="4" fill="#fff" opacity=".9"/>`).join("")}</g>`);
 
 /* ---------- 步驟 ---------- */
 const STEPS=[
- {t:"蒐集種子",l:["到校園、公園撿掉在地上的種子和果實","至少 5 種，大小、形狀、顏色越多樣越好","夾鏈袋分裝，寫上地點、日期、植物名","不認識的先拍照，有毒的不要撿"],tip:"撿完一定要洗手；不要搖樹、不要摘還長在樹上的。",
+ {t:"蒐集種子",l:["到校園、公園撿掉在地上的種子和果實","至少 5 種，大小、形狀、顏色越多樣越好","夾鏈袋分裝，寫上地點、日期、植物名","不認識的先拍照；有毒植物要戴手套撿"],tip:"撿完一定要洗手；不要搖樹、不要摘還長在樹上的。",
   art:`<svg viewBox="0 0 340 200"><path d="M40 20 Q 140 0 250 30" stroke="var(--wood)" stroke-width="8" fill="none" stroke-linecap="round"/>${[80,140,200].map((x,i)=>`<ellipse cx="${x}" cy="${36+i*2}" rx="26" ry="12" fill="var(--leaf)" opacity=".8"/>`).join("")}<g class="a-fall" style="animation-duration:3.4s">${WILD("acorn",150,40,1.4,30)}</g><g class="a-fall" style="animation-duration:4s;animation-delay:1s">${WILD("lantern",210,40,1.4)}</g><path d="M20 176 H320" stroke="var(--soil)" stroke-width="6"/>${WILD("gum",70,166,1.2)}${WILD("acorn",110,168,1,80)}${WILD("term",250,168,1)}<g transform="translate(290 120)"><path d="M-24 -30 h48 l-4 54 h-40 Z" fill="var(--film)" opacity=".5" stroke="var(--water)" stroke-width="2"/><rect x="-18" y="-24" width="36" height="14" fill="#fff" stroke="var(--muted)"/>${T(0,-13,"校園","middle","s-sm")}${WILD("soap",-6,6,1)}${WILD("acorn",8,12,.8,60)}</g></svg>`},
  {t:"刷洗、泡水挑選",l:["用舊牙刷刷掉泥土","泡水 10 分鐘","浮起來的橡實多半被蟲蛀或空心 → 不要用","有小洞、發霉、裂開的也挑掉"],tip:"殼斗（橡實帽子）容易掉，先另外收起來，之後再黏回去。",
   art:`<svg viewBox="0 0 340 200"><path d="M80 50 L90 180 L250 180 L260 50 Z" fill="var(--water)" opacity=".35" stroke="var(--water)" stroke-width="2.4"/>${WILD("acorn",130,160,1.8,90)}${WILD("acorn",170,164,1.8,80)}${WILD("soap",210,162,1.6)}<g class="a-up" style="animation-duration:3s">${WILD("acorn",200,78,1.8,100)}</g><circle cx="206" cy="72" r="3" fill="#2a1a10"/>${T(300,80,"浮起來","middle","s-txt")}${T(300,98,"＝蟲蛀、空心","middle","s-sm")}${T(300,168,"沉下去 ✓","middle","s-txt")}</svg>`},
@@ -1136,10 +1103,10 @@ const READY_OPTS=["可以撿","不要撿"];
 const READY=[
  ["校園地上完整的青剛櫟橡實",0,"地上掉落的、完整的，可以撿。回來記得泡水挑選、冷凍。"],
  ["有一個小圓洞的橡實",1,"小洞是象鼻蟲鑽出來的洞，裡面多半被吃空了。"],
- ["紅色、一端有黑點的亮亮小豆子",1,"這是雞母珠，種子有劇毒，不能撿也不能玩。"],
+ ["紅色、一端有黑點的亮亮小豆子",0,"這是雞母珠，種子有毒。可以用，但要戴手套撿、做完洗手，絕對不能放進嘴巴。"],
  ["公園地上的楓香球果",0,"可以，刺刺的形狀很適合當刺蝟或頭髮。戴手套撿。"],
  ["爬進別人家院子摘的果實",1,"私人土地的植物不能隨便採，也不要摘樹上的。"],
- ["海邊撿到、像小芒果的綠色果實",1,"可能是海檬果，全株有毒，不要撿。"],
+ ["海邊撿到、像小芒果的綠色果實",0,"可能是海檬果，全株有毒。可以用，但要戴手套、做完洗手。"],
  ["台灣欒樹掉下來的燈籠果",0,"可以，粉紅褐色的燈籠很漂亮，裡面還有黑色種子。"],
  ["長了白毛、軟軟的果實",1,"已經發霉了，會把霉帶進作品。"]
 ];
@@ -1176,7 +1143,7 @@ const CASES=[
 /* ---------- 小測驗 ---------- */
 const QS=[
  {q:"撿種子時，下列哪一個做法正確？",o:["撿掉在地上的，不搖樹、不摘","爬樹摘最新鮮的","到別人家院子撿","越多越好，整棵樹搖下來"],a:0,why:"只撿地上掉落的，並且只在校園、公園等可以撿的地方。"},
- {q:"紅色、一端有黑點的亮亮小豆子是雞母珠，應該怎麼辦？",o:["不要撿，它有劇毒","撿回來當眼睛","放進嘴巴試試看","磨成粉當顏料"],a:0,why:"雞母珠（相思子）種子有劇毒，不能撿也不能玩。"},
+ {q:"紅色、一端有黑點的亮亮小豆子是雞母珠，使用時要注意什麼？",o:["有毒，可以用但要戴手套，做完洗手、不放進嘴巴","沒有毒，可以直接用手玩","放進嘴巴試試看","磨成粉當顏料"],a:0,why:"雞母珠（相思子）種子有毒。可以拿來做作品，但要戴手套、做完用肥皂洗手，絕對不能放進嘴巴。"},
  {q:"橡實泡水時浮起來，通常代表什麼？",o:["被蟲蛀了或空心","特別新鮮","比較重","可以吃"],a:0,why:"裡面被象鼻蟲幼蟲吃空，比較輕，所以會浮起來。"},
  {q:"撿回來的種子為什麼要冷凍 2～3 天？",o:["殺死裡面的蟲卵","讓種子變硬好黏","讓顏色變深","讓種子發芽"],a:0,why:"冷凍（或老師低溫烘烤）可以殺死蟲卵，作品才不會長蟲。"},
  {q:"處理完的種子要完全乾燥，主要是為了防止什麼？",o:["發霉","變色變漂亮","太輕","太硬"],a:0,why:"種子沒乾透，放在作品裡容易發霉。"},
@@ -1336,7 +1303,7 @@ if(location.hash==="#quiz") show("t5");
   <ul class="matlist"><li><span class="mi" aria-hidden="true">🌰</span><span><b>自己撿的種子、果實</b><small><b>至少 5 種</b>，多撿一些備用；用夾鏈袋分裝，寫上地點、日期、植物名</small></span></li><li><span class="mi" aria-hidden="true">🌿</span><span><b>小樹枝、乾葉子（可選）</b><small>當手腳、裝飾</small></span></li><li><span class="mi" aria-hidden="true">📎</span><span><b>名片夾配件（做名片夾才需要）</b><small>小木夾、長尾夾或鋁線</small></span></li></ul>
   <p class="matt"><b>老師準備：</b>木頭切片底座、活動眼睛、低溫熱熔膠槍、保麗龍膠、亮光漆</p>
   <h3>⚠️ 注意事項</h3>
-  <ul class="matnote"><li>只撿<b>掉在地上</b>的，不要拔、不要搖樹；只在校園、公園撿，不進私人土地</li><li><b>有毒不要撿</b>：雞母珠（紅色一端黑色）、蓖麻子、海檬果、夾竹桃果實；不認識的種子不要放進嘴巴</li><li>撿回來要先處理：<b>刷洗 → 泡水挑掉浮起來的 → 冷凍 2～3 天 → 晾乾</b>，防蟲又防霉</li><li>撿種子時戴手套，撿完一定要用肥皂洗手</li></ul>
+  <ul class="matnote"><li>只撿<b>掉在地上</b>的，不要拔、不要搖樹；只在校園、公園撿，不進私人土地</li><li><b>注意有毒植物</b>：雞母珠（紅色一端黑色）、蓖麻子、海檬果、夾竹桃果實有毒，<b>仍可使用</b>，但要戴手套、做完用肥皂洗手；種子不要放進嘴巴</li><li>撿回來要先處理：<b>刷洗 → 泡水挑掉浮起來的 → 冷凍 2～3 天 → 晾乾</b>，防蟲又防霉</li><li>撿種子時戴手套，撿完一定要用肥皂洗手</li></ul>
   <label class="matok"><input type="checkbox" id="matChk"> 我已經記下來了</label>
 </div></div><script>
 /* ===== 報告範例共用模組（agri-plan 與各實習單元共用；改這裡＝全部同步） ===== */
