@@ -846,7 +846,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 <div class="card">
 <h2>報告要寫什麼<span class="sec">A4・約 3 頁</span></h2>
 <div class="rsec">
-<ol class="seclist"><li><b>一、作品基本資料</b><small>作品名稱、用途（桌面裝飾／名片夾）、用了幾種種子、蒐集地點與日期</small></li><li><b>二、種子蒐集紀錄</b><small>至少 5 種：植物名稱、特徵、傳播方式</small></li><li><b>三、製作過程</b><small>4 張照片：處理種子、設計試擺、黏眼睛組合、固定到底座</small></li><li><b>四、作品介紹</b><small>作品照片＋角色介紹</small></li><li><b>五、我最喜歡的種子</b><small>形狀和傳播方式的關係</small></li><li><b>六、遇到的問題與解決</b></li><li><b>七、心得</b><small>約 100 字</small></li></ol>
+<ol class="seclist"><li><b>一、作品基本資料</b><small>作品名稱、用途（桌面裝飾／名片夾）、用了幾種種子、蒐集地點與日期</small></li><li><b>二、種子蒐集紀錄</b><small>至少 5 種：植物名稱、特徵、傳播方式</small></li><li><b>三、製作過程</b><small>4 張照片，步驟自己選、依順序排，每張一句說明（範例可參考）</small></li><li><b>四、作品介紹</b><small>作品照片＋角色介紹</small></li><li><b>五、我最喜歡的種子</b><small>形狀和傳播方式的關係</small></li><li><b>六、遇到的問題與解決</b></li><li><b>七、心得</b><small>約 100 字</small></li></ol>
 <div class="rside">
 <a class="dlc" href="種子小精靈個人報告範本.docx" download><svg viewBox="0 0 60 70" aria-hidden="true"><path d="M6 2 h34 l14 14 v52 h-48 Z" fill="#fff" stroke="#2b579a" stroke-width="3"/><path d="M40 2 v14 h14" fill="#dbe5f4" stroke="#2b579a" stroke-width="3"/><rect x="0" y="30" width="34" height="22" rx="3" fill="#2b579a"/><text x="17" y="46" text-anchor="middle" style="fill:#fff;font-size:15px;font-weight:900;font-family:Arial">W</text></svg><span><b>下載 Word 報告範本</b><small>種子小精靈個人報告範本.docx</small></span></a>
 <div class="ftbl"><div><b>紙張</b><span>A4 直式，上下左右邊界 2 cm</span></div><div><b>字型</b><span>整份（含標題、表格）標楷體</span></div><div><b>字級</b><span>大標題 20 pt、章節標題 14 pt、內文 12 pt、表格與照片說明 11 pt</span></div><div><b>行距、頁碼</b><span>單行間距；頁尾置中頁碼（範本已有）</span></div><div><b>照片</b><span>手機橫拍、清楚；步驟照片高 4 cm、作品照片高 5.5 cm，鎖定長寬比，每張寫一句說明</span></div><div><b>PDF</b><span>壓縮圖片 220 ppi，檔案 20 MB 內</span></div></div>
@@ -1391,7 +1391,7 @@ const REPORTS=(function(){
     H("二、種子蒐集紀錄","不知道名字先寫特徵，拍照查詢後再補。傳播方式：風、動物、水、重力、彈射。","特徵寫「形狀＋顏色＋大小」；傳播方式要和特徵對得起來。")+
     `<div class="scroll"><table><tr><th style="width:8%">編號</th><th style="width:24%">植物名稱</th><th>特徵（形狀、顏色、大小）</th><th style="width:22%">傳播方式</th></tr>${seedRows.map(r=>`<tr>${r.map((c,i)=>`<td${i===0?' class="k"':""}>${i?A(c):c}</td>`).join("")}</tr>`).join("")}</table></div>`+
     BRK(2)+
-    H("三、製作過程（附照片）",null,"四張照片要看得出「順序」，說明寫用了什麼方法。")+photos(SEEDP)+
+    H("三、製作過程（附照片）","照片 4 張，步驟自己選，依製作順序排；每張寫一句說明。下面 4 張是示範。","選最能看出「你怎麼做」的 4 個步驟，例如：處理種子、設計試擺、黏眼睛、組合角色、固定到底座、做名片夾…；說明寫用了什麼方法。")+photos(SEEDP)+
     H("四、作品介紹")+`<div class="big"><span class="tag">完成的種子小精靈</span>${seedBig}</div>`+
     LN("戴殼斗帽的橡實爸爸和媽媽帶著無患子小孩、樟樹小寶寶去野餐，後面是欒樹燈籠果搭的帳篷，","角色介紹：牠們是誰？在做什麼？")+LN("楓香刺蝟是家裡的寵物。爸爸頭上的桃花心木種子是他新剪的髮型。名片夾在帳篷旁邊。")+
     BRK(3)+
