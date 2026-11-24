@@ -737,7 +737,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
       <h2>期末專題：「五色尋寶」<span class="sec">分組作業</span></h2>
       <p><b>任務：</b>全班分成 <span class="key">5 組</span>，每組選一種<span class="key">目標顏色</span>，找出能染出這個顏色的天然植物，完成<b>染色作品</b>和<b>研究報告</b>。</p>
       <div class="teams" id="teamBox"></div>
-      <p class="ex">各組顏色和植物在 12/24 分組時決定。可以用課堂介紹的植物，也鼓勵找<b>家裡、校園、在地</b>的植物。</p>
+      <p class="ex">各組顏色和植物在 12/31 分組時決定。可以用課堂介紹的植物，也鼓勵找<b>家裡、校園、在地</b>的植物。</p>
     </div>
 
     <div class="card">
@@ -772,9 +772,9 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <div class="card">
       <h2>小組時程建議</h2>
       <div class="timeline">
-        <div class="tl"><b>12/24</b><span class="m">上課</span><ul><li>分組、選目標顏色</li><li>分工（植物染已講解完畢）</li></ul></div>
-        <div class="tl"><b>12/31 前</b><span class="m">小組</span><ul><li>查資料：植物學名、色素種類</li><li>採集或購買植物、布料</li></ul></div>
-        <div class="tl"><b>1/7 前</b><span class="m">小組</span><ul><li>小塊布試染</li><li>正式染 20 × 20 cm 棉布作品</li><li>每一步拍照、記時間溫度</li></ul></div>
+        <div class="tl"><b>12/31</b><span class="m">上課</span><ul><li>分組、選目標顏色</li><li>分工（植物染已講解完畢）</li></ul></div>
+        <div class="tl"><b>1/7 前</b><span class="m">小組</span><ul><li>查資料：植物學名、色素種類</li><li>採集或購買植物、布料</li></ul></div>
+        <div class="tl"><b>1/12 前</b><span class="m">小組</span><ul><li>小塊布試染</li><li>正式染 20 × 20 cm 棉布作品</li><li>每一步拍照、記時間溫度</li></ul></div>
         <div class="tl"><b>1/14</b><span class="m">上課</span><ul><li>繳交作品、報告</li><li>至少 8 分鐘簡報上台</li></ul></div>
       </div>
     </div>
@@ -1228,12 +1228,12 @@ const REPORTS=(function(){
     ["漂白、吸乾、護貝",sv(`<rect x="16" y="40" width="208" height="90" rx="10" fill="#f4efc2" stroke="#999"/>${SKEL(120,86,.7,90,"#b8a070")}<text x="120" y="28" text-anchor="middle" style="font-size:13px;fill:#555;font-weight:700">漂白水 1：水 8</text>`),"泡稀釋漂白水 15 分鐘變米白色，吸水紙吸乾、熨斗隔紙燙乾，20 分鐘內當節護貝。"]
   ];
   const leafBig=sv(`<rect x="0" y="0" width="400" height="230" fill="#f3f5ec"/>
-    <g transform="translate(200 116)"><rect x="-34" y="-104" width="68" height="208" rx="6" fill="#9fd3f0" opacity=".5"/><rect x="-28" y="-98" width="56" height="196" rx="3" fill="#2f5d3a"/><circle cy="-86" r="5" fill="#f3f5ec"/>${SKEL(0,6,1.15,0,"#f7f1e1")}<text x="0" y="88" text-anchor="middle" style="fill:#f7f1e1;font-size:8px;font-weight:700">桂花 11/26</text></g>
+    <g transform="translate(200 116)"><rect x="-34" y="-104" width="68" height="208" rx="6" fill="#9fd3f0" opacity=".5"/><rect x="-28" y="-98" width="56" height="196" rx="3" fill="#2f5d3a"/><circle cy="-86" r="5" fill="#f3f5ec"/>${SKEL(0,6,1.15,0,"#f7f1e1")}<text x="0" y="88" text-anchor="middle" style="fill:#f7f1e1;font-size:8px;font-weight:700">桂花 12/10</text></g>
     <path d="M200 70 L290 44" stroke="#1f4fa8" stroke-width="1.5"/><text x="294" y="48" style="fill:#1f4fa8;font-size:15px;font-weight:700">主脈</text>
     <path d="M222 100 L290 104" stroke="#1f4fa8" stroke-width="1.5"/><text x="294" y="108" style="fill:#1f4fa8;font-size:15px;font-weight:700">側脈</text>
     <path d="M186 122 L110 140" stroke="#1f4fa8" stroke-width="1.5"/><text x="106" y="144" text-anchor="end" style="fill:#1f4fa8;font-size:15px;font-weight:700">細脈網</text>`,"0 0 400 230");
 
-  const LEAFREP=()=>top("葉脈標本護貝書籤","一人一份・照片至少 4 張・繳交彩色紙本＋Classroom 上傳 PDF")+info("11/26（四）","12/10（四）")+
+  const LEAFREP=()=>top("葉脈標本護貝書籤","一人一份・照片至少 4 張・繳交彩色紙本＋Classroom 上傳 PDF")+info("12/10（四）","12/17（四）")+
     H("一、材料與器材")+kv([["葉子種類",A("桂花")],["採集地點",A("學校中庭花圃")],["煮葉方式",A("肥皂水（水 1 公升＋肥皂絲 30 g），小火保持冒小泡")],["使用器材",A("不鏽鋼鍋、電磁爐、長筷子、舊牙刷、瓷磚、漂白水、量杯、吸水紙、熨斗、護貝膠膜、深綠色卡紙")]])+
     H("二、實習步驟（附照片）","照實際做的順序貼照片，每張寫一句說明。","說明要寫「怎麼做」：時間、份量、方法，不是只寫「煮葉子」。")+photos(LEAFP)+
     BRK(2)+
@@ -1275,8 +1275,8 @@ const REPORTS=(function(){
     <path d="M150 140 q14 8 28 0" stroke="#3a1a10" stroke-width="2" fill="none" transform="translate(0 6)"/>`,"0 0 400 230");
 
   const seedRows=[["1","青剛櫟","青剛櫟（殼斗科）","褐色橢圓形、戴殼斗帽，約 2 cm","動物（松鼠搬運）","爸爸、媽媽"],["2","無患子","無患子","黃褐色圓球、有點透明","動物（鳥吃）","小孩的頭"],["3","楓香球果","楓香","深褐色、刺刺的圓球","風（裡面種子有翅）","寵物刺蝟"],["4","燈籠果","台灣欒樹","粉紅褐色、像紙燈籠","風","野餐帳篷"],["5","樟樹果實","樟樹","黑色小圓果，約 0.7 cm","動物（鳥吃）","小寶寶"],["6","翅狀種子","大葉桃花心木","一片褐色翅膀","風（旋轉）","爸爸的頭髮"]];
-  const SEEDREP=()=>top("種子小精靈","一人一份・至少 5 種種子・上台分享・繳交彩色紙本＋Classroom 上傳 PDF")+info("12/17（四）","12/24（四）")+
-    H("一、作品基本資料",null,"作品名稱要有主題，讓人一看就知道在演什麼。")+kv([["作品名稱",A("《橡實一家去野餐》")],["用　　途",`☐ 桌面裝飾　<span class="tick">☑</span> 名片夾　☐ 其他：＿＿`],["使用種子",`共 ${A("6")} 種（至少 5 種）`],["蒐集地點",`${A("校園後山步道、住家附近公園")}　蒐集日期：${A("12／10")}`]])+
+  const SEEDREP=()=>top("種子小精靈","一人一份・至少 5 種種子・上台分享・繳交彩色紙本＋Classroom 上傳 PDF")+info("12/24（四）","12/31（四）")+
+    H("一、作品基本資料",null,"作品名稱要有主題，讓人一看就知道在演什麼。")+kv([["作品名稱",A("《橡實一家去野餐》")],["用　　途",`☐ 桌面裝飾　<span class="tick">☑</span> 名片夾　☐ 其他：＿＿`],["使用種子",`共 ${A("6")} 種（至少 5 種）`],["蒐集地點",`${A("校園後山步道、住家附近公園")}　蒐集日期：${A("12／17")}`]])+
     H("二、種子蒐集紀錄","不知道名字先寫特徵，拍照查詢後再補。傳播方式：風、動物、水、重力、彈射。","特徵寫「形狀＋顏色＋大小」；傳播方式要和特徵對得起來。")+
     `<div class="scroll"><table><tr><th style="width:7%">編號</th><th style="width:15%">種子／果實</th><th style="width:16%">來自植物</th><th>特徵</th><th style="width:16%">傳播方式</th><th style="width:15%">用在哪裡</th></tr>${seedRows.map(r=>`<tr>${r.map((c,i)=>`<td${i===0?' class="k"':""}>${i?A(c):c}</td>`).join("")}</tr>`).join("")}</table></div>`+
     BRK(2)+
@@ -1350,7 +1350,7 @@ const REPORTS=(function(){
     ["乾燥",sv(`<rect x="24" y="30" width="192" height="100" rx="6" fill="#e8edf0" stroke="#bbb"/>${SHEETP(78,80,70,60,"#fbfbf6",false)}${SHEETP(162,80,70,60,"#f2e8c8",true)}${T(78,124,"對照組")}${T(162,124,"加料組")}`),"用海綿壓出水分，翻到不織布上，貼標籤後陰乾 3 天。"]
   ];
   const paperBig=sv(`<rect width="400" height="230" fill="#f3f5ec"/>${SHEETP(110,112,150,170,"#fbfbf6",false)}${SHEETP(290,112,150,170,"#f2e8c8",true)}<text x="110" y="214" text-anchor="middle" style="font-size:14px;font-weight:700;fill:#1f4fa8">對照組（只用廢紙）</text><text x="290" y="214" text-anchor="middle" style="font-size:14px;font-weight:700;fill:#1f4fa8">加料組（＋玉米皮）</text>`,"0 0 400 230");
-  const PAPERREP=()=>GTOP("我們的農廢再生紙：玉米皮手抄紙","每組一份・照片至少 4 張・至少 8 分鐘簡報上台・繳交彩色紙本＋Classroom 上傳 PDF（組長上傳）")+GINFO("12/10（四）","12/17（四）")+
+  const PAPERREP=()=>GTOP("我們的農廢再生紙：玉米皮手抄紙","每組一份・照片至少 4 張・至少 8 分鐘簡報上台・繳交彩色紙本＋Classroom 上傳 PDF（組長上傳）")+GINFO("12/17（四）","12/24（四）")+
     H("一、組員與角色","每個人都要有角色，寫出實際做了什麼。","「負責工作」寫具體的事，不要只寫「幫忙」。")+
     TEAM([["3","陳○○","材料長","蒐集玉米皮、洗淨晾乾、秤乾重 12 g"],["12","林○○","資料長","查玉米皮的來源與處理方式、造紙資料"],["18","黃○○","操作員","剪段、泡水、打漿、抄紙"],["23","張○○","紀錄員","每一步拍照、做測試、整理紀錄表"],["30","吳○○","發表人","整合內容、做簡報、上台報告"]])+
     H("二、材料介紹",null,"要寫出「原本怎麼被丟掉」，才看得出再利用的意義。")+
