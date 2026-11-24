@@ -562,6 +562,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     
     
     
+    
     <!--RPT--><button class="tab" role="tab" id="t7" aria-selected="false"><span aria-hidden="true">📝</span> 報告與繳交</button><!--/RPT-->
     <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
   </nav>
@@ -707,7 +708,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
         <div class="mat"><b>🪣 大水盆</b><small>要比抄紙框大一圈</small></div>
         <div class="mat"><b>🖼️ 抄紙框</b><small>有紗網的網框＋沒有網的邊框（可用相框＋紗網自製）</small></div>
         <div class="mat"><b>🧽 海綿、吸水布</b><small>不織布、舊毛巾、舊報紙墊底</small></div>
-        <div class="mat"><b>🌸 加料（可選）</b><small>花瓣、葉片、煮軟的茭白筍殼或稻稈纖維</small></div>
+        <div class="mat"><b>🌾 農業廢棄物 5 g</b><small>加料組用（乾重）；照處理路線先軟化，和廢紙一起打漿</small></div>
       </div>
       <div class="note">紙漿濃度參考：打漿時 <b>紙：水 約 1：3</b>；倒進水盆後再加等量的水稀釋。科展實驗用 <b>8～15 g 廢紙配 1000 cc 水</b>做出來的紙最好用。</div>
       <div class="warnbox"><b>安全：</b>果汁機由老師操作，打漿時不要把手或湯匙伸進杯裡；手濕的時候不要碰插頭；地上的水隨時擦乾。</div>
@@ -1132,7 +1133,7 @@ const STEPS=[
    ${[70,120,165,210,255].map((x,i)=>`<rect class="a-fall s-sheet" x="${x}" y="62" width="22" height="16" style="animation-delay:${i*.5}s"/>`).join("")}
    ${[80,130,175,220,265].map((x,i)=>`<ellipse class="a-ripple" cx="${x}" cy="108" rx="16" ry="4" fill="none" stroke="var(--water2)" stroke-width="2" style="animation-delay:${i*.5}s"/>`).join("")}
    <text class="s-txt" x="170" y="186" text-anchor="middle">泡到紙變軟、一撕就爛</text></svg>`},
- {t:"打成紙漿",l:["泡軟的紙和水以 約 1：3 倒進果汁機","分段打，每次幾秒，打到糊狀、看不到紙片","想要彩色紙：最後加一點色紙或花瓣，稍微打一下"],tip:"安全：老師操作，手和湯匙不要伸進杯裡。",
+ {t:"打成紙漿",l:["泡軟的紙和水以 約 1：3 倒進果汁機","分段打，每次幾秒，打到糊狀、看不到紙片"],tip:"安全：老師操作，手和湯匙不要伸進杯裡。",
   art:`<svg viewBox="0 0 340 200"><g class="a-shake">
    <path d="M120 30 L220 30 L205 140 L135 140 Z" fill="var(--water)" opacity=".35" stroke="var(--muted)" stroke-width="3"/>
    <path d="M126 70 L214 70 L205 138 L135 138 Z" class="s-pulp"/>
@@ -1141,7 +1142,7 @@ const STEPS=[
    <rect x="125" y="140" width="90" height="40" rx="8" fill="var(--muted)"/><circle cx="170" cy="160" r="8" fill="var(--paper)"/>
    <rect x="115" y="22" width="110" height="10" rx="4" fill="var(--muted)"/></g>
    <text class="s-txt" x="270" y="80" text-anchor="middle">紙：水</text><text class="s-txt" x="270" y="100" text-anchor="middle" style="font-size:20px">1：3</text></svg>`},
- {t:"倒進水盆、稀釋",l:["紙漿倒進大水盆","加入和紙漿等量的水，攪拌均勻","可加入紙藥、花瓣、葉片或筍殼纖維"],tip:"漿越濃，紙越厚；漿越稀，紙越薄。",
+ {t:"倒進水盆、稀釋",l:["紙漿倒進大水盆","加入和紙漿等量的水，攪拌均勻"],tip:"漿越濃，紙越厚；漿越稀，紙越薄。",
   art:`<svg viewBox="0 0 340 200">${WATER("s-pulp",130)}${TUB(130)}
    <g class="a-pour"><path d="M95 40 L145 40 L140 95 L100 95 Z" fill="var(--pulp)" stroke="var(--muted)" stroke-width="3"/></g>
    <path class="a-stream" d="M150 52 Q170 80 168 118" fill="none" stroke="var(--pulp2)" stroke-width="8" stroke-linecap="round"/>
@@ -1395,7 +1396,7 @@ if(location.hash==="#quiz") show("t5");
   <h2 id="matTitle">🎒 材料準備</h2>
   <p class="matwhen"><b>什麼時候帶：</b>12/17（四）上課帶來（12/10 講解後回家準備）</p>
   <h3>每組要準備</h3>
-  <ul class="matlist"><li><span class="mi" aria-hidden="true">🌾</span><span><b>農業廢棄物</b><small>玉米皮、茭白筍殼、竹筍殼、甘蔗渣、稻稈、落葉…選一種；<b>乾重 10 g 以上</b>（實驗用 5 g，其餘備用）</small></span></li><li><span class="mi" aria-hidden="true">📄</span><span><b>廢紙 約 15 g</b><small>影印紙、報紙、紙箱都可以，不限種類；<b>對照組和加料組要用同一種廢紙</b></small></span></li><li><span class="mi" aria-hidden="true">🌸</span><span><b>加料（可選）</b><small>花瓣、小葉片，抄紙時放進去當裝飾</small></span></li></ul>
+  <ul class="matlist"><li><span class="mi" aria-hidden="true">🌾</span><span><b>農業廢棄物</b><small>玉米皮、茭白筍殼、竹筍殼、甘蔗渣、稻稈、落葉…選一種；<b>乾重 10 g 以上</b>（實驗用 5 g，其餘備用）</small></span></li><li><span class="mi" aria-hidden="true">📄</span><span><b>廢紙 約 15 g</b><small>影印紙、報紙、紙箱都可以，不限種類；<b>對照組和加料組要用同一種廢紙</b></small></span></li></ul>
   <p class="matt"><b>老師準備：</b>果汁機、抄紙框、水盆、海綿、不織布、電子秤</p>
   <h3>⚠️ 注意事項</h3>
   <ul class="matnote"><li>材料先<b>洗淨、晾乾</b>，處理前要<b>秤乾重</b>並記錄</li><li>鳳梨皮、香蕉皮、菜葉等多汁含糖的材料容易發霉、發臭：要先煮過、洗乾淨；<b>不要用油膩的廚餘</b></li><li>甘蔗渣先用清水搓洗掉糖分，不然會發霉、發黏</li><li>向攤販、店家要材料前先有禮貌地詢問</li><li>裝袋並貼上<b>組別、材料名稱、乾重</b>；由材料長負責帶來</li><li>實驗只比較<b>有沒有加入農業廢棄物</b>，所以兩組的廢紙種類、重量都要一樣</li></ul>
