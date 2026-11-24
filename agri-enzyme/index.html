@@ -1258,10 +1258,7 @@ const REPORTS=(function(){
     ["漂白、吸乾、護貝",sv(`<rect x="16" y="40" width="208" height="90" rx="10" fill="#f4efc2" stroke="#999"/>${SKEL(120,86,.7,90,"#b8a070")}<text x="120" y="28" text-anchor="middle" style="font-size:13px;fill:#555;font-weight:700">漂白水 1：水 8</text>`),"泡稀釋漂白水 15 分鐘變米白色，吸水紙吸乾、熨斗隔紙燙乾，20 分鐘內當節護貝。"]
   ];
   const leafBig=sv(`<rect x="0" y="0" width="400" height="230" fill="#f3f5ec"/>
-    <g transform="translate(200 116)"><rect x="-34" y="-104" width="68" height="208" rx="6" fill="#9fd3f0" opacity=".5"/><rect x="-28" y="-98" width="56" height="196" rx="3" fill="#2f5d3a"/><circle cy="-86" r="5" fill="#f3f5ec"/>${SKEL(0,6,1.15,0,"#f7f1e1")}<text x="0" y="88" text-anchor="middle" style="fill:#f7f1e1;font-size:8px;font-weight:700">桂花 12/10</text></g>
-    <path d="M200 70 L290 44" stroke="#1f4fa8" stroke-width="1.5"/><text x="294" y="48" style="fill:#1f4fa8;font-size:15px;font-weight:700">主脈</text>
-    <path d="M222 100 L290 104" stroke="#1f4fa8" stroke-width="1.5"/><text x="294" y="108" style="fill:#1f4fa8;font-size:15px;font-weight:700">側脈</text>
-    <path d="M186 122 L110 140" stroke="#1f4fa8" stroke-width="1.5"/><text x="106" y="144" text-anchor="end" style="fill:#1f4fa8;font-size:15px;font-weight:700">細脈網</text>`,"0 0 400 230");
+    <g transform="translate(200 116)"><rect x="-34" y="-104" width="68" height="208" rx="6" fill="#9fd3f0" opacity=".5"/><rect x="-28" y="-98" width="56" height="196" rx="3" fill="#2f5d3a"/><circle cy="-86" r="5" fill="#f3f5ec"/>${SKEL(0,6,1.15,0,"#f7f1e1")}<text x="0" y="88" text-anchor="middle" style="fill:#f7f1e1;font-size:8px;font-weight:700">桂花 12/10</text></g>`,"0 0 400 230");
 
   const LEAFREP=()=>top("葉脈標本護貝書籤","一人一份・照片至少 4 張・繳交彩色紙本＋Classroom 上傳 PDF")+info("12/10（四）","12/17（四）")+
     H("一、材料與器材")+kv([["葉子種類",A("桂花")],["採集地點",A("學校中庭花圃")],["煮葉方式",A("肥皂水（水 1 公升＋肥皂絲 30 g），小火保持冒小泡")],["使用器材",A("不鏽鋼鍋、電磁爐、長筷子、舊牙刷、瓷磚、漂白水、量杯、吸水紙、熨斗、護貝膠膜、深綠色卡紙")]])+
@@ -1275,7 +1272,7 @@ const REPORTS=(function(){
       <tr><td class="k l">葉脈完整度（1～5）</td><td>${A("4（右下角有一個小破洞）")}</td></tr>
       <tr><td class="k l">漂白時間（分鐘）</td><td>${A("15")}</td></tr>
       <tr><td class="k l">漂白後顏色</td><td>${A("米白")}</td></tr></table>
-    <div class="big" style="margin-top:10px"><span class="tag">我的葉脈書籤成品（標出主脈、側脈、細脈）</span>${leafBig}</div>`+
+    <div class="big" style="margin-top:10px"><span class="tag">我的葉脈書籤成品</span>${leafBig}</div>`+
     H("四、討論","每題寫 2～3 句，用自己的話回答。")+
     HQ("1. 我的葉子煮的時間剛好嗎？從刷葉肉的情形說說看。",["刷的時候葉肉好不好掉？要多用力？","有沒有刷破、刷斷細脈？發生在哪裡？","判斷：太短、剛好、還是太久？"])+
     HQ("2. 為什麼葉肉刷得掉，葉脈卻留得下來？",["葉肉和葉脈的細胞壁有什麼不同？","用上這些詞：果膠、鹼、加熱、維管束、木質素"])+
