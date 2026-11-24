@@ -495,6 +495,23 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 .wpo b{color:var(--accent)}
 .wpr small{display:block;color:var(--muted);font-size:13.5px;line-height:1.4}
 .wpa{font-size:26px;color:var(--accent);text-align:center;font-weight:900}
+
+/* 一根稻稈的多種出路 */
+.sout{display:grid;grid-template-columns:130px 70px minmax(0,1fr);align-items:stretch;gap:0}
+.sstraw{margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:8px}
+.sstraw svg{width:90px;height:auto}
+.sstraw figcaption{font-weight:900;font-size:18px;color:var(--soil)}
+.sbr{width:100%;height:100%}
+.souts{display:grid;grid-template-rows:repeat(4,1fr);gap:8px}
+.so{position:relative;display:grid;grid-template-columns:74px minmax(0,1fr);gap:10px;align-items:center;border:1.5px solid var(--line);border-left-width:7px;border-radius:12px;padding:8px 12px;background:var(--bg);font-size:16px;line-height:1.5}
+.so b{display:block;font-size:18px}
+.so.c1{border-left-color:var(--g1)}.so.c2{border-left-color:var(--g2)}.so.c3{border-left-color:var(--g3)}
+.so.no{border-left-color:var(--bad);border-style:dashed;opacity:.85}
+.so.no b{color:var(--bad)}
+.so:not(.no)::before{content:"";position:absolute;left:-15px;top:50%;margin-top:-8px;border:8px solid transparent;border-left:9px solid var(--accent)}
+@media (max-width:640px){.so:not(.no)::before{display:none}.sstraw::after{content:"▼ 可以變成";font-weight:900;color:var(--accent);font-size:15px}}
+.so .ic svg{width:74px;height:auto;display:block}
+@media (max-width:640px){.sout{grid-template-columns:1fr}.sbr{display:none}.sstraw{flex-direction:row;gap:10px;margin-bottom:8px}.sstraw svg{width:46px}.souts{grid-template-rows:none}}
 </style>
 </head>
 <body>
@@ -8815,10 +8832,24 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 
     <div class="card">
       <h2>一根稻稈的多種出路</h2>
-      <div class="three">
-        <div class="box c2"><b class="t">🐐 飼料</b>畜試所把稻稈做成青貯料、粒狀芻料餵牛羊，成本比進口草料低。</div>
-        <div class="box c1"><b class="t">🌱 堆肥</b>打碎後回到田裡，補充有機質。</div>
-        <div class="box c3"><b class="t">📄 造紙・材料</b>纖維做成手工紙、包材；蔗渣還能做成可堆肥的吸管。</div>
+      <div class="sout">
+        <figure class="sstraw"><svg viewBox="0 0 120 260" aria-hidden="true">
+<path d="M58 250 C 56 190, 60 120, 64 40" stroke="#c9a24a" stroke-width="7" fill="none" stroke-linecap="round"/>
+<path d="M58 250 C 56 190, 60 120, 64 40" stroke="#e8cf7a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+<g stroke="#a8843a" stroke-width="3"><path d="M57 200 h6"/><path d="M58 140 h6"/><path d="M60 90 h6"/></g>
+<path d="M58 205 q-30 -20 -40 -60" stroke="#b5a04a" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M59 150 q30 -18 38 -56" stroke="#b5a04a" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M64 40 q18 6 26 30 q4 14 0 30" stroke="#a8843a" stroke-width="2.5" fill="none"/>
+<g fill="#e0b23a" stroke="#a8843a" stroke-width="1.2">
+<ellipse cx="72" cy="46" rx="4" ry="7" transform="rotate(30 72 46)"/><ellipse cx="80" cy="56" rx="4" ry="7" transform="rotate(40 80 56)"/><ellipse cx="86" cy="68" rx="4" ry="7" transform="rotate(10 86 68)"/><ellipse cx="88" cy="82" rx="4" ry="7" transform="rotate(-5 88 82)"/><ellipse cx="88" cy="96" rx="4" ry="7"/><ellipse cx="66" cy="34" rx="4" ry="7" transform="rotate(15 66 34)"/></g>
+</svg><figcaption>一根稻稈</figcaption></figure>
+        <svg class="sbr" viewBox="0 0 80 300" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="sarr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--accent)"/></marker></defs>
+          <path d="M2 150 C 40 150, 40 38, 76 38" stroke="var(--accent)" stroke-width="4" fill="none" vector-effect="non-scaling-stroke"/>
+          <path d="M2 150 C 40 150, 40 112, 76 112" stroke="var(--accent)" stroke-width="4" fill="none" vector-effect="non-scaling-stroke"/>
+          <path d="M2 150 C 40 150, 40 188, 76 188" stroke="var(--accent)" stroke-width="4" fill="none" vector-effect="non-scaling-stroke"/>
+          <path d="M2 150 C 40 150, 40 262, 76 262" stroke="var(--bad)" stroke-width="3" stroke-dasharray="6 5" fill="none" vector-effect="non-scaling-stroke"/>
+        </svg>
+        <div class="souts"><div class="so c2"><span class="ic"><svg viewBox="0 0 80 60" aria-hidden="true"><ellipse cx="36" cy="34" rx="22" ry="13" fill="#f2efe6" stroke="#5e6b58" stroke-width="2"/><circle cx="60" cy="26" r="9" fill="#f2efe6" stroke="#5e6b58" stroke-width="2"/><path d="M56 18 l-4 -8 M64 18 l4 -8" stroke="#5e6b58" stroke-width="2.4" stroke-linecap="round"/><circle cx="62" cy="25" r="1.6" fill="#222"/><path d="M22 45 v10 M30 46 v10 M42 46 v10 M50 45 v10" stroke="#5e6b58" stroke-width="3" stroke-linecap="round"/><path d="M62 34 q4 8 10 12" stroke="#c9a24a" stroke-width="3" fill="none"/><path d="M64 34 q6 6 12 6" stroke="#c9a24a" stroke-width="3" fill="none"/></svg></span><span><b>飼料</b>畜試所把稻稈做成青貯料、粒狀芻料餵牛羊，成本比進口草料低。</span></div><div class="so c1"><span class="ic"><svg viewBox="0 0 80 60" aria-hidden="true"><path d="M8 54 Q40 18 72 54 Z" fill="#8a5d3b"/><path d="M20 48 l6 -3" stroke="#d9b45a" stroke-width="2.4"/><path d="M29 42 l6 -3" stroke="#d9b45a" stroke-width="2.4"/><path d="M38 48 l6 -3" stroke="#d9b45a" stroke-width="2.4"/><path d="M47 42 l6 -3" stroke="#d9b45a" stroke-width="2.4"/><path d="M56 48 l6 -3" stroke="#d9b45a" stroke-width="2.4"/><path d="M40 30 v-14" stroke="#3f8f3a" stroke-width="3"/><path d="M40 20 q-10 -6 -14 -14 q10 0 14 10 M40 18 q8 -8 16 -8 q-4 10 -16 12" fill="#5fae4a"/></svg></span><span><b>堆肥</b>打碎後回到田裡，補充有機質。</span></div><div class="so c3"><span class="ic"><svg viewBox="0 0 80 60" aria-hidden="true"><path d="M8 12 q8 -3 16 0 t16 0 t16 0 v38 q-8 3 -16 0 t-16 0 t-16 0 Z" fill="#efe4cf" stroke="#a8946c" stroke-width="2"/><path d="M14 20 l7 -2" stroke="#c9a24a" stroke-width="2"/><path d="M25 27 l7 2" stroke="#c9a24a" stroke-width="2"/><path d="M36 34 l7 -2" stroke="#c9a24a" stroke-width="2"/><path d="M47 41 l7 2" stroke="#c9a24a" stroke-width="2"/><path d="M22 22 l7 -2" stroke="#c9a24a" stroke-width="2"/><path d="M33 29 l7 2" stroke="#c9a24a" stroke-width="2"/><path d="M44 36 l7 -2" stroke="#c9a24a" stroke-width="2"/><path d="M19 43 l7 2" stroke="#c9a24a" stroke-width="2"/><g transform="translate(64 30) rotate(12)"><rect x="-5" y="-24" width="10" height="48" rx="3" fill="#d9c08a" stroke="#a8843a" stroke-width="2"/><path d="M-5 -14 h10 M-5 -4 h10 M-5 6 h10" stroke="#a8843a" stroke-width="1.2"/></g></svg></span><span><b>造紙・材料</b>纖維做成手工紙、包材；蔗渣還能做成可堆肥的吸管。</span></div><div class="so no"><span class="ic"><svg viewBox="0 0 80 60" aria-hidden="true"><path d="M20 52 q-6 -16 8 -28 q-2 10 6 12 q-2 -16 12 -26 q0 14 10 20 q8 8 2 22 Z" fill="#e8742c" opacity=".55"/><path d="M30 20 q-4 -8 2 -16 M46 16 q-4 -6 2 -12" stroke="#9aa394" stroke-width="3" fill="none"/><path d="M16 12 L64 52 M64 12 L16 52" stroke="#c8452f" stroke-width="6" stroke-linecap="round"/></svg></span><span><b>露天焚燒 ✕</b>以前常見的做法：空氣污染、浪費資源，要用上面三條出路取代。</span></div></div>
       </div>
       <div class="note">共同目標：把「廢棄物」變成「資源」，取代<b>露天焚燒</b>。</div>
     </div>
