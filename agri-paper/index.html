@@ -397,6 +397,10 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 .so .ic svg{width:74px;height:auto;display:block}
 @media (max-width:640px){.sout{grid-template-columns:1fr}.sbr{display:none}.sstraw{flex-direction:row;gap:10px;margin-bottom:8px}.sstraw svg{width:46px}.souts{grid-template-rows:none}}
 
+.vidh{font-size:18px;margin:14px 0 8px;color:var(--accent)}
+.vidwide{position:relative;width:100%;max-width:760px;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;border:1px solid var(--line)}
+.vidwide iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vidlink a{color:var(--accent);font-weight:700}
 /* 步驟影片 */
 .vidwrap{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:18px;align-items:start}
 @media (max-width:700px){.vidwrap{grid-template-columns:1fr}.vid{max-width:300px;margin:0 auto}}
@@ -565,6 +569,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <button class="tab" role="tab" id="t3" aria-selected="false">動手做</button>
     <button class="tab" role="tab" id="t6" aria-selected="false">分組實驗</button>
     <button class="tab" role="tab" id="t4" aria-selected="false">動手判斷</button>
+    
     
     
     
@@ -746,7 +751,8 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
       </div>
     </div>
     <div class="card">
-      <h2>看影片：抄紙實作<span class="sec">YouTube 短片</span></h2>
+      <h2>看影片：抄紙實作<span class="sec">YouTube・2 支</span></h2>
+      <h3 class="vidh">影片 1（短片）</h3>
       <div class="vidwrap">
         <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/6yGW3qCuxe8?rel=0" title="再生紙抄紙實作影片" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
         <div class="vidtxt">
@@ -759,6 +765,9 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
           <p class="ex">播放不了的話：<a href="https://www.youtube.com/shorts/6yGW3qCuxe8" target="_blank" rel="noopener">在 YouTube 開啟影片 ↗</a></p>
         </div>
       </div>
+      <h3 class="vidh">影片 2</h3>
+      <div class="vidwide"><iframe src="https://www.youtube-nocookie.com/embed/xxIZcRPEqmc?rel=0" title="再生紙抄紙影片 2" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <p class="ex vidlink">播放不了的話：<a href="https://www.youtube.com/watch?v=xxIZcRPEqmc" target="_blank" rel="noopener">在 YouTube 開啟影片 ↗</a></p>
     </div>
   </section>
 
