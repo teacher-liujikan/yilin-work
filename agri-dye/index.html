@@ -545,6 +545,31 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 .sibs b{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 .sibs a:hover{border-color:var(--accent)}
 
+/* 材料準備 */
+.matbtn{display:inline-flex;align-items:center;gap:6px;margin:4px 0 6px 8px;padding:6px 16px;min-height:40px;border:2px solid #2b7bbf;border-radius:999px;background:#e6f2fc;color:#1d5f99;font:inherit;font-weight:700;font-size:16px;cursor:pointer;box-shadow:0 2px 0 #2b7bbf;position:relative}
+.matbtn:hover,.matbtn:focus-visible{background:#2b7bbf;color:#fff;outline:none}
+.matbtn.new::after{content:"";position:absolute;top:-3px;right:-3px;width:11px;height:11px;border-radius:50%;background:#e5484d;border:2px solid var(--paper)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .matbtn{background:#15314a;color:#9fd0ff;border-color:#5aa3e0;box-shadow:0 2px 0 #5aa3e0}}
+:root[data-theme="dark"] .matbtn{background:#15314a;color:#9fd0ff;border-color:#5aa3e0;box-shadow:0 2px 0 #5aa3e0}
+.matov{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.45);display:flex;align-items:flex-start;justify-content:center;padding:24px 14px;overflow-y:auto}
+.matov[hidden]{display:none}
+.matbox{position:relative;background:var(--paper);color:var(--ink);border-radius:16px;max-width:640px;width:100%;padding:20px 22px;box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.matbox h2{margin:0 0 6px;font-size:24px;padding-right:40px}
+.matbox h3{margin:14px 0 6px;font-size:18px;color:var(--accent)}
+.matx{position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font-size:18px;cursor:pointer}
+.matwhen{background:#fff3cd;border:1.5px solid #e3c15a;color:#5a4a10;border-radius:10px;padding:8px 12px;margin:6px 0;font-size:16px}
+.matlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.matlist li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:8px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--bg)}
+.matlist .mi{font-size:26px;text-align:center}
+.matlist b{display:block;font-size:17px}
+.matlist small{display:block;color:var(--muted);font-size:14.5px;line-height:1.5}
+.matlist small b{display:inline;font-size:inherit;color:var(--ink)}
+.matt{font-size:15px;color:var(--muted);margin:8px 0 0}
+.matnote{margin:0;padding-left:1.3em;font-size:15.5px;line-height:1.6}
+.matnote li{margin:3px 0}
+.matok{display:flex;align-items:center;gap:8px;margin-top:14px;font-weight:700;cursor:pointer}
+.matok input{width:20px;height:20px;accent-color:var(--accent)}
+
 /*/RPT-CSS*/
 </style>
 </head>
@@ -554,7 +579,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <div class="brand">
       <div class="eyebrow">農業資源應用・期末專題</div>
       <h1>植物染與藍染</h1>
-      <p class="sub">基本知識 → 染色方法 → 五色尋寶專題 → 動手判斷 → 掃 QR 小測驗</p><!--RPT--><a class="planbtn" href="../agri-plan/">🧭 農業資源應用實習・開場</a><!--/RPT-->
+      <p class="sub">基本知識 → 染色方法 → 五色尋寶專題 → 動手判斷 → 掃 QR 小測驗</p><!--RPT--><a class="planbtn" href="../agri-plan/">🧭 農業資源應用實習・開場</a><button type="button" class="matbtn" id="matBtn"><span aria-hidden="true">🎒</span> 材料準備</button><!--/RPT-->
       <nav class="sibs" aria-label="其他實習課">實習課：<a href="../agri-leaf/">葉脈書籤</a><a href="../agri-paper/">再生紙</a><a href="../agri-seed/">種子創作</a><b aria-current="page">植物染</b></nav>
     </div>
     <div class="qr" id="qrBtn" role="button" tabindex="0" aria-label="放大 QR code"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACrklEQVR42u2cPW7kMAyFP64MpJSBOcAeRb7aHmlvIB8lBwhglwPIeFtItjPpUmzBgKo8HlbvDX8eSY2J75z1F987YR/2Yf9f7XcbZ+Gw/nHp7yZYZzi/nwJPd/ZIW5IkiaKGpAZkibIlSVsSRepPqoGnR/vhnPubWG1CFVDNT7MFGD4deDq0n758trI9mpXtmLQuSaxzCjx/EL+QG1rnDwwOE3kLPN3z+0UkGRko9ZisvE8NsoA98PRpf/TyeLzZJyjvb+rpuKteMzObA0+X/psv791BPeHmhtgPY53Ti3cHnv707zQU7pIbkJ8GHHaKpFP/Rv3sVf9+fupSWFsSkNRJJje6HA7967K/Qen9DUmVJNWsq+cxOh2QFfx65LefhmpuqDJcVzW3FxcPft3yO2Lx1a6scDYp1UY7K/qTXvkdXjsYzFdA7k3Km+Tg123+vWupXkaRzvlCHze0znTw63R+1MnL7RotSL2crmfpPKqvwNOjProdtpdWg1pp0H1H78DTp/7N7aqkR1fjzL8jPof+da1/N+hat0ujT+2Oxp2dg19czheGr+4TFDVsyer1sy19yHAY5T32c1zrI8qVdaXG3br6lITDf73G55tGGPm319TXYlbkX8f69yqjXvPvvXMX+te//r3a0T1cn5uUw6dD/+J3/2qfmhWB9XWd/GGslmTl79jr0GqpBZ5u50dnw+rz/Pfajr5TdOCJ3/sLuY1dZ5sPo2xJZjOM1Y3cAk+X8Tm1sTW5P8S6gNgfDXgOYcx+GP1d4Ol3flSugrneo8HtJY5HfHZtn6Q/88k0+7hf1n8Ca9wv+wn3F8o2imiKDgNSM/LTKAo8vdqfY/xxoUw1q5dWqvl5tp4DT6f+e1xXFx6y1UBwTAJkMKH1t2Cdt8DTnb3F/zOEfdi7tf8H3HRYTHzAfYMAAAAASUVORK5CYII="><span>掃我測驗</span></div>
@@ -565,6 +590,39 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <button class="tab" role="tab" id="t2" aria-selected="false">染色方法</button>
     <button class="tab" role="tab" id="t3" aria-selected="false">五色尋寶專題</button>
     <button class="tab" role="tab" id="t4" aria-selected="false">動手判斷</button>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <!--RPT--><button class="tab" role="tab" id="t7" aria-selected="false"><span aria-hidden="true">📝</span> 報告與繳交</button><!--/RPT-->
     <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
   </nav>
@@ -805,6 +863,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 
 
   <!-- ===== 5 小測驗 ===== -->
+
   <!--RPT-->
 <section class="panel" id="p7" hidden>
 <div class="card">
@@ -834,7 +893,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 </div>
 </section>
 <!--/RPT-->
-  <section class="panel" id="p5" hidden></section>
+<section class="panel" id="p5" hidden></section>
 
   <footer>內容整理自本課程「植物染與藍染工藝」簡報（植物與顏色對應、四大染色方式、明礬媒染、藍染原理與三峽藍染、五色尋寶專題）。示意圖為自繪，顏色僅供參考，實際依植物、濃度與布料而不同。</footer>
 </div>
@@ -1194,7 +1253,17 @@ if(location.hash==="#quiz") show("t5");
 })();
 
 </script>
-<!--RPT--><script>
+<!--RPT--><div class="matov" id="matOv" hidden><div class="matbox" role="dialog" aria-modal="true" aria-labelledby="matTitle">
+  <button type="button" class="matx" id="matX" aria-label="關閉">✕</button>
+  <h2 id="matTitle">🎒 材料準備</h2>
+  <p class="matwhen"><b>什麼時候帶：</b>12/31（四）分組後各組準備，1/14 前完成作品（課後進行）</p>
+  <h3>每組要準備</h3>
+  <ul class="matlist"><li><span class="mi" aria-hidden="true">🧵</span><span><b>棉布 20 × 20 cm</b><small>正式作品用；另外準備幾塊小布試染。新布先洗過去漿</small></span></li><li><span class="mi" aria-hidden="true">🌼</span><span><b>染色植物</b><small>依目標顏色選：薑黃、洋蔥皮、紫甘藍、蘇木、茜草…先查好學名和色素</small></span></li><li><span class="mi" aria-hidden="true">🧂</span><span><b>媒染劑（需要時）</b><small>明礬（藥局、化工行買得到）；用量照網頁說明</small></span></li><li><span class="mi" aria-hidden="true">🪢</span><span><b>防染工具</b><small>橡皮筋、棉線、冰棒棍、夾子，做紋樣用</small></span></li><li><span class="mi" aria-hidden="true">🍲</span><span><b>染色器具</b><small>不鏽鋼鍋、溫度計、濾網、手套</small></span></li></ul>
+  <p class="matt"><b>老師準備：</b>課堂已講解染色方法；藍染方巾照網頁步驟課後自行完成</p>
+  <h3>⚠️ 注意事項</h3>
+  <ul class="matnote"><li>染色用的鍋具<b>專用</b>，染過的鍋不要再拿來煮食物</li><li>煮染液要用火、熱水：<b>請家中大人陪同</b>，注意通風</li><li>採集植物要先問過，不採保育類、不採別人家的</li><li>每一步都拍照、記下<b>時間和溫度</b>，報告要用</li><li>明礬不可入口；做完洗手</li></ul>
+  <label class="matok"><input type="checkbox" id="matChk"> 我已經記下來了</label>
+</div></div><script>
 /* ===== 報告範例共用模組（agri-plan 與各實習單元共用；改這裡＝全部同步） ===== */
 const REPORTS=(function(){
   const LS="M0 -50 C 34 -28, 36 22, 0 46 C -36 22, -34 -28, 0 -50 Z";
@@ -1479,6 +1548,19 @@ const REPORTS=(function(){
   const t7=document.getElementById("t7");
   t7.addEventListener("click",()=>{ try{ history.replaceState(null,"","#report"); }catch(e){} });
   if(location.hash==="#report") t7.click();
+})();
+
+(function(){
+  const b=document.getElementById("matBtn"), ov=document.getElementById("matOv"); if(!b||!ov) return;
+  const K="yilin-mat-ok-agri-dye"; let ok=false; try{ ok=localStorage.getItem(K)==="1"; }catch(e){}
+  b.classList.toggle("new",!ok); document.getElementById("matChk").checked=ok;
+  const open=()=>{ ov.hidden=false; document.getElementById("matX").focus(); };
+  const close=()=>{ ov.hidden=true; b.focus(); };
+  b.onclick=open; document.getElementById("matX").onclick=close;
+  ov.addEventListener("click",e=>{ if(e.target===ov) close(); });
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!ov.hidden) close(); });
+  document.getElementById("matChk").onchange=e=>{ try{ localStorage.setItem(K,e.target.checked?"1":"0"); }catch(_){} b.classList.toggle("new",!e.target.checked); };
+  if(location.hash==="#material") open();
 })();
 
 </script><!--/RPT-->

@@ -495,6 +495,31 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 .sibs b{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 .sibs a:hover{border-color:var(--accent)}
 
+/* 材料準備 */
+.matbtn{display:inline-flex;align-items:center;gap:6px;margin:4px 0 6px 8px;padding:6px 16px;min-height:40px;border:2px solid #2b7bbf;border-radius:999px;background:#e6f2fc;color:#1d5f99;font:inherit;font-weight:700;font-size:16px;cursor:pointer;box-shadow:0 2px 0 #2b7bbf;position:relative}
+.matbtn:hover,.matbtn:focus-visible{background:#2b7bbf;color:#fff;outline:none}
+.matbtn.new::after{content:"";position:absolute;top:-3px;right:-3px;width:11px;height:11px;border-radius:50%;background:#e5484d;border:2px solid var(--paper)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .matbtn{background:#15314a;color:#9fd0ff;border-color:#5aa3e0;box-shadow:0 2px 0 #5aa3e0}}
+:root[data-theme="dark"] .matbtn{background:#15314a;color:#9fd0ff;border-color:#5aa3e0;box-shadow:0 2px 0 #5aa3e0}
+.matov{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.45);display:flex;align-items:flex-start;justify-content:center;padding:24px 14px;overflow-y:auto}
+.matov[hidden]{display:none}
+.matbox{position:relative;background:var(--paper);color:var(--ink);border-radius:16px;max-width:640px;width:100%;padding:20px 22px;box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.matbox h2{margin:0 0 6px;font-size:24px;padding-right:40px}
+.matbox h3{margin:14px 0 6px;font-size:18px;color:var(--accent)}
+.matx{position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font-size:18px;cursor:pointer}
+.matwhen{background:#fff3cd;border:1.5px solid #e3c15a;color:#5a4a10;border-radius:10px;padding:8px 12px;margin:6px 0;font-size:16px}
+.matlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.matlist li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:8px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--bg)}
+.matlist .mi{font-size:26px;text-align:center}
+.matlist b{display:block;font-size:17px}
+.matlist small{display:block;color:var(--muted);font-size:14.5px;line-height:1.5}
+.matlist small b{display:inline;font-size:inherit;color:var(--ink)}
+.matt{font-size:15px;color:var(--muted);margin:8px 0 0}
+.matnote{margin:0;padding-left:1.3em;font-size:15.5px;line-height:1.6}
+.matnote li{margin:3px 0}
+.matok{display:flex;align-items:center;gap:8px;margin-top:14px;font-weight:700;cursor:pointer}
+.matok input{width:20px;height:20px;accent-color:var(--accent)}
+
 /*/RPT-CSS*/
 </style>
 </head>
@@ -504,7 +529,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <div class="brand">
       <div class="eyebrow">實習課・50 分鐘 × 3 節</div>
       <h1>種子創作：種子小精靈</h1>
-      <p class="sub">基本知識 → 製作過程 → 作品分享 → 動手判斷 → 掃 QR 小測驗</p><!--RPT--><a class="planbtn" href="../agri-plan/">🧭 農業資源應用實習・開場</a><!--/RPT-->
+      <p class="sub">基本知識 → 製作過程 → 作品分享 → 動手判斷 → 掃 QR 小測驗</p><!--RPT--><a class="planbtn" href="../agri-plan/">🧭 農業資源應用實習・開場</a><button type="button" class="matbtn" id="matBtn"><span aria-hidden="true">🎒</span> 材料準備</button><!--/RPT-->
       <nav class="sibs" aria-label="其他實習課">實習課：<a href="../agri-leaf/">葉脈書籤</a><a href="../agri-paper/">再生紙</a><b aria-current="page">種子創作</b><a href="../agri-dye/">植物染</a></nav>
     </div>
     <div class="qr" id="qrBtn" role="button" tabindex="0" aria-label="放大 QR code"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAAClUlEQVR42u2cQW7jMAxFH0cGspSBOZBzgx6pmCP1BvZRcoAB5GUABX8Wkmy3uy5mwYICksjWX/GDIvlFxcR3xvaL743ABz7w/xW/Wx93XmO2T5jZBNsMY30Ke7rDI5UkSRJL+61ozVJfKGkslCStYU+P+O6c+wSb3UZIzk+zO9Bc/B72/An4pQDLw4xtTtKfOezjGT99enqZtntqcwND5BL2dM/vtUjKBWue/DFjy2OqkAXsYU+f+J41A0n2/phgKUlA6rxvZmY2hz1d5s/nKElaSYIsac0VIF0RkT+7rI96aqUK5NpmvWa6rAa/Pv33KHjbrB6cd0/unEf963h/HoRKBdr+fGge3Ylz+K9bfleStEL33/bY4i9cOA9+XfLb9uJlaJEwSG6ReD10zODXa/yt3U1bajWyKq1ZB8nBr1v/XY7zhbW97u4sjZy6pWDBr0v/ZSnwNf6q9Mdz4w5+cahPJhm5TraUGYObrCnRbwL2CW1zQuy/a9jTo75xiBd5fF3j76F5RH7l93x/HVrzmU63/bnFX6L+xfP5AvAyrVkym18GuWJ3wO77TQ2yPKI/x2X8zcLIfydbymvS9gZiN/oCoO1OC8JhT6fxl1x7Jdy+TsHqqH9D3/B8fpSlViRpFMFXuUNR//rPr86C9/Ta7sSE/vwD+mPbyJXzaL+127VKKfRJ9/0bDK2qfGa/DLky+HWaX/Gpf+Pa2HE9WAp+PeKP/Xm/Set+G/pVftrYml/Wut/Dni77Yw1SPV9a++QiWz5mGy20NezpHP9ql8x6/N37/bLmzlvcL3N/fwFYVjqrXbhM1chPY1HY0yt+HOP3WtfeJZnNoDU/h/Qc9vSeP48yaMiVujTphH7lEm/x/wyBD7xb/D/NmX1l5/YJfAAAAABJRU5ErkJggg=="><span>掃我測驗</span></div>
@@ -515,6 +540,39 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <button class="tab" role="tab" id="t2" aria-selected="false">製作過程</button>
     <button class="tab" role="tab" id="t3" aria-selected="false">作品分享</button>
     <button class="tab" role="tab" id="t4" aria-selected="false">動手判斷</button>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <!--RPT--><button class="tab" role="tab" id="t7" aria-selected="false"><span aria-hidden="true">📝</span> 報告與繳交</button><!--/RPT-->
     <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
   </nav>
@@ -803,6 +861,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 
 
   <!-- ===== 5 小測驗 ===== -->
+
   <!--RPT-->
 <section class="panel" id="p7" hidden>
 <div class="card">
@@ -832,7 +891,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 </div>
 </section>
 <!--/RPT-->
-  <section class="panel" id="p5" hidden></section>
+<section class="panel" id="p5" hidden></section>
 
   <footer>內容依一般種子構造、種子傳播與自然素材手作原則整理。撿拾種子請遵守校園與公園規定，只撿掉落的種子；有毒植物請以老師或植物圖鑑確認為準。</footer>
 </div>
@@ -1268,7 +1327,17 @@ if(location.hash==="#quiz") show("t5");
 })();
 
 </script>
-<!--RPT--><script>
+<!--RPT--><div class="matov" id="matOv" hidden><div class="matbox" role="dialog" aria-modal="true" aria-labelledby="matTitle">
+  <button type="button" class="matx" id="matX" aria-label="關閉">✕</button>
+  <h2 id="matTitle">🎒 材料準備</h2>
+  <p class="matwhen"><b>什麼時候帶：</b>12/24（四）上課帶來（12/17 第 3 節開始在校園撿，回家可以再找）</p>
+  <h3>每人要準備</h3>
+  <ul class="matlist"><li><span class="mi" aria-hidden="true">🌰</span><span><b>自己撿的種子、果實</b><small><b>至少 5 種</b>，多撿一些備用；用夾鏈袋分裝，寫上地點、日期、植物名</small></span></li><li><span class="mi" aria-hidden="true">🌿</span><span><b>小樹枝、乾葉子（可選）</b><small>當手腳、裝飾</small></span></li><li><span class="mi" aria-hidden="true">📎</span><span><b>名片夾配件（做名片夾才需要）</b><small>小木夾、長尾夾或鋁線</small></span></li></ul>
+  <p class="matt"><b>老師準備：</b>木頭切片底座、活動眼睛、低溫熱熔膠槍、保麗龍膠、亮光漆</p>
+  <h3>⚠️ 注意事項</h3>
+  <ul class="matnote"><li>只撿<b>掉在地上</b>的，不要拔、不要搖樹；只在校園、公園撿，不進私人土地</li><li><b>有毒不要撿</b>：雞母珠（紅色一端黑色）、蓖麻子、海檬果、夾竹桃果實；不認識的種子不要放進嘴巴</li><li>撿回來要先處理：<b>刷洗 → 泡水挑掉浮起來的 → 冷凍 2～3 天 → 晾乾</b>，防蟲又防霉</li><li>撿種子時戴手套，撿完一定要用肥皂洗手</li></ul>
+  <label class="matok"><input type="checkbox" id="matChk"> 我已經記下來了</label>
+</div></div><script>
 /* ===== 報告範例共用模組（agri-plan 與各實習單元共用；改這裡＝全部同步） ===== */
 const REPORTS=(function(){
   const LS="M0 -50 C 34 -28, 36 22, 0 46 C -36 22, -34 -28, 0 -50 Z";
@@ -1553,6 +1622,19 @@ const REPORTS=(function(){
   const t7=document.getElementById("t7");
   t7.addEventListener("click",()=>{ try{ history.replaceState(null,"","#report"); }catch(e){} });
   if(location.hash==="#report") t7.click();
+})();
+
+(function(){
+  const b=document.getElementById("matBtn"), ov=document.getElementById("matOv"); if(!b||!ov) return;
+  const K="yilin-mat-ok-agri-seed"; let ok=false; try{ ok=localStorage.getItem(K)==="1"; }catch(e){}
+  b.classList.toggle("new",!ok); document.getElementById("matChk").checked=ok;
+  const open=()=>{ ov.hidden=false; document.getElementById("matX").focus(); };
+  const close=()=>{ ov.hidden=true; b.focus(); };
+  b.onclick=open; document.getElementById("matX").onclick=close;
+  ov.addEventListener("click",e=>{ if(e.target===ov) close(); });
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!ov.hidden) close(); });
+  document.getElementById("matChk").onchange=e=>{ try{ localStorage.setItem(K,e.target.checked?"1":"0"); }catch(_){} b.classList.toggle("new",!e.target.checked); };
+  if(location.hash==="#material") open();
 })();
 
 </script><!--/RPT-->
