@@ -550,12 +550,12 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
       <p>鹼性越<span class="key">強</span>，葉肉爛得越<span class="key">快</span>，但也越危險。</p>
       <svg class="art" id="phSvg" viewBox="0 0 600 120" role="img" aria-label="酸鹼值刻度：清水 7、肥皂水約 9 到 10、碳酸鈉水約 11、漂白水約 12、氫氧化鈉水約 14"></svg>
       <div class="vs">
-        <div class="box na"><b class="t">氫氧化鈉（約 10%）・老師示範</b>
+        <div class="box na"><b class="t">氫氧化鈉（約 10%）・老師介紹（不示範）</b>
           <ul>
             <li><b>強鹼</b>，pH 約 14</li>
             <li>加熱到冒小泡（不要大滾），約 <span class="key">10～20 分鐘</span>，葉面變褐、表皮開始脫落就好</li>
             <li>成功率高，但會<b>腐蝕皮膚、傷眼睛</b>；蒸氣會刺激鼻子</li>
-            <li>護目鏡、手套、圍裙；只由老師配製、操作</li>
+            <li>工廠、專業做法會用；要護目鏡、手套、圍裙。<b>課堂只介紹，不示範、不使用</b></li>
           </ul></div>
         <div class="box so"><b class="t">肥皂水・學生使用</b>
           <ul>
@@ -672,7 +672,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
       <h3>怎麼知道煮好了？</h3>
       <svg class="art" id="designSvg" viewBox="0 0 640 220" role="img" aria-label="試刷一角：葉肉刷不掉表示還沒煮好；葉肉一點就掉、露出葉脈表示剛好；整片糊爛、葉脈斷掉表示煮太久"></svg>
       <div class="tip"><b>每 15 分鐘試一次：</b>夾一片出來，用牙刷輕點一角。刷得掉就可以開始刷；刷不掉就放回鍋裡再煮。<b>記下下鍋和夾出的時間。</b></div>
-      <div class="note"><b>老師的氫氧化鈉示範</b>當作「參考樣本」：放在旁邊，跟自己用肥皂水做的比一比。</div>
+      <div class="note"><b>氫氧化鈉的方法只由老師介紹，課堂不示範、不使用</b>：大家都用肥皂水，記錄自己作品的時間和結果就好。</div>
     </div>
 
     <div class="card">
@@ -726,8 +726,8 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <div class="card">
       <h2>三節課怎麼排</h2>
       <div class="timeline">
-        <div class="tl"><b>課前</b><span class="m">老師</span><ul><li>試煮肥皂水，確認大概要煮多久</li><li>準備氫氧化鈉示範</li></ul></div>
-        <div class="tl"><b>第 1 節</b><span class="m">講解</span><ul><li>基本知識、步驟、安全</li><li>老師先把肥皂水煮滾</li><li>示範氫氧化鈉煮、刷</li></ul></div>
+        <div class="tl"><b>課前</b><span class="m">老師</span><ul><li>試煮肥皂水，確認大概要煮多久</li></ul></div>
+        <div class="tl"><b>第 1 節</b><span class="m">講解</span><ul><li>基本知識、步驟、安全</li><li>老師先把肥皂水煮滾</li><li>介紹氫氧化鈉方法（不示範）</li></ul></div>
         <div class="tl"><b>第 2 節</b><span class="m">採葉＋下鍋</span><ul><li>校園採葉、挑葉</li><li><b>先蒐集好的組先下鍋</b>，記下鍋時間</li><li>每 15 分鐘試刷一角</li></ul></div>
         <div class="tl"><b>第 3 節</b><span class="m">刷葉＋護貝</span><ul><li>煮好的葉子沖冷水、刷葉肉</li><li>漂白、沖洗</li><li>吸水紙吸乾、熨斗燙乾，<b>30 分鐘內當節護貝</b></li></ul></div>
       </div>
@@ -880,7 +880,7 @@ const BRUSH=(sc=1)=>`<g transform="scale(${sc})"><rect x="-6" y="-90" width="12"
 (function(){
   const F=[
     ["挑厚葉",`<svg viewBox="0 0 120 90">${LEAF(60,38,.62,-15,"var(--leaf2)")}</svg>`,"革質、網狀脈"],
-    ["鹼水煮軟",`<svg viewBox="0 0 120 90"><g transform="translate(60 22) scale(.55)">${POT(0,0,"var(--soap)")}${LEAF(0,30,.32,90,"var(--leafbrown)",{noVein:true})}</g>${BUB(60,30,5)}</svg>`,"肥皂水／氫氧化鈉"],
+    ["鹼水煮軟",`<svg viewBox="0 0 120 90"><g transform="translate(60 22) scale(.55)">${POT(0,0,"var(--soap)")}${LEAF(0,30,.32,90,"var(--leafbrown)",{noVein:true})}</g>${BUB(60,30,5)}</svg>`,"肥皂水"],
     ["牙刷刷葉肉",`<svg viewBox="0 0 120 90">${SKEL(52,40,.6,0,"var(--skel)",{under:`<path d="${LS}" fill="var(--leafbrown)" opacity=".7" class="a-fadeout"/>`})}<g transform="translate(84 58)"><g class="a-tap">${BRUSH(.55)}</g></g></svg>`,"垂直輕點"],
     ["漂白",`<svg viewBox="0 0 120 90"><rect x="12" y="34" width="96" height="48" rx="6" fill="var(--bleach)" stroke="var(--muted)"/>${SKEL(60,52,.42,90,"var(--skel)",{cls:"a-fadeout"})}${WHITE(60,52,.42,90,{cls:"a-appear"})}</svg>`,"褐色變白"],
     ["護貝書籤",`<svg viewBox="0 0 120 90"><g class="a-swing" style="transform-origin:60px 10px"><path d="M60 10 q-8 -10 -14 4 M60 10 q8 -10 14 4" stroke="var(--g4)" stroke-width="2.5" fill="none"/><rect x="44" y="10" width="32" height="78" rx="4" class="s-film"/><rect x="47" y="16" width="26" height="68" rx="2" fill="var(--base)"/><circle cx="60" cy="16" r="2.5" fill="var(--paper)"/>${SKEL(60,46,.26,0,"var(--skelw)")}</g></svg>`,"深色底卡最明顯"]
@@ -960,11 +960,10 @@ const STEPS=[
   art:`<svg viewBox="0 0 340 200"><path d="M10 40 Q 120 20 230 46" stroke="var(--wood)" stroke-width="7" fill="none" stroke-linecap="round"/>${LEAF(70,62,.4,160,"var(--leaf2)")}${LEAF(130,58,.4,200,"var(--leaf2)")}${LEAF(190,66,.4,170,"var(--leaf2)")}
    <g class="a-fall">${LEAF(245,40,.4,20,"var(--leaf2)")}</g><rect x="200" y="130" width="90" height="56" rx="6" fill="var(--film)" opacity=".5" stroke="var(--water)" stroke-width="2"/>${T(245,166,"收集袋","middle","s-sm")}
    <rect x="20" y="120" width="150" height="66" rx="6" class="s-paper"/>${T(30,140,"✓ 厚、硬、有光澤","start","s-sm")}${T(30,158,"✓ 網狀脈","start","s-sm")}${T(30,176,"✓ 完整沒破洞","start","s-sm")}</svg>`},
- {t:"配煮液",l:["學生：水 1 公升＋肥皂絲約 30 g，攪到溶解","老師：另一鍋配約 10% 氫氧化鈉做示範（護目鏡、手套）","鍋子用不鏽鋼，不要用鋁鍋","兩鍋貼上標籤，分開放"],tip:"氫氧化鈉溶進水裡會發熱，要「把鹼慢慢加進水裡」，由老師操作。",
-  art:`<svg viewBox="0 0 340 200">${POT(90,80,"var(--soap)","學生：肥皂水")}${POT(250,80,"var(--naoh)","老師：氫氧化鈉")}
-   ${[0,1,2,3,4].map(i=>`<rect x="${70+i*9}" y="20" width="4" height="12" rx="2" fill="#f4f0e2" stroke="var(--muted)" stroke-width=".8" class="a-fall" style="animation-delay:${i*.5}s"/>`).join("")}
-   <path d="M250 12 l14 24 h-28 Z" fill="var(--g1)"/><text x="250" y="32" text-anchor="middle" style="fill:#fff;font-size:14px;font-weight:900">!</text></svg>`},
- {t:"煮軟",l:["水滾後放入葉子，轉小火保持冒小泡（不要大滾）","用長筷子壓，讓葉子都泡在水裡","記下鍋時間，每 15 分鐘夾一片試刷一角","水變少就補熱水"],tip:"氫氧化鈉鍋約 10～20 分鐘，葉面變褐、表皮開始脫落就好。",
+ {t:"配煮液",l:["水 1 公升＋肥皂絲約 30 g，攪到溶解","鍋子用不鏽鋼，不要用鋁鍋","鍋子貼上組別標籤"],tip:"肥皂絲先用溫水泡一下比較好溶。課堂一律用肥皂水；氫氧化鈉只由老師介紹，不示範。",
+  art:`<svg viewBox="0 0 340 200">${POT(170,80,"var(--soap)","肥皂水")}
+   ${[0,1,2,3,4].map(i=>`<rect x="${150+i*9}" y="20" width="4" height="12" rx="2" fill="#f4f0e2" stroke="var(--muted)" stroke-width=".8" class="a-fall" style="animation-delay:${i*.5}s"/>`).join("")}</svg>`},
+ {t:"煮軟",l:["水滾後放入葉子，轉小火保持冒小泡（不要大滾）","用長筷子壓，讓葉子都泡在水裡","記下鍋時間，每 15 分鐘夾一片試刷一角","水變少就補熱水"],tip:"肥皂水鹼性弱，要煮比較久；每 15 分鐘試刷一角，刷得掉就可以開始刷。",
   art:`<svg viewBox="0 0 340 200">${POT(130,90,"var(--soap)","")}${[0,1,2].map(i=>LEAF(100+i*30,118,.26,90+i*20,"var(--leafbrown)",{noVein:true})).join("")}${BUB(130,104,6)}
    <g transform="translate(270 80)"><circle r="38" fill="var(--paper)" stroke="var(--accent)" stroke-width="4"/><g class="a-rot" style="animation-duration:4s"><circle r="27" fill="none"/><path d="M0 0 L0 -26" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/></g><circle r="3" fill="var(--ink)"/>${T(0,60,"每 15 分鐘試一次","middle","s-txt")}</g></svg>`},
  {t:"夾出、沖冷水",l:["試刷刷得掉了，就用夾子夾出葉子","放進冷水盆沖洗、冷卻","記下煮了幾分鐘","手不要直接碰熱的鹼水"],tip:"沖過冷水，葉子比較不燙，也把鹼水洗掉。",
@@ -1121,7 +1120,7 @@ const QS=[
  {q:"下列哪一種葉子最適合做葉脈書籤？",o:["厚、硬、有光澤的桂花葉","薄又軟的嫩葉","平行脈的玉米葉","被蟲咬得都是洞的葉子"],a:0,why:"革質厚葉、網狀脈，葉脈強韌，刷完能留下完整的網子。"},
  {q:"為什麼玉米、竹子的葉子不適合做葉脈書籤？",o:["平行脈，刷完會散成一條一條","葉子太香","葉子含太多糖","它們沒有葉脈"],a:0,why:"單子葉植物多為平行脈，脈和脈之間沒有連成網，葉肉一刷掉就散開。"},
  {q:"用牙刷去除葉肉，正確的方法是？",o:["垂直輕點，順著葉脈方向","橫向用力來回刷","用指甲用力摳","泡在熱鹼水裡直接刷"],a:0,why:"垂直輕點只把軟爛的葉肉點掉，不會把細脈拉斷。"},
- {q:"氫氧化鈉和肥皂水比較，下列何者正確？",o:["氫氧化鈉鹼性強、快，但腐蝕性強，只由老師操作","肥皂水鹼性比氫氧化鈉強","兩者一樣危險","肥皂水完全不需要戴手套"],a:0,why:"氫氧化鈉 pH 約 14，速度快但會腐蝕皮膚、傷眼睛；肥皂水是弱鹼，比較溫和但要煮比較久。"},
+ {q:"氫氧化鈉和肥皂水比較，下列何者正確？",o:["氫氧化鈉鹼性強、快，但腐蝕性強，課堂只介紹不使用","肥皂水鹼性比氫氧化鈉強","兩者一樣危險","肥皂水完全不需要戴手套"],a:0,why:"氫氧化鈉 pH 約 14，速度快但會腐蝕皮膚、傷眼睛；肥皂水是弱鹼，比較溫和但要煮比較久。"},
  {q:"肥皂水的酸鹼值大約是？",o:["pH 9～10，弱鹼性","pH 1～2，強酸性","pH 7，中性","pH 14，強鹼性"],a:0,why:"肥皂水是弱鹼性，所以葉肉爛得比較慢。"},
  {q:"漂白水讓褐色葉脈變白，主要靠哪種成分？",o:["次氯酸鈉，會氧化分解色素","氫氧化鈉，會溶解葉脈","糖，會把葉子包起來","鹽，會把水吸走"],a:0,why:"次氯酸鈉是氧化劑，會破壞色素，讓葉脈變白。"},
  {q:"漂白水絕對不可以和下列哪一種東西混合？",o:["酸性清潔劑（如潔廁劑）","清水","冷水","自來水"],a:0,why:"漂白水遇到酸會產生有毒的氯氣。"},
