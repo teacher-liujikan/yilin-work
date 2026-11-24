@@ -396,6 +396,15 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 @media (max-width:640px){.so:not(.no)::before{display:none}.sstraw::after{content:"▼ 可以變成";font-weight:900;color:var(--accent);font-size:15px}}
 .so .ic svg{width:74px;height:auto;display:block}
 @media (max-width:640px){.sout{grid-template-columns:1fr}.sbr{display:none}.sstraw{flex-direction:row;gap:10px;margin-bottom:8px}.sstraw svg{width:46px}.souts{grid-template-rows:none}}
+
+/* 步驟影片 */
+.vidwrap{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:700px){.vidwrap{grid-template-columns:1fr}.vid{max-width:300px;margin:0 auto}}
+.vid{position:relative;width:100%;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#000;border:1px solid var(--line)}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vidtxt ul{margin:6px 0;padding-left:1.3em;font-size:17px}
+.vidtxt li{margin:4px 0}
+.vidtxt a{color:var(--accent);font-weight:700}
 /*RPT-CSS*/
 .dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 @media (max-width:900px){.dl{grid-template-columns:1fr}}
@@ -556,6 +565,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <button class="tab" role="tab" id="t3" aria-selected="false">動手做</button>
     <button class="tab" role="tab" id="t6" aria-selected="false">分組實驗</button>
     <button class="tab" role="tab" id="t4" aria-selected="false">動手判斷</button>
+    
     
     
     
@@ -732,6 +742,21 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
             <button class="btn ghost sm" id="sPause">⏸ 暫停動畫</button>
             <button class="btn" id="sNext">下一步 →</button>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>看影片：抄紙實作<span class="sec">YouTube 短片</span></h2>
+      <div class="vidwrap">
+        <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/6yGW3qCuxe8?rel=0" title="再生紙抄紙實作影片" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="vidtxt">
+          <p>先看一次影片，再對照上面的步驟動畫。</p>
+          <ul>
+            <li>影片中做了哪些步驟？依順序說說看。</li>
+            <li>和我們的步驟（泡紙 → 打漿 → 稀釋 → 抄紙 → 壓水 → 乾燥）哪裡一樣、哪裡不同？</li>
+            <li>你覺得哪一步最需要小心？為什麼？</li>
+          </ul>
+          <p class="ex">播放不了的話：<a href="https://www.youtube.com/shorts/6yGW3qCuxe8" target="_blank" rel="noopener">在 YouTube 開啟影片 ↗</a></p>
         </div>
       </div>
     </div>
