@@ -576,7 +576,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     <div class="card">
       <h2>身邊撿得到的種子和果實<span class="sec">秋冬圖鑑</span></h2>
       <div class="sbook" id="seedBook" role="list" aria-label="身邊撿得到的種子和果實"></div>
-      <p class="ex" style="font-size:13px;margin:6px 0 0">照片來源：苦楝－農業部（fkmweb.coa.gov.tw）。沒有照片的格子為示意圖。</p>
+      <p class="ex" style="font-size:13px;margin:6px 0 0">照片來源：苦楝－農業部（fkmweb.coa.gov.tw）；樟樹－廣漢園林（ghyl888.com）。沒有照片的格子為示意圖。</p>
       <div class="note">秋天到冬天（10～1 月）是撿種子的好季節。撿到不認識的，先拍照，回來請老師或用植物辨識 App 查。<b>廚房的豆子、玉米、南瓜子、八角</b>也可以當小配件。</div>
     </div>
 
@@ -927,8 +927,8 @@ const FLOW=[
 
 /* ---------- 秋冬圖鑑 ---------- */
 fill("seedBook",(()=>{
-  const L=[["acorn","青剛櫟","橡實＋殼斗",2.4],["lantern","台灣欒樹","燈籠蒴果",2.2],["soap","無患子","果皮像肥皂",2.3],["soapseed","無患子種子","黑亮圓球",2.6],["gum","楓香","刺刺球果",2],["wing","桃花心木","翅狀種子",1.5],
-           ["pod","阿勃勒","長豆莢",1],["cone","松果","鱗片一片片",2],["camph","樟樹","小黑果",3.4],["term","欖仁","扁扁的核果",2],["melia","苦楝","黃色小果",3],["star","八角","廚房找得到",2.2]];
+  const L=[["acorn","青剛櫟","橡實＋殼斗",2.4],["lantern","台灣欒樹","燈籠蒴果",2.2],["soap","無患子","整顆晾乾就能保存",2.3],["soapseed","無患子種子","黑亮圓球",2.6],["gum","楓香","刺刺球果",2],["wing","桃花心木","翅狀種子",1.5],
+           ["pod","阿勃勒","長豆莢",1],["cone","松果","鱗片一片片",2],["camph","樟樹","種子（搓掉果肉）",3.4],["term","欖仁","扁扁的核果",2],["melia","苦楝","黃色小果",3],["star","八角","廚房找得到",2.2]];
   /* 照片放在 agri-seed/photos/<代號>.jpg；沒有照片時自動顯示示意圖 */
   return L.map(([k,n,d,sc])=>`<figure class="sb" role="listitem"><div class="sbimg"><img src="photos/${k}.jpg" alt="${n}（${d}）" loading="lazy" onerror="this.remove()"><svg viewBox="0 0 96 96" aria-hidden="true">${WILD(k,48,52,sc*.78,k==="pod"?-20:0)}</svg></div><figcaption><b>${n}</b><small>${d}</small></figcaption></figure>`).join("");
 })());
@@ -987,7 +987,7 @@ const STEPS=[
  {t:"刷洗、泡水挑選",l:["用舊牙刷刷掉泥土","泡水 10 分鐘","浮起來的橡實多半被蟲蛀或空心 → 不要用","有小洞、發霉、裂開的也挑掉"],tip:"殼斗（橡實帽子）容易掉，先另外收起來，之後再黏回去。",
   art:`<svg viewBox="0 0 340 200"><path d="M80 50 L90 180 L250 180 L260 50 Z" fill="var(--water)" opacity=".35" stroke="var(--water)" stroke-width="2.4"/>${WILD("acorn",130,160,1.8,90)}${WILD("acorn",170,164,1.8,80)}${WILD("soap",210,162,1.6)}<g class="a-up" style="animation-duration:3s">${WILD("acorn",200,78,1.8,100)}</g><circle cx="206" cy="72" r="3" fill="#2a1a10"/>${T(300,80,"浮起來","middle","s-txt")}${T(300,98,"＝蟲蛀、空心","middle","s-sm")}${T(300,168,"沉下去 ✓","middle","s-txt")}</svg>`},
  {t:"冷凍或烘烤",l:["裝袋冷凍 2～3 天，殺死裡面的蟲卵","或在家用烤箱低溫烘烤（不在學校操作）","烤箱低溫、有大人顧著，拿出來戴隔熱手套","拿出來後攤開陰乾 2～3 天，乾透才用"],tip:"沒處理的橡實，幾週後可能鑽出象鼻蟲，在作品上留下小洞和粉末。",
-  art:`<svg viewBox="0 0 340 200"><rect x="40" y="20" width="110" height="160" rx="10" fill="#dbe9f2" stroke="var(--metal)" stroke-width="3"/><path d="M40 76 h110" stroke="var(--metal)" stroke-width="3"/><rect x="134" y="30" width="6" height="30" rx="3" fill="var(--metal)"/><rect x="56" y="104" width="78" height="56" rx="8" fill="var(--film)" opacity=".5" stroke="var(--water)"/>${WILD("acorn",76,132,1.2,90)}${WILD("gum",108,134,1)}<g transform="translate(95 48)"><g class="a-spin" style="animation-duration:6s"><path d="M-12 0 h24 M0 -12 v24 M-8 -8 l16 16 M-8 8 l16 -16" stroke="#5aa3d9" stroke-width="2.4"/></g></g>${T(95,196,"冷凍 2～3 天","middle","s-sm")}${T(180,104,"或","middle","s-txt")}<rect x="200" y="56" width="120" height="90" rx="8" fill="var(--metal)"/><rect x="210" y="68" width="78" height="66" rx="4" fill="#2b3036"/><rect x="210" y="68" width="78" height="66" rx="4" fill="#f2a64a" opacity=".3" class="a-fade"/>${WILD("acorn",232,104,1,90)}${WILD("soap",262,104,1)}<circle cx="304" cy="80" r="5" fill="#ddd"/><circle cx="304" cy="100" r="5" fill="#ddd"/>${T(260,170,"老師低溫烘烤","middle","s-sm")}</svg>`},
+  art:`<svg viewBox="0 0 340 200"><rect x="40" y="20" width="110" height="160" rx="10" fill="#dbe9f2" stroke="var(--metal)" stroke-width="3"/><path d="M40 76 h110" stroke="var(--metal)" stroke-width="3"/><rect x="134" y="30" width="6" height="30" rx="3" fill="var(--metal)"/><rect x="56" y="104" width="78" height="56" rx="8" fill="var(--film)" opacity=".5" stroke="var(--water)"/>${WILD("acorn",76,132,1.2,90)}${WILD("gum",108,134,1)}<g transform="translate(95 48)"><g class="a-spin" style="animation-duration:6s"><path d="M-12 0 h24 M0 -12 v24 M-8 -8 l16 16 M-8 8 l16 -16" stroke="#5aa3d9" stroke-width="2.4"/></g></g>${T(95,196,"冷凍 2～3 天","middle","s-sm")}${T(180,104,"或","middle","s-txt")}<rect x="200" y="56" width="120" height="90" rx="8" fill="var(--metal)"/><rect x="210" y="68" width="78" height="66" rx="4" fill="#2b3036"/><rect x="210" y="68" width="78" height="66" rx="4" fill="#f2a64a" opacity=".3" class="a-fade"/>${WILD("acorn",232,104,1,90)}${WILD("soap",262,104,1)}<circle cx="304" cy="80" r="5" fill="#ddd"/><circle cx="304" cy="100" r="5" fill="#ddd"/>${T(260,170,"在家低溫烘烤","middle","s-sm")}</svg>`},
  {t:"試擺、決定主題",l:["把種子倒在木片旁邊，玩玩看","哪顆當頭？哪顆當身體？誰戴帽子？","想一個主題：一家人、樂團、排隊上學…","擺好拍照，等一下照著黏"],tip:"高的放後面、矮的放前面；大小交錯，畫面才有層次。",
   art:`<svg viewBox="0 0 340 200">${SLICE(170,130,130,40)}<g class="a-place">${WILD("cone",120,104,2,0)}</g>${WILD("acorn",170,110,2.2)}${WILD("soap",218,124,1.8)}${WILD("melia",130,144,1.8)}${WILD("camph",196,150,2.4)}<g transform="translate(296 40)"><rect x="-26" y="-18" width="52" height="40" rx="6" fill="var(--ink)"/><circle r="10" fill="#555" stroke="#ddd" stroke-width="2"/><rect x="10" y="-24" width="10" height="6" rx="2" fill="var(--ink)"/></g><path d="M60 60 L120 60 M70 40 v40" stroke="var(--g1)" stroke-width="2" stroke-dasharray="4 4" class="a-fade"/>${T(60,30,"後面高","middle","s-sm")}${T(60,186,"前面矮","middle","s-sm")}</svg>`},
  {t:"黏眼睛",l:["用牙籤沾一點保麗龍膠，點在眼睛背面","鑷子夾起，貼到種子上","兩眼高度要一樣；位置不同，表情就不同","等膠乾再動（約 10 分鐘）"],tip:"活動眼睛的背面是平的，用保麗龍膠或白膠比熱熔膠好控制、不會溢出。",
@@ -1066,7 +1066,7 @@ const QS=[
  {q:"撿種子時，下列哪一個做法正確？",o:["撿掉在地上的，不搖樹、不摘","爬樹摘最新鮮的","到別人家院子撿","越多越好，整棵樹搖下來"],a:0,why:"只撿地上掉落的，並且只在校園、公園等可以撿的地方。"},
  {q:"紅色、一端有黑點的亮亮小豆子是雞母珠，使用時要注意什麼？",o:["有毒，可以用但要戴手套，做完洗手、不放進嘴巴","沒有毒，可以直接用手玩","放進嘴巴試試看","磨成粉當顏料"],a:0,why:"雞母珠（相思子）種子有毒。可以拿來做作品，但要戴手套、做完用肥皂洗手，絕對不能放進嘴巴。"},
  {q:"橡實泡水時浮起來，通常代表什麼？",o:["被蟲蛀了或空心","特別新鮮","比較重","可以吃"],a:0,why:"裡面被象鼻蟲幼蟲吃空，比較輕，所以會浮起來。"},
- {q:"撿回來的種子為什麼要冷凍 2～3 天？",o:["殺死裡面的蟲卵","讓種子變硬好黏","讓顏色變深","讓種子發芽"],a:0,why:"冷凍（或老師低溫烘烤）可以殺死蟲卵，作品才不會長蟲。"},
+ {q:"撿回來的種子為什麼要冷凍 2～3 天？",o:["殺死裡面的蟲卵","讓種子變硬好黏","讓顏色變深","讓種子發芽"],a:0,why:"冷凍（或在家低溫烘烤）可以殺死蟲卵，作品才不會長蟲。"},
  {q:"處理完的種子要完全乾燥，主要是為了防止什麼？",o:["發霉","變色變漂亮","太輕","太硬"],a:0,why:"種子沒乾透，放在作品裡容易發霉。"},
  {q:"橡實上面那頂「帽子」叫什麼？",o:["殼斗","種臍","胚乳","花萼"],a:0,why:"殼斗是殼斗科植物（如青剛櫟）包住果實的構造。"},
  {q:"種子裡將來會長成「根」的部分是？",o:["胚根","胚芽","子葉","種皮"],a:0,why:"胚根長成根；胚芽長成莖和葉。"},
@@ -1224,7 +1224,7 @@ if(location.hash==="#quiz") show("t5");
   <ul class="matlist"><li><span class="mi" aria-hidden="true">🌰</span><span><b>自己撿的種子、果實</b><small><b>至少 5 種</b>，多撿一些備用；用夾鏈袋分裝，寫上地點、日期、植物名</small></span></li><li><span class="mi" aria-hidden="true">🌿</span><span><b>小樹枝、乾葉子（可選）</b><small>當手腳、裝飾</small></span></li><li><span class="mi" aria-hidden="true">📎</span><span><b>名片夾配件（做名片夾才需要）</b><small>小木夾、長尾夾或鋁線</small></span></li></ul>
   <p class="matt"><b>老師準備：</b>木頭切片底座、活動眼睛、低溫熱熔膠槍、保麗龍膠、亮光漆</p>
   <h3>⚠️ 注意事項</h3>
-  <ul class="matnote"><li>只撿<b>掉在地上</b>的，不要拔、不要搖樹；只在校園、公園撿，不進私人土地</li><li><b>注意有毒植物</b>：雞母珠（紅色一端黑色）、蓖麻子、海檬果、夾竹桃果實有毒，<b>仍可使用</b>，但要戴手套、做完用肥皂洗手；種子不要放進嘴巴</li><li>撿回來要先處理：<b>刷洗 → 泡水挑掉浮起來的 → 冷凍 2～3 天（或在家用烤箱低溫烘烤）→ 晾乾</b>，防蟲又防霉</li><li>撿種子時戴手套，撿完一定要用肥皂洗手</li></ul>
+  <ul class="matnote"><li>只撿<b>掉在地上</b>的，不要拔、不要搖樹；只在校園、公園撿，不進私人土地</li><li><b>注意有毒植物</b>：雞母珠（紅色一端黑色）、蓖麻子、海檬果、夾竹桃果實有毒，<b>仍可使用</b>，但要戴手套、做完用肥皂洗手；種子不要放進嘴巴</li><li>撿回來要先處理：<b>刷洗 → 泡水挑掉浮起來的 → 冷凍 2～3 天（或在家用烤箱低溫烘烤）→ 晾乾</b>，防蟲又防霉</li><li><b>多汁的果實要去果肉</b>：樟樹的小黑果要泡水搓掉果肉、只留種子再晾乾，不然會發霉、招螞蟻；無患子果皮乾了很硬，可以整顆晾乾保存</li><li>撿種子時戴手套，撿完一定要用肥皂洗手</li></ul>
   <label class="matok"><input type="checkbox" id="matChk"> 我已經記下來了</label>
 </div></div><script>
 /* ===== 報告範例共用模組（agri-plan 與各實習單元共用；改這裡＝全部同步） ===== */
