@@ -499,6 +499,7 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
     
     
     
+    
     <!--RPT--><button class="tab" role="tab" id="t7" aria-selected="false"><span aria-hidden="true">📝</span> 報告與繳交</button><!--/RPT-->
     <button class="tab" role="tab" id="t5" aria-selected="false">小測驗</button>
   </nav>
@@ -625,8 +626,8 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
         <div class="mat"><b>🧪 漂白水、量杯、塑膠盒</b><small>稀釋後泡葉脈</small></div>
         <div class="mat"><b>🧤 手套、護目鏡、圍裙</b><small>每人都要</small></div>
         <div class="mat"><b>🧻 吸水紙、熨斗</b><small>吸乾後低溫隔紙燙乾，30 分鐘內</small></div>
-        <div class="mat"><b>🟩 深色卡紙 5 × 15 cm</b><small>白色葉脈放深色底最明顯</small></div>
-        <div class="mat"><b>🎞️ 護貝膠膜、打洞器、緞帶</b><small>護貝機全班共用</small></div>
+        <div class="mat"><b>✂️ 小紙條、細字筆</b><small>寫植物名稱、日期，跟葉脈一起護貝</small></div>
+        <div class="mat"><b>🎞️ 透明護貝膠膜、打洞器、緞帶</b><small>不用底卡，兩片透明膠膜直接夾住葉脈；護貝機全班共用</small></div>
       </div>
       <div class="note"><b>肥皂水建議起點：</b>水 1 公升＋肥皂絲約 30 g，煮滾後轉小火保持冒小泡。肥皂種類差很多，<b>請老師課前先試煮一次</b>，確認大概要煮多久。</div>
       <div class="warnbox"><b>安全：</b>鍋子和熱水都很燙，鍋柄朝內；加熱時有人顧著，水少了要補熱水；漂白水和鹼液要分開放、貼標籤。</div>
@@ -887,7 +888,7 @@ const BRUSH=(sc=1)=>`<g transform="scale(${sc})"><rect x="-6" y="-90" width="12"
     ["鹼水煮軟",`<svg viewBox="0 0 120 90"><g transform="translate(60 22) scale(.55)">${POT(0,0,"var(--soap)")}${LEAF(0,30,.32,90,"var(--leafbrown)",{noVein:true})}</g>${BUB(60,30,5)}</svg>`,"肥皂水"],
     ["牙刷刷葉肉",`<svg viewBox="0 0 120 90">${SKEL(52,40,.6,0,"var(--skel)",{under:`<path d="${LS}" fill="var(--leafbrown)" opacity=".7" class="a-fadeout"/>`})}<g transform="translate(84 58)"><g class="a-tap">${BRUSH(.55)}</g></g></svg>`,"垂直輕點"],
     ["漂白",`<svg viewBox="0 0 120 90"><rect x="12" y="34" width="96" height="48" rx="6" fill="var(--bleach)" stroke="var(--muted)"/>${SKEL(60,52,.42,90,"var(--skel)",{cls:"a-fadeout"})}${WHITE(60,52,.42,90,{cls:"a-appear"})}</svg>`,"褐色變白"],
-    ["護貝書籤",`<svg viewBox="0 0 120 90"><g class="a-swing" style="transform-origin:60px 10px"><path d="M60 10 q-8 -10 -14 4 M60 10 q8 -10 14 4" stroke="var(--g4)" stroke-width="2.5" fill="none"/><rect x="44" y="10" width="32" height="78" rx="4" class="s-film"/><rect x="47" y="16" width="26" height="68" rx="2" fill="var(--base)"/><circle cx="60" cy="16" r="2.5" fill="var(--paper)"/>${SKEL(60,46,.26,0,"var(--skelw)")}</g></svg>`,"深色底卡最明顯"]
+    ["護貝書籤",`<svg viewBox="0 0 120 90"><g class="a-swing" style="transform-origin:60px 10px"><path d="M60 10 q-8 -10 -14 4 M60 10 q8 -10 14 4" stroke="var(--g4)" stroke-width="2.5" fill="none"/><rect x="44" y="10" width="32" height="78" rx="4" class="s-film"/><circle cx="60" cy="16" r="2.5" fill="var(--paper)"/>${SKEL(60,48,.26,0,"var(--skel)")}</g></svg>`,"透明透光"]
   ];
   $("flowBox").innerHTML=F.map((f,i)=>`<div class="fl"><span class="no">${i+1}</span>${f[1]}<b>${f[0]}</b><small>${f[2]}</small></div>`).join("");
 })();
@@ -990,14 +991,14 @@ const STEPS=[
    <rect x="60" y="80" width="220" height="10" class="s-blot"/>${WHITE(170,96,.32,90,{noNet:true})}<rect x="60" y="102" width="220" height="10" class="s-blot"/><rect x="54" y="112" width="232" height="12" class="s-board"/>
    ${T(170,150,"吸水紙夾住 → 熨斗隔紙燙乾（低溫、關蒸氣）","middle","s-txt")}
    ${[["#e2705a",90],["#3f7fd0",140],["#e0b23a",190],["#a2408c",240]].map(([c,x],i)=>`<circle cx="${x}" cy="180" r="8" fill="${c}" class="a-fade" style="animation-delay:${i*.3}s"/>`).join("")}${T(262,184,"可染色","start","s-sm")}</svg>`},
- {t:"排版、護貝",l:["深色卡紙裁 5 × 15 cm，把葉脈放上去","寫上植物名稱、日期","放進護貝膠膜，四周留 3～5 mm","護貝機預熱到燈亮，封口端先進"],tip:"白色葉脈配深綠、深藍、黑色底卡最漂亮。",
+ {t:"排版、護貝",l:["不用底卡：打開透明護貝膠膜，葉脈直接放在中間","小紙條寫上植物名稱、日期，放在葉脈下方","葉脈和紙條四周離膠膜邊緣留 5 mm 以上","蓋上另一片膠膜，護貝機預熱到燈亮，封口端先進"],tip:"兩片透明膠膜夾住，成品透明透光，對著光看葉脈網紋最清楚；葉脈要乾透，不然膠膜裡會起霧。",
   art:`<svg viewBox="0 0 340 200">${ARROWDEF("ar3")}<rect x="110" y="70" width="120" height="66" rx="10" fill="var(--metal)"/><rect x="110" y="100" width="120" height="8" fill="#2b3036"/><circle cx="214" cy="82" r="5" fill="var(--g1)" class="a-fade"/>${T(170,90,"護貝機","middle","s-txt")}
-   <g class="a-feed"><rect x="140" y="96" width="60" height="14" rx="2" class="s-film" style="opacity:.9"/><rect x="146" y="98" width="48" height="10" fill="var(--base)"/><rect x="140" y="96" width="6" height="14" fill="var(--g3)"/></g>
+   <g class="a-feed"><rect x="140" y="96" width="60" height="14" rx="2" class="s-film" style="opacity:.9"/><path d="M160 103 h20" stroke="var(--skel)" stroke-width="3"/><rect x="140" y="96" width="6" height="14" fill="var(--g3)"/></g>
    <path d="M20 103 h80" stroke="var(--muted)" stroke-width="2" marker-end="url(#ar3)"/>${T(60,160,"封口端先進","middle","s-sm")}${T(280,160,"放平冷卻","middle","s-sm")}
    <path d="M130 60 q4 -8 8 0 M164 60 q4 -8 8 0 M198 60 q4 -8 8 0" stroke="var(--g1)" stroke-width="2.5" fill="none" class="a-fade"/></svg>`},
- {t:"裁切、打洞綁繩",l:["沿底卡外圍留約 3 mm 膠膜剪下，四角剪圓","上方空白處打洞（離底卡至少 5 mm）","穿上緞帶或麻繩","完成！夾在書裡，避免陽光直射"],tip:"不要剪到底卡，不然水會從邊緣滲進去。",
+ {t:"裁切、打洞綁繩",l:["沿葉脈外圍留至少 3 mm 膠膜剪下，四角剪圓","上方空白處打洞（離葉脈至少 5 mm）","穿上緞帶或麻繩","完成！夾在書裡，避免陽光直射"],tip:"不要剪到葉脈，四周要有上下膠膜黏死的透明邊，水才不會從邊緣滲進去。",
   art:`<svg viewBox="0 0 340 200"><g class="a-swing"><path d="M170 40 q-30 -40 -50 -8 q20 10 50 8 q30 -40 50 -8 q-20 10 -50 8" stroke="var(--g4)" stroke-width="4" fill="none"/>
-   <rect x="128" y="22" width="84" height="172" rx="10" class="s-film"/><rect x="134" y="30" width="72" height="158" rx="3" fill="var(--base)"/><circle cx="170" cy="40" r="6" fill="var(--bg)" stroke="var(--muted)"/>${SKEL(170,104,.62,0,"var(--skelw)")}<text x="170" y="170" text-anchor="middle" style="fill:var(--skelw);font-size:13px;font-weight:700;font-family:var(--f)">桂花</text><text x="170" y="183" text-anchor="middle" style="fill:var(--skelw);font-size:9px;font-family:var(--f)">2026.11.12</text></g></svg>`}
+   <rect x="128" y="22" width="84" height="172" rx="10" class="s-film"/><circle cx="170" cy="40" r="6" fill="var(--bg)" stroke="var(--muted)"/>${SKEL(170,104,.62,0,"var(--skel)")}<rect x="146" y="158" width="48" height="30" rx="2" fill="#fffdf5" stroke="var(--cardline)"/><text x="170" y="172" text-anchor="middle" style="fill:#3a2a10;font-size:13px;font-weight:700;font-family:var(--f)">桂花</text><text x="170" y="183" text-anchor="middle" style="fill:#3a2a10;font-size:9px;font-family:var(--f)">2026.11.12</text></g></svg>`}
 ];
 let sIdx=0, paused=false; const seen=new Set([0]);
 function renderStep(){
@@ -1098,8 +1099,8 @@ function renderMargin(){
   const px=m*4, X=40, Y=10, W=220, H=170, cx=X+px, cy=Y+px, cw=W-2*px, ch=H-2*px;
   let gaps=""; if(m<3){ [[X+4,Y+40],[X+W-10,Y+100],[X+90,Y+H-6]].forEach(([x,y],i)=>{ gaps+=`<circle cx="${x}" cy="${y}" r="4" class="s-water a-fade" style="animation-delay:${i*.4}s"/>`; }); }
   $("mSvg").innerHTML=`<rect x="${X}" y="${Y}" width="${W}" height="${H}" rx="8" fill="var(--film)" opacity="${m?0.8:0.2}" stroke="var(--water)" stroke-width="2"/>
-    <rect x="${cx}" y="${cy}" width="${cw}" height="${ch}" rx="3" fill="var(--base)"/>
-    ${SKEL(140,Y+H/2,Math.min(cw/130,ch/125).toFixed(3),90,"var(--skelw)")}
+    <rect x="${cx}" y="${cy}" width="${cw}" height="${ch}" rx="3" fill="none" stroke="var(--muted)" stroke-dasharray="4 4"/>
+    ${SKEL(150,Y+H/2,Math.min(cw/130,ch/125).toFixed(3),90,"var(--skel)")}
     ${gaps}${m?`<path d="M${X} ${Y+H+6} h${px}" stroke="var(--g3)" stroke-width="3"/>`:""}`;
 }
 $("mRange").oninput=renderMargin; renderMargin();
@@ -1228,7 +1229,7 @@ const REPORTS=(function(){
     <g transform="translate(200 116)"><rect x="-34" y="-104" width="68" height="208" rx="6" fill="#9fd3f0" opacity=".5"/><rect x="-28" y="-98" width="56" height="196" rx="3" fill="#2f5d3a"/><circle cy="-86" r="5" fill="#f3f5ec"/>${SKEL(0,6,1.15,0,"#f7f1e1")}<text x="0" y="88" text-anchor="middle" style="fill:#f7f1e1;font-size:8px;font-weight:700">桂花 12/10</text></g>`,"0 0 400 230");
 
   const LEAFREP=()=>top("葉脈標本護貝書籤","一人一份・照片至少 4 張・繳交彩色紙本＋Classroom 上傳 PDF")+info("12/10（四）","12/17（四）")+
-    H("一、材料與器材")+kv([["葉子種類",A("桂花")],["採集地點",A("學校中庭花圃")],["煮葉方式",A("肥皂水（水 1 公升＋肥皂絲 30 g），小火保持冒小泡")],["使用器材",A("不鏽鋼鍋、電磁爐、長筷子、舊牙刷、瓷磚、漂白水、量杯、吸水紙、熨斗、護貝膠膜、深綠色卡紙")]])+
+    H("一、材料與器材")+kv([["葉子種類",A("桂花")],["採集地點",A("學校中庭花圃")],["煮葉方式",A("肥皂水（水 1 公升＋肥皂絲 30 g），小火保持冒小泡")],["使用器材",A("不鏽鋼鍋、電磁爐、長筷子、舊牙刷、瓷磚、漂白水、量杯、吸水紙、熨斗、透明護貝膠膜")]])+
     H("二、實習步驟（附照片）","照實際做的順序貼照片，每張寫一句說明。","說明要寫「怎麼做」：時間、份量、方法，不是只寫「煮葉子」。")+photos(LEAFP)+
     BRK(2)+
     H("三、實習結果","記錄自己作品的結果；完整度對照網頁上的 1～5 分圖。","數字要當場記，不要事後用猜的。")+
