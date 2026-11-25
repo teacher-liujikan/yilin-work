@@ -284,6 +284,8 @@ button.dot{border:0;padding:0;cursor:pointer;width:22px;height:12px}
 .tri3 .box{font-size:17px}
 .tri3 .box b.t{font-size:19px}
 @media (max-width:520px){.tri3 .box{font-size:16px}}
+.case .clue{font-size:15px;line-height:1.6;color:var(--ink);background:var(--soil-soft);border-radius:8px;padding:6px 8px}
+.case .clue b{color:var(--soil)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 /* ===== 多裝置：電視／平板／手機 ===== */
@@ -702,6 +704,7 @@ button.dot{border:0;padding:0;cursor:pointer;width:22px;height:12px}
       <div class="picker" id="dPick" role="tablist" aria-label="選擇主題"></div>
       <div class="actions"><button class="btn ghost" id="dAll">全部揭曉</button><button class="btn ghost" id="dReset">全部蓋回去</button></div>
     </div>
+    <div class="tip" id="dTip" hidden></div>
     <div class="cases" id="dCases"></div>
     <div class="actions"><button class="btn" data-go="t7">下一個：計算練習 →</button></div>
   </section>
@@ -773,7 +776,19 @@ $("vsList").innerHTML=VS.map(([a,b])=>`<div class="vsr"><span class="vsa">${a}</
 
 /* ---------- 動手判斷 ---------- */
 const DECKS=[
- {name:"病原是誰？",items:[["水稻稻熱病","真菌"],["馬鈴薯晚疫病","真菌（卵菌）"],["玉米露菌病","真菌"],["番茄青枯病","細菌"],["柑橘潰瘍病","細菌"],["蔬菜軟腐病","細菌"],["木瓜輪點病","病毒（蚜蟲傳播）"],["胡瓜嵌紋病","病毒"],["水稻黃萎病","菌質（浮塵子傳播）"],["甘藷簇葉病","菌質"],["白菜根瘤病","黏菌"],["荔枝腫葉病","蟎類"]]},
+ {name:"病原是誰？",tip:'<b>看線索判斷：</b>長<b>黴</b>（白霜、灰黴）→ 真菌｜<b>菌泥、軟爛發臭</b>、雨水傷口傳 → 細菌｜<b>嵌紋、輪紋</b>、蚜蟲傳、沒藥醫 → 病毒｜<b>黃化、矮縮、簇葉</b>、浮塵子傳 → 菌質｜根<b>腫成瘤</b> → 黏菌｜<b>毛氈、腫葉</b>、放大鏡才看得到的小蟲 → 蟎類',items:[
+  ["水稻稻熱病","真菌","葉上紡錘形病斑，潮濕時病斑長出<b>灰色黴</b>；孢子靠<b>風</b>傳播"],
+  ["馬鈴薯晚疫病","真菌（卵菌）","葉片出現水浸狀黑褐斑，潮濕時葉背長出<b>白色黴狀物</b>"],
+  ["玉米露菌病","真菌","葉片黃白條紋，清晨葉背長一層<b>白色霜狀黴</b>"],
+  ["番茄青枯病","細菌","葉子還是綠的就整株萎凋；切下莖泡清水，會流出<b>白色乳狀菌泥</b>"],
+  ["柑橘潰瘍病","細菌","葉和果皮上有木栓化突起的病斑，周圍黃暈；<b>颱風雨、傷口</b>後變多"],
+  ["蔬菜軟腐病","細菌","組織變得<b>軟爛、黏糊糊、發出惡臭</b>"],
+  ["木瓜輪點病","病毒（蚜蟲傳播）","果皮上一圈圈<b>同心輪紋</b>、葉片皺縮；靠<b>蚜蟲</b>傳播，噴藥治不好"],
+  ["胡瓜嵌紋病","病毒","葉片深綠、淺綠相間，像<b>馬賽克（嵌紋）</b>，植株矮小"],
+  ["水稻黃萎病","菌質（浮塵子傳播）","全株<b>黃化、矮縮</b>，分蘗變多；田裡<b>浮塵子</b>很多"],
+  ["甘藷簇葉病","菌質","葉片變小、<b>擠成一簇</b>，全株黃化；由<b>浮塵子</b>傳播"],
+  ["白菜根瘤病","黏菌","拔起來<b>根部腫成大小不一的瘤</b>，中午葉片萎凋"],
+  ["荔枝腫葉病","蟎類","葉背長出<b>絨毛狀毛氈</b>、葉片腫脹變形；要用<b>放大鏡</b>才看得到的極小蟲在刺吸新芽"]]},
  {name:"什麼口器？",items:[["蝗蟲","咀嚼式"],["天牛、金龜子","咀嚼式"],["蚜蟲","刺吸式"],["椿象、浮塵子","刺吸式"],["蝶、蛾","虹吸式"],["薊馬","銼吸式"],["家蠅","舐吮式"],["蜜蜂","咀吸式"]]},
  {name:"哪一種變態？",items:[["椿象","不完全：卵→若蟲→成蟲"],["蝗蟲","不完全變態"],["斑星天牛","完全：卵→幼蟲→蛹→成蟲"],["紋白蝶","完全變態"],["蜻蜓","半變態：卵→稚蟲→成蟲"],["衣魚","無變態"]]},
  {name:"用哪種防治法？",items:[["機場檢疫水果","法規防治"],["掛黃色黏紙","物理防治"],["水稻、紅豆輪作","農業防治"],["噴蘇力菌","生物防治"],["拔掉罹病植株","除病"],["種抗病品種","抗病（最經濟）"],["放鴨子吃雜草","生物防除"],["用鐮刀割草","物理防除"]]},
@@ -783,7 +798,8 @@ let dCur=0;
 function renderDeck(){
   $("dPick").innerHTML=DECKS.map((d,i)=>`<button class="pk" role="tab" data-i="${i}" aria-selected="${i===dCur}">${d.name}</button>`).join("");
   document.querySelectorAll("#dPick .pk").forEach(b=>b.onclick=()=>{dCur=+b.dataset.i;renderDeck();});
-  $("dCases").innerHTML=DECKS[dCur].items.map((c,i)=>`<button class="case" data-c="${i}" style="min-height:110px"><span class="q" style="font-size:20px;font-weight:700">${c[0]}</span><span class="a">點我看答案</span></button>`).join("");
+  const D=DECKS[dCur]; $("dTip").innerHTML=D.tip||""; $("dTip").hidden=!D.tip;
+  $("dCases").innerHTML=D.items.map((c,i)=>`<button class="case" data-c="${i}" style="min-height:110px"><span class="q" style="font-size:20px;font-weight:700">${c[0]}</span>${c[2]?`<span class="clue">🔍 ${c[2]}</span>`:""}<span class="a">點我看答案</span></button>`).join("");
   document.querySelectorAll("#dCases .case").forEach(b=>b.onclick=()=>flip(b));
 }
 function flip(b,force){ const c=DECKS[dCur].items[+b.dataset.c], open=force!==undefined?force:!b.classList.contains("open"); b.classList.toggle("open",open); b.querySelector(".a").innerHTML=open?`<b style="font-size:20px">${c[1]}</b>`:"點我看答案"; }
