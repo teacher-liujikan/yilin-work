@@ -286,6 +286,8 @@ button.dot{border:0;padding:0;cursor:pointer;width:22px;height:12px}
 @media (max-width:520px){.tri3 .box{font-size:16px}}
 .case .clue{font-size:15px;line-height:1.6;color:var(--ink);background:var(--soil-soft);border-radius:8px;padding:6px 8px}
 .case .clue b{color:var(--soil)}
+.cluelist{margin:6px 0 0;padding-left:1.3em;font-size:17px;line-height:1.9}
+.cluelist li{margin:2px 0}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
 /* ===== 多裝置：電視／平板／手機 ===== */
@@ -776,7 +778,7 @@ $("vsList").innerHTML=VS.map(([a,b])=>`<div class="vsr"><span class="vsa">${a}</
 
 /* ---------- 動手判斷 ---------- */
 const DECKS=[
- {name:"病原是誰？",tip:'<b>看線索判斷：</b>長<b>黴</b>（白霜、灰黴）→ 真菌｜<b>菌泥、軟爛發臭</b>、雨水傷口傳 → 細菌｜<b>嵌紋、輪紋</b>、蚜蟲傳、沒藥醫 → 病毒｜<b>黃化、矮縮、簇葉</b>、浮塵子傳 → 菌質｜根<b>腫成瘤</b> → 黏菌｜<b>毛氈、腫葉</b>、放大鏡才看得到的小蟲 → 蟎類',items:[
+ {name:"病原是誰？",tip:'<b>看線索判斷：</b><ul class="cluelist"><li>長<b>黴</b>（白霜、灰黴）→ <b>真菌</b></li><li><b>菌泥、軟爛發臭</b>，雨水、傷口傳播 → <b>細菌</b></li><li><b>嵌紋、輪紋</b>，蚜蟲傳播、沒藥醫 → <b>病毒</b></li><li><b>黃化、矮縮、簇葉</b>，浮塵子傳播 → <b>菌質</b></li><li>根<b>腫成瘤</b> → <b>黏菌</b></li><li><b>毛氈、腫葉</b>，放大鏡才看得到的小蟲 → <b>蟎類</b></li></ul>',items:[
   ["水稻稻熱病","真菌","葉上紡錘形病斑，潮濕時病斑長出<b>灰色黴</b>；孢子靠<b>風</b>傳播"],
   ["馬鈴薯晚疫病","真菌（卵菌）","葉片出現水浸狀黑褐斑，潮濕時葉背長出<b>白色黴狀物</b>"],
   ["玉米露菌病","真菌","葉片黃白條紋，清晨葉背長一層<b>白色霜狀黴</b>"],
