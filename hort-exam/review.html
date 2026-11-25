@@ -114,6 +114,27 @@ nav.bottom button.on{color:var(--green);font-weight:700}
 .fsz button{flex:1;border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px;font-weight:700}
 @media (min-width:900px){ :root{--fs:18px} main{padding-top:20px} }
 </style>
+
+<style id="prog-css">
+article h3{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+article h2{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.sbtns{margin-left:auto;display:inline-flex;gap:6px;font-size:.8rem;font-weight:700}
+.sbtns button{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:3px 10px;min-height:32px;line-height:1.2;color:var(--mute)}
+.sbtns .ck.on{background:var(--leaf);border-color:var(--leaf);color:#fff}
+.sbtns .bm{font-size:1rem;padding:2px 8px}
+.sbtns .bm.on{color:#c98a00;border-color:#e8c060;background:#fff6d6}
+article h3.secdone{opacity:.75}
+.ptools{display:flex;align-items:center;gap:8px;margin:-4px 0 12px;font-size:.85rem;color:var(--mute)}
+.ptools .pb{flex:1;height:8px;background:#e9e3d2;border-radius:99px;overflow:hidden}
+.ptools .pb i{display:block;height:100%;background:var(--leaf)}
+.ptools button{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:5px 10px;font-size:.82rem}
+.toc .mini{display:block;width:54px;height:6px;background:#e9e3d2;border-radius:9px;overflow:hidden;flex:none}
+.toc .mini b{display:block;height:100%;background:var(--leaf)}
+.bmh{font-weight:700;color:#a87300;margin:4px 0 2px}
+.toc .bmi{color:#7a5a00}
+body.cloze .sbtns button{color:var(--mute)!important;background:#fff!important}
+body.cloze .sbtns .ck.on{color:#fff!important;background:var(--leaf)!important}
+</style>
 </head>
 <body>
 <header>
@@ -329,6 +350,64 @@ $("#cardSeg").onclick=e=>{const b=e.target.closest("button");if(!b)return;
 
 setCloze(!!S.cloze);
 render(S.cur||0);
+</script>
+
+<script id="prog-js">
+(function(){
+S.sec=S.sec||{};S.bm=S.bm||{};
+const SECS=CH.map(c=>{const d=document.createElement("div");d.innerHTML=c.html;const h=[...d.querySelectorAll("h3")].map(x=>x.textContent.trim());return h.length?h:[c.title]});
+const sk=(ci,j)=>CH[ci].id+"|"+j;
+const stat=ci=>{const n=SECS[ci].length;let k=0;for(let j=0;j<n;j++)if(S.sec[sk(ci,j)])k++;return[k,n]};
+const sync=ci=>{const[k,n]=stat(ci);S.done[CH[ci].id]=k===n};
+const total=()=>{let K=0,N=0;CH.forEach((_,i)=>{const[k,n]=stat(i);K+=k;N+=n});return[K,N]};
+// migrate: chapters already marked 讀完 -> all sections checked
+CH.forEach((c,i)=>{if(S.done[c.id]&&stat(i)[0]===0)SECS[i].forEach((_,j)=>S.sec[sk(i,j)]=true)});
+save();
+// progress strip under search
+const tools=document.querySelector("#v-notes .tools");
+const pt=document.createElement("div");pt.className="ptools";
+pt.innerHTML='<span id="ptTxt"></span><span class="pb"><i id="ptBar"></i></span><button id="ptBm">★ 書籤</button>';
+tools.after(pt);
+$("#ptBm").onclick=()=>{toc();$("#tocSheet").classList.add("show")};
+function strip(){const[K,N]=total();$("#ptTxt").textContent=`複習進度 ${K}/${N}（${Math.round(K/N*100)}%）`;$("#ptBar").style.width=(K/N*100)+"%";
+  const nb=Object.keys(S.bm).filter(k=>S.bm[k]).length;$("#ptBm").textContent=nb?`★ 書籤 ${nb}`:"☆ 書籤"}
+chips=function(){
+  $("#chips").innerHTML=CH.map((c,i)=>{const[k,n]=stat(i);const tag=k===n?'<span class="ok">✓</span> ':k?`<span class="ok">${k}/${n}</span> `:"";return `<button class="chip${i===S.cur?" cur":""}" data-i="${i}">${tag}${esc(c.short)}</button>`}).join("");
+  const el=$("#chips .cur");if(el)el.scrollIntoView({inline:"center",block:"nearest"});
+};
+const _render=render;
+render=function(i,keep){_render(i,keep);decorate();strip()};
+function decorate(){
+  const ci=S.cur,art=$("#art");let hs=[...art.querySelectorAll("h3")];if(!hs.length)hs=[art.querySelector("h2")];
+  hs.forEach((h,j)=>{const key=sk(ci,j),on=!!S.sec[key],bm=!!S.bm[key];
+    const w=document.createElement("span");w.className="sbtns";
+    w.innerHTML=`<button class="bm${bm?" on":""}" data-k="${key}" data-j="${j}" aria-label="書籤">${bm?"★":"☆"}</button><button class="ck${on?" on":""}" data-k="${key}">${on?"✓ 已複習":"☐ 複習"}</button>`;
+    h.appendChild(w);h.classList.toggle("secdone",on)});
+  const[k,n]=stat(ci),b=$("#doneBtn");
+  b.classList.toggle("on",k===n);
+  b.textContent=k===n?`✓ 本章 ${n} 節全部複習完（再按取消）`:`本章已複習 ${k}/${n} 節・按此全部勾選`;
+}
+$("#art").addEventListener("click",e=>{const b=e.target.closest(".sbtns button");if(!b)return;e.stopPropagation();e.preventDefault();
+  const key=b.dataset.k;
+  if(b.classList.contains("bm")){if(S.bm[key])delete S.bm[key];else S.bm[key]=1}
+  else{S.sec[key]=!S.sec[key];sync(S.cur)}
+  save();render(S.cur,true)},true);
+$("#doneBtn").onclick=()=>{const ci=S.cur,[k,n]=stat(ci),v=k!==n;SECS[ci].forEach((_,j)=>S.sec[sk(ci,j)]=v);sync(ci);save();render(ci,true)};
+toc=function(){
+  const[K,N]=total(),nd=CH.filter(c=>S.done[c.id]).length;
+  $("#progTxt").textContent=`已複習 ${K} / ${N} 小節（${Math.round(K/N*100)}%）・完成 ${nd} / ${CH.length} 章`;
+  $("#progBar").style.width=(K/N*100)+"%";
+  const bms=Object.keys(S.bm).filter(k=>S.bm[k]).map(k=>{const[id,j]=k.split("|");const ci=CH.findIndex(c=>c.id===id);return ci<0?null:{ci,j:+j}}).filter(Boolean).sort((a,b)=>a.ci-b.ci||a.j-b.j);
+  const bmHtml=bms.length?`<div class="bmh">★ 我的書籤（${bms.length}）</div>`+bms.map(x=>`<button class="bmi" data-i="${x.ci}" data-j="${x.j}">★ ${esc(CH[x.ci].short)}／${esc(SECS[x.ci][x.j]||"")}</button>`).join("")+`<div class="bmh" style="color:var(--green);margin-top:10px">各章進度</div>`:"";
+  $("#toc").innerHTML=bmHtml+CH.map((c,i)=>{const[k,n]=stat(i);return `<button data-i="${i}">${esc(c.title)}<span class="st">${k===n?"✓ 完成":k+"/"+n}</span><i class="mini"><b style="width:${k/n*100}%"></b></i></button>`}).join("");
+};
+$("#toc").onclick=e=>{const b=e.target.closest("button");if(!b)return;$("#tocSheet").classList.remove("show");showView("notes");clearSearch();render(+b.dataset.i);
+  if(b.dataset.j!==undefined){const hs=[...$("#art").querySelectorAll("h3")];const h=hs[+b.dataset.j];if(h)setTimeout(()=>h.scrollIntoView({block:"start",behavior:"smooth"}),50)}};
+const rb=$("#resetBtn");rb.textContent="清除複習進度、書籤與閃卡紀錄";
+let rt=0;rb.onclick=()=>{if(rt&&Date.now()-rt<3000){rt=0;S.done={};S.unk={};S.sec={};S.bm={};save();render(S.cur,true);try{drawCard()}catch(e){}rb.textContent="已清除";return}
+  rt=Date.now();rb.textContent="再按一次確認清除";setTimeout(()=>{rb.textContent="清除複習進度、書籤與閃卡紀錄"},3000)};
+render(S.cur||0,true);
+})();
 </script>
 </body>
 </html>
