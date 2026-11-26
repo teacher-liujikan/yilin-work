@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第一～三章 題庫複習</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: 同「自然段與意義段」的架構：上方標題＋QR，分頁 土壤重點／肥料重點／動手做／計算練習／小測驗。土色系，投影用大字。 */
+:root{
+  --bg:#f7f3ec; --paper:#ffffff; --ink:#2a2118; --muted:#6c5f52; --line:#e3d9cb; --grid:#efe8dc;
+  --accent:#2f6b3a; --accent-ink:#ffffff; --accent-soft:#e3f0e3;
+  --soil:#8a5a35; --soil-soft:#f4e7da;
+  --mark:#ffe08a; --mark-ink:#2a2118;
+  --ok:#1f7a45; --ok-soft:#e1f4e7; --bad:#b4362c; --bad-soft:#fbe7e4;
+  --g1:#c46a17; --g2:#2f8a57; --g3:#3b6fd1; --g4:#a2408c;
+  --g1s:#fbecdc; --g2s:#e0f2e7; --g3s:#e3ebfb; --g4s:#f6e4f1;
+  --lA:#4a3324; --lB:#8e6038; --lC:#c4a07a; --lR:#8d8a85;
+  --f:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --r:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#17130f; --paper:#211b16; --ink:#efe7dc; --muted:#b4a594; --line:#3a3027; --grid:#1d1813;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#17130f; --paper:#211b16; --ink:#efe7dc; --muted:#b4a594; --line:#3a3027; --grid:#1d1813;
+  --accent:#7fcf8c; --accent-ink:#10170f; --accent-soft:#1f3322;
+  --soil:#d59a6a; --soil-soft:#33261b;
+  --mark:#6b5414; --mark-ink:#fff4cc;
+  --ok:#6fd398; --ok-soft:#173326; --bad:#ff8f84; --bad-soft:#3a1d1a;
+  --g1:#f0a35a; --g2:#6fd09a; --g3:#8eaaf0; --g4:#e08ccc;
+  --g1s:#3a2a1a; --g2s:#173326; --g3s:#1c2740; --g4s:#36203a;
+  color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:17px;line-height:1.7;
+  background-image:radial-gradient(var(--grid) 1.2px,transparent 1.2px);background-size:22px 22px}
+.wrap{max-width:980px;margin:0 auto;padding-block:20px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{display:flex;gap:16px;align-items:flex-start;justify-content:space-between}
+.brand{min-width:0}
+.eyebrow{font-size:14px;letter-spacing:.12em;color:var(--soil);font-weight:700}
+h1{font-size:clamp(30px,6vw,44px);font-weight:900;line-height:1.2;margin:4px 0 6px;text-wrap:balance}
+.sub{color:var(--muted);margin:0;font-size:16px}
+.qr{flex:none;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+.qr img{width:84px;height:84px;image-rendering:pixelated;display:block}
+.qr span{font-size:12px;color:#4a3d31;font-weight:700}
+button:focus-visible,.qr:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tabs{display:flex;gap:8px;margin:22px 0 14px;flex-wrap:wrap}
+.tab{font:inherit;font-weight:700;font-size:17px;border:2px solid var(--accent);background:var(--paper);color:var(--accent);border-radius:999px;padding:7px 18px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.tab small{font-weight:500;opacity:.8;margin-left:4px;font-size:13px}
+.panel{display:flex;flex-direction:column;gap:16px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px}
+.toolbar .hint{font-size:14px;color:var(--muted)}
+.switch{display:inline-flex;align-items:center;gap:8px;font-weight:700;cursor:pointer;user-select:none}
+.switch input{width:20px;height:20px;accent-color:var(--accent)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;min-width:0}
+.card h2{font-size:24px;font-weight:900;margin:0 0 8px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.card h2 .sec{font-size:13px;font-weight:700;color:var(--soil);background:var(--soil-soft);border-radius:999px;padding:1px 10px}
+.card h3{font-size:19px;margin:14px 0 4px}
+.card p{margin:6px 0}
+.card ul{margin:6px 0;padding-left:1.3em}
+.card li{margin:3px 0}
+.key{background:var(--mark);color:var(--mark-ink);border-radius:4px;padding:0 4px;font-weight:700;transition:filter .2s}
+body.blank .key{color:transparent;background:var(--soil-soft);border-bottom:2px solid var(--soil);cursor:pointer;user-select:none}
+body.blank .key.show{color:var(--mark-ink);background:var(--mark);border-bottom-color:transparent}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:720px){.two,.three{grid-template-columns:1fr}}
+.box{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--bg);min-width:0}
+.box b.t{display:block;font-size:17px;margin-bottom:2px}
+.box.c1{border-top:5px solid var(--g1)}.box.c2{border-top:5px solid var(--g2)}.box.c3{border-top:5px solid var(--g3)}.box.c4{border-top:5px solid var(--g4)}
+.note{font-size:15px;color:var(--muted);background:var(--bg);border-radius:8px;padding:8px 12px;margin-top:10px}
+.tip{font-size:15px;border:1.5px dashed var(--soil);border-radius:10px;padding:8px 12px;margin-top:10px;background:var(--soil-soft)}
+.tip b{color:var(--soil)}
+.tblwrap{overflow-x:auto;margin-top:8px}
+table.t{width:100%;border-collapse:collapse;font-size:16px;min-width:520px}
+table.t th,table.t td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+table.t th{background:var(--accent-soft);white-space:nowrap}
+table.t td.c{text-align:center}
+.pill{display:inline-block;font-size:13px;font-weight:700;border-radius:999px;padding:0 9px;border:1.5px solid currentColor;white-space:nowrap;line-height:1.6}
+.pill.ok{color:var(--ok)}.pill.no{color:var(--bad)}.pill.mid{color:var(--g1)}
+.btn{font:inherit;font-weight:700;font-size:16px;border:0;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:9px 22px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+.btn:disabled{opacity:.45;cursor:default}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+
+/* 組成條 */
+.bar{display:flex;height:44px;border-radius:10px;overflow:hidden;margin-top:8px;font-size:14px;font-weight:700;color:#fff}
+.bar span{display:grid;place-items:center;white-space:nowrap;padding:0 4px;overflow:hidden}
+
+/* 粒徑尺 */
+.scale{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;margin-top:8px}
+.scale div{border-radius:8px;padding:8px 6px;text-align:center;font-size:14px;line-height:1.35;background:var(--bg);border:1px solid var(--line)}
+.scale div b{display:block;font-size:16px}
+.scale .dot{display:block;margin:4px auto;border-radius:50%;background:var(--soil)}
+@media (max-width:560px){.scale{grid-template-columns:1fr 1fr}}
+
+/* 剖面 */
+.profile{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr);gap:16px;align-items:stretch}
+@media (max-width:620px){.profile{grid-template-columns:1fr}}
+.layers{display:flex;flex-direction:column;border-radius:10px;overflow:hidden;border:2px solid var(--line)}
+.layer{font:inherit;border:0;color:#fff;font-weight:900;font-size:18px;cursor:pointer;text-align:left;padding:10px 14px;display:flex;flex-direction:column;justify-content:center;position:relative}
+.layer small{font-weight:500;font-size:13px;opacity:.9}
+.layer[aria-pressed="true"]{box-shadow:inset 0 0 0 4px var(--mark)}
+.layer.A{background:var(--lA);min-height:70px}.layer.B{background:var(--lB);min-height:90px}.layer.C{background:var(--lC);color:#2a2118;min-height:80px}.layer.R{background:var(--lR);min-height:50px;background-image:radial-gradient(#6d6a66 3px,transparent 3.5px);background-size:16px 14px}
+.lay-info{border:1px solid var(--line);border-radius:10px;padding:12px 16px;background:var(--bg)}
+.lay-info h3{margin:0 0 4px}
+
+/* 氮轉化 */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:8px}
+.chem{border:2px solid var(--soil);border-radius:10px;padding:4px 12px;font-weight:900;font-size:18px;background:var(--paper)}
+.arr{display:flex;flex-direction:column;align-items:center;font-size:13px;font-weight:700;color:var(--accent);line-height:1.2;min-width:70px}
+.arr::after{content:"⟶";font-size:22px;line-height:1}
+.arr.bad{color:var(--bad)}
+
+/* 元素格 */
+.egroup{margin-top:10px}
+.egroup .lab{font-size:14px;font-weight:700;color:var(--muted);margin-bottom:4px}
+.els{display:flex;flex-wrap:wrap;gap:8px}
+.el{font:inherit;width:72px;height:72px;border-radius:10px;border:2px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1;position:relative}
+.el b{font-size:24px;font-weight:900}
+.el small{font-size:13px}
+.el.main{border-color:var(--g1)}.el.sec{border-color:var(--g3)}.el.tr{border-color:var(--g2)}
+.el.npk::before{content:"三要素";position:absolute;top:-9px;font-size:11px;font-weight:700;background:var(--g1);color:#fff;border-radius:999px;padding:0 6px}
+.el.mob::after{content:"";position:absolute;right:6px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--g4)}
+.el[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.einfo{margin-top:14px;border:1px solid var(--line);border-radius:10px;padding:12px 16px;background:var(--bg);min-height:120px}
+.einfo h3{margin:0 0 6px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.einfo dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px}
+.einfo dt{font-weight:700;color:var(--soil);white-space:nowrap}
+.einfo dd{margin:0}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;color:var(--muted);margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--g4);margin-right:4px}
+
+/* 木桶 */
+.barrel{display:flex;align-items:flex-end;gap:3px;height:120px;margin:8px 0}
+.barrel span{flex:1;background:var(--soil);border-radius:4px 4px 0 0;color:#fff;font-size:12px;font-weight:700;text-align:center;padding-top:2px}
+.barrel span.low{background:var(--bad)}
+
+/* pH 站 */
+.phwrap{margin-top:6px}
+.phscale{height:22px;border-radius:999px;background:linear-gradient(90deg,#d63b2f,#ef8a2c,#f2cf3c,#5cb85c,#3a8ad6,#5a4bc4);position:relative}
+input[type=range]{width:100%;accent-color:var(--accent);margin:8px 0 0}
+.phnum{font-size:46px;font-weight:900;line-height:1;color:var(--accent)}
+.phzone{font-size:20px;font-weight:900}
+.phgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+@media (max-width:620px){.phgrid{grid-template-columns:1fr}}
+
+/* 診斷卡 */
+.cases{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.case{font:inherit;color:var(--ink);text-align:left;border:2px solid var(--line);border-radius:12px;background:var(--paper);padding:12px 14px;cursor:pointer;display:flex;flex-direction:column;gap:6px;min-height:150px}
+.case .q{font-size:16px}
+.case .tag{font-size:12px;font-weight:700;color:var(--muted)}
+.case .a{margin-top:auto;font-size:15px;color:var(--muted)}
+.case.open{border-color:var(--accent);background:var(--accent-soft)}
+.case.open .a{color:var(--ink)}
+.case .a b{font-size:22px;color:var(--accent);margin-right:6px}
+
+/* 計算 */
+.picker{display:flex;gap:8px;flex-wrap:wrap}
+.pk{font:inherit;font-size:15px;font-weight:700;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:7px 12px;cursor:pointer;line-height:1.3;text-align:left}
+.pk small{display:block;font-size:12px;font-weight:500;color:var(--muted)}
+.pk[aria-selected="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.problem{font-size:21px;line-height:1.8;font-weight:500}
+.problem b{color:var(--soil)}
+.formula{font-size:18px;font-weight:700;background:var(--soil-soft);border-radius:10px;padding:8px 14px;margin-top:10px}
+.ansrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.ansrow input{font:inherit;font-size:20px;width:180px;border:2px solid var(--line);border-radius:10px;padding:6px 12px;background:var(--paper);color:var(--ink)}
+.ansfb{font-weight:700}
+.ansfb.ok{color:var(--ok)}.ansfb.bad{color:var(--bad)}
+.steps{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.step{border-left:5px solid var(--accent);background:var(--bg);border-radius:0 10px 10px 0;padding:8px 14px;font-size:18px}
+.step .n{font-size:13px;font-weight:700;color:var(--accent);display:block}
+.step.final{border-color:var(--g1);background:var(--g1s);font-weight:900}
+
+/* 測驗 */
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.progress{display:flex;gap:4px;flex-wrap:wrap}
+.dot{width:18px;height:8px;border-radius:4px;background:var(--line)}
+.dot.ok{background:var(--ok)}.dot.bad{background:var(--bad)}.dot.now{background:var(--line)}
+.qtype{font-size:14px;font-weight:700;color:var(--accent);letter-spacing:.06em}
+.qsrc{font-size:13px;font-weight:700;color:var(--soil);background:var(--soil-soft);border-radius:999px;padding:0 8px;margin-left:6px}
+.qtext{font-size:22px;line-height:1.75;margin:10px 0 14px;font-weight:500}
+.qlist{font-size:18px;background:var(--bg);border-radius:10px;padding:8px 14px;margin:-4px 0 14px;line-height:1.9}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{font:inherit;font-size:18px;text-align:left;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:12px 14px;cursor:pointer;display:flex;gap:10px;align-items:center}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt .k{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--bg);font-size:14px;font-weight:700}
+.opt.right{border-color:var(--ok);background:var(--ok-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt:disabled{cursor:default}
+.feedback{margin-top:14px;border-radius:10px;padding:10px 14px;font-size:16px}
+.feedback.ok{background:var(--ok-soft);color:var(--ok)}
+.feedback.bad{background:var(--bad-soft);color:var(--bad)}
+.feedback .why{color:var(--ink);display:block;margin-top:4px}
+.score{font-size:64px;font-weight:900;color:var(--accent);line-height:1;margin:10px 0}
+.review .item{border-left:4px solid var(--bad);padding:6px 12px;background:var(--bg);border-radius:0 6px 6px 0;font-size:16px;margin-top:8px;text-align:left}
+.overlay{position:fixed;inset:0;background:rgba(20,14,8,.72);display:grid;place-items:center;z-index:50;padding:20px}
+.overlay .inner{background:#fff;border-radius:16px;padding:22px;text-align:center;color:#2a2118;max-width:92vw}
+.overlay img{width:min(340px,72vw);height:min(340px,72vw);image-rendering:pixelated;display:block;margin:0 auto}
+.overlay p{font-size:22px;font-weight:700;margin:12px 0 0}
+.overlay small{display:block;color:#6c5f52;margin-top:4px;word-break:break-all}
+footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
+
+.art{width:100%;height:auto;display:block;color:var(--ink)}
+figure{margin:0}
+figcaption{font-size:15px;line-height:1.5;margin-top:6px;text-align:center}
+figcaption b{display:block;font-size:17px}
+.ex{color:var(--muted);font-size:14px}
+.icons{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:8px}
+.icons.three-up{grid-template-columns:repeat(3,minmax(0,1fr))}
+.icons.two-up{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:620px){.icons.three-up,.icons.two-up{grid-template-columns:1fr}}
+.icons figure{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px}
+.icons figure svg{max-height:180px}
+.two>svg.art{max-height:260px}
+.scene{border-radius:12px;margin-top:6px}
+.legend2{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.lg{font-size:14px;font-weight:700;border-radius:999px;padding:2px 12px}
+.lg.g{background:var(--g2s);color:var(--g2)}.lg.p{background:var(--g4s);color:var(--g4)}
+.phbar{display:flex;border-radius:12px;overflow:hidden;margin-top:6px}
+.phbar .seg{color:#fff;font-weight:900;font-size:15px;text-align:center;padding:8px 4px;line-height:1.3}
+.phbar small{font-weight:500;font-size:12px}
+.phaxis{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:4px}
+
+.defmap .art{border-radius:12px}
+.dchips g{cursor:pointer}
+.dchips rect{fill:#fff;stroke:#2f6b3a;stroke-width:2.5}
+.dchips text{font-size:15px;font-weight:900;text-anchor:middle;fill:#2f6b3a}
+.dchips g.on rect{fill:#2f6b3a}.dchips g.on text{fill:#fff}
+.dchips g:focus{outline:none}.dchips g:focus rect{stroke:#e0a21b;stroke-width:4}
+.defkey{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.dk{border-radius:10px;padding:8px 12px;font-size:15px}
+.dk b{display:block;font-size:16px}
+.dk.new{background:var(--g3s);border-left:5px solid var(--g3)}.dk.old{background:var(--g1s);border-left:5px solid var(--g1)}
+@media (max-width:599px){.defkey{grid-template-columns:1fr}.defmap{overflow-x:auto}.defmap svg{min-width:520px}}
+.einfo .eflex{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;align-items:center}
+.leafpic{background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px;text-align:center}
+.leafpic svg{width:100%;height:auto;display:block}
+.leafpic small{display:block;font-size:13px;font-weight:700;color:#4a3324}
+@media (max-width:520px){.einfo .eflex{grid-template-columns:1fr}.leafpic{max-width:170px;margin:0 auto}}
+.cagal{margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+.cgt{font-size:17px;color:var(--soil)}
+.cgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:6px}
+@media (max-width:720px){.cgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cgrid figure{background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px;color:#2a2118}
+.cgrid svg{width:100%;height:auto;display:block;max-height:110px}
+.cgrid figcaption{font-size:14px;text-align:center}
+.cgrid figcaption b{font-size:16px;display:block}
+.qnav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap}
+.qcount{font-size:14px;color:var(--muted);font-weight:700}
+.btn.sm{min-height:36px;padding:4px 14px;font-size:14px}
+.btn.warn{background:var(--bad);color:#fff;border-color:var(--bad)}
+button.dot{border:0;padding:0;cursor:pointer;width:22px;height:12px}
+.dot.now{outline:2px solid var(--accent);outline-offset:2px}
+.dot.ok.now{background:var(--ok)}.dot.bad.now{background:var(--bad)}
+@media (max-width:599px){.qnav .btn{flex:1}.qcount{order:-1;width:100%;text-align:center}}
+.stages.pic{gap:2px}
+.stg{display:flex;flex-direction:column;align-items:center;background:var(--paper);border:2px solid var(--accent);border-radius:12px;padding:2px 6px 4px;min-width:62px}
+.stg svg{width:58px;height:42px;display:block}
+.stg b{font-size:15px;line-height:1.2}
+.stg.pupa{border-color:var(--g1);background:var(--g1s)}
+.stg.pupa b{color:var(--g1)}
+.diff{display:block;font-size:15px;color:var(--g1);margin-bottom:2px}
+@media (max-width:520px){.stg{min-width:52px;padding:2px 3px}.stg svg{width:46px;height:34px}.stg b{font-size:13px}}
+.xp{margin-top:8px;color:var(--ink)}
+.xpt{font-weight:700;background:var(--paper);border:1.5px solid var(--g3);border-radius:8px;padding:6px 10px;color:var(--g3)}
+.xex{margin-top:8px;background:var(--paper);border-radius:8px;padding:6px 10px}
+.xex ul{margin:4px 0 0;padding-left:1.2em}.xex li{margin:3px 0;font-size:16px;line-height:1.6}
+.xtag{display:inline-block;font-size:12px;font-weight:900;border-radius:999px;padding:0 8px;margin-right:6px;background:var(--g3);color:#fff;vertical-align:1px}
+.xtag.ex{background:var(--g1)}.xtag.sm{font-size:11px}
+.tri{max-width:640px;margin:0 auto;display:block}
+.tri3 .box{font-size:17px}
+.tri3 .box b.t{font-size:19px}
+@media (max-width:520px){.tri3 .box{font-size:16px}}
+.case .clue{font-size:15px;line-height:1.6;color:var(--ink);background:var(--soil-soft);border-radius:8px;padding:6px 8px}
+.case .clue b{color:var(--soil)}
+.cluelist{margin:6px 0 0;padding-left:1.3em;font-size:17px;line-height:1.9}
+.cluelist li{margin:2px 0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ===== 多裝置：電視／平板／手機 ===== */
+.tabs{position:sticky;top:0;z-index:20;background:var(--bg);padding:8px 0;margin:14px 0 10px}
+.btn,.pk,.tab{min-height:44px}
+.opt{min-height:56px}
+.widewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+/* 平板 */
+@media (min-width:600px) and (max-width:1100px){
+  body{font-size:18px}
+  .card p,.card li{font-size:18px}
+  .qtext{font-size:24px}.opt{font-size:20px}
+}
+/* 手機 */
+@media (max-width:599px){
+  .wrap{padding-block:12px 40px}
+  h1{font-size:30px}
+  .qr img{width:64px;height:64px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:none;font-size:16px;padding:6px 14px}
+  .tab small{display:none}
+  .card{padding:14px}
+  .card h2{font-size:21px}
+  .qtext{font-size:20px}
+  .toolbar .hint{display:none}
+  .widewrap>svg{min-width:560px}
+}
+/* 電視、大螢幕：整頁放大 */
+@media (min-width:1500px){ .wrap{zoom:1.3} }
+@media (min-width:2200px){ .wrap{zoom:1.75} }
+@media (min-width:3000px){ .wrap{zoom:2.4} }
+
+.phbar .seg{font-size:18px!important;padding:12px 6px!important;line-height:1.4!important}
+.phbar small{font-size:15px!important;font-weight:700!important;display:block;margin-top:4px}
+.phaxis{font-size:14px!important}
+@media (max-width:599px){
+  .phbar{flex-direction:column}
+  .phbar .seg{flex:none!important;display:flex;justify-content:space-between;align-items:center;text-align:left;gap:10px;padding:10px 14px!important}
+  .phbar .seg>br{display:none}
+  .phbar small{margin:0;text-align:right}
+  .phaxis{display:none}
+}
+
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:6px}
+.pcard{font:inherit;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+.pcard svg{max-height:70px}
+.pcard b{font-size:17px}
+.pcard[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:720px){.four{grid-template-columns:1fr 1fr}}
+.pr{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center;font-size:15px;line-height:1.6}
+.pr b{display:block;font-size:22px;margin:2px 0}
+.pn{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-weight:900}
+.meta{display:flex;flex-direction:column;gap:10px}
+.mrow{display:grid;grid-template-columns:130px minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:center;background:var(--bg);border-radius:10px;padding:8px 12px}
+.ml{font-size:17px}.ml small{display:block;font-size:12px;color:var(--muted);font-weight:500}
+.stages{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.st{background:var(--paper);border:2px solid var(--accent);border-radius:999px;padding:2px 12px;font-weight:900}
+.st.pupa{border-color:var(--g1);background:var(--g1s);color:var(--g1)}
+.sa{color:var(--muted)}
+.ex2{font-size:15px}
+@media (max-width:720px){.mrow{grid-template-columns:1fr}}
+.vs{display:flex;flex-direction:column;gap:8px}
+.vsr{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:center}
+.vsa{background:var(--g2s);color:var(--g2);border-radius:10px;padding:8px 12px;font-weight:900;text-align:center}
+.vsb{background:var(--bad-soft);color:var(--bad);border-radius:10px;padding:8px 12px;font-weight:700;text-align:center}
+.vsx{font-size:13px;color:var(--muted);font-weight:700}
+@media (max-width:520px){.vsr{grid-template-columns:1fr}.vsx{text-align:center}}
+.horm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:720px){.horm{grid-template-columns:1fr 1fr}}
+@media (max-width:420px){.horm{grid-template-columns:1fr}}
+.hm{background:var(--bg);border:1px solid var(--line);border-top:5px solid var(--gc,var(--accent));border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:2px;text-align:center}
+.hm.c1{--gc:var(--g1)}.hm.c2{--gc:var(--g2)}.hm.c3{--gc:var(--g3)}.hm.c4{--gc:var(--g4)}
+.hm svg{max-height:80px}
+.hm b{font-size:19px}.hm small{color:var(--muted);font-size:13px}.hm span{font-size:15px}
+
+/* quiz13 */
+.range{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:620px){.range{grid-template-columns:1fr 1fr}}
+.range .pk{text-align:center;padding:12px 8px;font-size:18px}
+.range .pk small{font-size:13px}
+.mtag{display:inline-block;font-size:13px;font-weight:900;border-radius:6px;padding:1px 8px;margin-left:6px;color:#fff;background:var(--g2);vertical-align:2px}
+.mtag.m{background:var(--bad)}
+.mhint{font-size:15px;color:var(--bad);font-weight:700;margin:4px 0 8px}
+.opt.sel{border-color:var(--g3);background:var(--g3s)}
+.opt.sel .k{background:var(--g3);color:#fff}
+.opt.miss{border-color:var(--ok);border-style:dashed}
+.xopt{list-style:none;padding:0!important;margin:6px 0 0}
+.xopt li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:6px;padding:5px 0;border-top:1px dashed var(--line);font-size:16px;line-height:1.6}
+.xopt li:first-child{border-top:0}
+.xopt .mk{font-weight:900;text-align:center}
+.xopt li.y .mk{color:var(--ok)}.xopt li.n .mk{color:var(--bad)}
+.xopt .you{display:inline-block;font-size:12px;font-weight:900;color:#fff;background:var(--g3);border-radius:999px;padding:0 7px;margin-left:6px}
+.xopt .ot{font-weight:700}
+.showx{margin-top:8px}
+.best{color:var(--muted);font-size:15px;margin-top:6px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.stats span{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:15px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="eyebrow">農業概論・第一～三章 題庫</div>
+      <h1>題庫複習 40 題</h1>
+      <p class="sub">緒論・農業環境與發展・作物生產｜單選＋複選，答錯馬上看詳解　<a href="../agri-ch3/" style="color:var(--accent);font-weight:700">第三章 作物生產 總複習 →</a></p>
+    </div>
+    <div class="qr" id="qrBtn" role="button" tabindex="0" aria-label="放大 QR code"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAADfklEQVR4Xu1cW07sMAx1aCU+W4kFzFI6O2BJd03sYLIUFoDUfiK18tWxnTLwQZq5QtdofD6qKVMFk5Pj+JGSmFqQH1qeJqJ4/nvE/MT8XOOG9bAkwxkDZdycl55SSj1RHgmfBH3osYob5r8Jt4zfscB+z7AS5dNKzDMRTa890STf4/am8Vtwi/0tuM/xTZxQLaTLF5my4T2ppkXi+uk+5+c4vM0PfO4HtkTThShNr4k4nzumPHb/6v+b4G1+frs9n/nt1pTHmTif1j4RbYlpELe847f/vfdmv/Jb9t4tcX4mSoSfTy8jlNyvRAMeWMI/1+Fx/WwaHhNRx+mPBFRzB0blUmLqNAa/dXjjlzR2VsxEfBkQSQ9yv+LvsehacfFmf9hTAbNqFbkQCJ1kvx2QHyFnMiXLt8FvHd7WW4mvhrdeWGbdjJEpEXWrZMKEb4mWpzXyoxq88XstU5UuHLI4aQjWLiJx+OzwzxV45BdemfeCVQmt+IJKlmhaS1fB7wE45HcWwQrJUKjqd0URq4N+5ZOQjC+82R/2HImvCkTElhopq+apje7gtwZv663oUjbcvVSlWy8Eq0mSyDn88wE45VeT25IkqS+2dFhyJvHUEV/V4ZNfs1uyXuGyVDrMSUuRI/bfA/DGL+xB10gFK1vvhkoloVOImuWwUjp/dAo92t+Ce7P/KqCyJEmrkihYQcR7kTLyo0PwuX5sr10eOZ33+oaJ+NE0LSc5nNp/HD7n/zha7VeFlvxXqs5W7rgKojVTEuJbx4/nv8dPz89VfqQZ0E63JURaqbTAK/it4af5ah1/P7+x9YRTOYYFTWDcTvOmjQfKz9iYW8eP513oV/NfKThrpcNKkxZVabgV/rkOb+u5+Oe91qxd39La/6hpRf57CA75/XR+o5x1tp5/qWRJzSP0W4c3fh/0cLPgDNecy1sLQqicurKjz+K9HdrfhHuzH/FVpxWNRMtIdv55fsIxjneNt5gW1LTi/MYBeFs/Gj/rWRy7bD3nE6gdZk7Ty1hIptBvHd74/WqP+mLtLyBJwvtlWpgWx+3e/hq8z38NrfZ/fT+F8zgzZbA8sXQaujXhTSSaJA1uHT+e/7/5r85/aeMza9cIvV4Jrfgi1ErpWRB8eeDrOECcNQQlgmJcUjkuy/KmCucTw1PjeEfw+7v4TfH/Gb5FrOeYn2t4Ww9/AZijV6MUp034AAAAAElFTkSuQmCC"><span>掃我練習</span></div>
+  </header>
+  <main class="panel" id="app" style="margin-top:18px"></main>
+  <footer>農業概論 第一～三章 題庫複習。作答紀錄只存在這台裝置。</footer>
+</div>
+<div class="overlay" id="overlay" hidden><div class="inner"><img alt="QR code" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAADfklEQVR4Xu1cW07sMAx1aCU+W4kFzFI6O2BJd03sYLIUFoDUfiK18tWxnTLwQZq5QtdofD6qKVMFk5Pj+JGSmFqQH1qeJqJ4/nvE/MT8XOOG9bAkwxkDZdycl55SSj1RHgmfBH3osYob5r8Jt4zfscB+z7AS5dNKzDMRTa890STf4/am8Vtwi/0tuM/xTZxQLaTLF5my4T2ppkXi+uk+5+c4vM0PfO4HtkTThShNr4k4nzumPHb/6v+b4G1+frs9n/nt1pTHmTif1j4RbYlpELe847f/vfdmv/Jb9t4tcX4mSoSfTy8jlNyvRAMeWMI/1+Fx/WwaHhNRx+mPBFRzB0blUmLqNAa/dXjjlzR2VsxEfBkQSQ9yv+LvsehacfFmf9hTAbNqFbkQCJ1kvx2QHyFnMiXLt8FvHd7WW4mvhrdeWGbdjJEpEXWrZMKEb4mWpzXyoxq88XstU5UuHLI4aQjWLiJx+OzwzxV45BdemfeCVQmt+IJKlmhaS1fB7wE45HcWwQrJUKjqd0URq4N+5ZOQjC+82R/2HImvCkTElhopq+apje7gtwZv663oUjbcvVSlWy8Eq0mSyDn88wE45VeT25IkqS+2dFhyJvHUEV/V4ZNfs1uyXuGyVDrMSUuRI/bfA/DGL+xB10gFK1vvhkoloVOImuWwUjp/dAo92t+Ce7P/KqCyJEmrkihYQcR7kTLyo0PwuX5sr10eOZ33+oaJ+NE0LSc5nNp/HD7n/zha7VeFlvxXqs5W7rgKojVTEuJbx4/nv8dPz89VfqQZ0E63JURaqbTAK/it4af5ah1/P7+x9YRTOYYFTWDcTvOmjQfKz9iYW8eP513oV/NfKThrpcNKkxZVabgV/rkOb+u5+Oe91qxd39La/6hpRf57CA75/XR+o5x1tp5/qWRJzSP0W4c3fh/0cLPgDNecy1sLQqicurKjz+K9HdrfhHuzH/FVpxWNRMtIdv55fsIxjneNt5gW1LTi/MYBeFs/Gj/rWRy7bD3nE6gdZk7Ty1hIptBvHd74/WqP+mLtLyBJwvtlWpgWx+3e/hq8z38NrfZ/fT+F8zgzZbA8sXQaujXhTSSaJA1uHT+e/7/5r85/aeMza9cIvV4Jrfgi1ErpWRB8eeDrOECcNQQlgmJcUjkuy/KmCucTw1PjeEfw+7v4TfH/Gb5FrOeYn2t4Ww9/AZijV6MUp034AAAAAElFTkSuQmCC"><p>用平板或手機掃描，開始練習！</p><small>https://teacher-liujikan.github.io/yilin-work/agri-quiz13/</small></div></div>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const QS=[{"ch": "一", "q": "農業的英文 Agriculture 中，「culture」的意思是？", "o": ["耕種栽培", "文化創意", "土地資源", "文明進步"], "c": [0], "why": "Agri＝土地，Culture＝耕種、栽培。（104 統測）", "pt": "1-1 農業的涵義：Agriculture 的字義", "ex": ["正確：Culture＝耕種、栽培、耕耘", "Culture 在這裡不是「文化」的意思", "「土地」是 Agri 的意思，不是 Culture", "文明進步不是字義"]}, {"ch": "一", "q": "下列哪些屬於「園藝」生產體系的範圍？", "o": ["蔬菜", "花卉", "造園", "特用作物"], "c": [0, 1, 2], "why": "蔬菜、花卉、造園、園產加工屬園藝；特用作物、糧食作物屬農藝。（111 統測）", "pt": "1-1 農業的範圍：園藝與農藝生產體系", "ex": ["正確：蔬菜屬園藝", "正確：花卉屬園藝", "正確：造園屬園藝（還有果樹、園產加工）", "錯誤：特用作物屬<b>農藝</b>（食用、特用、飼用、雜用作物）"]}, {"ch": "一", "q": "有關農業範圍的敘述，何者正確？", "o": ["林業經營也重視遊樂休閒的效益", "遠洋漁業不屬於漁撈業", "蔬菜屬於農藝的範圍", "飼料作物屬於園藝的範圍"], "c": [0], "why": "漁撈含遠洋、近海、沿海、內河；蔬菜屬園藝；飼料作物屬農藝。（106 統測）", "pt": "1-1 農業的範圍：農林漁牧各業", "ex": ["正確：林業除了生產木材，也重視森林遊樂、休閒效益", "錯誤：漁撈分遠洋、近海、沿海、內河，遠洋也是漁撈", "錯誤：蔬菜屬<b>園藝</b>", "錯誤：飼料作物屬<b>農藝</b>"]}, {"ch": "一", "q": "北極的愛斯基摩人至今仍以漁獵、獵海豹為生，屬於農業演變的哪一個時期？", "o": ["採集經濟時期", "耕牧經濟時期", "村落經濟時期", "城市經濟時期"], "c": [0], "why": "以採集、漁獵維生＝採集經濟時期。（104 統測）", "pt": "1-2 農業經濟演變七個時期", "ex": ["正確：靠採集、漁獵、狩獵維生＝採集經濟時期，至今北極仍可見", "錯誤：耕牧經濟時期是遊牧、刀耕火種", "錯誤：村落經濟時期是定居農耕、自給自足", "錯誤：城市經濟時期以錢帛為媒介交易"]}, {"ch": "一", "q": "由「焚林而獵」到「焚林而田」，屬於哪一個農業經濟時期？", "o": ["耕牧經濟時期", "採集經濟時期", "村落經濟時期", "都會經濟時期"], "c": [0], "why": "開始遊牧、刀耕火種＝耕牧經濟時期。（103 統測）", "pt": "1-2 農業經濟演變：耕牧經濟時期", "ex": ["正確：焚林而獵（遊牧）→ 焚林而田（刀耕火種）＝耕牧經濟時期", "錯誤：採集經濟只採集、漁獵", "錯誤：村落經濟已定居耕作", "錯誤：都會經濟是現代都市化、企業化"]}, {"ch": "一", "q": "以錢帛當媒介進行農產品交易，起源於哪一個時期？", "o": ["城市經濟時期", "村落經濟時期", "耕牧經濟時期", "國家經濟時期"], "c": [0], "why": "以錢帛為媒介交易，源於城市經濟時期。（106、112 統測）", "pt": "1-2 農業經濟演變：城市經濟時期", "ex": ["正確：以錢帛當媒介、農產品商業交易＝城市經濟時期", "錯誤：村落經濟以物易物、自給自足", "錯誤：耕牧經濟是遊牧、刀耕火種", "錯誤：國家經濟是以農業發展工業"]}, {"ch": "一", "q": "有關農業起源與經濟演變，哪些敘述正確？", "o": ["逐水草而居是遊牧民族的生活方式", "耕牧經濟時期開始有土地和財產的觀念", "採集經濟型態已在全球消失", "漁獵時期已有私有財產的觀念"], "c": [0, 1], "why": "採集經濟至今仍存在（如愛斯基摩人）；私有財產觀念在遊牧（耕牧）時期才出現。（108、109 統測）", "pt": "1-2 農業的起源與經濟演變", "ex": ["正確：遊牧民族逐水草而居", "正確：耕牧經濟時期開始有土地和財產觀念", "錯誤：採集經濟至今仍存在（例：愛斯基摩人）", "錯誤：漁獵時期還沒有私有財產觀念，遊牧時期才出現"]}, {"ch": "一", "q": "下列哪一種作物的栽培起源中心，是南美洲安地斯地區？", "o": ["可可", "玉米", "葡萄", "咖啡"], "c": [0], "why": "依課本：可可起源南美洲；玉米中美洲、葡萄西亞、咖啡非洲。（111 統測）", "pt": "1-2 作物的栽培起源中心", "ex": ["正確：依課本，可可起源於南美洲", "錯誤：玉米起源<b>中美洲</b>（墨西哥）", "錯誤：葡萄起源西亞", "錯誤：咖啡起源<b>非洲</b>（衣索比亞）"]}, {"ch": "一", "q": "人類文明開化的原點是哪一種產業？", "o": ["農業", "工業", "商業", "服務業"], "c": [0], "why": "農業是一級產業，也是人類文明開化的原點。（109 統測）", "pt": "1-1 農業的重要性", "ex": ["正確：農業是一級產業，是人類文明開化的原點", "錯誤：工業在農業之後才發展", "錯誤：商業建立在農產品交易之後", "錯誤：服務業是三級產業，最晚發展"]}, {"ch": "一", "q": "下列哪些屬於農業的「經濟性」特質？", "o": ["資產固定，不易改變用途", "農產品價格變動大", "生產週期短，資金週轉快", "需要光、熱、空氣才能生存"], "c": [0, 1], "why": "農業生產週期長、資金週轉遲緩；需光熱空氣屬「生物性」。（104 統測）", "pt": "1-3 農業生產的特色：經濟性", "ex": ["正確：農地、設施資產固定，不易改作他用", "正確：產量影響價格，價格變動大、供需缺乏彈性", "錯誤：農業生產週期<b>長</b>、資金週轉<b>遲緩</b>", "錯誤：需光、熱、空氣才能生存是<b>生物性</b>"]}, {"ch": "一", "q": "「農業生產必須因時因地制宜」，屬於農業的哪一種特色？", "o": ["自然性", "生物性", "經濟性", "工商性"], "c": [0], "why": "受地區、季節、氣候影響＝自然性。（103 統測）", "pt": "1-3 農業生產的特色：自然性", "ex": ["正確：受地區、季節、氣候影響，要因時因地制宜＝自然性", "錯誤：生物性是「動植物需光熱空氣、有生命週期」", "錯誤：經濟性是資產固定、週期長、價格變動大", "錯誤：工商性不是課本的農業特色"]}, {"ch": "一", "q": "「厚植森林資源、永續經營」屬於三生農業的哪一項目標？", "o": ["生態", "生活", "生產", "生命"], "c": [0], "why": "三生農業：生產、生活、生態；保育森林屬生態。（103 統測）", "pt": "1-3 三生農業：生產、生活、生態", "ex": ["正確：保育森林、永續經營＝生態", "錯誤：生活指改善農民生活、休閒", "錯誤：生產指提高產量、所得", "錯誤：三生是生產、生活、生態，沒有「生命」"]}, {"ch": "一", "q": "強調自主學習、培養解決問題能力的自我訓練課程，稱為？", "o": ["專題研究", "專業實習", "農學研究", "專門技術"], "c": [0], "why": "專題研究屬「實踐型」學習，培養主動解決問題的能力。", "pt": "1-4 學習農業的方法：專題研究", "ex": ["正確：專題研究屬實踐型學習，培養主動解決問題的能力", "錯誤：專業實習是到產業現場實習", "錯誤：農學研究不是課本名詞", "錯誤：專門技術指技能本身"]}, {"ch": "二", "q": "下列何者為「定日性（中日性）」作物？", "o": ["甘蔗", "馬鈴薯", "甘藷", "番茄"], "c": [0], "why": "依課本：甘蔗為定日性；馬鈴薯長日照、甘藷短日照、番茄中性。（109 統測）", "pt": "2-1 光週期：作物對日照長短的反應", "ex": ["正確：依課本，甘蔗為定日性作物", "錯誤：馬鈴薯是<b>長日照</b>作物", "錯誤：甘藷是<b>短日照</b>作物", "錯誤：番茄是<b>中性</b>作物"]}, {"ch": "二", "q": "路燈換成 LED 後長時間強光照射，旁邊作物一直長、不開花，最可能是？", "o": ["水稻", "棉花", "番茄", "小麥"], "c": [0], "why": "短日照作物（水稻）夜間被照光，暗期被打斷就不開花。（107 統測）", "pt": "2-1 光週期：短日照作物", "ex": ["正確：水稻是短日照作物，夜間照光打斷暗期就不開花", "錯誤：棉花不是課本的代表例", "錯誤：番茄是中性作物，開花不受日長影響", "錯誤：小麥是長日照作物，照光反而促進開花"]}, {"ch": "二", "q": "下列哪些是「長日照」作物？", "o": ["馬鈴薯", "小麥", "水稻", "玉米"], "c": [0, 1], "why": "長日照：馬鈴薯、小麥、大麥、蘿蔔、菠菜；水稻是短日照。（107 統測）", "pt": "2-1 光週期：長日照作物", "ex": ["正確：馬鈴薯是長日照作物", "正確：小麥是長日照作物（還有大麥、蘿蔔、菠菜）", "錯誤：水稻是<b>短日照</b>作物", "錯誤：玉米不屬於長日照作物"]}, {"ch": "二", "q": "依年降雨量區分農業經營，500～750 毫米屬於哪一區？", "o": ["半濕潤區", "乾旱區", "沙漠區", "水田區"], "c": [0], "why": "沙漠＜150；乾旱 150～250；半濕潤 500～750；濕潤 750～1000 mm。（107 統測）", "pt": "2-1 雨量與農業經營分區", "ex": ["正確：500～750 mm 是半濕潤區", "錯誤：乾旱區是 150～250 mm", "錯誤：沙漠區少於 150 mm", "錯誤：課本沒有「水田區」這種分區；750～1000 mm 是濕潤區"]}, {"ch": "二", "q": "臺灣秋冬裡作栽培紅豆的最適產地是？", "o": ["屏東平原", "嘉南平原", "臺北盆地", "臺中盆地"], "c": [0], "why": "紅豆以屏東秋作為主（二期稻後不整地撒播）。（105 統測）", "pt": "2-2 臺灣農區概要：紅豆產地", "ex": ["正確：紅豆以<b>屏東</b>秋冬裡作為主（二期稻後撒播）", "錯誤：嘉南平原以稻作、雜糧為主", "錯誤：臺北盆地以都市農業、花卉為主", "錯誤：臺中盆地不是紅豆主產區"]}, {"ch": "二", "q": "日據時代臺灣發展最成功的兩個產業是？", "o": ["糖及稻米", "稻米及玉米", "糖及高粱", "玉米及小麥"], "c": [0], "why": "「工業日本、農業臺灣」，以蔗糖和稻米為主。（109 統測）", "pt": "2-2 臺灣農業發展：日據時代", "ex": ["正確：「工業日本、農業臺灣」，以蔗糖和稻米最成功", "錯誤：玉米不是日據時代主力", "錯誤：高粱主要在金門，不是日據時代主力", "錯誤：小麥在臺灣產量很少"]}, {"ch": "二", "q": "臺灣的動物飼料用玉米與黃豆，主要從哪一國進口？", "o": ["美國", "日本", "澳洲", "泰國"], "c": [0], "why": "飼料玉米、黃豆主要自美國進口。（112 統測）", "pt": "2-2 臺灣的農業經濟環境：進口糧食", "ex": ["正確：飼料玉米、黃豆主要從美國進口", "錯誤：日本不是主要穀物出口國", "錯誤：澳洲以小麥出口為主", "錯誤：泰國以稻米出口為主"]}, {"ch": "二", "q": "臺灣農業產值結構，下列排列何者正確？", "o": ["農作物＞畜產＞漁產＞林產", "農作物＞漁產＞畜產＞林產", "畜產＞農作物＞漁產＞林產", "林產＞漁產＞畜產＞農作物"], "c": [0], "why": "農作物產值最高，林產最低。", "pt": "2-2 臺灣農業產值結構", "ex": ["正確：農作物＞畜產＞漁產＞林產", "錯誤：畜產產值大於漁產", "錯誤：農作物產值最高，不是畜產", "錯誤：林產產值最低"]}, {"ch": "二", "q": "下列哪一種政策違反 WTO（世界貿易組織）的精神？", "o": ["增加出口補貼，降低廠商損失", "削減關稅，開放市場", "削減農業生產支持活動", "檢疫措施合乎國際標準"], "c": [0], "why": "WTO 要求「削減」出口補貼，讓貿易自由公平。（112 統測）", "pt": "2-3 WTO 基本理念：公平的農業貿易", "ex": ["正確：違反 WTO 精神——WTO 要求<b>削減</b>出口補貼", "符合 WTO：削減關稅、逐步開放市場", "符合 WTO：削減農業生產支持（境內補貼）", "符合 WTO：檢疫措施要合乎國際標準"]}, {"ch": "二", "q": "中國大陸以驗出介殼蟲為由禁止臺灣釋迦進口，依據的是 WTO 哪一項措施？", "o": ["動植物防檢疫", "開放市場", "削減出口補貼", "削減農業生產支持"], "c": [0], "why": "因病蟲害禁止進口＝動植物防檢疫措施。（111 統測）", "pt": "2-3 WTO 農業協定：動植物防檢疫", "ex": ["正確：以驗出病蟲害（介殼蟲）為由禁止進口＝動植物防檢疫措施", "錯誤：開放市場是降低關稅、增加進口", "錯誤：削減出口補貼是限制政府補貼出口", "錯誤：削減農業生產支持是減少境內補貼"]}, {"ch": "二", "q": "臺灣農業國際化後的因應對策，哪些正確？", "o": ["落實動植物防疫檢疫體系", "發展精緻農業與休閒農業", "拓展多元化行銷通路", "無須限制進口量以活化農業"], "c": [0, 1, 2], "why": "國際化仍要保護國內產業，不是無限制開放進口。（108 統測）", "pt": "2-3 臺灣農業國際化的因應對策", "ex": ["正確：落實防疫檢疫，防止外來病蟲害", "正確：發展精緻農業、休閒農業，提升競爭力", "正確：拓展多元行銷通路，運銷現代化", "錯誤：仍須保護國內產業，不是無限制開放進口"]}, {"ch": "二", "q": "世界三大糧食作物是？", "o": ["小麥、水稻、玉米", "黃豆、小麥、玉米", "水稻、大麥、玉米", "花生、小麥、水稻"], "c": [0], "why": "三大糧食（禾穀類）：小麥、水稻、玉米；蕎麥不是。（110、112 統測）", "pt": "2-4 世界農業：三大糧食作物", "ex": ["正確：小麥、水稻、玉米是世界三大糧食", "錯誤：黃豆不是三大糧食", "錯誤：大麥不是三大糧食", "錯誤：花生不是三大糧食"]}, {"ch": "二", "q": "有關世界農業的敘述，哪些正確？", "o": ["日本、臺灣以集約式農業為主", "阿爾卑斯山畜牧屬於山牧季移型", "美國因氣候因素無法種植稻米", "甘蔗主要種植在寒帶及溫帶"], "c": [0, 1], "why": "美國有種稻（也是稻米出口國）；甘蔗主要在熱帶。（109 統測）", "pt": "2-4 世界農業生產概況", "ex": ["正確：日本、臺灣地狹人稠，採集約式農業", "正確：阿爾卑斯山夏季上山、冬季下山放牧＝山牧季移", "錯誤：美國有種稻，也是稻米出口國", "錯誤：甘蔗主要種在<b>熱帶</b>"]}, {"ch": "三", "q": "龍舌蘭、菊花、仙客來，依序用哪一種營養器官繁殖？", "o": ["吸芽、分蘗、球莖", "吸芽、分蘗、鱗莖", "塊莖、零餘子、鱗莖", "塊莖、零餘子、走莖"], "c": [0], "why": "龍舌蘭吸芽、菊花分蘗、仙客來球莖；鱗莖是百合、鬱金香。（112 統測）", "pt": "3-1 無性繁殖：分割繁殖的營養器官", "ex": ["正確：龍舌蘭吸芽、菊花分蘗、仙客來球莖", "錯誤：仙客來是球莖；鱗莖是百合、鬱金香", "錯誤：塊莖是馬鈴薯、零餘子是山藥", "錯誤：走莖是草莓"]}, {"ch": "三", "q": "由「一朵花」中多數離生子房和花托共同發育的果實是？", "o": ["草莓", "桑椹", "鳳梨", "無花果"], "c": [0], "why": "一朵花多個子房＝聚合果（草莓）；多朵花發育＝複果。（110 統測）", "pt": "3-1 果實的種類：聚合果與複果", "ex": ["正確：一朵花多個離生子房＋花托＝聚合果（草莓）", "錯誤：桑椹是<b>複果</b>（整個花序發育）", "錯誤：鳳梨是<b>複果</b>", "錯誤：無花果是<b>複果</b>（隱頭花序發育）"]}, {"ch": "三", "q": "下列哪些果實屬於「複果（多花果）」？", "o": ["鳳梨", "桑椹", "無花果", "草莓"], "c": [0, 1, 2], "why": "複果由整個花序發育：鳳梨、桑椹、無花果；草莓是聚合果。（108 統測）", "pt": "3-1 果實的種類：複果（多花果）", "ex": ["正確：鳳梨是複果", "正確：桑椹是複果", "正確：無花果是複果", "錯誤：草莓是<b>聚合果</b>（一朵花發育）"]}, {"ch": "三", "q": "在同一塊地種一期紅豆，收成後再種一期水稻，這種耕作方式稱為？", "o": ["輪作", "間作", "混作", "連作"], "c": [0], "why": "同一塊地輪流種不同作物＝輪作。（111 統測）", "pt": "3-2 作物栽培制度：輪作", "ex": ["正確：同一塊地輪流種不同作物＝輪作", "錯誤：間作是在主作物的行間同時種另一種作物", "錯誤：混作是兩種以上作物混在一起種", "錯誤：連作是同一塊地連續種同一種作物"]}, {"ch": "三", "q": "同一塊地一年種滿兩期水稻和一期蔬菜，複作指數是多少？", "o": ["300%", "100%", "200%", "400%"], "c": [0], "why": "一年收穫 3 次 → 3 × 100%＝300%。（111 統測）", "pt": "3-2 栽培制度：複作指數", "ex": ["正確：一年收穫 3 次 → 3 × 100%＝300%", "錯誤：100% 是一年只種一期", "錯誤：200% 是一年兩期", "錯誤：400% 是一年四期"]}, {"ch": "三", "q": "辣椒田下一期要轉作，考慮連作障礙，哪一種作物「最不適合」？", "o": ["馬鈴薯", "蕹菜", "青花菜", "胡蘿蔔"], "c": [0], "why": "辣椒和馬鈴薯同為茄科，接著種會有連作障礙。（112 統測）", "pt": "3-2 連作障礙：同科作物不連作", "ex": ["正確：馬鈴薯和辣椒同為<b>茄科</b>，接著種會有連作障礙", "可以：蕹菜是旋花科", "可以：青花菜是十字花科", "可以：胡蘿蔔是繖形科"]}, {"ch": "三", "q": "下列哪一種作物適合連作栽培？", "o": ["小白菜", "馬鈴薯", "花生", "苦瓜"], "c": [0], "why": "小白菜等短期葉菜較耐連作；茄科、豆科、瓜類忌連作。（109 統測）", "pt": "3-2 連作：耐連作與忌連作作物", "ex": ["正確：小白菜等短期葉菜較耐連作", "錯誤：馬鈴薯（茄科）忌連作", "錯誤：花生（豆科）忌連作", "錯誤：苦瓜（瓜類）忌連作"]}, {"ch": "三", "q": "種蔥時發現蔥白太短，下次栽培應加強哪一項田間管理？", "o": ["適當進行培土", "提早移植蔥苗", "多次少量施氮肥", "增加灌溉次數"], "c": [0], "why": "培土遮光，讓葉鞘軟白變長。（109 統測）", "pt": "3-2 田間管理：培土", "ex": ["正確：培土遮光，讓葉鞘軟白，蔥白變長", "錯誤：提早移植不會讓蔥白變長", "錯誤：氮肥促進葉片生長，不是增加蔥白", "錯誤：灌溉和蔥白長度無關"]}, {"ch": "三", "q": "臺灣木瓜用網室栽培，網室最主要的功能是？", "o": ["防止蚜蟲", "防止颱風", "防止木蝨", "縮短結果期"], "c": [0], "why": "網室阻隔蚜蟲，避免傳播木瓜輪點病毒。（112 統測）", "pt": "3-3 設施栽培：網室的功能", "ex": ["正確：網室阻隔蚜蟲，避免傳播木瓜輪點病毒", "錯誤：網室無法抵擋颱風", "錯誤：木蝨傳播的是柑橘黃龍病", "錯誤：網室的目的不是縮短結果期"]}, {"ch": "三", "q": "下列何者屬於「雌雄異株」作物？", "o": ["蘆筍", "玉米", "絲瓜", "水稻"], "c": [0], "why": "蘆筍雌雄異株；玉米、絲瓜是雌雄同株異花；水稻是兩性花。", "pt": "3-1 花的性別：雌雄異株", "ex": ["正確：蘆筍雌株、雄株分開，是雌雄異株", "錯誤：玉米是雌雄同株異花", "錯誤：絲瓜是雌雄同株異花", "錯誤：水稻是兩性花（完全花）"]}, {"ch": "三", "q": "下列哪些作物會用嫁接技術進行生產？", "o": ["水梨", "芒果", "柑橘", "甘藷"], "c": [0, 1, 2], "why": "果樹常用嫁接；甘藷用藷蔓扦插繁殖。", "pt": "3-1 無性繁殖：嫁接", "ex": ["正確：水梨用嫁接繁殖", "正確：芒果用嫁接繁殖", "正確：柑橘用嫁接繁殖", "錯誤：甘藷用<b>藷蔓扦插</b>，不用嫁接"]}, {"ch": "三", "q": "有關作物繁殖體的配對，哪些正確？", "o": ["甘藷－藷蔓", "百合－珠芽", "唐菖蒲－木子", "鬱金香－根莖"], "c": [0, 1, 2], "why": "鬱金香用鱗莖繁殖，不是根莖。", "pt": "3-1 無性繁殖：特殊營養器官", "ex": ["正確：甘藷用藷蔓扦插", "正確：百合可用葉腋的珠芽繁殖", "正確：唐菖蒲用球莖旁的木子繁殖", "錯誤：鬱金香用<b>鱗莖</b>繁殖，不是根莖"]}, {"ch": "三", "q": "有關培土的說明，哪些正確？", "o": ["馬鈴薯培土有利薯球品質", "落花生培土幫助子房柄入土結莢", "蔥培土可增加蔥白長度", "落花生培土會使結莢困難"], "c": [0, 1, 2], "why": "培土：馬鈴薯防綠化、落花生助結莢、蔥軟白、玉米防倒伏。", "pt": "3-2 田間管理：培土的目的", "ex": ["正確：馬鈴薯培土防薯塊照光變綠，提升品質", "正確：落花生培土幫助子房柄入土結莢", "正確：蔥培土可軟白、增加蔥白長度", "錯誤：落花生培土是<b>幫助</b>結莢，不是使結莢困難"]}, {"ch": "三", "q": "下列有關農業生物技術的敘述，何者正確？", "o": ["組織培養已用於生產無病毒香蕉苗", "紅豆杉醇大量用作作物生長促進劑", "臺灣已建立日本鰻人工繁殖技術", "生長激素已合法用於魚蝦養殖"], "c": [0], "why": "組織培養可大量生產無病毒種苗（香蕉、蘭花）。（109 統測）", "pt": "3-4 農業生物技術：組織培養", "ex": ["正確：組織培養可大量生產無病毒香蕉苗、蘭花苗", "錯誤：紅豆杉醇（紫杉醇）是抗癌藥物，不是生長促進劑", "錯誤：日本鰻人工繁殖尚未成功商業化", "錯誤：基改生長激素並未合法用於魚蝦養殖"]}];
+const KEY="agri-quiz13-115-1";
+const L="ABCD";
+const CH={"一":"第一章 緒論","二":"第二章 農業環境與發展","三":"第三章 作物生產"};
+const RANGES=[["all","全部","第一～三章"],["一","第一章","緒論"],["二","第二章","農業環境與發展"],["三","第三章","作物生產"]];
+let range="all", order="seq", quiz=null;
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+function load(){ try{ return JSON.parse(localStorage.getItem(KEY)||"{}"); }catch(e){ return {}; } }
+function save(s){ try{ localStorage.setItem(KEY,JSON.stringify(s)); }catch(e){} }
+const same=(a,b)=>a.length===b.length&&a.every(x=>b.includes(x));
+
+function home(){
+  quiz=null; const st=load();
+  $("app").innerHTML=`<div class="card"><h2>選擇練習範圍</h2>
+    <div class="range" role="tablist">${RANGES.map(([k,a,b])=>{const n=k==="all"?QS.length:QS.filter(q=>q.ch===k).length; const best=st[k]?`<small>最佳 ${st[k]} / ${n}</small>`:`<small>${b}・${n} 題</small>`; return `<button class="pk" role="tab" data-r="${k}" aria-selected="${k===range}">${a}${best}</button>`;}).join("")}</div>
+    <h3>題目順序</h3>
+    <div class="picker"><button class="pk" data-o="seq" aria-selected="${order==="seq"}">照課本順序</button><button class="pk" data-o="rnd" aria-selected="${order==="rnd"}">隨機打亂</button></div>
+    <ul style="margin-top:14px">
+      <li><span class="mtag">單選</span> 點一個選項就送出。</li>
+      <li><span class="mtag m">複選</span> 可能有 2～3 個正確答案，全部選好再按「送出答案」，要<b>全對</b>才算對。</li>
+      <li>答錯會直接出現<b>考點＋每個選項的詳解</b>；答對也可以按「看詳解」。</li>
+    </ul>
+    <div class="actions" style="margin-top:12px"><button class="btn" id="go">開始練習 →</button></div></div>`;
+  document.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{range=b.dataset.r;home();});
+  document.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{order=b.dataset.o;home();});
+  $("go").onclick=()=>start();
+}
+function start(only){
+  let idx = only || QS.map((q,i)=>i).filter(i=>range==="all"||QS[i].ch===range);
+  if(order==="rnd"&&!only) idx=shuffle(idx);
+  quiz={retry:!!only,items:idx.map(i=>({i,perm:shuffle([0,1,2,3])})),cur:0,res:[],pick:[],sel:[],open:[],done:false};
+  render(); window.scrollTo({top:0});
+}
+function dots(){ return quiz.items.map((_,k)=>`<button class="dot ${quiz.res[k]===true?"ok":quiz.res[k]===false?"bad":""}${k===quiz.cur&&!quiz.done?" now":""}" data-go="${k}" aria-label="第 ${k+1} 題"></button>`).join(""); }
+function explain(q,it,picked){
+  return `<div class="xp"><div class="xpt"><span class="xtag">考點</span>${q.pt}</div>
+    <div class="xex"><span class="xtag ex">詳解</span><ul class="xopt">${it.perm.map((o,k)=>{const y=q.c.includes(o); return `<li class="${y?"y":"n"}"><span class="mk">${y?"✔":"✘"}</span><span><span class="ot">${L[k]}. ${q.o[o]}</span>${picked&&picked.includes(k)?'<span class="you">你選的</span>':""}<br>${q.ex[o]}</span></li>`;}).join("")}</ul>
+    <p style="margin:6px 0 0;font-size:15px;color:var(--muted)">💡 ${q.why}</p></div></div>`;
+}
+function goQ(k){ quiz.cur=k; quiz.done=false; render(); window.scrollTo({top:0}); }
+function bindCommon(P){
+  P.querySelectorAll(".dot[data-go]").forEach(d=>d.onclick=()=>goQ(+d.dataset.go));
+  const r=P.querySelector("#qReset");
+  if(r) r.onclick=()=>{ if(r.dataset.arm){ home(); window.scrollTo({top:0}); } else { r.dataset.arm="1"; r.textContent="確定要從頭開始？再按一次"; r.classList.add("warn"); setTimeout(()=>{ if(r.isConnected){ delete r.dataset.arm; r.textContent="↺ 重新開始"; r.classList.remove("warn"); } },3000); } };
+}
+function render(){
+  const P=$("app"), {items,cur,res}=quiz, answered=res.filter(x=>x!==undefined).length;
+  if(quiz.done){
+    const n=res.filter(Boolean).length, tot=items.length, r=n/tot;
+    if(!quiz.retry){ const s=load(); if(!s[range]||n>s[range]) s[range]=n; save(s); }
+    const msg=r===1?(quiz.retry?"錯題全部訂正完成！":"全對！第一～三章你已經掌握了！"):r>=.8?"很棒！把錯的題目再練一次。":r>=.6?"不錯喔！看完詳解再挑戰一次。":"別灰心，先看詳解，再練一次錯題！";
+    const wr=items.map((it,k)=>({it,k})).filter(x=>res[x.k]!==true);
+    const by={}; items.forEach((it,k)=>{const c=QS[it.i].ch; by[c]=by[c]||[0,0]; by[c][1]++; if(res[k]) by[c][0]++;});
+    P.innerHTML=`<div class="card" style="text-align:center"><div class="qtype">${quiz.retry?"錯題再練結果":"練習結果"}</div><div class="score">${n} / ${tot}</div><p>${msg}${tot-answered?`<br><span style="color:var(--bad)">還有 ${tot-answered} 題沒作答</span>`:""}</p>
+      <div class="stats">${Object.keys(by).map(c=>`<span>${CH[c]}：${by[c][0]} / ${by[c][1]}</span>`).join("")}</div>
+      ${wr.length?`<div class="review" style="margin-top:14px"><b>訂正一下：</b>${wr.map(({it,k})=>{const q=QS[it.i]; return `<div class="item"><b>第 ${k+1} 題</b>${res[k]===undefined?"（未作答）":""}　${q.q}<br><b style="color:var(--ok)">正確答案：${q.c.map(o=>q.o[o]).join("、")}</b><br><span class="xtag sm">考點</span> ${q.pt}</div>`;}).join("")}</div>`:""}
+      <div class="actions" style="justify-content:center;margin-top:14px">${wr.length?`<button class="btn" id="retry">錯題再練（${wr.length} 題）</button>`:""}<button class="btn ghost" id="again">再練一次</button><button class="btn ghost" id="qReset">↺ 換範圍</button></div></div>`;
+    if($("retry")) $("retry").onclick=()=>start(wr.map(x=>x.it.i));
+    $("again").onclick=()=>start(quiz.retry?items.map(x=>x.i):undefined);
+    $("qReset").onclick=()=>home();
+    P.querySelectorAll(".dot[data-go]").forEach(d=>d.onclick=()=>goQ(+d.dataset.go));
+    return;
+  }
+  const it=items[cur], q=QS[it.i], multi=q.c.length>1, locked=res[cur]!==undefined, last=cur===items.length-1;
+  const right=it.perm.map((o,k)=>q.c.includes(o)?k:-1).filter(k=>k>=0);
+  const picked=quiz.pick[cur], sel=quiz.sel[cur]||[];
+  const opts=it.perm.map((o,k)=>{ let c=""; if(locked){ if(right.includes(k)) c=picked.includes(k)?" right":" right miss"; else if(picked.includes(k)) c=" wrong"; } else if(sel.includes(k)) c=" sel";
+    return `<button class="opt${c}" data-k="${k}" ${locked?"disabled":""} aria-pressed="${sel.includes(k)}"><span class="k">${multi&&!locked?(sel.includes(k)?"✓":L[k]):L[k]}</span><span>${q.o[o]}</span></button>`; }).join("");
+  let fb="";
+  if(locked){
+    const ok=res[cur];
+    fb=`<div class="feedback ${ok?"ok":"bad"}"><b>${ok?"答對了！":"答錯了，正確答案是「"+right.map(k=>L[k]+". "+q.o[it.perm[k]]).join("、")+"」"}</b>
+      ${ok&&!quiz.open[cur]?`<div class="showx"><button class="btn ghost sm" id="showX">看詳解</button></div>`:explain(q,it,picked)}</div>`;
+  }
+  P.innerHTML=`<div class="card"><div class="qhead"><span class="qtype">${quiz.retry?"錯題再練・":""}第 ${cur+1} 題／共 ${items.length} 題<span class="qsrc">${CH[q.ch]}</span></span><button class="btn ghost sm" id="qReset">↺ 重新開始</button></div>
+    <div class="progress" style="margin-top:8px">${dots()}</div>
+    <div class="qtext"><span class="mtag${multi?" m":""}" style="margin:0 8px 0 0">${multi?"複選":"單選"}</span>${q.q}</div>
+    ${multi&&!locked?`<div class="mhint">這題有 2 個以上的正確答案，選好後按「送出答案」</div>`:""}
+    <div class="opts">${opts}</div>
+    ${multi&&!locked?`<div class="actions" style="margin-top:10px"><button class="btn" id="submit" ${sel.length?"":"disabled"}>送出答案</button></div>`:""}
+    <div id="fb" aria-live="polite">${fb}</div>
+    <div class="qnav"><button class="btn ghost" id="qPrev" ${cur===0?"disabled":""}>← 上一題</button><span class="qcount">已作答 ${answered} / ${items.length}</span><button class="btn" id="qNext">${last?"看結果":"下一題 →"}</button></div></div>`;
+  const finish=p=>{ quiz.pick[cur]=p; quiz.res[cur]=same(p,right); render(); const f=$("fb"); if(f&&!quiz.res[cur]) f.scrollIntoView({behavior:"smooth",block:"nearest"}); };
+  P.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    if(locked) return; const k=+b.dataset.k;
+    if(!multi) return finish([k]);
+    const s=quiz.sel[cur]=quiz.sel[cur]||[]; const at=s.indexOf(k); at>=0?s.splice(at,1):s.push(k); render();
+  });
+  if($("submit")) $("submit").onclick=()=>finish([...(quiz.sel[cur]||[])]);
+  if($("showX")) $("showX").onclick=()=>{quiz.open[cur]=true; render();};
+  $("qPrev").onclick=()=>{ if(cur>0) goQ(cur-1); };
+  $("qNext").onclick=()=>{ if(last){ quiz.done=true; render(); window.scrollTo({top:0}); } else goQ(cur+1); };
+  bindCommon(P);
+}
+const openQR=()=>{$("overlay").hidden=false;};
+$("qrBtn").onclick=openQR; $("qrBtn").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openQR();}};
+$("overlay").onclick=()=>{$("overlay").hidden=true;};
+home();
+})();
+</script>
+</body>
+</html>
