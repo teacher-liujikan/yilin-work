@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>自主學習成果產生器</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+/*
+VOICE: 給高職學生的實用工具，口吻直接、清楚，一步一步做完。
+IDEA: 學習歷程檔案夾——把散落的每週學習單收進一本裝訂好的成果冊。
+PICTURE: 上傳區就是主角；預覽是一疊 A4 紙。
+COLOUR and TYPE: 葉綠為主、牛皮紙為輔、橘色提醒；介面 Noto Sans TC，成果冊用標楷體。
+LAYOUT: 四步驟分頁，單欄表單，手機自動堆疊。
+*/
+:root{color-scheme:light dark;
+--bg:light-dark(#f6f7f2,#121612);--card:light-dark(#fff,#1b211c);--ink:light-dark(#1c241d,#e6ece5);--mute:light-dark(#5d6b5f,#9fb0a2);
+--line:light-dark(#d9e0d6,#2f3a31);--leaf:light-dark(#2f6b3c,#7cc28a);--leafbg:light-dark(#e6f1e4,#203325);--kraft:light-dark(#efe4cc,#3a3222);
+--acc:light-dark(#d9661c,#f29a52);--accbg:light-dark(#fdeee2,#3a2617);--bad:light-dark(#b3261e,#ff8a80)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Noto Sans TC",system-ui,sans-serif;overflow-x:clip}
+header{background:var(--leaf);color:light-dark(#fff,#0f1a11);padding:22px max(5vw,16px) 0}
+header .back{display:inline-block;color:inherit;opacity:.85;font-size:14px;margin-bottom:6px;text-decoration:none;border-bottom:1px solid currentColor}
+header h1{margin:0;font-size:clamp(26px,4vw,38px);line-height:1.15;text-wrap:balance}
+header p{margin:6px 0 16px;opacity:.9;max-width:62ch}
+.steps{display:flex;gap:4px;overflow-x:auto}
+.steps button{flex:none;border:0;background:transparent;color:inherit;font:inherit;font-weight:500;padding:12px 16px;border-radius:12px 12px 0 0;opacity:.8;cursor:pointer;min-height:44px}
+.steps button.on{background:var(--bg);color:var(--ink);opacity:1}
+.steps b{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.25);margin-right:6px;font-size:13px}
+.steps .on b{background:var(--leaf);color:#fff}
+main{max-width:1000px;margin:0 auto;padding:24px max(4vw,14px) 80px}
+.view{display:none}.view.on{display:block}
+h2{font-size:22px;margin:28px 0 10px}h2:first-child{margin-top:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px}
+label.f{display:block;font-size:14px;color:var(--mute)}
+label.f span{display:block;margin-bottom:4px}
+input[type=text],textarea,select{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px}
+textarea{resize:vertical;min-height:96px;line-height:1.6}
+input:focus,textarea:focus,select:focus,button:focus-visible{outline:3px solid color-mix(in srgb,var(--leaf) 45%,transparent);outline-offset:1px}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:500;border-radius:10px;padding:10px 16px;min-height:44px;cursor:pointer}
+.btn.pri{background:var(--leaf);border-color:var(--leaf);color:light-dark(#fff,#0f1a11)}
+.btn.acc{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn.sm{min-height:36px;padding:6px 10px;font-size:14px}
+.btn:disabled{opacity:.5;cursor:wait}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.drop{border:3px dashed var(--leaf);background:var(--leafbg);border-radius:18px;padding:clamp(24px,5vw,48px) 20px;text-align:center;cursor:pointer;transition:background .2s}
+.drop.hover{background:color-mix(in srgb,var(--leaf) 22%,var(--leafbg))}
+.drop svg{width:120px;height:90px}
+.drop strong{display:block;font-size:20px;margin:8px 0 4px}
+.drop small{color:var(--mute)}
+.note{font-size:14px;color:var(--mute)}
+.tip{background:var(--kraft);border-radius:12px;padding:12px 14px;font-size:15px}
+.warnbox{background:var(--accbg);border-left:5px solid var(--acc);border-radius:10px;padding:10px 14px;font-size:15px;margin:12px 0}
+.wk{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:14px 0;overflow:hidden}
+.wk-h{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--leafbg);padding:10px 14px}
+.wk-h .no{font-weight:700;color:var(--leaf);font-size:18px}
+.wk-h .src{font-size:13px;color:var(--mute);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wk-b{padding:14px;display:grid;gap:12px}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:12px}
+.chip{display:inline-block;font-size:12px;padding:2px 8px;border-radius:99px;background:var(--accbg);color:var(--acc);font-weight:500}
+.chip.ok{background:var(--leafbg);color:var(--leaf)}
+.photos{display:flex;flex-wrap:wrap;gap:10px}
+.ph{position:relative;width:132px;height:110px;border-radius:10px;overflow:hidden;border:3px solid transparent;cursor:pointer;background:var(--line)}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ph.sel{border-color:var(--leaf)}
+.ph .n{position:absolute;left:6px;top:6px;background:var(--leaf);color:#fff;border-radius:50%;width:24px;height:24px;display:grid;place-items:center;font-size:13px;font-weight:700}
+.ph .x{position:absolute;right:4px;top:4px;border:0;background:rgba(0,0,0,.55);color:#fff;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:14px;line-height:1}
+.ph.add{display:grid;place-items:center;border:2px dashed var(--line);background:transparent;color:var(--mute);font-size:14px;text-align:center}
+.q{margin:18px 0}
+.q h3{margin:0 0 4px;font-size:17px}
+.q .hint{font-size:14px;color:var(--mute);margin:0 0 8px}
+.req{display:inline-block;color:#fff;background:var(--bad);font-size:12px;font-weight:700;padding:1px 8px;border-radius:99px;margin-left:8px;vertical-align:2px}
+.opt{display:inline-block;color:var(--leaf);background:var(--leafbg);font-size:12px;font-weight:700;padding:1px 8px;border-radius:99px;margin-left:8px;vertical-align:2px}
+#reflForm textarea::placeholder{color:light-dark(#9aa59b,#6f7d71);line-height:1.7}
+#reflForm textarea:focus::placeholder{color:transparent}
+.cnt{font-size:13px;color:var(--mute);text-align:right;margin-top:2px}
+.skills{display:flex;flex-wrap:wrap;gap:8px}
+.skills label{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:99px;padding:6px 12px;cursor:pointer;min-height:40px;background:var(--card)}
+.skills input{width:18px;height:18px;accent-color:var(--leaf)}
+.rate{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;align-items:center}
+.stars button{border:0;background:none;font-size:26px;cursor:pointer;color:var(--line);padding:0 2px;min-width:34px;min-height:40px}
+.stars button.on{color:var(--acc)}
+.expbar{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line);margin-bottom:16px}
+#paperWrap{overflow:hidden}
+#paper{transform-origin:top left}
+.page{width:210mm;height:297mm;background:#fff;color:#111;margin:0 auto 18px;box-shadow:0 4px 18px rgba(0,0,0,.18);padding:20mm;position:relative;overflow:hidden;
+font-family:"DFKai-SB","BiauKai","標楷體","LXGW WenKai TC","Kaiti TC",serif;font-size:12pt;line-height:1.55}
+.pg-body{height:100%;overflow:hidden}
+.pg-no{position:absolute;bottom:9mm;left:0;right:0;text-align:center;font-size:10pt;color:#555}
+.page h1{font-size:20pt;text-align:center;margin:0 0 4mm}
+.page h2{font-size:14pt;margin:0 0 3mm;padding-top:2mm}
+.page h3{font-size:12pt;margin:3mm 0 1.5mm}
+.page p{margin:0 0 2mm;white-space:pre-wrap}
+.rt{width:100%;border-collapse:collapse;font-size:11pt;margin-bottom:5mm;table-layout:fixed}
+.rt th,.rt td{border:1px solid #444;padding:1.6mm 2.2mm;vertical-align:top;text-align:left;white-space:pre-wrap;word-break:break-word}
+.rt th{background:#e6efe1;font-weight:bold}
+.rt .lab{background:#f3f6f0;font-weight:bold;width:26mm;text-align:center;vertical-align:middle}
+.rt .wkh{background:#dbe9d4;font-size:12pt}
+.rt .phc{text-align:center;white-space:normal}
+.rt .phc img{height:5.5cm;max-width:48%;object-fit:contain;margin:0 1mm}
+.cover{text-align:center;padding-top:14mm}
+.cover .sub{font-size:13pt;color:#333}
+.cover .big{font-size:28pt;font-weight:bold;letter-spacing:4pt;margin:10mm 0 4mm}
+.cover .theme{font-size:16pt;margin-bottom:10mm}
+.cover table{width:120mm;margin:0 auto 10mm;font-size:13pt}
+.cover table td{border-bottom:1px solid #888;padding:2mm 3mm;text-align:left}
+.cover table td:first-child{width:32mm;color:#444}
+.collage{display:grid;grid-template-columns:1fr 1fr;gap:3mm;width:150mm;margin:0 auto}
+.collage img{width:100%;height:50mm;object-fit:cover;border-radius:2mm}
+.blk{padding-bottom:1mm}
+.stars-p{color:#c75a12;letter-spacing:1pt}
+#toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(120px);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:12px;transition:transform .25s;z-index:20;max-width:92vw}
+#toast.on{transform:translateX(-50%) translateY(0)}
+#busy{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;place-items:center;z-index:30}
+#busy div{background:var(--card);color:var(--ink);padding:20px 26px;border-radius:14px;font-weight:500}
+@media(max-width:600px){.two{grid-template-columns:1fr}.ph{width:calc(50% - 5px);height:120px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media print{
+  @page{size:A4;margin:0}
+  body{background:#fff}
+  header,.expbar,.view:not(#v4),#v4>*:not(#paperWrap),#toast,#busy{display:none!important}
+  main{padding:0;max-width:none}#v4{display:block!important}
+  #paper{transform:none!important;width:auto!important;height:auto!important}#paperWrap{height:auto!important;overflow:visible}
+  .page{margin:0;box-shadow:none;page-break-after:always;break-after:page}
+}
+</style>
+</head>
+<body>
+<header>
+  <a class="back" href="./">← 什麼是自主學習？為什麼重要？</a>
+  <h1>自主學習成果產生器</h1>
+  <p>把 8～9 週的學習單丟進來，系統自動整理成一份成果報告；你只要在最後寫總結心得，就能匯出 Word 或 PDF。</p>
+  <nav class="steps" id="steps">
+    <button data-v="1" class="on"><b>1</b>上傳學習單</button>
+    <button data-v="2"><b>2</b>檢查每週內容</button>
+    <button data-v="3"><b>3</b>撰寫總結心得</button>
+    <button data-v="4"><b>4</b>預覽與匯出</button>
+  </nav>
+</header>
+<main>
+<section class="view on" id="v1">
+  <div class="drop" id="drop" tabindex="0" role="button" aria-label="選擇學習單檔案">
+    <svg viewBox="0 0 120 90" aria-hidden="true"><rect x="22" y="14" width="56" height="70" rx="5" fill="#cfe3c9" transform="rotate(-8 50 49)"/><rect x="38" y="8" width="56" height="70" rx="5" fill="#fff" stroke="#2f6b3c" stroke-width="2.5"/><path d="M47 24h38M47 33h38M47 42h26" stroke="#9db99a" stroke-width="3" stroke-linecap="round"/><rect x="47" y="51" width="16" height="18" rx="2" fill="#9cc98f"/><rect x="66" y="51" width="16" height="18" rx="2" fill="#e8a46a"/><circle cx="92" cy="70" r="15" fill="#d9661c"/><path d="M92 62v16M84 70h16" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/></svg>
+    <strong>點這裡或把檔案拖進來</strong>
+    <small>可一次選多個檔案：Word（.docx）、PDF、照片（jpg / png）</small>
+  </div>
+  <input type="file" id="fileIn" multiple accept=".docx,.pdf,image/*" hidden>
+  <p class="note">檔案只在你的瀏覽器裡處理，不會上傳到任何伺服器。舊版 .doc 請先用 Word「另存新檔」成 .docx 或 PDF。</p>
+  <div id="upMsg"></div>
+
+  <h2>基本資料</h2>
+  <div class="card">
+    <p class="note" style="margin-top:0">上傳後會從學習單自動帶入，請確認是否正確。</p>
+    <div class="grid" id="infoForm"></div>
+  </div>
+  <div class="row" style="margin-top:18px">
+    <button class="btn pri" data-go="2">下一步：檢查每週內容 →</button>
+    <button class="btn" id="demoBtn">先看示範資料</button>
+  </div>
+</section>
+
+<section class="view" id="v2">
+  <div class="row" style="justify-content:space-between">
+    <h2 style="margin:0">每週學習紀錄 <span id="wkCount" class="note"></span></h2>
+    <div class="row"><button class="btn sm" id="addFilesBtn">＋ 再上傳學習單</button><button class="btn sm" id="addBlankBtn">＋ 手動新增一週</button></div>
+  </div>
+  <div class="tip" style="margin-top:12px">系統已依日期排好順序。點照片可選擇要放進成果的 2 張（綠框＝已選，數字是順序）。文字讀錯的地方直接修改即可。</div>
+  <div id="weekList"></div>
+  <div class="row"><button class="btn pri" data-go="3">下一步：撰寫總結心得 →</button></div>
+</section>
+
+<section class="view" id="v3">
+  <h2>總結心得與反思</h2>
+  <div class="tip" style="margin-bottom:6px">標示<span class="req" style="margin:0 2px">必填</span>的是成果報告格式中一定要有的項目；標示<span class="opt" style="margin:0 2px">建議填寫</span>的項目也請盡量寫完整，內容越完整，越能看出你這學期的學習歷程與成長。<br>每一欄都有灰色的<b>範例</b>，點進欄位後範例就會消失，請用自己的經驗和文字來寫。內容會自動儲存在這台裝置的瀏覽器。</div>
+  <div id="reflForm"></div>
+  <div class="row"><button class="btn pri" data-go="4">下一步：預覽與匯出 →</button></div>
+</section>
+
+<section class="view" id="v4">
+  <div class="expbar">
+    <div class="row">
+      <button class="btn pri" id="wordBtn">下載 Word 檔</button>
+      <button class="btn acc" id="pdfBtn">下載 PDF 檔</button>
+      <button class="btn" id="printBtn">列印／另存 PDF（文字最清晰）</button>
+    </div>
+    <p class="note" style="margin:6px 0 0" id="fnNote"></p>
+    <p class="note" style="margin:2px 0 0">上傳學習歷程平臺的 PDF 須在 4 MB 以內；Google Classroom 請上傳 PDF。</p>
+  </div>
+  <div id="checkMsg"></div>
+  <div class="row" style="margin-bottom:12px">
+    <button class="btn sm" id="saveJson">下載進度檔（換電腦用）</button>
+    <button class="btn sm" id="loadJson">載入進度檔</button>
+    <button class="btn sm" id="resetAll">全部清除重來</button>
+    <input type="file" id="jsonIn" accept=".json,application/json" hidden>
+  </div>
+  <div id="paperWrap"><div id="paper"></div></div>
+</section>
+</main>
+<div id="toast" role="status"></div>
+<div id="busy"><div id="busyTxt">處理中…</div></div>
+
+<script>
+{
+const KEY='yilin-self-learning-v1';
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Math.random().toString(36).slice(2,9);
+const blank=()=>({info:{year:'',course:'',cls:'',seat:'',name:'',theme:'',teacher:''},weeks:[],refl:{motive:'',goal:'',gain:'',best:'',bestWhy:'',hard:'',skills:[],rate:{},future:'',summary:''}});
+let S=blank();
+try{const raw=localStorage.getItem(KEY);if(raw){const o=JSON.parse(raw);S={...blank(),...o,info:{...blank().info,...o.info},refl:{...blank().refl,...o.refl}}}}catch(e){}
+
+let dlCap=null;
+if(window.claude&&typeof window.claude.use==='function'){
+  $('#printBtn').style.display='none';
+  window.claude.use('downloads').then(d=>{dlCap=d;if(!d){$('#wordBtn').disabled=$('#pdfBtn').disabled=true;$('#fnNote').textContent='這個檢視畫面不能下載檔案，請改用瀏覽器開啟此網頁。'}}).catch(()=>{});
+}
+
+/* ---------- 儲存 ---------- */
+let saveT=null,warned=false;
+function save(){clearTimeout(saveT);saveT=setTimeout(doSave,400)}
+function doSave(){
+  try{localStorage.setItem(KEY,JSON.stringify(S));return}catch(e){}
+  try{const lite={...S,weeks:S.weeks.map(w=>({...w,photos:w.photos.map((p,i)=>w.sel.includes(i)?p:null),}))};localStorage.setItem(KEY,JSON.stringify(lite))}catch(e){}
+  if(!warned){warned=true;toast('瀏覽器空間不足，建議到第 4 步按「下載進度檔」備份',5000)}
+}
+function toast(m,ms=2600){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),ms)}
+function busy(on,txt){$('#busy').style.display=on?'grid':'none';if(txt)$('#busyTxt').textContent=txt}
+
+/* ---------- 步驟切換 ---------- */
+function go(v){
+  document.querySelectorAll('.view').forEach(e=>e.classList.toggle('on',e.id==='v'+v));
+  document.querySelectorAll('#steps button').forEach(b=>b.classList.toggle('on',b.dataset.v==v));
+  if(v==2)renderWeeks();if(v==3)renderRefl();if(v==4)renderReport();
+  window.scrollTo({top:0});
+}
+$('#steps').addEventListener('click',e=>{const b=e.target.closest('button');if(b)go(b.dataset.v)});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)go(b.dataset.go)});
+
+/* ---------- 基本資料 ---------- */
+const INFO=[['year','學年度／學期','例：114 學年度第 1 學期'],['course','課程名稱','例：園藝科 作物栽培'],['theme','自主學習主題','例：從實作認識園藝作物栽培'],['cls','班級','例：307'],['seat','座號','例：11'],['name','姓名',''],['teacher','指導老師','']];
+function renderInfo(){
+  $('#infoForm').innerHTML=INFO.map(([k,l,ph])=>`<label class="f"><span>${l}</span><input type="text" data-info="${k}" value="${esc(S.info[k])}" placeholder="${esc(ph)}"></label>`).join('');
+}
+$('#infoForm').addEventListener('input',e=>{const k=e.target.dataset.info;if(k){S.info[k]=e.target.value;save()}});
+
+/* ---------- 上傳 ---------- */
+const drop=$('#drop'),fileIn=$('#fileIn');
+drop.addEventListener('click',()=>fileIn.click());
+drop.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fileIn.click()}});
+['dragenter','dragover'].forEach(t=>drop.addEventListener(t,e=>{e.preventDefault();drop.classList.add('hover')}));
+['dragleave','drop'].forEach(t=>drop.addEventListener(t,e=>{e.preventDefault();drop.classList.remove('hover')}));
+drop.addEventListener('drop',e=>handleFiles([...e.dataTransfer.files]));
+fileIn.addEventListener('change',()=>{handleFiles([...fileIn.files]);fileIn.value=''});
+$('#addFilesBtn').addEventListener('click',()=>fileIn.click());
+
+async function handleFiles(files){
+  if(!files.length)return;
+  const msgs=[];let added=0;
+  for(let i=0;i<files.length;i++){
+    const f=files[i];busy(true,`讀取中（${i+1}/${files.length}）：${f.name}`);
+    try{
+      const ext=f.name.split('.').pop().toLowerCase();let res;
+      if(ext==='docx')res=await parseDocx(f);
+      else if(ext==='pdf')res=await parsePdf(f);
+      else if(f.type.startsWith('image/')||/^(jpe?g|png|webp|gif|bmp)$/.test(ext))res=await parseImage(f);
+      else if(ext==='doc'){msgs.push(`「${f.name}」是舊版 .doc，請另存成 .docx 或 PDF 再上傳`);continue}
+      else{msgs.push(`「${f.name}」格式不支援`);continue}
+      for(const r of res){mergeInfo(r.info);addWeek(r.week);added++}
+    }catch(err){console.error(err);msgs.push(`「${f.name}」讀取失敗，可以改用手動新增`)}
+  }
+  busy(false);sortWeeks();save();renderInfo();
+  $('#upMsg').innerHTML=(added?`<div class="tip" style="margin-top:12px">已讀入 ${added} 週學習單，目前共 ${S.weeks.length} 週。<button class="btn sm pri" data-go="2" style="margin-left:8px">去檢查 →</button></div>`:'')+msgs.map(m=>`<div class="warnbox">${esc(m)}</div>`).join('');
+  if(document.querySelector('#v2.on'))renderWeeks();
+  toast(added?`讀入 ${added} 週`:'沒有讀到學習單內容');
+}
+function mergeInfo(inf){for(const k in inf){if(inf[k]&&!S.info[k])S.info[k]=inf[k]}}
+function addWeek(w){
+  const dup=S.weeks.findIndex(x=>x.date&&x.topic&&x.date===w.date&&x.topic===w.topic);
+  if(dup>=0)S.weeks[dup]={...w,id:S.weeks[dup].id};else S.weeks.push(w);
+}
+function dateNum(s){
+  s=String(s||'');let m=s.match(/(\d{2,4})\s*[\/\.\-年]\s*(\d{1,2})\s*[\/\.\-月]\s*(\d{1,2})/);
+  if(m){let y=+m[1];if(y<1911)y+=1911;return y*10000+ +m[2]*100+ +m[3]}
+  m=s.match(/(\d{1,2})\s*[\/月]\s*(\d{1,2})/);if(m)return 50000000+ +m[1]*100+ +m[2];
+  return 99999999;
+}
+function sortWeeks(){S.weeks.sort((a,b)=>dateNum(a.date)-dateNum(b.date))}
+
+/* ---------- 圖片處理 ---------- */
+function toJpeg(src,max=1000){
+  return new Promise(res=>{const im=new Image();im.onload=()=>{
+    let w=im.naturalWidth,h=im.naturalHeight;if(!w||!h)return res(null);
+    const k=Math.min(1,max/Math.max(w,h));w=Math.round(w*k);h=Math.round(h*k);
+    const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,w,h);x.drawImage(im,0,0,w,h);
+    res({src:c.toDataURL('image/jpeg',.8),w,h})};im.onerror=()=>res(null);im.src=src});
+}
+function canvasCrop(cv,r){
+  const w=Math.round(r.w),h=Math.round(r.h);if(w<20||h<20)return null;
+  const c=document.createElement('canvas');const k=Math.min(1,1000/Math.max(w,h));c.width=Math.round(w*k);c.height=Math.round(h*k);
+  c.getContext('2d').drawImage(cv,r.x,r.y,w,h,0,0,c.width,c.height);return {src:c.toDataURL('image/jpeg',.8),w:c.width,h:c.height};
+}
+async function parseImage(f){
+  const url=URL.createObjectURL(f);const p=await toJpeg(url);URL.revokeObjectURL(url);
+  if(!p)throw new Error('img');
+  return [{info:{},week:mkWeek({photos:[p],src:f.name,scanned:true})}];
+}
+function mkWeek(o={}){return {id:uid(),date:'',topic:'',steps:'',feel:'',photos:[],sel:[],src:'',scanned:false,...o}}
+
+/* ---------- 共用：從文字區塊抓欄位 ---------- */
+const LBL=[['date',/^(課程)?日期/],['cls',/^班級/],['seat',/^座號/],['name',/^(學生)?姓名/],['topic',/^(今日)?(課程)?主題/]];
+const clean=t=>String(t||'').replace(/[\s　]/g,'').replace(/^([一二三四五六七八九十]+[、.．]|[（(][一二三四五六七八九十\d]+[)）]|\d+[、.．])/,'');
+function secType(t){
+  const k=clean(t);if(!k)return null;
+  if(/照片/.test(k)&&k.length<=24)return 'photo';
+  if(/(重點|步驟)/.test(k)&&k.length<=16)return 'steps';
+  if(/心得/.test(k)&&k.length<=10)return 'feel';
+  return null;
+}
+function labelOf(t){const k=clean(t);for(const [f,re] of LBL){if(re.test(k)&&k.length<=40)return [f,k.replace(re,'').replace(/^[:：]/,'')]}return null}
+function isMeta(t){return /學年度|學習單/.test(t)}
+function splitSheets(blocks){
+  const idx=[];blocks.forEach((b,i)=>{const l=labelOf(b.t);if(l&&l[0]==='date')idx.push(i)});
+  if(idx.length<2)return [blocks];
+  const cuts=idx.slice(1).map(i=>{let j=i;for(let k=1;k<=4&&i-k>=0;k++){if(isMeta(blocks[i-k].t))j=i-k}return j});
+  const out=[];let s=0;for(const c of cuts){out.push(blocks.slice(s,c));s=c}out.push(blocks.slice(s));return out;
+}
+function extract(blocks,isPdf){
+  const info={},w=mkWeek();const sec={steps:[],feel:[],photo:[]},imgs={photo:[],other:[]};let cur=null;
+  for(let i=0;i<blocks.length;i++){
+    const b=blocks[i],t=(b.t||'').trim();
+    if(b.imgs&&b.imgs.length)(cur==='photo'?imgs.photo:imgs.other).push(...b.imgs);
+    if(!t)continue;
+    if(isMeta(t)&&!cur){
+      const y=t.match(/\d{2,3}\s*學年度\s*(第\s*[一二12]\s*學期)?/);if(y&&!info.year)info.year=y[0].replace(/\s+/g,' ');
+      if(/學習單/.test(t)&&!info.course){info.course=t.replace(/\d{2,3}\s*學年度\s*(第\s*[一二12]\s*學期)?/,'').replace(/[-－–—_]?\s*學習單.*$/,'').replace(/高[一二三]群課程/,'').trim()}
+      continue;
+    }
+    const st=secType(t);
+    if(st){cur=st;continue}
+    const lb=!cur||cur==='photo'?labelOf(t):null;
+    if(lb){
+      const [f,rest]=lb;let v=rest;
+      if(!v){const nx=blocks[i+1];if(nx&&nx.t&&!labelOf(nx.t)&&!secType(nx.t)){v=nx.t.trim();i++}}
+      if(f==='topic'&&!w.topic)w.topic=v;else if(f==='date'&&!w.date)w.date=v;else if(!info[f]&&f!=='topic'&&f!=='date')info[f]=v;
+      continue;
+    }
+    if(cur&&cur!=='photo')sec[cur].push(t);
+  }
+  const fix=a=>isPdf?smartJoin(a):a.join('\n');
+  w.steps=fix(sec.steps).trim();w.feel=fix(sec.feel).trim();
+  w.photos=[...imgs.photo,...imgs.other];w.sel=w.photos.slice(0,2).map((_,i)=>i);
+  return {info,week:w};
+}
+function smartJoin(lines){
+  const out=[];
+  for(const l of lines){const s=l.trim();if(!s)continue;
+    const startNew=/^(\d+\s*[\.、．)）]|[（(]\d|[一二三四五六七八九十]+、|[•●▪■◆\-–]|步驟)/.test(s);
+    if(out.length&&!startNew&&!/[。！？!?：:]$/.test(out[out.length-1]))out[out.length-1]+=s;else out.push(s);}
+  return out.join('\n');
+}
+
+/* ---------- Word (.docx) ---------- */
+async function parseDocx(f){
+  const zip=await JSZip.loadAsync(f);
+  const xml=await zip.file('word/document.xml').async('string');
+  const relsTxt=zip.file('word/_rels/document.xml.rels')?await zip.file('word/_rels/document.xml.rels').async('string'):'';
+  const rels={};const rd=new DOMParser().parseFromString(relsTxt||'<r/>','application/xml');
+  for(const r of rd.getElementsByTagName('Relationship'))rels[r.getAttribute('Id')]=r.getAttribute('Target');
+  const doc=new DOMParser().parseFromString(xml,'application/xml');
+  const blocks=[];
+  // 頁首裡的標題
+  for(const name of Object.keys(zip.files).filter(n=>/^word\/header\d*\.xml$/.test(n))){
+    const hx=new DOMParser().parseFromString(await zip.file(name).async('string'),'application/xml');
+    for(const p of hx.getElementsByTagName('w:p')){const t=paraOf(p).t.trim();if(t)blocks.push({t,imgs:[]})}
+  }
+  function paraOf(p){
+    let t='';const ids=[];
+    (function rec(n){for(const c of n.childNodes){const nm=c.nodeName;
+      if(nm==='w:t')t+=c.textContent;else if(nm==='w:tab')t+=' ';else if(nm==='w:br'||nm==='w:cr')t+='\n';
+      else if(nm==='a:blip'){const id=c.getAttribute('r:embed');if(id)ids.push(id)}
+      else if(nm==='v:imagedata'){const id=c.getAttribute('r:id');if(id)ids.push(id)}
+      else if(nm==='mc:Fallback'||nm==='w:instrText'||nm==='w:delText')continue;
+      else if(c.nodeType===1)rec(c)}})(p);
+    return {t,imgs:ids};
+  }
+  function walk(n){for(const c of n.children){const nm=c.nodeName;
+    if(nm==='w:p')blocks.push(paraOf(c));
+    else if(nm==='w:tbl')table(c);
+    else if(nm==='w:sdt'||nm==='w:sdtContent'||nm==='w:customXml')walk(c);}}
+  function table(t){for(const tr of t.children){if(tr.nodeName!=='w:tr')continue;
+    for(const tc of tr.children){if(tc.nodeName==='w:tc')cell(tc);else if(tc.nodeName==='w:sdt'){const sc=tc.getElementsByTagName('w:tc');for(const x of sc)cell(x)}}}}
+  function cell(tc){let lines=[],ids=[];
+    const flush=()=>{if(lines.length||ids.length)blocks.push({t:lines.join('\n'),imgs:ids});lines=[];ids=[]};
+    for(const c of tc.children){if(c.nodeName==='w:p'){const p=paraOf(c);lines.push(p.t);ids.push(...p.imgs)}else if(c.nodeName==='w:tbl'){flush();table(c)}else if(c.nodeName==='w:sdt'){const ps=c.getElementsByTagName('w:p');for(const p of ps){const q=paraOf(p);lines.push(q.t);ids.push(...q.imgs)}}}
+    while(lines.length&&!lines[lines.length-1].trim())lines.pop();flush()}
+  walk(doc.getElementsByTagName('w:body')[0]);
+  // 轉換圖片
+  const cache={};
+  for(const b of blocks){const out=[];for(const id of b.imgs||[]){
+    if(!(id in cache)){cache[id]=null;let tg=rels[id];if(tg){tg=tg.replace(/^\/?word\//,'').replace(/^\//,'');const zf=zip.file('word/'+tg);
+      if(zf&&/\.(png|jpe?g|gif|bmp|webp)$/i.test(tg)){const blob=await zf.async('blob');const url=URL.createObjectURL(blob);const p=await toJpeg(url);URL.revokeObjectURL(url);if(p&&(p.w>=80||p.h>=80))cache[id]=p}}}
+    if(cache[id]&&!out.includes(cache[id]))out.push(cache[id])}b.imgs=out}
+  return splitSheets(blocks).map(seg=>{const r=extract(seg,false);r.week.src=f.name;if(!r.week.steps&&!r.week.feel&&!r.week.topic)r.week.scanned=true;return r});
+}
+
+/* ---------- PDF ---------- */
+async function parsePdf(f){
+  const lib=window.pdfjsLib;if(!lib)throw new Error('pdfjs');
+  try{lib.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js'}catch(e){}
+  const data=new Uint8Array(await f.arrayBuffer());
+  const pdf=await lib.getDocument({data,cMapUrl:'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/cmaps/',cMapPacked:true,standardFontDataUrl:'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/standard_fonts/',isEvalSupported:false}).promise;
+  const all=[];const scans=[];
+  for(let pn=1;pn<=pdf.numPages;pn++){
+    const page=await pdf.getPage(pn);const vp=page.getViewport({scale:1});
+    const tc=await page.getTextContent();
+    const items=tc.items.filter(it=>it.str&&it.str.trim()).map(it=>{const tr=it.transform;const h=Math.hypot(tr[2],tr[3])||it.height||10;return {s:it.str,x:tr[4],y:vp.height-tr[5],w:it.width,h}});
+    items.sort((a,b)=>a.y-b.y||a.x-b.x);
+    const lines=[];for(const it of items){const L=lines[lines.length-1];if(L&&Math.abs(L.y-it.y)<it.h*.55)L.items.push(it);else lines.push({y:it.y,items:[it]})}
+    const blocks=[];
+    for(const L of lines){L.items.sort((a,b)=>a.x-b.x);let cur=null;
+      for(const it of L.items){if(cur&&it.x-(cur.x2)<it.h*1.6){cur.t+=(it.x-cur.x2>it.h*.35?' ':'')+it.s;cur.x2=it.x+it.w}else{cur={t:it.s,x2:it.x+it.w,y:L.y,imgs:[]};blocks.push(cur)}}}
+    // 圖片位置
+    const rects=[];
+    try{const ops=await page.getOperatorList();const O=lib.OPS;let ctm=[1,0,0,1,0,0];const stack=[];
+      for(let i=0;i<ops.fnArray.length;i++){const fn=ops.fnArray[i],a=ops.argsArray[i];
+        if(fn===O.save)stack.push(ctm.slice());else if(fn===O.restore)ctm=stack.pop()||[1,0,0,1,0,0];
+        else if(fn===O.transform)ctm=lib.Util.transform(ctm,a);
+        else if(fn===O.paintFormXObjectBegin){stack.push(ctm.slice());if(a&&a[0])ctm=lib.Util.transform(ctm,a[0])}
+        else if(fn===O.paintFormXObjectEnd)ctm=stack.pop()||[1,0,0,1,0,0];
+        else if(fn===O.paintImageXObject||fn===O.paintInlineImageXObject||fn===O.paintJpegXObject){
+          const pts=[[0,0],[1,0],[0,1],[1,1]].map(([u,v])=>[ctm[0]*u+ctm[2]*v+ctm[4],ctm[1]*u+ctm[3]*v+ctm[5]]);
+          const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]);const r=vp.convertToViewportRectangle([Math.min(...xs),Math.min(...ys),Math.max(...xs),Math.max(...ys)]);
+          const x=Math.min(r[0],r[2]),y=Math.min(r[1],r[3]),w=Math.abs(r[2]-r[0]),h=Math.abs(r[3]-r[1]);
+          if(w>40&&h>40)rects.push({x,y,w,h});}}}catch(e){console.warn(e)}
+    const scanned=!blocks.length;
+    if(rects.length||scanned){
+      const S2=2,v2=page.getViewport({scale:S2});const cv=document.createElement('canvas');cv.width=v2.width;cv.height=v2.height;
+      const cx=cv.getContext('2d');cx.fillStyle='#fff';cx.fillRect(0,0,cv.width,cv.height);
+      await page.render({canvasContext:cx,viewport:v2}).promise;
+      if(scanned){const k=Math.min(1,1400/cv.width);const c2=document.createElement('canvas');c2.width=cv.width*k;c2.height=cv.height*k;c2.getContext('2d').drawImage(cv,0,0,c2.width,c2.height);scans.push({pn,img:{src:c2.toDataURL('image/jpeg',.8),w:c2.width,h:c2.height}})}
+      else for(const r of rects){if(r.w*r.h>vp.width*vp.height*.7)continue;const p=canvasCrop(cv,{x:r.x*S2,y:r.y*S2,w:r.w*S2,h:r.h*S2});if(p)blocks.push({t:'',y:r.y+0.01,imgs:[p]})}
+    }
+    blocks.sort((a,b)=>a.y-b.y);
+    all.push(...blocks);
+  }
+  const res=all.length?splitSheets(all).map(seg=>{const r=extract(seg,true);r.week.src=f.name;return r}):[];
+  for(const s of scans)res.push({info:{},week:mkWeek({photos:[s.img],src:`${f.name}（第 ${s.pn} 頁，掃描檔）`,scanned:true})});
+  return res;
+}
+
+/* ---------- 每週卡片 ---------- */
+function warnsOf(w){const a=[];if(!w.date)a.push('缺日期');if(!w.topic)a.push('缺主題');if(!w.steps)a.push('缺課程重點');if(!w.feel)a.push('缺心得');if(w.sel.length<2)a.push(`照片 ${w.sel.length}/2`);return a}
+function renderWeeks(){
+  $('#wkCount').textContent=S.weeks.length?`共 ${S.weeks.length} 週`:'';
+  if(!S.weeks.length){$('#weekList').innerHTML=`<div class="card" style="margin-top:14px;text-align:center">還沒有學習單。<br><button class="btn pri" data-go="1" style="margin-top:10px">回第 1 步上傳</button></div>`;return}
+  $('#weekList').innerHTML=S.weeks.map((w,i)=>{const ws=warnsOf(w);return `<div class="wk" data-id="${w.id}">
+  <div class="wk-h"><span class="no">第 ${i+1} 週</span>${ws.length?ws.map(x=>`<span class="chip">${x}</span>`).join(''):'<span class="chip ok">完整</span>'}<span class="src" title="${esc(w.src)}">${esc(w.src||'手動新增')}</span>
+  <button class="btn sm" data-act="up" ${i?'':'disabled'} aria-label="往上移">↑</button><button class="btn sm" data-act="down" ${i<S.weeks.length-1?'':'disabled'} aria-label="往下移">↓</button><button class="btn sm" data-act="del">刪除</button></div>
+  <div class="wk-b">${w.scanned?'<div class="warnbox" style="margin:0">這份檔案讀不到文字（照片或掃描檔），請參考下方圖片自己輸入內容。</div>':''}
+  <div class="two"><label class="f"><span>課程日期</span><input type="text" data-k="date" value="${esc(w.date)}" placeholder="2025/3/28"></label><label class="f"><span>課程主題</span><input type="text" data-k="topic" value="${esc(w.topic)}"></label></div>
+  <label class="f"><span>課程重點或操作步驟</span><textarea data-k="steps" rows="5">${esc(w.steps)}</textarea></label>
+  <label class="f"><span>學習心得</span><textarea data-k="feel" rows="4">${esc(w.feel)}</textarea></label>
+  <div><span class="note">照片（點選 2 張放進成果）</span><div class="photos">${w.photos.map((p,j)=>p?`<div class="ph ${w.sel.includes(j)?'sel':''}" data-ph="${j}" role="button" tabindex="0" aria-label="照片 ${j+1}"><img src="${p.src}" alt="">${w.sel.includes(j)?`<span class="n">${w.sel.indexOf(j)+1}</span>`:''}<button class="x" data-rm="${j}" aria-label="刪除照片">×</button></div>`:'').join('')}<label class="ph add">＋ 加照片<input type="file" accept="image/*" multiple hidden data-addph></label></div></div>
+  </div></div>`}).join('');
+}
+const wkOf=el=>S.weeks.find(w=>w.id===el.closest('.wk')?.dataset.id);
+$('#weekList').addEventListener('input',e=>{const k=e.target.dataset.k;if(!k)return;const w=wkOf(e.target);w[k]=e.target.value;save()});
+$('#weekList').addEventListener('change',async e=>{
+  if(e.target.dataset.k==='date'){sortWeeks();save();renderWeeks();return}
+  if(e.target.matches('[data-addph]')){const w=wkOf(e.target);for(const f of e.target.files){const u=URL.createObjectURL(f);const p=await toJpeg(u);URL.revokeObjectURL(u);if(p){w.photos.push(p);if(w.sel.length<2)w.sel.push(w.photos.length-1)}}save();renderWeeks()}
+});
+$('#weekList').addEventListener('click',e=>{
+  const w=wkOf(e.target);if(!w)return;const i=S.weeks.indexOf(w);
+  const rm=e.target.closest('[data-rm]');
+  if(rm){e.stopPropagation();const j=+rm.dataset.rm;w.photos.splice(j,1);w.sel=w.sel.filter(x=>x!==j).map(x=>x>j?x-1:x);save();renderWeeks();return}
+  const ph=e.target.closest('[data-ph]');
+  if(ph){const j=+ph.dataset.ph;if(w.sel.includes(j))w.sel=w.sel.filter(x=>x!==j);else{if(w.sel.length>=2)w.sel.shift();w.sel.push(j)}save();renderWeeks();return}
+  const act=e.target.closest('[data-act]')?.dataset.act;
+  if(act==='up'&&i>0){[S.weeks[i-1],S.weeks[i]]=[S.weeks[i],S.weeks[i-1]]}
+  else if(act==='down'&&i<S.weeks.length-1){[S.weeks[i+1],S.weeks[i]]=[S.weeks[i],S.weeks[i+1]]}
+  else if(act==='del'){const b=e.target.closest('[data-act]');if(b.dataset.sure!=='1'){b.dataset.sure='1';b.textContent='確定刪除？';setTimeout(()=>{b.dataset.sure='';b.textContent='刪除'},2500);return}S.weeks.splice(i,1)}
+  else return;
+  save();renderWeeks();
+});
+$('#weekList').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-ph]')){e.preventDefault();e.target.click()}});
+$('#addBlankBtn').addEventListener('click',()=>{S.weeks.push(mkWeek({src:'手動新增'}));save();renderWeeks();document.querySelector('.wk:last-child')?.scrollIntoView({behavior:'smooth'})});
+
+/* ---------- 總結心得 ---------- */
+const SKILLS=['動手實作','觀察與紀錄','植物辨識','工具使用','安全衛生','團隊合作','問題解決','時間管理','資料整理','美感設計','表達分享','自我管理'];
+const RATES=[['join','上課參與與出席'],['skill','實作技能進步'],['record','學習單紀錄完整'],['attitude','學習態度與主動性'],['team','與同學合作']];
+const Q=[
+ ['motive','學習動機','為什麼選這門課作為自主學習？可以寫興趣、未來想從事的工作，或想解決的問題。',false,4,'例：我從小就喜歡在陽台種植物，但常常種到一半就枯掉。選這門課，是想學會正確的栽培方法，也想了解園藝相關的工作，作為未來升學或就業的參考。'],
+ ['goal','學習目標','寫下你希望學會什麼、能夠做到什麼。若沒有修改，會使用下方範例文字。',false,4,''],
+ ['gain','學習收穫','這幾週你學到了哪些知識和技能？試著舉 2～3 個具體例子（哪一週、學到什麼）。',true,6,'例：這幾週我學到不同的繁殖方法。像第 2 週的多肉葉插，葉片要先放 2～3 天讓傷口乾燥才不會腐爛；第 3 週的扦插則要保留 2～3 個節。手洗愛玉凍時，我才知道礦泉水裡的鈣能幫助愛玉凝固。除了知識，我也學會照步驟操作，並把過程完整記錄在學習單上。'],
+ ['best','印象最深刻的一次課程','選出最難忘的一週，說說當時發生了什麼、你有什麼感受。',false,0,'例：我最難忘的是水苔球製作。第一次包的時候水苔一直散開，試了好幾次才成功。用 QQ 線固定好、看到圓圓的成品時，覺得非常有成就感，現在它還放在我的書桌上。'],
+ ['hard','遇到的困難與解決方法','做實作時卡在哪裡？你怎麼解決（問老師、查資料、反覆練習、和同學討論）？結果如何？',false,5,'例：做水苔球時，水苔太濕，包起來很容易鬆散。我請教老師後，先把水苔擰到半乾，再邊包邊壓緊，第二次就成功了。這次經驗讓我知道，遇到問題要先找出原因，再調整做法。'],
+ ['skills','我培養的能力','勾選你覺得有進步的能力（可複選）。',false,0,''],
+ ['rate','自我評價','依自己的表現給 1～5 顆星，誠實評估就好。',false,0,''],
+ ['future','未來應用與下一步','學到的東西可以用在生活、升學或工作的哪裡？下一步想再學什麼、怎麼改進？',false,5,'例：我想把扦插和換盆的技巧用在家裡的盆栽上，也會繼續練習組合盆栽設計。接下來想多了解水耕栽培，查資料試著在家做一個小型水耕槽，記錄蔬菜的生長情形。'],
+ ['summary','總結心得','回顧這 8～9 週的學習，寫下整體感想：最大的改變、最想感謝的人事物、對自己的期許。建議 300 字以上。',true,10,'例：回顧這 9 週的課程，我從一個只會澆水的人，變成能自己繁殖植物、設計盆栽的人。每次實作都有新的挑戰，有時候會失敗，但透過觀察、請教老師和跟同學討論，我慢慢找到方法。寫學習單讓我養成記錄的習慣，回頭看時更能發現自己的進步。謝謝老師耐心示範，也謝謝同組同學互相幫忙。未來我希望保持主動學習的態度，把園藝知識應用在生活中，也持續探索自己有興趣的領域。']];
+function renderRefl(){
+  const R=S.refl;
+  $('#reflForm').innerHTML=Q.map(([k,t,h,req,rows,ex])=>{
+    let body='';
+    if(k==='best')body=`<select data-r="best"><option value="">請選一週</option>${S.weeks.map((w,i)=>`<option value="${w.id}" ${R.best===w.id?'selected':''}>第 ${i+1} 週　${esc(w.topic||'未命名')}</option>`).join('')}</select><textarea data-r="bestWhy" rows="3" placeholder="${esc(ex)}" style="margin-top:8px">${esc(R.bestWhy)}</textarea>`;
+    else if(k==='skills')body=`<div class="skills">${SKILLS.map(s=>`<label><input type="checkbox" data-skill="${s}" ${R.skills.includes(s)?'checked':''}>${s}</label>`).join('')}</div>`;
+    else if(k==='rate')body=`<div class="rate">${RATES.map(([rk,rl])=>`<span>${rl}</span><span class="stars" data-rate="${rk}">${[1,2,3,4,5].map(n=>`<button type="button" data-n="${n}" class="${(R.rate[rk]||0)>=n?'on':''}" aria-label="${n} 顆星">★</button>`).join('')}</span>`).join('')}</div>`;
+    else{const ph=k==='goal'?(autoGoal()?'例：'+autoGoal():'例：我希望學會常見園藝作物的繁殖與栽培方法，能獨立完成實作，並用學習單記錄過程與成果。'):ex;body=`<textarea data-r="${k}" rows="${rows}" placeholder="${esc(ph)}">${esc(R[k])}</textarea><div class="cnt" data-cnt="${k}">${(R[k]||'').replace(/\s/g,'').length} 字</div>`}
+    return `<div class="q card"><h3>${t}${req?'<span class="req">必填</span>':'<span class="opt">建議填寫</span>'}</h3>${h?`<p class="hint">${h}</p>`:''}${body}</div>`}).join('');
+}
+function autoGoal(){const t=S.weeks.map(w=>w.topic).filter(Boolean);return t.length?`透過 ${S.weeks.length} 週的實作課程，完成${t.join('、')}等學習，並用學習單記錄每次的操作步驟、心得與成果，培養動手實作與自主紀錄的能力。`:''}
+$('#reflForm').addEventListener('input',e=>{const k=e.target.dataset.r;if(k){S.refl[k]=e.target.value;const c=document.querySelector(`[data-cnt="${k}"]`);if(c)c.textContent=e.target.value.replace(/\s/g,'').length+' 字';save()}
+  const sk=e.target.dataset.skill;if(sk){const a=S.refl.skills;e.target.checked?a.includes(sk)||a.push(sk):a.splice(a.indexOf(sk),1);save()}});
+$('#reflForm').addEventListener('change',e=>{if(e.target.dataset.r==='best'){S.refl.best=e.target.value;save()}});
+$('#reflForm').addEventListener('click',e=>{const b=e.target.closest('[data-n]');if(!b)return;const rk=b.parentNode.dataset.rate;const n=+b.dataset.n;S.refl.rate[rk]=S.refl.rate[rk]===n?0:n;save();
+  b.parentNode.querySelectorAll('button').forEach(x=>x.classList.toggle('on',+x.dataset.n<=S.refl.rate[rk]))});
+
+/* ---------- 成果內容（共用） ---------- */
+const METHOD='每週參與實作課程，依步驟動手操作；課後填寫學習單，記錄課程重點、操作步驟與心得，並拍照保存作品成果。';
+function model(){
+  const I=S.info,R=S.refl,W=S.weeks;
+  const dates=W.map(w=>w.date).filter(Boolean);
+  const period=dates.length?(dates.length>1?`${dates[0]} ～ ${dates[dates.length-1]}`:dates[0]):'';
+  const best=W.find(w=>w.id===R.best);
+  return {I,R,W,period,goal:R.goal||autoGoal(),best,bestNo:best?W.indexOf(best)+1:0,
+    pick:w=>w.sel.map(i=>w.photos[i]).filter(Boolean)};
+}
+function brief(s){const t=String(s||'').split('\n').map(x=>x.trim().replace(/^(\d+\s*[\.、．)）]|[•●\-]\s*)/,'')).filter(Boolean).join('、');return t.length>46?t.slice(0,46)+'…':t}
+const fname=()=>`${S.info.seat||''}${S.info.name||''}_自主學習成果`.replace(/[\\/:*?"<>|]/g,'');
+
+/* ---------- 預覽（A4 分頁） ---------- */
+function blocksHTML(){
+  const m=model(),{I,R,W}=m;const out=[];
+  const cov=[];W.forEach(w=>{const p=m.pick(w)[0];if(p&&cov.length<4)cov.push(p)});
+  out.push({brk:1,h:`<div class="cover"><div class="sub">${esc(I.year)}　${esc(I.course)}</div><div class="big">自主學習成果報告</div><div class="theme">${esc(I.theme||I.course)}</div>
+  <table>${[['班級',I.cls],['座號',I.seat],['姓名',I.name],['指導老師',I.teacher],['學習期間',m.period],['學習週數',W.length?W.length+' 週':'']].filter(r=>r[1]).map(r=>`<tr><td>${r[0]}</td><td>${esc(r[1])}</td></tr>`).join('')}</table>
+  ${cov.length?`<div class="collage">${cov.map(p=>`<img src="${p.src}" alt="">`).join('')}</div>`:''}</div>`});
+  out.push({brk:1,h:`<h2>一、學習計畫概要</h2><table class="rt"><colgroup><col style="width:26mm"><col></colgroup><tr><td class="lab">學習主題</td><td>${esc(I.theme||I.course)}</td></tr>${R.motive?`<tr><td class="lab">學習動機</td><td>${esc(R.motive)}</td></tr>`:''}<tr><td class="lab">學習目標</td><td>${esc(m.goal)}</td></tr><tr><td class="lab">執行方法</td><td>${METHOD}</td></tr>${m.period?`<tr><td class="lab">學習期間</td><td>${esc(m.period)}（共 ${W.length} 週）</td></tr>`:''}</table>`});
+  out.push({h:`<h2>二、每週學習進度總表</h2><table class="rt"><colgroup><col style="width:14mm"><col style="width:26mm"><col style="width:38mm"><col></colgroup><tr><th>週次</th><th>日期</th><th>課程主題</th><th>學習重點摘要</th></tr>${W.map((w,i)=>`<tr><td style="text-align:center">${i+1}</td><td>${esc(w.date)}</td><td>${esc(w.topic)}</td><td>${esc(brief(w.steps))}</td></tr>`).join('')}</table>`});
+  W.forEach((w,i)=>{const ps=m.pick(w);out.push({brk:i===0,h:`${i===0?'<h2>三、每週學習紀錄</h2>':''}<table class="rt"><colgroup><col style="width:26mm"><col></colgroup><tr><th class="wkh" colspan="2">第 ${i+1} 週　${esc(w.date)}　${esc(w.topic)}</th></tr><tr><td class="lab">課程重點<br>操作步驟</td><td>${esc(w.steps)}</td></tr><tr><td class="lab">學習心得</td><td>${esc(w.feel)}</td></tr>${ps.length?`<tr><td class="lab">課程照片</td><td class="phc">${ps.map(p=>`<img src="${p.src}" alt="">`).join('')}</td></tr>`:''}</table>`})});
+  const secs=[];let n=0;const ch='一二三四五六七八九';
+  const add=(t,body)=>secs.push(`<div class="blk"><h3>${ch[n++]}、${t}</h3>${body}</div>`);
+  if(R.gain)add('學習收穫',`<p>${esc(R.gain)}</p>`);
+  if(m.best||R.bestWhy)add('印象最深刻的一次課程',`${m.best?`<p><b>第 ${m.bestNo} 週　${esc(m.best.topic)}</b></p>`:''}${R.bestWhy?`<p>${esc(R.bestWhy)}</p>`:''}`);
+  if(R.hard)add('遇到的困難與解決方法',`<p>${esc(R.hard)}</p>`);
+  if(R.skills.length)add('我培養的能力',`<p>${R.skills.map(s=>'☑ '+s).join('　')}</p>`);
+  const rated=RATES.filter(([k])=>R.rate[k]);
+  if(rated.length)add('自我評價',`<table class="rt"><tr><th>項目</th><th style="width:40mm">評分</th></tr>${rated.map(([k,l])=>`<tr><td>${l}</td><td class="stars-p">${'★'.repeat(R.rate[k])}${'☆'.repeat(5-R.rate[k])}</td></tr>`).join('')}</table>`);
+  if(R.future)add('未來應用與下一步',`<p>${esc(R.future)}</p>`);
+  if(R.summary)add('總結心得',`<p>${esc(R.summary)}</p>`);
+  secs.forEach((s,i)=>out.push({brk:i===0,h:(i===0?'<h2>四、成果總結與反思</h2>':'')+s}));
+  return out;
+}
+function renderReport(){
+  const paper=$('#paper');paper.style.transform='none';paper.innerHTML='';
+  const blocks=blocksHTML();let body=null,pages=0;
+  const newPage=()=>{const pg=document.createElement('div');pg.className='page';pg.innerHTML='<div class="pg-body"></div>';paper.appendChild(pg);pages++;body=pg.firstChild;if(pages>1){const no=document.createElement('div');no.className='pg-no';no.textContent=pages-1;pg.appendChild(no)}};
+  for(const b of blocks){
+    if(!body||(b.brk&&body.children.length))newPage();
+    const d=document.createElement('div');d.innerHTML=b.h;body.appendChild(d);
+    if(body.scrollHeight>body.clientHeight+1&&body.children.length>1){d.remove();newPage();body.appendChild(d)}
+  }
+  fitPaper();
+  $('#fnNote').textContent=dlCap===null&&window.claude?$('#fnNote').textContent:`檔名：${fname()}（Google Classroom 請上傳 PDF）　共 ${pages} 頁`;
+  const miss=[];if(!S.weeks.length)miss.push('還沒有任何學習單');
+  if(!S.info.name)miss.push('基本資料缺姓名');
+  if(!S.refl.gain)miss.push('「學習收穫」還沒寫');if(!S.refl.summary)miss.push('「總結心得」還沒寫');
+  const bad=S.weeks.map((w,i)=>warnsOf(w).length?`第 ${i+1} 週（${warnsOf(w).join('、')}）`:'').filter(Boolean);
+  if(bad.length)miss.push('每週紀錄不完整：'+bad.join('；'));
+  $('#checkMsg').innerHTML=miss.length?`<div class="warnbox"><b>匯出前檢查：</b><br>${miss.map(esc).join('<br>')}</div>`:'';
+}
+function fitPaper(){const wrap=$('#paperWrap'),paper=$('#paper');const pw=paper.querySelector('.page')?.offsetWidth||794;
+  const k=Math.min(1,wrap.clientWidth/pw);paper.style.width=pw+'px';paper.style.transform=`scale(${k})`;wrap.style.height=(paper.scrollHeight*k)+'px';
+  if(wrap.clientWidth>pw)paper.style.marginLeft=((wrap.clientWidth-pw)/2)+'px';else paper.style.marginLeft='0'}
+const ro=new ResizeObserver(()=>{if(document.querySelector('#v4.on'))fitPaper()});ro.observe($('#paperWrap'));
+
+/* ---------- 下載 ---------- */
+async function saveFile(name,blob){
+  if(dlCap){try{await dlCap.save({filename:name,data:blob});toast('已下載：'+name)}catch(e){toast(e&&e.code==='declined'?'已取消下載':'無法下載：'+(e&&e.message||''),4000)}return}
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},3000);toast('已下載：'+name);
+}
+$('#printBtn').addEventListener('click',()=>{renderReport();const t=document.title;document.title=fname();const p=$('#paper');p.style.transform='none';setTimeout(()=>{try{window.print()}catch(e){}document.title=t;fitPaper()},100)});
+$('#pdfBtn').addEventListener('click',async()=>{
+  const btn=$('#pdfBtn');btn.disabled=true;renderReport();busy(true,'正在產生 PDF…');
+  const paper=$('#paper');paper.style.transform='none';
+  try{
+    if(document.fonts&&document.fonts.ready)await document.fonts.ready;
+    const {jsPDF}=window.jspdf;const pdf=new jsPDF({unit:'mm',format:'a4',compress:true});
+    const pages=[...paper.querySelectorAll('.page')];
+    for(let i=0;i<pages.length;i++){$('#busyTxt').textContent=`正在產生 PDF…（${i+1}/${pages.length} 頁）`;
+      const pg=pages[i];const sh=pg.style.boxShadow;pg.style.boxShadow='none';
+      const cv=await html2canvas(pg,{scale:1.6,backgroundColor:'#ffffff',logging:false});pg.style.boxShadow=sh;
+      if(i)pdf.addPage();pdf.addImage(cv.toDataURL('image/jpeg',.72),'JPEG',0,0,210,297,undefined,'FAST')}
+    const pb=pdf.output('blob');await saveFile(fname()+'.pdf',pb);if(pb.size>4*1024*1024)toast(`PDF 約 ${(pb.size/1048576).toFixed(1)} MB，超過學習歷程上傳上限 4 MB：請改用「列印／另存 PDF」，或減少照片數量`,8000);
+  }catch(e){console.error(e);toast('PDF 產生失敗，請改用「列印／另存 PDF」或下載 Word',5000)}
+  busy(false);btn.disabled=false;fitPaper();
+});
+$('#wordBtn').addEventListener('click',async()=>{const btn=$('#wordBtn');btn.disabled=true;busy(true,'正在產生 Word…');
+  try{await saveFile(fname()+'.docx',await buildDocx())}catch(e){console.error(e);toast('Word 產生失敗',4000)}busy(false);btn.disabled=false});
+
+/* ---------- 產生 Word ---------- */
+async function buildDocx(){
+  const m=model(),{I,R,W}=m;const media=[];let pid=1;
+  const X=s=>String(s??'').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const run=(t,o={})=>`<w:r><w:rPr>${o.b?'<w:b/><w:bCs/>':''}${o.color?`<w:color w:val="${o.color}"/>`:''}${o.sz?`<w:sz w:val="${o.sz}"/><w:szCs w:val="${o.sz}"/>`:''}</w:rPr>${String(t??'').split('\n').map(x=>`<w:t xml:space="preserve">${X(x)}</w:t>`).join('<w:br/>')}</w:r>`;
+  const P=(inner,o={})=>`<w:p><w:pPr>${o.keep?'<w:keepNext/>':''}<w:spacing w:before="${o.before||0}" w:after="${o.after??80}"/>${o.jc?`<w:jc w:val="${o.jc}"/>`:''}${o.ind?`<w:ind w:firstLine="${o.ind}"/>`:''}</w:pPr>${inner}</w:p>`;
+  const paras=(t,o={})=>String(t||'').split('\n').map(l=>P(run(l,o),{after:40,...o})).join('')||P('');
+  const BR='<w:p><w:r><w:br w:type="page"/></w:r></w:p>';
+  const img=(p,hCm,maxW)=>{if(!p)return '';let h=hCm*360000,w=Math.round(h*p.w/p.h);const mw=maxW*360000;if(w>mw){h=Math.round(h*mw/w);w=mw}
+    const n=pid++;const rid='rIdImg'+n;media.push({rid,n,src:p.src});
+    return `<w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="${w}" cy="${Math.round(h)}"/><wp:docPr id="${n}" name="Picture ${n}"/><wp:cNvGraphicFramePr><a:graphicFrameLocks noChangeAspect="1"/></wp:cNvGraphicFramePr><a:graphic><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic><pic:nvPicPr><pic:cNvPr id="${n}" name="img${n}.jpeg"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="${rid}"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="${w}" cy="${Math.round(h)}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r>`};
+  const TW=9638;
+  const tc=(content,o={})=>`<w:tc><w:tcPr><w:tcW w:w="${o.w}" w:type="dxa"/>${o.span>1?`<w:gridSpan w:val="${o.span}"/>`:''}${o.fill?`<w:shd w:val="clear" w:color="auto" w:fill="${o.fill}"/>`:''}<w:vAlign w:val="${o.va||'top'}"/></w:tcPr>${content||'<w:p/>'}</w:tc>`;
+  const tbl=(widths,rows,o={})=>{const bd=o.nob?'nil':'single';const b=s=>`<w:${s} w:val="${bd}" w:sz="6" w:space="0" w:color="444444"/>`;
+    return `<w:tbl><w:tblPr><w:tblW w:w="${widths.reduce((a,b)=>a+b,0)}" w:type="dxa"/>${o.center?'<w:jc w:val="center"/>':''}<w:tblBorders>${['top','left','bottom','right','insideH','insideV'].map(b).join('')}</w:tblBorders><w:tblLayout w:type="fixed"/><w:tblCellMar><w:top w:w="60" w:type="dxa"/><w:left w:w="110" w:type="dxa"/><w:bottom w:w="60" w:type="dxa"/><w:right w:w="110" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>${widths.map(w=>`<w:gridCol w:w="${w}"/>`).join('')}</w:tblGrid>${rows.join('')}</w:tbl>${P('',{after:120})}`};
+  const tr=(cells,o={})=>`<w:tr><w:trPr>${o.cant?'<w:cantSplit/>':''}${o.head?'<w:tblHeader/>':''}</w:trPr>${cells.join('')}</w:tr>`;
+  const S11={sz:22};const H2=t=>P(run(t,{b:1,sz:28}),{after:120,before:120,keep:1});const H3=t=>P(run(t,{b:1,sz:24}),{after:60,before:160,keep:1});
+  const labRow=(l,v,lw=1500)=>tr([tc(P(run(l,{b:1,...S11}),{jc:'center',after:0}),{w:lw,fill:'F0F5EC',va:'center'}),tc(paras(v,S11),{w:TW-lw})],{cant:1});
+  let body='';
+  // 封面
+  body+=P('',{after:600})+P(run(`${I.year}　${I.course}`,{sz:26}),{jc:'center',after:400})+P(run('自主學習成果報告',{b:1,sz:56}),{jc:'center',after:240})+P(run(I.theme||I.course,{sz:32}),{jc:'center',after:600});
+  const cr=[['班級',I.cls],['座號',I.seat],['姓名',I.name],['指導老師',I.teacher],['學習期間',m.period],['學習週數',W.length?W.length+' 週':'']].filter(r=>r[1]);
+  body+=tbl([2000,4800],cr.map(r=>tr([tc(P(run(r[0],{sz:26}),{after:0}),{w:2000}),tc(P(run(r[1],{sz:26}),{after:0}),{w:4800})])),{center:1});
+  const cov=[];W.forEach(w=>{const p=m.pick(w)[0];if(p&&cov.length<4)cov.push(p)});
+  if(cov.length){const rows=[];for(let i=0;i<cov.length;i+=2)rows.push(tr([0,1].map(k=>tc(P(img(cov[i+k],4.6,7.6),{jc:'center',after:0}),{w:4400})),{cant:1}));body+=tbl([4400,4400],rows,{nob:1,center:1})}
+  body+=BR;
+  // 一
+  body+=H2('一、學習計畫概要');
+  body+=tbl([1500,TW-1500],[labRow('學習主題',I.theme||I.course),R.motive?labRow('學習動機',R.motive):'',labRow('學習目標',m.goal),labRow('執行方法',METHOD),m.period?labRow('學習期間',`${m.period}（共 ${W.length} 週）`):''].filter(Boolean));
+  // 二
+  body+=H2('二、每週學習進度總表');
+  const cw=[800,1500,2200,TW-4500];
+  body+=tbl(cw,[tr(['週次','日期','課程主題','學習重點摘要'].map((h,i)=>tc(P(run(h,{b:1,...S11}),{jc:'center',after:0}),{w:cw[i],fill:'E6EFE1'})),{head:1}),
+    ...W.map((w,i)=>tr([tc(P(run(i+1,S11),{jc:'center',after:0}),{w:cw[0]}),tc(P(run(w.date,S11),{after:0}),{w:cw[1]}),tc(P(run(w.topic,S11),{after:0}),{w:cw[2]}),tc(P(run(brief(w.steps),S11),{after:0}),{w:cw[3]})],{cant:1}))]);
+  body+=BR;
+  // 三
+  body+=H2('三、每週學習紀錄');
+  W.forEach((w,i)=>{const ps=m.pick(w);
+    body+=tbl([1500,TW-1500],[tr([tc(P(run(`第 ${i+1} 週　${w.date}　${w.topic}`,{b:1,sz:24}),{after:0,keep:1}),{w:TW,span:2,fill:'DBE9D4'})],{cant:1}),labRow('課程重點\n操作步驟',w.steps),labRow('學習心得',w.feel),
+      ps.length?tr([tc(P(run('課程照片',{b:1,...S11}),{jc:'center',after:0}),{w:1500,fill:'F0F5EC',va:'center'}),tc(P(ps.map(p=>img(p,5.5,6.8)).join(run('　')),{jc:'center',after:0}),{w:TW-1500})],{cant:1}):''].filter(Boolean))});
+  // 四
+  const secs=[];const ch='一二三四五六七八九';let n=0;const add=(t,x)=>secs.push(H3(`${ch[n++]}、${t}`)+x);
+  if(R.gain)add('學習收穫',paras(R.gain));
+  if(m.best||R.bestWhy)add('印象最深刻的一次課程',(m.best?P(run(`第 ${m.bestNo} 週　${m.best.topic}`,{b:1})):'')+(R.bestWhy?paras(R.bestWhy):''));
+  if(R.hard)add('遇到的困難與解決方法',paras(R.hard));
+  if(R.skills.length)add('我培養的能力',P(run(R.skills.map(s=>'☑ '+s).join('　'))));
+  const rated=RATES.filter(([k])=>R.rate[k]);
+  if(rated.length)add('自我評價',tbl([TW-2800,2800],[tr([tc(P(run('項目',{b:1,...S11}),{after:0}),{w:TW-2800,fill:'E6EFE1'}),tc(P(run('評分',{b:1,...S11}),{after:0}),{w:2800,fill:'E6EFE1'})]),...rated.map(([k,l])=>tr([tc(P(run(l,S11),{after:0}),{w:TW-2800}),tc(P(run('★'.repeat(R.rate[k])+'☆'.repeat(5-R.rate[k]),{color:'C75A12',...S11}),{after:0}),{w:2800})]))]));
+  if(R.future)add('未來應用與下一步',paras(R.future));
+  if(R.summary)add('總結心得',paras(R.summary));
+  if(secs.length)body+=BR+H2('四、成果總結與反思')+secs.join('');
+  const NS='xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"';
+  const docXml=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document ${NS}><w:body>${body}<w:sectPr><w:footerReference w:type="default" r:id="rIdFtr"/><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" w:header="567" w:footer="567" w:gutter="0"/><w:titlePg/></w:sectPr></w:body></w:document>`;
+  const F='標楷體';
+  const styles=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="${F}" w:hAnsi="${F}" w:eastAsia="${F}" w:cs="${F}"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="en-US" w:eastAsia="zh-TW"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after="0" w:line="240" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults><w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/></w:style></w:styles>`;
+  const footer=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:ftr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:p><w:pPr><w:jc w:val="center"/></w:pPr><w:r><w:rPr><w:sz w:val="20"/></w:rPr><w:fldChar w:fldCharType="begin"/></w:r><w:r><w:rPr><w:sz w:val="20"/></w:rPr><w:instrText xml:space="preserve"> PAGE </w:instrText></w:r><w:r><w:rPr><w:sz w:val="20"/></w:rPr><w:fldChar w:fldCharType="separate"/></w:r><w:r><w:rPr><w:sz w:val="20"/></w:rPr><w:t>1</w:t></w:r><w:r><w:rPr><w:sz w:val="20"/></w:rPr><w:fldChar w:fldCharType="end"/></w:r></w:p></w:ftr>`;
+  const zip=new JSZip();
+  zip.file('[Content_Types].xml',`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="jpeg" ContentType="image/jpeg"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/><Override PartName="/word/footer1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml"/></Types>`);
+  zip.file('_rels/.rels',`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>`);
+  zip.file('word/document.xml',docXml);zip.file('word/styles.xml',styles);zip.file('word/footer1.xml',footer);
+  zip.file('word/_rels/document.xml.rels',`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rIdSty" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/><Relationship Id="rIdFtr" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer" Target="footer1.xml"/>${media.map(x=>`<Relationship Id="${x.rid}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/img${x.n}.jpeg"/>`).join('')}</Relationships>`);
+  for(const x of media)zip.file(`word/media/img${x.n}.jpeg`,x.src.split(',')[1],{base64:true});
+  return zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+}
+
+/* ---------- 進度檔 ---------- */
+$('#saveJson').addEventListener('click',()=>saveFile(fname()+'_進度檔.json',new Blob([JSON.stringify(S)],{type:'application/json'})));
+$('#loadJson').addEventListener('click',()=>$('#jsonIn').click());
+$('#jsonIn').addEventListener('change',async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;
+  try{const o=JSON.parse(await f.text());if(!o.weeks)throw 0;S={...blank(),...o,info:{...blank().info,...o.info},refl:{...blank().refl,...o.refl}};save();renderInfo();renderReport();toast('已載入進度檔')}catch(err){toast('這不是進度檔',3000)}});
+$('#resetAll').addEventListener('click',e=>{const b=e.target;if(b.dataset.sure!=='1'){b.dataset.sure='1';b.textContent='再按一次確定清除';setTimeout(()=>{b.dataset.sure='';b.textContent='全部清除重來'},3000);return}
+  S=blank();try{localStorage.removeItem(KEY)}catch(err){}renderInfo();renderReport();toast('已清除');b.dataset.sure='';b.textContent='全部清除重來'});
+
+/* ---------- 示範資料 ---------- */
+$('#demoBtn').addEventListener('click',()=>{
+  const pic=(c1,c2,seed)=>{const c=document.createElement('canvas');c.width=800;c.height=600;const x=c.getContext('2d');const g=x.createLinearGradient(0,0,0,600);g.addColorStop(0,c1);g.addColorStop(1,c2);x.fillStyle=g;x.fillRect(0,0,800,600);
+    x.fillStyle='rgba(90,60,30,.85)';x.beginPath();x.ellipse(400,520,200,50,0,0,7);x.fill();x.fillStyle='#8a5a33';x.fillRect(260,430,280,100);
+    x.strokeStyle='#2f6b3c';x.lineWidth=10;for(let i=0;i<7;i++){const a=-Math.PI/2+(i-3)*0.32+seed*.05;x.beginPath();x.moveTo(400,430);x.quadraticCurveTo(400+Math.cos(a)*120,430+Math.sin(a)*200,400+Math.cos(a)*220,430+Math.sin(a)*300);x.stroke()}
+    return {src:c.toDataURL('image/jpeg',.8),w:800,h:600}};
+  const D=[['2025/2/11','水苔球製作','1.選一盆喜歡的植株，從盆中取出並去掉土\n2.在塑膠袋上鋪含水的水苔\n3.把植物放在水苔上\n4.用水苔和塑膠袋包成球狀\n5.用 QQ 線固定，再修剪外觀','第一次做水苔球，包的時候水苔一直散開，後來老師教我先把水苔擰到半乾再包，就順利多了。'],
+    ['2025/2/18','多肉植物葉插','1.挑健康飽滿的葉片輕輕摘下\n2.放陰涼處 2～3 天讓傷口乾燥\n3.平放在乾燥介質上\n4.長根後再少量噴水','原來葉插不能馬上澆水，傷口要先乾燥才不會爛掉。'],
+    ['2025/3/28','手洗愛玉凍','1.秤 40 g 愛玉籽，裝進洗袋綁好\n2.大碗裝約 2000 ml 礦泉水\n3.在水中搓揉擠壓愛玉籽 6 分鐘\n4.倒入容器冰 1 小時待凝固\n5.加蜂蜜、檸檬汁完成','愛玉要用礦泉水，因為裡面的礦物質（鈣）能幫助凝固，這是我以前不知道的。']];
+  D.forEach(([d,t,s,f],i)=>addWeek(mkWeek({date:d,topic:t,steps:s,feel:f,photos:[pic('#bfe0f5','#e9f3e4',i),pic('#f5e6c8','#fff7e8',i+3)],sel:[0,1],src:'示範資料'})));
+  mergeInfo({year:'113 學年度第 2 學期',course:'「園藝科」作物栽培',cls:'120',seat:'11',name:'林小明'});
+  sortWeeks();save();renderInfo();go(2);toast('已載入 3 週示範資料，可隨時到第 4 步「全部清除重來」');
+});
+
+renderInfo();
+}
+</script>
+</body>
+</html>

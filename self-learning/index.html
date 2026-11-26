@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>認識自主學習</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/*
+VOICE: 對高職學生說話，直接、具體，不說教。
+IDEA: 一排花盆——每週一盆，植物一週比一週長高，最後收進成果檔案夾。
+PICTURE: 首屏右側 9 週成長線 SVG，對應「每週學習單 → 成果報告」。
+COLOUR and TYPE: 葉綠為主、牛皮紙為輔、橘色行動按鈕；Noto Sans TC 四種字級。
+LAYOUT: 首屏標題＋成長線，往下是分段帶狀區塊，手機單欄。
+*/
+:root{color-scheme:light dark;
+--bg:light-dark(#f7f8f3,#111611);--card:light-dark(#fff,#1a211b);--ink:light-dark(#1c241d,#e6ece5);--mute:light-dark(#566457,#a3b3a5);
+--line:light-dark(#d9e0d6,#2e3a30);--leaf:light-dark(#2f6b3c,#7cc28a);--leafbg:light-dark(#e5f0e2,#1f3224);--kraft:light-dark(#efe4cc,#352e20);
+--acc:light-dark(#d9661c,#f29a52);--accbg:light-dark(#fdeee2,#3a2617)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 "Noto Sans TC",system-ui,sans-serif;overflow-x:clip}
+a{color:var(--leaf)}
+.band{padding:clamp(32px,5vw,64px) max(5vw,16px)}
+.wrap{max-width:1080px;margin:0 auto}
+.hero{background:var(--leaf);color:light-dark(#fff,#0e1a10)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(20px,4vw,48px);align-items:center}
+.hero small{display:block;opacity:.85;font-size:15px;margin-bottom:8px}
+.hero h1{font-size:clamp(32px,5vw,50px);line-height:1.12;margin:0 0 14px;text-wrap:balance;font-weight:900}
+.hero p{margin:0 0 22px;font-size:18px;opacity:.95;max-width:34em}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 22px;border-radius:12px;font:inherit;font-weight:700;text-decoration:none;border:2px solid transparent}
+.btn.go{background:var(--acc);color:#fff}
+.btn.ghost{border-color:currentColor;color:inherit}
+.btn:focus-visible{outline:3px solid #ffd27a;outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.fig svg{width:100%;height:auto;display:block}
+.nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav .scroll{display:flex;gap:6px;overflow-x:auto;padding:8px max(5vw,16px);max-width:1080px;margin:0 auto}
+.nav a{flex:none;text-decoration:none;color:var(--ink);font-size:15px;padding:8px 12px;border-radius:99px;min-height:40px;display:inline-flex;align-items:center}
+.nav a:hover{background:var(--leafbg)}
+html{scroll-padding-top:64px}
+h2{font-size:clamp(26px,3.4vw,34px);line-height:1.2;margin:0 0 10px;text-wrap:balance}
+.lead{color:var(--mute);margin:0 0 24px;max-width:46em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.card h3{margin:0 0 6px;font-size:19px;line-height:1.35}
+.card p{margin:0;color:var(--mute);font-size:16px}
+.num{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--leaf);color:light-dark(#fff,#0e1a10);font-weight:700;margin-bottom:8px}
+.shift{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:14px;align-items:center;margin:8px 0 26px}
+.shift .card{text-align:center}
+.shift .arrow{font-size:28px;color:var(--acc);font-weight:900}
+.kraft{background:var(--kraft)}
+.big{font-size:clamp(40px,6vw,60px);font-weight:900;color:var(--acc);line-height:1}
+.fact{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px 18px;align-items:start}
+.fact .card{grid-column:1/-1}
+.ep{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px;margin:18px 0}
+.ep div{background:var(--card);border-radius:14px;padding:16px;border-top:6px solid var(--line)}
+.ep div.hot{border-top-color:var(--acc)}
+.ep b{display:block;font-size:17px}
+.ep span{font-size:15px;color:var(--mute)}
+.tag{display:inline-block;background:var(--accbg);color:var(--acc);font-size:13px;font-weight:700;border-radius:99px;padding:2px 10px;margin-top:6px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.steps li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;padding:0 0 22px;position:relative}
+.steps li:not(:last-child)::before{content:"";position:absolute;left:27px;top:52px;bottom:4px;width:2px;background:var(--line)}
+.steps .n{width:56px;height:56px;border-radius:50%;background:var(--leafbg);color:var(--leaf);display:grid;place-items:center;font-weight:900;font-size:22px}
+.steps h3{margin:10px 0 2px;font-size:19px}
+.steps p{margin:0;color:var(--mute)}
+.map{width:100%;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden;font-size:16px}
+.map th,.map td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.map th{background:var(--leafbg);font-size:15px}
+.map td:first-child{font-weight:700;white-space:nowrap}
+.cta{background:var(--leaf);color:light-dark(#fff,#0e1a10);border-radius:22px;padding:clamp(24px,4vw,40px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center}
+.cta h2{margin:0 0 6px}.cta p{margin:0;opacity:.92}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:700;padding:12px 0;min-height:44px}
+details p{margin:0 0 14px;color:var(--mute)}
+.src{font-size:14px;color:var(--mute)}
+.src li{margin-bottom:4px}
+footer{padding:28px max(5vw,16px);font-size:14px;color:var(--mute);text-align:center}
+@media(max-width:760px){.hero .wrap{grid-template-columns:1fr}.cta{grid-template-columns:1fr}}
+@media(max-width:600px){.shift{grid-template-columns:1fr}.shift .arrow{transform:rotate(90deg);justify-self:center}
+ .map thead{display:none}.map tr{display:grid;padding:10px 0;border-bottom:1px solid var(--line)}.map td{border:0;padding:3px 14px}.map td:first-child{white-space:normal;color:var(--leaf)}}
+@media(prefers-reduced-motion:no-preference){.grow{transform-origin:bottom;animation:g 1s ease-out both}@keyframes g{from{transform:scaleY(.2);opacity:0}}}
+</style>
+</head>
+<body>
+<section class="band hero">
+  <div class="wrap">
+    <div>
+      <small>園藝與休閒學程・學習歷程準備</small>
+      <h1>自主學習：把每一次實作，變成看得見的成長</h1>
+      <p>每週的學習單不是寫完就丟。整理起來，它就是一份能放進學習歷程、讓技專教授看見你的成果。</p>
+      <div class="row">
+        <a class="btn go" href="maker.html">開始製作我的成果 →</a>
+        <a class="btn ghost" href="#what">先了解自主學習</a>
+      </div>
+    </div>
+    <div class="fig" aria-label="九週成長線：每週一盆植物逐漸長高，最後收進成果檔案夾">
+      <svg viewBox="0 0 560 300" role="img">
+        <defs>
+          <linearGradient id="pot" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0864a"/><stop offset="1" stop-color="#b85d2a"/></linearGradient>
+          <linearGradient id="lf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#bfe8a6"/><stop offset="1" stop-color="#5aa35a"/></linearGradient>
+          <g id="potg"><path d="M-17 0h34l-5 30h-24z" fill="url(#pot)"/><rect x="-20" y="-6" width="40" height="8" rx="2" fill="#cf7339"/><path d="M-12 30h24" stroke="rgba(0,0,0,.18)" stroke-width="3"/></g>
+          <path id="leaf" d="M0 0c10-10 24-8 30 0-8 8-20 9-30 0z" fill="url(#lf)"/>
+        </defs>
+        <rect x="0" y="232" width="560" height="10" rx="5" fill="rgba(255,255,255,.22)"/>
+        <g id="pots"></g>
+        <g transform="translate(476 120)">
+          <rect x="6" y="8" width="70" height="96" rx="6" fill="rgba(0,0,0,.18)"/>
+          <rect width="70" height="96" rx="6" fill="#efe4cc"/>
+          <rect x="0" y="0" width="14" height="96" rx="4" fill="#d9661c"/>
+          <path d="M24 22h36M24 34h36M24 46h24" stroke="#9b8a63" stroke-width="4" stroke-linecap="round"/>
+          <rect x="24" y="58" width="16" height="16" rx="2" fill="#7cc28a"/><rect x="44" y="58" width="16" height="16" rx="2" fill="#e8a46a"/>
+          <text x="35" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">成果報告</text>
+        </g>
+        <path d="M438 210 q18 -40 30 -60" stroke="#ffd27a" stroke-width="3" fill="none" stroke-dasharray="6 6" marker-end="url(#ar)"/>
+        <defs><marker id="ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#ffd27a"/></marker></defs>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<nav class="nav"><div class="scroll">
+  <a href="#what">什麼是自主學習</a><a href="#why">為什麼重要</a><a href="#good">好成果長怎樣</a><a href="#how">五個步驟</a><a href="#ours">我們的做法</a><a href="#qa">常見問題</a>
+</div></nav>
+
+<section class="band" id="what"><div class="wrap">
+  <h2>什麼是自主學習？</h2>
+  <p class="lead">一句話：學會「怎麼學習」。不是自習、不是寫考卷，而是自己決定要學什麼、怎麼學、學到什麼程度，然後把過程記錄下來。</p>
+  <div class="shift">
+    <div class="card"><h3>以前</h3><p>老師教什麼，就學什麼<br>學完考試就結束</p></div>
+    <div class="arrow" aria-hidden="true">→</div>
+    <div class="card" style="border-color:var(--leaf)"><h3>自主學習</h3><p>自己設定主題和目標<br>規劃進度、動手做、留下紀錄</p></div>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="num">1</div><h3>發現問題</h3><p>從實作或生活中找到想弄懂的事，例如「為什麼我的扦插枝條會爛根？」</p></div>
+    <div class="card"><div class="num">2</div><h3>尋找資源</h3><p>問老師、查資料、看影片、請教業界或學長姐，找到可以用的方法。</p></div>
+    <div class="card"><div class="num">3</div><h3>解決問題</h3><p>試做、記錄、調整，直到成功；失敗也要寫下原因和下一步。</p></div>
+  </div>
+  <p class="lead" style="margin-top:22px">這三個能力，就是進入科大或職場後最常被用到的能力：資訊一直更新，會自己學的人走得最遠。</p>
+</div></section>
+
+<section class="band kraft" id="why"><div class="wrap">
+  <h2>為什麼重要？跟升學有什麼關係？</h2>
+  <p class="lead">108 課綱之後，升學不只看統測分數。你高中三年做了什麼、怎麼想、學到什麼，都會透過「學習歷程檔案」被看見。</p>
+  <div class="grid">
+    <div class="card"><div class="big">111</div><h3>學年度起可直接勾選當備審資料</h3><p>升學時可以上傳（勾選）學習歷程檔案給想申請的校系審查，不用到高三才重新整理、印刷。</p></div>
+    <div class="card"><div class="big">2 階段</div><h3>四技二專甄選入學看學習歷程</h3><p>第一階段用統測篩選，第二階段要上傳學習歷程備審資料，包含課程學習成果和多元表現。</p></div>
+    <div class="card"><div class="big">實作＋反思</div><h3>技專教授最想看的</h3><p>務實致用的專業知識與實作能力，以及有意義、和所學有關聯的學習反思。</p></div>
+  </div>
+
+  <h3 style="margin:30px 0 4px;font-size:21px">學習歷程檔案裡有什麼？</h3>
+  <div class="ep">
+    <div><b>A 修課紀錄</b><span>成績、學分，學校統一上傳</span></div>
+    <div class="hot"><b>B 課程學習成果</b><span>課堂作品、實習成果、書面報告；需任課老師認證</span><br><span class="tag">每週實作成果可放這裡</span></div>
+    <div class="hot"><b>C 多元表現</b><span>彈性學習時間（含自主學習）、社團、幹部、服務學習、競賽、證照</span><br><span class="tag">自主學習屬於 C-1</span></div>
+    <div><b>D 綜整心得與自述</b><span>多元表現綜整心得、學習歷程自述（反思、動機、讀書計畫）</span></div>
+  </div>
+  <div class="card" style="margin-top:6px">
+    <h3>為什麼要現在就整理？</h3>
+    <p>以前很多人到高三才開始準備備審資料，結果時間太趕、照片和資料找不到，內容也不夠真實。每學期把成果整理好、按時上傳，高三就只要「挑選」，不用從零開始。報考大學申請入學的同學也一樣用得到：有文章整理大學端資料指出，「高中自主學習計畫與成果」是大學校系最常參採的多元表現項目之一。</p>
+  </div>
+</div></section>
+
+<section class="band" id="good"><div class="wrap">
+  <h2>一份好的自主學習成果長什麼樣？</h2>
+  <p class="lead">形式沒有硬性規定，表格、條列、敘述都可以，重點是資訊完整、好讀。一份完整的成果檔案通常包含這四塊：</p>
+  <table class="map">
+    <thead><tr><th>成果檔案的組成</th><th>內容</th><th>在成果產生器裡</th></tr></thead>
+    <tbody>
+      <tr><td>1. 學習計畫</td><td>主題、動機、目標、方法、進度</td><td>自動整理＋你補寫動機</td></tr>
+      <tr><td>2. 每週進度與反思</td><td>每週做了什麼、遇到的困難、怎麼解決、心得</td><td>上傳學習單自動帶入</td></tr>
+      <tr><td>3. 最終成果</td><td>作品照片、報告、證書等看得到的產出</td><td>每週挑 2 張照片</td></tr>
+      <tr><td>4. 成果報告書</td><td>整體反思、收穫、自我評價</td><td>你只要寫這一部分</td></tr>
+    </tbody>
+  </table>
+  <h3 style="margin:30px 0 10px;font-size:21px">讓成果加分的三個關鍵</h3>
+  <div class="grid">
+    <div class="card"><h3>有自己的觀點</h3><p>不只是抄步驟，要寫出你的分析和想法：為什麼這樣做？換個方法會怎樣？</p></div>
+    <div class="card"><h3>有完整脈絡</h3><p>從動機、過程到成果，讓看的人可以跟著你的故事一步一步走。</p></div>
+    <div class="card"><h3>有多元素材</h3><p>文字＋照片＋數據（例如株高、時間、用量），讓成果更有說服力。</p></div>
+  </div>
+  <div class="card" style="margin-top:16px;border-left:6px solid var(--acc)">
+    <h3>歷程比「完美成果」更重要</h3>
+    <p>作品失敗也沒關係。只要清楚說明：用了哪些工具和方法、遇到什麼挑戰、怎麼嘗試解決、從不足中學到什麼、下一步怎麼改進，一樣是一份好的紀錄，甚至更能打動教授。</p>
+  </div>
+</div></section>
+
+<section class="band kraft" id="how"><div class="wrap">
+  <h2>自主學習的五個步驟</h2>
+  <p class="lead">以「想學會多肉植物繁殖」為例：</p>
+  <ol class="steps">
+    <li><span class="n">1</span><div><h3>確認主題與動機</h3><p>想學什麼、為什麼學。例：家裡的多肉常常養死，想學會繁殖和照顧。動機會在你想放棄時撐住你。</p></div></li>
+    <li><span class="n">2</span><div><h3>訂出具體目標</h3><p>「想學園藝」太籠統。改成：「8 週內用葉插、扦插繁殖 3 種多肉，記錄發根天數，成功率達一半以上」。</p></div></li>
+    <li><span class="n">3</span><div><h3>選擇學習方法</h3><p>上課實作、看教學影片、查資料、請教老師或花市業者，選最適合自己的方式。</p></div></li>
+    <li><span class="n">4</span><div><h3>安排時間與進度</h3><p>把大目標拆成每週的小任務，每週固定記錄一次；進度落後就調整，不要拖到最後。</p></div></li>
+    <li><span class="n">5</span><div><h3>呈現具體成果</h3><p>整理成報告、照片、簡報，寫清楚主題、目標、內容、方法和花了多少時間，最後加上反思。</p></div></li>
+  </ol>
+</div></section>
+
+<section class="band" id="ours"><div class="wrap">
+  <h2>我們的做法：學習單 → 成果報告</h2>
+  <p class="lead">你每週寫的實作學習單，本身就是「每週進度與反思」。學期末用成果產生器，幾分鐘就能整理成一份完整成果。</p>
+  <div class="grid">
+    <div class="card"><div class="num">1</div><h3>每週寫學習單</h3><p>課程主題、重點或操作步驟、學習心得、照片 2 張。照片和電子檔要留好。</p></div>
+    <div class="card"><div class="num">2</div><h3>上傳 8～9 份</h3><p>Word、PDF、照片都可以，一次全部丟進去，系統依日期排好放進表格。</p></div>
+    <div class="card"><div class="num">3</div><h3>寫總結心得</h3><p>學習收穫、總結心得必填；動機、困難、未來應用也盡量寫完整，每欄都有範例。</p></div>
+    <div class="card"><div class="num">4</div><h3>下載並繳交</h3><p>下載 Word 或 PDF。Classroom 交 PDF；上傳學習歷程平臺依學校公告時間，PDF 要在 4 MB 以內。</p></div>
+  </div>
+  <div class="cta" style="margin-top:28px">
+    <div><h2>準備好了嗎？</h2><p>把學習單準備好，開始製作你的自主學習成果。檔案只在你的瀏覽器處理，不會被上傳。</p></div>
+    <a class="btn go" href="maker.html">開啟自主學習成果產生器 →</a>
+  </div>
+</div></section>
+
+<section class="band kraft" id="qa"><div class="wrap">
+  <h2>常見問題</h2>
+  <details><summary>自主學習的主題一定要跟以後要讀的科系有關嗎？</summary><p>不一定。方向確定的話，聚焦在相關領域當然能累積更直接的經驗；但就算沒有直接相關，只要能展現你主動探索的動機、解決問題的過程和清楚的反思，一樣有價值。</p></details>
+  <details><summary>作品做失敗了，還能放進成果嗎？</summary><p>可以。把失敗的原因、你嘗試過的解決方法、下次會怎麼改寫清楚，這種真實的歷程往往比一張完美的成品照更能看出你的能力。</p></details>
+  <details><summary>心得要寫多長？可以寫「很好玩、學到很多」嗎？</summary><p>避免空泛的形容詞。用具體例子說：哪一週、做了什麼、發現了什麼、為什麼。總結心得建議 300 字以上，寫出你最大的改變和對自己的期許。</p></details>
+  <details><summary>上傳學習歷程有檔案大小限制嗎？</summary><p>有。PDF、JPG、PNG 每件須在 4 MB 以內，文字簡述在 100 字以內。成果產生器的「列印／另存 PDF」檔案最小、文字最清楚；如果檔案太大，可以少放幾張照片。</p></details>
+  <details><summary>課程學習成果和多元表現差在哪？</summary><p>課程學習成果是有學分的課程中產出的作品或報告，需要任課老師認證；多元表現是課程以外的表現，例如彈性學習時間（含自主學習）、社團、幹部、服務學習、競賽、證照。實際要放哪一類，請依老師和學校的規定。</p></details>
+
+  <h3 style="margin:30px 0 8px;font-size:18px">參考資料</h3>
+  <ul class="src">
+    <li><a href="https://school.taiwanbar.cc/posts/self-directed-learning-program">臺灣吧｜自主學習計劃怎麼做？6 大學習主題、撰寫格式、學長姐範例一次看</a></li>
+    <li><a href="https://www.techadmi.edu.tw/page.php?pid=162">技專校院招生策略委員會｜四技二專各入學管道學習準備建議方向查詢</a></li>
+    <li><a href="https://www.techadmi.edu.tw/bbs.php?bid=559">技專校院招生策略委員會｜升學四技二專學習歷程備審資料準備手冊</a></li>
+    <li><a href="https://blog.104.com.tw/vhs-epf">104 職場力｜技高學習歷程檔案：準備、上傳規定、範本</a></li>
+  </ul>
+  <p class="src">升學規定每年可能調整，實際內容請以當年度招生簡章與學校公告為準。</p>
+</div></section>
+
+<footer>園藝與休閒學程・蔡易霖老師　｜　<a href="../">回到教學網頁首頁</a></footer>
+
+<script>
+{
+const g=document.getElementById('pots');let h='';
+for(let i=0;i<9;i++){
+  const x=30+i*48,ht=14+i*13;const lv=Math.min(4,1+Math.floor(i/2));
+  let leaves='';for(let k=0;k<lv;k++){const y=-ht+8+k*(ht/lv)*.8;leaves+=`<use href="#leaf" transform="translate(0 ${y.toFixed(1)}) scale(${(0.36+i*0.035).toFixed(2)})"/><use href="#leaf" transform="translate(0 ${(y+6).toFixed(1)}) scale(-${(0.36+i*0.035).toFixed(2)} ${(0.36+i*0.035).toFixed(2)})"/>`}
+  h+=`<g transform="translate(${x} 202)"><g class="grow" style="animation-delay:${i*0.12}s"><path d="M0 0V${-ht}" stroke="#3f8a45" stroke-width="3.5" stroke-linecap="round"/>${leaves}${i===8?`<circle cy="${-ht-6}" r="8" fill="#ffd27a"/><circle cy="${-ht-6}" r="3.5" fill="#d9661c"/>`:''}</g><use href="#potg"/><text y="50" text-anchor="middle" font-size="12" fill="currentColor" opacity=".9">第${i+1}週</text></g>`;
+}
+g.innerHTML=h;
+}
+</script>
+</body>
+</html>

@@ -12,6 +12,13 @@
       ]
     },
     {
+      "name": "自主學習與學習歷程",
+      "open": true,
+      "items": [
+        "self-learning"
+      ]
+    },
+    {
       "name": "農業概論 總複習與測驗",
       "open": false,
       "items": [

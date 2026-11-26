@@ -115,6 +115,11 @@ footer{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
 /* ================= 網頁清單（新增網頁時在這裡加一筆） ================= */
 const PAGES = [
  {
+  "id": "self-learning",
+  "title": "自主學習：認識＋成果產生器",
+  "desc": "什麼是自主學習、為什麼對升學（四技二專學習歷程）重要；上傳 8～9 週學習單自動整理成自主學習成果，學生只寫總結心得，可下載 Word／PDF"
+ },
+ {
   "id": "agri-plan",
   "title": "實習課開場：課程規劃",
   "desc": "葉脈書籤 12/10 → 再生紙 12/17 → 種子小精靈 12/24 → 植物染 1/14；每週排程、回家作業、報告繳交日一次看清楚；報告 Word 範本、格式規定（字型、字級、照片規格）＋三份寫好的範例"
@@ -207,7 +212,7 @@ const PAGES = [
 ];
 
 /* ================= 預設分類（和 folders.json 相同；讀不到檔案時使用） ================= */
-const DEFAULT_FOLDERS = {"folders": [{"name": "115-1 農業資源應用實習", "open": true, "items": ["agri-plan", "agri-leaf", "agri-paper", "agri-seed", "agri-dye"]}, {"name": "農業概論 總複習與測驗", "open": false, "items": ["agri-ch3", "agri-ch4", "agri-ch5", "agri-ch6", "agri-quiz13", "agri-quest345", "agri-quest", "agri-review"]}, {"name": "實習課備用單元", "open": false, "items": ["agri-worm", "agri-enzyme", "agri-flower"]}, {"name": "職業試探", "open": false, "items": ["agri-career"]}, {"name": "教師自修", "open": false, "items": ["hort-exam"]}]};
+const DEFAULT_FOLDERS = {"folders": [{"name": "115-1 農業資源應用實習", "open": true, "items": ["agri-plan", "agri-leaf", "agri-paper", "agri-seed", "agri-dye"]}, {"name": "自主學習與學習歷程", "open": true, "items": ["self-learning"]}, {"name": "農業概論 總複習與測驗", "open": false, "items": ["agri-ch3", "agri-ch4", "agri-ch5", "agri-ch6", "agri-quiz13", "agri-quest345", "agri-quest", "agri-review"]}, {"name": "實習課備用單元", "open": false, "items": ["agri-worm", "agri-enzyme", "agri-flower"]}, {"name": "職業試探", "open": false, "items": ["agri-career"]}, {"name": "教師自修", "open": false, "items": ["hort-exam"]}]};
 
 (function(){
 const $=id=>document.getElementById(id);
