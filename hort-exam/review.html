@@ -127,6 +127,9 @@ article h2{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .sbtns .bm{font-size:1rem;padding:2px 8px}
 .sbtns .bm.on{color:#c98a00;border-color:#e8c060;background:#fff6d6}
 article h3.secdone{opacity:.75}
+.secfoot{display:flex;justify-content:flex-end;margin:10px 0 18px}
+.secfoot .ck{font-size:.9rem;padding:8px 16px;min-height:40px}
+.ckmini{font-size:.75rem;color:var(--leaf);font-weight:700;align-self:center}
 .ptools{display:flex;align-items:center;gap:8px;margin:-4px 0 12px;font-size:.85rem;color:var(--mute)}
 .ptools .pb{flex:1;height:8px;background:#e9e3d2;border-radius:99px;overflow:hidden}
 .ptools .pb i{display:block;height:100%;background:var(--leaf)}
@@ -384,8 +387,13 @@ function decorate(){
   const ci=S.cur,art=$("#art");let hs=[...art.querySelectorAll("h3")];if(!hs.length)hs=[art.querySelector("h2")];
   hs.forEach((h,j)=>{const key=sk(ci,j),on=!!S.sec[key],bm=!!S.bm[key];
     const w=document.createElement("span");w.className="sbtns";
-    w.innerHTML=`<button class="bm${bm?" on":""}" data-k="${key}" data-j="${j}" aria-label="書籤">${bm?"★":"☆"}</button><button class="ck${on?" on":""}" data-k="${key}">${on?"✓ 已複習":"☐ 複習"}</button>`;
-    h.appendChild(w);h.classList.toggle("secdone",on)});
+    w.innerHTML=`<button class="bm${bm?" on":""}" data-k="${key}" data-j="${j}" aria-label="書籤">${bm?"★":"☆"}</button>${on?'<span class="ckmini">✓ 已複習</span>':""}`;
+    h.appendChild(w);h.classList.toggle("secdone",on);
+    let last=h,nx=h.nextElementSibling;
+    while(nx&&!/^H[23]$/.test(nx.tagName)&&!nx.classList.contains("secfoot")){last=nx;nx=nx.nextElementSibling}
+    const f=document.createElement("div");f.className="sbtns secfoot";
+    f.innerHTML=`<button class="ck${on?" on":""}" data-k="${key}">${on?"✓ 這一節已複習（再按取消）":"☐ 這一節複習完了，打勾"}</button>`;
+    last.after(f)});
   const[k,n]=stat(ci),b=$("#doneBtn");
   b.classList.toggle("on",k===n);
   b.textContent=k===n?`✓ 本章 ${n} 節全部複習完（再按取消）`:`本章已複習 ${k}/${n} 節・按此全部勾選`;
@@ -409,7 +417,7 @@ $("#toc").onclick=e=>{const b=e.target.closest("button");if(!b)return;$("#tocShe
 const rb=$("#resetBtn");rb.textContent="清除複習進度、書籤與閃卡紀錄";
 let rt=0;rb.onclick=()=>{if(rt&&Date.now()-rt<3000){rt=0;S.done={};S.unk={};S.sec={};S.bm={};save();render(S.cur,true);try{drawCard()}catch(e){}rb.textContent="已清除";return}
   rt=Date.now();rb.textContent="再按一次確認清除";setTimeout(()=>{rb.textContent="清除複習進度、書籤與閃卡紀錄"},3000)};
-render(S.cur||0,true);
+{const _sk=CH.findIndex(c=>c.title.startsWith("十七"));render(location.hash==="#skill"&&_sk>=0?_sk:(S.cur||0),location.hash!=="#skill");}
 })();
 </script>
 </body>
